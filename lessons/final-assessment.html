@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Assessment - Typing Master</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 90%;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .timer-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .timer {
+            font-size: 3rem;
+            color: #FFC107;
+            text-align: center;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-label {
+            color: #aaa;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-top: 0.5rem;
+            font-weight: bold;
+        }
+
+        #game-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        #text-display {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: #ccc;
+            text-align: left;
+            min-height: 200px;
+        }
+
+        .typed {
+            color: #4CAF50;
+            text-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+        }
+
+        .current {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 0 4px;
+        }
+
+        .error {
+            color: #ff5252;
+            text-decoration: underline wavy #ff5252;
+        }
+
+        #start-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 2rem auto;
+            display: block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        #start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+            background: #45a049;
+        }
+
+        #success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(76, 175, 80, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            animation: fadeInScale 0.5s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        #success-message h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #success-message p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        #instructions {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        #instructions h2 {
+            color: #FFC107;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        #instructions ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #instructions li {
+            margin: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #fff;
+        }
+
+        #instructions li:before {
+            content: "•";
+            color: #4CAF50;
+            position: absolute;
+            left: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        #game-container, .stats-container, .timer-container {
+            display: none;
+        }
+
+        #failure-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(244, 67, 54, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            animation: fadeInScale 0.5s ease;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+
+        #failure-message h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        #failure-message p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .retry-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .retry-btn:hover {
+            background: #45a049;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            position: absolute;
+            animation: confetti 5s ease-in-out infinite;
+        }
+
+        @keyframes confetti {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        #certificate-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .certificate {
+            background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
+            padding: 60px;
+            border: 25px solid #4CAF50;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0,0,0,0.1);
+            width: 1000px;
+            font-family: 'Times New Roman', serif;
+        }
+
+        .certificate::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9InJnYmEoMCwwLDAsMC4xKSIvPjwvc3ZnPg==');
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .certificate-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border: 2px solid #333;
+            padding: 40px;
+            background: #fff;
+        }
+
+        .certificate-header {
+            margin-bottom: 40px;
+        }
+
+        .certificate-title {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+            font-family: 'Old English Text MT', 'Times New Roman', serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .certificate-subtitle {
+            font-size: 24px;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .certificate-photo {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #4CAF50;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .certificate-name {
+            font-size: 42px;
+            color: #333;
+            margin: 30px 0;
+            font-family: 'Brush Script MT', cursive;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .certificate-text {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+
+        .certificate-seal {
+            width: 120px;
+            height: 120px;
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            transform: rotate(-15deg);
+            border: 5px solid #45a049;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .certificate-footer {
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding-top: 40px;
+            border-top: 2px solid #eee;
+        }
+
+        .certificate-signature {
+            text-align: center;
+            flex: 1;
+        }
+
+        .signature-line {
+            width: 200px;
+            border-top: 2px solid #333;
+            margin: 10px auto;
+        }
+
+        .verify-link {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .verify-qr {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+            display: block;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: #fff;
+        }
+
+        /* Print styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            #certificate-container,
+            #certificate-container * {
+                visibility: visible;
+            }
+            
+            #certificate-container {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .certificate {
+                width: 210mm;  /* A4 width */
+                height: 297mm; /* A4 height */
+                margin: 0;
+                padding: 20mm; /* Standard margin */
+                border: none;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            
+            .certificate-content {
+                height: 100%;
+                padding: 0;
+                border: 15px double #4CAF50;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+            
+            /* Ensure proper font rendering in PDF */
+            @font-face {
+                font-family: 'Old English Text MT';
+                src: local('Old English Text MT');
+            }
+            
+            .certificate-title {
+                font-family: 'Old English Text MT', 'Times New Roman', serif !important;
+            }
+            
+            /* Ensure images are loaded before printing */
+            img {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Better QR code visibility in print */
+            .verify-qr {
+                border: 2px solid #000;
+            }
+            
+            /* Ensure green colors print properly */
+            .certificate-seal {
+                background-color: #4CAF50 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            /* Ensure proper page margins */
+            @page {
+                margin: 0;
+                size: A4 portrait;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Final Assessment</h1>
+
+        <div class="user-info-form">
+            <h2>Enter Your Details</h2>
+            <label for="user-name">Your Full Name</label>
+            <input type="text" id="user-name" placeholder="Enter your full name" required>
+            
+            <label for="user-photo">Your Photo</label>
+            <input type="file" id="user-photo" accept="image/*" required>
+            <img id="photo-preview" class="user-photo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="Preview">
+        </div>
+
+        <div id="instructions">
+            <h2>Instructions for Certificate</h2>
+            <ul>
+                <li>You have exactly 5 minutes to complete this test</li>
+                <li>You must achieve at least 15 Words Per Minute (WPM)</li>
+                <li>You must maintain at least 80% accuracy</li>
+                <li>The test will automatically end after 5 minutes</li>
+                <li>You will receive your certificate upon successful completion</li>
+            </ul>
+        </div>
+
+        <div class="timer-container">
+            <div class="timer">5:00</div>
+            <div class="timer-label">Time Remaining</div>
+        </div>
+
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-label">Words Per Minute</div>
+                <div class="stat-value" id="wpm">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value" id="accuracy">0%</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Errors</div>
+                <div class="stat-value" id="errors">0</div>
+            </div>
+        </div>
+
+        <div id="game-container">
+            <div id="text-display"></div>
+        </div>
+
+        <button id="start-btn">Start Test</button>
+    </div>
+
+    <div id="success-message">
+        <div class="emoji">🎉</div>
+        <h2>Congratulations!</h2>
+        <p>You've successfully completed the test and earned your certificate!</p>
+        <div class="emoji">🏆</div>
+    </div>
+
+    <div id="failure-message">
+        <div class="emoji">😔</div>
+        <h2>Sorry!</h2>
+        <p>You didn't meet the requirements this time.</p>
+        <button onclick="retryTest()" class="retry-btn">Try Again</button>
+        <div class="emoji">💪</div>
+    </div>
+
+    <div id="certificate-container" style="display: none;">
+        <div class="certificate">
+            <div class="certificate-content">
+                <div class="certificate-header">
+                    <h1 class="certificate-title">Certificate of Achievement</h1>
+                    <div class="certificate-subtitle">Professional Typing Course</div>
+                </div>
+                
+                <img id="cert-user-photo" class="certificate-photo" src="" alt="User Photo">
+                
+                <p class="certificate-text">This is to certify that</p>
+                <h2 class="certificate-name" id="cert-user-name">User Name</h2>
+                <p class="certificate-text">
+                    has successfully completed the EduLang hub Typing Course<br>
+                    demonstrating exceptional proficiency in touch typing<br>
+                    with outstanding performance metrics of
+                </p>
+                <p class="certificate-text" style="font-size: 28px; color: #4CAF50; margin: 30px 0;">
+                    <strong><span id="cert-wpm">0</span> Words Per Minute</strong><br>
+                    with <strong><span id="cert-accuracy">0</span>% Accuracy</strong>
+                </p>
+                <p class="certificate-text" style="font-style: italic; color: #666;">
+                    Awarded on <span id="cert-date"></span>
+                </p>
+
+                <div class="certificate-footer">
+                    <div class="certificate-signature">
+                        <p>BILAL AHMAD</p>
+                        <div class="signature-line"></div>
+                        <p>Course Director</p>
+                    </div>
+                    <div class="certificate-seal">
+                        CERTIFIED<br>TYPIST
+                    </div>
+                </div>
+
+                <div class="verify-link">
+                    <p>Verify this certificate at:</p>
+                    <p><a href="lessons/verify-certificate.html" target="_blank" style="color: #4CAF50; text-decoration: none;">www.bilalahmad.com/verify</a></p>
+                    <img class="verify-qr" id="qr-code" src="" alt="Verification QR Code">
+                    <p style="margin-top: 10px; font-size: 12px;">Certificate ID: <span id="cert-id"></span></p>
+                </div>
+            </div>
+        </div>
+        <button class="print-btn" onclick="printCertificate()">Print Certificate</button>
+    </div>
+
+    <script>
+        const texts = [
+            "The cat and dog play together Sphinx of black quartz, judge my vow. Ahmed's daily prayer, a quiet vow, brings wisdom and eternal guidance; zealous Muslims seek the truth. Crazy Fredrick bought many very exquisite opal jewels; zipping quickly around corners. Jack's amazing quest for golden trophies, via zany spirals, perplexed everybody! The quick, brown fox jumps over a lazy dog; amazingly vivid yet baffling! How razorback-jumping frogs can level six piqued gymnasts. A calm, quiet Muslim prays daily, seeking eternal wisdom, zealous for the truth. Jumpy zebras vex and make disjointed quacking sounds!",
+        ];
+
+        let currentText = "";
+        let currentPosition = 0;
+        let startTime = null;
+        let errors = 0;
+        let totalKeystrokes = 0;
+        let correctKeystrokes = 0;
+        let isTestActive = false;
+        let timeLeft = 300; // 5 minutes in seconds
+        let timerInterval = null;
+
+        const textDisplay = document.getElementById('text-display');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const errorsDisplay = document.getElementById('errors');
+        const startButton = document.getElementById('start-btn');
+        const timerDisplay = document.querySelector('.timer');
+        const successMessage = document.getElementById('success-message');
+        const failureMessage = document.getElementById('failure-message');
+        const instructions = document.getElementById('instructions');
+        const gameContainer = document.getElementById('game-container');
+        const statsContainer = document.querySelector('.stats-container');
+        const timerContainer = document.querySelector('.timer-container');
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff'][Math.floor(Math.random() * 5)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        function startTest() {
+            if (isTestActive) return;
+            
+            // Hide instructions and show game elements
+            instructions.style.display = 'none';
+            gameContainer.style.display = 'block';
+            statsContainer.style.display = 'grid';
+            timerContainer.style.display = 'block';
+            
+            const userName = document.getElementById('user-name').value;
+            const userPhoto = document.getElementById('user-photo').files[0];
+            
+            if (!userName || !userPhoto) {
+                alert('Please enter your name and upload a photo before starting the test.');
+                return;
+            }
+
+            currentText = texts[Math.floor(Math.random() * texts.length)];
+            currentPosition = 0;
+            errors = 0;
+            totalKeystrokes = 0;
+            correctKeystrokes = 0;
+            timeLeft = 300;
+            startTime = new Date();
+            isTestActive = true;
+            
+            updateDisplay();
+            startButton.style.display = 'none';
+            
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    endTest();
+                }
+            }, 1000);
+        }
+
+        function updateDisplay() {
+            let html = '';
+            for (let i = 0; i < currentText.length; i++) {
+                if (i < currentPosition) {
+                    html += `<span class="typed">${currentText[i]}</span>`;
+                } else if (i === currentPosition) {
+                    html += `<span class="current">${currentText[i]}</span>`;
+                } else {
+                    html += currentText[i];
+                }
+            }
+            textDisplay.innerHTML = html;
+        }
+
+        function updateStats() {
+            const accuracy = Math.round((correctKeystrokes / totalKeystrokes) * 100) || 0;
+            const words = currentPosition / 5;
+            const minutes = (300 - timeLeft) / 60;
+            const wpm = Math.round(words / minutes) || 0;
+
+            wpmDisplay.textContent = wpm;
+            accuracyDisplay.textContent = accuracy + '%';
+            errorsDisplay.textContent = errors;
+
+            // Check if requirements are met before time runs out
+            if (wpm >= 15 && accuracy >= 80 && currentPosition >= currentText.length) {
+                clearInterval(timerInterval); // Stop the timer
+                endTest(); // Show success message and certificate
+            }
+        }
+
+        function endTest() {
+            isTestActive = false;
+
+            const accuracy = Math.round((correctKeystrokes / totalKeystrokes) * 100) || 0;
+            const words = currentPosition / 5;
+            const minutes = (300 - timeLeft) / 60;
+            const wpm = Math.round(words / minutes);
+
+            if (wpm >= 15 && accuracy >= 80) {
+                // Show success message first
+                successMessage.style.display = 'block';
+                createConfetti();
+                
+                // Generate unique certificate ID and store certificate data
+                const timestamp = Date.now();
+                const certId = `CERT-${timestamp}`;
+                document.getElementById('cert-id').textContent = certId;
+
+                // Store certificate data in localStorage
+                const certificateData = {
+                    id: certId,
+                    name: document.getElementById('user-name').value,
+                    wpm: wpm,
+                    accuracy: accuracy,
+                    date: new Date().toLocaleDateString()
+                };
+                localStorage.setItem(certId, JSON.stringify(certificateData));
+                
+                // Generate QR code with just the certificate ID
+                const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${certId}`;
+                document.getElementById('qr-code').src = qrCodeUrl;
+                
+                // Update certificate details
+                document.getElementById('cert-user-name').textContent = document.getElementById('user-name').value;
+                document.getElementById('cert-wpm').textContent = wpm;
+                document.getElementById('cert-accuracy').textContent = accuracy;
+                
+                // Show certificate after a delay
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                    document.getElementById('certificate-container').style.display = 'flex';
+                }, 3000);
+            } else {
+                failureMessage.style.display = 'block';
+            }
+        }
+
+        function retryTest() {
+            failureMessage.style.display = 'none';
+            location.reload();
+        }
+
+        function printCertificate() {
+            // Wait for images to load
+            const images = document.querySelectorAll('#certificate-container img');
+            let loadedImages = 0;
+            
+            images.forEach(img => {
+                if (img.complete) {
+                    loadedImages++;
+                } else {
+                    img.addEventListener('load', () => {
+                        loadedImages++;
+                        if (loadedImages === images.length) {
+                            // All images loaded, trigger print
+                            window.print();
+                        }
+                    });
+                }
+            });
+            
+            // If all images are already loaded
+            if (loadedImages === images.length) {
+                window.print();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!isTestActive) return;
+            if (timeLeft <= 0) return;
+            
+            if (currentPosition >= currentText.length) {
+                clearInterval(timerInterval);
+                endTest();
+                return;
+            }
+
+            const expectedChar = currentText[currentPosition];
+            const typedChar = e.key;
+
+            if (typedChar === expectedChar) {
+                currentPosition++;
+                correctKeystrokes++;
+                updateDisplay();
+                updateStats();
+                
+                // Check if user has completed the entire text
+                if (currentPosition === currentText.length) {
+                    clearInterval(timerInterval);
+                    endTest();
+                }
+            } else {
+                errors++;
+                updateStats();
+            }
+        });
+
+        document.getElementById('user-photo').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photo-preview').src = e.target.result;
+                    document.getElementById('cert-user-photo').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('user-name').addEventListener('input', function(e) {
+            document.getElementById('cert-user-name').textContent = e.target.value || 'User Name';
+        });
+
+        startButton.addEventListener('click', startTest);
+    </script>
+</body>
+</html>

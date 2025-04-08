@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol Practice - Advanced Typing | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #007bff;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+            --danger-color: #dc3545;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-600: #6c757d;
+            --gray-800: #343a40;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .game-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .game-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .game-header h1 {
+            color: var(--gray-800);
+            margin-bottom: 1rem;
+        }
+
+        .game-header p {
+            color: var(--gray-600);
+            font-size: 1.1rem;
+        }
+
+        .symbol-display {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--gray-100);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .current-symbol {
+            font-size: 4rem;
+            margin: 1rem 0;
+            color: var(--primary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .symbol-info {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            margin: 1rem 0;
+        }
+
+        .symbol-input {
+            width: 100%;
+            max-width: 300px;
+            margin: 2rem auto;
+            padding: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .symbol-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(0,123,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .game-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--gray-100);
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+            margin: 1rem 0;
+            padding: 0.5rem;
+            background: var(--gray-100);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .timer.warning {
+            color: var(--danger-color);
+            animation: pulse 1s infinite;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+        }
+
+        .btn-start {
+            background: var(--success-color);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .keyboard-hint {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #e8f4ff;
+            border-radius: 12px;
+            color: var(--primary-color);
+        }
+
+        .feedback {
+            text-align: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .feedback.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .difficulty-selector {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        .difficulty-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .difficulty-btn.easy {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .difficulty-btn.medium {
+            background: #FF9800;
+            color: white;
+        }
+
+        .difficulty-btn.hard {
+            background: #f44336;
+            color: white;
+        }
+
+        .difficulty-btn.selected {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .difficulty-btn:not(.selected) {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../typing.html">Typing Practice</a>
+            <a href="../typing-instructions.html">Instructions</a>
+        </div>
+    </nav>
+
+    <div class="game-container">
+        <div class="game-header">
+            <h1><i class="fas fa-keyboard"></i> Symbol Practice</h1>
+            <p>Select difficulty and type symbols to earn time! Easy: +3s, Medium: +2s, Hard: +1s</p>
+        </div>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn easy selected" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn medium" data-difficulty="medium">Medium</button>
+            <button class="difficulty-btn hard" data-difficulty="hard">Hard</button>
+        </div>
+
+        <div class="timer" id="timer">
+            <i class="fas fa-clock"></i>
+            <span>60</span>s
+        </div>
+
+        <div class="keyboard-hint">
+            <i class="fas fa-lightbulb"></i> 
+            <span id="keyboardHint">Press these keys to type @: Shift + 2</span>
+        </div>
+
+        <div class="symbol-display">
+            <div class="current-symbol" id="currentSymbol">@</div>
+            <div class="symbol-info">Type this symbol</div>
+        </div>
+
+        <input type="text" class="symbol-input" id="symbolInput" placeholder="Type the symbol here..." disabled>
+
+        <div class="game-stats">
+            <div class="stat-item">
+                <div class="stat-value" id="wpmDisplay">0</div>
+                <div class="stat-label">WPM</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="correctCount">0</div>
+                <div class="stat-label">Correct</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="accuracyDisplay">0%</div>
+                <div class="stat-label">Accuracy</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="highScoreDisplay">0</div>
+                <div class="stat-label">Best WPM</div>
+            </div>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="controls">
+            <button class="btn btn-start" id="startBtn">
+                <i class="fas fa-play"></i> Start Game
+            </button>
+            <button class="btn btn-primary" id="nextBtn" style="display: none;">
+                <i class="fas fa-forward"></i> Next Symbol
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Add audio elements for feedback
+        const correctAudio = new Audio('data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjI5LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAAFbgBtbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1t//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjU0AAAAAAAAAAAAAAAAJAYAAAAAAAAABWPp8XClAAAAAAAAAAAAAAAAAAAA//MUZAAAAAGkAAAAAAAAA0gAAAAATEFN//MUZAMAAAGkAAAAAAAAA0gAAAAARTMu//MUZAYAAAGkAAAAAAAAA0gAAAAAOTku//MUZAkAAAGkAAAAAAAAA0gAAAAANVVV');
+        const wrongAudio = new Audio('data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4LjI5LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAACAAAFbgBtbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1tbW1t//////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjU0AAAAAAAAAAAAAAAAJAQAAAAAAAAABWLkgLJ5AAAAAAAAAAAAAAAAAAAAAP/zFGQAAAAAZAAAAAAAAANIAAAAABExL//zFGQDAAABpAAAAAAAAANIAAAAAEUzL//zFGQGAAABpAAAAAAAAANIAAAAADk5L//zFGQJAAABpAAAAAAAAANIAAAAADVVV');
+
+        const symbolsByDifficulty = {
+            easy: [
+            { symbol: '@', hint: 'Shift + 2' },
+            { symbol: '#', hint: 'Shift + 3' },
+            { symbol: '$', hint: 'Shift + 4' },
+            { symbol: '%', hint: 'Shift + 5' },
+            { symbol: '^', hint: 'Shift + 6' },
+            { symbol: '&', hint: 'Shift + 7' },
+            { symbol: '*', hint: 'Shift + 8' },
+            { symbol: '(', hint: 'Shift + 9' },
+            { symbol: ')', hint: 'Shift + 0' },
+            { symbol: '_', hint: 'Shift + -' },
+            { symbol: '+', hint: 'Shift + =' },
+            { symbol: '{', hint: 'Shift + [' },
+            { symbol: '}', hint: 'Shift + ]' },
+            { symbol: '|', hint: 'Shift + \\' },
+            { symbol: ':', hint: 'Shift + ;' },
+            { symbol: '"', hint: 'Shift + \'' },
+            { symbol: '<', hint: 'Shift + ,' },
+            { symbol: '>', hint: 'Shift + .' },
+            { symbol: '?', hint: 'Shift + /' }
+
+            ],
+            medium: [
+            { symbol: '`Used in: console.log(`Welcome, ${user}`)', hint: 'Used in: console.log(`Welcome, ${user}`)' },
+            { symbol: '-', hint: 'Used in: 2025-04-05 is today\'s date' },
+            { symbol: '=', hint: 'Used in: let score = 100' },
+            { symbol: '[', hint: 'Used in: fruits = [\"apple\", \"banana\"]' },
+            { symbol: ']', hint: 'Used in: console.log(fruits[0])' },
+            { symbol: '\\', hint: 'Used in: C:\\Program Files\\App' },
+            { symbol: ';', hint: 'Used in: int age = 18;' },
+            { symbol: '\'', hint: 'Used in: const letter = \'A\'' },
+            { symbol: ',', hint: 'Used in: red, green, blue are colors' },
+            { symbol: '.', hint: 'Used in: www.google.com' },
+            { symbol: '/', hint: 'Used in: 100 / 4 = 25' },
+            { symbol: ':', hint: 'Used in: Time is 10:45 AM' },
+            { symbol: '"', hint: 'Used in: console.log("Hello World")' },
+            { symbol: '<', hint: 'Used in: <html> tag' },
+            { symbol: '>', hint: 'Used in: if (x > y)' },
+            { symbol: '?', hint: 'Used in: What is your name?' },
+            { symbol: '_', hint: 'Used in: snake_case variable_name' },
+            { symbol: '|', hint: 'Used in: condition1 || condition2' },
+            { symbol: '{', hint: 'Used in: function test() { ... }' },
+            { symbol: '}', hint: 'Used in: Closing curly braces }' }
+
+            ],
+            hard: [
+            [
+  { symbol: '~ The value is ~50, maybe ~49 or ~51 depending on the input ~ it\'s just an estimate. ',},
+  { symbol: '` Use the `code` syntax in Markdown like `console.log()` or `let a = `value``. The ` is a special symbol in coding.', },
+  { symbol: '! Wait! Stop! This is important! Don’t ignore it! Wait! Did you hear that? Stop and check everything again!', },
+  { symbol: '@ Send emails to support@domain.com or info@domain.com and follow us @EduLangHub. You can also contact @support anytime.', },
+  { symbol: '# Follow #JavaScript, #coding, and #100DaysOfCode for daily updates. It’s important to use # for hashtags.' },
+  { symbol: '$ The item costs $5, the tax is $0.50, and total is $5.50. The total amount is $5.50 after adding $0.50 tax.' },
+  { symbol: '% Battery is at 85%, completed 100%, dropped to 60% later. The progress bar shows 100%, but battery was at 60%. The power usage is 85%.' },
+  { symbol: '^ In math: 2^3 = 8, 3^2 = 9, and 10^0 = 1. The value 2^3 shows an exponential result.' },
+  { symbol: '& Tom & Jerry, salt & pepper, rock & roll — all great combos! The combination of Tom & Jerry is legendary.' },
+  { symbol: '* Enter your PIN: ****, password: ********, and confirm: ********. The PIN **** is needed for secure access.' },
+  { symbol: '( (Note: This is important) and (do not forget the details). The note (inside the parentheses) is critical.' },
+  { symbol: ') The results (90%), (95%), and (88%) are all excellent. The percentage (90%) is close to 100%.' },
+  { symbol: '_ Use snake_case_like_this in Python or file_name_example.txt. Snake_case is better than camelCase for readability.' },
+  { symbol: '+ 10 + 5 = 15, then +2 more, and +1 bonus point added. The sum 10 + 5 is 15, plus 1 equals 16.' },
+  { symbol: '{ Start block with {, open nested block with { again. To start the function, open {.' },
+  { symbol: '} Close inner block }, then close main block } at the end. Don’t forget to close } to avoid errors.' },
+  { symbol: '| Use || for OR, like true || false || true returns true. You can use || in logic operations for true or false.' },
+  { symbol: ': Time: 10:30 AM, Deadline: 5:00 PM, Ratio: 3:1. The ratio is expressed as 3:1 between the two elements.' },
+  { symbol: '" He said, "Hello", then replied, "How are you?" and smiled. She said, "Welcome!", and they all replied, "Good!"' },
+  { symbol: '? Who are you? Where are you? What is this? So many questions? The question "What is this?" is often asked.' }            ]
+            ]
+        };  
+
+        let currentSymbols = symbolsByDifficulty.easy; // Default to easy symbols
+
+        let gameState = {
+            currentSymbolIndex: 0,
+            correctCount: 0,
+            totalCount: 0,
+            timeLeft: 60,
+            gameStarted: false,
+            timerInterval: null,
+            startTime: null,
+            highScore: 0,
+            difficulty: 'easy' // Default difficulty
+        };
+
+        const currentSymbol = document.getElementById('currentSymbol');
+        const symbolInput = document.getElementById('symbolInput');
+        const keyboardHint = document.getElementById('keyboardHint');
+        const correctCount = document.getElementById('correctCount');
+        const accuracyDisplay = document.getElementById('accuracyDisplay');
+        const wpmDisplay = document.getElementById('wpmDisplay');
+        const highScoreDisplay = document.getElementById('highScoreDisplay');
+        const feedback = document.getElementById('feedback');
+        const nextBtn = document.getElementById('nextBtn');
+        const startBtn = document.getElementById('startBtn');
+        const timer = document.getElementById('timer');
+
+        const difficultyBtns = document.querySelectorAll('.difficulty-btn');
+        difficultyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (!gameState.gameStarted) {
+                    // Update selected button visual
+                    difficultyBtns.forEach(b => b.classList.remove('selected'));
+                    btn.classList.add('selected');
+                    
+                    // Update difficulty and symbols
+                    gameState.difficulty = btn.dataset.difficulty;
+                    currentSymbols = symbolsByDifficulty[gameState.difficulty];
+                }
+            });
+        });
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function showSymbol() {
+            const symbolObj = currentSymbols[gameState.currentSymbolIndex];
+            currentSymbol.textContent = symbolObj.symbol;
+            keyboardHint.textContent = `Press these keys to type ${symbolObj.symbol}: ${symbolObj.hint}`;
+            symbolInput.value = '';
+            symbolInput.focus();
+        }
+
+        function calculateWPM() {
+            if (!gameState.startTime) return 0;
+            const timeElapsed = (60 - gameState.timeLeft) / 60; // in minutes
+            if (timeElapsed === 0) return 0;
+            return Math.round((gameState.correctCount / timeElapsed));
+        }
+
+        function updateStats() {
+            correctCount.textContent = gameState.correctCount;
+            const accuracy = (gameState.totalCount === 0) ? 0 : 
+                Math.round((gameState.correctCount / gameState.totalCount) * 100);
+            accuracyDisplay.textContent = `${accuracy}%`;
+            
+            const currentWPM = calculateWPM();
+            wpmDisplay.textContent = currentWPM;
+            
+            if (currentWPM > gameState.highScore) {
+                gameState.highScore = currentWPM;
+                highScoreDisplay.textContent = currentWPM;
+            }
+        }
+
+        function showFeedback(message, type) {
+            feedback.textContent = message;
+            feedback.className = `feedback ${type}`;
+            
+            // Play sound based on type
+            if (type === 'success') {
+                correctAudio.play();
+                // Add time based on difficulty
+                const timeBonus = getTimeBonus();
+                if (gameState.gameStarted && gameState.timeLeft < (60 - timeBonus)) {
+                    gameState.timeLeft += timeBonus;
+                    timer.querySelector('span').textContent = gameState.timeLeft;
+                }
+            } else if (type === 'error') {
+                wrongAudio.play();
+                feedback.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    feedback.style.animation = '';
+                }, 500);
+            }
+            
+            setTimeout(() => {
+                feedback.style.display = 'none';
+            }, 2000);
+        }
+
+        function getTimeBonus() {
+            switch(gameState.difficulty) {
+                case 'easy': return 3;
+                case 'medium': return 2;
+                case 'hard': return 1;
+                default: return 2;
+            }
+        }
+
+        function nextSymbol() {
+            if (!gameState.gameStarted) return;
+            gameState.currentSymbolIndex = (gameState.currentSymbolIndex + 1) % currentSymbols.length;
+            showSymbol();
+        }
+
+        function startGame() {
+            // Reset game state
+            gameState = {
+                ...gameState,
+                currentSymbolIndex: 0,
+                correctCount: 0,
+                totalCount: 0,
+                timeLeft: 60,
+                gameStarted: true,
+                startTime: Date.now()
+            };
+
+            // Get symbols for current difficulty
+            currentSymbols = symbolsByDifficulty[gameState.difficulty];
+            
+            // Shuffle symbols for current difficulty
+            shuffleArray(currentSymbols);
+            
+            // Update UI
+            symbolInput.disabled = false;
+            startBtn.style.display = 'none';
+            nextBtn.style.display = 'inline-flex';
+            showSymbol();
+            updateStats();
+            
+            // Disable difficulty buttons during game
+            difficultyBtns.forEach(btn => btn.style.opacity = '0.5');
+            
+            // Start timer
+            gameState.timerInterval = setInterval(() => {
+                gameState.timeLeft--;
+                timer.querySelector('span').textContent = gameState.timeLeft;
+                
+                if (gameState.timeLeft <= 10) {
+                    timer.classList.add('warning');
+                }
+                
+                if (gameState.timeLeft <= 0) {
+                    endGame();
+                }
+                
+                updateStats();
+            }, 1000);
+        }
+
+        function endGame() {
+            clearInterval(gameState.timerInterval);
+            gameState.gameStarted = false;
+            symbolInput.disabled = true;
+            startBtn.style.display = 'inline-flex';
+            nextBtn.style.display = 'none';
+            startBtn.textContent = 'Play Again';
+            timer.classList.remove('warning');
+            
+            // Re-enable difficulty buttons
+            difficultyBtns.forEach(btn => btn.style.opacity = '1');
+            
+            const finalWPM = calculateWPM();
+            showFeedback(`Time's up! Final WPM: ${finalWPM} (${gameState.difficulty} mode)`, 'success');
+        }
+
+        symbolInput.addEventListener('input', (e) => {
+            if (!gameState.gameStarted) return;
+            
+            const input = e.target.value;
+            const currentSymbolObj = currentSymbols[gameState.currentSymbolIndex];
+
+            if (input === currentSymbolObj.symbol) {
+                gameState.correctCount++;
+                gameState.totalCount++;
+                updateStats();
+                showFeedback('Correct! Well done!', 'success');
+                setTimeout(nextSymbol, 500);
+            } else if (input.length >= currentSymbolObj.symbol.length) {
+                gameState.totalCount++;
+                updateStats();
+                showFeedback(`Try again! Use ${currentSymbolObj.hint}`, 'error');
+                symbolInput.value = '';
+            }
+        });
+
+        nextBtn.addEventListener('click', nextSymbol);
+        startBtn.addEventListener('click', startGame);
+
+        // Initialize the game
+        symbolInput.disabled = true;
+        nextBtn.style.display = 'none';
+        highScoreDisplay.textContent = '0';
+    </script>
+</body>
+</html>

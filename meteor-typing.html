@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meteor Typing Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        #game-container {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        #score-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        #input-box {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            padding: 15px;
+            font-size: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #4CAF50;
+            border-radius: 25px;
+            color: #fff;
+            text-align: center;
+            z-index: 100;
+        }
+
+        #input-box:focus {
+            outline: none;
+            border-color: #69F0AE;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+        }
+
+        .word {
+            position: absolute;
+            color: #fff;
+            font-size: 20px;
+            font-family: monospace;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: color 0.3s;
+        }
+
+        .word.active {
+            color: #69F0AE;
+            text-shadow: 0 0 15px rgba(105, 240, 174, 0.7);
+        }
+
+        .word.danger {
+            color: #FF5252;
+            text-shadow: 0 0 15px rgba(255, 82, 82, 0.7);
+        }
+
+        #game-over {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #game-over h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #FF5252;
+        }
+
+        #game-over p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        #restart-btn {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #4CAF50;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        #restart-btn:hover {
+            background: #45a049;
+            transform: scale(1.05);
+        }
+
+        #start-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #start-screen h1 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            color: #4CAF50;
+            text-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+        }
+
+        #start-btn {
+            padding: 20px 40px;
+            font-size: 24px;
+            background: #4CAF50;
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        #start-btn:hover {
+            background: #45a049;
+            transform: scale(1.1);
+        }
+
+        .meteor-trail {
+            position: absolute;
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.2));
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="start-screen">
+        <h1>Meteor Typing</h1>
+        <button id="start-btn">Start Game</button>
+    </div>
+
+    <div id="game-container"></div>
+    
+    <div id="score-container">
+        Score: <span id="score">0</span>
+        <br>
+        Lives: <span id="lives">5</span>
+    </div>
+
+    <input type="text" id="input-box" placeholder="Type here..." autocomplete="off">
+
+    <div id="game-over">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="final-score">0</span></p>
+        <p>High Score: <span id="high-score">0</span></p>
+        <button id="restart-btn">Play Again</button>
+    </div>
+
+    <script>
+        const words = [
+            'code', 'game', 'play', 'type', 'fast', 'word', 'text',
+            'score', 'level', 'speed', 'quick', 'jump', 'high', 'time',
+            'space', 'race', 'skill', 'learn', 'focus', 'start', 'end',
+            'win', 'lose', 'try', 'best', 'next', 'move', 'flow', 'zone'
+        ];
+
+        const gameContainer = document.getElementById('game-container');
+        const inputBox = document.getElementById('input-box');
+        const scoreElement = document.getElementById('score');
+        const livesElement = document.getElementById('lives');
+        const gameOverScreen = document.getElementById('game-over');
+        const finalScoreElement = document.getElementById('final-score');
+        const highScoreElement = document.getElementById('high-score');
+        const startScreen = document.getElementById('start-screen');
+        const startBtn = document.getElementById('start-btn');
+        const restartBtn = document.getElementById('restart-btn');
+
+        let activeWords = [];
+        let score = 0;
+        let lives = 5;
+        let gameActive = false;
+        let spawnInterval;
+        let animationFrameId;
+        let lastTime = 0;
+        let difficulty = 1;
+        let highScore = localStorage.getItem('meteorTypingHighScore') || 0;
+
+        class Word {
+            constructor(word) {
+                this.word = word;
+                this.element = document.createElement('div');
+                this.element.className = 'word';
+                this.element.textContent = word;
+                this.element.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+                this.element.style.top = '-50px';
+                this.speed = (1 + Math.random() * 0.5) * difficulty;
+                gameContainer.appendChild(this.element);
+            }
+
+            update(deltaTime) {
+                const currentTop = parseFloat(this.element.style.top);
+                this.element.style.top = (currentTop + this.speed * deltaTime) + 'px';
+                
+                if (currentTop > window.innerHeight) {
+                    this.remove();
+                    loseLife();
+                    return false;
+                }
+                return true;
+            }
+
+            remove() {
+                gameContainer.removeChild(this.element);
+            }
+        }
+
+        function spawnWord() {
+            if (!gameActive) return;
+            const word = words[Math.floor(Math.random() * words.length)];
+            activeWords.push(new Word(word));
+        }
+
+        function updateGame(currentTime) {
+            if (!gameActive) return;
+
+            const deltaTime = (currentTime - lastTime) / 16; // Normalize to ~60fps
+            lastTime = currentTime;
+
+            activeWords = activeWords.filter(word => word.update(deltaTime));
+            
+            // Increase difficulty over time
+            difficulty = 1 + Math.floor(score / 100) * 0.2;
+
+            animationFrameId = requestAnimationFrame(updateGame);
+        }
+
+        function loseLife() {
+            lives--;
+            livesElement.textContent = lives;
+            
+            if (lives <= 0) {
+                endGame();
+            }
+        }
+
+        function startGame() {
+            gameActive = true;
+            score = 0;
+            lives = 5;
+            difficulty = 1;
+            activeWords = [];
+            gameContainer.innerHTML = '';
+            scoreElement.textContent = score;
+            livesElement.textContent = lives;
+            startScreen.style.display = 'none';
+            gameOverScreen.style.display = 'none';
+            inputBox.value = '';
+            inputBox.focus();
+
+            // Start spawning words
+            spawnInterval = setInterval(spawnWord, 2000);
+            lastTime = performance.now();
+            animationFrameId = requestAnimationFrame(updateGame);
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(spawnInterval);
+            cancelAnimationFrame(animationFrameId);
+            
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('meteorTypingHighScore', highScore);
+            }
+            
+            finalScoreElement.textContent = score;
+            highScoreElement.textContent = highScore;
+            gameOverScreen.style.display = 'block';
+        }
+
+        inputBox.addEventListener('input', () => {
+            if (!gameActive) return;
+
+            const typedText = inputBox.value.toLowerCase();
+            
+            for (let i = 0; i < activeWords.length; i++) {
+                const wordObj = activeWords[i];
+                if (wordObj.word === typedText) {
+                    // Word matched
+                    score += Math.floor(20 * difficulty);
+                    scoreElement.textContent = score;
+                    wordObj.remove();
+                    activeWords.splice(i, 1);
+                    inputBox.value = '';
+                    break;
+                } else if (wordObj.word.startsWith(typedText)) {
+                    // Partial match
+                    wordObj.element.classList.add('active');
+                } else {
+                    wordObj.element.classList.remove('active');
+                }
+            }
+        });
+
+        startBtn.addEventListener('click', startGame);
+        restartBtn.addEventListener('click', startGame);
+
+        // Initialize
+        highScoreElement.textContent = highScore;
+    </script>
+</body>
+</html>

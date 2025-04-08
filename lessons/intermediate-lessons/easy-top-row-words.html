@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Row Challenge - Easy Top Row Words | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; overflow-y: auto; }
+        body { margin: 0; padding: 0; min-height: 100vh; position: relative; top: 0; }
+        .lesson-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .game-container {
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .word-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 500px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .current-word {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 1rem 0;
+            transition: all 0.3s ease;
+        }
+        .success-message {
+            color: #27ae60;
+            transform: scale(1.1);
+            animation: successPop 1s ease;
+        }
+        .timer-display {
+            font-size: 2rem;
+            font-weight: bold;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .timer-display.warning {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            animation: pulse 1s infinite;
+        }
+        .input-box {
+            font-size: 1.5rem;
+            padding: 0.5rem 1rem;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 1rem 0;
+            transition: border-color 0.3s;
+        }
+        .input-box.error {
+            border-color: #e74c3c;
+            animation: shake 0.5s;
+        }
+        .input-box.combo-active {
+            border-color: #2ecc71;
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+        }
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+        .stat-item {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .keyboard-hint {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .keyboard-key {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            background: #e9ecef;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .difficulty-selector {
+            margin: 1rem 0;
+        }
+        .difficulty-btn {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .difficulty-btn.active {
+            background: #2ecc71;
+            color: white;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        @keyframes successPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 0; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="../../typing.html" class="nav-brand">EduLang Hub</a>
+            <div class="nav-links">
+                <a href="../../typing.html">Home</a>
+                <a href="../typing-instructions.html">Instructions</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="lesson-container">
+        <h1><i class="fas fa-keyboard"></i> Top Row Challenge</h1>
+        <p>Master typing with the top row keys (Q, W, E, R, T, Y, U, I, O, P). Type each word quickly and accurately!</p>
+
+        <div class="keyboard-hint">
+            <p>Focus on these keys:</p>
+            <div class="key-row">
+                <span class="keyboard-key">Q</span>
+                <span class="keyboard-key">W</span>
+                <span class="keyboard-key">E</span>
+                <span class="keyboard-key">R</span>
+                <span class="keyboard-key">T</span>
+                <span class="keyboard-key">Y</span>
+                <span class="keyboard-key">U</span>
+                <span class="keyboard-key">I</span>
+                <span class="keyboard-key">O</span>
+                <span class="keyboard-key">P</span>
+            </div>
+        </div>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
+
+        <div class="game-container">
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="timer-display" id="timer-display">
+                        <span id="timer">30.0</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-tachometer-alt"></i> WPM: <span id="wpm">0</span>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-bullseye"></i> Accuracy: <span id="accuracy">100</span>%
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-fire"></i> Combo: <span id="combo">0</span>
+                </div>
+            </div>
+
+            <div class="word-box">
+                <div id="word-display" class="current-word">ready</div>
+                <input type="text" id="word-input" class="input-box" autocomplete="off" disabled>
+                <button id="start-btn" class="btn btn-primary">Start Game</button>
+            </div>
+
+            <div id="top-scores">
+                <h3>Top Scores</h3>
+                <!-- Leaderboard entries will be added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Word lists for different difficulty levels
+        const wordLists = {
+            easy: [
+                'tie', 'wet', 'try', 'type', 'quit', 'wire', 'trip',
+                'pet', 'top', 'tip', 'toy', 'pie', 'pit', 'row',
+                'rip', 'tie', 'way', 'war', 'we', 'you', 'yet',
+                'eye', 'two', 'who', 'pay', 'put', 'our', 'out'
+            ],
+            medium: [
+                'quiet', 'write', 'power', 'tweet', 'quite', 'upper',
+                'tower', 'query', 'water', 'paper', 'party', 'worry',
+                'pretty', 'proper', 'poetry', 'player', 'equity',
+                'twenty', 'triple', 'theory', 'output', 'prayer'
+            ],
+            hard: [
+                'require', 'territory', 'typewriter', 'priority', 'equipment',
+                'property', 'powerful', 'quantity', 'properly', 'operator',
+                'prototype', 'quarterly', 'repertory', 'temporary', 'outerwear',
+                'waterproof', 'typewriter', 'equitable', 'perpetuity', 'repertoire'
+            ]
+        };
+
+        // Game variables
+        let gameActive = false;
+        let timer = 30;
+        let combo = 0;
+        let score = 0;
+        let wordsTyped = 0;
+        let mistakes = 0;
+        let gameInterval;
+        let currentWord = '';
+        let currentDifficulty = 'easy';
+
+        // DOM elements
+        const wordDisplay = document.getElementById('word-display');
+        const input = document.getElementById('word-input');
+        const startButton = document.getElementById('start-btn');
+        const timerDisplay = document.getElementById('timer-display');
+        const timerElement = document.getElementById('timer');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const comboDisplay = document.getElementById('combo');
+        const difficultyButtons = document.querySelectorAll('.difficulty-btn');
+
+        // Get random word based on difficulty
+        function getRandomWord() {
+            const words = wordLists[currentDifficulty];
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        function calculateWPM() {
+            const minutes = (30 - timer) / 60;
+            return Math.round(wordsTyped / minutes) || 0;
+        }
+
+        function updateTimer() {
+            timerElement.textContent = timer.toFixed(1);
+            
+            if (timer <= 5) {
+                timerDisplay.classList.add('warning');
+            } else {
+                timerDisplay.classList.remove('warning');
+            }
+        }
+
+        function updateStats() {
+            wpmDisplay.textContent = calculateWPM();
+            const accuracy = mistakes === 0 ? 100 : Math.round((wordsTyped - mistakes) / wordsTyped * 100);
+            accuracyDisplay.textContent = accuracy;
+            comboDisplay.textContent = combo;
+        }
+
+        function startGame() {
+            if (gameActive) return;
+            
+            gameActive = true;
+            timer = 30;
+            combo = 0;
+            score = 0;
+            wordsTyped = 0;
+            mistakes = 0;
+            
+            input.disabled = false;
+            input.value = '';
+            input.focus();
+            
+            currentWord = getRandomWord();
+            wordDisplay.textContent = currentWord;
+            
+            startButton.disabled = true;
+            
+            gameInterval = setInterval(() => {
+                timer -= 0.1;
+                updateTimer();
+                
+                if (timer <= 0) {
+                    endGame();
+                }
+            }, 100);
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            gameActive = false;
+            input.disabled = true;
+            startButton.disabled = false;
+            wordDisplay.textContent = 'Game Over!';
+            
+            const finalScore = {
+                wpm: calculateWPM(),
+                accuracy: Math.round((wordsTyped - mistakes) / wordsTyped * 100),
+                difficulty: currentDifficulty
+            };
+            
+            updateLeaderboard(finalScore);
+        }
+
+        function updateLeaderboard(score) {
+            const scores = JSON.parse(localStorage.getItem('topRowScores') || '[]');
+            scores.push(score);
+            scores.sort((a, b) => b.wpm - a.wpm);
+            scores.splice(10); // Keep only top 10 scores
+            localStorage.setItem('topRowScores', JSON.stringify(scores));
+            displayLeaderboard();
+        }
+
+        function displayLeaderboard() {
+            const scores = JSON.parse(localStorage.getItem('topRowScores') || '[]');
+            const leaderboardDiv = document.getElementById('top-scores');
+            leaderboardDiv.innerHTML = `<h3>Top Scores</h3>` + scores.map((score, index) => `
+                <div>
+                    ${index + 1}. ${score.wpm} WPM (${score.accuracy}% accuracy) - ${score.difficulty}
+                </div>
+            `).join('');
+        }
+
+        function showSuccessMessage(word) {
+            const display = document.getElementById('word-display');
+            display.textContent = '✓ ' + word;
+            display.classList.add('success-message');
+            
+            setTimeout(() => {
+                display.classList.remove('success-message');
+                currentWord = getRandomWord();
+                display.textContent = currentWord;
+            }, 1000);
+        }
+
+        // Event Listeners
+        startButton.addEventListener('click', startGame);
+
+        input.addEventListener('input', (e) => {
+            if (!gameActive) return;
+            
+            const typed = e.target.value;
+            if (typed === currentWord) {
+                e.target.value = '';
+                wordsTyped++;
+                combo++;
+                timer = Math.min(timer + 2, 30);
+                
+                if (combo >= 5) {
+                    input.classList.add('combo-active');
+                } else {
+                    input.classList.remove('combo-active');
+                }
+                
+                showSuccessMessage(currentWord);
+                updateStats();
+            } else if (!currentWord.startsWith(typed)) {
+                input.classList.add('error');
+                mistakes++;
+                combo = 0;
+                updateStats();
+            } else {
+                input.classList.remove('error');
+            }
+        });
+
+        difficultyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (gameActive) return;
+                
+                difficultyButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentDifficulty = btn.dataset.difficulty;
+            });
+        });
+
+        // Initialize
+        displayLeaderboard();
+    </script>
+</body>
+</html>

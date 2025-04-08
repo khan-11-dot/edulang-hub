@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .verify-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+
+        input {
+            width: 100%;
+            max-width: 400px;
+            padding: 15px;
+            margin: 1rem 0;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0;
+        }
+
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .result {
+            display: none;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .result.valid {
+            border: 2px solid #4CAF50;
+        }
+
+        .result.invalid {
+            border: 2px solid #ff5252;
+        }
+
+        .certificate-details {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .detail-label {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 2rem;
+        }
+
+        .verified-badge {
+            width: 100px;
+            height: 100px;
+            margin: 1rem auto;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .scan-container {
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        #reader {
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .scan-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        
+        .scan-btn:hover {
+            background: #45a049;
+        }
+
+        #reader video {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Certificate Verification</h1>
+        
+        <div class="verify-form">
+            <h2>Enter Certificate ID</h2>
+            <p>Please enter the certificate ID to verify its authenticity</p>
+            <input type="text" id="cert-id" placeholder="Enter Certificate ID (e.g., CERT-1234567890)">
+            <button onclick="verifyCertificate()">Verify Certificate</button>
+            <div class="scan-container">
+                <p>- OR -</p>
+                <button class="scan-btn" onclick="startScanner()">Scan QR Code</button>
+                <div id="reader"></div>
+            </div>
+        </div>
+
+        <div class="result" id="result">
+            <div class="verified-badge">✓</div>
+            <h2 id="result-title">Certificate Verified</h2>
+            <p id="result-message">This certificate is authentic and was issued by our institution.</p>
+            
+            <div class="certificate-details">
+                <div class="detail-row">
+                    <span class="detail-label">Certificate ID:</span>
+                    <span id="cert-id-display"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Issued To:</span>
+                    <span id="cert-name"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Issue Date:</span>
+                    <span id="cert-date"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Typing Speed:</span>
+                    <span id="cert-wpm"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Accuracy:</span>
+                    <span id="cert-accuracy"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Course:</span>
+                    <span id="cert-course"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Issuer:</span>
+                    <span id="cert-issuer"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/html5-qr-code"></script>
+    <script>
+        let html5QrcodeScanner = null;
+
+        function startScanner() {
+            if (html5QrcodeScanner === null) {
+                html5QrcodeScanner = new Html5QrcodeScanner(
+                    "reader", 
+                    { 
+                        fps: 10,
+                        qrbox: 250,
+                        aspectRatio: 1.0,
+                        formatsToSupport: [ Html5QrcodeSupportedFormats.QR_CODE ]
+                    }
+                );
+                
+                html5QrcodeScanner.render(onScanSuccess, onScanError);
+                document.getElementById('reader').style.display = 'block';
+            } else {
+                document.getElementById('reader').style.display = 'block';
+            }
+        }
+
+        function onScanSuccess(decodedText) {
+            console.log("QR Code detected:", decodedText); // Debug log
+            if (decodedText.startsWith('CERT-')) {
+                document.getElementById('cert-id').value = decodedText;
+                verifyCertificate();
+                if (html5QrcodeScanner) {
+                    html5QrcodeScanner.clear();
+                    html5QrcodeScanner = null;
+                }
+                document.getElementById('reader').style.display = 'none';
+            }
+        }
+
+        function onScanError(error) {
+            console.log("QR Code scan error:", error); // Debug log
+        }
+
+        function verifyCertificate() {
+            const certId = document.getElementById('cert-id').value.trim();
+            const result = document.getElementById('result');
+            const resultTitle = document.getElementById('result-title');
+            const resultMessage = document.getElementById('result-message');
+
+            if (!certId.match(/^EDU:\d{4}\.\d{5}$/)) {
+                result.style.display = 'block';
+                result.className = 'result invalid';
+                resultTitle.textContent = 'Invalid Certificate';
+                resultMessage.textContent = 'The certificate ID format is invalid. Please check and try again.';
+                return;
+            }
+
+            // Get certificate data from localStorage
+            const certDataStr = localStorage.getItem(certId);
+            if (!certDataStr) {
+                result.style.display = 'block';
+                result.className = 'result invalid';
+                resultTitle.textContent = 'Certificate Not Found';
+                resultMessage.textContent = 'This certificate could not be found in our records.';
+                return;
+            }
+
+            const certData = JSON.parse(certDataStr);
+            
+            result.style.display = 'block';
+            result.className = 'result valid';
+            resultTitle.textContent = 'Certificate Verified';
+            resultMessage.textContent = 'This certificate is authentic and was issued by our institution.';
+            
+            // Update certificate details with actual data
+            document.getElementById('cert-id-display').textContent = certData.id;
+            document.getElementById('cert-name').textContent = certData.name;
+            document.getElementById('cert-date').textContent = certData.date;
+            document.getElementById('cert-wpm').textContent = certData.wpm + ' WPM';
+            document.getElementById('cert-accuracy').textContent = certData.accuracy + '%';
+            document.getElementById('cert-course').textContent = certData.course;
+            document.getElementById('cert-issuer').textContent = certData.issuer;
+        }
+
+        // Check for certificate ID in URL when page loads
+        window.addEventListener('load', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const certId = urlParams.get('id');
+            if (certId) {
+                document.getElementById('cert-id').value = certId;
+                verifyCertificate();
+            }
+        });
+    </script>
+</body>
+</html>

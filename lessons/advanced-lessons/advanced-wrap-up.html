@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Word Typing Challenge</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    #modeButtons button,
+    #startButton,
+    #restartButton {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      background-color: #3498db;
+      transition: background 0.3s ease;
+    }
+
+    #modeButtons button:hover,
+    #startButton:hover,
+    #restartButton:hover {
+      background-color: #2980b9;
+    }
+
+    #gameArea {
+      width: 100%;
+      height: 400px;
+      margin-top: 20px;
+      position: relative;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .word {
+      position: absolute;
+      top: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      animation-name: fall;
+      animation-timing-function: linear;
+    }
+
+    @keyframes fall {
+      from { top: 0; }
+      to { top: 100%; }
+    }
+
+    #inputBox {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+
+    #info {
+      margin-top: 20px;
+      font-size: 1.2rem;
+    }
+
+    #restartButton {
+      margin-top: 20px;
+      background-color: #16a085;
+    }
+
+    #sliderContainer {
+  margin: 15px 0;
+  padding: 10px;
+  background: #1f020202;
+  display: inline-block;
+  border-radius: 10px;
+}
+
+  </style>
+</head>
+<body>
+    
+
+  <h1>📝 Word Typing Challenge</h1>
+
+  <div id="sliderContainer">
+    <label>Spawn Speed (ms): </label>
+    <input type="range" min="500" max="4000" step="100" value="2000" id="speedSlider" onchange="updateSpeed()" />
+    <span id="speedValue">2000</span> ms
+  </div>
+
+  <div id="modeButtons">
+    <button onclick="setMode('easy')">Easy</button>
+    <button onclick="setMode('medium')">Medium</button>
+    <button onclick="setMode('hard')">Hard</button>
+  </div>
+
+  <button id="startButton" onclick="startGame()">Start Game</button>
+
+  <div id="gameArea"></div>
+
+  <input type="text" id="inputBox" placeholder="Type the word here" disabled />
+
+  <div id="info">
+    <p>⏱️ Time Left: <span id="time">60</span> seconds</p>
+    <p>🏆 Score: <span id="score">0</span></p>
+  </div>
+
+  <button id="restartButton" onclick="restartGame()" style="display: none;">🔁 Restart Game</button>
+
+ <script>
+
+  const words = ["html", "css", "javascript", "python", "developer", "typing", "keyboard", "language", "function", "variable"];
+  let gameArea = document.getElementById("gameArea");
+  let inputBox = document.getElementById("inputBox");
+  let scoreDisplay = document.getElementById("score");
+  let timeDisplay = document.getElementById("time");
+  let restartButton = document.getElementById("restartButton");
+
+  let intervalSpawn, intervalTimer;
+  let currentWords = [];
+  let score = 0;
+  let timeLeft = 60;
+  let mode = "easy";
+
+  const modeSettings = {
+    easy: { animationSpeed: 19, spawnRate: 3500 },
+    medium: { animationSpeed: 14, spawnRate: 2000 },
+    hard: { animationSpeed: 10, spawnRate: 1000 }
+  };
+
+  function setMode(selectedMode) {
+    mode = selectedMode;
+  }
+
+  function startGame() {
+    document.getElementById("startButton").style.display = "none";
+    restartButton.style.display = "inline-block";
+    gameArea.style.display = "block";
+    inputBox.disabled = false;
+    inputBox.focus();
+    score = 0;
+    timeLeft = 60;
+    scoreDisplay.textContent = score;
+    timeDisplay.textContent = timeLeft;
+    currentWords = [];
+
+    clearInterval(intervalSpawn);
+    clearInterval(intervalTimer);
+
+    intervalSpawn = setInterval(spawnWord, modeSettings[mode].spawnRate);
+    intervalTimer = setInterval(updateTimer, 1000);
+  }
+
+  function spawnWord() {
+    const wordText = words[Math.floor(Math.random() * words.length)];
+    const wordElem = document.createElement("div");
+    wordElem.classList.add("word");
+    wordElem.textContent = wordText;
+    wordElem.style.left = Math.random() * 90 + "%";
+
+    // Apply animation speed per mode
+    let fallDuration = modeSettings[mode].animationSpeed;
+    wordElem.style.animation = `fall ${fallDuration}s linear forwards`;
+
+    gameArea.appendChild(wordElem);
+    currentWords.push({ text: wordText, element: wordElem });
+
+    setTimeout(() => {
+      if (gameArea.contains(wordElem)) {
+        gameArea.removeChild(wordElem);
+        currentWords = currentWords.filter(w => w.element !== wordElem);
+      }
+    }, fallDuration * 1000);
+  }
+
+  inputBox.addEventListener("input", () => {
+    const typed = inputBox.value.trim().toLowerCase();
+    const matchIndex = currentWords.findIndex(w => w.text === typed);
+    if (matchIndex !== -1) {
+      const word = currentWords[matchIndex];
+      gameArea.removeChild(word.element);
+      currentWords.splice(matchIndex, 1);
+      score++;
+      scoreDisplay.textContent = score;
+      inputBox.value = "";
+    }
+  });
+
+  function updateTimer() {
+    timeLeft--;
+    timeDisplay.textContent = timeLeft;
+    if (timeLeft <= 0) {
+      endGame();
+    }
+  }
+
+  function endGame() {
+    clearInterval(intervalSpawn);
+    clearInterval(intervalTimer);
+    inputBox.disabled = true;
+    alert("Time's up! Your score is: " + score);
+  }
+
+  function restartGame() {
+    clearInterval(intervalSpawn);
+    clearInterval(intervalTimer);
+    gameArea.innerHTML = "";
+    inputBox.value = "";
+    startGame();
+  }
+
+  function updateSpeed() {
+  spawnRate = +document.getElementById("speedSlider").value;
+  document.getElementById("speedValue").textContent = spawnRate;
+  if (!paused) {
+    clearInterval(intervalSpawn);
+    intervalSpawn = setInterval(spawnWord, spawnRate);
+  }
+}
+
+</script>
+
+
+</body>
+</html>

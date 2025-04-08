@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Numeric Keypad Speed Challenge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #2563eb;
+      --secondary-color: #1e40af;
+      --success-color: #22c55e;
+      --error-color: #ef4444;
+      --background-color: #f0f9ff;
+    }
+
+    body {
+      background: var(--background-color);
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .game-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+
+    .stat-box.warning {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { background: #f8fafc; }
+      50% { background: #fee2e2; }
+      100% { background: #f8fafc; }
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-top: 0.5rem;
+    }
+
+    .number-sequence {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: 1rem;
+      color: var(--secondary-color);
+      margin: 2rem 0;
+      padding: 2rem;
+      background: #f8fafc;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    input[type="text"] {
+      font-size: 1.5rem;
+      padding: 0.75rem 1rem;
+      width: 100%;
+      max-width: 300px;
+      border: 2px solid var(--primary-color);
+      border-radius: 12px;
+      text-align: center;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .difficulty-selector {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .difficulty-btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .difficulty-btn.active {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.25rem;
+      font-weight: 500;
+      padding: 1rem;
+      border-radius: 12px;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .success {
+      background-color: rgba(34, 197, 94, 0.1);
+      color: var(--success-color);
+    }
+
+    .error {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--error-color);
+    }
+
+    .tips {
+      margin-top: 2rem;
+      text-align: left;
+      background: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 15px;
+      font-size: 1rem;
+    }
+
+    .tips h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .tips ul {
+      padding-left: 1.5rem;
+      list-style-type: none;
+    }
+
+    .tips li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .tips li::before {
+      content: '→';
+      position: absolute;
+      left: -1.2rem;
+      color: var(--primary-color);
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 2rem;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.875rem;
+      background: white;
+      box-shadow: 0 -1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Numeric Keypad Speed Challenge</h1>
+    
+    <div class="game-stats">
+      <div class="stat-box">
+        <div class="stat-label">Score</div>
+        <div id="score" class="stat-value">0</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Time</div>
+        <div id="timer" class="stat-value">0.0s</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">High Score</div>
+        <div id="high-score" class="stat-value">0</div>
+      </div>
+    </div>
+
+    <div class="difficulty-selector">
+      <button class="difficulty-btn active" data-length="4">Easy</button>
+      <button class="difficulty-btn" data-length="6">Medium</button>
+      <button class="difficulty-btn" data-length="8">Hard</button>
+    </div>
+
+    <div id="number-sequence" class="number-sequence">----</div>
+
+    <div class="controls">
+      <input type="text" id="user-input" placeholder="Type here using Numpad" maxlength="8" autofocus />
+      <button onclick="startGame()">New Game</button>
+    </div>
+
+    <div id="result" class="result"></div>
+
+    <div class="tips">
+      <h3>💡 Typing Tips:</h3>
+      <ul>
+        <li>Use your right hand for the numeric keypad.</li>
+        <li>Index finger: 4, 5, 6</li>
+        <li>Middle finger: 8</li>
+        <li>Ring finger: 7, 9</li>
+        <li>Thumb: 0</li>
+        <li>Practice regularly to build muscle memory!</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    Created by Bilal Ahmad | EduLang Hub
+  </footer>
+
+  <script>
+    let sequence = '';
+    let startTime = 0;
+    let timerInterval;
+    let currentScore = 0;
+    let highScore = localStorage.getItem('highScore') || 0;
+    let selectedLength = 4;
+    let timeLeft = 10;
+    let isGameOver = false;
+
+    document.getElementById('high-score').textContent = highScore;
+
+    // Handle difficulty selection
+    document.querySelectorAll('.difficulty-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.difficulty-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedLength = parseInt(this.dataset.length);
+        startGame();
+      });
+    });
+
+    function updateTimer() {
+      timeLeft = Math.max(0, 10 - Math.floor((Date.now() - startTime) / 1000));
+      const timerElement = document.getElementById('timer');
+      timerElement.textContent = timeLeft + 's';
+      
+      // Add warning effect when time is low
+      if (timeLeft <= 5) {
+        timerElement.parentElement.classList.add('warning');
+      } else {
+        timerElement.parentElement.classList.remove('warning');
+      }
+
+      // Game over when time runs out
+      if (timeLeft === 0 && !isGameOver) {
+        gameOver();
+      }
+    }
+
+    function generateSequence(length = selectedLength) {
+      sequence = '';
+      for (let i = 0; i < length; i++) {
+        sequence += Math.floor(Math.random() * 10);
+      }
+      document.getElementById('number-sequence').textContent = sequence;
+      document.getElementById('user-input').value = '';
+      document.getElementById('result').textContent = '';
+      document.getElementById('result').className = 'result';
+    }
+
+    function gameOver() {
+      isGameOver = true;
+      clearInterval(timerInterval);
+      const resultElement = document.getElementById('result');
+      resultElement.textContent = '⏰ Time is up! Game Over!';
+      resultElement.className = 'result error';
+      document.getElementById('user-input').disabled = true;
+    }
+
+    function startGame() {
+      isGameOver = false;
+      clearInterval(timerInterval);
+      generateSequence();
+      const inputElement = document.getElementById('user-input');
+      inputElement.disabled = false;
+      inputElement.value = '';
+      inputElement.focus();
+      startTime = Date.now();
+      timeLeft = 15;
+      document.getElementById('timer').parentElement.classList.remove('warning');
+      timerInterval = setInterval(updateTimer, 100);
+    }
+
+    function updateScore(correct) {
+      if (correct) {
+        const timeBonus = Math.max(10 - Math.floor((Date.now() - startTime) / 1000), 1);
+        const lengthBonus = Math.floor(selectedLength * 1.5);
+        const points = timeBonus * lengthBonus;
+        currentScore += points;
+        document.getElementById('score').textContent = currentScore;
+
+        if (currentScore > highScore) {
+          highScore = currentScore;
+          localStorage.setItem('highScore', highScore);
+          document.getElementById('high-score').textContent = highScore;
+        }
+      }
+    }
+
+    document.getElementById('user-input').addEventListener('input', function() {
+      if (isGameOver) return;
+      
+      const userInput = this.value;
+      if (userInput.length === sequence.length) {
+        const resultElement = document.getElementById('result');
+        
+        if (userInput === sequence) {
+          resultElement.textContent = '✅ Excellent! Keep going!';
+          resultElement.className = 'result success';
+          updateScore(true);
+          // Add 3 seconds bonus time for correct answer
+          startTime += 3000;
+          setTimeout(() => startGame(), 1000);
+        } else {
+          resultElement.textContent = '❌ Try again!';
+          resultElement.className = 'result error';
+          currentScore = Math.max(0, currentScore - 5);
+          document.getElementById('score').textContent = currentScore;
+          // Subtract 2 seconds for wrong answer
+          startTime -= 2000;
+          setTimeout(() => {
+            document.getElementById('user-input').value = '';
+            resultElement.textContent = '';
+            resultElement.className = 'result';
+          }, 1500);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

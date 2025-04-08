@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Key Master - Typing Challenge | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .game-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .letter-display {
+            font-size: 4rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: var(--bg-gradient);
+            border-radius: 10px;
+            color: #2c3e50;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .finger-guide {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: rgba(255,255,255,0.8);
+            border-radius: 5px;
+        }
+
+        .keyboard-layout {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .keyboard-row {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .key {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        .key.active {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .key.shift {
+            width: 80px;
+        }
+
+        .input-area {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .input-box {
+            font-size: 2rem;
+            padding: 1rem;
+            width: 80%;
+            max-width: 400px;
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .input-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(74, 144, 226, 0.3);
+        }
+
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .combo-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            animation: slideIn 0.3s ease;
+        }
+
+        .achievement {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            animation: dropIn 0.5s ease;
+            z-index: 1000;
+        }
+
+        @keyframes dropIn {
+            0% { transform: translate(-50%, -100%); }
+            100% { transform: translate(-50%, 0); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .difficulty-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .difficulty-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            background: #eee;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .difficulty-btn.active {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        #start-btn {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 1rem 0;
+        }
+
+        #start-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+
+        .leaderboard {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .leaderboard h3 {
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .leaderboard-entry {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .finger-guide-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.9);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .finger-guide-item {
+            padding: 0.3rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .target-letter {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-left: 0.5rem;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+
+        #pause-btn {
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 1rem 0;
+            display: none;
+        }
+
+        #pause-btn.paused {
+            background: #e74c3c;
+        }
+
+        #pause-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+        }
+
+        .pause-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            display: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        .pause-overlay.active {
+            display: block;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="nav-content">
+            <a href="../../typing.html" class="nav-brand">EduLang Hub</a>
+            <div class="nav-links">
+                <a href="../../typing.html">Home</a>
+                <a href="../typing-instructions.html">Instructions</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="game-container">
+        <h1><i class="fas fa-keyboard"></i> Shift Key Master</h1>
+        <p>Master the Shift key with this fast-paced typing challenge!</p>
+
+        <div class="difficulty-selector">
+            <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+            <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+            <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+        </div>
+
+        <div class="stats-panel">
+            <div class="stat-item">
+                <div>Time</div>
+                <div class="stat-value" id="timer">60.0</div>
+            </div>
+            <div class="stat-item">
+                <div>Score</div>
+                <div class="stat-value" id="score">0</div>
+            </div>
+            <div class="stat-item">
+                <div>Combo</div>
+                <div class="stat-value" id="combo">0</div>
+            </div>
+            <div class="stat-item">
+                <div>Accuracy</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+        </div>
+
+        <div class="letter-display" id="letter-display">
+            Press Start
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="text-input" class="input-box" placeholder="Type here..." autocomplete="off" disabled>
+            <div class="game-controls">
+                <button id="start-btn" class="btn">Start Game</button>
+                <button id="pause-btn" class="btn">
+                    <i class="fas fa-pause"></i> Pause
+                </button>
+            </div>
+        </div>
+
+        <div class="leaderboard">
+            <h3>Top Scores</h3>
+            <div id="leaderboard-entries"></div>
+        </div>
+
+        <div class="pause-overlay" id="pause-overlay">
+            <i class="fas fa-pause-circle"></i> Game Paused
+        </div>
+    </div>
+
+    <script>
+        // Game configuration
+        const config = {
+            initialTime: 60,
+            timeIncrement: 1,
+            comboThreshold: 5,
+            difficulties: {
+                easy: {
+                    content: 'SINGLE',
+                    timeBonus: 1,
+                    scoreMultiplier: 1
+                },
+                medium: {
+                    content: 'WORD',
+                    timeBonus: 1.5,
+                    scoreMultiplier: 2
+                },
+                hard: {
+                    content: 'SENTENCE',
+                    timeBonus: 2,
+                    scoreMultiplier: 3
+                }
+            }
+        };
+
+        // Game state
+        let gameState = {
+            active: false,
+            paused: false,
+            timer: config.initialTime,
+            score: 0,
+            combo: 0,
+            totalAttempts: 0,
+            correctAttempts: 0,
+            currentText: '',
+            difficulty: 'easy'
+        };
+
+        // Audio effects
+        const audio = {
+            correct: new Audio('../../assets/sounds/correct.mp3'),
+            wrong: new Audio('../../assets/sounds/wrong.mp3'),
+            combo: new Audio('../../assets/sounds/combo.mp3')
+        };
+
+        // DOM elements
+        const elements = {
+            letterDisplay: document.getElementById('letter-display'),
+            input: document.getElementById('text-input'),
+            startButton: document.getElementById('start-btn'),
+            pauseButton: document.getElementById('pause-btn'),
+            pauseOverlay: document.getElementById('pause-overlay'),
+            timer: document.getElementById('timer'),
+            score: document.getElementById('score'),
+            combo: document.getElementById('combo'),
+            accuracy: document.getElementById('accuracy'),
+            difficultyButtons: document.querySelectorAll('.difficulty-btn')
+        };
+
+        // Content generators
+        const contentGenerators = {
+            SINGLE: () => {
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+                return chars[Math.floor(Math.random() * chars.length)];
+            },
+            WORD: () => {
+                const words = [
+                    'Cat', 'Dog', 'Sky', 'Sun', 'Moon', 'Star', 'Book',
+                    'Tree', 'Fish', 'Bird', 'Home', 'Time', 'Life', 'Work'
+                ];
+                return words[Math.floor(Math.random() * words.length)];
+            },
+            SENTENCE: () => {
+                const sentences = [
+                    'My Name is Bilal.',
+                    'How Are You Today?',
+                    'The Sun is Bright.',
+                    'I Love to Read Books.',
+                    'What Time is It Now?',
+                    'i WILL Be There SOON',
+                    'CAN You HELP me WITH This',
+                    'homeWORK IS Due TOMORROW',
+                    'hoNESTY IS The BEST Policy',
+                    'Let s LEAVE QUIETly',  
+                    'WATCH Out FOR The CAR',    
+                    'no PARKING ALLOWed',
+                    'DEAR JOHN, How ARE You',
+                    'Would YOU Like TEA Or COFFEE',
+                    'it s BEEN A Long DAY',
+                    'BREAKing NEWS: Storm APPROACHing',
+                    'Concert STARTS At 8 PM',
+                    'DONT Touch THAT, its HOT',
+                    'i HOPE THIS Works',
+                    'Drink PLENTY Of WATER Daily',
+                    'WORK HARD And STAY HumBLE',
+                    'That WAS REALLY HILARious',
+                    'You CAN DO It, Keep TRYing',
+                    'Stay INSIDE Your VEHICLE Always',
+                    'ONCE Upon A TIME, There Was MAGIC',
+                    'I m SORRY For THE MisTAKE I Made',
+                    'CONGRATULATIONS ON Your SUCCESS Today',
+                    'I SHOULD Have BEEN More CAREful',
+                    'We ARE Ready FOR TakeOFF Soon',
+                    'FINAL Score: 3-1, We WON',
+                    'YOU Are INVITED To OUR Wedding Party',
+                    'DONT Forget YOUR AssignMENTS Again',
+                    'HEAVY RAIN Is Expected ToMORRow Night',
+                    'IS There ANY DisCOUNT On THIS',
+                    'WE WILL Land IN 10 MINutes, PREPARE'
+                ];
+                return sentences[Math.floor(Math.random() * sentences.length)];
+            }
+        };
+
+        const fingerGuideUrdu = {
+            'a': { finger: 'Left Pinky (چھوٹی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            's': { finger: 'Left Ring (انگوٹھی والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'd': { finger: 'Left Middle (درمیانی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'f': { finger: 'Left Index (اشارے والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'g': { finger: 'Left Index (اشارے والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'h': { finger: 'Right Index (اشارے والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'j': { finger: 'Right Index (اشارے والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'k': { finger: 'Right Middle (درمیانی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'l': { finger: 'Right Ring (انگوٹھی والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            ';': { finger: 'Right Pinky (چھوٹی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'q': { finger: 'Left Pinky (چھوٹی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'w': { finger: 'Left Ring (انگوٹھی والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'e': { finger: 'Left Middle (درمیانی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'r': { finger: 'Left Index (اشارے والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            't': { finger: 'Left Index (اشارے والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'y': { finger: 'Right Index (اشارے والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'u': { finger: 'Right Index (اشارے والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'i': { finger: 'Right Middle (درمیانی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'o': { finger: 'Right Ring (انگوٹھی والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'p': { finger: 'Right Pinky (چھوٹی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'z': { finger: 'Left Pinky (چھوٹی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'x': { finger: 'Left Ring (انگوٹھی والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'c': { finger: 'Left Middle (درمیانی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'v': { finger: 'Left Index (اشارے والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'b': { finger: 'Left Index (اشارے والی انگلی بائیں)', hand: 'Left (بائیں ہاتھ)' },
+            'n': { finger: 'Right Index (اشارے والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' },
+            'm': { finger: 'Right Index (اشارے والی انگلی دائیں)', hand: 'Right (دائیں ہاتھ)' }
+        };
+
+        function getFingerGuide(letter) {
+            const guide = fingerGuideUrdu[letter.toLowerCase()];
+            if (!guide) return '';
+            
+            const shiftText = letter === letter.toUpperCase() ? 
+                (guide.hand === 'Left (بائیں ہاتھ)' ? 'دائیں شفٹ + ' : 'بائیں شفٹ + ') : '';
+            
+            return `${shiftText}${guide.finger} - ${guide.hand}`;
+        }
+
+        function getWordFingerGuide(word) {
+            let guide = '';
+            for(let i = 0; i < word.length; i++) {
+                const letter = word[i];
+                if (letter === ' ') continue;
+                const letterGuide = getFingerGuide(letter);
+                if (letterGuide) {
+                    guide += `<div class="finger-guide-item">
+                        <span class="target-letter">${letter}</span>: 
+                        ${letterGuide}
+                    </div>`;
+                }
+            }
+            return guide;
+        }
+
+        function generateContent() {
+            const difficulty = config.difficulties[gameState.difficulty];
+            const content = contentGenerators[difficulty.content]();
+            let guide = '';
+
+            if (difficulty.content === 'SINGLE') {
+                guide = getFingerGuide(content);
+            } else {
+                guide = getWordFingerGuide(content);
+            }
+            
+            elements.letterDisplay.innerHTML = `
+                <div class="current-letter" style="margin-bottom: 1rem">${content}</div>
+                <div class="finger-guide-container" style="font-size: 1.2rem; direction: rtl; text-align: right;">
+                    ${guide}
+                </div>
+            `;
+            
+            return content;
+        }
+
+        function updateDisplay() {
+            elements.timer.textContent = gameState.timer.toFixed(1);
+            elements.score.textContent = gameState.score;
+            elements.combo.textContent = gameState.combo;
+            elements.accuracy.textContent = 
+                `${((gameState.correctAttempts / Math.max(gameState.totalAttempts, 1)) * 100).toFixed(0)}%`;
+        }
+
+        function showAchievement(message, timeout = 2000) {
+            const achievement = document.createElement('div');
+            achievement.className = 'achievement';
+            achievement.textContent = message;
+            document.body.appendChild(achievement);
+            
+            if (timeout > 0) {
+                setTimeout(() => achievement.remove(), timeout);
+            }
+            return achievement;
+        }
+
+        function hideAchievement() {
+            const achievements = document.querySelectorAll('.achievement');
+            achievements.forEach(achievement => achievement.remove());
+        }
+
+        function togglePause() {
+            if (!gameState.active) return;
+            
+            gameState.paused = !gameState.paused;
+            elements.pauseButton.innerHTML = gameState.paused ? 
+                '<i class="fas fa-play"></i> Resume' : 
+                '<i class="fas fa-pause"></i> Pause';
+            
+            elements.pauseButton.classList.toggle('paused', gameState.paused);
+            elements.input.disabled = gameState.paused;
+            elements.pauseOverlay.classList.toggle('active', gameState.paused);
+            
+            if (gameState.paused) {
+                clearInterval(gameState.gameInterval);
+                showAchievement('Game Paused - Press Space to Resume', 0);
+            } else {
+                elements.input.focus();
+                gameState.gameInterval = setInterval(updateGame, 100);
+                hideAchievement();
+            }
+        }
+
+        function updateGame() {
+            if (gameState.paused) return;
+            
+            gameState.timer -= 0.1;
+            if (gameState.timer <= 0) {
+                endGame();
+            }
+            updateDisplay();
+        }
+
+        function startGame() {
+            if (gameState.active) return;
+            
+            gameState = {
+                ...gameState,
+                active: true,
+                paused: false,
+                timer: config.initialTime,
+                score: 0,
+                combo: 0,
+                totalAttempts: 0,
+                correctAttempts: 0
+            };
+
+            elements.input.disabled = false;
+            elements.input.value = '';
+            elements.input.focus();
+            elements.startButton.disabled = true;
+            elements.pauseButton.style.display = 'block';
+            elements.pauseOverlay.classList.remove('active');
+
+            gameState.currentText = generateContent();
+            gameState.gameInterval = setInterval(updateGame, 100);
+        }
+
+        function endGame() {
+            clearInterval(gameState.gameInterval);
+            gameState.active = false;
+            gameState.paused = false;
+            elements.input.disabled = true;
+            elements.startButton.disabled = false;
+            elements.pauseButton.style.display = 'none';
+            elements.pauseOverlay.classList.remove('active');
+            elements.letterDisplay.textContent = 'Game Over!';
+
+            const score = {
+                score: gameState.score,
+                accuracy: ((gameState.correctAttempts / gameState.totalAttempts) * 100).toFixed(0),
+                difficulty: gameState.difficulty
+            };
+
+            updateLeaderboard(score);
+        }
+
+        function updateLeaderboard(score) {
+            const scores = JSON.parse(localStorage.getItem('shiftKeyScores') || '[]');
+            scores.push(score);
+            scores.sort((a, b) => b.score - a.score);
+            scores.splice(10); // Keep top 10
+            localStorage.setItem('shiftKeyScores', JSON.stringify(scores));
+            displayLeaderboard();
+        }
+
+        function displayLeaderboard() {
+            const scores = JSON.parse(localStorage.getItem('shiftKeyScores') || '[]');
+            const container = document.getElementById('leaderboard-entries');
+            container.innerHTML = scores.map((score, index) => `
+                <div class="leaderboard-entry">
+                    <span>#${index + 1}</span>
+                    <span>${score.score} pts</span>
+                    <span>${score.accuracy}%</span>
+                    <span class="badge">${score.difficulty}</span>
+                </div>
+            `).join('');
+        }
+
+        function updateLetterDisplay() {
+            const content = gameState.currentText;
+            let guide = '';
+
+            if (config.difficulties[gameState.difficulty].content === 'SINGLE') {
+                guide = getFingerGuide(content);
+            } else {
+                guide = getWordFingerGuide(content);
+            }
+
+            elements.letterDisplay.innerHTML = `
+                <div class="current-letter" style="margin-bottom: 1rem">${content}</div>
+                <div class="finger-guide-container" style="font-size: 1.2rem; direction: rtl; text-align: right;">
+                    ${guide}
+                </div>
+            `;
+        }
+
+        // Event listeners
+        elements.startButton.addEventListener('click', startGame);
+        elements.pauseButton.addEventListener('click', togglePause);
+
+        elements.input.addEventListener('input', (e) => {
+            if (!gameState.active) return;
+
+            gameState.totalAttempts++;
+            const typed = e.target.value;
+            
+            if (typed === gameState.currentText) {
+                gameState.correctAttempts++;
+                gameState.combo++;
+                gameState.score += 10 * config.difficulties[gameState.difficulty].scoreMultiplier * 
+                    (1 + Math.floor(gameState.combo / config.comboThreshold) * 0.5);
+                
+                if (gameState.combo % config.comboThreshold === 0) {
+                    showAchievement('Combo x' + (Math.floor(gameState.combo / config.comboThreshold)));
+                    audio.combo.play();
+                } else {
+                    audio.correct.play();
+                }
+
+                gameState.timer += config.difficulties[gameState.difficulty].timeBonus;
+                e.target.value = '';
+                gameState.currentText = generateContent();
+                updateLetterDisplay();
+            } else if (!gameState.currentText.startsWith(typed)) {
+                gameState.combo = 0;
+                audio.wrong.play();
+                elements.input.classList.add('error');
+                setTimeout(() => elements.input.classList.remove('error'), 200);
+            }
+
+            updateDisplay();
+        });
+
+        elements.difficultyButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (gameState.active) return;
+                elements.difficultyButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                gameState.difficulty = btn.dataset.difficulty;
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && gameState.active && gameState.paused) {
+                e.preventDefault();
+                togglePause();
+            }
+        });
+
+        // Initialize leaderboard
+        displayLeaderboard();
+    </script>
+</body>
+</html>

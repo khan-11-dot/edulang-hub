@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Builder - Advanced Typing | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .lesson-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .typing-game {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        .text-display {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            white-space: pre-wrap;
+        }
+        .text-display span {
+            position: relative;
+        }
+        .text-display span.correct {
+            color: #28a745;
+        }
+        .text-display span.incorrect {
+            color: #dc3545;
+            text-decoration: underline;
+        }
+        .text-display span.current {
+            background: #e9ecef;
+        }
+        .typing-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .typing-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .stat-box i {
+            font-size: 1.5rem;
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        .btn-warning {
+            background: #ffc107;
+            color: #000;
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .lesson-progress {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #007bff;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .level-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        .feedback {
+            text-align: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+        .feedback.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../typing.html">Typing Practice</a>
+            <a href="../typing-instructions.html">Instructions</a>
+        </div>
+    </nav>
+
+    <main class="lesson-container">
+        <h1><i class="fas fa-dumbbell"></i> Skill Builder</h1>
+        
+        <div class="progress-indicator">
+            <p><i class="fas fa-map-marker-alt"></i> Advanced Lessons > Skill Builder</p>
+        </div>
+
+        <div class="lesson-progress">
+            <h3>Your Progress</h3>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="level-indicator">
+                <span>Level 1</span>
+                <span>Level 5</span>
+            </div>
+        </div>
+
+        <div class="typing-game">
+            <div class="stats-container">
+                <div class="stat-box">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <div class="stat-label">WPM</div>
+                    <div class="stat-value" id="wpm">0</div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-bullseye"></i>
+                    <div class="stat-label">Accuracy</div>
+                    <div class="stat-value" id="accuracy">0%</div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-keyboard"></i>
+                    <div class="stat-label">Characters</div>
+                    <div class="stat-value" id="chars">0</div>
+                </div>
+            </div>
+
+            <div class="text-display" id="textDisplay"></div>
+            <input type="text" class="typing-input" id="typingInput" placeholder="Start typing when ready..." autocomplete="off">
+            
+            <div class="feedback" id="feedback"></div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn">
+                    <i class="fas fa-play"></i> Start Lesson
+                </button>
+                <button class="btn btn-warning" id="resetBtn" style="display: none;">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+                <button class="btn btn-danger" id="tryAgainBtn" style="display: none;">
+                    <i class="fas fa-sync"></i> Try Again
+                </button>
+                <button class="btn btn-success" id="nextBtn" style="display: none;">
+                    <i class="fas fa-arrow-right"></i> Next Level
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const levels = [
+            {
+                text: "The quick brown fox jumps over the lazy dog.",
+                requiredWPM: 30,
+                requiredAccuracy: 90
+            },
+            {
+                text: "JavaScript is a programming language tha",
+                requiredWPM: 35,
+                requiredAccuracy: 92
+            },
+            {
+                text: "In computer science, algorithms are step-by-step procedures for calculations. Data structures organize and store data.",
+                requiredWPM: 40,
+                requiredAccuracy: 93
+            },
+            {
+                text: "The Internet of Things (IoT) connects everyday devices to the internet. Cloud computing provides services over the network.",
+                requiredWPM: 45,
+                requiredAccuracy: 94
+            },
+            {
+                text: "Artificial Intelligence and Machine Learning are transforming technology. Neural networks process complex patterns of data.",
+                requiredWPM: 50,
+                requiredAccuracy: 95
+            }
+        ];
+
+        let currentLevel = 0;
+        let startTime;
+        let timerInterval;
+        let mistakes = 0;
+        let isTyping = false;
+
+        const textDisplay = document.getElementById('textDisplay');
+        const typingInput = document.getElementById('typingInput');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const tryAgainBtn = document.getElementById('tryAgainBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const charsDisplay = document.getElementById('chars');
+        const feedback = document.getElementById('feedback');
+        const progressFill = document.querySelector('.progress-fill');
+
+        function initializeLevel() {
+            const levelText = levels[currentLevel].text;
+            textDisplay.innerHTML = levelText.split('').map(char => 
+                `<span>${char}</span>`
+            ).join('');
+            typingInput.value = '';
+            mistakes = 0;
+            updateStats(0, 100, 0);
+            progressFill.style.width = `${(currentLevel / (levels.length - 1)) * 100}%`;
+            tryAgainBtn.style.display = 'none';
+            feedback.style.display = 'none';
+        }
+
+        function updateStats(wpm, accuracy, chars) {
+            wpmDisplay.textContent = Math.round(wpm);
+            accuracyDisplay.textContent = Math.round(accuracy) + '%';
+            charsDisplay.textContent = chars;
+        }
+
+        function calculateStats() {
+            const timeElapsed = (Date.now() - startTime) / 1000 / 60; // in minutes
+            const wordsTyped = typingInput.value.trim().split(/\s+/).length;
+            const wpm = wordsTyped / timeElapsed;
+            const accuracy = 100 * (1 - mistakes / typingInput.value.length);
+            return { wpm, accuracy };
+        }
+
+        function showFeedback(message, isSuccess) {
+            feedback.textContent = message;
+            feedback.className = `feedback ${isSuccess ? 'success' : 'error'}`;
+            feedback.style.display = 'block';
+        }
+
+        startBtn.addEventListener('click', () => {
+            startBtn.style.display = 'none';
+            resetBtn.style.display = 'inline-flex';
+            typingInput.style.display = 'block';
+            typingInput.focus();
+            initializeLevel();
+            startTime = Date.now();
+            isTyping = true;
+        });
+
+        resetBtn.addEventListener('click', () => {
+            initializeLevel();
+            startTime = Date.now();
+            typingInput.focus();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentLevel++;
+            if (currentLevel < levels.length) {
+                nextBtn.style.display = 'none';
+                resetBtn.style.display = 'inline-flex';
+                feedback.style.display = 'none';
+                initializeLevel();
+                startTime = Date.now();
+                isTyping = true;
+                typingInput.focus();
+            }
+        });
+
+        tryAgainBtn.addEventListener('click', () => {
+            initializeLevel();
+            startTime = Date.now();
+            isTyping = true;
+            typingInput.focus();
+        });
+
+        typingInput.addEventListener('input', () => {
+            if (!isTyping) return;
+
+            const chars = textDisplay.querySelectorAll('span');
+            const inputChars = typingInput.value.split('');
+
+            let allCorrect = true;
+            chars.forEach((char, index) => {
+                if (inputChars[index] == null) {
+                    char.className = '';
+                    allCorrect = false;
+                } else if (inputChars[index] === char.innerText) {
+                    char.className = 'correct';
+                } else {
+                    char.className = 'incorrect';
+                    allCorrect = false;
+                    mistakes++;
+                }
+            });
+
+            // Update stats
+            const { wpm, accuracy } = calculateStats();
+            updateStats(wpm, accuracy, typingInput.value.length);
+
+            // Check if level is complete
+            if (allCorrect && inputChars.length === chars.length) {
+                isTyping = false;
+                const levelRequirements = levels[currentLevel];
+                
+                if (wpm >= levelRequirements.requiredWPM && accuracy >= levelRequirements.requiredAccuracy) {
+                    showFeedback(`Great job! WPM: ${Math.round(wpm)}, Accuracy: ${Math.round(accuracy)}%`, true);
+                    resetBtn.style.display = 'none';
+                    tryAgainBtn.style.display = 'none';
+                    if (currentLevel < levels.length - 1) {
+                        nextBtn.style.display = 'inline-flex';
+                    }
+                } else {
+                    showFeedback(`Try again! You need ${levelRequirements.requiredWPM} WPM and ${levelRequirements.requiredAccuracy}% accuracy.`, false);
+                    resetBtn.style.display = 'none';
+                    tryAgainBtn.style.display = 'inline-flex';
+                }
+            }
+        });
+
+        // Initialize first level
+        initializeLevel();
+    </script>
+</body>
+</html>

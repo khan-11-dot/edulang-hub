@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Row Frenzy - Easy Home Row Words | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; overflow-y: auto; }
+        body { margin: 0; padding: 0; min-height: 100vh; position: relative; top: 0; }
+        .lesson-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .game-container {
+            background: linear-gradient(135deg, #FF9A8B, #FF6B6B);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+            color: white;
+        }
+        .word-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem auto;
+            max-width: 500px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .current-word {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+            margin: 1rem 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+        }
+        .typing-input {
+            font-size: 1.5rem;
+            padding: 1rem;
+            width: 80%;
+            max-width: 400px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin: 1rem auto;
+            text-align: center;
+            font-family: monospace;
+        }
+        .typing-input.error {
+            border-color: #dc3545;
+            background-color: #fff5f5;
+        }
+        .typing-input.correct {
+            border-color: #28a745;
+            background-color: #f0fff4;
+        }
+        .stats-panel {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+        }
+        .timer-bar {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            margin: 1rem auto;
+            max-width: 500px;
+            overflow: hidden;
+        }
+        .timer-progress {
+            height: 100%;
+            background: #28a745;
+            width: 100%;
+            transition: width 0.1s linear;
+        }
+        .combo-indicator {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+        }
+        .combo-active {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .keyboard-hint {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        .key {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .difficulty-selector {
+            margin: 1rem 0;
+        }
+        .difficulty-btn {
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .difficulty-btn.active {
+            background: white;
+            color: #FF6B6B;
+        }
+        .start-game-btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            background: white;
+            color: #FF6B6B;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 1rem 0;
+        }
+        .start-game-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .achievements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .achievement {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+        }
+        .achievement.unlocked {
+            background: #ffd700;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../typing.html">Typing Practice</a>
+            <a href="../typing-instructions.html">Instructions</a>
+        </div>
+    </nav>
+
+    <main class="lesson-container">
+        <h1><i class="fas fa-keyboard"></i> Home Row Frenzy</h1>
+        
+        <div class="game-container">
+            <div class="keyboard-hint">
+                <div class="key">A</div>
+                <div class="key">S</div>
+                <div class="key">D</div>
+                <div class="key">F</div>
+                <div class="key">G</div>
+                <div class="key">H</div>
+                <div class="key">J</div>
+                <div class="key">K</div>
+                <div class="key">L</div>
+            </div>
+
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+                <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+            </div>
+
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <i class="fas fa-trophy"></i>
+                    <span id="score">0 pts</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-bolt"></i>
+                    <span id="wpm">0 WPM</span>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-clock"></i>
+                    <span id="time">30s</span>
+                </div>
+            </div>
+
+            <div class="timer-bar">
+                <div class="timer-progress"></div>
+            </div>
+
+            <div class="word-box">
+                <div class="current-word">Press Start!</div>
+                <input type="text" class="typing-input" placeholder="Type home row words..." disabled>
+            </div>
+
+            <div class="combo-indicator">
+                Combo: <span id="combo">0</span>
+            </div>
+
+            <button class="start-game-btn">
+                <i class="fas fa-play"></i> Start Game
+            </button>
+
+            <div class="achievements" id="achievements">
+                <!-- Achievements will be added here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const easyWords = ['sad', 'dad', 'ask', 'had', 'has', 'fall', 'flag'];
+        const mediumWords = ['glass', 'flash', 'falls', 'slash', 'shall'];
+        const hardWords = ['ladash', 'galfad', 'hasdal', 'kladag', 'flashad'];
+        
+        let currentWord = '';
+        let timer = 30;
+        let gameInterval;
+        let combo = 0;
+        let score = 0;
+        let wordsTyped = 0;
+        let mistakes = 0;
+        let gameActive = false;
+        let currentDifficulty = 'easy';
+
+        const wordDisplay = document.querySelector('.current-word');
+        const input = document.querySelector('.typing-input');
+        const timerProgress = document.querySelector('.timer-progress');
+        const startButton = document.querySelector('.start-game-btn');
+        const scoreDisplay = document.getElementById('score');
+        const wpmDisplay = document.getElementById('wpm');
+        const timeDisplay = document.getElementById('time');
+        const comboDisplay = document.getElementById('combo');
+
+        const achievements = {
+            speedster: { name: 'Speedster', condition: 'Reach 50 WPM', unlocked: false },
+            comboMaster: { name: 'Combo Master', condition: 'Get a 10x combo', unlocked: false },
+            perfectionist: { name: 'Perfectionist', condition: '100% accuracy', unlocked: false }
+        };
+
+        function getRandomWord() {
+            const wordList = currentDifficulty === 'easy' ? easyWords :
+                           currentDifficulty === 'medium' ? mediumWords : hardWords;
+            return wordList[Math.floor(Math.random() * wordList.length)];
+        }
+
+        function updateTimer() {
+            timerProgress.style.width = (timer / 30 * 100) + '%';
+            timeDisplay.textContent = Math.ceil(timer) + 's';
+        }
+
+        function calculateWPM() {
+            const minutes = (30 - timer) / 60;
+            return Math.round(wordsTyped / minutes) || 0;
+        }
+
+        function updateStats() {
+            const wpm = calculateWPM();
+            scoreDisplay.textContent = score + ' pts';
+            wpmDisplay.textContent = wpm + ' WPM';
+            comboDisplay.textContent = combo;
+
+            // Check achievements
+            if (wpm >= 50) unlockAchievement('speedster');
+            if (combo >= 10) unlockAchievement('comboMaster');
+            if (wordsTyped > 0 && mistakes === 0) unlockAchievement('perfectionist');
+        }
+
+        function unlockAchievement(id) {
+            if (!achievements[id].unlocked) {
+                achievements[id].unlocked = true;
+                const achievementsDiv = document.getElementById('achievements');
+                const achievement = document.createElement('div');
+                achievement.className = 'achievement unlocked';
+                achievement.textContent = `🏆 ${achievements[id].name}`;
+                achievementsDiv.appendChild(achievement);
+                
+                // Play achievement sound
+                const achievementSound = new Audio('../../assets/sounds/achievement.mp3');
+                achievementSound.play().catch(() => {});
+            }
+        }
+
+        function startGame() {
+            if (gameActive) return;
+            
+            gameActive = true;
+            timer = 30;
+            combo = 0;
+            score = 0;
+            wordsTyped = 0;
+            mistakes = 0;
+            
+            input.disabled = false;
+            input.value = '';
+            input.focus();
+            
+            currentWord = getRandomWord();
+            wordDisplay.textContent = currentWord;
+            
+            startButton.disabled = true;
+            
+            gameInterval = setInterval(() => {
+                timer -= 0.1;
+                updateTimer();
+                
+                if (timer <= 0) {
+                    endGame();
+                }
+            }, 100);
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            gameActive = false;
+            input.disabled = true;
+            startButton.disabled = false;
+            wordDisplay.textContent = 'Game Over!';
+            
+            const finalScore = {
+                score: score,
+                wpm: calculateWPM(),
+                difficulty: currentDifficulty
+            };
+            
+            updateLeaderboard(finalScore);
+        }
+
+        function updateLeaderboard(score) {
+            let scores = JSON.parse(localStorage.getItem('homeRowFrenzyScores') || '[]');
+            scores.push(score);
+            scores.sort((a, b) => b.score - a.score);
+            scores = scores.slice(0, 5);
+            localStorage.setItem('homeRowFrenzyScores', JSON.stringify(scores));
+        }
+
+        // Event Listeners
+        startButton.addEventListener('click', startGame);
+
+        input.addEventListener('input', (e) => {
+            if (!gameActive) return;
+            
+            const typed = e.target.value;
+            if (typed === currentWord) {
+                // Correct word
+                const correctSound = new Audio('../../assets/sounds/correct.mp3');
+                correctSound.play().catch(() => {});
+                
+                e.target.value = '';
+                wordsTyped++;
+                combo++;
+                score += (10 * (combo >= 5 ? 2 : 1)); // Double points during combo
+                timer = Math.min(timer + 2, 30);
+                
+                if (combo >= 5) {
+                    input.classList.add('combo-active');
+                } else {
+                    input.classList.remove('combo-active');
+                }
+                
+                currentWord = getRandomWord();
+                wordDisplay.textContent = currentWord;
+                updateStats();
+            } else if (!currentWord.startsWith(typed)) {
+                // Mistake
+                const wrongSound = new Audio('../../assets/sounds/wrong.mp3');
+                wrongSound.play().catch(() => {});
+                
+                input.classList.add('error');
+                mistakes++;
+                combo = 0;
+                updateStats();
+            } else {
+                input.classList.remove('error');
+            }
+        });
+
+        document.querySelectorAll('.difficulty-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (gameActive) return;
+                
+                document.querySelector('.difficulty-btn.active').classList.remove('active');
+                btn.classList.add('active');
+                currentDifficulty = btn.dataset.difficulty;
+            });
+        });
+
+        // Initialize
+        document.getElementById('achievements').innerHTML = Object.values(achievements)
+            .map(a => `<div class="achievement">${a.name} - ${a.condition}</div>`).join('');
+    </script>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Breaker: Numbers & Letters Challenge | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .game-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .game-box {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .sequence-display {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            letter-spacing: 3px;
+            font-family: monospace;
+        }
+        .sequence-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+            border: 2px solid #ced4da;
+            border-radius: 8px;
+            margin: 1rem auto;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+        .sequence-input:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+        }
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+        .btn {
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-warning { background: #ffc107; color: black; }
+        .difficulty-selector {
+            margin: 2rem 0;
+        }
+        .difficulty-btn {
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .difficulty-btn.active {
+            background: #007bff;
+            color: white;
+        }
+        .correct { color: #28a745; }
+        .incorrect { color: #dc3545; }
+        #combo-indicator {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #6c757d;
+        }
+        #error-message {
+            color: #dc3545;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            font-weight: bold;
+            display: none;
+        }
+        .shake {
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        .timer-warning {
+            color: #dc3545;
+            font-weight: bold;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../typing.html">Typing Practice</a>
+            <a href="../typing-instructions.html">Instructions</a>
+        </div>
+    </nav>
+
+    <main class="game-container">
+        <h1><i class="fas fa-code"></i> Code Breaker: Numbers & Letters Challenge</h1>
+        
+        <div class="game-box">
+            <div class="difficulty-selector">
+                <button class="difficulty-btn active" data-level="easy">Easy</button>
+                <button class="difficulty-btn" data-level="medium">Medium</button>
+                <button class="difficulty-btn" data-level="hard">Hard</button>
+            </div>
+
+            <div class="sequence-display" id="sequenceDisplay">Press Start to Begin</div>
+            <input type="text" class="sequence-input" id="sequenceInput" placeholder="Type here..." disabled>
+            <div id="error-message">Wrong sequence! Try again!</div>
+            <div id="combo-indicator"></div>
+
+            <div class="stats-container">
+                <div class="stat-box">
+                    <div class="stat-label">Score</div>
+                    <div class="stat-value" id="score">0</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Time</div>
+                    <div class="stat-value" id="timer">0s</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Best Score</div>
+                    <div class="stat-value" id="bestScore">0</div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" id="startBtn">
+                    <i class="fas fa-play"></i> Start Game
+                </button>
+                <button class="btn btn-warning" id="resetBtn" style="display: none;">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const sequenceDisplay = document.getElementById('sequenceDisplay');
+        const sequenceInput = document.getElementById('sequenceInput');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const scoreDisplay = document.getElementById('score');
+        const timerDisplay = document.getElementById('timer');
+        const bestScoreDisplay = document.getElementById('bestScore');
+        const comboIndicator = document.getElementById('combo-indicator');
+        const difficultyBtns = document.querySelectorAll('.difficulty-btn');
+
+        let currentSequence = '';
+        let score = 0;
+        let bestScore = 0;
+        let timer = 0;
+        let timerInterval;
+        let comboCount = 0;
+        let difficulty = 'easy';
+
+        const difficultySettings = {
+            easy: { length: 4, bonus: 10, timeLimit: 240 }, // 4 minutes
+            medium: { length: 6, bonus: 20, timeLimit: 180 }, // 3 minutes
+            hard: { length: 8, bonus: 30, timeLimit: 120 } // 2 minutes
+        };
+
+        function generateSequence(length) {
+            const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+            return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+        }
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        function updateTimer() {
+            timer++;
+            const timeLimit = difficultySettings[difficulty].timeLimit;
+            const timeLeft = timeLimit - timer;
+            
+            if (timeLeft >= 0) {
+                timerDisplay.textContent = formatTime(timeLeft);
+                
+                // Warning when less than 30 seconds left
+                if (timeLeft <= 30) {
+                    timerDisplay.classList.add('timer-warning');
+                }
+            }
+            
+            // Game over when time runs out
+            if (timeLeft <= 0) {
+                gameOver();
+            }
+        }
+
+        function gameOver() {
+            clearInterval(timerInterval);
+            sequenceInput.disabled = true;
+            resetBtn.style.display = 'inline-flex';
+            sequenceDisplay.textContent = 'Time\'s Up! Final Score: ' + score;
+            document.getElementById('error-message').style.display = 'none';
+            comboIndicator.textContent = '';
+        }
+
+        function startGame() {
+            score = 0;
+            timer = 0;
+            comboCount = 0;
+            scoreDisplay.textContent = '0';
+            sequenceInput.value = '';
+            sequenceInput.disabled = false;
+            startBtn.style.display = 'none';
+            resetBtn.style.display = 'inline-flex';
+            timerDisplay.classList.remove('timer-warning');
+            
+            // Show initial time limit
+            const timeLimit = difficultySettings[difficulty].timeLimit;
+            timerDisplay.textContent = formatTime(timeLimit);
+            
+            generateNewSequence();
+            timerInterval = setInterval(updateTimer, 1000);
+            sequenceInput.focus();
+        }
+
+        function generateNewSequence() {
+            currentSequence = generateSequence(difficultySettings[difficulty].length);
+            sequenceDisplay.textContent = currentSequence;
+        }
+
+        function resetGame() {
+            clearInterval(timerInterval);
+            sequenceInput.disabled = true;
+            startBtn.style.display = 'inline-flex';
+            resetBtn.style.display = 'none';
+            sequenceDisplay.textContent = 'Press Start to Begin';
+            comboIndicator.textContent = '';
+            document.getElementById('error-message').style.display = 'none';
+            timerDisplay.classList.remove('timer-warning');
+            
+            // Show initial time limit for current difficulty
+            const timeLimit = difficultySettings[difficulty].timeLimit;
+            timerDisplay.textContent = formatTime(timeLimit);
+        }
+
+        function updateScore(correct) {
+            if (correct) {
+                comboCount++;
+                const basePoints = difficultySettings[difficulty].bonus;
+                const comboBonus = Math.floor(comboCount / 3) * 5;
+                score += basePoints + comboBonus;
+                
+                if (comboCount > 1) {
+                    comboIndicator.textContent = `Combo x${comboCount}!`;
+                }
+            } else {
+                comboCount = 0;
+                comboIndicator.textContent = '';
+            }
+            
+            scoreDisplay.textContent = score;
+            if (score > bestScore) {
+                bestScore = score;
+                bestScoreDisplay.textContent = bestScore;
+            }
+        }
+
+        sequenceInput.addEventListener('input', () => {
+            const input = sequenceInput.value.toUpperCase();
+            const errorMessage = document.getElementById('error-message');
+            
+            // Check each character as it's typed
+            const currentLength = input.length;
+            if (currentLength > 0) {
+                if (input[currentLength - 1] !== currentSequence[currentLength - 1]) {
+                    errorMessage.style.display = 'block';
+                    sequenceInput.classList.add('shake');
+                    setTimeout(() => {
+                        sequenceInput.classList.remove('shake');
+                    }, 500);
+                    sequenceInput.value = input.slice(0, -1); // Remove the wrong character
+                    updateScore(false);
+                    return;
+                } else {
+                    errorMessage.style.display = 'none';
+                }
+            }
+
+            // Check if sequence is complete
+            if (input.length === currentSequence.length) {
+                const correct = input === currentSequence;
+                if (correct) {
+                    errorMessage.style.display = 'none';
+                    updateScore(true);
+                    sequenceInput.value = '';
+                    generateNewSequence();
+                }
+            }
+        });
+
+        startBtn.addEventListener('click', startGame);
+        resetBtn.addEventListener('click', resetGame);
+
+        difficultyBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                difficultyBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                difficulty = btn.dataset.level;
+                
+                // Update timer display for new difficulty
+                const timeLimit = difficultySettings[difficulty].timeLimit;
+                timerDisplay.textContent = formatTime(timeLimit);
+                
+                resetGame();
+            });
+        });
+
+        // Initialize best score from localStorage if available
+        const savedBestScore = localStorage.getItem('codeBreaker_bestScore');
+        if (savedBestScore) {
+            bestScore = parseInt(savedBestScore);
+            bestScoreDisplay.textContent = bestScore;
+        }
+
+        // Save best score when window is closed
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('codeBreaker_bestScore', bestScore);
+        });
+    </script>
+</body>
+</html>

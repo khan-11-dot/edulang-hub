@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Courses - EduLang Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/courses.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#study-notes">Study Notes</a>
+            <a href="#past-papers">Past Papers</a>
+            <a href="#languages">Languages</a>
+            <a href="typing.html">Typing</a>
+            <a href="courses.html" class="active">Courses</a>
+            <a href="#login" class="btn-login">Login</a>
+            <a href="#signup" class="btn-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <main class="courses-container">
+        <h1 class="page-title">Our Courses</h1>
+        
+        <div class="course-filters">
+            <button class="filter-btn active" data-filter="all">All Courses</button>
+            <button class="filter-btn" data-filter="ai">AI & ML</button>
+            <button class="filter-btn" data-filter="language">Languages</button>
+            <button class="filter-btn" data-filter="academic">Academic</button>
+            <button class="filter-btn" data-filter="professional">Professional</button>
+        </div>
+
+        <div class="courses-grid">
+            <!-- AI Courses -->
+            <div class="course-card" data-category="ai">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Machine Learning">
+                    <span class="course-badge hot">Hot</span>
+                </div>
+                <div class="course-content">
+                    <h3>Machine Learning Fundamentals</h3>
+                    <p>Learn ML algorithms and data science basics</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 16 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Intermediate</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 30,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="ai">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Deep Learning">
+                    <span class="course-badge">New</span>
+                </div>
+                <div class="course-content">
+                    <h3>Deep Learning with Python</h3>
+                    <p>Master neural networks and deep learning</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 20 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Advanced</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 35,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="ai">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Computer Vision">
+                </div>
+                <div class="course-content">
+                    <h3>Computer Vision & AI</h3>
+                    <p>Image processing and vision applications</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 14 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Intermediate</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 28,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Language Courses -->
+            <div class="course-card" data-category="language">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="English Course">
+                    <span class="course-badge">Popular</span>
+                </div>
+                <div class="course-content">
+                    <h3>Advanced English</h3>
+                    <p>Master English language with native speakers</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 12 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Beginner to Advanced</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 15,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="language">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Korean Course">
+                </div>
+                <div class="course-content">
+                    <h3>Korean Language</h3>
+                    <p>Learn Korean from basics to TOPIK level</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 16 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> All Levels</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 18,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Courses -->
+            <div class="course-card" data-category="academic">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Mathematics">
+                    <span class="course-badge">New</span>
+                </div>
+                <div class="course-content">
+                    <h3>Advanced Mathematics</h3>
+                    <p>Complete mathematics for college entrance</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 8 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Intermediate</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 12,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="academic">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Physics">
+                </div>
+                <div class="course-content">
+                    <h3>Physics Mastery</h3>
+                    <p>Complete physics course for FSc and entry tests</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 10 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Intermediate</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 14,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Courses -->
+            <div class="course-card" data-category="professional">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Web Development">
+                    <span class="course-badge hot">Hot</span>
+                </div>
+                <div class="course-content">
+                    <h3>Web Development</h3>
+                    <p>Learn full-stack web development</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 24 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> Beginner Friendly</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 25,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-card" data-category="professional">
+                <div class="course-image">
+                    <img src="assets/courses/placeholder.svg" alt="Digital Marketing">
+                </div>
+                <div class="course-content">
+                    <h3>Digital Marketing</h3>
+                    <p>Master digital marketing strategies</p>
+                    <div class="course-details">
+                        <span><i class="fas fa-clock"></i> 12 weeks</span>
+                        <span><i class="fas fa-user-graduate"></i> All Levels</span>
+                    </div>
+                    <div class="course-footer">
+                        <span class="price">Rs. 20,000</span>
+                        <a href="#enroll" class="enroll-btn">Enroll Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/courses.js"></script>
+</body>
+</html>

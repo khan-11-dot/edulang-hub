@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner Typing Lessons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #1a1a1a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .lesson-section {
+            background: #2d2d2d;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #69F0AE;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #69F0AE;
+            padding-bottom: 10px;
+        }
+
+        .lesson-card {
+            background: #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .lesson-card h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .lesson-card p {
+            color: #aaa;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .start-btn {
+            display: inline-block;
+            background: #4CAF50;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: background 0.2s;
+        }
+
+        .start-btn:hover {
+            background: #45a049;
+        }
+
+        .progress-indicator {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #666;
+        }
+
+        .completed .progress-indicator {
+            background: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Typing Lessons</h1>
+
+        <div class="lesson-grid">
+            <div class="lesson-section">
+                <h2 class="section-title">GETTING STARTED</h2>
+                
+                <div class="lesson-card">
+                    <h3>J, F, and Space</h3>
+                    <p>Learn the home position keys</p>
+                    <a href="jf-space.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>U, R, and K Keys</h3>
+                    <p>Expand to nearby keys</p>
+                    <a href="urk-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>D, E, and I Keys</h3>
+                    <p>Learn common letter combinations</p>
+                    <a href="dei-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2 class="section-title"></h2>
+                
+                <div class="lesson-card">
+                    <h3>C, G, and N Keys</h3>
+                    <p>Master more frequent letters</p>
+                    <a href="cgn-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>T, S, and L Keys</h3>
+                    <p>Learn common consonants</p>
+                    <a href="tsl-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>O, B, and A Keys</h3>
+                    <p>Practice with vowels</p>
+                    <a href="oba-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2 class="section-title"></h2>
+                
+                <div class="lesson-card">
+                    <h3>V, H, and M Keys</h3>
+                    <p>Add more consonants</p>
+                    <a href="vhm-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>W, X, and ; Keys</h3>
+                    <p>Less common keys</p>
+                    <a href="wxsc-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Q, Y, and P Keys</h3>
+                    <p>Complete the alphabet</p>
+                    <a href="qyp-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Z and Enter Keys</h3>
+                    <p>Special keys practice</p>
+                    <a href="z-enter-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Period and Comma Keys</h3>
+                    <p>Punctuation practice</p>
+                    <a href="period-comma-keys.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+            </div>
+
+            <div class="lesson-section">
+                <h2 class="section-title">Final Lessons</h2>
+                
+                <div class="lesson-card">
+                    <h3>Final Assessment</h3>
+                    <p>Test your typing skills</p>
+                    <a href="final-assessment.html" class="start-btn">Start</a>
+                    <div class="progress-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load progress from localStorage
+        document.querySelectorAll('.lesson-card').forEach(card => {
+            const link = card.querySelector('a').getAttribute('href');
+            const completed = localStorage.getItem(`typing_lesson_${link}`);
+            if (completed === 'true') {
+                card.classList.add('completed');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Instructions - EduLang Hub</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    .keyboard-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      
+      .keyboard-table th,
+      .keyboard-table td {
+        border: 1px solid #ccc;
+        padding: 10px 12px;
+        text-align: center;
+      }
+      
+      .keyboard-table th {
+        background-color: #007BFF;
+        color: white;
+      }
+      
+      .keyboard-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+    </style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            overflow-y: auto;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            top: 0;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .instructions-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-container {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .interactive-keyboard {
+            background: var(--dark-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            color: white;
+            margin: 2rem 0;
+        }
+
+        .key-row {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .key {
+            background: white;
+            color: var(--dark-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            min-width: 40px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .key:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .exercise-card {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .progress-tracker {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .progress-bar {
+            height: 20px;
+            background: var(--light-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .typing-game {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .game-text {
+            font-size: 1.2rem;
+            line-height: 2;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .instructions-container {
+                padding: 1rem;
+            }
+
+            .left-hand, .right-hand {
+                min-width: 100%;
+            }
+        }
+        :root {
+            --primary-color: #007bff;
+            --secondary-color: #28a745;
+            --accent-color: #17a2b8;
+            --warning-color: #dc3545;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'auto'
+            });
+        });
+        history.scrollRestoration = 'manual';
+    </script>
+</head>
+<body>
+    
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="../typing.html">Typing Practice</a>
+            <a href="../courses.html">Courses</a>
+            <a href="#login" class="btn-login">Login</a>
+            <a href="#signup" class="btn-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <main class="instructions-container">
+        <div class="page-header">
+            <h1><i class="fas fa-keyboard"></i> Professional Typing Instructions</h1>
+            <p>Master the art of touch typing with our comprehensive guide</p>
+        </div>
+
+        <section class="section-container">
+            <h2><i class="fas fa-hand-point-up"></i> Finger Placement Guide</h2>
+            <div class="hands-container">
+                <div class="left-hand">
+                    <h3>Left Hand</h3>
+                    <img src="../assets/hands/f.jpg" alt="Left Hand Position" class="hand-image">
+                    <div class="finger-guide">
+                        <ul>
+                            <li><strong>Little (Pink):</strong> Q, A, Z</li>
+                            <li><strong>Ring (Blue):</strong> W, S, X</li>
+                            <li><strong>Middle (Green):</strong> E, D, C</li>
+                            <li><strong>Index (Orange):</strong> R, F, V, T, G, B</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-hand">
+                    <h3>Right Hand</h3>
+                    <img src="../assets/hands/g.jpg" alt="Right Hand Position" class="hand-image">
+                    <div class="finger-guide">
+                        <ul>
+                            <li><strong>Index (Orange):</strong> Y, H, N, U, J, M</li>
+                            <li><strong>Middle (Green):</strong> I, K, ,</li>
+                            <li><strong>Ring (Blue):</strong> O, L, .</li>
+                            <li><strong>Little (Pink):</strong> P, ;, /</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <h2><i class="fas fa-keyboard"></i> Interactive Keyboard</h2>
+            <div class="interactive-keyboard">
+                <div class="key-row">
+                    <div class="key">Q</div>
+                    <div class="key">W</div>
+                    <div class="key">E</div>
+                    <div class="key">R</div>
+                    <div class="key">T</div>
+                    <div class="key">Y</div>
+                    <div class="key">U</div>
+                    <div class="key">I</div>
+                    <div class="key">O</div>
+                    <div class="key">P</div>
+                </div>
+                <div class="key-row">
+                    <div class="key">A</div>
+                    <div class="key">S</div>
+                    <div class="key">D</div>
+                    <div class="key">F</div>
+                    <div class="key">G</div>
+                    <div class="key">H</div>
+                    <div class="key">J</div>
+                    <div class="key">K</div>
+                    <div class="key">L</div>
+                    <div class="key">;</div>
+                </div>
+                <div class="key-row">
+                    <div class="key">Z</div>
+                    <div class="key">X</div>
+                    <div class="key">C</div>
+                    <div class="key">V</div>
+                    <div class="key">B</div>
+                    <div class="key">N</div>
+                    <div class="key">M</div>
+                    <div class="key">,</div>
+                    <div class="key">.</div>
+                    <div class="key">/</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <h2><i class="fas fa-dumbbell"></i> Practice Exercises</h2>
+            <div class="exercise-card">
+                <h3>Basic Home Row (Level 1)</h3>
+                <p>Type these sequences:</p>
+                <code>asdf jkl; asdf jkl;</code>
+                <p>Focus on: Home row position</p>
+            </div>
+            <div class="exercise-card">
+                <h3>Upper Row Practice (Level 2)</h3>
+                <p>Practice reaching up:</p>
+                <code>qwer uiop rtyu</code>
+                <p>Focus on: Reaching up without looking</p>
+            </div>
+            <div class="exercise-card">
+                <h3>Lower Row Practice (Level 3)</h3>
+                <p>Practice reaching down:</p>
+                <code>zxcv bnm, vbnm</code>
+                <p>Focus on: Smooth downward reaches</p>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <h2><i class="fas fa-chart-line"></i> Progress Tracking</h2>
+            <div class="progress-tracker">
+                <h3>Your Typing Journey</h3>
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h4>Current Speed</h4>
+                        <div class="stat-value">0</div>
+                        <p>Words per minute</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Accuracy</h4>
+                        <div class="stat-value">0%</div>
+                        <p>Correct keystrokes</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Practice Time</h4>
+                        <div class="stat-value">0</div>
+                        <p>Minutes today</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typing Games Section -->
+        <section class="section-container" id="typing-games">
+            <h2><i class="fas fa-gamepad"></i> Fun Typing Games</h2>
+            <div class="games-container">
+                <style>
+                    .games-container {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                        gap: 1.5rem;
+                        margin-top: 1.5rem;
+                    }
+                    .game-card {
+                        background: #fff;
+                        border-radius: 10px;
+                        padding: 1.5rem;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                        transition: transform 0.3s ease, box-shadow 0.3s ease;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                    }
+                    .game-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                    }
+                    .game-icon {
+                        font-size: 2.5rem;
+                        color: var(--primary-color);
+                        margin-bottom: 1rem;
+                    }
+                    .game-title {
+                        font-size: 1.25rem;
+                        font-weight: bold;
+                        margin-bottom: 0.5rem;
+                        color: #333;
+                    }
+                    .game-description {
+                        color: #666;
+                        margin-bottom: 1rem;
+                        font-size: 0.9rem;
+                    }
+                    .play-button {
+                        background: var(--primary-color);
+                        color: white;
+                        padding: 0.8rem 1.5rem;
+                        border-radius: 25px;
+                        text-decoration: none;
+                        transition: background 0.3s ease;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 0.5rem;
+                    }
+                    .play-button:hover {
+                        background: var(--accent-color);
+                        text-decoration: none;
+                        color: white;
+                    }
+                    .difficulty {
+                        margin-top: 0.5rem;
+                        padding: 0.3rem 0.8rem;
+                        border-radius: 15px;
+                        font-size: 0.8rem;
+                        color: white;
+                    }
+                    .easy { background: #28a745; }
+                    .medium { background: #ffc107; color: #333; }
+                    .hard { background: #dc3545; }
+                </style>
+
+                <!-- Balloon Typing Game -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-balloon"></i>
+                    </div>
+                    <h3 class="game-title">Balloon Typing</h3>
+                    <p class="game-description">Pop balloons by typing the words they carry before they float away!</p>
+                    <a href="games/balloon-typing.html" class="play-button">
+                        <i class="fas fa-play"></i> Play Now
+                    </a>
+                    <div class="difficulty easy">Easy</div>
+                </div>
+
+                <!-- Space Typing Game -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="game-title">Space Typing</h3>
+                    <p class="game-description">Defend your spaceship by typing words to destroy incoming asteroids!</p>
+                    <a href="games/space-typing.html" class="play-button">
+                        <i class="fas fa-play"></i> Play Now
+                    </a>
+                    <div class="difficulty medium">Medium</div>
+                </div>
+
+                <!-- Ninja Typing Game -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <h3 class="game-title">Typing Ninja</h3>
+                    <p class="game-description">Slice through words with ninja-like speed and precision!</p>
+                    <a href="games/typing-ninja.html" class="play-button">
+                        <i class="fas fa-play"></i> Play Now
+                    </a>
+                    <div class="difficulty medium">Medium</div>
+                </div>
+
+                <!-- Racing Game -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <h3 class="game-title">Type Racer</h3>
+                    <p class="game-description">Race against others by typing accurately and quickly!</p>
+                    <a href="games/type-racer.html" class="play-button">
+                        <i class="fas fa-play"></i> Play Now
+                    </a>
+                    <div class="difficulty hard">Hard</div>
+                </div>
+
+                <!-- Fish Typing Game -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3 class="game-title">Fish Typing</h3>
+                    <p class="game-description">Help your fish catch words to grow bigger and swim faster!</p>
+                    <a href="games/fish-typing.html" class="play-button">
+                        <i class="fas fa-play"></i> Play Now
+                    </a>
+                    <div class="difficulty easy">Easy</div>
+                </div>
+
+                <!-- Speed Typing Challenge -->
+                <div class="game-card">
+                    <div class="game-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3 class="game-title">Speed Challenge</h3>
+                    <p class="game-description">Test your speed limits with this intense typing challenge!</p>
+                    <a href="games/speed-challenge.html" class="play-button">
+                        <i class="fas fa-play"></i> Play Now
+                    </a>
+                    <div class="difficulty hard">Hard</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <script>
+        window.onload = function() {
+            window.scrollTo(0, 0);
+        }
+    </script>
+    <table class="keyboard-table">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Finger</th>
+            <th>Hand</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+       <style>
+        td.pressed {
+            transform: scale(0.9);
+            transition: transform 0.1s;
+        }
+        </style>
+       <script>
+       document.querySelectorAll("td").forEach(function(cell) {
+            cell.addEventListener("mousedown", function() {
+                this.classList.add("pressed");
+            });
+        
+            cell.addEventListener("mouseup", function() {
+                this.classList.remove("pressed");
+            });
+        });
+    </script>
+        <tbody>
+          <tr><td>Q</td><td>Left Pinky</td><td>Left</td><td>Top row</td></tr>
+          <tr><td>W</td><td>Left Ring</td><td>Left</td><td>Top row</td></tr>
+          <tr><td>E</td><td>Left Middle</td><td>Left</td><td>Top row</td></tr>
+          <tr><td>R</td><td>Left Index</td><td>Left</td><td>Top row</td></tr>
+          <tr><td>T</td><td>Left Index</td><td>Left</td><td>Top row</td></tr>
+      
+          <tr><td>Y</td><td>Right Index</td><td>Right</td><td>Top row</td></tr>
+          <tr><td>U</td><td>Right Index</td><td>Right</td><td>Top row</td></tr>
+          <tr><td>I</td><td>Right Middle</td><td>Right</td><td>Top row</td></tr>
+          <tr><td>O</td><td>Right Ring</td><td>Right</td><td>Top row</td></tr>
+          <tr><td>P</td><td>Right Pinky</td><td>Right</td><td>Top row</td></tr>
+      
+          <tr><td>A</td><td>Left Pinky</td><td>Left</td><td>Home row</td></tr>
+          <tr><td>S</td><td>Left Ring</td><td>Left</td><td>Home row</td></tr>
+          <tr><td>D</td><td>Left Middle</td><td>Left</td><td>Home row</td></tr>
+          <tr><td>F</td><td>Left Index</td><td>Left</td><td>Home row</td></tr>
+          <tr><td>G</td><td>Left Index</td><td>Left</td><td>Home row</td></tr>
+      
+          <tr><td>H</td><td>Right Index</td><td>Right</td><td>Home row</td></tr>
+          <tr><td>J</td><td>Right Index</td><td>Right</td><td>Home row</td></tr>
+          <tr><td>K</td><td>Right Middle</td><td>Right</td><td>Home row</td></tr>
+          <tr><td>L</td><td>Right Ring</td><td>Right</td><td>Home row</td></tr>
+          <tr><td>;</td><td>Right Pinky</td><td>Right</td><td>Home row</td></tr>
+      
+          <tr><td>Z</td><td>Left Pinky</td><td>Left</td><td>Bottom row</td></tr>
+          <tr><td>X</td><td>Left Ring</td><td>Left</td><td>Bottom row</td></tr>
+          <tr><td>C</td><td>Left Middle</td><td>Left</td><td>Bottom row</td></tr>
+          <tr><td>V</td><td>Left Index</td><td>Left</td><td>Bottom row</td></tr>
+          <tr><td>B</td><td>Left Index</td><td>Left</td><td>Bottom row</td></tr>
+      
+          <tr><td>N</td><td>Right Index</td><td>Right</td><td>Bottom row</td></tr>
+          <tr><td>M</td><td>Right Index</td><td>Right</td><td>Bottom row</td></tr>
+          <tr><td>,</td><td>Right Middle</td><td>Right</td><td>Bottom row</td></tr>
+          <tr><td>.</td><td>Right Ring</td><td>Right</td><td>Bottom row</td></tr>
+          <tr><td>/</td><td>Right Pinky</td><td>Right</td><td>Bottom row</td></tr>
+      
+          <tr><td>0</td><td>Right Pinky</td><td>Right</td><td>Number row</td></tr>
+          <tr><td>1</td><td>Left Pinky</td><td>Left</td><td>Number row</td></tr>
+          <tr><td>2</td><td>Left Ring</td><td>Left</td><td>Number row</td></tr>
+          <tr><td>3</td><td>Left Middle</td><td>Left</td><td>Number row</td></tr>
+          <tr><td>4</td><td>Left Index</td><td>Left</td><td>Number row</td></tr>
+          <tr><td>5</td><td>Left Index</td><td>Left</td><td>Number row</td></tr>
+          <tr><td>6</td><td>Right Index</td><td>Right</td><td>Number row</td></tr>
+          <tr><td>7</td><td>Right Index</td><td>Right</td><td>Number row</td></tr>
+          <tr><td>8</td><td>Right Middle</td><td>Right</td><td>Number row</td></tr>
+          <tr><td>9</td><td>Right Ring</td><td>Right</td><td>Number row</td></tr>
+        </tbody>
+      </table>
+      
+      <table class="keyboard-table">
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Finger</th>
+            <th>Hand</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>!</td><td>Left Pinky</td><td>Left</td><td>Shift + 1</td></tr>
+          <tr><td>@</td><td>Left Ring</td><td>Left</td><td>Shift + 2</td></tr>
+          <tr><td>#</td><td>Left Middle</td><td>Left</td><td>Shift + 3</td></tr>
+          <tr><td>$</td><td>Left Index</td><td>Left</td><td>Shift + 4</td></tr>
+          <tr><td>%</td><td>Left Index</td><td>Left</td><td>Shift + 5</td></tr>
+      
+          <tr><td>^</td><td>Right Index</td><td>Right</td><td>Shift + 6</td></tr>
+          <tr><td>&</td><td>Right Index</td><td>Right</td><td>Shift + 7</td></tr>
+          <tr><td>*</td><td>Right Middle</td><td>Right</td><td>Shift + 8</td></tr>
+          <tr><td>(</td><td>Right Ring</td><td>Right</td><td>Shift + 9</td></tr>
+          <tr><td>)</td><td>Right Pinky</td><td>Right</td><td>Shift + 0</td></tr>
+      
+          <tr><td>_</td><td>Right Pinky</td><td>Right</td><td>Shift + -</td></tr>
+          <tr><td>+</td><td>Right Pinky</td><td>Right</td><td>Shift + =</td></tr>
+          <tr><td>{</td><td>Right Pinky</td><td>Right</td><td>Shift + [</td></tr>
+          <tr><td>}</td><td>Right Pinky</td><td>Right</td><td>Shift + ]</td></tr>
+          <tr><td>|</td><td>Right Pinky</td><td>Right</td><td>Shift + \</td></tr>
+      
+          <tr><td>:</td><td>Right Pinky</td><td>Right</td><td>Shift + ;</td></tr>
+          <tr><td>"</td><td>Right Pinky</td><td>Right</td><td>Shift + '</td></tr>
+          <tr><td><</td><td>Right Middle</td><td>Right</td><td>Shift + ,</td></tr>
+          <tr><td>></td><td>Right Ring</td><td>Right</td><td>Shift + .</td></tr>
+          <tr><td>?</td><td>Right Pinky</td><td>Right</td><td>Shift + /</td></tr>
+      
+          <tr><td>~</td><td>Left Pinky</td><td>Left</td><td>Shift + `</td></tr>
+          <tr><td>`</td><td>Left Pinky</td><td>Left</td><td>Grave accent key</td></tr>
+          <tr><td>-</td><td>Right Pinky</td><td>Right</td><td>Dash/Minus</td></tr>
+          <tr><td>=</td><td>Right Pinky</td><td>Right</td><td>Equal sign</td></tr>
+          <tr><td>[</td><td>Right Pinky</td><td>Right</td><td>Opening bracket</td></tr>
+          <tr><td>]</td><td>Right Pinky</td><td>Right</td><td>Closing bracket</td></tr>
+          <tr><td>\</td><td>Right Pinky</td><td>Right</td><td>Backslash</td></tr>
+          <tr><td>;</td><td>Right Pinky</td><td>Right</td><td>Semicolon</td></tr>
+          <tr><td>'</td><td>Right Pinky</td><td>Right</td><td>Apostrophe</td></tr>
+          <tr><td>,</td><td>Right Middle</td><td>Right</td><td>Comma</td></tr>
+          <tr><td>.</td><td>Right Ring</td><td>Right</td><td>Period</td></tr>
+          <tr><td>/</td><td>Right Pinky</td><td>Right</td><td>Forward slash</td></tr>
+        </tbody>
+      </table>
+      
+</body>
+</html>

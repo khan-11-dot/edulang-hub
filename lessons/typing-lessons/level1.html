@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 1: J, F, and Space Keys</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-label">WPM</div>
+                <div class="stat-value" id="wpm">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Accuracy</div>
+                <div class="stat-value" id="accuracy">100%</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Progress</div>
+                <div class="stat-value" id="progress">0%</div>
+            </div>
+        </div>
+
+        <div class="level-progress">
+            <div class="level-dot active"></div>
+            <div class="level-dot"></div>
+            <div class="level-dot"></div>
+        </div>
+
+        <div class="typing-area">
+            <div class="typing-text" id="typing-text">
+f j f j f j f j
+j f j f j f j f
+space space space space
+f j space f j space
+j f space j f space</div>
+        </div>
+
+        <div class="keyboard-section">
+            <div class="finger-guide">
+                <div class="finger-indicator">
+                    <div class="finger-dot pinky"></div>
+                    <div class="finger-label">L Pinky</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot ring"></div>
+                    <div class="finger-label">L Ring</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot middle"></div>
+                    <div class="finger-label">L Middle</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot index"></div>
+                    <div class="finger-label">L Index</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot thumb"></div>
+                    <div class="finger-label">L Thumb</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot thumb"></div>
+                    <div class="finger-label">R Thumb</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot index"></div>
+                    <div class="finger-label">R Index</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot middle"></div>
+                    <div class="finger-label">R Middle</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot ring"></div>
+                    <div class="finger-label">R Ring</div>
+                </div>
+                <div class="finger-indicator">
+                    <div class="finger-dot pinky"></div>
+                    <div class="finger-label">R Pinky</div>
+                </div>
+            </div>
+
+            <div class="keyboard">
+                <!-- Row 1 -->
+                <div class="keyboard-row">
+                    <div class="key">`</div>
+                    <div class="key">1</div>
+                    <div class="key">2</div>
+                    <div class="key">3</div>
+                    <div class="key">4</div>
+                    <div class="key">5</div>
+                    <div class="key">6</div>
+                    <div class="key">7</div>
+                    <div class="key">8</div>
+                    <div class="key">9</div>
+                    <div class="key">0</div>
+                    <div class="key">-</div>
+                    <div class="key">=</div>
+                    <div class="key">⌫</div>
+                </div>
+                <!-- Row 2 -->
+                <div class="keyboard-row">
+                    <div class="key">Tab</div>
+                    <div class="key">Q</div>
+                    <div class="key">W</div>
+                    <div class="key">E</div>
+                    <div class="key">R</div>
+                    <div class="key">T</div>
+                    <div class="key">Y</div>
+                    <div class="key">U</div>
+                    <div class="key">I</div>
+                    <div class="key">O</div>
+                    <div class="key">P</div>
+                    <div class="key">[</div>
+                    <div class="key">]</div>
+                    <div class="key">\</div>
+                </div>
+                <!-- Row 3 -->
+                <div class="keyboard-row">
+                    <div class="key">Caps</div>
+                    <div class="key">A</div>
+                    <div class="key">S</div>
+                    <div class="key">D</div>
+                    <div class="key home" id="key-f">F</div>
+                    <div class="key">G</div>
+                    <div class="key">H</div>
+                    <div class="key home" id="key-j">J</div>
+                    <div class="key">K</div>
+                    <div class="key">L</div>
+                    <div class="key">;</div>
+                    <div class="key">'</div>
+                    <div class="key">Enter</div>
+                </div>
+                <!-- Row 4 -->
+                <div class="keyboard-row">
+                    <div class="key">Shift</div>
+                    <div class="key">Z</div>
+                    <div class="key">X</div>
+                    <div class="key">C</div>
+                    <div class="key">V</div>
+                    <div class="key">B</div>
+                    <div class="key">N</div>
+                    <div class="key">M</div>
+                    <div class="key">,</div>
+                    <div class="key">.</div>
+                    <div class="key">/</div>
+                    <div class="key">Shift</div>
+                </div>
+                <!-- Row 5 -->
+                <div class="keyboard-row">
+                    <div class="key">Ctrl</div>
+                    <div class="key">Win</div>
+                    <div class="key">Alt</div>
+                    <div class="key space" id="key-space">Space</div>
+                    <div class="key">Alt</div>
+                    <div class="key">Win</div>
+                    <div class="key">Menu</div>
+                    <div class="key">Ctrl</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="star-rating" id="star-rating">
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+            <i class="fas fa-star star"></i>
+        </div>
+
+        <div class="level-nav">
+            <button class="nav-btn btn-secondary" onclick="restartLevel()">
+                <i class="fas fa-redo"></i>
+                Redo Level
+            </button>
+            <button class="nav-btn btn-primary" id="next-btn" onclick="nextLevel()" disabled>
+                Next Level
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <input type="text" id="typing-input" style="position: absolute; opacity: 0;">
+
+    <script>
+        const typingText = document.getElementById('typing-text');
+        const typingInput = document.getElementById('typing-input');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const progressDisplay = document.getElementById('progress');
+        const nextButton = document.getElementById('next-btn');
+        const starRating = document.getElementById('star-rating');
+        const stars = document.querySelectorAll('.star');
+
+        let startTime;
+        let currentIndex = 0;
+        let errors = 0;
+        let isLessonStarted = false;
+
+        const lessonText = typingText.innerText.trim();
+        const characters = lessonText.split('');
+
+        // Finger mapping
+        const fingerMap = {
+            'f': { hand: 'left', finger: 'index' },
+            'j': { hand: 'right', finger: 'index' },
+            ' ': { hand: 'right', finger: 'thumb' }
+        };
+
+        function updateDisplay() {
+            let html = '';
+            characters.forEach((char, index) => {
+                if (index === currentIndex) {
+                    html += `<span class="current-char">${char}</span>`;
+                } else if (index < currentIndex) {
+                    html += `<span class="typed-correct">${char}</span>`;
+                } else {
+                    html += char;
+                }
+            });
+            typingText.innerHTML = html;
+
+            // Highlight next key to press
+            const nextChar = characters[currentIndex];
+            if (nextChar && fingerMap[nextChar]) {
+                const keyId = nextChar === ' ' ? 'space' : nextChar.toLowerCase();
+                const keyElement = document.getElementById(`key-${keyId}`);
+                document.querySelectorAll('.key').forEach(k => k.classList.remove('active'));
+                if (keyElement) keyElement.classList.add('active');
+            }
+        }
+
+        function calculateWPM() {
+            if (!startTime || currentIndex === 0) return 0;
+            const timeElapsed = (Date.now() - startTime) / 1000 / 60;
+            const wordsTyped = currentIndex / 5;
+            return Math.round(wordsTyped / timeElapsed);
+        }
+
+        function calculateAccuracy() {
+            if (currentIndex === 0) return 100;
+            return Math.round(((currentIndex - errors) / currentIndex) * 100);
+        }
+
+        function updateStars() {
+            const accuracy = calculateAccuracy();
+            const wpm = calculateWPM();
+            
+            let starCount = 0;
+            if (accuracy >= 95 && wpm >= 30) starCount = 3;
+            else if (accuracy >= 85 && wpm >= 20) starCount = 2;
+            else if (accuracy >= 70) starCount = 1;
+
+            stars.forEach((star, index) => {
+                star.classList.toggle('filled', index < starCount);
+            });
+            starRating.style.display = 'flex';
+        }
+
+        function updateProgress() {
+            const progress = Math.round((currentIndex / characters.length) * 100);
+            progressDisplay.textContent = `${progress}%`;
+            
+            if (progress === 100) {
+                nextButton.disabled = false;
+                updateStars();
+            }
+        }
+
+        function updateStats() {
+            if (isLessonStarted) {
+                wpmDisplay.textContent = calculateWPM();
+                accuracyDisplay.textContent = `${calculateAccuracy()}%`;
+                updateProgress();
+            }
+        }
+
+        function restartLevel() {
+            currentIndex = 0;
+            errors = 0;
+            isLessonStarted = false;
+            startTime = null;
+            nextButton.disabled = true;
+            starRating.style.display = 'none';
+            updateDisplay();
+            updateStats();
+            typingInput.value = '';
+            typingInput.focus();
+        }
+
+        function nextLevel() {
+            window.location.href = 'level2.html';
+        }
+
+        typingInput.addEventListener('input', (e) => {
+            if (!isLessonStarted) {
+                startTime = Date.now();
+                isLessonStarted = true;
+            }
+
+            const typedChar = e.target.value.slice(-1);
+            const expectedChar = characters[currentIndex];
+
+            if (typedChar === expectedChar) {
+                currentIndex++;
+                updateDisplay();
+                updateStats();
+            } else {
+                errors++;
+                updateStats();
+            }
+
+            if (currentIndex >= characters.length) {
+                nextButton.disabled = false;
+                updateStars();
+            }
+        });
+
+        // Initialize
+        updateDisplay();
+        typingInput.focus();
+
+        // Keep input focused
+        document.addEventListener('click', () => typingInput.focus());
+    </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+/* Main Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f0f2f5;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* Hands Container */
+.hands-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 20px 0;
+    background: #f8fafc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hand {
+    position: absolute;
+    width: 250px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.hand.left {
+    left: calc(50% - 260px);
+    transform-origin: bottom right;
+}
+
+.hand.right {
+    right: calc(50% - 260px);
+    transform-origin: bottom left;
+}
+
+.finger {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(52, 152, 219, 0.4);
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+/* Keyboard Styles */
+.keyboard {
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.key {
+    position: relative;
+    min-width: 45px;
+    height: 45px;
+    background: white;
+    border: 2px solid #bdc3c7;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    color: #34495e;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.1s ease;
+    user-select: none;
+}
+
+.key.active {
+    background: #3498db;
+    color: white;
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+.key.home {
+    border-color: #3498db;
+    background: #e8f4fc;
+}
+
+.key.space {
+    width: 400px;
+}
+
+/* Finger Indicators */
+.finger-hint {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.finger-hint.pinky { background: #e74c3c; }
+.finger-hint.ring { background: #f1c40f; }
+.finger-hint.middle { background: #2ecc71; }
+.finger-hint.index { background: #3498db; }
+.finger-hint.thumb { background: #9b59b6; }
+
+/* Typing Area */
+.typing-area {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.typing-text {
+    font-family: 'Courier New', monospace;
+    font-size: 24px;
+    line-height: 1.8;
+    color: #7f8c8d;
+}
+
+.typed-correct {
+    color: #27ae60;
+}
+
+.typed-wrong {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.current-char {
+    background: #3498db;
+    color: white;
+    padding: 0 4px;
+    border-radius: 2px;
+    animation: blink 1s infinite;
+}
+
+/* Stats Bar */
+.stats-bar {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+/* Level Navigation */
+.level-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ecf0f1;
+}
+
+.level-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.level-btn.next {
+    background: #3498db;
+    color: white;
+}
+
+.level-btn.next:hover {
+    background: #2980b9;
+}
+
+.level-btn.restart {
+    background: white;
+    color: #3498db;
+    border: 2px solid #3498db;
+}
+
+.level-btn.restart:hover {
+    background: #f7f9fc;
+}
+
+/* Animations */
+@keyframes blink {
+    50% { opacity: 0.5; }
+}
+
+@keyframes fingerPress {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
+
+/* Progress Bar */
+.progress-container {
+    background: #ecf0f1;
+    height: 4px;
+    border-radius: 2px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #3498db;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Level Dots */
+.level-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.level-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ecf0f1;
+}
+
+.level-dot.active {
+    background: #3498db;
+}
+
+.level-dot.completed {
+    background: #27ae60;
+}

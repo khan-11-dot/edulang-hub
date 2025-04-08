@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate Typing Lessons | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; overflow-y: auto; }
+        body { margin: 0; padding: 0; min-height: 100vh; position: relative; top: 0; }
+        .lessons-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .lessons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .lesson-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .lesson-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .lesson-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .lesson-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        .lesson-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .lesson-link:hover {
+            background: #218838;
+        }
+        .header-section {
+            background: linear-gradient(135deg, #007bff, #00d2ff);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .progress-path {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .progress-path h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .path-list {
+            list-style: none;
+            padding: 0;
+        }
+        .path-list li {
+            padding: 0.5rem 0;
+            border-left: 3px solid #28a745;
+            padding-left: 1rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        });
+        history.scrollRestoration = 'manual';
+    </script>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../typing.html">Typing Practice</a>
+            <a href="../typing-instructions.html">Instructions</a>
+        </div>
+    </nav>
+
+    <main class="lessons-container">
+        <div class="header-section">
+            <h1><i class="fas fa-keyboard"></i> Intermediate Typing Lessons</h1>
+            <p>Master advanced typing skills with our comprehensive intermediate lessons</p>
+        </div>
+
+        <div class="progress-path">
+            <h3><i class="fas fa-map-signs"></i> Learning Path</h3>
+            <p>Follow these lessons in sequence for the best learning experience:</p>
+        </div>
+
+        <div class="lessons-grid">
+            <div class="lesson-card">
+                <h3><i class="fas fa-book"></i> Common English Words</h3>
+                <p>Practice typing frequently used English words to build speed and accuracy.</p>
+                <a href="common-english-words.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-keyboard"></i> Easy Home Row Words</h3>
+                <p>Master the home row with common word combinations.</p>
+                <a href="easy-home-row-words.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-arrow-up"></i> Easy Top Row Words</h3>
+                <p>Practice words using the top row of your keyboard.</p>
+                <a href="easy-top-row-words.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-arrow-down"></i> Easy Bottom Row Words</h3>
+                <p>Learn to efficiently type words using bottom row keys.</p>
+                <a href="easy-bottom-row-words.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-paragraph"></i> On to Sentences</h3>
+                <p>Begin typing complete sentences with proper technique.</p>
+                <a href="sentences.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-arrow-up"></i> Shift Key and Capitalization</h3>
+                <p>Master proper capitalization techniques.</p>
+                <a href="shift-key-capitalization.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-period"></i> Basic Punctuation</h3>
+                <p>Learn to type common punctuation marks efficiently.</p>
+                <a href="basic-punctuation.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-ellipsis-h"></i> Intermediate Punctuation</h3>
+                <p>Practice with advanced punctuation and special characters.</p>
+                <a href="intermediate-punctuation.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-bolt"></i> Quick Sentences</h3>
+                <p>Build speed with sentence typing exercises.</p>
+                <a href="quick-sentences.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-align-left"></i> Short Paragraphs</h3>
+                <p>Practice typing complete paragraphs with consistency.</p>
+                <a href="short-paragraphs.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-tachometer-alt"></i> Speed Drills</h3>
+                <p>Push your typing speed to new levels.</p>
+                <a href="speed-drills.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-check-circle"></i> Wrapping Up</h3>
+                <p>Review and reinforce your intermediate typing skills.</p>
+                <a href="wrapping-up.html" class="lesson-link">Start Lesson <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="lesson-card">
+                <h3><i class="fas fa-award"></i> Final Assessment</h3>
+                <p>Test your intermediate typing proficiency.</p>
+                <a href="intermediate-assessment.html" class="lesson-link">Take Assessment <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/typing.js"></script>
+</body>
+</html>

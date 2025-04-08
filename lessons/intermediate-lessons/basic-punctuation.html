@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Punctuation - Intermediate Typing | EduLang Hub</title>
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="../../styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; overflow-y: auto; }
+        body { margin: 0; padding: 0; min-height: 100vh; position: relative; top: 0; }
+        .lesson-content {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .lesson-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .lesson-header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .lesson-header p {
+            color: #666;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        .game-intro {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+        }
+        .game-intro h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .game-intro p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 0;
+            list-style: none;
+        }
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        .feature-item i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .feature-item h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .feature-item p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .game-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #87CEEB 0%, #1E90FF 100%);
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+        }
+        :root {
+            --primary-color: #4A90E2;
+            --bubble-color: rgba(255, 255, 255, 0.9);
+        }
+        .bubble {
+            position: absolute;
+            background: var(--bubble-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+            animation: float 3s linear forwards;
+            user-select: none;
+        }
+        .bubble.punctuation {
+            background: #FFD700;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .bubble:hover {
+            transform: scale(1.1);
+        }
+        @keyframes float {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(500px); }
+        }
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+        .stat-box {
+            text-align: center;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .sentence-display {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            min-height: 100px;
+            text-align: center;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .target-sentence {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        .current-sentence {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .input-box {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.5rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+        }
+        .input-box:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        .input-box.error {
+            border-color: #e74c3c;
+            animation: shake 0.5s;
+        }
+        .difficulty-selector {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .difficulty-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .difficulty-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        .double-score {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+            z-index: 100;
+        }
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+        .leaderboard {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+        }
+        #start-game-btn {
+            display: inline-block;
+            margin: 2rem auto;
+            padding: 1.2rem 3rem;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #start-game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        #start-game-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(76, 175, 80, 0.2);
+        }
+
+        #start-game-btn i {
+            margin-right: 10px;
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+
+        #start-game-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+
+        #start-game-btn:hover::after {
+            animation: ripple 1s ease-out;
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(100, 100);
+                opacity: 0;
+            }
+        }
+
+        .nav-container {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container .logo h2 {
+            color: white;
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .nav-container .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-container .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        #game-section {
+            display: none;
+        }
+
+        #game-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .game-intro.hidden {
+            display: none;
+        }
+
+        .game-controls {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+
+        .game-controls .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 180px;
+        }
+
+        #start-btn {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        #start-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        #start-btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        #pause-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        #pause-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        #pause-btn.paused {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        #pause-btn.paused:hover {
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn i {
+            font-size: 1.2em;
+        }
+
+        .warning-message {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #e74c3c;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .warning-message.show {
+            opacity: 1;
+        }
+
+        .input-area {
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        #pause-btn {
+            display: none;
+        }
+
+        #pause-btn.show {
+            display: flex;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        });
+        history.scrollRestoration = 'manual';
+    </script>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="../../index.html">Home</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="lesson-content">
+            <div class="lesson-header">
+                <h1>Basic Punctuation</h1>
+                <p>Master the art of punctuation through our interactive typing game. Learn to use periods, commas, question marks, and more while having fun!</p>
+            </div>
+
+            <div id="game-section">
+                <div class="game-container">
+                    <div class="stats-panel">
+                        <div class="stat-box">
+                            <div class="stat-label">Time</div>
+                            <div class="stat-value" id="timer">60.0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Score</div>
+                            <div class="stat-value" id="score">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Combo</div>
+                            <div class="stat-value" id="combo">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Accuracy</div>
+                            <div class="stat-value" id="accuracy">100%</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">WPM</div>
+                            <div class="stat-value" id="wpm">0</div>
+                        </div>
+                    </div>
+
+                    <div class="difficulty-selector">
+                        <button class="difficulty-btn active" data-difficulty="easy">Easy</button>
+                        <button class="difficulty-btn" data-difficulty="medium">Medium</button>
+                        <button class="difficulty-btn" data-difficulty="hard">Hard</button>
+                    </div>
+
+                    <div id="sentence-display" class="sentence-display">
+                        <div class="target-sentence">Type the sentence with correct punctuation:</div>
+                        <div class="current-sentence"></div>
+                    </div>
+
+                    <div class="input-area">
+                        <div class="warning-message">Incorrect! Try again.</div>
+                        <input type="text" id="text-input" class="input-box" placeholder="Type here..." autocomplete="off" disabled>
+                        <div class="game-controls">
+                            <button id="start-btn" class="btn">
+                                <i class="fas fa-play"></i>
+                                Start Game
+                            </button>
+                            <button id="pause-btn" class="btn">
+                                <i class="fas fa-pause"></i>
+                                <span>Pause</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="leaderboard">
+                        <h3>Top Scores</h3>
+                        <div id="leaderboard-entries"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-intro">
+                <h2>Welcome to Punctuation Pop! 🎯</h2>
+                <p>Catch falling word bubbles and punctuation marks to create perfect sentences. Challenge yourself with different difficulty levels and aim for the high score!</p>
+                
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="fas fa-stopwatch"></i>
+                        <h3>Time Challenge</h3>
+                        <p>60 seconds to start, earn bonus time with correct sentences</p>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-star"></i>
+                        <h3>Combo System</h3>
+                        <p>Build combos for double points and higher scores</p>
+                    </li>
+                    <li class="feature-item">
+                        <i class="fas fa-trophy"></i>
+                        <h3>Leaderboard</h3>
+                        <p>Compete for the top spot and track your progress</p>
+                    </li>
+                </ul>
+
+                <button id="start-game-btn" onclick="showGame()">
+                    <i class="fas fa-play"></i> Start Punctuation Pop
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="../../js/typing.js"></script>
+    <script>
+        // Audio setup
+        const audio = {
+            correct: new Audio('../../sounds/correct.mp3'),
+            wrong: new Audio('../../sounds/wrong.mp3'),
+            combo: new Audio('../../sounds/combo.mp3'),
+            pop: new Audio('../../sounds/pop.mp3')
+        };
+
+        // Game configuration
+        const config = {
+            initialTime: 60,
+            comboThreshold: 5,
+            doubleScoreDuration: 10000,
+            difficulties: {
+                easy: {
+                    content: 'SIMPLE',
+                    scoreMultiplier: 1,
+                    timeBonus: 5,
+                    bubbleSpeed: 3000
+                },
+                medium: {
+                    content: 'MIXED',
+                    scoreMultiplier: 1.5,
+                    timeBonus: 7,
+                    bubbleSpeed: 2500
+                },
+                hard: {
+                    content: 'COMPLEX',
+                    scoreMultiplier: 2,
+                    timeBonus: 10,
+                    bubbleSpeed: 2000
+                }
+            }
+        };
+
+        // Game state
+        let gameState = {
+            active: false,
+            paused: false,
+            timer: config.initialTime,
+            score: 0,
+            combo: 0,
+            totalAttempts: 0,
+            correctAttempts: 0,
+            currentText: '',
+            currentWords: [],
+            currentPunctuation: [],
+            difficulty: 'easy',
+            doubleScoreActive: false,
+            doubleScoreTimeout: null,
+            startTime: null,
+            totalCharacters: 0,
+            warningTimeout: null
+        };
+
+        // DOM elements
+        const elements = {
+            container: document.querySelector('.game-container'),
+            sentenceDisplay: document.getElementById('sentence-display'),
+            currentSentence: document.querySelector('.current-sentence'),
+            input: document.getElementById('text-input'),
+            startButton: document.getElementById('start-btn'),
+            pauseButton: document.getElementById('pause-btn'),
+            timer: document.getElementById('timer'),
+            score: document.getElementById('score'),
+            combo: document.getElementById('combo'),
+            accuracy: document.getElementById('accuracy'),
+            wpm: document.getElementById('wpm'),
+            difficultyButtons: document.querySelectorAll('.difficulty-btn'),
+            leaderboardEntries: document.getElementById('leaderboard-entries')
+        };
+
+        function togglePause() {
+            if (!gameState.active) return;
+            
+            gameState.paused = !gameState.paused;
+            const pauseBtn = elements.pauseButton;
+            const pauseIcon = pauseBtn.querySelector('i');
+            const pauseText = pauseBtn.querySelector('span');
+            
+            if (gameState.paused) {
+                pauseIcon.className = 'fas fa-play';
+                pauseText.textContent = 'Resume';
+                pauseBtn.classList.add('paused');
+                clearInterval(gameState.gameInterval);
+                elements.input.disabled = true;
+                showAchievement('Game Paused', 0);
+            } else {
+                pauseIcon.className = 'fas fa-pause';
+                pauseText.textContent = 'Pause';
+                pauseBtn.classList.remove('paused');
+                gameState.gameInterval = setInterval(updateGame, 100);
+                elements.input.disabled = false;
+                elements.input.focus();
+                hideAchievement();
+            }
+        }
+
+        function showWarning() {
+            const warning = document.querySelector('.warning-message');
+            warning.classList.add('show');
+            
+            if (gameState.warningTimeout) {
+                clearTimeout(gameState.warningTimeout);
+            }
+            
+            gameState.warningTimeout = setTimeout(() => {
+                warning.classList.remove('show');
+            }, 2000);
+        }
+
+        function startGame() {
+            if (gameState.active) return;
+            
+            gameState = {
+                ...gameState,
+                active: true,
+                paused: false,
+                timer: config.initialTime,
+                score: 0,
+                combo: 0,
+                totalAttempts: 0,
+                correctAttempts: 0,
+                startTime: Date.now(),
+                totalCharacters: 0
+            };
+
+            elements.input.disabled = false;
+            elements.input.value = '';
+            elements.input.focus();
+            elements.startButton.disabled = true;
+            elements.pauseButton.classList.add('show');
+
+            generateContent();
+            gameState.gameInterval = setInterval(updateGame, 100);
+        }
+
+        function updateGame() {
+            if (gameState.paused) return;
+            
+            gameState.timer -= 0.1;
+            if (gameState.timer <= 0) {
+                endGame();
+                return;
+            }
+
+            // Calculate WPM
+            if (gameState.startTime) {
+                const minutesElapsed = (Date.now() - gameState.startTime) / 60000;
+                const wpm = Math.round((gameState.totalCharacters / 5) / minutesElapsed);
+                elements.wpm.textContent = wpm;
+            }
+
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            elements.timer.textContent = gameState.timer.toFixed(1);
+            elements.score.textContent = Math.floor(gameState.score);
+            elements.combo.textContent = gameState.combo;
+            elements.accuracy.textContent = 
+                `${((gameState.correctAttempts / Math.max(gameState.totalAttempts, 1)) * 100).toFixed(0)}%`;
+        }
+
+        function showAchievement(text, timeout = 2000) {
+            const achievement = document.createElement('div');
+            achievement.className = 'achievement';
+            achievement.textContent = text;
+            document.body.appendChild(achievement);
+            
+            if (timeout > 0) {
+                setTimeout(() => achievement.remove(), timeout);
+            }
+            return achievement;
+        }
+
+        function hideAchievement() {
+            const achievement = document.querySelector('.achievement');
+            if (achievement) achievement.remove();
+        }
+
+        function activateDoubleScore() {
+            if (gameState.doubleScoreTimeout) {
+                clearTimeout(gameState.doubleScoreTimeout);
+            }
+
+            gameState.doubleScoreActive = true;
+            showAchievement('DOUBLE SCORE MODE!', config.doubleScoreDuration);
+
+            gameState.doubleScoreTimeout = setTimeout(() => {
+                gameState.doubleScoreActive = false;
+            }, config.doubleScoreDuration);
+        }
+
+        function endGame() {
+            clearInterval(gameState.gameInterval);
+            gameState.active = false;
+            gameState.paused = false;
+            elements.input.disabled = true;
+            elements.startButton.disabled = false;
+            elements.pauseButton.classList.remove('show');
+            elements.currentSentence.textContent = 'Game Over!';
+
+            const score = {
+                score: gameState.score,
+                accuracy: ((gameState.correctAttempts / gameState.totalAttempts) * 100).toFixed(0),
+                wpm: elements.wpm.textContent,
+                difficulty: gameState.difficulty
+            };
+
+            updateLeaderboard(score);
+            
+            // Remove any remaining bubbles
+            document.querySelectorAll('.bubble').forEach(bubble => bubble.remove());
+        }
+
+        // Content generators
+        const contentGenerators = {
+            SIMPLE: () => {
+                const sentences = [
+                    'The cat is sleeping.',
+                    'Where are you going?',
+                    'I love ice cream!',
+                    'Please help me.',
+                    'The sun is bright.',
+                    'Can you help me?',
+                    'This is amazing!',
+                    'Have a nice day.',
+                    'What time is it?',
+                    'Thank you so much!'
+                ];
+                return sentences[Math.floor(Math.random() * sentences.length)];
+            },
+            MIXED: () => {
+                const sentences = [
+                    'Do you like pizza, pasta, or salad?',
+                    'Wait a minute, where are you going?',
+                    'The movie was great, but the book was better!',
+                    'Is it raining, or is that snow?',
+                    'First, wash your hands, then eat.',
+                    'She asked, "What time is it?"',
+                    'Wow, that was amazing!',
+                    'Stop, look, and listen!',
+                    'Are you coming to the party, or not?',
+                    'He said, "I\'ll be there soon!"'
+                ];
+                return sentences[Math.floor(Math.random() * sentences.length)];
+            },
+            COMPLEX: () => {
+                const sentences = [
+                    'Hello, John! How are you today?',
+                    'Stop, drop, and roll; it\'s a safety rule!',
+                    'She asked, "When will you be home?" but I wasn\'t sure.',
+                    'Bring these items: pencils, paper, and erasers.',
+                    '"Wow!" she exclaimed, "That\'s incredible!"',
+                    'Is this the right way? No, I think it\'s that way.',
+                    'Help! I\'ve lost my keys, phone, and wallet!',
+                    'He said, "I\'ll be there at 3:00 p.m.," but he was late.',
+                    'Wait a minute... did you hear that noise?',
+                    'Dear Sir/Madam, I am writing to inform you...'
+                ];
+                return sentences[Math.floor(Math.random() * sentences.length)];
+            }
+        };
+
+        function createBubble(content, isPunctuation = false) {
+            const bubble = document.createElement('div');
+            bubble.className = `bubble ${isPunctuation ? 'punctuation' : ''}`;
+            bubble.textContent = content;
+            
+            const x = Math.random() * (elements.container.offsetWidth - 100);
+            bubble.style.left = `${x}px`;
+            
+            elements.container.appendChild(bubble);
+            
+            bubble.addEventListener('click', () => {
+                const currentInput = elements.input.value;
+                elements.input.value = currentInput + content;
+                bubble.remove();
+                audio.pop.play();
+            });
+
+            setTimeout(() => {
+                if (bubble.parentNode) bubble.remove();
+            }, config.difficulties[gameState.difficulty].bubbleSpeed);
+        }
+
+        function splitSentenceIntoBubbles(sentence) {
+            const words = sentence.split(/([,.!?;:"']|\s+)/).filter(Boolean);
+            const punctuation = words.filter(word => /^[,.!?;:"']$/.test(word));
+            const nonPunctuation = words.filter(word => !/^[,.!?;:"']$/.test(word));
+            
+            return { words: nonPunctuation, punctuation };
+        }
+
+        function generateContent() {
+            const difficulty = config.difficulties[gameState.difficulty];
+            const sentence = contentGenerators[difficulty.content]();
+            const { words, punctuation } = splitSentenceIntoBubbles(sentence);
+            
+            gameState.currentWords = words;
+            gameState.currentPunctuation = punctuation;
+            gameState.currentText = sentence;
+            
+            elements.currentSentence.textContent = sentence;
+            
+            // Create word bubbles
+            words.forEach(word => {
+                setTimeout(() => {
+                    if (gameState.active && !gameState.paused) {
+                        createBubble(word);
+                    }
+                }, Math.random() * 2000);
+            });
+            
+            // Create punctuation bubbles
+            punctuation.forEach(punct => {
+                setTimeout(() => {
+                    if (gameState.active && !gameState.paused) {
+                        createBubble(punct, true);
+                    }
+                }, Math.random() * 2000);
+            });
+            
+            return sentence;
+        }
+
+        // Event listeners
+        elements.startButton.addEventListener('click', startGame);
+        elements.pauseButton.addEventListener('click', togglePause);
+        
+        elements.input.addEventListener('input', (e) => {
+            if (!gameState.active || gameState.paused) return;
+
+            gameState.totalAttempts++;
+            const typed = e.target.value;
+            
+            if (typed === gameState.currentText) {
+                gameState.correctAttempts++;
+                gameState.combo++;
+                gameState.totalCharacters += typed.length;
+                
+                const scoreMultiplier = gameState.doubleScoreActive ? 2 : 1;
+                gameState.score += 10 * config.difficulties[gameState.difficulty].scoreMultiplier * 
+                    (1 + Math.floor(gameState.combo / config.comboThreshold) * 0.5) * scoreMultiplier;
+                
+                if (gameState.combo % config.comboThreshold === 0) {
+                    activateDoubleScore();
+                    audio.combo.play();
+                } else {
+                    audio.correct.play();
+                }
+
+                gameState.timer += config.difficulties[gameState.difficulty].timeBonus;
+                e.target.value = '';
+                generateContent();
+            } else if (!gameState.currentText.startsWith(typed)) {
+                gameState.combo = 0;
+                audio.wrong.play();
+                elements.input.classList.add('error');
+                showWarning();
+                setTimeout(() => elements.input.classList.remove('error'), 200);
+            }
+
+            updateDisplay();
+        });
+
+        elements.difficultyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (gameState.active) return;
+                
+                elements.difficultyButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                gameState.difficulty = button.dataset.difficulty;
+            });
+        });
+
+        // Add keyboard shortcut for pause
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' && e.ctrlKey && gameState.active) {
+                e.preventDefault();
+                togglePause();
+            }
+        });
+
+        // Leaderboard management
+        function updateLeaderboard(score) {
+            let leaderboard = JSON.parse(localStorage.getItem('punctuationPopLeaderboard') || '[]');
+            leaderboard.push(score);
+            leaderboard.sort((a, b) => b.score - a.score);
+            leaderboard = leaderboard.slice(0, 5);
+            localStorage.setItem('punctuationPopLeaderboard', JSON.stringify(leaderboard));
+            displayLeaderboard();
+        }
+
+        function displayLeaderboard() {
+            const leaderboard = JSON.parse(localStorage.getItem('punctuationPopLeaderboard') || '[]');
+            elements.leaderboardEntries.innerHTML = leaderboard.map((entry, index) => `
+                <div class="leaderboard-entry">
+                    <span>#${index + 1} ${entry.difficulty.toUpperCase()}</span>
+                    <span>${Math.floor(entry.score)} pts (${entry.accuracy}% - ${entry.wpm} WPM)</span>
+                </div>
+            `).join('');
+        }
+
+        // Initialize leaderboard
+        displayLeaderboard();
+
+        function showGame() {
+            document.querySelector('.game-intro').classList.add('hidden');
+            document.getElementById('game-section').classList.add('active');
+        }
+    </script>
+</body>
+</html>

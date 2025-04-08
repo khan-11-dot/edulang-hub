@@ -1,0 +1,249 @@
+/* Main Layout */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: #f5f5f5;
+    min-height: 100vh;
+}
+
+.lesson-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styles */
+.lesson-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-info h1 {
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.lesson-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 200px;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.lesson-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat i {
+    color: #2196F3;
+    font-size: 18px;
+}
+
+.stat span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* Typing Section */
+.typing-section {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hands Display */
+.hands-display {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    height: 150px;
+}
+
+.typing-hands {
+    height: 150px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Text Display */
+.text-display {
+    font-size: 24px;
+    line-height: 1.6;
+    margin: 30px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    min-height: 120px;
+}
+
+.previous-text {
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.current-text {
+    color: #333;
+    white-space: pre-wrap;
+}
+
+.next-text {
+    color: #999;
+    margin-top: 10px;
+}
+
+/* Virtual Keyboard */
+.keyboard-section {
+    margin-top: 40px;
+}
+
+.keyboard-guide {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.keyboard-guide p {
+    color: #666;
+    font-size: 16px;
+}
+
+.virtual-keyboard {
+    background: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.key.active {
+    background: #4CAF50;
+    color: white;
+    border-color: #388E3C;
+    transform: translateY(2px);
+}
+
+.key.next-key {
+    background: #E8F5E9;
+    border-color: #4CAF50;
+    animation: pulse-next 1.5s infinite;
+}
+
+.key.home-key {
+    border-color: #2196F3;
+    background: #E3F2FD;
+}
+
+.key.spacebar {
+    width: 300px;
+}
+
+/* Hidden Input */
+.hidden-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Animations */
+@keyframes pulse-next {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lesson-container {
+        padding: 10px;
+    }
+
+    .lesson-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .text-display {
+        font-size: 20px;
+    }
+
+    .key {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .key.spacebar {
+        width: 200px;
+    }
+}
+
+/* Hand Movement Classes */
+.hands-display[data-key="f"] .typing-hands {
+    transform: translateX(-40px);
+}
+
+.hands-display[data-key="j"] .typing-hands {
+    transform: translateX(40px);
+}
+
+.hands-display[data-key="space"] .typing-hands {
+    transform: translateY(10px);
+}

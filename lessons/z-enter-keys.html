@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z and Enter Keys - Typing Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            min-height: 100vh;
+        }
+
+        #game-container {
+            width: 100%;
+            height: calc(100vh - 200px);
+            position: relative;
+        }
+
+        #score-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        #keyboard {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .key {
+            width: 60px;
+            height: 60px;
+            background: #333;
+            border: 2px solid #666;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff;
+            transition: all 0.2s;
+        }
+
+        #key-enter {
+            width: 120px;
+        }
+
+        .key.active {
+            background: #4CAF50;
+            border-color: #69F0AE;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+        }
+
+        .letter {
+            position: absolute;
+            font-size: 28px;
+            font-family: monospace;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: color 0.3s;
+        }
+
+        .letter.active {
+            color: #69F0AE;
+            text-shadow: 0 0 15px rgba(105, 240, 174, 0.7);
+        }
+
+        .letter.danger {
+            color: #FF5252;
+            text-shadow: 0 0 15px rgba(255, 82, 82, 0.7);
+        }
+
+        #difficulty-select {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #difficulty-select h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+            color: #4CAF50;
+        }
+
+        .difficulty-btn {
+            display: block;
+            width: 200px;
+            margin: 15px auto;
+            padding: 15px;
+            font-size: 20px;
+            background: #333;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .difficulty-btn:hover {
+            transform: scale(1.05);
+        }
+
+        #easy-btn { background: #4CAF50; }
+        #medium-btn { background: #FFC107; }
+        #hard-btn { background: #F44336; }
+
+        #game-over {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #game-over h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #FF5252;
+        }
+
+        #game-over p {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        #restart-btn, #menu-btn, #pause-btn {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #restart-btn { background: #4CAF50; }
+        #menu-btn { background: #2196F3; }
+        #pause-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: #FFC107;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+        }
+
+        #pause-screen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            color: #FFC107;
+        }
+    </style>
+</head>
+<body>
+    <div id="difficulty-select">
+        <h2>Z and Enter Keys Practice</h2>
+        <button id="easy-btn" class="difficulty-btn">Easy</button>
+        <button id="medium-btn" class="difficulty-btn">Medium</button>
+        <button id="hard-btn" class="difficulty-btn">Hard</button>
+    </div>
+
+    <div id="game-container"></div>
+    
+    <div id="score-container">
+        Score: <span id="score">0</span>
+        <br>
+        Lives: <span id="lives">5</span>
+        <br>
+        Level: <span id="level">Easy</span>
+    </div>
+
+    <button id="pause-btn">Pause</button>
+
+    <div id="keyboard">
+        <div class="key" id="key-z">Z</div>
+        <div class="key" id="key-enter">ENTER</div>
+    </div>
+
+    <div id="pause-screen">
+        PAUSED
+        <br>
+        Press Space to Resume
+    </div>
+
+    <div id="game-over">
+        <h2>Game Over!</h2>
+        <p>Final Score: <span id="final-score">0</span></p>
+        <p>High Score: <span id="high-score">0</span></p>
+        <div class="buttons">
+            <button id="restart-btn">Play Again</button>
+            <button id="menu-btn" onclick="window.location.href='beginner-typing.html'">Main Menu</button>
+        </div>
+    </div>
+
+    <script>
+        const gameContainer = document.getElementById('game-container');
+        const scoreElement = document.getElementById('score');
+        const livesElement = document.getElementById('lives');
+        const levelElement = document.getElementById('level');
+        const gameOverScreen = document.getElementById('game-over');
+        const finalScoreElement = document.getElementById('final-score');
+        const highScoreElement = document.getElementById('high-score');
+        const difficultySelect = document.getElementById('difficulty-select');
+        const restartBtn = document.getElementById('restart-btn');
+        const pauseBtn = document.getElementById('pause-btn');
+        const pauseScreen = document.getElementById('pause-screen');
+
+        const keys = ['z', 'Enter'];
+        let activeLetters = [];
+        let score = 0;
+        let lives = 5;
+        let gameActive = false;
+        let gamePaused = false;
+        let spawnInterval;
+        let animationFrameId;
+        let lastTime = 0;
+        let baseSpeed = 1;
+        let highScore = localStorage.getItem('zEnterKeysHighScore') || 0;
+        let spawnRate = 2000;
+        let maxActiveLetters = 5;
+        let letterGroups = [];
+        let startTime;
+
+        class Letter {
+            constructor(char, groupIndex) {
+                this.char = char;
+                this.element = document.createElement('div');
+                this.element.className = 'letter';
+                this.element.textContent = char === 'Enter' ? '⏎' : char.toUpperCase();
+                this.element.style.left = (groupIndex * (window.innerWidth / 2) + 
+                    Math.random() * (window.innerWidth / 2 - 50)) + 'px';
+                this.element.style.top = '-50px';
+                this.initialSpeed = (1 + Math.random() * 0.5) * baseSpeed;
+                this.speed = this.initialSpeed;
+                this.creationTime = Date.now();
+                gameContainer.appendChild(this.element);
+            }
+
+            update(deltaTime) {
+                if (gamePaused) return true;
+                
+                // Increase speed based on time elapsed
+                const timeElapsed = (Date.now() - this.creationTime) / 1000; // seconds
+                this.speed = this.initialSpeed * (1 + timeElapsed * 0.1); // 10% increase per second
+                
+                const currentTop = parseFloat(this.element.style.top);
+                this.element.style.top = (currentTop + this.speed * deltaTime) + 'px';
+                
+                if (currentTop > window.innerHeight - 300) {
+                    this.element.classList.add('danger');
+                }
+                
+                if (currentTop > window.innerHeight - 200) {
+                    this.remove();
+                    loseLife();
+                    return false;
+                }
+                return true;
+            }
+
+            remove() {
+                gameContainer.removeChild(this.element);
+            }
+        }
+
+        function spawnLetterGroup() {
+            if (!gameActive || gamePaused) return;
+            
+            const shuffledKeys = [...keys].sort(() => Math.random() - 0.5);
+            for (let i = 0; i < 2; i++) {
+                if (activeLetters.length < maxActiveLetters) {
+                    activeLetters.push(new Letter(shuffledKeys[i], i));
+                }
+            }
+
+            // Gradually decrease spawn interval over time
+            const timeElapsed = (Date.now() - startTime) / 1000; // seconds
+            const newSpawnRate = Math.max(spawnRate * (1 - timeElapsed * 0.02), spawnRate * 0.5); // Decrease by 2% per second, minimum 50% of original
+            clearInterval(spawnInterval);
+            spawnInterval = setInterval(spawnLetterGroup, newSpawnRate);
+        }
+
+        function updateGame(currentTime) {
+            if (!gameActive) return;
+
+            const deltaTime = (currentTime - lastTime) / 16;
+            lastTime = currentTime;
+
+            activeLetters = activeLetters.filter(letter => letter.update(deltaTime));
+            
+            animationFrameId = requestAnimationFrame(updateGame);
+        }
+
+        function loseLife() {
+            lives--;
+            livesElement.textContent = lives;
+            
+            if (lives <= 0) {
+                endGame();
+            }
+        }
+
+        function startGame(difficulty) {
+            gameActive = true;
+            gamePaused = false;
+            score = 0;
+            lives = 5;
+            activeLetters = [];
+            gameContainer.innerHTML = '';
+            scoreElement.textContent = score;
+            livesElement.textContent = lives;
+            difficultySelect.style.display = 'none';
+            gameOverScreen.style.display = 'none';
+            pauseScreen.style.display = 'none';
+            pauseBtn.style.display = 'block';
+
+            switch(difficulty) {
+                case 'easy':
+                    baseSpeed = 1;
+                    spawnRate = 3000;
+                    maxActiveLetters = 6;
+                    levelElement.textContent = 'Easy';
+                    break;
+                case 'medium':
+                    baseSpeed = 1.5;
+                    spawnRate = 2500;
+                    maxActiveLetters = 8;
+                    levelElement.textContent = 'Medium';
+                    break;
+                case 'hard':
+                    baseSpeed = 2;
+                    spawnRate = 2000;
+                    maxActiveLetters = 10;
+                    levelElement.textContent = 'Hard';
+                    break;
+            }
+
+            startTime = Date.now();
+            spawnInterval = setInterval(spawnLetterGroup, spawnRate);
+            lastTime = performance.now();
+            animationFrameId = requestAnimationFrame(updateGame);
+        }
+
+        function togglePause() {
+            gamePaused = !gamePaused;
+            pauseScreen.style.display = gamePaused ? 'flex' : 'none';
+        }
+
+        function endGame() {
+            gameActive = false;
+            clearInterval(spawnInterval);
+            cancelAnimationFrame(animationFrameId);
+            
+            if (score > highScore) {
+                highScore = score;
+                localStorage.setItem('zEnterKeysHighScore', highScore);
+                localStorage.setItem('typing_lesson_z-enter-keys.html', 'true');
+            }
+            
+            finalScoreElement.textContent = score;
+            highScoreElement.textContent = highScore;
+            gameOverScreen.style.display = 'block';
+            pauseBtn.style.display = 'none';
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!gameActive) return;
+
+            if (e.code === 'Space' && gamePaused) {
+                togglePause();
+                return;
+            }
+
+            if (gamePaused) return;
+
+            const key = e.key;
+            const keyElement = document.getElementById(`key-${key.toLowerCase()}`);
+            if (keyElement) {
+                keyElement.classList.add('active');
+            }
+
+            for (let i = 0; i < activeLetters.length; i++) {
+                const letterObj = activeLetters[i];
+                if (letterObj.char === key) {
+                    score += 10;
+                    scoreElement.textContent = score;
+                    letterObj.remove();
+                    activeLetters.splice(i, 1);
+                    break;
+                }
+            }
+        });
+
+        document.addEventListener('keyup', (e) => {
+            const key = e.key.toLowerCase();
+            const keyElement = document.getElementById(`key-${key}`);
+            if (keyElement) {
+                keyElement.classList.remove('active');
+            }
+        });
+
+        pauseBtn.addEventListener('click', togglePause);
+
+        document.getElementById('easy-btn').addEventListener('click', () => startGame('easy'));
+        document.getElementById('medium-btn').addEventListener('click', () => startGame('medium'));
+        document.getElementById('hard-btn').addEventListener('click', () => startGame('hard'));
+        restartBtn.addEventListener('click', () => {
+            gameOverScreen.style.display = 'none';
+            difficultySelect.style.display = 'block';
+        });
+
+        highScoreElement.textContent = highScore;
+        pauseBtn.style.display = 'none';
+    </script>
+</body>
+</html>

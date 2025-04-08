@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Typing Practice - EduLang Hub</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/typing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+            overflow-y: auto;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            position: relative;
+            top: 0;
+        }
+        .finger-instructions {
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .hands-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .left-hand, .right-hand {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .hand-image {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .finger-guide {
+            text-align: left;
+        }
+
+        .finger-guide ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .finger-guide li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: #f1f3f5;
+            border-radius: 4px;
+        }
+
+        .typing-tips {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .typing-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .typing-tips li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-left: 4px solid #007bff;
+            background: #f8f9fa;
+        }
+
+        h2, h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        strong {
+            color: #007bff;
+        }
+
+        .instructions-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 1rem 0;
+            transition: background 0.3s;
+        }
+
+        .instructions-btn:hover {
+            background: #218838;
+            text-decoration: none;
+            color: white;
+        }
+
+        .instructions-btn i {
+            margin-right: 0.5rem;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'auto'
+            });
+        });
+        history.scrollRestoration = 'manual';
+    </script>
+</head>
+<body>
+    <nav class="nav-container">
+        <div class="logo">
+            <h2><i class="fas fa-graduation-cap"></i> EduLang Hub</h2>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="typing.html" class="active">Typing</a>
+            <a href="courses.html">Courses</a>
+            <a href="about-computer.html">About Computer</a>
+            <a href="#" class="btn-login" onclick="showLoginModal()">Login/Sign Up</a>
+        </div>
+    </nav>
+
+    <main class="typing-container">
+        <div class="typing-header">
+            <h1>Professional Typing Practice</h1>
+            <p>Improve your typing speed and accuracy with our interactive typing test</p>
+            <a href="lessons/typing-instructions.html" class="instructions-btn">
+                <i class="fas fa-book-open"></i> View Typing Instructions
+            </a>
+            <a href="lessons/advanced-lessons/advanced-assessment.html" class="instructions-btn" style="background: #007bff; margin-left: 1rem;">
+                <i class="fas fa-certificate"></i> Print Your Certificate Now
+            </a>
+        </div>
+
+        <!-- Learn to Type Section -->
+        <div class="learn-typing-section">
+            <h2>Learn to Type</h2>
+            <div class="level-cards">
+                <div class="level-card" data-level="beginner">
+                    <div class="level-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Beginner</h3>
+                    <ul class="level-features">
+                        <li><i class="fas fa-check"></i> Basic finger positions</li>
+                        <li><i class="fas fa-check"></i> Home row keys</li>
+                        <li><i class="fas fa-check"></i> Simple words</li>
+                    </ul>
+                    <div class="level-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span>0% Complete</span>
+                    </div>
+                    <a href="lessons/beginner-typing.html" class="start-level-btn">Start Learning</a>
+                </div>
+
+                <div class="level-card" data-level="intermediate">
+                    <div class="level-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Intermediate</h3>
+                    <ul class="level-features">
+                        <li><i class="fas fa-check"></i> Upper & lower rows</li>
+                        <li><i class="fas fa-check"></i> Common words</li>
+                        <li><i class="fas fa-check"></i> Speed building</li>
+                    </ul>
+                    <div class="level-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span>0% Complete</span>
+                    </div>
+                    <a href="lessons/intermediate-lessons/index.html" class="start-level-btn">Start Learning</a>
+                </div>
+
+                <div class="level-card" data-level="advanced">
+                    <div class="level-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Advanced</h3>
+                    <ul class="level-features">
+                        <li><i class="fas fa-check"></i> Skill Builder</li>
+                        <li><i class="fas fa-check"></i> Advanced Symbols</li>
+                        <li><i class="fas fa-check"></i> Speed Assessment</li>
+                    </ul>
+                    <div class="level-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                        </div>
+                        <span>0% Complete</span>
+                    </div>
+                    <a href="lessons/advanced-lessons/index.html" class="start-level-btn">Start Learning</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="typing-mode-selector">
+            <button class="mode-btn active" data-mode="words">Words</button>
+            <button class="mode-btn" data-mode="time">Time</button>
+            <button class="mode-btn" data-mode="custom">Custom</button>
+        </div>
+
+        <div class="difficulty-selector">
+            <label>Difficulty:</label>
+            <select id="difficultyLevel">
+                <option value="easy">Easy (Simple Words)</option>
+                <option value="medium" selected>Medium (Common Words)</option>
+                <option value="hard">Hard (Complex Words)</option>
+                <option value="expert">Expert (Programming)</option>
+            </select>
+        </div>
+
+        <div class="typing-dashboard">
+            <div class="stats-panel">
+                <div class="stat-box">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <div class="stat-content">
+                        <span id="wpm">0</span>
+                        <label>WPM</label>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-bullseye"></i>
+                    <div class="stat-content">
+                        <span id="accuracy">0%</span>
+                        <label>Accuracy</label>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-keyboard"></i>
+                    <div class="stat-content">
+                        <span id="keystrokes">0</span>
+                        <label>Keystrokes</label>
+                    </div>
+                </div>
+                <div class="stat-box">
+                    <i class="fas fa-clock"></i>
+                    <div class="stat-content">
+                        <span id="timer">60</span>
+                        <label>Seconds</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-box">
+                <div class="text-display" id="textDisplay"></div>
+                <textarea id="textInput" class="text-input" placeholder="Click here to start typing..." autofocus></textarea>
+            </div>
+
+            <div class="control-panel">
+                <button id="newTextBtn" class="control-btn">
+                    <i class="fas fa-sync-alt"></i> New Text
+                </button>
+                <button id="resetBtn" class="control-btn">
+                    <i class="fas fa-undo"></i> Reset
+                </button>
+                <button id="shareBtn" class="control-btn">
+                    <i class="fas fa-share-alt"></i> Share Result
+                </button>
+            </div>
+        </div>
+
+        <div class="typing-features">
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Progress Tracking</h3>
+                <p>Track your improvement over time with detailed statistics</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Achievements</h3>
+                <p>Earn badges and certificates as you improve</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Compete</h3>
+                <p>Challenge friends and join typing competitions</p>
+            </div>
+        </div>
+
+        <div class="result-modal" id="resultModal">
+            <div class="modal-content">
+                <h2>Typing Test Results</h2>
+                <div class="result-stats">
+                    <div class="result-item">
+                        <span class="result-label">Speed:</span>
+                        <span class="result-value" id="finalWpm">0 WPM</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Accuracy:</span>
+                        <span class="result-value" id="finalAccuracy">0%</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Time:</span>
+                        <span class="result-value" id="finalTime">0s</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button id="retryBtn" class="modal-btn">Try Again</button>
+                    <button id="shareResultBtn" class="modal-btn">Share</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/typing.js"></script>
+    <!-- Login/Signup Modal -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="showTab('login')">Login</button>
+                    <button class="auth-tab" onclick="showTab('signup')">Sign Up</button>
+                </div>
+                
+                <div id="loginForm" class="auth-form">
+                    <h2>Welcome Back!</h2>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <button onclick="login()">Login</button>
+                    <p class="auth-link">Forgot password?</p>
+                </div>
+
+                <div id="signupForm" class="auth-form" style="display: none;">
+                    <h2>Create Account</h2>
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button onclick="signup()">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .auth-container {
+            padding: 20px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .auth-tab {
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+        }
+
+        .auth-tab.active {
+            color: #4776E6;
+            border-bottom: 2px solid #4776E6;
+            margin-bottom: -2px;
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .auth-form h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .auth-form input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .auth-form button {
+            background: linear-gradient(90deg, #4776E6 0%, #8E54E9 100%);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .auth-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        .auth-link {
+            text-align: center;
+            color: #4776E6;
+            cursor: pointer;
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function showTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.style.display = 'none');
+            
+            if (tab === 'login') {
+                document.querySelector('.auth-tab:first-child').classList.add('active');
+                document.getElementById('loginForm').style.display = 'flex';
+            } else {
+                document.querySelector('.auth-tab:last-child').classList.add('active');
+                document.getElementById('signupForm').style.display = 'flex';
+            }
+        }
+
+        function login() {
+            // Add login logic here
+            alert('Login functionality will be implemented soon!');
+        }
+
+        function signup() {
+            // Add signup logic here
+            alert('Sign up functionality will be implemented soon!');
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) {
+                closeLoginModal();
+            }
+        }
+    </script>
+</body>
+</html>
