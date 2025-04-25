@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Languages - EduLang Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background: linear-gradient(120deg, #e0f7fa 0%, #fff3e0 100%);
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #00796b;
+      padding: 12px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .navbar-logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      color: #fff;
+      font-weight: bold;
+      gap: 10px;
+    }
+    .navbar-logo img {
+      width: 36px;
+      height: 36px;
+    }
+    .navbar-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+    .navbar-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.1rem;
+      transition: color 0.2s;
+    }
+    .navbar-links li a:hover {
+      color: #ffd180;
+    }
+    /* Header */
+    .main-header {
+      text-align: center;
+      margin: 40px 0 25px 0;
+    }
+    .main-header h1 {
+      font-size: 2.8rem;
+      color: #006064;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .main-header .subtitle {
+      color: #555;
+      font-size: 1.3rem;
+      margin-top: 8px;
+    }
+    /* Certificate Section */
+    .certificate-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .certificate-box {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 28px 36px 18px 36px;
+      text-align: center;
+      min-width: 320px;
+      position: relative;
+      z-index: 2;
+    }
+    .certificate-btn {
+      padding: 14px 38px;
+      font-size: 1.15rem;
+      background: linear-gradient(90deg, #00796b, #26a69a);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .certificate-btn:hover {
+      background: linear-gradient(90deg, #004d40, #26a69a);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.13);
+    }
+    /* Modal Dropdown */
+    .dropdown-modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.15);
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    .dropdown-modal.active {
+      display: flex;
+    }
+    .dropdown-content {
+      background: #fff;
+      border-radius: 12px;
+      padding: 32px 28px 22px 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      text-align: center;
+      min-width: 290px;
+      animation: fadeIn 0.3s;
+    }
+    .dropdown-content h2 {
+      margin-bottom: 18px;
+      color: #00796b;
+      font-size: 1.35rem;
+    }
+    .dropdown-content select {
+      padding: 12px 18px;
+      font-size: 1.08rem;
+      border-radius: 8px;
+      border: 1.5px solid #26a69a;
+      margin-bottom: 18px;
+      outline: none;
+      width: 85%;
+      margin-top: 10px;
+      background: #f7f9fa url('data:image/svg+xml;utf8,<svg fill="%2300796b" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 16px center/22px 22px;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      box-shadow: 0 2px 7px rgba(38,166,154,0.08);
+      transition: border 0.2s, box-shadow 0.2s;
+      color: #00796b;
+      font-weight: 500;
+    }
+    .dropdown-content select:focus {
+      border: 2px solid #00796b;
+      box-shadow: 0 0 0 2px #b2dfdb;
+      background-color: #e0f2f1;
+    }
+    .dropdown-content option {
+      background: #fff;
+      color: #00796b;
+      font-size: 1.05rem;
+      padding: 8px 0;
+      font-weight: 500;
+    }
+    .dropdown-content select:hover {
+      border-color: #009688;
+    }
+    .start-test-btn {
+      padding: 10px 26px;
+      background: #00796b;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .start-test-btn:hover {
+      background: #004d40;
+    }
+    .close-modal {
+      background: #e0e0e0;
+      color: #444;
+      border: none;
+      border-radius: 7px;
+      padding: 10px 22px;
+      font-size: 1.02rem;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+    }
+    .close-modal:hover {
+      background: #bdbdbd;
+    }
+    /* Language Cards */
+    .languages-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin: 28px 40px 36px 40px;
+    }
+    .language-card {
+      background: #fff;
+      padding: 28px 18px 20px 18px;
+      border-radius: 15px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+      transition: transform 0.28s cubic-bezier(.4,2,.6,1), box-shadow 0.28s;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .language-card:hover {
+      transform: translateY(-9px) scale(1.03);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+    }
+    .language-card img {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 18px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border: 2px solid #b2dfdb;
+      background: #fafafa;
+    }
+    .language-title {
+      font-size: 1.35rem;
+      color: #00796b;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+    .language-description {
+      font-size: 1.04rem;
+      margin: 10px 0 18px 0;
+      color: #444;
+      min-height: 40px;
+    }
+    .learn-btn {
+      padding: 10px 22px;
+      background: linear-gradient(90deg, #ff7043, #ffa726);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .learn-btn:hover {
+      background: linear-gradient(90deg, #e64a19, #ffb74d);
+    }
+    /* Footer */
+    .footer {
+      background: #00796b;
+      color: #fff;
+      text-align: center;
+      padding: 18px 0 12px 0;
+      font-size: 1.05rem;
+      margin-top: auto;
+      letter-spacing: 0.5px;
+    }
+    .footer a {
+      color: #ffd180;
+      text-decoration: underline;
+    }
+    /* Animations */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .navbar { flex-direction: column; padding: 12px 10px; }
+      .navbar-links { gap: 14px; }
+      .main-header { margin: 22px 0 15px 0; }
+      .languages-container { margin: 18px 5vw 28px 5vw; gap: 16px; }
+      .certificate-box { min-width: 95vw; padding: 18px 2vw 10px 2vw; }
+    }
+    @media (max-width: 480px) {
+      .main-header h1 { font-size: 1.6rem; }
+      .main-header .subtitle { font-size: 1.05rem; }
+      .languages-container { grid-template-columns: 1fr; }
+      .navbar-logo span { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo" />
+      <span>EduLang Hub</span>
+    </div>
+    <ul class="navbar-links">
+      <li><a href="#languagesContainer">Languages</a></li>
+      <li><a href="#certificateSection">Certificate</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="main-header">
+    <h1>🌍 Language Learning Hub</h1>
+    <p class="subtitle">Explore and Learn Languages from Around the World</p>
+  </header>
+
+  <section class="certificate-section" id="certificateSection">
+    <div class="certificate-box">
+      <button class="certificate-btn" onclick="getCertificate()">🎓 Get Certificate</button>
+      <div id="languageDropdown" class="dropdown-modal">
+        <div class="dropdown-content">
+          <h2>Select Language for Certificate</h2>
+          <select id="selectedLanguage" aria-label="Select language for certificate">
+            <option value="">-- Choose a Language --</option>
+            <option value="Korean">Korean</option>
+            <option value="English">English</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Urdu">Urdu</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Spanish">Spanish</option>
+            <option value="French">French</option>
+          </select>
+          <button class="start-test-btn" onclick="startTest()">START TEST</button>
+          <button class="close-modal" onclick="closeDropdown()">Close</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="languages-container" id="languagesContainer"></div>
+
+  <footer class="footer" id="contact">
+    <div>
+      &copy; 2025 EduLang Hub. All rights reserved.
+    </div>
+    <div>
+      Contact: <a href="mailto:info@edulanghub.com">info@edulanghub.com</a>
+    </div>
+  </footer>
+
+  <script>
+    const languages = [
+      {
+        name: "Korean",
+        description: "Learn Hangul, grammar, and everyday conversation.",
+        flag: "https://flagcdn.com/w80/kr.png"
+      },
+      {
+        name: "English",
+        description: "Master global communication with modern English.",
+        flag: "https://flagcdn.com/w80/gb.png"
+      },
+      {
+        name: "Arabic",
+        description: "Explore Arabic script and classical poetry.",
+        flag: "https://flagcdn.com/w80/sa.png"
+      },
+      {
+        name: "Japanese",
+        description: "Understand Hiragana, Katakana, and Kanji.",
+        flag: "https://flagcdn.com/w80/jp.png"
+      },
+      {
+        name: "Urdu",
+        description: "Beautiful calligraphy, poetry, and culture.",
+        flag: "https://flagcdn.com/w80/pk.png"
+      },
+      {
+        name: "Chinese",
+        description: "Learn Mandarin tones and characters.",
+        flag: "https://flagcdn.com/w80/cn.png"
+      },
+      {
+        name: "Spanish",
+        description: "Speak one of the most spoken languages in the world.",
+        flag: "https://flagcdn.com/w80/es.png"
+      },
+      {
+        name: "French",
+        description: "The language of love, fashion, and diplomacy.",
+        flag: "https://flagcdn.com/w80/fr.png"
+      }
+    ];
+    function startTest() {
+  const selected = document.getElementById("selectedLanguage").value;
+  if (!selected) {
+    alert("❗ Please select your test language first!");
+    return;
+  }
+  // Language to test page mapping
+  const langToPage = {
+    'Korean': 'tests/test_korean.html',
+    'English': 'tests/test_english.html',
+    'Arabic': 'tests/test_arabic.html',
+    'Japanese': 'tests/test_japanese.html',
+    'Urdu': 'tests/test_urdu.html',
+    'Chinese': 'tests/test_chinese.html',
+    'Spanish': 'tests/test_spanish.html',
+    'French': 'tests/test_french.html'
+  };
+  const page = langToPage[selected];
+  if (page) {
+    window.location.href = page;
+  } else {
+    alert('Test page not found for the selected language.');
+  }
+}
+
+function getCertificate() {
+  document.getElementById("languageDropdown").classList.add("active");
+}
+function closeDropdown() {
+  document.getElementById("languageDropdown").classList.remove("active");
+}
+
+const container = document.getElementById("languagesContainer");
+languages.forEach(lang => {
+  const card = document.createElement("div");
+  card.className = "language-card";
+  card.innerHTML = `
+    <img src="${lang.flag}" alt="${lang.name} Flag">
+    <div class="language-title">${lang.name}</div>
+    <div class="language-description">${lang.description}</div>
+    <button class="learn-btn">Start Learning</button>
+  `;
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>
