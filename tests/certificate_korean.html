@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korean Language Certificate - EduLang Hub</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* Body Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    /* Certificate Container */
+    .certificate-container {
+      max-width: 800px;
+      width: 100%;
+      background: white;
+      margin: 20px auto;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      position: relative;
+    }
+    
+    /* Certificate Frame */
+    .certificate-frame {
+      border: 5px double #c9a227;
+      padding: 30px;
+      position: relative;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+    }
+    
+    /* Certificate Header */
+    .certificate-header {
+      text-align: center;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+    
+    .certificate-title {
+      font-size: 32px;
+      color: #1a3a7e;
+      margin-bottom: 10px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .certificate-subtitle {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    
+    /* Certificate Body */
+    .certificate-body {
+      text-align: center;
+      margin-bottom: 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .certificate-text {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    
+    .certificate-name {
+      font-size: 36px;
+      color: #c9a227;
+      margin: 20px 0;
+      font-weight: bold;
+      font-style: italic;
+    }
+    
+    .certificate-description {
+      font-size: 16px;
+      margin-bottom: 20px;
+      max-width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Certificate Photo */
+    .certificate-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #c9a227;
+      margin: 20px auto;
+      display: block;
+    }
+    
+    /* Certificate Details */
+    .certificate-details {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      margin: 20px 0;
+    }
+    
+    .certificate-detail {
+      text-align: center;
+    }
+    
+    .detail-label {
+      font-size: 14px;
+      color: #777;
+      text-transform: uppercase;
+    }
+    
+    .detail-value {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1a3a7e;
+    }
+    
+    /* Certificate Footer */
+    .certificate-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      width: 100%;
+      margin-top: 30px;
+    }
+    
+    .certificate-id {
+      font-family: monospace;
+      font-size: 14px;
+      color: #777;
+    }
+    
+    .certificate-signature {
+      text-align: center;
+    }
+    
+    .signature-line {
+      width: 150px;
+      height: 1px;
+      background-color: #333;
+      margin: 10px auto;
+    }
+    
+    .signature-name {
+      font-weight: bold;
+    }
+    
+    .signature-title {
+      font-size: 14px;
+      color: #555;
+    }
+    
+    /* Certificate QR Code */
+    .certificate-qr {
+      text-align: center;
+    }
+    
+    .qr-code {
+      width: 80px;
+      height: 80px;
+      border: 1px solid #ddd;
+      margin-bottom: 5px;
+    }
+    
+    .qr-text {
+      font-size: 12px;
+      color: #777;
+    }
+    
+    /* Certificate Seal */
+    .certificate-seal {
+      position: absolute;
+      bottom: 80px;
+      right: 80px;
+      width: 100px;
+      height: 100px;
+      opacity: 0.2;
+    }
+    
+    /* Ornamental Corners */
+    .corner {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-color: #c9a227;
+      border-style: solid;
+      border-width: 0;
+    }
+    
+    .top-left {
+      top: 10px;
+      left: 10px;
+      border-top-width: 3px;
+      border-left-width: 3px;
+    }
+    
+    .top-right {
+      top: 10px;
+      right: 10px;
+      border-top-width: 3px;
+      border-right-width: 3px;
+    }
+    
+    .bottom-left {
+      bottom: 10px;
+      left: 10px;
+      border-bottom-width: 3px;
+      border-left-width: 3px;
+    }
+    
+    .bottom-right {
+      bottom: 10px;
+      right: 10px;
+      border-bottom-width: 3px;
+      border-right-width: 3px;
+    }
+    
+    /* Watermark */
+    .watermark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.05;
+      pointer-events: none;
+      font-size: 100px;
+      font-weight: bold;
+      color: #1a3a7e;
+      transform: rotate(-30deg);
+    }
+    
+    /* Download Buttons */
+    .download-buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      gap: 15px;
+    }
+    
+    .download-btn {
+      padding: 10px 20px;
+      background-color: #1a3a7e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+    
+    .download-btn:hover {
+      background-color: #c9a227;
+    }
+    
+    /* No Certificate Message */
+    .no-certificate {
+      text-align: center;
+      padding: 50px;
+      background-color: #f9f9f9;
+      border-left: 4px solid #1a3a7e;
+      margin: 50px 0;
+    }
+    
+    .no-certificate h2 {
+      color: #c9a227;
+      margin-bottom: 15px;
+    }
+    
+    .no-certificate p {
+      margin-bottom: 10px;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .certificate-frame {
+        padding: 15px;
+      }
+      
+      .certificate-title {
+        font-size: 24px;
+      }
+      
+      .certificate-name {
+        font-size: 28px;
+      }
+      
+      .certificate-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .certificate-id, .certificate-signature, .certificate-qr {
+        margin-bottom: 15px;
+      }
+      
+      .certificate-details {
+        flex-direction: column;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="certificate-container" id="certificateContainer">
+    <div id="certificateContent"></div>
+  </div>
+  
+  <script>
+    // Certificate data object
+    let certData = {};
+    
+    // Function to generate a unique certificate ID
+    function generateCertificateId() {
+      const timestamp = Date.now().toString(36).toUpperCase();
+      const random = Math.random().toString(36).substring(2, 8).toUpperCase();
+      return `EDU-${timestamp}-${random}`;
+    }
+    
+    // Function to format date
+    function formatDate(date) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return date.toLocaleDateString('en-US', options);
+    }
+    
+    // Function to show certificate preview
+    function showCertificatePreview() {
+      // Generate certificate ID
+      const certId = generateCertificateId();
+      
+      // Create verification URL
+      const verifyUrl = `https://edulang-hub.com/verify?cert=${certId}`;
+      
+      // Get current date
+      const currentDate = formatDate(new Date());
+      
+      // Create certificate HTML
+      const certificateHTML = `
+        <div class="certificate-frame">
+          <div class="corner top-left"></div>
+          <div class="corner top-right"></div>
+          <div class="corner bottom-left"></div>
+          <div class="corner bottom-right"></div>
+          <div class="watermark">EduLang</div>
+          
+          <div class="certificate-header">
+            <div class="certificate-title">Certificate of Achievement</div>
+            <div class="certificate-subtitle">Korean Language Proficiency</div>
+          </div>
+          
+          <div class="certificate-body">
+            <div class="certificate-text">This is to certify that</div>
+            <div class="certificate-name">${certData.name}</div>
+            <div class="certificate-description">has successfully completed the Korean Language Proficiency Test with distinction, demonstrating exceptional skills in vocabulary, grammar, listening, and comprehension.</div>
+            
+            <img src="${certData.photo}" alt="Student Photo" class="certificate-photo">
+            
+            <div class="certificate-details">
+              <div class="certificate-detail">
+                <div class="detail-label">ID Card</div>
+                <div class="detail-value">${certData.id}</div>
+              </div>
+              <div class="certificate-detail">
+                <div class="detail-label">Issue Date</div>
+                <div class="detail-value">${currentDate}</div>
+              </div>
+              <div class="certificate-detail">
+                <div class="detail-label">Status</div>
+                <div class="detail-value">Verified</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="certificate-footer">
+            <div class="certificate-id">
+              <div>Certificate ID:</div>
+              <div>${certId}</div>
+            </div>
+            
+            <div class="certificate-signature">
+              <div class="signature-line"></div>
+              <div class="signature-name">Dr. Kim Minsoo</div>
+              <div class="signature-title">Director, EduLang Hub</div>
+            </div>
+            
+            <div class="certificate-qr">
+              <div class="qr-code" id="qrCode"></div>
+              <div class="qr-text">Verify Certificate</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="download-buttons">
+          <button class="download-btn" onclick="downloadAsPDF()">Download as PDF</button>
+          <button class="download-btn" onclick="downloadAsImage()">Download as Image</button>
+        </div>
+      `;
+      
+      // Display certificate
+      document.getElementById('certificateContent').innerHTML = certificateHTML;
+      
+      // Create a simple QR code (just a placeholder since we're not using libraries)
+      createSimpleQRCode(verifyUrl);
+    }
+    
+    // Function to create a simple QR code placeholder
+    function createSimpleQRCode(url) {
+      const qrCode = document.getElementById('qrCode');
+      qrCode.style.backgroundColor = '#f9f9f9';
+      qrCode.style.display = 'flex';
+      qrCode.style.alignItems = 'center';
+      qrCode.style.justifyContent = 'center';
+      qrCode.style.fontSize = '10px';
+      qrCode.style.padding = '5px';
+      qrCode.style.wordBreak = 'break-all';
+      qrCode.textContent = 'QR: ' + url.substring(0, 20) + '...';
+    }
+    
+    // Function to show no certificate message
+    function showNoCertificateMessage() {
+      const noCertificateHTML = `
+        <div class="no-certificate">
+          <h2>Certificate Not Available</h2>
+          <p>Please complete the Korean Language Test first to receive your certificate.</p>
+          <p>You need to score at least 160 points to qualify.</p>
+        </div>
+      `;
+      
+      document.getElementById('certificateContent').innerHTML = noCertificateHTML;
+    }
+    
+    // Function to download as PDF (simplified version without actual PDF generation)
+    function downloadAsPDF() {
+      alert('In a real implementation, this would download a PDF of your certificate.');
+    }
+    
+    // Function to download as Image (simplified version without actual image generation)
+    function downloadAsImage() {
+      alert('In a real implementation, this would download an image of your certificate.');
+    }
+    
+    // On page load, check sessionStorage for certificate data
+    window.addEventListener('DOMContentLoaded', function() {
+      const name = sessionStorage.getItem('certName');
+      const id = sessionStorage.getItem('certId');
+      const photo = sessionStorage.getItem('certPhoto');
+      
+      if (name && id && photo) {
+        certData = { name, id, photo };
+        showCertificatePreview();
+        
+        // Clear storage to prevent showing on refresh
+        sessionStorage.removeItem('certName');
+        sessionStorage.removeItem('certId');
+        sessionStorage.removeItem('certPhoto');
+      } else {
+        showNoCertificateMessage();
+      }
+    });
+  </script>
+</body>
+</html>
