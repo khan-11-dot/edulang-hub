@@ -32,7 +32,7 @@
     <div class="modal-box">
       <h2>Test Instructions</h2>
       <ul class="instr-list">
-        <li>No answers are pre-selected. You must choose one for each question.</li>
+        <li>THERE ARE 40 MCQS.</li>
         <li>Each correct answer gives <b>+5 marks</b>.</li>
         <li>Each wrong answer deducts <b>2 marks</b>.</li>
         <li>Total marks: <b>200</b></li>
@@ -94,13 +94,13 @@
       {q: 'Which of the following is pronounced as "kamja"?', options: ['김치 (kimchi)', '감자 (potato)', '고구마 (sweet potato)', '계란 (gyeran)'], correct: 1},
       {q: 'Which Hangul represents the sound "g/k"?', options: ['ㄱ', 'ㅂ', 'ㅅ', 'ㅈ'], correct: 0},
       {q: 'Which word is pronounced "saram"?', options: ['사랑 (love)', '사람 (person)', '사과 (apple)', '사전 (dictionary)'], correct: 1},
-      {q: 'Select the word pronounced "hakgyo":', options: ['학교 (hakgyo)', '학교', '학기 (hakgi)', '학생 (haksaeng)'], correct: 1},
+      {q: 'Select the word pronounced "hakgyo":', options: ['학교 (hakgyo)', '학교에 (hakgyo-e)', '학기 (hakgi)', '학생 (haksaeng)'], correct: 0},
       {q: 'Which is the correct spelling for "coffee" in Korean?', options: ['코피', '카피', '커피', '커피이'], correct: 2},
       {q: 'What is the correct pronunciation of "의자" (chair)?', options: ['uija', 'euija', 'oija', 'eija'], correct: 1},
       {q: 'Which Hangul letter is pronounced as "m"?', options: ['ㄴ', 'ㅁ', 'ㄹ', 'ㅂ'], correct: 1},
-      {q: 'Choose the correct pronunciation for "사과" (apple):', options: ['sagwa', 'sagwa', 'sagwo', 'sagwi'], correct: 1},
+      {q: 'Choose the correct pronunciation for "사과" (apple):', options: ['sagua', 'sagwa', 'sagwo', 'sagwi'], correct: 1},
       {q: 'Which option sounds like "annyeong"?', options: ['안녕', '안니옹', '아녕', '안용'], correct: 0},
-      {q: 'What is the correct spelling for "school" in Hangul?', options: ['학꾜', '학교', '학교', '학꾜오'], correct: 2},
+      {q: 'What is the correct spelling for "school" in Hangul?', options: ['학꾜', '학꾜오', '학교', '학교오'], correct: 2},
       // Category 4: Sentence Usage / Comprehension
       {q: 'Translate to English: "저는 학생입니다."', options: ['I am a teacher.', 'I am a student.', 'I am a friend.', 'I am a parent.'], correct: 1},
       {q: 'Fill in the blank: "나는 ___ 먹어요." (I eat ___.) [rice]', options: ['사과 (apple)', '물 (water)', '밥 (bap)', '우유 (milk)'], correct: 2},
@@ -164,12 +164,13 @@
       // Show overlay
       document.body.insertAdjacentHTML('beforeend', `<div id='resultOverlay' class='result-overlay'></div>`);
       let overlay = document.getElementById('resultOverlay');
-      overlay.innerHTML = (score >= 5) ? `
-        <div class='result-message-box success'>
-          <div class='result-title' style='color:#00796b;'>Congratulations!</div>
-          <div class='result-score' style='color:#00796b;'>You scored ${score}/200.</div>
-          <div class='result-desc' style='color:#00796b;'>You are eligible for the certificate.</div>
-          <button class='back-btn' id='showCertFormBtn' style='background:#26a69a;margin-top:12px;'>Get Certificate</button>
+      overlay.innerHTML = (score >= 3 ? `
+        <div class='result-message-box success' style="background: #f1fff8; border: 2px solid #26a69a; border-radius: 14px; box-shadow: 0 4px 18px rgba(38,166,154,0.09); padding: 38px 32px 28px 32px; text-align: center; font-family: 'Segoe UI', Arial, sans-serif;">
+          <div style="font-size: 2.8rem; color: #43b97f; margin-bottom: 12px;">&#10004;</div>
+          <div class='result-title' style='color:#00796b; font-size: 1.58rem; font-weight: 700; margin-bottom: 6px;'>Congratulations!</div>
+          <div class='result-score' style='color:#00796b; font-size: 1.18rem; margin-bottom: 6px;'>You scored <b>${score}/200</b></div>
+          <div class='result-desc' style='color:#555; font-size: 1.08rem; margin-bottom: 12px;'>You have successfully passed the Korean Language Test and are eligible to receive your official certificate.</div>
+          <button class='back-btn' id='showCertFormBtn' style='background:linear-gradient(90deg,#26a69a,#43b97f);margin-top:16px;font-size:1.08rem;font-weight:600;border-radius:8px;padding:12px 38px;'>Get Your Certificate</button>
         </div>
       ` : `
         <div class='result-message-box fail'>
@@ -179,7 +180,7 @@
           <div class='result-desc'>Unfortunately, you are not eligible for the certificate this time.</div>
           <div class='result-encouragement'>Try again soon!</div>
         </div>
-      `;
+      `);
       window.scrollTo({top:0,behavior:'smooth'});
       return false;
     }
@@ -369,43 +370,25 @@
 // Certificate Modal Logic
 let certData = {};
 function showCertForm() {
-  document.body.insertAdjacentHTML('beforeend', `
-    <div id="certModalBg" class="cert-modal-bg">
-      <div class="cert-modal-box">
-        <h2>Certificate Details</h2>
-        <form id="certForm" class="cert-form">
-          <label for="certName">Full Name</label>
-          <input type="text" id="certName" name="certName" required maxlength="40" />
-          <label for="certAddress">Address</label>
-          <input type="text" id="certAddress" name="certAddress" required maxlength="70" />
-          <label for="certId">ID Card Number</label>
-          <input type="text" id="certId" name="certId" required maxlength="25" />
-          <label for="certPhoto">Photo</label>
-          <input type="file" id="certPhoto" name="certPhoto" accept="image/*" required />
-          <button type="submit" class="cert-download-btn" style="background:#26a69a;margin-top:6px;">Preview Certificate</button>
-        </form>
-        <button class="cert-download-btn cert-close-btn" onclick="closeCertModal()">Cancel</button>
-      </div>
-    </div>
-  `);
-  document.getElementById('certForm').onsubmit = function(e) {
-    e.preventDefault();
-    const name = document.getElementById('certName').value.trim();
-    const address = document.getElementById('certAddress').value.trim();
-    const id = document.getElementById('certId').value.trim();
-    const photoInput = document.getElementById('certPhoto');
-    if (!name || !address || !id || !photoInput.files[0]) return;
-    const reader = new FileReader();
-    reader.onload = function(ev) {
-      // Store data in sessionStorage
-      sessionStorage.setItem('certName', name);
-      sessionStorage.setItem('certAddress', address);
-      sessionStorage.setItem('certId', id);
-      sessionStorage.setItem('certPhoto', ev.target.result);
-      window.location.href = 'certificate_korean.html';
-    };
-    reader.readAsDataURL(photoInput.files[0]);
-  };
+  // Get the score from the result display
+  const scoreText = document.querySelector('.result-score').textContent;
+  const scoreMatch = scoreText.match(/(\d+)\/200/);
+  const score = scoreMatch ? scoreMatch[1] : 190; // Default to 190 if not found
+  
+  // Set default certificate data
+  const defaultName = "STUDENT NAME";
+  const defaultAddress = "123 Main Street, Seoul, South Korea";
+  const defaultId = "ID-12345-6789";
+  const defaultPhoto = "https://via.placeholder.com/150";
+  
+  // Store data in sessionStorage
+  sessionStorage.setItem('certName', defaultName);
+  sessionStorage.setItem('certAddress', defaultAddress);
+  sessionStorage.setItem('certId', defaultId);
+  sessionStorage.setItem('certPhoto', defaultPhoto);
+  
+  // Redirect to certificate page with marks parameter
+  window.location.href = `certificate_korean.html?marks=${score}`;
 }
 function closeCertModal() {
   let modal = document.getElementById('certModalBg');
