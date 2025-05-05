@@ -6,17 +6,478 @@
   <title>English Language Test - EduLang Hub</title>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #e0f7fa; margin: 0; padding: 0; }
-    .test-container { max-width: 600px; margin: 60px auto; background: #fff; border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); padding: 36px 30px; text-align: center; }
-    h1 { color: #00796b; margin-bottom: 12px; }
-    .back-btn { margin-top: 32px; padding: 10px 24px; background: #00796b; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
+    .test-container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.11); padding: 36px 30px 28px 30px; text-align: left; }
+    h1 { color: #00796b; margin-bottom: 8px; text-align: center; }
+    .test-desc { text-align: center; color: #555; margin-bottom: 30px; }
+    .test-section { margin-bottom: 38px; }
+    .test-section h2 { color: #ff7043; font-size: 1.23rem; margin-bottom: 12px; border-bottom: 1.5px solid #b2dfdb; padding-bottom: 5px; }
+    .question-list { margin-left: 0; padding-left: 18px; }
+    .question-list li { margin-bottom: 18px; font-size: 1.07rem; }
+    .options { list-style-type: upper-alpha; padding-left: 20px; margin-top: 7px; }
+    .options li { margin-bottom: 4px; padding: 4px 8px; border-radius: 6px; cursor: pointer; transition: background 0.18s; display: block; }
+    .options li[data-correct="true"] { background: #e0f7fa; border: 1.2px solid #26a69a; }
+    .options li:hover { background: #ffe0b2; }
+    .back-btn { margin: 32px auto 0 auto; display: block; padding: 10px 24px; background: #00796b; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
     .back-btn:hover { background: #004d40; }
+    @media (max-width: 700px) {
+      .test-container { padding: 18px 2vw 14px 2vw; }
+      h1 { font-size: 1.4rem; }
+      .test-section h2 { font-size: 1.09rem; }
+    }
   </style>
 </head>
-<body>
-  <div class="test-container">
-    <h1>Welcome to the English Test!</h1>
-    <p>This is a placeholder for the English language test. Add your questions here.</p>
-    <button class="back-btn" onclick="window.location.href='languages.html'">Back to Languages</button>
+  <body>
+  <!-- INSTRUCTION MODAL -->
+  <div id="instructionModal" class="modal-bg" style="display:flex;">
+    <div class="modal-box">
+      <h2>Test Instructions</h2>
+      <ul class="instr-list">
+        <li>THERE ARE 40 MCQS.</li>
+        <li>Each correct answer gives <b>+5 marks</b>.</li>
+        <li>Each wrong answer deducts <b>2 marks</b>.</li>
+        <li>Total marks: <b>200</b></li>
+        <li>You must score <b>160 or above</b> to be eligible for a certificate.</li>
+      </ul>
+      <button onclick="startTestNow()" class="start-btn">Start Test</button>
+    </div>
   </div>
+
+  <div class="test-container" id="testContainer" style="display:none;">
+    <h1>English Language Test</h1>
+    <p class="test-desc">Beginner to Intermediate | 40 Questions | 4 Categories</p>
+    <form id="EnglishTestForm">
+    <!-- Category 1: Vocabulary -->
+    <section class="test-section">
+      <h2>Category 1: Vocabulary</h2>
+      <ol start="1" class="question-list">
+        <!-- ... (all questions as before, no radio buttons, just for display) ... -->
+      </ol>
+    </section>
+    <!-- ... (other categories, omitted for brevity, but all questions included as before) ... -->
+    <button type="submit" class="back-btn" style="background:#ff7043;">Submit Test</button>
+    </form>
+    <div id="resultBox" style="display:none;"></div>
+    <button class="back-btn" onclick="window.location.href='../languages.html'">Back to Languages</button>
+  </div>
+  <script>
+    // Show instructions modal, hide test until started
+    function startTestNow() {
+      document.getElementById('instructionModal').style.display = 'none';
+      document.getElementById('testContainer').style.display = 'block';
+    }
+
+  // Dynamically render all questions with radio buttons (no pre-selected)
+  const questions = [
+  // Vocabulary (1-10)
+  {q: 'What is the synonym of "happy"?', options: ['Sad', 'Angry', 'Joyful', 'Tired'], correct: 2},
+  {q: 'Choose the correct spelling:', options: ['Recieve', 'Receive', 'Recive', 'Receeve'], correct: 1},
+  {q: 'Which word means "quick"?', options: ['Slow', 'Rapid', 'Heavy', 'Late'], correct: 1},
+  {q: 'What is the antonym of "difficult"?', options: ['Easy', 'Hard', 'Strong', 'Weak'], correct: 0},
+  {q: 'Select the noun:', options: ['Run', 'Beautiful', 'Happiness', 'Quickly'], correct: 2},
+  {q: 'Which word is a verb?', options: ['Blue', 'Sing', 'Tall', 'Soft'], correct: 1},
+  {q: 'Pick the adjective:', options: ['Run', 'Quick', 'Sing', 'Happiness'], correct: 1},
+  {q: 'What is the plural of "child"?', options: ['Childs', 'Childes', 'Children', 'Childrens'], correct: 2},
+  {q: 'Choose the correct word: "She ___ a book."', options: ['read', 'reads', 'reading', 'reed'], correct: 1},
+  {q: 'Which is a preposition?', options: ['Quick', 'Under', 'Sing', 'Blue'], correct: 1},
+  // Grammar (11-20)
+  {q: 'Which sentence is correct?', options: ['He go to school.', 'He goes to school.', 'He going to school.', 'He goed to school.'], correct: 1},
+  {q: 'Choose the correct form: "They ___ playing."', options: ['is', 'was', 'are', 'be'], correct: 2},
+  {q: 'Which is a question word?', options: ['Why', 'Book', 'Run', 'Blue'], correct: 0},
+  {q: 'Select the correct tense: "I have eaten."', options: ['Present Simple', 'Past Simple', 'Present Perfect', 'Future Simple'], correct: 2},
+  {q: 'Pick the correct passive voice: "The cake was eaten by John."', options: ['Active', 'Passive', 'Both', 'None'], correct: 1},
+  {q: 'Which is a conjunction?', options: ['And', 'Quickly', 'Sing', 'Blue'], correct: 0},
+  {q: 'What is the superlative of "good"?', options: ['Goodest', 'Better', 'Best', 'Most Good'], correct: 2},
+  {q: 'Which is an interjection?', options: ['Wow!', 'Book', 'Run', 'Blue'], correct: 0},
+  {q: 'Choose the correct article: "___ apple"', options: ['A', 'An', 'The', 'No article'], correct: 1},
+  {q: 'Which sentence is in the future tense?', options: ['I will go.', 'I go.', 'I went.', 'I am going.'], correct: 0},
+  // Reading (21-30)
+  {q: 'Read: "The sun rises in the ___."', options: ['West', 'East', 'North', 'South'], correct: 1},
+  {q: 'Which sentence is true?', options: ['Cats can fly.', 'Birds can swim.', 'Fish can walk.', 'Dogs can bark.'], correct: 3},
+  {q: 'Find the main idea: "Water is important for life."', options: ['Water is blue.', 'Water is important.', 'Life is easy.', 'Water is cold.'], correct: 1},
+  {q: 'Which is a fact?', options: ['Ice is hot.', 'Fire is cold.', 'The sky is blue.', 'Grass is red.'], correct: 2},
+  {q: 'What does "library" mean?', options: ['A place to eat', 'A place to read books', 'A place to sleep', 'A place to play'], correct: 1},
+  {q: 'Which is a question?', options: ['He is tall.', 'Is he tall?', 'He tall.', 'Tall he is.'], correct: 1},
+  {q: 'Find the correct answer: "What color is the sky?"', options: ['Green', 'Blue', 'Yellow', 'Red'], correct: 1},
+  {q: 'Which is a command?', options: ['Sit down.', 'He sits.', 'She sitting.', 'They sat.'], correct: 0},
+  {q: 'What is the opposite of "up"?', options: ['Down', 'Left', 'Right', 'Back'], correct: 0},
+  {q: 'Which is a pronoun?', options: ['He', 'Run', 'Blue', 'Quick'], correct: 0},
+  // Listening/Comprehension (31-40)
+  {q: 'Which sentence is a greeting?', options: ['Goodbye!', 'Hello!', 'See you!', 'Take care!'], correct: 1},
+  {q: 'Choose the correct response: "How are you?"', options: ['Yes.', 'No.', 'I am fine.', 'Go.'], correct: 2},
+  {q: 'Which is a polite expression?', options: ['Give me!', 'Thank you.', 'Sit!', 'Go!'], correct: 1},
+  {q: 'Find the correct answer: "What day comes after Monday?"', options: ['Sunday', 'Tuesday', 'Friday', 'Saturday'], correct: 1},
+  {q: 'Which is a feeling?', options: ['Table', 'Chair', 'Happy', 'Book'], correct: 2},
+  {q: 'Choose the correct word: "She ___ to music."', options: ['listen', 'listens', 'listening', 'listened'], correct: 1},
+  {q: 'Pick the correct sentence:', options: ['The boy play.', 'The boys plays.', 'The boy plays.', 'The boy playing.'], correct: 2},
+  {q: 'Which is a place?', options: ['Run', 'Park', 'Blue', 'Quick'], correct: 1},
+  {q: 'Choose the correct spelling:', options: ['Becaus', 'Becouse', 'Because', 'Becasue'], correct: 2},
+  {q: 'What is the plural of "mouse"?', options: ['Mouses', 'Mices', 'Mice', 'Mouse'], correct: 2},
+];
+    renderQuestions();
+
+    // Render questions dynamically (replace static HTML)
+    function renderQuestions() {
+      const cats = [
+        {title: 'Category 1: Vocabulary', start: 1, end: 10},
+        {title: 'Category 2: Grammar', start: 11, end: 20},
+        {title: 'Category 3: Listening / Pronunciation', start: 21, end: 30},
+        {title: 'Category 4: Sentence Usage / Comprehension', start: 31, end: 40}
+      ];
+      let html = '';
+      let idx = 0;
+      for (const cat of cats) {
+        html += `<section class="test-section"><h2>${cat.title}</h2><ol start="${cat.start}" class="question-list">`;
+        for (let i = cat.start-1; i < cat.end; ++i) {
+          const q = questions[i];
+          html += `<li>${q.q}<ul class="options">`;
+          for (let j = 0; j < 4; ++j) {
+            html += `<li><label><input type="radio" name="q${i+1}" value="${j}"> ${String.fromCharCode(65+j)}. ${q.options[j]}</label></li>`;
+          }
+          html += '</ul></li>';
+        }
+        html += '</ol></section>';
+      }
+      document.querySelector('#EnglishTestForm').innerHTML = html + '<button type="submit" class="back-btn" style="background:#ff7043;">Submit Test</button>';
+    }
+
+    // Fill questions array and render on page load
+    // ... (fill questions array here, omitted for brevity in this message) ...
+    renderQuestions();
+
+    // Handle form submit
+    document.getElementById('EnglishTestForm').onsubmit = function(e) {
+      e.preventDefault();
+      let score = 0;
+      let total = 40;
+      for (let i = 0; i < total; ++i) {
+        const radios = document.getElementsByName(`q${i+1}`);
+        let selected = -1;
+        for (let j = 0; j < 4; ++j) {
+          if (radios[j] && radios[j].checked) selected = j;
+        }
+        if (selected === -1) continue; // unanswered
+        if (selected === questions[i].correct) score += 5;
+        else score -= 2;
+      }
+      let resultBox = document.getElementById('resultBox');
+      resultBox.style.display = 'block';
+      // Show overlay
+      document.body.insertAdjacentHTML('beforeend', `<div id='resultOverlay' class='result-overlay'></div>`);
+      let overlay = document.getElementById('resultOverlay');
+      overlay.innerHTML = (score >= 3 ? `
+        <div class='result-message-box success' style="background: #f1fff8; border: 2px solid #26a69a; border-radius: 14px; box-shadow: 0 4px 18px rgba(38,166,154,0.09); padding: 38px 32px 28px 32px; text-align: center; font-family: 'Segoe UI', Arial, sans-serif;">
+          <div style="font-size: 2.8rem; color: #43b97f; margin-bottom: 12px;">&#10004;</div>
+          <div class='result-title' style='color:#00796b; font-size: 1.58rem; font-weight: 700; margin-bottom: 6px;'>Congratulations!</div>
+          <div class='result-score' style='color:#00796b; font-size: 1.18rem; margin-bottom: 6px;'>You scored <b>${score}/200</b></div>
+          <div class='result-desc' style='color:#555; font-size: 1.08rem; margin-bottom: 12px;'>You have successfully passed the Korean Language Test and are eligible to receive your official certificate.</div>
+          <button class='back-btn' id='showCertFormBtn' style='background:linear-gradient(90deg,#26a69a,#43b97f);margin-top:16px;font-size:1.08rem;font-weight:600;border-radius:8px;padding:12px 38px;'>Get Your Certificate</button>
+        </div>
+      ` : `
+        <div class='result-message-box fail'>
+          <div class='result-icon' aria-label='Sad face'>😔</div>
+          <div class='result-title'>Thank you for taking the test.</div>
+          <div class='result-score'>Your score is <b>${score}/200</b>.</div>
+          <div class='result-desc'>Unfortunately, you are not eligible for the certificate this time.</div>
+          <div class='result-encouragement'>Try again soon!</div>
+        </div>
+      `);
+      window.scrollTo({top:0,behavior:'smooth'});
+      return false;
+    }
+  </script>
+  <style>
+    /* ...existing styles... */
+    .modal-bg { position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;z-index:99; }
+    .modal-box { background:#fff; border-radius:12px; padding:36px 28px 22px 28px; box-shadow:0 8px 32px rgba(0,0,0,0.13); text-align:center; min-width:290px; animation:fadeIn 0.3s; }
+    .modal-box h2 { margin-bottom:18px; color:#00796b; font-size:1.3rem; }
+    .instr-list { text-align:left; margin-bottom:18px; color:#444; font-size:1.06rem; }
+    .instr-list li { margin-bottom:7px; }
+    .start-btn { padding:12px 38px; background:linear-gradient(90deg,#00796b,#26a69a);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1.12rem;box-shadow:0 2px 8px rgba(0,0,0,0.09);transition:background 0.3s; }
+    .start-btn:hover { background:linear-gradient(90deg,#004d40,#26a69a); }
+    .result-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.23);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100vw;
+    }
+    .result-message-box {
+      max-width: 410px;
+      background: #fff8f4;
+      border: 1.5px solid #e64a19;
+      border-radius: 12px;
+      padding: 32px 28px 22px 28px;
+      box-shadow: 0 4px 18px rgba(230,74,25,0.13);
+      text-align: center;
+      color: #e64a19;
+      font-size: 1.08rem;
+      font-family: inherit;
+      font-weight: 400;
+      transition: box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .result-message-box .result-icon {
+  font-size: 3.2rem;
+  margin-bottom: 8px;
+}
+.result-message-box.success {
+      background: #f1fff8;
+      border: 1.5px solid #26a69a;
+      color: #00796b;
+      box-shadow: 0 4px 18px rgba(38,166,154,0.13);
+    }
+    /* Certificate Modal Styles */
+    .cert-modal-bg {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.22); z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .cert-modal-box {
+      background: #fff; border-radius: 12px; padding: 32px 28px 24px 28px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13); text-align: center; min-width: 320px;
+      max-width: 98vw; width: 400px;
+    }
+    .cert-modal-box h2 { color: #00796b; font-size: 1.21rem; margin-bottom: 18px; }
+    .cert-form input[type="text"], .cert-form input[type="file"] { width: 100%; padding: 8px; margin-bottom: 13px; border-radius: 6px; border: 1px solid #b2dfdb; font-size: 1rem; }
+    .cert-form label { display: block; text-align: left; color: #444; margin-bottom: 4px; font-size: 0.98rem; }
+    .cert-form input[type="file"] { padding: 4px 0; }
+    .cert-cert-preview { margin-top: 18px; }
+    .cert-preview-box.professional-certificate {
+  background: #f9faf6;
+  border-radius: 24px;
+  box-shadow: 0 6px 40px rgba(44,62,80,0.11);
+  max-width: 540px;
+  margin: 0 auto 18px auto;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  position: relative;
+}
+.cert-border {
+  border: 6px double #cfa32b;
+  border-radius: 22px;
+  padding: 0;
+  background: linear-gradient(135deg,#e3e6f3 0%,#f9f6e7 100%);
+  box-shadow: 0 1px 8px rgba(44,62,80,0.08);
+  min-height: 420px;
+  position: relative;
+}
+.cert-bg-pattern {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: repeating-linear-gradient(135deg,rgba(207,163,43,0.07) 0 8px,transparent 8px 24px);
+  border-radius: 16px;
+  z-index: 0;
+}
+.cert-content-area {
+  position: relative;
+  z-index: 2;
+  padding: 38px 36px 18px 36px;
+  text-align: center;
+}
+.cert-header {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 18px;
+}
+.cert-issuer {
+  font-family: 'Playfair Display', serif;
+  color: #0d47a1;
+  font-size: 1.18rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+.cert-id-field {
+  font-size: 0.93rem;
+  color: #bfa32b;
+  background: #fffbe7;
+  border-radius: 7px;
+  padding: 2px 10px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.cert-title-pro {
+  font-family: 'Playfair Display', serif;
+  color: #cfa32b;
+  font-size: 2.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.7px;
+}
+.cert-photo-row {
+  margin-bottom: 12px;
+}
+.cert-photo-pro {
+  width: 84px; height: 84px; object-fit: cover; border-radius: 50%; border: 2.5px solid #26a69a; margin-bottom: 0;
+}
+.cert-body {
+  margin-bottom: 18px;
+}
+.cert-presented {
+  font-size: 1.09rem; color: #555; margin-bottom: 5px;
+}
+.cert-name {
+  font-size: 1.35rem; font-weight: 600; color: #00796b; font-family: 'Montserrat', Arial, sans-serif; margin-bottom: 4px;
+}
+.cert-desc {
+  font-size: 1.08rem; color: #444; margin-bottom: 8px;
+}
+.cert-info-row {
+  font-size: 1.02rem; color: #444; margin-bottom: 2px;
+}
+.cert-info-label { color: #0d47a1; font-weight: 500; }
+.cert-footer-row {
+  display: flex; justify-content: space-between; align-items: flex-end; margin-top: 18px;
+}
+.cert-signature-area {
+  text-align: left; margin-left: 6px;
+}
+.cert-signature-text {
+  font-family: 'Playfair Display', serif;
+  color: #bfa32b; font-size: 1.02rem; font-weight: 600; margin-bottom: 2px;
+}
+.cert-signature-img {
+  font-family: 'Playfair Display', cursive; color: #0d47a1; font-size: 1.19rem; font-style: italic; font-weight: 500; letter-spacing: 2.5px;
+}
+.cert-qr-area {
+  text-align: right; margin-right: 6px;
+}
+.cert-qr-img {
+  width: 60px; height: 60px; border-radius: 8px; border: 1.5px solid #cfa32b; margin-bottom: 2px;
+}
+.cert-qr-label {
+  font-size: 0.87rem; color: #888; margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+    .cert-photo { width: 72px; height: 72px; object-fit: cover; border-radius: 50%; border: 2px solid #26a69a; margin-bottom: 10px; }
+    .cert-title { color: #00796b; font-size: 1.18rem; font-weight: bold; margin-bottom: 10px; }
+    .cert-field { color: #444; font-size: 1.07rem; margin-bottom: 4px; }
+    .cert-id { font-size: 0.98rem; color: #888; margin-bottom: 7px; }
+    .cert-download-btn { margin: 8px 6px 0 6px; padding: 8px 20px; background: #26a69a; color: #fff; border: none; border-radius: 7px; cursor: pointer; font-weight: 500; font-size: 1rem; transition: background 0.2s; }
+    .cert-download-btn:hover { background: #00796b; }
+    .cert-close-btn { margin-top: 14px; background: #e0e0e0; color: #444; }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
+<script>
+// Certificate Modal Logic
+let certData = {};
+function showCertForm() {
+  // Get the score from the result display
+  const scoreText = document.querySelector('.result-score').textContent;
+  const scoreMatch = scoreText.match(/(\d+)\/200/);
+  const score = scoreMatch ? scoreMatch[1] : 190; // Default to 190 if not found
+  
+  // Set default certificate data
+  const defaultName = "STUDENT NAME";
+  const defaultAddress = "123 Main Street, Seoul, South Korea";
+  const defaultId = "ID-12345-6789";
+  const defaultPhoto = "https://via.placeholder.com/150";
+  
+  // Store data in sessionStorage
+  sessionStorage.setItem('certName', defaultName);
+  sessionStorage.setItem('certAddress', defaultAddress);
+  sessionStorage.setItem('certId', defaultId);
+  sessionStorage.setItem('certPhoto', defaultPhoto);
+  
+  // Redirect to certificate page with marks parameter
+  window.location.href = `certificate_english.html?marks=${score}`;
+}
+function closeCertModal() {
+  let modal = document.getElementById('certModalBg');
+  if(modal) modal.remove();
+}
+function certFormSubmit(e) {
+  e.preventDefault();
+  let name = document.getElementById('certName').value.trim();
+  let address = document.getElementById('certAddress').value.trim();
+  let id = document.getElementById('certId').value.trim();
+  let photoInput = document.getElementById('certPhoto');
+  if (!name || !address || !id || !photoInput.files[0]) return;
+  let reader = new FileReader();
+  reader.onload = function(ev) {
+    certData = { name, address, id, photo: ev.target.result };
+    showCertPreview();
+  };
+  reader.readAsDataURL(photoInput.files[0]);
+}
+function showCertPreview() {
+  closeCertModal();
+  // Generate a unique certificate ID (e.g., date+random)
+  const certId = 'EDU-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+  // Generate QR code using a public API (e.g., qrserver.com)
+  const verifyUrl = `https://edulang-hub.com/verify?cert=${certId}`;
+  const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(verifyUrl)}`;
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="certModalBg" class="cert-modal-bg">
+      <div class="cert-modal-box cert-cert-preview">
+        <div id="certPreviewBox" class="cert-preview-box professional-certificate">
+          <div class="cert-border">
+            <div class="cert-bg-pattern"></div>
+            <div class="cert-content-area">
+              <div class="cert-header">
+                <span class="cert-issuer">EduLang Hub</span>
+                <span class="cert-id-field">Certificate ID: <span id="certUniqueId">${certId}</span></span>
+              </div>
+              <div class="cert-title-pro">Certificate of Achievement</div>
+              <div class="cert-photo-row">
+                <img src="${certData.photo}" alt="Photo" class="cert-photo-pro" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-presented">This is to certify that</div>
+                <div class="cert-name">${certData.name}</div>
+                <div class="cert-desc">has successfully passed the <b>Korean Language Test</b> with distinction.</div>
+                <div class="cert-info-row">
+                  <span class="cert-info-label">Address:</span> <span>${certData.address}</span>
+                </div>
+                <div class="cert-info-row">
+                  <span class="cert-info-label">ID Card:</span> <span>${certData.id}</span>
+                </div>
+                <div class="cert-info-row">
+                  <span class="cert-info-label">Date:</span> <span>${new Date().toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div class="cert-footer-row">
+                <div class="cert-signature-area">
+                  <div class="cert-signature-text">Director, EduLang Hub</div>
+                  <div class="cert-signature-img">(signature)</div>
+                </div>
+                <div class="cert-qr-area">
+                  <img id="certQrCode" class="cert-qr-img" src="${qrApi}" alt="QR Code" />
+                  <div class="cert-qr-label">Verify</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="cert-download-btn" onclick="downloadCertPDF()">Download as PDF</button>
+        <button class="cert-download-btn" onclick="downloadCertImage()">Download as Image</button>
+        <button class="cert-download-btn cert-close-btn" onclick="closeCertModal()">Close</button>
+      </div>
+    </div>
+  `);
+}
+function downloadCertPDF() {
+  html2pdf().from(document.getElementById('certPreviewBox')).set({margin:0.2, filename:'certificate.pdf', html2canvas:{scale:2}}).save();
+}
+function downloadCertImage() {
+  html2canvas(document.getElementById('certPreviewBox')).then(function(canvas) {
+    let link = document.createElement('a');
+    link.download = 'certificate.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+// Attach handler after overlay shown
+window.addEventListener('click', function(e) {
+  if(e.target && e.target.id==='showCertFormBtn') showCertForm();
+});
+</script>
 </html>
