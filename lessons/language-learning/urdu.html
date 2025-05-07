@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urdu Language Learning - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0f7fa 0%, #fff3e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: #00796b;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .navbar-logo img {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .navbar-links a:hover {
+            color: #ffd180;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: url('https://images.unsplash.com/photo-1566837497312-7be4a47d0c95?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .start-btn {
+            display: inline-block;
+            background: #ff7043;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .start-btn:hover {
+            background: #e64a19;
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #00796b;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff7043;
+            margin: 15px auto 0;
+        }
+        
+        /* Learning Modules */
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .module-header {
+            background: #00796b;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.3rem;
+        }
+        
+        .module-content {
+            padding: 20px;
+        }
+        
+        .module-content ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .module-content li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .module-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00796b;
+            font-weight: bold;
+        }
+        
+        .module-btn {
+            display: inline-block;
+            background: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .module-btn:hover {
+            background: #004d40;
+        }
+        
+        /* Urdu Script Section */
+        .script-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+            direction: rtl;
+        }
+        
+        .alphabet-char {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        
+        .alphabet-char:hover {
+            transform: scale(1.1);
+            background: #e0f7fa;
+        }
+        
+        .alphabet-char .urdu {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: #00796b;
+        }
+        
+        .alphabet-char .transliteration {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Poetry Section */
+        .poetry-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .poetry-example {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border-right: 4px solid #00796b;
+            direction: rtl;
+            text-align: right;
+        }
+        
+        .poetry-urdu {
+            font-size: 1.5rem;
+            line-height: 2;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .poetry-translation {
+            font-style: italic;
+            color: #666;
+            direction: ltr;
+            text-align: left;
+            border-top: 1px solid #e0e0e0;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+        
+        /* Calligraphy Section */
+        .calligraphy-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .calligraphy-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .calligraphy-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .calligraphy-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .calligraphy-image {
+            width: 100%;
+            height: 150px;
+            background-color: #e0f7fa;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #00796b;
+            font-family: 'Noto Nastaliq Urdu', serif;
+        }
+        
+        .calligraphy-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #00796b;
+        }
+        
+        .calligraphy-description {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Progress Tracker */
+        .progress-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .progress-bars {
+            margin-top: 30px;
+        }
+        
+        .progress-item {
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #00796b;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #00796b;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff7043;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #b2dfdb;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd180;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #ff7043;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .navbar-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-logo">
+            <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo">
+            <span>EduLang Hub</span>
+        </a>
+        <ul class="navbar-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../courses.html">Courses</a></li>
+            <li><a href="../../languages.html">Languages</a></li>
+            <li><a href="../../typing.html">Typing</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Learn Urdu Language</h1>
+            <p>Explore beautiful calligraphy, poetry, and rich cultural heritage through our comprehensive Urdu course.</p>
+            <a href="#modules" class="start-btn">Start Learning Now</a>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <section id="modules">
+            <h2 class="section-title">Learning Modules</h2>
+            <div class="modules">
+                <div class="module-card">
+                    <div class="module-header">
+                        <h3>Urdu Script</h3>
+                    </div>
+                    <div class="module-content">
+                        <p>Master the beautiful Urdu script and calligraphy.</p>
+                        <ul>
+                            <li>Urdu alphabet</li>
+                            <li>Letter forms and connections</li>
+                            <li>Diacritical marks</li>
+                            <li>Calligraphy basics</li>
+                        </ul>
+                        <a href="#script" class="module-btn">Start Module</a>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <h3>Essential Phrases</h3>
+                    </div>
+                    <div class="module-content">
+                        <p>Learn common Urdu phrases for everyday situations.</p>
+                        <ul>
+                            <li>Greetings and introductions</li>
+                            <li>Shopping and dining</li>
+                            <li>Travel and directions</li>
+                            <li>Cultural expressions</li>
+                        </ul>
+                        <a href="#" class="module-btn">Start Module</a>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <h3>Poetry & Literature</h3>
+                    </div>
+                    <div class="module-content">
+                        <p>Discover the rich tradition of Urdu poetry and literature.</p>
+                        <ul>
+                            <li>Ghazal and nazm forms</li>
+                            <li>Famous poets and works</li>
+                            <li>Literary devices</li>
+                            <li>Cultural context</li>
+                        </ul>
+                        <a href="#poetry" class="module-btn">Start Module</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Urdu Script Section -->
+        <section id="script" class="script-section">
+            <h2 class="section-title">Urdu Script</h2>
+            <p>Urdu is written in a modified version of the Persian alphabet, which is itself a modified version of the Arabic alphabet. It is written from right to left and has 38 basic letters.</p>
+            
+            <h3 style="margin-top: 30px; color: #00796b;">Basic Letters</h3>
+            <div class="alphabet-grid">
+                <div class="alphabet-char">
+                    <div class="urdu">ا</div>
+                    <div class="transliteration">alif</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">ب</div>
+                    <div class="transliteration">be</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">پ</div>
+                    <div class="transliteration">pe</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">ت</div>
+                    <div class="transliteration">te</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">ٹ</div>
+                    <div class="transliteration">ṭe</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">ث</div>
+                    <div class="transliteration">se</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">ج</div>
+                    <div class="transliteration">jīm</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="urdu">چ</div>
+                    <div class="transliteration">che</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Poetry Section -->
+        <section id="poetry" class="poetry-section">
+            <h2 class="section-title">Urdu Poetry</h2>
+            <p>Urdu poetry is known for its beauty, depth, and emotional resonance. The ghazal is one of the most popular forms of Urdu poetry, consisting of rhyming couplets with a refrain.</p>
+            
+            <div class="poetry-example">
+                <div class="poetry-urdu">
+                    دل ہی تو ہے نہ سنگ و خشت، درد سے بھر نہ آئے کیوں<br>
+                    روئیں گے ہم ہزار بار، کوئی ہمیں سُنانے آئے
+                </div>
+                <div class="poetry-translation">
+                    "The heart is not made of stone or brick, why wouldn't it be filled with pain?<br>
+                    We will cry a thousand times, if someone comes to listen to us."
+                    <p style="margin-top: 10px; font-size: 0.9rem;">- Mirza Ghalib</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Calligraphy Section -->
+        <section id="calligraphy" class="calligraphy-section">
+            <h2 class="section-title">Urdu Calligraphy</h2>
+            <p>Urdu calligraphy (خطاطی) is a beautiful art form that has been practiced for centuries. It combines artistic expression with the written word.</p>
+            
+            <div class="calligraphy-examples">
+                <div class="calligraphy-card">
+                    <div class="calligraphy-image">خوش آمدید</div>
+                    <div class="calligraphy-title">Nastaliq Style</div>
+                    <div class="calligraphy-description">The most common style used for Urdu, characterized by its hanging letters and fluid curves.</div>
+                </div>
+                
+                <div class="calligraphy-card">
+                    <div class="calligraphy-image">السلام علیکم</div>
+                    <div class="calligraphy-title">Naskh Style</div>
+                    <div class="calligraphy-description">A more angular and structured style, often used for religious texts.</div>
+                </div>
+                
+                <div class="calligraphy-card">
+                    <div class="calligraphy-image">محبت</div>
+                    <div class="calligraphy-title">Diwani Style</div>
+                    <div class="calligraphy-description">An ornate and decorative style with intricate curves and flourishes.</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Progress Tracker -->
+        <section class="progress-section">
+            <h2 class="section-title">Your Learning Progress</h2>
+            <p>Track your progress through the Urdu language learning modules.</p>
+            
+            <div class="progress-bars">
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Urdu Script</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Essential Phrases</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Poetry & Literature</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Overall Progress</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About EduLang Hub</h3>
+                <p>EduLang Hub is dedicated to providing high-quality language learning resources to help you achieve fluency in your target language.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../courses.html">Courses</a></li>
+                    <li><a href="../../languages.html">Languages</a></li>
+                    <li><a href="../../typing.html">Typing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@edulanghub.com</p>
+                <p>Phone: +92 123 456 7890</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 EduLang Hub. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script to animate progress bars when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When progress section is in view, animate progress bars
+                        setTimeout(() => {
+                            document.querySelectorAll('.progress-fill').forEach(bar => {
+                                bar.style.width = '0%'; // Reset first
+                            });
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Observe the progress section
+            observer.observe(document.querySelector('.progress-section'));
+        });
+    </script>
+</body>
+</html>

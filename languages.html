@@ -462,8 +462,32 @@ languages.forEach(lang => {
     <img src="${lang.flag}" alt="${lang.name} Flag">
     <div class="language-title">${lang.name}</div>
     <div class="language-description">${lang.description}</div>
-    <button class="learn-btn">Start Learning</button>
+    <button class="learn-btn" data-language="${lang.name}">Start Learning</button>
   `;
+  card.querySelector('.learn-btn').addEventListener('click', function() {
+    const language = this.getAttribute('data-language');
+    if (language === 'Korean') {
+      window.location.href = 'lessons/language-learning/korean.html';
+    } else if (language === 'English') {
+      window.location.href = 'lessons/language-learning/english.html';
+    } else if (language === 'Arabic') {
+      window.location.href = 'lessons/language-learning/arabic.html';
+    } else if (language === 'Japanese') {
+      window.location.href = 'lessons/language-learning/japanese.html';
+    } else if (language === 'Urdu') {
+      window.location.href = 'lessons/language-learning/urdu.html';
+    } else if (language === 'Chinese') {
+      window.location.href = 'lessons/language-learning/chinese.html';
+    } else if (language === 'Spanish') {
+      window.location.href = 'lessons/language-learning/spanish.html';
+    } else if (language === 'French') {
+      window.location.href = 'lessons/language-learning/french.html';
+    } else if (language === 'Vietnamese') {
+      window.location.href = 'lessons/language-learning/vietnamese.html';
+    } else {
+      alert(`${language} learning page coming soon!`);
+    }
+  });
   container.appendChild(card);
 });
 </script>

@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Language Learning - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0f7fa 0%, #fff3e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: #00796b;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .navbar-logo img {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .navbar-links a:hover {
+            color: #ffd180;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: url('https://images.unsplash.com/photo-1519818187420-8e49de7adeef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .start-btn {
+            display: inline-block;
+            background: #ff7043;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .start-btn:hover {
+            background: #e64a19;
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #00796b;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff7043;
+            margin: 15px auto 0;
+        }
+        
+        /* Learning Modules */
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .module-header {
+            background: #00796b;
+            color: white;
+            padding: 15px 20px;
+            font-size: 1.3rem;
+        }
+        
+        .module-content {
+            padding: 20px;
+        }
+        
+        .module-content ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .module-content li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .module-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00796b;
+            font-weight: bold;
+        }
+        
+        .module-btn {
+            display: inline-block;
+            background: #00796b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        
+        .module-btn:hover {
+            background: #004d40;
+        }
+        
+        /* Grammar Section */
+        .grammar-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+        
+        .grammar-table th, .grammar-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .grammar-table th {
+            background-color: #f5f5f5;
+            font-weight: bold;
+            color: #00796b;
+        }
+        
+        .grammar-table tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Progress Tracker */
+        .progress-section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .progress-bars {
+            margin-top: 30px;
+        }
+        
+        .progress-item {
+            margin-bottom: 20px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #00796b;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #00796b;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: left;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff7043;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #b2dfdb;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #ffd180;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #ff7043;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .navbar-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-logo">
+            <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo">
+            <span>EduLang Hub</span>
+        </a>
+        <ul class="navbar-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../courses.html">Courses</a></li>
+            <li><a href="../../languages.html">Languages</a></li>
+            <li><a href="../../typing.html">Typing</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Learn English Language</h1>
+            <p>Master global communication with modern English through our comprehensive course.</p>
+            <a href="#modules" class="start-btn">Start Learning Now</a>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <section id="modules">
+            <h2 class="section-title">Learning Modules</h2>
+            <div class="modules">
+                <div class="module-card">
+                    <div class="module-header">
+                        <h3>Pronunciation Basics</h3>
+                    </div>
+                    <div class="module-content">
+                        <p>Master English pronunciation and accent reduction.</p>
+                        <ul>
+                            <li>Vowel and consonant sounds</li>
+                            <li>Stress and intonation</li>
+                            <li>Linking and reduction</li>
+                            <li>Speaking practice</li>
+                        </ul>
+                        <a href="#grammar" class="module-btn">Start Module</a>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <h3>Everyday Conversation</h3>
+                    </div>
+                    <div class="module-content">
+                        <p>Learn practical English for real-life situations.</p>
+                        <ul>
+                            <li>Greetings and small talk</li>
+                            <li>Shopping and dining</li>
+                            <li>Travel and directions</li>
+                            <li>Business English</li>
+                        </ul>
+                        <a href="#" class="module-btn">Start Module</a>
+                    </div>
+                </div>
+                
+                <div class="module-card">
+                    <div class="module-header">
+                        <h3>Advanced Grammar</h3>
+                    </div>
+                    <div class="module-content">
+                        <p>Perfect your English grammar and sentence structure.</p>
+                        <ul>
+                            <li>Verb tenses</li>
+                            <li>Conditionals</li>
+                            <li>Reported speech</li>
+                            <li>Complex sentences</li>
+                        </ul>
+                        <a href="#" class="module-btn">Start Module</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Grammar Section -->
+        <section id="grammar" class="grammar-section">
+            <h2 class="section-title">English Grammar Essentials</h2>
+            <p>English grammar is the set of structural rules that govern the composition of clauses, phrases, and words in the English language. Here are some essential grammar points to master:</p>
+            
+            <table class="grammar-table">
+                <thead>
+                    <tr>
+                        <th>Tense</th>
+                        <th>Structure</th>
+                        <th>Example</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Present Simple</td>
+                        <td>Subject + V1 (+ s/es for 3rd person)</td>
+                        <td>I work. She works.</td>
+                    </tr>
+                    <tr>
+                        <td>Present Continuous</td>
+                        <td>Subject + am/is/are + V-ing</td>
+                        <td>I am working. She is working.</td>
+                    </tr>
+                    <tr>
+                        <td>Past Simple</td>
+                        <td>Subject + V2 (past form)</td>
+                        <td>I worked. She worked.</td>
+                    </tr>
+                    <tr>
+                        <td>Past Continuous</td>
+                        <td>Subject + was/were + V-ing</td>
+                        <td>I was working. They were working.</td>
+                    </tr>
+                    <tr>
+                        <td>Present Perfect</td>
+                        <td>Subject + have/has + V3 (past participle)</td>
+                        <td>I have worked. She has worked.</td>
+                    </tr>
+                    <tr>
+                        <td>Future Simple</td>
+                        <td>Subject + will + V1</td>
+                        <td>I will work. She will work.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <!-- Progress Tracker -->
+        <section class="progress-section">
+            <h2 class="section-title">Your Learning Progress</h2>
+            <p>Track your progress through the English language learning modules.</p>
+            
+            <div class="progress-bars">
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Pronunciation Basics</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Everyday Conversation</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Advanced Grammar</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+                
+                <div class="progress-item">
+                    <div class="progress-label">
+                        <span>Overall Progress</span>
+                        <span>0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About EduLang Hub</h3>
+                <p>EduLang Hub is dedicated to providing high-quality language learning resources to help you achieve fluency in your target language.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../courses.html">Courses</a></li>
+                    <li><a href="../../languages.html">Languages</a></li>
+                    <li><a href="../../typing.html">Typing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@edulanghub.com</p>
+                <p>Phone: +92 123 456 7890</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 EduLang Hub. All rights reserved.
+        </div>
+    </footer>
+    
+    <script>
+        // Simple script to animate progress bars when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up intersection observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // When progress section is in view, animate progress bars
+                        setTimeout(() => {
+                            document.querySelectorAll('.progress-fill').forEach(bar => {
+                                bar.style.width = '0%'; // Reset first
+                            });
+                        }, 300);
+                    }
+                });
+            });
+            
+            // Observe the progress section
+            observer.observe(document.querySelector('.progress-section'));
+        });
+    </script>
+</body>
+</html>
