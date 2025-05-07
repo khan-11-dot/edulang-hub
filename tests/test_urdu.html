@@ -6,17 +6,369 @@
   <title>Urdu Language Test - EduLang Hub</title>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #e0f7fa; margin: 0; padding: 0; }
-    .test-container { max-width: 600px; margin: 60px auto; background: #fff; border-radius: 12px; box-shadow: 0 6px 24px rgba(0,0,0,0.10); padding: 36px 30px; text-align: center; }
-    h1 { color: #00796b; margin-bottom: 12px; }
-    .back-btn { margin-top: 32px; padding: 10px 24px; background: #00796b; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
+    .test-container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.11); padding: 36px 30px 28px 30px; text-align: left; }
+    h1 { color: #00796b; margin-bottom: 8px; text-align: center; }
+    .test-desc { text-align: center; color: #555; margin-bottom: 30px; }
+    .test-section { margin-bottom: 38px; }
+    .test-section h2 { color: #ff7043; font-size: 1.23rem; margin-bottom: 12px; border-bottom: 1.5px solid #b2dfdb; padding-bottom: 5px; }
+    .question-list { margin-left: 0; padding-left: 18px; }
+    .question-list li { margin-bottom: 18px; font-size: 1.07rem; }
+    .options { list-style-type: upper-alpha; padding-left: 20px; margin-top: 7px; }
+    .options li { margin-bottom: 4px; padding: 4px 8px; border-radius: 6px; cursor: pointer; transition: background 0.18s; display: block; }
+    .options li[data-correct="true"] { background: #e0f7fa; border: 1.2px solid #26a69a; }
+    .options li:hover { background: #ffe0b2; }
+    .back-btn { margin: 32px auto 0 auto; display: block; padding: 10px 24px; background: #00796b; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: background 0.2s; }
     .back-btn:hover { background: #004d40; }
+    @media (max-width: 700px) {
+      .test-container { padding: 18px 2vw 14px 2vw; }
+      h1 { font-size: 1.4rem; }
+      .test-section h2 { font-size: 1.09rem; }
+    }
   </style>
 </head>
-<body>
-  <div class="test-container">
-    <h1>Welcome to the Urdu Test!</h1>
-    <p>This is a placeholder for the Urdu language test. Add your questions here.</p>
-    <button class="back-btn" onclick="window.location.href='languages.html'">Back to Languages</button>
+  <body>
+  <!-- INSTRUCTION MODAL -->
+  <div id="instructionModal" class="modal-bg" style="display:flex;">
+    <div class="modal-box">
+      <h2>Test Instructions</h2>
+      <ul class="instr-list">
+        <li>THERE ARE 40 MCQS.</li>
+        <li>Each correct answer gives <b>+5 marks</b>.</li>
+        <li>Each wrong answer deducts <b>2 marks</b>.</li>
+        <li>Total marks: <b>200</b></li>
+        <li>You must score <b>160 or above</b> to be eligible for a certificate.</li>
+      </ul>
+      <button onclick="startTestNow()" class="start-btn">Start Test</button>
+    </div>
   </div>
+
+  <div class="test-container" id="testContainer" style="display:none;">
+    <h1>Urdu Language Test</h1>
+    <p class="test-desc">Beginner to Intermediate | 40 Questions | 4 Categories</p>
+    <form id="urduTestForm">
+    <!-- Category 1: Vocabulary -->
+    <section class="test-section">
+      <h2>Category 1: Vocabulary</h2>
+      <ol start="1" class="question-list">
+        <!-- ... (all questions as before, no radio buttons, just for display) ... -->
+      </ol>
+    </section>
+    <!-- ... (other categories, omitted for brevity, but all questions included as before) ... -->
+    <button type="submit" class="back-btn" style="background:#ff7043;">Submit Test</button>
+    </form>
+    <div id="resultBox" style="display:none;"></div>
+    <button class="back-btn" onclick="window.location.href='../languages.html'">Back to Languages</button>
+  </div>
+  <script>
+    // Show instructions modal, hide test until started
+    function startTestNow() {
+      document.getElementById('instructionModal').style.display = 'none';
+      document.getElementById('testContainer').style.display = 'block';
+    }
+
+  // Urdu Language Quiz Questions (Moderate Difficulty)
+const questions = [
+  // Category 1: Vocabulary (1–10)
+  {q: 'لفظ "کتاب" کا مطلب کیا ہے؟', options: ['Book', 'Pen', 'Bag', 'Chair'], correct: 0},
+  {q: '"پانی" کا انگریزی ترجمہ کیا ہے؟', options: ['Milk', 'Water', 'Juice', 'Oil'], correct: 1},
+  {q: 'لفظ "دوست" کا درست انگریزی ترجمہ کیا ہے؟', options: ['Enemy', 'Friend', 'Teacher', 'Brother'], correct: 1},
+  {q: 'کون سا لفظ "کھانا" کے لیے استعمال ہوتا ہے؟', options: ['پینا', 'سونا', 'کھانا', 'دھونا'], correct: 2},
+  {q: '"مدرسہ" کا مطلب کیا ہے؟', options: ['School', 'Mosque', 'Library', 'Hospital'], correct: 0},
+  {q: '"خوشی" کا متضاد کیا ہے؟', options: ['اداسی', 'محبت', 'رحمت', 'دوستی'], correct: 0},
+  {q: 'لفظ "شکر" کس چیز کے لیے ہے؟', options: ['Salt', 'Sugar', 'Honey', 'Flour'], correct: 1},
+  {q: 'درج ذیل میں سے کون سا جانور ہے؟', options: ['کتاب', 'قلم', 'گھوڑا', 'میز'], correct: 2},
+  {q: '"صبح" کب ہوتی ہے؟', options: ['رات', 'دن', 'شام', 'طلوع آفتاب'], correct: 3},
+  {q: '"دروازہ" کس چیز کے لیے استعمال ہوتا ہے؟', options: ['بیٹھنے', 'سونے', 'داخل ہونے', 'کھانے'], correct: 2},
+
+  // Category 2: Grammar (11–20)
+  {q: '"وہ جا رہا ہے" کون سا زمانہ ہے؟', options: ['ماضی', 'حال', 'مستقبل', 'جملہ شرطیہ'], correct: 1},
+  {q: 'درج ذیل میں سے واحد اسم کون سا ہے؟', options: ['کتابیں', 'لڑکیاں', 'پھول', 'کتاب'], correct: 3},
+  {q: 'جملے میں فاعل کیا ہوتا ہے؟', options: ['کام', 'کام کرنے والا', 'کلمہ', 'زمانہ'], correct: 1},
+  {q: '"نے" کون سے جملوں میں آتا ہے؟', options: ['فعل ماضی', 'فعل حال', 'فعل مستقبل', 'فعل امر'], correct: 0},
+  {q: 'جمع کا درست طریقہ کیا ہے؟', options: ['کتابون', 'کتاباں', 'کتابیں', 'کتابات'], correct: 2},
+  {q: '"میں پڑھتا ہوں" کس زمانے کا جملہ ہے؟', options: ['حال', 'ماضی', 'مستقبل', 'شرطیہ'], correct: 0},
+  {q: 'منفی جملہ کیا ہوتا ہے؟', options: ['جس میں انکار ہو', 'جس میں سوال ہو', 'جس میں حکم ہو', 'جس میں تعریف ہو'], correct: 0},
+  {q: 'ضمیر کیا ہوتی ہے؟', options: ['اسم', 'فعل', 'جو اسم کی جگہ آئے', 'صفت'], correct: 2},
+  {q: '"آپ" کون سی ضمیر ہے؟', options: ['واحد', 'جمع', 'ادب کی', 'منفی'], correct: 2},
+  {q: 'کون سا لفظ مذکر ہے؟', options: ['دروازہ', 'کرسی', 'میز', 'چادر'], correct: 0},
+
+  // Category 3: Reading Comprehension (21–30)
+  {q: 'متن: "علی روز سکول جاتا ہے۔ وہ پڑھائی میں بہت اچھا ہے۔" علی کہاں جاتا ہے؟', options: ['بازار', 'دفتر', 'سکول', 'پارک'], correct: 2},
+  {q: 'متن: "مریم کو پھول پسند ہیں۔ وہ روز باغ میں جاتی ہے۔" مریم کو کیا پسند ہے؟', options: ['کتابیں', 'پھول', 'پرندے', 'کھانا'], correct: 1},
+  {q: 'متن: "بارش ہو رہی ہے، بچے کھیل نہیں رہے۔" بچے کیوں نہیں کھیل رہے؟', options: ['گرمی ہے', 'بارش ہو رہی ہے', 'چھٹیاں ہیں', 'رات ہے'], correct: 1},
+  {q: 'متن: "امی نے بازار سے سبزیاں خریدیں۔" امی نے کیا خریدا؟', options: ['پھل', 'دوائیں', 'سبزیاں', 'کپڑے'], correct: 2},
+  {q: 'متن: "دادا ابو قرآن پڑھتے ہیں۔" دادا ابو کیا کرتے ہیں؟', options: ['سو جاتے ہیں', 'کھیلتے ہیں', 'قرآن پڑھتے ہیں', 'ٹی وی دیکھتے ہیں'], correct: 2},
+  {q: 'متن: "ندا ہر روز نماز پڑھتی ہے۔" ندا کیا کرتی ہے؟', options: ['نماز پڑھتی ہے', 'گانے سنتی ہے', 'کھیلتی ہے', 'ٹی وی دیکھتی ہے'], correct: 0},
+  {q: 'متن: "سعد اسکول میں بہترین طالب علم ہے۔" سعد کہاں بہترین ہے؟', options: ['دفتر', 'سکول', 'گھر', 'پارک'], correct: 1},
+  {q: 'متن: "بارش کے بعد موسم خوشگوار ہو گیا۔" موسم کب خوشگوار ہوا؟', options: ['بارش سے پہلے', 'بارش کے بعد', 'سردی میں', 'گرمی میں'], correct: 1},
+  {q: 'متن: "ننھے احمد کو کہانیاں سننا پسند ہے۔" احمد کو کیا پسند ہے؟', options: ['کتابیں پڑھنا', 'کہانیاں سننا', 'ٹی وی دیکھنا', 'کھیلنا'], correct: 1},
+  {q: 'متن: "پاپا دفتر جاتے ہیں اور دیر سے آتے ہیں۔" پاپا کہاں جاتے ہیں؟', options: ['بازار', 'اسکول', 'دفتر', 'پارک'], correct: 2},
+
+  // Category 4: Cultural Knowledge (31–40)
+  {q: 'اردو زبان کہاں کی قومی زبان ہے؟', options: ['بھارت', 'پاکستان', 'بنگلہ دیش', 'نیپال'], correct: 1},
+  {q: 'علامہ اقبال نے کیا لکھا؟', options: ['قانون', 'افسانے', 'شاعری', 'رپورٹ'], correct: 2},
+  {q: 'اردو رسم الخط کیا کہلاتا ہے؟', options: ['لاطینی', 'عربی', 'فارسی', 'دیوناگری'], correct: 2},
+  {q: 'اردو کا پہلا ناول کون سا ہے؟', options: ['امراؤ جان ادا', 'آبِ حیات', 'میرات العروس', 'ادھوری خواہش'], correct: 2},
+  {q: 'پاکستان میں یومِ زبان اردو کب منایا جاتا ہے؟', options: ['14 اگست', '21 فروری', '9 نومبر', '21 مارچ'], correct: 1},
+  {q: 'اردو کے مشہور شاعر میر کا پورا نام کیا تھا؟', options: ['میرزا غالب', 'میر تقی میر', 'فیض احمد فیض', 'احمد فراز'], correct: 1},
+  {q: 'شاعری کی سب سے مشہور صنف کون سی ہے؟', options: ['افسانہ', 'نظم', 'غزل', 'مضمون'], correct: 2},
+  {q: 'غالب کا تعلق کس شہر سے تھا؟', options: ['لاہور', 'کراچی', 'دہلی', 'لکھنؤ'], correct: 2},
+  {q: 'اردو کی ابتدائی شکل کس زبان سے متاثر ہے؟', options: ['پنجابی', 'ترکی', 'فارسی', 'چینی'], correct: 2},
+  {q: 'اردو کا پہلا اخبار کیا تھا؟', options: ['اخبار وطن', 'جامِ جہاں نما', 'نئی بات', 'روزنامہ جنگ'], correct: 1}
+];
+
+    
+    // Render questions dynamically (replace static HTML)
+    function renderQuestions() {
+      const cats = [
+        {title: 'Category 1: Vocabulary', start: 1, end: 10},
+        {title: 'Category 2: Grammar', start: 11, end: 20},
+        {title: 'Category 3: Character Recognition', start: 21, end: 30},
+        {title: 'Category 4: Culture and Communication', start: 31, end: 40}
+      ];
+      let html = '';
+      let idx = 0;
+      for (const cat of cats) {
+        html += `<section class="test-section"><h2>${cat.title}</h2><ol start="${cat.start}" class="question-list">`;
+        for (let i = cat.start-1; i < cat.end; ++i) {
+          const q = questions[i];
+          html += `<li>${q.q}<ul class="options">`;
+          for (let j = 0; j < 4; ++j) {
+            html += `<li><label><input type="radio" name="q${i+1}" value="${j}"> ${String.fromCharCode(65+j)}. ${q.options[j]}</label></li>`;
+          }
+          html += '</ul></li>';
+        }
+        html += '</ol></section>';
+      }
+      document.querySelector('#urduTestForm').innerHTML = html + '<button type="submit" class="back-btn" style="background:#ff7043;">Submit Test</button>';
+    }
+
+    // Fill questions array and render on page load
+    // ... (fill questions array here, omitted for brevity in this message) ...
+    renderQuestions();
+
+    // Handle form submit
+    document.getElementById('urduTestForm').onsubmit = function(e) {
+      e.preventDefault();
+      let score = 0;
+      let total = 40;
+      for (let i = 0; i < total; ++i) {
+        const radios = document.getElementsByName(`q${i+1}`);
+        let selected = -1;
+        for (let j = 0; j < 4; ++j) {
+          if (radios[j] && radios[j].checked) selected = j;
+        }
+        if (selected === -1) continue; // unanswered
+        if (selected === questions[i].correct) score += 5;
+        else score -= 2;
+      }
+      let resultBox = document.getElementById('resultBox');
+      resultBox.style.display = 'block';
+      // Show overlay
+      document.body.insertAdjacentHTML('beforeend', `<div id='resultOverlay' class='result-overlay'></div>`);
+      let overlay = document.getElementById('resultOverlay');
+      overlay.innerHTML = (score >= 1 ? `
+        <div class='result-message-box success' style="background: #f1fff8; border: 2px solid #26a69a; border-radius: 14px; box-shadow: 0 4px 18px rgba(38,166,154,0.09); padding: 38px 32px 28px 32px; text-align: center; font-family: 'Segoe UI', Arial, sans-serif;">
+          <div style="font-size: 2.8rem; color: #43b97f; margin-bottom: 12px;">&#10004;</div>
+          <div class='result-title' style='color:#00796b; font-size: 1.58rem; font-weight: 700; margin-bottom: 6px;'>Congratulations!</div>
+          <div class='result-score' style='color:#00796b; font-size: 1.18rem; margin-bottom: 6px;'>You scored <b>${score}/200</b></div>
+          <div class='result-desc' style='color:#555; font-size: 1.08rem; margin-bottom: 12px;'>You have successfully passed the Chinese Language Test and are eligible to receive your official certificate.</div>
+          <button class='back-btn' id='showCertFormBtn' style='background:linear-gradient(90deg,#26a69a,#43b97f);margin-top:16px;font-size:1.08rem;font-weight:600;border-radius:8px;padding:12px 38px;'>Get Your Certificate</button>
+        </div>
+      ` : `
+        <div class='result-message-box fail'>
+          <div class='result-icon' aria-label='Sad face'>😔</div>
+          <div class='result-title'>Thank you for taking the test.</div>
+          <div class='result-score'>Your score is <b>${score}/200</b>.</div>
+          <div class='result-desc'>Unfortunately, you are not eligible for the certificate this time.</div>
+          <div class='result-encouragement'>Try again soon!</div>
+        </div>
+      `);
+      window.scrollTo({top:0,behavior:'smooth'});
+      
+      // Add event listener to the certificate button if test is passed
+      if (score >= 160) {
+        document.getElementById('showCertFormBtn').addEventListener('click', showCertForm);
+      }
+      
+      return false;
+    }
+    
+    // Function to show certificate form
+    function showCertForm() {
+      const scoreText = document.querySelector('.result-score').textContent;
+      const scoreMatch = scoreText.match(/(\d+)\/200/);
+      const score = scoreMatch ? scoreMatch[1] : 190;
+      
+      // Redirect to certificate page
+      window.location.href = 'certificate_urdu.html?score=' + score;
+    }
+  </script>
+  <style>
+    /* ...existing styles... */
+    .modal-bg { position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.18);display:flex;align-items:center;justify-content:center;z-index:99; }
+    .modal-box { background:#fff; border-radius:12px; padding:36px 28px 22px 28px; box-shadow:0 8px 32px rgba(0,0,0,0.13); text-align:center; min-width:290px; animation:fadeIn 0.3s; }
+    .modal-box h2 { margin-bottom:18px; color:#00796b; font-size:1.3rem; }
+    .instr-list { text-align:left; margin-bottom:18px; color:#444; font-size:1.06rem; }
+    .instr-list li { margin-bottom:7px; }
+    .start-btn { padding:12px 38px; background:linear-gradient(90deg,#00796b,#26a69a);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;font-size:1.12rem;box-shadow:0 2px 8px rgba(0,0,0,0.09);transition:background 0.3s; }
+    .start-btn:hover { background:linear-gradient(90deg,#004d40,#26a69a); }
+    .result-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.23);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      width: 100vw;
+    }
+    .result-message-box {
+      max-width: 410px;
+      background: #fff8f4;
+      border: 1.5px solid #e64a19;
+      border-radius: 12px;
+      padding: 32px 28px 22px 28px;
+      box-shadow: 0 4px 18px rgba(230,74,25,0.13);
+      text-align: center;
+      color: #e64a19;
+      font-size: 1.08rem;
+      font-family: inherit;
+      font-weight: 400;
+      transition: box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .result-message-box .result-icon {
+      font-size: 3.2rem;
+      margin-bottom: 8px;
+    }
+    .result-message-box.success {
+      background: #f1fff8;
+      border: 1.5px solid #26a69a;
+      color: #00796b;
+      box-shadow: 0 4px 18px rgba(38,166,154,0.13);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </body>
+<script>
+// Certificate Modal Logic
+let certData = {};
+function showCertForm() {
+  // Get the score from the result display
+  const scoreText = document.querySelector('.result-score').textContent;
+  const scoreMatch = scoreText.match(/(\d+)\/200/);
+  const score = scoreMatch ? scoreMatch[1] : 190; // Default to 190 if not found
+  
+  // Set default certificate data
+  const defaultName = "STUDENT NAME";
+  const defaultAddress = "123 Main Street, Beijing, China";
+  const defaultId = "ID-12345-6789";
+  const defaultPhoto = "https://via.placeholder.com/150";
+  
+  // Store data in sessionStorage
+  sessionStorage.setItem('certName', defaultName);
+  sessionStorage.setItem('certAddress', defaultAddress);
+  sessionStorage.setItem('certId', defaultId);
+  sessionStorage.setItem('certPhoto', defaultPhoto);
+  
+  // Redirect to certificate page with marks parameter
+  window.location.href = `certificate_urdu.html?marks=${score}`;
+}
+function closeCertModal() {
+  let modal = document.getElementById('certModalBg');
+  if(modal) modal.remove();
+}
+function certFormSubmit(e) {
+  e.preventDefault();
+  let name = document.getElementById('certName').value.trim();
+  let address = document.getElementById('certAddress').value.trim();
+  let id = document.getElementById('certId').value.trim();
+  let photoInput = document.getElementById('certPhoto');
+  if (!name || !address || !id || !photoInput.files[0]) return;
+  let reader = new FileReader();
+  reader.onload = function(ev) {
+    certData = { name, address, id, photo: ev.target.result };
+    showCertPreview();
+  };
+  reader.readAsDataURL(photoInput.files[0]);
+}
+function showCertPreview() {
+  closeCertModal();
+  // Generate a unique certificate ID (e.g., date+random)
+  const certId = 'EDU-' + Date.now().toString(36).toUpperCase() + '-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+  // Generate QR code using a public API (e.g., qrserver.com)
+  const verifyUrl = `https://edulang-hub.com/verify?cert=${certId}`;
+  const qrApi = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(verifyUrl)}`;
+  document.body.insertAdjacentHTML('beforeend', `
+    <div id="certModalBg" class="cert-modal-bg">
+      <div class="cert-modal-box cert-cert-preview">
+        <div id="certPreviewBox" class="cert-preview-box professional-certificate">
+          <div class="cert-border">
+            <div class="cert-bg-pattern"></div>
+            <div class="cert-content-area">
+              <div class="cert-header">
+                <span class="cert-issuer">EduLang Hub</span>
+                <span class="cert-id-field">Certificate ID: <span id="certUniqueId">${certId}</span></span>
+              </div>
+              <div class="cert-title-pro">Certificate of Achievement</div>
+              <div class="cert-photo-row">
+                <img src="${certData.photo}" alt="Photo" class="cert-photo-pro" />
+              </div>
+              <div class="cert-body">
+                <div class="cert-presented">This is to certify that</div>
+                <div class="cert-name">${certData.name}</div>
+                <div class="cert-desc">has successfully passed the <b>Urdu Language Test</b> with distinction.</div>
+                <div class="cert-info-row">
+                  <span class="cert-info-label">Address:</span> <span>${certData.address}</span>
+                </div>
+                <div class="cert-info-row">
+                  <span class="cert-info-label">ID Card:</span> <span>${certData.id}</span>
+                </div>
+                <div class="cert-info-row">
+                  <span class="cert-info-label">Date:</span> <span>${new Date().toLocaleDateString()}</span>
+                </div>
+              </div>
+              <div class="cert-footer-row">
+                <div class="cert-signature-area">
+                  <div class="cert-signature-text">Director, EduLang Hub</div>
+                  <div class="cert-signature-img">(signature)</div>
+                </div>
+                <div class="cert-qr-area">
+                  <img id="certQrCode" class="cert-qr-img" src="${qrApi}" alt="QR Code" />
+                  <div class="cert-qr-label">Verify</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="cert-download-btn" onclick="downloadCertPDF()">Download as PDF</button>
+        <button class="cert-download-btn" onclick="downloadCertImage()">Download as Image</button>
+        <button class="cert-download-btn cert-close-btn" onclick="closeCertModal()">Close</button>
+      </div>
+    </div>
+  `);
+}
+function downloadCertPDF() {
+  html2pdf().from(document.getElementById('certPreviewBox')).set({margin:0.2, filename:'certificate.pdf', html2canvas:{scale:2}}).save();
+}
+function downloadCertImage() {
+  html2canvas(document.getElementById('certPreviewBox')).then(function(canvas) {
+    let link = document.createElement('a');
+    link.download = 'certificate.png';
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+// Attach handler after overlay shown
+window.addEventListener('click', function(e) {
+  if(e.target && e.target.id==='showCertFormBtn') showCertForm();
+});
+</script>
 </html>

@@ -53,6 +53,19 @@
     .navbar-links li a:hover {
       color: #ffd180;
     }
+    
+    .navbar-links li a.verify-btn {
+      background-color: #ff7043;
+      padding: 8px 15px;
+      border-radius: 6px;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    .navbar-links li a.verify-btn:hover {
+      background-color: #ff5722;
+      color: #fff;
+      transform: translateY(-2px);
+    }
     /* Header */
     .main-header {
       text-align: center;
@@ -100,6 +113,27 @@
     }
     .certificate-btn:hover {
       background: linear-gradient(90deg, #004d40, #26a69a);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.13);
+    }
+    
+    .verify-certificate-btn {
+      padding: 14px 38px;
+      font-size: 1.15rem;
+      background: linear-gradient(90deg, #ff7043, #ffa726);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+      transition: background 0.3s, box-shadow 0.3s;
+      margin-left: 15px;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .verify-certificate-btn:hover {
+      background: linear-gradient(90deg, #e64a19, #ff9800);
       box-shadow: 0 4px 14px rgba(0,0,0,0.13);
     }
     /* Modal Dropdown */
@@ -291,8 +325,8 @@
       <span>EduLang Hub</span>
     </div>
     <ul class="navbar-links">
-      <li><a href="#languagesContainer">Languages</a></li>
-      <li><a href="#certificateSection">Certificate</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Courses</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -305,6 +339,7 @@
   <section class="certificate-section" id="certificateSection">
     <div class="certificate-box">
       <button class="certificate-btn" onclick="getCertificate()">🎓 Get Certificate</button>
+      <a href="verify-certificate.html" class="verify-certificate-btn">🔍 Verify Certificate</a>
       <div id="languageDropdown" class="dropdown-modal">
         <div class="dropdown-content">
           <h2>Select Language for Certificate</h2>
@@ -318,6 +353,7 @@
             <option value="Chinese">Chinese</option>
             <option value="Spanish">Spanish</option>
             <option value="French">French</option>
+            <option value="Vietnamese">Vietnamese</option>
           </select>
           <button class="start-test-btn" onclick="startTest()">START TEST</button>
           <button class="close-modal" onclick="closeDropdown()">Close</button>
@@ -378,6 +414,11 @@
         name: "French",
         description: "The language of love, fashion, and diplomacy.",
         flag: "https://flagcdn.com/w80/fr.png"
+      },
+      {
+        name: "Vietnamese",
+        description: "The language of love, fashion, and diplomacy.",
+        flag: "https://flagcdn.com/w80/vn.png"
       }
     ];
     function startTest() {
@@ -395,7 +436,8 @@
     'Urdu': 'tests/test_urdu.html',
     'Chinese': 'tests/test_chinese.html',
     'Spanish': 'tests/test_spanish.html',
-    'French': 'tests/test_french.html'
+    'French': 'tests/test_french.html',
+    'Vietnamese': 'tests/test_vietnamese.html'
   };
   const page = langToPage[selected];
   if (page) {

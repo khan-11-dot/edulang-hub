@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spanish Language Test - EduLang Hub</title>
+  <title>Vietnamese Language Test - EduLang Hub</title>
   <style>
     body { font-family: 'Segoe UI', Arial, sans-serif; background: #e0f7fa; margin: 0; padding: 0; }
     .test-container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.11); padding: 36px 30px 28px 30px; text-align: left; }
@@ -43,9 +43,9 @@
   </div>
 
   <div class="test-container" id="testContainer" style="display:none;">
-    <h1> Spanish Language Test</h1>
+    <h1> Vietnamese Language Test</h1>
     <p class="test-desc">Beginner to Intermediate | 40 Questions | 4 Categories</p>
-    <form id="spanishTestForm">
+    <form id="vietnameseTestForm">
     <!-- Category 1: Vocabulary -->
     <section class="test-section">
       <h2>Category 1: Vocabulary</h2>
@@ -66,90 +66,111 @@
       document.getElementById('testContainer').style.display = 'block';
     }
 
-   // Spanish Language Assessment – Multiple Choice Questions (No Pre-Selected Answers)
-const questions = [
+    const vietnameseQuestions = [
   // Category 1: Vocabulary (1–10)
-  { q: 'What is the English meaning of "casa"?', options: ['Car', 'House', 'Table', 'Book'], correct: 1 },
-  { q: 'What is the Spanish translation of "dog"?', options: ['Gato', 'Perro', 'Pájaro', 'Pez'], correct: 1 },
-  { q: 'Which word means "good morning" in Spanish?', options: ['Buenas noches', 'Buenos días', 'Buenas tardes', 'Hasta luego'], correct: 1 },
-  { q: 'What is the Spanish translation of "water"?', options: ['Vino', 'Leche', 'Agua', 'Jugo'], correct: 2 },
-  { q: 'What is the English meaning of "amigo"?', options: ['Enemy', 'Family', 'Friend', 'Brother'], correct: 2 },
-  { q: 'What is the Spanish word for "food"?', options: ['Comida', 'Bebida', 'Cena', 'Desayuno'], correct: 0 },
-  { q: 'What is the English meaning of "trabajo"?', options: ['Travel', 'Study', 'Work', 'Play'], correct: 2 },
-  { q: 'What is the Spanish translation of "time"?', options: ['Día', 'Hora', 'Tiempo', 'Minuto'], correct: 2 },
-  { q: 'Which word means "thank you" in Spanish?', options: ['Por favor', 'De nada', 'Gracias', 'Perdón'], correct: 2 },
-  { q: 'What is the Spanish word for "money"?', options: ['Moneda', 'Dinero', 'Billete', 'Banco'], correct: 1 },
+  {q: 'Từ "bác sĩ" có nghĩa là gì trong tiếng Anh?', options: ['Teacher', 'Doctor', 'Engineer', 'Lawyer'], correct: 1},
+  {q: 'Từ nào sau đây có nghĩa là "library"?', options: ['Trường học', 'Cửa hàng', 'Thư viện', 'Công viên'], correct: 2},
+  {q: 'Từ "ngon" thường được dùng để mô tả điều gì?', options: ['Âm thanh', 'Món ăn', 'Màu sắc', 'Kích thước'], correct: 1},
+  {q: 'Từ nào sau đây là danh từ chỉ địa điểm?', options: ['Đi', 'Nhà', 'Ăn', 'Uống'], correct: 1},
+  {q: 'Từ "mệt" có nghĩa là gì?', options: ['Hungry', 'Tired', 'Happy', 'Angry'], correct: 1},
+  {q: 'Từ nào là động từ?', options: ['Ngủ', 'Tivi', 'Đẹp', 'Xe'], correct: 0},
+  {q: 'Từ "bầu trời" chỉ điều gì?', options: ['The earth', 'The sea', 'The sky', 'The sun'], correct: 2},
+  {q: 'Từ nào liên quan đến thời tiết?', options: ['Nóng', 'Ngọt', 'Xanh', 'Tròn'], correct: 0},
+  {q: 'Từ "giao thông" thuộc về lĩnh vực nào?', options: ['Y tế', 'Ẩm thực', 'Giao thông', 'Giáo dục'], correct: 2},
+  {q: 'Từ "tháng" thường đi với?', options: ['Giờ', 'Năm', 'Phút', 'Ngày'], correct: 1},
 
   // Category 2: Grammar (11–20)
-  { q: 'What is the singular masculine definite article in Spanish?', options: ['La', 'El', 'Los', 'Las'], correct: 1 },
-  { q: 'How do you form the plural of "lápiz"?', options: ['Lápizes', 'Lápiz', 'Lápices', 'Lápizs'], correct: 2 },
-  { q: 'What is the verb tense in "Yo comí ayer"?', options: ['Present', 'Future', 'Present Perfect', 'Preterite'], correct: 3 },
-  { q: 'Which is the correct form?', options: ['Yo sabo', 'Yo sepo', 'Yo sé', 'Yo sabo'], correct: 2 },
-  { q: 'Which preposition is used in "Voy ____ España"?', options: ['en', 'a', 'de', 'con'], correct: 1 },
-  { q: 'What is the past participle of "hacer"?', options: ['Hacido', 'Hecho', 'Haciendo', 'Hizo'], correct: 1 },
-  { q: 'How do you say "I have been" in Spanish?', options: ['He sido', 'He estado', 'Estuve', 'Fui'], correct: 1 },
-  { q: 'What is the imperative form of "hablar" for "tú"?', options: ['Habla', 'Hable', 'Hablas', 'Hables'], correct: 0 },
-  { q: 'Which pronoun replaces "a Juan" in "Veo a Juan"?', options: ['Le', 'Lo', 'La', 'Se'], correct: 1 },
-  { q: 'What is the correct present tense form of "ir" for "nosotros"?', options: ['Vamos', 'Imos', 'Vemos', 'Vayamos'], correct: 0 },
+  {q: 'Trong câu "Tôi đang học", từ "đang" biểu thị thì gì?', options: ['Quá khứ', 'Tương lai', 'Hiện tại tiếp diễn', 'Mệnh lệnh'], correct: 2},
+  {q: 'Câu nào đúng ngữ pháp?', options: ['Tôi thích đi học.', 'Tôi đi học thích.', 'Thích tôi đi học.', 'Học đi tôi thích.'], correct: 0},
+  {q: 'Từ "của" trong tiếng Việt là loại từ gì?', options: ['Danh từ', 'Đại từ', 'Giới từ', 'Tính từ'], correct: 2},
+  {q: 'Câu nào sử dụng đại từ nhân xưng đúng?', options: ['Anh ta ăn cơm.', 'Anh ta cơm ăn.', 'Cơm ăn anh ta.', 'Ăn anh ta cơm.'], correct: 0},
+  {q: 'Câu phủ định đúng là?', options: ['Tôi không đi học.', 'Không đi học tôi.', 'Học không đi tôi.', 'Tôi đi học không.'], correct: 0},
+  {q: 'Từ "rất" là gì trong ngữ pháp?', options: ['Tính từ', 'Đại từ', 'Phó từ', 'Danh từ'], correct: 2},
+  {q: 'Câu "Tôi ăn cơm rồi" có bao nhiêu từ?', options: ['2', '3', '4', '5'], correct: 2},
+  {q: 'Câu nào là câu nghi vấn?', options: ['Bạn đang làm gì?', 'Tôi ăn cơm.', 'Anh ấy học bài.', 'Chúng tôi đi chơi.'], correct: 0},
+  {q: 'Từ "đẹp" là?', options: ['Danh từ', 'Tính từ', 'Động từ', 'Phó từ'], correct: 1},
+  {q: 'Từ "để" trong câu "Tôi học để giỏi" là?', options: ['Liên từ', 'Giới từ', 'Tính từ', 'Động từ'], correct: 0},
 
   // Category 3: Reading Comprehension (21–30)
-  { q: 'Text: "María va al supermercado todos los lunes. Compra frutas, verduras y pan." — What day does María go to the supermarket?', options: ['Sunday', 'Monday', 'Tuesday', 'Wednesday'], correct: 1 },
-  { q: 'Text: "Pedro estudia medicina en la universidad. Quiere ser doctor." — What does Pedro study?', options: ['Law', 'Engineering', 'Medicine', 'Architecture'], correct: 2 },
-  { q: 'Text: "En verano hace calor y en invierno hace frío." — When is it hot?', options: ['Autumn', 'Winter', 'Spring', 'Summer'], correct: 3 },
-  { q: 'Text: "Ana tiene un perro y dos gatos. Su perro se llama Max." — How many animals does Ana have?', options: ['One', 'Two', 'Three', 'Four'], correct: 2 },
-  { q: 'Text: "El restaurante abre a las 8:00 y cierra a las 22:00." — What time does the restaurant close?', options: ['8:00', '20:00', '22:00', '10:00'], correct: 2 },
-  { q: 'Text: "Carlos no come carne porque es vegetariano." — Why doesn’t Carlos eat meat?', options: ['He is allergic', 'He doesn’t like it', 'He is vegetarian', 'It’s expensive'], correct: 2 },
-  { q: 'Text: "Mi hermana menor se llama Lucía y tiene 15 años." — Who is 15 years old?', options: ['My brother', 'My older sister', 'My younger sister', 'Me'], correct: 2 },
-  { q: 'Text: "El tren sale a las 9:30. Tenemos que estar en la estación a las 9:00." — What time does the train depart?', options: ['9:00', '9:15', '9:30', '9:45'], correct: 2 },
-  { q: 'Text: "Necesito comprar leche, huevos y pan para el desayuno." — What is needed for breakfast?', options: ['Meat, fish, and vegetables', 'Milk, eggs, and bread', 'Fruits and cereal', 'Coffee and tea'], correct: 1 },
-  { q: 'Text: "Madrid es la capital de España y Barcelona es una ciudad importante." — What is the capital of Spain?', options: ['Barcelona', 'Seville', 'Valencia', 'Madrid'], correct: 3 },
+  {q: 'Đọc: "Minh thích chơi đá bóng vào buổi chiều." Minh thích làm gì?', options: ['Chơi bóng rổ', 'Chơi đá bóng', 'Ngủ trưa', 'Đi học'], correct: 1},
+  {q: 'Đọc: "Lan có một con mèo tên là Mimi." Mimi là gì?', options: ['Một người bạn', 'Một con chó', 'Một con mèo', 'Một con cá'], correct: 2},
+  {q: 'Đọc: "Hôm nay trời mưa nên tôi mang ô." Tại sao người nói mang ô?', options: ['Trời nắng', 'Trời mưa', 'Trời gió', 'Trời lạnh'], correct: 1},
+  {q: 'Đọc: "Bố tôi làm việc ở bệnh viện." Ông ấy làm ở đâu?', options: ['Trường học', 'Nhà máy', 'Siêu thị', 'Bệnh viện'], correct: 3},
+  {q: 'Đọc: "Chúng tôi đi chợ mua rau và thịt." Họ mua gì?', options: ['Cá và cơm', 'Rau và thịt', 'Bánh và kẹo', 'Nước và đá'], correct: 1},
+  {q: 'Đọc: "Nam là học sinh lớp 6." Nam học lớp mấy?', options: ['5', '6', '7', '4'], correct: 1},
+  {q: 'Đọc: "Mẹ nấu ăn rất ngon." Mẹ làm gì rất ngon?', options: ['Dọn dẹp', 'Nấu ăn', 'Giặt đồ', 'Học bài'], correct: 1},
+  {q: 'Đọc: "Tôi dậy lúc 6 giờ sáng mỗi ngày." Tôi dậy lúc mấy giờ?', options: ['5 giờ', '6 giờ', '7 giờ', '8 giờ'], correct: 1},
+  {q: 'Đọc: "Anh tôi chơi đàn guitar rất hay." Anh tôi chơi nhạc cụ gì?', options: ['Piano', 'Trống', 'Guitar', 'Sáo'], correct: 2},
+  {q: 'Đọc: "Chúng tôi đi du lịch Đà Nẵng vào mùa hè." Họ đi đâu?', options: ['Hà Nội', 'Huế', 'Đà Nẵng', 'Sài Gòn'], correct: 2},
 
-  // Category 4: Cultural Knowledge (31–40)
-  { q: 'Which of these countries does NOT have Spanish as an official language?', options: ['Mexico', 'Brazil', 'Argentina', 'Colombia'], correct: 1 },
-  { q: 'Which famous Spanish painter created "Guernica"?', options: ['Salvador Dalí', 'Pablo Picasso', 'Diego Velázquez', 'Francisco Goya'], correct: 1 },
-  { q: 'Which Spanish festival features bulls running through the streets?', options: ['La Tomatina', 'San Fermín', 'Las Fallas', 'Semana Santa'], correct: 1 },
-  { q: 'Which traditional dance originated in Spain?', options: ['Tango', 'Salsa', 'Flamenco', 'Bachata'], correct: 2 },
-  { q: 'Which Spanish dish is the most internationally well-known?', options: ['Paella', 'Gazpacho', 'Spanish omelette', 'Churros'], correct: 0 },
-  { q: 'In what year did Christopher Columbus reach the Americas?', options: ['1492', '1592', '1392', '1692'], correct: 0 },
-  { q: 'What is the most prestigious literary award in the Spanish-speaking world?', options: ['Premio Planeta', 'Premio Cervantes', 'Nobel Prize', 'Goya Award'], correct: 1 },
-  { q: 'What currency was used in Spain before the euro?', options: ['Peso', 'Peseta', 'Dollar', 'Pound'], correct: 1 },
-  { q: 'What holiday is celebrated on October 12 in Spain?', options: ['Constitution Day', 'Hispanic Day', 'Labor Day', 'Epiphany'], correct: 1 },
-  { q: 'Which writer authored "Don Quixote de la Mancha"?', options: ['Federico García Lorca', 'Gabriel García Márquez', 'Miguel de Cervantes', 'Pablo Neruda'], correct: 2 },
+  // Category 4: Culture & Language Use (31–40)
+  {q: 'Tết là lễ hội quan trọng nhất ở Việt Nam vào dịp nào?', options: ['Trung thu', 'Cuối năm', 'Mùa hè', 'Giữa năm'], correct: 1},
+  {q: 'Trang phục truyền thống của phụ nữ Việt Nam là gì?', options: ['Áo bà ba', 'Áo dài', 'Áo sơ mi', 'Váy ngắn'], correct: 1},
+  {q: 'Người Việt thường ăn gì vào sáng sớm?', options: ['Phở', 'Cơm', 'Cháo gà', 'Bánh chưng'], correct: 0},
+  {q: 'Ngôn ngữ tiếng Việt sử dụng hệ thống chữ gì?', options: ['Chữ Nôm', 'Chữ La-tinh (quốc ngữ)', 'Chữ Hán', 'Chữ Ả Rập'], correct: 1},
+  {q: 'Món ăn nào sau đây là đặc sản của miền Trung Việt Nam?', options: ['Bún bò Huế', 'Phở Hà Nội', 'Cơm tấm Sài Gòn', 'Bánh cuốn'], correct: 0},
+  {q: 'Việt Nam có bao nhiêu vùng miền chính?', options: ['2', '3', '4', '5'], correct: 1},
+  {q: 'Thành phố nào là thủ đô của Việt Nam?', options: ['Hồ Chí Minh', 'Đà Nẵng', 'Hà Nội', 'Huế'], correct: 2},
+  {q: 'Tên gọi khác của Tết Nguyên Đán là gì?', options: ['Tết Trung thu', 'Tết cổ truyền', 'Tết Đoan ngọ', 'Tết Hạ'], correct: 1},
+  {q: 'Việt Nam giành độc lập khỏi Pháp năm nào?', options: ['1954', '1945', '1975', '1968'], correct: 1},
+  {q: 'Người Việt thường dùng từ nào để chào buổi tối?', options: ['Chào buổi sáng', 'Chào buổi tối', 'Tạm biệt', 'Xin chào'], correct: 1},
 ];
 
-    renderQuestions();
 
     // Render questions dynamically (replace static HTML)
     function renderQuestions() {
+      // First, clear the form content
+      const form = document.getElementById('vietnameseTestForm');
+      if (!form) {
+        console.error('Form element not found!');
+        return;
+      }
+      
+      // Define categories
       const cats = [
         {title: 'Category 1: Vocabulary', start: 1, end: 10},
         {title: 'Category 2: Grammar', start: 11, end: 20},
-        {title: 'Category 3: Listening / Pronunciation', start: 21, end: 30},
-        {title: 'Category 4: Sentence Usage / Comprehension', start: 31, end: 40}
+        {title: 'Category 3: Reading Comprehension', start: 21, end: 30},
+        {title: 'Category 4: Culture & Language Use', start: 31, end: 40}
       ];
+      
       let html = '';
-      let idx = 0;
+      
+      // Generate HTML for each category and its questions
       for (const cat of cats) {
         html += `<section class="test-section"><h2>${cat.title}</h2><ol start="${cat.start}" class="question-list">`;
+        
         for (let i = cat.start-1; i < cat.end; ++i) {
-          const q = questions[i];
+          if (i >= vietnameseQuestions.length) {
+            console.error(`Question index ${i} out of bounds!`);
+            continue;
+          }
+          
+          const q = vietnameseQuestions[i];
           html += `<li>${q.q}<ul class="options">`;
-          for (let j = 0; j < 4; ++j) {
+          
+          for (let j = 0; j < q.options.length; ++j) {
             html += `<li><label><input type="radio" name="q${i+1}" value="${j}"> ${String.fromCharCode(65+j)}. ${q.options[j]}</label></li>`;
           }
+          
           html += '</ul></li>';
         }
+        
         html += '</ol></section>';
       }
-      document.querySelector('#spanishTestForm').innerHTML = html + '<button type="submit" class="back-btn" style="background:#ff7043;">Submit Test</button>';
+      
+      // Add the submit button
+      html += '<button type="submit" class="back-btn" style="background:#ff7043;">Submit Test</button>';
+      
+      // Set the HTML content
+      form.innerHTML = html;
     }
 
-    // Fill questions array and render on page load
-    // ... (fill questions array here, omitted for brevity in this message) ...
+    // Render the questions on page load
     renderQuestions();
 
     // Handle form submit
-    document.getElementById('spanishTestForm').onsubmit = function(e) {
+    document.getElementById('vietnameseTestForm').onsubmit = function(e) {
       e.preventDefault();
       let score = 0;
       let total = 40;
@@ -160,7 +181,7 @@ const questions = [
           if (radios[j] && radios[j].checked) selected = j;
         }
         if (selected === -1) continue; // unanswered
-        if (selected === questions[i].correct) score += 5;
+        if (selected === vietnameseQuestions[i].correct) score += 5;
         else score -= 2;
       }
       let resultBox = document.getElementById('resultBox');
@@ -392,7 +413,7 @@ function showCertForm() {
   sessionStorage.setItem('certPhoto', defaultPhoto);
   
   // Redirect to certificate page with marks parameter
-  window.location.href = `certificate_spanish.html?marks=${score}`;
+  window.location.href = `certificate_vietnamese.html?marks=${score}`;
 }
 function closeCertModal() {
   let modal = document.getElementById('certModalBg');

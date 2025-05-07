@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korean Language Certificate - EduLang Hub</title>
+  <title>Chinese Language Certificate - EduLang Hub</title>
   <!-- Preconnect to Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -905,7 +905,7 @@
 <body>
   <!-- Form Container -->
   <div class="form-container" id="formContainer">
-    <h1>Korean Language Certificate</h1>
+    <h1>Chinese Language Certificate</h1>
     
     <div class="form-group">
       <label for="name">Your Name:</label>
@@ -938,15 +938,16 @@
         <div class="certificate-header">
           <!-- Logo removed as requested -->
           <h1 class="certificate-title">Certificate of Achievement</h1>
-          <div class="certificate-subtitle" style="font-size: 24px; color: #b8860b; margin-bottom: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Korean Language Proficiency</div>
+          <div class="certificate-subtitle" style="font-size: 24px; color: #b8860b; margin-bottom: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;">Chinese Language Proficiency</div>
         </div>
         
         <div class="certificate-body">
           
           <div class="certificate-watermark">EDULANG HUB</div>
           <div class="certificate-name" id="certificateName" style="font-family: 'Cinzel', serif; font-weight: 900; letter-spacing: 2px;">STUDENT NAME</div>
-          <div class="certificate-description">has successfully completed the <span style="font-weight: bold; color: #0D47A1;">Korean Language Proficiency Test</span>With distinction, the holder has successfully completed the Korean Language Test, demonstrating excellent language skills and a strong commitment to mastery.
-          </div>
+          <div class="certificate-description">has successfully completed the <span style="font-weight: bold; color: #0D47A1;">Chinese Language Proficiency Test</span> With distinction, the holder has successfully completed the Chinese Language Test, demonstrating excellent language skills and a strong commitment to mastery.</div>
+
+          
           <div class="certificate-stamp">
             <div class="certificate-stamp-ink" style="background-color: #ccc;"></div>
             <div class="stamp-content">
@@ -1148,7 +1149,7 @@
         id: certificateID,
         name: name,
         date: formattedDate,
-        course: 'Korean Language Proficiency',
+        course: 'Chinese Language Proficiency',
         issuer: 'EduLang Hub',
         score: marks + ' marks',
         level: determineLevel(marks)
@@ -1198,7 +1199,7 @@
 
       // Back to test page
       document.getElementById('backToTest').addEventListener('click', function() {
-        window.location.href = 'test_korean.html';
+        window.location.href = 'test_chinese.html';
       });
 
       // Add button to go back to form
@@ -1290,7 +1291,7 @@
             const imgX = (pdfWidth - imgWidth * ratio) / 2;
             const imgY = (pdfHeight - imgHeight * ratio) / 2;
             pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-            pdf.save('Korean_Language_Certificate.pdf');
+            pdf.save('Chinese_Language_Certificate.pdf');
           } catch (error) {
             console.error('Error creating PDF:', error);
             // alert removed: do not show any popup to user
