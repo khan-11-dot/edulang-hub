@@ -1150,7 +1150,7 @@
         id: certificateID,
         name: name,
         date: formattedDate,
-        course: 'Korean Language Proficiency',
+        course: 'English Language Proficiency',
         issuer: 'EduLang Hub',
         score: marks + ' marks',
         level: determineLevel(marks)
@@ -1200,7 +1200,7 @@
 
       // Back to test page
       document.getElementById('backToTest').addEventListener('click', function() {
-        window.location.href = 'test_korean.html';
+        window.location.href = 'test_english.html';
       });
 
       // Add button to go back to form
@@ -1292,7 +1292,7 @@
             const imgX = (pdfWidth - imgWidth * ratio) / 2;
             const imgY = (pdfHeight - imgHeight * ratio) / 2;
             pdf.addImage(imgData, 'JPEG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-            pdf.save('Korean_Language_Certificate.pdf');
+            pdf.save('English_Language_Certificate.pdf');
           } catch (error) {
             console.error('Error creating PDF:', error);
             // alert removed: do not show any popup to user
