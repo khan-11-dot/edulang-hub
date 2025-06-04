@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Developer - Bilal Ahmad</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<style>
+        :root {
+            --neon-green: #00ff00;
+            --neon-blue: #00ffff;
+            --neon-pink: #ff00ff;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --neon-primary: #00ff00;
+            --neon-secondary: #00ffff;
+            --neon-accent: #ff3366;
+            --neon-text-glow: 0 0 10px currentColor;
+            --neon-box-glow: 0 0 20px rgba(0, 255, 0, 0.5);
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.9) !important;
+            border-bottom: 1px solid var(--neon-green);
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--neon-green) !important;
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: var(--neon-pink) !important;
+            text-shadow: 0 0 10px var(--neon-pink),
+                       0 0 20px var(--neon-pink),
+                       0 0 30px var(--neon-pink);
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .creator-hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                        url('janan.jpg') center/cover no-repeat fixed;
+            color: white;
+        }
+
+        .creator-card {
+            background: rgba(17, 17, 17, 0.95);
+            border-radius: 20px;
+            box-shadow: var(--neon-box-glow);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--neon-primary);
+        }
+
+        .creator-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px var(--neon-primary);
+        }
+
+        .creator-header {
+            background: linear-gradient(45deg, var(--neon-primary), var(--neon-secondary));
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid var(--neon-primary);
+            box-shadow: var(--neon-box-glow);
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .creator-body {
+            padding: 2rem;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--neon-primary);
+            text-shadow: var(--neon-text-glow);
+        }
+
+        .text-muted {
+            color: #aaa !important;
+        }
+
+        .text-dark {
+            color: var(--neon-primary) !important;
+        }
+
+        .contact-link {
+            font-size: 1.1rem;
+            color: var(--neon-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            text-shadow: var(--neon-text-glow);
+        }
+
+        .contact-link:hover {
+            color: var(--neon-secondary);
+            transform: translateX(5px);
+        }
+
+        .contact-link i {
+            margin-right: 10px;
+        }
+
+        .creator-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #4a90e2, #67b26f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .creator-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #4a90e2, #67b26f);
+            box-shadow: 0 0 15px rgba(74, 144, 226, 0.5);
+        }
+
+        .skills-section {
+            padding: 3rem 0;
+            background: rgba(17, 17, 17, 0.95);
+            border-radius: 20px;
+            margin: 2rem 0;
+            border: 1px solid var(--neon-primary);
+            box-shadow: var(--neon-box-glow);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--neon-primary);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px var(--neon-primary);
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 0, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-card:hover::before {
+            opacity: 1;
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-primary);
+            text-shadow: var(--neon-text-glow);
+        }
+
+        .skill-title {
+            font-size: 1.25rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skill-description {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .location-list {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: rgba(17, 17, 17, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            border-top: 1px solid var(--neon-primary);
+            box-shadow: var(--neon-box-glow);
+        }
+
+        .location-list h2 {
+            color: var(--neon-primary);
+            margin-bottom: 20px;
+            text-shadow: var(--neon-text-glow);
+        }
+
+        .location-list .list-group-item {
+            background: transparent;
+            border: 1px solid var(--neon-primary);
+            color: #fff;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .location-list .list-group-item:hover {
+            background: var(--neon-primary);
+            color: #000;
+            transform: translateX(10px);
+        }
+
+        .location-list .list-group-item i {
+            margin-right: 10px;
+        }
+
+        .skill-category {
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid #ff3300;
+            box-shadow: 0 0 15px rgba(255, 51, 0, 0.3);
+        }
+
+        .skill-card {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #ff3300;
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(255, 51, 0, 0.4);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff3300;
+            text-shadow: 0 0 10px #ff3300;
+        }
+
+        .skill-title {
+            color: #ff3300;
+            text-shadow: 0 0 10px #ff3300;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .skill-description {
+            color: #fff;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<link href="css/cursor-effects.css" rel="stylesheet"/></head>
+<body>
+<!-- Navigation -->
+
+                    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Header -->
+<header class="page-header">
+<div class="container">
+<h1>Developer</h1>
+<p class="lead">Meet the developer </p>
+</div>
+</header>
+<!-- Creator Section -->
+<section class="creator-hero d-flex align-items-center">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-8">
+<div class="creator-card">
+<!-- Header -->
+<div class="creator-header">
+<div class="profile-image">
+<img alt="Bilal Ahmad" class="img-fluid" src="janan.jpg"/>
+</div>
+<h1 class="creator-name" data-text="Bilal Ahmad">Bilal Ahmad</h1>
+<p class="lead mb-0">Website Developer &amp; Designer</p>
+</div>
+<!-- Body -->
+<div class="creator-body">
+<!-- About -->
+<div class="mb-5">
+<h2 class="h3 text-dark mb-4">About Me</h2>
+<p class="lead text-muted">
+                                    Professional web developer specializing in creating modern, responsive websites
+                                    with beautiful user interfaces and smooth user experiences.
+                                </p>
+</div>
+<!-- Contact -->
+<div>
+<h2 class="h3 text-dark mb-4">Contact Information</h2>
+<div class="d-flex flex-column">
+<a class="contact-link" href="tel:+923439224280">
+<i class="fas fa-phone"></i>
+                                        0343 9224280
+                                    </a>
+<a class="contact-link" href="mailto:ahmadadalbilal@gmail.com">
+<i class="fas fa-envelope"></i>
+                                        ahmadadalbilal@gmail.com
+                                    </a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section class="skills-section">
+<div class="container">
+<h2 class="text-center mb-5" style="color: var(--neon-primary); text-shadow: var(--neon-text-glow);">Professional Skills</h2>
+<!-- Languages -->
+<div class="skill-category mb-5">
+<h3 class="text-center mb-4" style="color: var(--neon-secondary); font-size: 1.5rem;">Languages</h3>
+<div class="skills-grid">
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fas fa-language"></i>
+</div>
+<h3 class="skill-title">Korean Language</h3>
+<p class="skill-description">Proficient in Korean language with strong communication and cultural understanding.</p>
+</div>
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fas fa-globe"></i>
+</div>
+<h3 class="skill-title">English Language</h3>
+<p class="skill-description">Advanced English proficiency with excellent writing and speaking skills.</p>
+</div>
+</div>
+</div>
+<!-- Technical Skills -->
+<div class="skill-category mb-5">
+<h3 class="text-center mb-4" style="color: var(--neon-secondary); font-size: 1.5rem;">Technical Expertise</h3>
+<div class="skills-grid">
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fas fa-robot"></i>
+</div>
+<h3 class="skill-title">AI Expert</h3>
+<p class="skill-description">Specialized in artificial intelligence, machine learning, and deep learning technologies.</p>
+</div>
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fab fa-python"></i>
+</div>
+<h3 class="skill-title">Python Programming</h3>
+<p class="skill-description">Skilled in Python development with focus on automation and data processing.</p>
+</div>
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fab fa-html5"></i>
+</div>
+<h3 class="skill-title">HTML &amp; CSS</h3>
+<p class="skill-description">Expertise in creating responsive and modern web interfaces.</p>
+</div>
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fab fa-java"></i>
+</div>
+<h3 class="skill-title">Java Programming</h3>
+<p class="skill-description">Proficient in Java development and object-oriented programming.</p>
+</div>
+</div>
+</div>
+<!-- Professional Tools -->
+<div class="skill-category">
+<h3 class="text-center mb-4" style="color: var(--neon-secondary); font-size: 1.5rem;">Professional Tools</h3>
+<div class="skills-grid">
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fas fa-keyboard"></i>
+</div>
+<h3 class="skill-title">High Speed Typing</h3>
+<p class="skill-description">Expert in rapid and accurate typing with exceptional WPM speed.</p>
+</div>
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fas fa-file-excel"></i>
+</div>
+<h3 class="skill-title">Excel Expert</h3>
+<p class="skill-description">Advanced proficiency in Microsoft Excel, including complex formulas and data analysis.</p>
+</div>
+<div class="skill-card">
+<div class="skill-icon">
+<i class="fas fa-desktop"></i>
+</div>
+<h3 class="skill-title">MS Office Suite</h3>
+<p class="skill-description">Comprehensive knowledge of Microsoft Office applications and tools.</p>
+</div>
+</div>
+</div>
+<div class="text-center mt-5">
+<p style="color: var(--neon-primary); text-shadow: var(--neon-text-glow);">
+                    Contact me at:
+                    <br/>
+<i class="fas fa-envelope"></i> ahmadadalbilal@gmail.com
+                    <br/>
+<i class="fas fa-phone"></i> 0343 9224280
+                </p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-dark text-light py-4">
+<div class="container text-center">
+<p class="mb-0">© 2025 Developed by Bilal Ahmad. All rights reserved.</p>
+</div>
+</footer>
+<div class="cursor-dot-outline"></div>
+<script src="js/cursor-effects.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        function toggleList(listId) {
+            const lists = document.querySelectorAll('.location-list');
+            lists.forEach(list => {
+                if (list.id === listId) {
+                    list.style.display = list.style.display === 'none' ? 'block' : 'none';
+                } else {
+                    list.style.display = 'none';
+                }
+            });
+        }
+
+        // Close lists when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.location-list') && !event.target.closest('.nav-link')) {
+                document.querySelectorAll('.location-list').forEach(list => {
+                    list.style.display = 'none';
+                });
+            }
+        });
+
+        // Initialize lists as hidden
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.location-list').forEach(list => {
+                list.style.display = 'none';
+            });
+        });
+    </script>
+<script src="js/cursor-effects.js"></script></body>
+</html>
