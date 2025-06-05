@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pronunciation Basics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #005a9e;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 2rem 1rem;
+        }
+
+        .category {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            width: 260px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category:hover {
+            background-color: #d6eaff;
+            transform: translateY(-5px);
+        }
+
+        #details-section {
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 1rem auto 2rem;
+            padding: 2rem;
+            border-top: 4px solid #005a9e;
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        #detail-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #005a9e;
+        }
+
+        #detail-content {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Enhanced Pronunciation Guide Styles */
+        .pronunciation-guide-enhanced {
+            padding: 25px 15px;
+            background-color: #f0f4f8; /* Light grey-blue background for the whole section */
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 950px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+
+        .pronunciation-guide-enhanced > h2 {
+            text-align: center;
+            color: #1c3d5a; /* Darker blue for main title */
+            font-size: 2.4rem;
+            margin-bottom: 35px;
+            font-weight: 700;
+        }
+
+        .learning-module {
+            background-color: #ffffff; /* White background for individual modules */
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+            border-top: 4px solid;
+        }
+
+        .learning-module.consonants-module {
+            border-top-color: #28a745; /* Green accent for consonants */
+        }
+        .learning-module.consonants-module .module-title .emoji {
+            background-color: #e9f5ec; /* Light green background for emoji */
+            color: #28a745;
+        }
+
+        .learning-module.vowels-module {
+            border-top-color: #007bff; /* Blue accent for vowels */
+        }
+        .learning-module.vowels-module .module-title .emoji {
+            background-color: #e6f2ff; /* Light blue background for emoji */
+            color: #007bff;
+        }
+
+        .module-title {
+            font-size: 1.9rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: #343a40; /* Dark grey for module titles */
+        }
+
+        .module-title .emoji {
+            font-size: 1.5em; /* Larger emoji */
+            margin-right: 15px;
+            padding: 8px;
+            border-radius: 50%; /* Circular background for emoji */
+            line-height: 1; /* Ensure emoji is centered in circle */
+        }
+
+        .module-subtitle {
+            color: #495057; /* Medium grey for subtitles */
+            font-size: 1.4rem;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef; /* Light underline for subtitles */
+            display: flex;
+            align-items: center;
+        }
+        .module-subtitle .emoji {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .learning-module p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: #545b62; /* Slightly lighter grey for paragraph text */
+            margin-bottom: 18px;
+        }
+
+        .sound-list {
+            list-style-type: none;
+            padding-left: 0;
+            font-size: 1rem;
+            line-height: 1.9;
+        }
+
+        .sound-list li {
+            padding: 10px 15px;
+            border-bottom: 1px solid #f1f3f5; /* Very light separator */
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+            border-radius: 5px;
+        }
+        .sound-list li:last-child {
+            border-bottom: none;
+        }
+        .sound-list li:hover {
+            background-color: #f8f9fa; /* Light hover effect */
+            transform: translateX(5px);
+        }
+
+        .sound-list strong {
+            color: #212529; /* Darker text for sound types */
+            font-weight: 600;
+        }
+        .sound-list .example-word {
+            font-style: italic;
+            color: #007bff; /* Blue for example words */
+        }
+
+        .practice-tip {
+            background-color: #fff9e6; /* Light yellow for tips */
+            border-left: 4px solid #ffc107; /* Amber accent for tips */
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        .practice-tip strong {
+            color: #b38600; /* Darker yellow for 'Tip:' */
+        }
+
+        .audio-practice-area {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa; /* Light grey background for audio area */
+            border-radius: 6px;
+        }
+
+        .audio-practice-area .module-subtitle {
+            border-bottom: none; /* Remove underline for subtitle in audio area */
+            margin-bottom: 10px;
+        }
+
+        .audio-player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid for audio players */
+            gap: 10px;
+        }
+
+        .audio-player-grid audio {
+            width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .vowel-chart-container {
+            margin-top: 25px;
+            text-align: center; /* Center the chart */
+        }
+
+        .vowel-chart-container img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ced4da; /* Light border for chart */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Vowel Section Enhancements */
+        .content-block {
+            margin: 25px 0;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .mistake-item {
+            background: #fff8f8;
+            border-left: 4px solid #ff6b6b;
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .mistake-word {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .mistake-example {
+            color: #7f8c8d;
+            font-family: 'Courier New', monospace;
+            margin: 5px 0;
+            line-height: 1.5;
+        }
+        
+        .mistake-tip {
+            font-size: 0.9em;
+            color: #5d5d5d;
+            font-style: italic;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .tip-card {
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e0e0ff;
+        }
+        
+        .tip-card h5 {
+            margin: 10px 0 8px;
+            color: #2c3e50;
+        }
+        
+        .tip-card p {
+            margin: 0;
+            font-size: 0.95em;
+            color: #555;
+        }
+        
+        .practice-exercises {
+            margin: 30px 0;
+        }
+        
+        .exercise {
+            background: #f9f9f9;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .exercise h5 {
+            margin: 0 0 10px;
+            color: #2c3e50;
+        }
+        
+        .pairs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .pairs-grid div {
+            background: #fff;
+            padding: 8px 12px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        /* New Sections Styling */
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .example {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .example .word {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .example .ipa {
+            font-family: 'Courier New', monospace;
+            color: #7f8c8d;
+            margin: 5px 0;
+        }
+
+        .example .hint {
+            font-size: 0.85em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .sentence-example {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .sentence-example p {
+            margin: 0;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .sentence-example .hint {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .linking-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .reductions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .reduction {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .reduction .phrase {
+            font-weight: bold;
+        }
+
+        .reduction .becomes {
+            color: #7f8c8d;
+        }
+
+        .reduction .reduced {
+            color: #e74c3c;
+            font-style: italic;
+        }
+
+        .shadowing-exercise {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .conversation-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .topic {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #9b59b6;
+        }
+
+        .topic h5 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .topic p {
+            margin: 0;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .final-tip {
+            background: #fff9e6;
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+        }
+        
+        .final-practice-box {
+            margin-top: 30px;
+            background-color: #e6fff0; /* Light green for final practice */
+            border-left: 5px solid #20c997; /* Teal accent */
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .final-practice-box .module-subtitle {
+             color: #00695c; /* Darker teal for title */
+             border-bottom: none;
+        }
+        .final-practice-box p {
+            font-size: 1.1rem;
+            color: #004d40; /* Dark teal text */
+        }
+        
+        /* Alphabet Grid Styles */
+        .alphabet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .alphabet-card {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        /* Practice Section Styles */
+        .practice-section {
+            margin: 30px 0;
+        }
+
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .practice-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .practice-card h5 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f4f8;
+        }
+
+        .practice-card ul, .practice-card ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        .practice-card li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .minimal-pairs li {
+            font-family: 'Courier New', monospace;
+        }
+
+        .tongue-twisters li {
+            color: #2c3e50;
+            font-style: italic;
+        }
+
+        .stress-practice li {
+            color: #2c3e50;
+        }
+
+        .stress-practice strong {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .intonation-practice li {
+            position: relative;
+            padding-right: 30px;
+        }
+
+        .intonation-practice li::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+        }
+
+        .reductions li {
+            display: flex;
+            justify-content: space-between;
+            max-width: 200px;
+        }
+
+        .reductions li::after {
+            content: '→';
+            margin: 0 10px;
+            color: #7f8c8d;
+        }
+        
+        /* Vowel Tips Section */
+        .vowel-tips {
+            margin: 30px 0;
+        }
+        
+        .vowel-tips .module-subtitle {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 1.4em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .tip-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #4a90e2;
+        }
+        
+        .tip-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tip-card h6 {
+            color: #2c3e50;
+            margin: 0 0 12px 0;
+            font-size: 1.1em;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f4f8;
+        }
+        
+        .tip-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin: 10px 0 12px 0;
+        }
+        
+        .tip-card ul {
+            padding-left: 20px;
+            margin: 10px 0 0 0;
+        }
+        
+        .tip-card li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+            color: #4a5568;
+        }
+        
+        .tip-card li:last-child {
+            margin-bottom: 0;
+        }
+        
+        .vowel-tips .practice-tip {
+            background-color: #f0f7ff;
+            border-left: 4px solid #4a90e2;
+            padding: 15px 20px;
+            margin: 25px 0 0 0;
+            border-radius: 6px;
+        }
+        
+        .alphabet-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            background: #e9ecef;
+        }
+        
+        .letter {
+            display: block;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+        
+        .pronunciation {
+            font-size: 0.9em;
+            color: #6c757d;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <header>
+        <h1>Pronunciation Basics</h1>
+        <p>Master English pronunciation and accent reduction</p>
+    </header>
+    <section class="pronunciation-guide-enhanced">
+        <h2><span class="emoji">🔤</span> English Alphabet (A to Z)</h2>
+        <div class="alphabet-grid">
+            <div class="alphabet-card"><span class="letter">A</span><span class="pronunciation">/eɪ/</span></div>
+            <div class="alphabet-card"><span class="letter">B</span><span class="pronunciation">/biː/</span></div>
+            <div class="alphabet-card"><span class="letter">C</span><span class="pronunciation">/siː/</span></div>
+            <div class="alphabet-card"><span class="letter">D</span><span class="pronunciation">/diː/</span></div>
+            <div class="alphabet-card"><span class="letter">E</span><span class="pronunciation">/iː/</span></div>
+            <div class="alphabet-card"><span class="letter">F</span><span class="pronunciation">/ɛf/</span></div>
+            <div class="alphabet-card"><span class="letter">G</span><span class="pronunciation">/dʒiː/</span></div>
+            <div class="alphabet-card"><span class="letter">H</span><span class="pronunciation">/eɪtʃ/</span></div>
+            <div class="alphabet-card"><span class="letter">I</span><span class="pronunciation">/aɪ/</span></div>
+            <div class="alphabet-card"><span class="letter">J</span><span class="pronunciation">/dʒeɪ/</span></div>
+            <div class="alphabet-card"><span class="letter">K</span><span class="pronunciation">/keɪ/</span></div>
+            <div class="alphabet-card"><span class="letter">L</span><span class="pronunciation">/ɛl/</span></div>
+            <div class="alphabet-card"><span class="letter">M</span><span class="pronunciation">/ɛm/</span></div>
+            <div class="alphabet-card"><span class="letter">N</span><span class="pronunciation">/ɛn/</span></div>
+            <div class="alphabet-card"><span class="letter">O</span><span class="pronunciation">/oʊ/</span></div>
+            <div class="alphabet-card"><span class="letter">P</span><span class="pronunciation">/piː/</span></div>
+            <div class="alphabet-card"><span class="letter">Q</span><span class="pronunciation">/kjuː/</span></div>
+            <div class="alphabet-card"><span class="letter">R</span><span class="pronunciation">/ɑːr/</span></div>
+            <div class="alphabet-card"><span class="letter">S</span><span class="pronunciation">/ɛs/</span></div>
+            <div class="alphabet-card"><span class="letter">T</span><span class="pronunciation">/tiː/</span></div>
+            <div class="alphabet-card"><span class="letter">U</span><span class="pronunciation">/juː/</span></div>
+            <div class="alphabet-card"><span class="letter">V</span><span class="pronunciation">/viː/</span></div>
+            <div class="alphabet-card"><span class="letter">W</span><span class="pronunciation">/ˈdʌbəl.juː/</span></div>
+            <div class="alphabet-card"><span class="letter">X</span><span class="pronunciation">/ɛks/</span></div>
+            <div class="alphabet-card"><span class="letter">Y</span><span class="pronunciation">/waɪ/</span></div>
+            <div class="alphabet-card"><span class="letter">Z</span><span class="pronunciation">/zɛd/ or /ziː/</span></div>
+        </div>
+
+        <h2 style="margin-top: 50px;"><span class="emoji">🗣️</span> All English Sounds: Consonants & Vowels</h2>
+
+        <!-- Consonants Section -->
+        <div class="learning-module consonants-module">
+            <h3 class="module-title"><span class="emoji">🅰️</span>Consonant Sounds (حروفِ صحیح)</h3>
+            <p>Consonants are produced by obstructing the airflow with lips, tongue, or throat. English has <strong>24 consonant sounds</strong>.</p>
+
+            <div>
+                <h4 class="module-subtitle"><span class="emoji">🔹</span>Types of Consonants:</h4>
+                <ul class="sound-list">
+                    <li><strong>Plosives:</strong> /p/ <span class="example-word">(pen)</span>, /b/ <span class="example-word">(bat)</span>, /t/ <span class="example-word">(top)</span>, /d/ <span class="example-word">(dog)</span>, /k/ <span class="example-word">(cat)</span>, /g/ <span class="example-word">(go)</span></li>
+                    <li><strong>Fricatives:</strong> /f/ <span class="example-word">(fan)</span>, /v/ <span class="example-word">(van)</span>, /θ/ <span class="example-word">(think)</span>, /ð/ <span class="example-word">(this)</span>, /s/ <span class="example-word">(sun)</span>, /z/ <span class="example-word">(zoo)</span>, /ʃ/ <span class="example-word">(she)</span>, /ʒ/ <span class="example-word">(measure)</span></li>
+                    <li><strong>Affricates:</strong> /ʧ/ <span class="example-word">(chair)</span>, /ʤ/ <span class="example-word">(jungle)</span></li>
+                    <li><strong>Nasals:</strong> /m/ <span class="example-word">(man)</span>, /n/ <span class="example-word">(net)</span>, /ŋ/ <span class="example-word">(ring)</span></li>
+                    <li><strong>Approximants:</strong> /l/ <span class="example-word">(love)</span>, /r/ <span class="example-word">(red)</span>, /w/ <span class="example-word">(water)</span>, /j/ <span class="example-word">(yes)</span></li>
+                </ul>
+            </div>
+
+            <div class="practice-tip">
+                <strong>Tip:</strong> Use tongue twisters like “She sells sea shells by the sea shore” to improve /ʃ/ and /s/ pronunciation. Also, try to feel where the sound is made in your mouth.
+            </div>
+             <div class="practice-tip">
+                <strong>Practice Tip:</strong> Use a mirror to observe your lip and tongue position when making consonant sounds. Record your voice and compare it with native speakers.
+            </div>
+
+
+        </div>
+
+        <!-- Vowel Section -->
+        <div class="learning-module vowels-module">
+            <h3 class="module-title"><span class="emoji">🔤</span>Vowel Sounds (حروفِ علت)</h3>
+            <p>Vowels are sounds made without blocking airflow. English has <strong>5 vowel letters</strong> (A, E, I, O, U) but over <strong>20 vowel sounds</strong>, which can be tricky for learners!</p>
+
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">🔹</span>Types of Vowels:</h4>
+                <ul class="sound-list">
+                    <li><strong>Short Vowels:</strong> /æ/ <span class="example-word">(cat)</span>, /e/ <span class="example-word">(bed)</span>, /ɪ/ <span class="example-word">(sit)</span>, /ɒ/ <span class="example-word">(hot)</span>, /ʌ/ <span class="example-word">(cup)</span></li>
+                    <li><strong>Long Vowels:</strong> /iː/ <span class="example-word">(see)</span>, /uː/ <span class="example-word">(blue)</span>, /ɑː/ <span class="example-word">(car)</span>, /ɔː/ <span class="example-word">(saw)</span>, /ɜː/ <span class="example-word">(bird)</span></li>
+                    <li><strong>Diphthongs (Gliding Vowels):</strong> /aɪ/ <span class="example-word">(time)</span>, /eɪ/ <span class="example-word">(day)</span>, /oʊ/ <span class="example-word">(go)</span>, /aʊ/ <span class="example-word">(now)</span>, /ɔɪ/ <span class="example-word">(boy)</span></li>
+                </ul>
+                
+                <div class="vowel-tips">
+                    <h5 class="module-subtitle"><span class="emoji">💡</span> Vowel Pronunciation Tips</h5>
+                    <div class="tip-grid">
+                        <div class="tip-card">
+                            <h6>1. Mouth Position Matters</h6>
+                            <ul>
+                                <li>For /iː/ (as in "see"): Smile widely, tongue high and forward</li>
+                                <li>For /uː/ (as in "food"): Round your lips, tongue pulled back</li>
+                                <li>For /æ/ (as in "cat"): Mouth open wide, tongue low and forward</li>
+                                <li>For /ɑː/ (as in "car"): Mouth open wide, tongue low and back</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h6>2. Length is Key</h6>
+                            <p>English distinguishes between short and long vowels. Long vowels are held longer:</p>
+                            <ul>
+                                <li>ship /ʃɪp/ (short) vs. sheep /ʃiːp/ (long)</li>
+                                <li>full /fʊl/ (short) vs. fool /fuːl/ (long)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h6>3. Master the Schwa /ə/</h6>
+                            <p>The most common vowel sound in English, found in unstressed syllables:</p>
+                            <ul>
+                                <li>about /əˈbaʊt/</li>
+                                <li>banana /bəˈnænə/</li>
+                                <li>support /səˈpɔːrt/</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h6>4. Diphthong Practice</h6>
+                            <p>These are two vowel sounds in one syllable. Practice gliding from one to the other:</p>
+                            <ul>
+                                <li>/aɪ/: Start with /a/ and glide to /ɪ/ (try saying "I")</li>
+                                <li>/oʊ/: Start with /o/ and glide to /ʊ/ (try saying "go")</li>
+                                <li>/aʊ/: Start with /a/ and glide to /ʊ/ (try saying "now")</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h6>5. The R-Colored Vowels</h6>
+                            <p>In American English, vowels before R change their sound:</p>
+                            <ul>
+                                <li>car /kɑːr/ (not /kaː/)</li>
+                                <li>bird /bɜːrd/ (not /bɜːd/)</li>
+                                <li>her /hɜːr/ (not /hɜː/)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="tip-card">
+                            <h6>6. Common Problem Pairs</h6>
+                            <p>Practice these commonly confused sounds:</p>
+                            <ul>
+                                <li>/e/ vs /æ/: bet vs bat, men vs man</li>
+                                <li>/ɪ/ vs /iː/: ship vs sheep, live vs leave</li>
+                                <li>/ɒ/ vs /ɔː/: cot vs caught, not vs nought</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="practice-tip">
+                    <strong>💡 Practice Tip:</strong> Record yourself saying these vowel sounds and compare with native speakers. Pay attention to your mouth shape and tongue position in a mirror.
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">🎯</span> Common Vowel Mistakes</h4>
+                <div class="mistakes-grid">
+                    <div class="mistake-item">
+                        <div class="mistake-word">/ɪ/ vs /iː/</div>
+                        <div class="mistake-example">ship vs sheep<br>bit vs beat<br>sit vs seat</div>
+                        <div class="mistake-tip">The short /ɪ/ is quick and relaxed, while /iː/ is longer with a smile</div>
+                    </div>
+                    <div class="mistake-item">
+                        <div class="mistake-word">/æ/ vs /ɑː/</div>
+                        <div class="mistake-example">cat vs cart<br>hat vs heart<br>bad vs bard</div>
+                        <div class="mistake-tip">/æ/ is a short sound, while /ɑː/ is longer and more open</div>
+                    </div>
+                    <div class="mistake-item">
+                        <div class="mistake-word">/ʊ/ vs /uː/</div>
+                        <div class="mistake-example">pull vs pool<br>full vs fool<br>look vs Luke</div>
+                        <div class="mistake-tip">/ʊ/ is shorter and more relaxed than the long /uː/</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">💡</span> Vowel Pronunciation Tips</h4>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <span class="emoji">👄</span>
+                        <h5>Mouth Position</h5>
+                        <p>For /iː/ (as in 'see'), stretch your lips wide like a smile. For /uː/ (as in 'blue'), round your lips tightly.</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="emoji">👅</span>
+                        <h5>Tongue Position</h5>
+                        <p>For /æ/ (as in 'cat'), keep your tongue low and front. For /ɑː/ (as in 'car'), lower your tongue and open your mouth wider.</p>
+                    </div>
+                    <div class="tip-card">
+                        <span class="emoji">⏱️</span>
+                        <h5>Length Matters</h5>
+                        <p>Long vowels (like /iː/ in 'sheep') should be held longer than short vowels (like /ɪ/ in 'ship').</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="practice-exercises">
+                <h4 class="module-subtitle"><span class="emoji">✍️</span> Practice Exercises</h4>
+                <div class="exercise">
+                    <h5>1. Minimal Pairs Practice</h5>
+                    <p>Read these pairs aloud, focusing on the different vowel sounds:</p>
+                    <div class="pairs-grid">
+                        <div>bit - beat</div>
+                        <div>ship - sheep</div>
+                        <div>full - fool</div>
+                        <div>cot - caught</div>
+                        <div>pull - pool</div>
+                        <div>bad - bed</div>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h5>2. Vowel Length Practice</h5>
+                    <p>Read these words, holding the long vowels longer:</p>
+                    <div class="pairs-grid">
+                        <div>sheep (long) vs ship (short)</div>
+                        <div>fool (long) vs full (short)</div>
+                        <div>cart (long) vs cat (short)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vowel-chart-container">
+                <h4 class="module-subtitle"><span class="emoji">📊</span> Vowel Chart</h4>
+                <p>This chart shows the position of your tongue when making each vowel sound. Front vowels are made with the tongue forward in the mouth, while back vowels are made with the tongue pulled back.</p>
+                <img src="https://www.speechactive.com/wp-content/uploads/2021/04/English-Vowel-Chart-SpeechActive.png" alt="Vowel Chart" style="max-width: 100%; height: auto;">
+                <div class="chart-legend">
+                    <div><span class="legend-dot" style="background: #4CAF50;"></span> Front Vowels</div>
+                    <div><span class="legend-dot" style="background: #2196F3;"></span> Central Vowels</div>
+                    <div><span class="legend-dot" style="background: #FF5722;"></span> Back Vowels</div>
+                </div>
+            </div>
+
+            <div class="practice-tip">
+                <strong>📝 Pro Tip:</strong> Record yourself speaking and compare with native speakers. Pay special attention to vowel length and mouth position.
+            </div>
+        </div>
+
+        <!-- Stress and Intonation Section -->
+        <div class="learning-module stress-module">
+            <h3 class="module-title"><span class="emoji">🎵</span> Stress and Intonation</h3>
+            <p>Mastering word and sentence stress is crucial for natural-sounding English. It's not just <em>what</em> you say, but <em>how</em> you say it!</p>
+            
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">🔹</span> Word Stress</h4>
+                <p>In English, we stress one syllable more than others in multi-syllable words:</p>
+                <div class="examples-grid">
+                    <div class="example">
+                        <div class="word">PHOto</div>
+                        <div class="ipa">/ˈfoʊ.toʊ/</div>
+                        <div class="hint">First syllable stressed</div>
+                    </div>
+                    <div class="example">
+                        <div class="word">phoTOgraphy</div>
+                        <div class="ipa">/fəˈtɑː.ɡrə.fi/</div>
+                        <div class="hint">Second syllable stressed</div>
+                    </div>
+                    <div class="example">
+                        <div class="word">photoGRAPHic</div>
+                        <div class="ipa">/ˌfoʊ.t̬əˈɡræf.ɪk/</div>
+                        <div class="hint">Third syllable stressed</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">🎶</span> Sentence Stress & Rhythm</h4>
+                <p>Content words (nouns, main verbs, adjectives, adverbs) are usually stressed, while function words (articles, prepositions, helping verbs) are reduced.</p>
+                
+                <div class="sentence-example">
+                    <p><strong>I</strong> <em>WANT</em> to <em>GO</em> to the <em>STORE</em> to <em>BUY</em> some <em>MILK</em>.</p>
+                    <p class="hint">Stressed words carry the main meaning</p>
+                </div>
+
+                <div class="practice-tip">
+                    <strong>💡 Tip:</strong> English is a stress-timed language. Stressed syllables occur at regular intervals, and unstressed syllables are shortened to fit the rhythm.
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h5>Practice Exercise: Mark the Stressed Syllables</h5>
+                <p>Underline the stressed syllable in these words:</p>
+                <div class="pairs-grid">
+                    <div>1. beautiful</div>
+                    <div>2. understand</div>
+                    <div>3. important</div>
+                    <div>4. information</div>
+                    <div>5. photograph</div>
+                    <div>6. development</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Linking and Reduction Section -->
+        <div class="learning-module linking-module">
+            <h3 class="module-title"><span class="emoji">🔗</span> Linking and Reduction</h3>
+            <p>Native speakers often connect words and reduce sounds in natural speech. Learning these patterns will help you understand spoken English better.</p>
+            
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">🔹</span> Common Linking Patterns</h4>
+                <div class="linking-examples">
+                    <div class="example">
+                        <div class="title">Consonant + Vowel</div>
+                        <div class="phrase">"turn off" → "tur-noff"</div>
+                        <div class="hint">The /n/ sound links to the next word</div>
+                    </div>
+                    <div class="example">
+                        <div class="title">Vowel + Vowel</div>
+                        <div class="phrase">"go away" → "go(w)away"</div>
+                        <div class="hint">A /w/ or /j/ sound is added between vowels</div>
+                    </div>
+                    <div class="example">
+                        <div class="title">Same Consonant</div>
+                        <div class="phrase">"big game" → "bigame"</div>
+                        <div class="hint">The sound is held longer, not repeated</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-block">
+                <h4 class="module-subtitle"><span class="emoji">🔊</span> Common Reductions</h4>
+                <div class="reductions-grid">
+                    <div class="reduction">
+                        <div class="phrase">going to</div>
+                        <div class="becomes">→</div>
+                        <div class="reduced">gonna</div>
+                    </div>
+                    <div class="reduction">
+                        <div class="phrase">want to</div>
+                        <div class="becomes">→</div>
+                        <div class="reduced">wanna</div>
+                    </div>
+                    <div class="reduction">
+                        <div class="phrase">have to</div>
+                        <div class="becomes">→</div>
+                        <div class="reduced">hafta</div>
+                    </div>
+                    <div class="reduction">
+                        <div class="phrase">did you</div>
+                        <div class="becomes">→</div>
+                        <div class="reduced">didja</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h5>Practice Exercise: Linking Practice</h5>
+                <p>Read these sentences aloud, linking the words smoothly:</p>
+                <div class="practice-section">
+                    <h4 class="module-subtitle"><span class="emoji">🔊</span> Pronunciation Drills</h4>
+                    <div class="practice-grid">
+                        <div class="practice-card">
+                            <h5>1. Minimal Pairs Practice</h5>
+                            <p>Practice these similar-sounding words to improve your pronunciation accuracy:</p>
+                            <ul class="minimal-pairs">
+                                <li>ship /ʃɪp/ vs. sheep /ʃiːp/</li>
+                                <li>live /lɪv/ vs. leave /liːv/</li>
+                                <li>bad /bæd/ vs. bed /bɛd/</li>
+                                <li>full /fʊl/ vs. fool /fuːl/</li>
+                                <li>walk /wɔːk/ vs. work /wɜːrk/</li>
+                            </ul>
+                        </div>
+
+                        <div class="practice-card">
+                            <h5>2. Tongue Twisters</h5>
+                            <p>Challenge yourself with these fun tongue twisters:</p>
+                            <ul class="tongue-twisters">
+                                <li>She sells seashells by the seashore.</li>
+                                <li>How can a clam cram in a clean cream can?</li>
+                                <li>Fuzzy Wuzzy was a bear. Fuzzy Wuzzy had no hair.</li>
+                                <li>Red lorry, yellow lorry, red lorry, yellow lorry.</li>
+                            </ul>
+                        </div>
+
+                        <div class="practice-card">
+                            <h5>3. Common Phrases</h5>
+                            <p>Practice these frequently used English expressions:</p>
+                            <ol class="practice-list">
+                                <li>I need to ask her about it.</li>
+                                <li>He's an English teacher.</li>
+                                <li>I'll call you later.</li>
+                                <li>What do you want to do?</li>
+                                <li>I have to go now.</li>
+                                <li>Could you please repeat that?</li>
+                                <li>I don't understand.</li>
+                                <li>What does that mean?</li>
+                            </ol>
+                        </div>
+
+                        <div class="practice-card">
+                            <h5>4. Sentence Stress Practice</h5>
+                            <p>Repeat these sentences, stressing the <strong>bold</strong> words:</p>
+                            <ul class="stress-practice">
+                                <li>I <strong>love</strong> learning English.</li>
+                                <li>She <strong>always</strong> drinks coffee in the morning.</li>
+                                <li>They're <strong>going</strong> to the park tomorrow.</li>
+                                <li>I <strong>didn't</strong> say you were wrong.</li>
+                            </ul>
+                        </div>
+
+                        <div class="practice-card">
+                            <h5>5. Intonation Practice</h5>
+                            <p>Practice these questions with rising (↗) and falling (↘) intonation:</p>
+                            <ul class="intonation-practice">
+                                <li>Is it raining? (Rising: Yes/No question) ↗</li>
+                                <li>What time is it? (Falling: Wh-question) ↘</li>
+                                <li>You're coming, aren't you? (Rising: Tag question) ↗</li>
+                                <li>How was your day? (Falling: General question) ↘</li>
+                            </ul>
+                        </div>
+
+                        <div class="practice-card">
+                            <h5>6. Common Reductions</h5>
+                            <p>Practice these common English reductions in fast speech:</p>
+                            <ul class="reductions">
+                                <li>going to → gonna</li>
+                                <li>want to → wanna</li>
+                                <li>have to → hafta</li>
+                                <li>got to → gotta</li>
+                                <li>kind of → kinda</li>
+                                <li>sort of → sorta</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Final Practice Box -->
+        <div class="final-practice-box">
+            <h3 class="module-subtitle"><span class="emoji">🎉</span> Congratulations!</h3>
+            <p>You've completed this pronunciation guide! Keep practicing regularly and you'll continue to improve.</p>
+            <p class="practice-sentence">"The more you practice, the more confident you'll become in your English speaking skills!"</p>
+        </div>
+    </section>
+
+    <script>
+        // Function to show details when a category is clicked
+        function showDetails(category) {
+            // Implementation remains the same
+        }
+    </script>
+</body>
+</html>

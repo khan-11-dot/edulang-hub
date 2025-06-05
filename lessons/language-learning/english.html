@@ -235,44 +235,7 @@
             background-color: #f9f9f9;
         }
         
-        /* Progress Tracker */
-        .progress-section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 60px;
-        }
-        
-        .progress-bars {
-            margin-top: 30px;
-        }
-        
-        .progress-item {
-            margin-bottom: 20px;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: #00796b;
-            border-radius: 5px;
-            width: 0%;
-            transition: width 1s;
-        }
-        
+
         /* Footer */
         .footer {
             background: #00796b;
@@ -497,53 +460,7 @@
             </table>
         </section>
         
-        <!-- Progress Tracker -->
-        <section class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <p>Track your progress through the English language learning modules.</p>
-            
-            <div class="progress-bars">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Pronunciation Basics</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Everyday Conversation</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Advanced Grammar</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Overall Progress</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </div>
     
     <!-- Footer -->
@@ -579,26 +496,5 @@
         </div>
     </footer>
     
-    <script>
-        // Simple script to animate progress bars when they come into view
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // When progress section is in view, animate progress bars
-                        setTimeout(() => {
-                            document.querySelectorAll('.progress-fill').forEach(bar => {
-                                bar.style.width = '0%'; // Reset first
-                            });
-                        }, 300);
-                    }
-                });
-            });
-            
-            // Observe the progress section
-            observer.observe(document.querySelector('.progress-section'));
-        });
-    </script>
 </body>
 </html>

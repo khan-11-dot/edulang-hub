@@ -281,44 +281,6 @@
             margin-top: 15px;
         }
         
-        /* Progress Tracker */
-        .progress-section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 60px;
-        }
-        
-        .progress-bars {
-            margin-top: 30px;
-        }
-        
-        .progress-item {
-            margin-bottom: 20px;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background: #e0e0e0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: #00796b;
-            border-radius: 5px;
-            width: 0%;
-            transition: width 1s;
-        }
-        
         /* Footer */
         .footer {
             background: #00796b;
@@ -397,6 +359,66 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
         
+        /* Additional Resources Section */
+        .resources-section {
+            padding-bottom: 60px; /* Added more bottom padding */
+        }
+
+        .resources-section p.description {
+            text-align: center;
+            margin-bottom: 40px; /* Increased margin */
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px; /* Limit width for readability */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .resource-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; /* Consistent gap */
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            padding: 25px 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex; /* For flex layout */
+            flex-direction: column; /* Align items vertically */
+            justify-content: space-between; /* Distribute space */
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .resource-card h3 {
+            font-size: 1.4rem; /* Adjusted for consistency */
+            color: #00796b;
+            margin-bottom: 15px;
+        }
+
+        .resource-card p {
+            font-size: 0.95rem; /* Adjusted for consistency */
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            flex-grow: 1; /* Allow paragraph to take available space */
+        }
+
+        .resource-card .start-btn {
+            font-size: 0.9rem;
+            padding: 10px 20px;
+            margin-top: auto; /* Push button to bottom if card heights vary */
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .navbar {
@@ -457,7 +479,7 @@
                             <li>Diacritical marks</li>
                             <li>Calligraphy basics</li>
                         </ul>
-                        <a href="#alphabet" class="module-btn">Start Module</a>
+                        <a href="arabic_script_module.html" class="module-btn">Start Module</a>
                     </div>
                 </div>
                 
@@ -473,7 +495,7 @@
                             <li>Travel and directions</li>
                             <li>Cultural expressions</li>
                         </ul>
-                        <a href="#" class="module-btn">Start Module</a>
+                        <a href="arabic_phrases_module.html" class="module-btn">Start Module</a>
                     </div>
                 </div>
                 
@@ -489,7 +511,7 @@
                             <li>Poetic meters</li>
                             <li>Famous poets and works</li>
                         </ul>
-                        <a href="#poetry" class="module-btn">Start Module</a>
+                        <a href="arabic_poetry_module.html" class="module-btn">Start Module</a>
                     </div>
                 </div>
             </div>
@@ -550,6 +572,71 @@
                     <div class="arabic">س</div>
                     <div class="transliteration">sin</div>
                 </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ش</div>
+                    <div class="transliteration">shin</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ص</div>
+                    <div class="transliteration">sad</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ض</div>
+                    <div class="transliteration">dad</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ط</div>
+                    <div class="transliteration">ta</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ظ</div>
+                    <div class="transliteration">za</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ع</div>
+                    <div class="transliteration">ain</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">غ</div>
+                    <div class="transliteration">ghain</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ف</div>
+                    <div class="transliteration">fa</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ق</div>
+                    <div class="transliteration">qaf</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ك</div>
+                    <div class="transliteration">kaf</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ل</div>
+                    <div class="transliteration">lam</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">م</div>
+                    <div class="transliteration">meem</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ن</div>
+                    <div class="transliteration">noon</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ه</div>
+                    <div class="transliteration">ha</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">و</div>
+                    <div class="transliteration">waw</div>
+                </div>
+                <div class="alphabet-char">
+                    <div class="arabic">ي</div>
+                    <div class="transliteration">ya</div>
+                </div>
+                
             </div>
         </section>
         
@@ -571,53 +658,34 @@
             </div>
         </section>
         
-        <!-- Progress Tracker -->
-        <section class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <p>Track your progress through the Arabic language learning modules.</p>
-            
-            <div class="progress-bars">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Arabic Script</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+        <!-- Additional Learning Resources -->
+        <section id="additional-resources" class="resources-section">
+            <h2 class="section-title">Additional Learning Resources</h2>
+            <p class="description">Explore these external websites for more Arabic learning materials, tools, and communities to enhance your language journey.</p>
+            <div class="resource-list">
+                <div class="resource-card">
+                    <h3>Desert Sky Arabic</h3>
+                    <p>Features resources for Standard Arabic and the Egyptian dialect, including vocabulary lists, idiomatic expressions, and proverbs.</p>
+                    <a href="https://arabic.desert-sky.net/" target="_blank" class="start-btn">Visit Site</a>
                 </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Essential Phrases</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+                <div class="resource-card">
+                    <h3>Fluent Arabic</h3>
+                    <p>A comprehensive guide to free online resources for learning Modern Standard Arabic (MSA) and Classical Arabic, from alphabet to advanced topics.</p>
+                    <a href="https://www.fluentarabic.net/free-resources-to-learn-arabic-online/" target="_blank" class="start-btn">Visit Site</a>
                 </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Classical Poetry</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+                <div class="resource-card">
+                    <h3>Learn Arabic Online</h3>
+                    <p>A large and growing repository of tutorials covering Arabic reading, writing, numbers, verb conjugation, grammar, and more.</p>
+                    <a href="https://www.learnarabiconline.com/" target="_blank" class="start-btn">Visit Site</a>
                 </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Overall Progress</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+                <div class="resource-card">
+                    <h3>StoryLearning Arabic</h3>
+                    <p>Offers resources for learning multiple Arabic dialects (Egyptian, Levantine, Moroccan, etc.), with a focus on improving speaking fluency through stories.</p>
+                    <a href="https://storylearning.com/learn/arabic/arabic-tips/best-resources-to-learn-arabic" target="_blank" class="start-btn">Visit Site</a>
                 </div>
             </div>
         </section>
+        
     </div>
     
     <!-- Footer -->
@@ -653,26 +721,5 @@
         </div>
     </footer>
     
-    <script>
-        // Simple script to animate progress bars when they come into view
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // When progress section is in view, animate progress bars
-                        setTimeout(() => {
-                            document.querySelectorAll('.progress-fill').forEach(bar => {
-                                bar.style.width = '0%'; // Reset first
-                            });
-                        }, 300);
-                    }
-                });
-            });
-            
-            // Observe the progress section
-            observer.observe(document.querySelector('.progress-section'));
-        });
-    </script>
 </body>
 </html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical Arabic Poetry - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .navbar {
+            background: #00796b; /* Teal shade */
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .navbar-logo img {
+            height: 40px;
+            vertical-align: middle;
+        }
+        .navbar-logo span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        .navbar-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .navbar-links li {
+            margin-right: 25px;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+        .navbar-links a:hover {
+            color: #e0f2f1; /* Lighter teal for hover */
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.07);
+        }
+        .page-title {
+            text-align: center;
+            color: #004d40; /* Darker teal */
+            margin-bottom: 20px;
+            font-family: 'Noto Naskh Arabic', serif; /* Using Arabic font for title consistency */
+        }
+        .poetry-intro-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #e0f2f1; /* Light teal background */
+            border-radius: 8px;
+            border-left: 5px solid #00796b; /* Teal accent border */
+        }
+        .poetry-intro-section h2 {
+            color: #00695c; /* Medium teal */
+            font-family: 'Noto Naskh Arabic', serif;
+            margin-top: 0;
+        }
+        .poetry-intro-section p {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .poetry-intro-section ul {
+            list-style: none; /* Or 'disc' if preferred */
+            padding-left: 20px; /* Indent list */
+            margin-bottom: 20px;
+        }
+        .poetry-intro-section ul li {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px; /* Space for custom bullet */
+        }
+        .module-section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background-color: #f9f9f9; /* Slightly different from intro for distinction or use #e0f2f1 for consistency */
+            border-radius: 8px;
+            border-left: 5px solid #00796b; /* Teal accent border */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .module-section h2 {
+            color: #00695c; /* Medium teal */
+            border-bottom: 2px solid #004d40;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-family: 'Noto Naskh Arabic', serif;
+        }
+        .module-section p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 15px;
+        }
+        .module-section ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+        .module-section ul li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+        .module-section strong {
+            color: #004d40; 
+            font-weight: bold;
+        }
+        .poetry-intro-section ul li::before {
+            content: '\f02d'; /* Font Awesome book icon or similar, e.g., \f101 for poetry scroll */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #00796b; /* Teal */
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        .start-module-button-container {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .start-module-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #00796b; /* Teal */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .start-module-button:hover {
+            background-color: #004d40; /* Darker teal */
+            transform: translateY(-2px);
+        }
+        .start-module-button:active {
+            transform: translateY(0);
+        }
+        .back-link-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #00796b; /* Teal */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .back-link i {
+            margin-right: 8px;
+        }
+        .back-link:hover {
+            background: #004d40; /* Darker teal on hover */
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background: #004d40; /* Darker teal for footer */
+            color: #e0f2f1;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-logo">
+            <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo">
+            <span>EduLang Hub</span>
+        </a>
+        <ul class="navbar-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="arabic.html">Arabic Course</a></li>
+            <li><a href="../../languages.html">Other Languages</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Classical Poetry - النثر الكلاسيكي</h1>
+
+        <section class="poetry-intro-section">
+            <h2><i class="fas fa-feather-alt"></i> Classical Poetry</h2>
+            <p>Discover the rich tradition of Arabic poetry.</p>
+            <ul>
+                <li>Pre-Islamic poetry (الشعر الجاهلي)</li>
+                <li>Golden Age poetry (شعر العصر الذهبي)</li>
+                <li>Poetic meters (البحور الشعرية)</li>
+                <li>Famous poets and works (أشهر الشعراء والأعمال)</li>
+            </ul>
+
+        </section>
+
+        <section class="module-section" id="pre-islamic-poetry">
+            <h2><i class="fas fa-landmark"></i> Pre-Islamic Poetry (الشعر الجاهلي)</h2>
+            <p>Pre-Islamic poetry, known as <strong>Ash-Shi'r al-Jahili (الشعر الجاهلي)</strong>, refers to the poetry composed in the Arabian Peninsula before the rise of Islam (before approximately 610 CE). This era, often termed the "Age of Ignorance" (Jahiliyyah) from a later Islamic perspective, was paradoxically a golden age for Arabic poetry, characterized by a highly sophisticated oral tradition.</p>
+            <p>Key characteristics of Pre-Islamic poetry include:</p>
+            <ul>
+                <li><strong>The Qasida (قصيدة):</strong> The most prominent poetic form, a long polythematic ode, often beginning with a nostalgic prelude (nasīb) lamenting a lost love or abandoned campsite, followed by a journey (raḥīl), and then praise of the tribe, a patron, oneself (fakhr), or satire (hijāʾ).</li>
+                <li><strong>Themes:</strong> Common themes revolved around desert life, tribal loyalty (ʿaṣabiyyah), bravery in battle, generosity, love, fate, and vivid descriptions of nature (animals, landscapes, storms).</li>
+                <li><strong>Oral Tradition:</strong> Poems were composed and transmitted orally by poets (sha'ir), who held esteemed positions in society as spokesmen and historians of their tribes.</li>
+                <li><strong>Rich Language and Meter:</strong> The language was highly developed, with a vast vocabulary and complex metrical patterns (ʻarūḍ), even before formal codification.</li>
+            </ul>
+            <p>The most celebrated collection from this period is the <strong>Mu'allaqat (المعلقات)</strong>, or "The Suspended Odes." These are seven (or sometimes ten) qasidas considered masterpieces, traditionally said to have been hung on the Kaaba in Mecca. Famous poets of this era include:</p>
+            <ul>
+                <li>Imru' al-Qais (امرؤ القيس) - Often considered the "father" of Arabic poetry.</li>
+                <li>Antarah ibn Shaddad (عنترة بن شداد) - Known for his chivalry and poems of love and battle.</li>
+                <li>Tarafa ibn al-Abd (طرفة بن العبد)</li>
+                <li>Zuhayr ibn Abi Sulma (زهير بن أبي سلمى)</li>
+                <li>Labid ibn Rabi'ah (لبيد بن ربيعة)</li>
+            </ul>
+            <p>This poetry provides invaluable insight into the culture, values, and daily life of the Arabs before Islam.</p>
+        </section>
+
+        <section class="module-section" id="golden-age-poetry">
+            <h2><i class="fas fa-star"></i> Golden Age Poetry (شعر العصر الذهبي)</h2>
+            <p>The Golden Age of Arabic poetry largely coincides with the <strong>Abbasid Caliphate (750-1258 CE)</strong>, a period of immense cultural, scientific, and literary flourishing, with Baghdad as its vibrant center. Poetry during this era evolved significantly from its Pre-Islamic roots, reflecting a more cosmopolitan society and new intellectual currents.</p>
+            <p>Key developments and characteristics include:</p>
+            <ul>
+                <li><strong>New Themes and Forms:</strong> While the qasida continued, new themes gained prominence, such as:
+                    <ul>
+                        <li><strong>Khamriyyat (خَمْرِيَّات):</strong> Wine songs, masterfully developed by poets like Abu Nuwas, celebrating pleasure and often challenging societal norms.</li>
+                        <li><strong>Ghazal (غَزَل):</strong> Refined and courtly love poetry, focusing on themes of longing and idealized love.</li>
+                        <li><strong>Zuhdiyyat (زُهْدِيَّات):</strong> Ascetic or philosophical poetry, reflecting on mortality, piety, and the transient nature of life, notably by poets like Abu al-Atahiya and Al-Ma'arri.</li>
+                        <li><strong>Nature and Garden Poetry (روضيات):</strong> Detailed and appreciative descriptions of nature, gardens, and urban landscapes.</li>
+                    </ul>
+                </li>
+                <li><strong>Influence of Other Cultures:</strong> Increased interaction with Persian, Greek, and Indian cultures introduced new ideas, vocabulary, and literary motifs.</li>
+                <li><strong>Patronage:</strong> Caliphs and wealthy patrons played a crucial role in supporting poets, leading to a highly competitive and sophisticated literary scene.</li>
+                <li><strong>Badi' (بديع):</strong> The art of poetic ornamentation and rhetorical figures became highly developed, with poets showcasing their linguistic skill through elaborate metaphors, wordplay, and stylistic devices.</li>
+            </ul>
+            <p>Prominent poets of the Golden Age include:</p>
+            <ul>
+                <li><strong>Abu Nuwas (أبو نواس)</strong> (c. 756-814) - Famed for his witty and unconventional wine and hunting poems.</li>
+                <li><strong>Abu Tammam (أبو تمام)</strong> (c. 788-845) - Known for his complex style and historical anthologies like the <em>Hamasa</em>.</li>
+                <li><strong>Al-Buhturi (البحتري)</strong> (c. 821-897) - Praised for his descriptive prowess and elegant style.</li>
+                <li><strong>Al-Mutanabbi (المتنبي)</strong> (915-965) - Widely regarded as one of the greatest, if not the greatest, Arab poets, known for his powerful verses, wisdom, and pride.</li>
+                <li><strong>Abu al-Ala al-Ma'arri (أبو العلاء المعري)</strong> (973-1057) - A blind poet and philosopher known for his pessimistic yet profound and rationalist poetry, particularly in his <em>Luzumiyyat</em> and <em>Risalat al-Ghufran</em>.</li>
+            </ul>
+            <p>The poetry of this era reflects a dynamic and intellectually vibrant society, pushing the boundaries of Arabic literary expression.</p>
+        </section>
+
+        <section class="module-section" id="poetic-meters">
+            <h2><i class="fas fa-balance-scale"></i> Poetic Meters (البحور الشعرية)</h2>
+            <p>The structural foundation of classical Arabic poetry is its intricate system of quantitative meter, known as <strong>ʻArūḍ (العروض)</strong>. This science was traditionally codified by <strong>Al-Khalil ibn Ahmad al-Farahidi (الخليل بن أحمد الفراهيدي)</strong> in the 8th century CE. Understanding ʻArūḍ is essential for appreciating the rhythm, musicality, and formal artistry of Arabic verse.</p>
+            <p>Key concepts in Arabic poetic meters include:</p>
+            <ul>
+                <li><strong>Baḥr (بَحْر - pl. Buḥūr, بُحُور):</strong> Literally meaning "sea," a Baḥr is a specific metrical pattern or template. Al-Farahidi identified fifteen primary Buḥūr, and a sixteenth (Al-Mutadārik) was added later. Each Baḥr has a distinct sequence of long and short syllables.</li>
+                <li><strong>Tafāʿīl (تَفَاعِيل - sing. Tafʿīlah, تَفْعِيلَة):</strong> These are the metrical "feet" or basic rhythmic units that make up a line of poetry. There are eight canonical Tafāʿīl, such as <em>Faʿūlun (فَعُولُنْ)</em>, <em>Mafāʿīlun (مَفَاعِيلُنْ)</em>, and <em>Mustafʿilun (مُسْتَفْعِلُنْ)</em>. Each Tafʿīlah is composed of combinations of shorter units.</li>
+                <li><strong>Basic Syllabic Units:</strong> The Tafāʿīl are built from combinations of:
+                    <ul>
+                        <li><strong>Sabab (سَبَب):</strong> A unit of two letters (consonants with vowels). Can be light (<em>sabab khafīf</em> - moving consonant + sukun) or heavy (<em>sabab thaqīl</em> - two moving consonants).</li>
+                        <li><strong>Watad (وَتِد):</strong> A unit of three letters. Can be <em>watad majmūʿ</em> (two moving consonants + sukun) or <em>watad mafrūq</em> (moving consonant + sukun + moving consonant).</li>
+                        <li><strong>Fāṣilah (فَاصِلَة):</strong> A unit of four or five letters, less fundamental than sabab and watad for basic understanding.</li>
+                    </ul>
+                </li>
+                <li><strong>The Bayt (بَيْت):</strong> The poetic line or verse, typically divided into two hemistichs (half-lines) called <em>ṣadr (صَدْر)</em> and <em>ʿajuz (عَجُز)</em>.</li>
+                <li><strong>Qāfiyah (قَافِيَة):</strong> The rhyme scheme, which is consistent throughout the poem, usually involving the last one or more syllables of each Bayt.</li>
+            </ul>
+            <p>Some of the well-known Buḥūr include:</p>
+            <ul>
+                <li>At-Ṭawīl (الطَّوِيل)</li>
+                <li>Al-Basīṭ (البَسِيط)</li>
+                <li>Al-Kāmil (الكامِل)</li>
+                <li>Al-Wāfir (الوَافِر)</li>
+            </ul>
+            <p>Mastery of ʻArūḍ was a hallmark of a skilled poet, and adherence to these metrical rules was crucial for a poem to be considered classically valid. While modern Arabic poetry often employs free verse (<em>shiʿr ḥurr</em>), the classical meters remain a vital part of Arabic literary heritage and continue to be studied and used.</p>
+        </section>
+
+        <section class="module-section" id="famous-poets">
+            <h2><i class="fas fa-users"></i> Famous Poets and Works (أشهر الشعراء والأعمال)</h2>
+            <p>Content for Famous poets and works will go here. This section will highlight influential poets throughout Arabic history and their most celebrated works.</p>
+            <!-- Add more detailed content, examples, biographies later -->
+        </section>
+
+        <div class="back-link-container">
+            <a href="arabic.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Arabic Course</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 EduLang Hub. All rights reserved. Classical Poetry Module.</p>
+    </footer>
+</body>
+</html>

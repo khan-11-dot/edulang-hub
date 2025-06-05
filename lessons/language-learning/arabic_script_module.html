@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arabic Script Module - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0f7fa 0%, #fff3e0 100%);
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background: #00796b;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .navbar-logo img {
+            width: 36px;
+            height: 36px;
+        }
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        .navbar-links a:hover {
+            color: #ffd180;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .page-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #00796b;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff7043;
+            margin: 10px auto 0;
+        }
+        .module-section {
+            margin-bottom: 40px;
+        }
+        .module-section h2 {
+            font-size: 1.8rem;
+            color: #00796b;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+        .module-section p, .module-section ul {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .module-section ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .back-link-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        .back-link {
+            display: inline-block;
+            background: #ff7043;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+        .back-link:hover {
+            background: #e64a19;
+        }
+
+        /* Alphabet Table Styles */
+        .alphabet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .alphabet-table th, .alphabet-table td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+        .alphabet-table th {
+            background-color: #00796b;
+            color: white;
+            font-weight: bold;
+        }
+        .alphabet-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .alphabet-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .alphabet-table .letter {
+            font-size: 1.8rem; /* Larger font for Arabic letters */
+            font-family: 'Noto Naskh Arabic', 'Times New Roman', serif; /* Arabic font */
+            direction: rtl;
+        }
+        .alphabet-table .forms td {
+            font-size: 1.2rem;
+            font-family: 'Noto Naskh Arabic', 'Times New Roman', serif;
+            direction: rtl;
+        }
+
+        /* Footer */
+        .footer {
+            background: #004d40; /* Darker shade for module pages */
+            color: #e0f2f1;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 50px;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-logo">
+            <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo">
+            <span>EduLang Hub</span>
+        </a>
+        <ul class="navbar-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="arabic.html">Arabic Course</a></li>
+            <li><a href="../../languages.html">Other Languages</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Arabic Script Module</h1>
+
+        <section class="module-section" id="alphabet">
+            <h2>Arabic Alphabet</h2>
+            <p>The Arabic alphabet (أَبْجَدِيَّة عَرَبِيَّة‎, abjadiyyah ʿarabiyyah) consists of 28 primary letters, written from right to left. Most letters change form depending on whether they are at the beginning, middle, or end of a word, or if they stand alone. Below is a table detailing each letter, its name, and common transliteration.</p>
+            <table class="alphabet-table">
+                <thead>
+                    <tr>
+                        <th>Letter</th>
+                        <th>Name</th>
+                        <th>Transliteration</th>
+                        <th>Sound (approx.)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="letter">ا</td>
+                        <td>Alif</td>
+                        <td>ā / ’</td>
+                        <td>long 'a' as in 'father', or a glottal stop</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ب</td>
+                        <td>Bā’</td>
+                        <td>b</td>
+                        <td>'b' as in 'bat'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ت</td>
+                        <td>Tā’</td>
+                        <td>t</td>
+                        <td>'t' as in 'tap'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ث</td>
+                        <td>Thā’</td>
+                        <td>th</td>
+                        <td>'th' as in 'thin'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ج</td>
+                        <td>Jīm</td>
+                        <td>j</td>
+                        <td>'j' as in 'jump' (can also be 'g' as in 'gate' in some dialects)</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ح</td>
+                        <td>Ḥā’</td>
+                        <td>ḥ</td>
+                        <td>a sharp, breathy 'h' (no English equivalent)</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">خ</td>
+                        <td>Khā’</td>
+                        <td>kh</td>
+                        <td>'ch' as in Scottish 'loch' or German 'Bach'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">د</td>
+                        <td>Dāl</td>
+                        <td>d</td>
+                        <td>'d' as in 'dog'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ذ</td>
+                        <td>Dhāl</td>
+                        <td>dh</td>
+                        <td>'th' as in 'this'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ر</td>
+                        <td>Rā’</td>
+                        <td>r</td>
+                        <td>a rolled 'r' as in Spanish 'perro'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ز</td>
+                        <td>Zāy</td>
+                        <td>z</td>
+                        <td>'z' as in 'zoo'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">س</td>
+                        <td>Sīn</td>
+                        <td>s</td>
+                        <td>'s' as in 'sun'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ش</td>
+                        <td>Shīn</td>
+                        <td>sh</td>
+                        <td>'sh' as in 'shoe'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ص</td>
+                        <td>Ṣād</td>
+                        <td>ṣ</td>
+                        <td>an emphatic 's' (no English equivalent)</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ض</td>
+                        <td>Ḍād</td>
+                        <td>ḍ</td>
+                        <td>an emphatic 'd' (no English equivalent)</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ط</td>
+                        <td>Ṭā’</td>
+                        <td>ṭ</td>
+                        <td>an emphatic 't' (no English equivalent)</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ظ</td>
+                        <td>Ẓā’</td>
+                        <td>ẓ</td>
+                        <td>an emphatic 'dh' (no English equivalent)</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ع</td>
+                        <td>‘Ayn</td>
+                        <td>‘</td>
+                        <td>a throaty sound (no English equivalent, like a constricted 'ah')</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">غ</td>
+                        <td>Ghayn</td>
+                        <td>gh</td>
+                        <td>a gargling sound, like French or German 'r'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ف</td>
+                        <td>Fā’</td>
+                        <td>f</td>
+                        <td>'f' as in 'fish'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ق</td>
+                        <td>Qāf</td>
+                        <td>q</td>
+                        <td>a 'k' sound produced further back in the throat (uvular 'k')</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ك</td>
+                        <td>Kāf</td>
+                        <td>k</td>
+                        <td>'k' as in 'king'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ل</td>
+                        <td>Lām</td>
+                        <td>l</td>
+                        <td>'l' as in 'love'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">م</td>
+                        <td>Mīm</td>
+                        <td>m</td>
+                        <td>'m' as in 'moon'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ن</td>
+                        <td>Nūn</td>
+                        <td>n</td>
+                        <td>'n' as in 'sun'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ه</td>
+                        <td>Hā’</td>
+                        <td>h</td>
+                        <td>'h' as in 'hat'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">و</td>
+                        <td>Wāw</td>
+                        <td>w / ū</td>
+                        <td>'w' as in 'wet', or long 'oo' as in 'moon'</td>
+                    </tr>
+                    <tr>
+                        <td class="letter">ي</td>
+                        <td>Yā’</td>
+                        <td>y / ī</td>
+                        <td>'y' as in 'yes', or long 'ee' as in 'see'</td>
+                    </tr>
+                    <!-- Hamza is often considered separately or as a variation of Alif -->
+                    <tr>
+                        <td class="letter">ء</td>
+                        <td>Hamza</td>
+                        <td>’</td>
+                        <td>glottal stop, like the pause in 'uh-oh'</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 20px;"><strong>Note:</strong> The pronunciation of some letters can vary slightly between different Arabic dialects. The sounds provided are generally for Modern Standard Arabic (MSA).</p>
+        </section>
+
+        <section class="module-section" id="letter-forms">
+            <h2>Letter Forms and Connections</h2>
+            <p>Understanding how Arabic letters connect is crucial for reading and writing. Most letters connect to the following letter in a word, but some do not.</p>
+            <p>Arabic letters are cursive, meaning they generally connect to adjacent letters in a word. However, the shape of a letter often changes depending on its position:
+                <ul>
+                    <li><strong>Isolated:</strong> When the letter stands alone.</li>
+                    <li><strong>Initial:</strong> When the letter is at the beginning of a word.</li>
+                    <li><strong>Medial:</strong> When the letter is in the middle of a word, connecting from both sides (if possible).</li>
+                    <li><strong>Final:</strong> When the letter is at the end of a word.</li>
+                </ul>
+            </p>
+            <p>There are six letters in Arabic, often called "non-connecting" or "six ungrateful letters," that do not connect to the letter immediately following them. These letters are:
+                <strong>ا (Alif), د (Dāl), ذ (Dhāl), ر (Rā’), ز (Zāy), و (Wāw)</strong>.
+                They will, however, connect to a preceding letter if that letter is a connector. When one of these non-connecting letters appears in the middle or at the end of a word, it will take its final/isolated form, and the next letter (if any) will start in its initial/isolated form.
+            </p>
+            <p>The table below shows the different forms for each letter and indicates if it connects to the following letter.</p>
+            <table class="alphabet-table">
+                <thead>
+                    <tr>
+                        <th>Letter</th>
+                        <th>Name</th>
+                        <th>Isolated</th>
+                        <th>Initial</th>
+                        <th>Medial</th>
+                        <th>Final</th>
+                        <th>Connects to Next?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td class="letter">ا</td><td>Alif</td><td class="letter">ا</td><td class="letter">ا</td><td class="letter">ـا</td><td class="letter">ـا</td><td>No</td></tr>
+                    <tr><td class="letter">ب</td><td>Bā’</td><td class="letter">ب</td><td class="letter">بـ</td><td class="letter">ـبـ</td><td class="letter">ـب</td><td>Yes</td></tr>
+                    <tr><td class="letter">ت</td><td>Tā’</td><td class="letter">ت</td><td class="letter">تـ</td><td class="letter">ـتـ</td><td class="letter">ـت</td><td>Yes</td></tr>
+                    <tr><td class="letter">ث</td><td>Thā’</td><td class="letter">ث</td><td class="letter">ثـ</td><td class="letter">ـثـ</td><td class="letter">ـث</td><td>Yes</td></tr>
+                    <tr><td class="letter">ج</td><td>Jīm</td><td class="letter">ج</td><td class="letter">جـ</td><td class="letter">ـجـ</td><td class="letter">ـج</td><td>Yes</td></tr>
+                    <tr><td class="letter">ح</td><td>Ḥā’</td><td class="letter">ح</td><td class="letter">حـ</td><td class="letter">ـحـ</td><td class="letter">ـح</td><td>Yes</td></tr>
+                    <tr><td class="letter">خ</td><td>Khā’</td><td class="letter">خ</td><td class="letter">خـ</td><td class="letter">ـخـ</td><td class="letter">ـخ</td><td>Yes</td></tr>
+                    <tr><td class="letter">د</td><td>Dāl</td><td class="letter">د</td><td class="letter">د</td><td class="letter">ـد</td><td class="letter">ـد</td><td>No</td></tr>
+                    <tr><td class="letter">ذ</td><td>Dhāl</td><td class="letter">ذ</td><td class="letter">ذ</td><td class="letter">ـذ</td><td class="letter">ـذ</td><td>No</td></tr>
+                    <tr><td class="letter">ر</td><td>Rā’</td><td class="letter">ر</td><td class="letter">ر</td><td class="letter">ـر</td><td class="letter">ـر</td><td>No</td></tr>
+                    <tr><td class="letter">ز</td><td>Zāy</td><td class="letter">ز</td><td class="letter">ز</td><td class="letter">ـز</td><td class="letter">ـز</td><td>No</td></tr>
+                    <tr><td class="letter">س</td><td>Sīn</td><td class="letter">س</td><td class="letter">سـ</td><td class="letter">ـسـ</td><td class="letter">ـس</td><td>Yes</td></tr>
+                    <tr><td class="letter">ش</td><td>Shīn</td><td class="letter">ش</td><td class="letter">شـ</td><td class="letter">ـشـ</td><td class="letter">ـش</td><td>Yes</td></tr>
+                    <tr><td class="letter">ص</td><td>Ṣād</td><td class="letter">ص</td><td class="letter">صـ</td><td class="letter">ـصـ</td><td class="letter">ـص</td><td>Yes</td></tr>
+                    <tr><td class="letter">ض</td><td>Ḍād</td><td class="letter">ض</td><td class="letter">ضـ</td><td class="letter">ـضـ</td><td class="letter">ـض</td><td>Yes</td></tr>
+                    <tr><td class="letter">ط</td><td>Ṭā’</td><td class="letter">ط</td><td class="letter">طـ</td><td class="letter">ـطـ</td><td class="letter">ـط</td><td>Yes</td></tr>
+                    <tr><td class="letter">ظ</td><td>Ẓā’</td><td class="letter">ظ</td><td class="letter">ظـ</td><td class="letter">ـظـ</td><td class="letter">ـظ</td><td>Yes</td></tr>
+                    <tr><td class="letter">ع</td><td>‘Ayn</td><td class="letter">ع</td><td class="letter">عـ</td><td class="letter">ـعـ</td><td class="letter">ـع</td><td>Yes</td></tr>
+                    <tr><td class="letter">غ</td><td>Ghayn</td><td class="letter">غ</td><td class="letter">غـ</td><td class="letter">ـغـ</td><td class="letter">ـغ</td><td>Yes</td></tr>
+                    <tr><td class="letter">ف</td><td>Fā’</td><td class="letter">ف</td><td class="letter">فـ</td><td class="letter">ـفـ</td><td class="letter">ـف</td><td>Yes</td></tr>
+                    <tr><td class="letter">ق</td><td>Qāf</td><td class="letter">ق</td><td class="letter">قـ</td><td class="letter">ـقـ</td><td class="letter">ـق</td><td>Yes</td></tr>
+                    <tr><td class="letter">ك</td><td>Kāf</td><td class="letter">ك</td><td class="letter">كـ</td><td class="letter">ـكـ</td><td class="letter">ـك</td><td>Yes</td></tr>
+                    <tr><td class="letter">ل</td><td>Lām</td><td class="letter">ل</td><td class="letter">لـ</td><td class="letter">ـلـ</td><td class="letter">ـل</td><td>Yes</td></tr>
+                    <tr><td class="letter">م</td><td>Mīm</td><td class="letter">م</td><td class="letter">مـ</td><td class="letter">ـمـ</td><td class="letter">ـم</td><td>Yes</td></tr>
+                    <tr><td class="letter">ن</td><td>Nūn</td><td class="letter">ن</td><td class="letter">نـ</td><td class="letter">ـنـ</td><td class="letter">ـن</td><td>Yes</td></tr>
+                    <tr><td class="letter">ه</td><td>Hā’</td><td class="letter">ه</td><td class="letter">هـ</td><td class="letter">ـهـ</td><td class="letter">ـه</td><td>Yes</td></tr>
+                    <tr><td class="letter">و</td><td>Wāw</td><td class="letter">و</td><td class="letter">و</td><td class="letter">ـو</td><td class="letter">ـو</td><td>No</td></tr>
+                    <tr><td class="letter">ي</td><td>Yā’</td><td class="letter">ي</td><td class="letter">يـ</td><td class="letter">ـيـ</td><td class="letter">ـي</td><td>Yes</td></tr>
+                    <tr><td class="letter">ء</td><td>Hamza</td><td class="letter">ء</td><td class="letter">أ إ ء</td><td class="letter">ـئـ ـؤـ</td><td class="letter">ـأ ـإ ـئ ـؤ ء</td><td>Depends on carrier</td></tr>
+                    <tr><td class="letter">لا</td><td>Lām-Alif</td><td class="letter">لا</td><td class="letter">لا</td><td class="letter">ـلا</td><td class="letter">ـلا</td><td>No (as Alif is 2nd part)</td></tr>
+                </tbody>
+            </table>
+            <p style="margin-top:15px;"><strong>Understanding the Forms:</strong></p>
+            <ul>
+                <li><strong>Isolated:</strong> How the letter looks when it's by itself (e.g., <span class="letter">ب</span>).</li>
+                <li><strong>Initial:</strong> How the letter looks at the beginning of a word (e.g., <span class="letter">بـ</span> in <span class="letter">بيت</span> - house).</li>
+                <li><strong>Medial:</strong> How the letter looks in the middle of a word (e.g., <span class="letter">ـبـ</span> in <span class="letter">مكتب</span> - office).</li>
+                <li><strong>Final:</strong> How the letter looks at the end of a word (e.g., <span class="letter">ـب</span> in <span class="letter">كتاب</span> - book).</li>
+            </ul>
+            <p><strong>Example of Connections:</strong></p>
+            <p>Consider the word <span class="letter" style="font-size:1.5em;">كِتاب</span> (kitāb - book):</p>
+            <ul>
+                <li><span class="letter">ك</span> (k) is in its initial form: <span class="letter">كـ</span></li>
+                <li><span class="letter">ت</span> (t) is in its medial form: <span class="letter">ـتـ</span></li>
+                <li><span class="letter">ا</span> (ā - Alif) is in its final form (connected to Tā’, but Alif doesn't connect to what follows): <span class="letter">ـا</span></li>
+                <li><span class="letter">ب</span> (b) is in its isolated form (because Alif before it is a non-connector to the next letter): <span class="letter">ب</span></li>
+            </ul>
+            <p>So, it's written: <span class="letter" style="font-size:1.5em;">ك‍</span> + <span class="letter" style="font-size:1.5em;">‍ت‍</span> + <span class="letter" style="font-size:1.5em;">‍ا</span> + <span class="letter" style="font-size:1.5em;">ب</span> = <span class="letter" style="font-size:1.5em;">كتاب</span>.</p>
+            <p>Practice identifying these forms in Arabic texts. It's key to reading and writing fluently!</p>
+        </section>
+
+        <section class="module-section" id="diacritics">
+            <h2>Diacritical Marks (Harakat)</h2>
+            <p>Diacritical marks (حَرَكَات‎, ḥarakāt) are used to indicate short vowels and other phonetic features not represented by the basic letters. They are essential for correct pronunciation, especially for learners.</p>
+            <div class="diacritics-list">
+                <h4>1. Fatha (فَتْحَة) <span class="letter">ـَ</span></h4>
+                <p>The Fatha is a small diagonal stroke placed <strong>above</strong> a consonant. It represents a short 'a' vowel sound, similar to the 'a' in "cat" or "apple".</p>
+                <p><strong>Example:</strong> The letter <span class="letter">ب</span> (Bā’) with a Fatha becomes <span class="letter">بَ</span> (ba). <br/>In a word: <span class="letter">كَتَبَ</span> (kataba - he wrote).</p>
+
+                <h4>2. Kasra (كَسْرَة) <span class="letter">ـِ</span></h4>
+                <p>The Kasra is a small diagonal stroke placed <strong>below</strong> a consonant. It represents a short 'i' vowel sound, similar to the 'i' in "kit" or "pin".</p>
+                <p><strong>Example:</strong> The letter <span class="letter">ب</span> (Bā’) with a Kasra becomes <span class="letter">بِ</span> (bi). <br/>In a word: <span class="letter">بِنْت</span> (bint - girl).</p>
+
+                <h4>3. Damma (ضَمَّة) <span class="letter">ـُ</span></h4>
+                <p>The Damma is a small loop-like mark (similar to a tiny <span class="letter">و</span>) placed <strong>above</strong> a consonant. It represents a short 'u' vowel sound, similar to the 'u' in "put" or "book".</p>
+                <p><strong>Example:</strong> The letter <span class="letter">ب</span> (Bā’) with a Damma becomes <span class="letter">بُ</span> (bu). <br/>In a word: <span class="letter">كُتُب</span> (kutub - books).</p>
+
+                <h4>4. Sukun (سُكُون) <span class="letter">ـْ</span></h4>
+                <p>The Sukun is a small circle placed <strong>above</strong> a consonant. It indicates the absence of any vowel sound following that consonant. The consonant is pronounced with a stop or rest.</p>
+                <p><strong>Example:</strong> The letter <span class="letter">ب</span> (Bā’) with a Sukun becomes <span class="letter">بْ</span> (b - just the consonant sound). <br/>In a word: <span class="letter">مَكْتَب</span> (maktab - office/desk), where the <span class="letter">كْ</span> (k) has a Sukun.</p>
+
+                <h4>5. Shadda (شَدَّة) <span class="letter">ـّ</span></h4>
+                <p>The Shadda is a mark that looks like a small 'w' or a tiny <span class="letter">س</span> without dots, placed <strong>above</strong> a consonant. It indicates that the consonant is geminated or doubled in pronunciation. The Shadda itself does not represent a vowel; it is usually accompanied by a Fatha, Kasra, or Damma to indicate the vowel sound that follows the doubled consonant.</p>
+                <p><strong>Example:</strong> The letter <span class="letter">ر</span> (Rā’) with a Shadda and Fatha becomes <span class="letter">رَّ</span> (rra). <br/>In a word: <span class="letter">مُدَرِّس</span> (mudarris - teacher), where the <span class="letter">رّ</span> is doubled.</p>
+
+                <h4>6. Tanween (تَنْوِين)</h4>
+                <p>Tanween refers to the addition of a final 'n' sound to a noun or adjective, typically indicating indefiniteness (like 'a' or 'an' in English). It appears as a doubled short vowel mark at the end of a word. There are three types of Tanween:</p>
+                <ul>
+                    <li><strong>Tanween al-Fath (تَنْوِين الفَتْح) <span class="letter">ـً</span></strong>: Two Fathas, pronounced as '-an'. Often written with an Alif (<span class="letter">اً</span>) as a carrier, unless the word ends in Tā’ Marbūṭah (<span class="letter">ة</span>) or Hamza (<span class="letter">ء</span>) preceded by Alif.
+                        <br/><strong>Example:</strong> <span class="letter">كِتابًا</span> (kitāban - a book).</li>
+                    <li><strong>Tanween al-Kasr (تَنْوِين الكَسْر) <span class="letter">ـٍ</span></strong>: Two Kasras, pronounced as '-in'.
+                        <br/><strong>Example:</strong> <span class="letter">كِتابٍ</span> (kitābin - of a book / a book [genitive]).</li>
+                    <li><strong>Tanween ad-Damm (تَنْوِين الضَّمّ) <span class="letter">ـٌ</span></strong>: Two Dammas (often one Damma and a small loop, or two Dammas side-by-side), pronounced as '-un'.
+                        <br/><strong>Example:</strong> <span class="letter">كِتابٌ</span> (kitābun - a book [nominative]).</li>
+                </ul>
+            </div>
+            <p style="margin-top: 20px;"><strong>Usage of Diacritics:</strong> While crucial for correct pronunciation, diacritics are often omitted in everyday texts like newspapers and books for adult native speakers. However, they are consistently used in the Qur'an, children's books, educational materials for learners, and sometimes to avoid ambiguity in complex words.</p>
+        </section>
+
+        <section class="module-section" id="calligraphy">
+            <h2>Calligraphy Basics (الخط العربي)</h2>
+            <p>Arabic calligraphy (الخط العربي‎, al-khaṭṭ al-ʿarabī) is a highly revered art form. Learning the basics can deepen your appreciation for the script's beauty.</p>
+            <div class="calligraphy-details">
+                <h4>Key Concepts in Arabic Calligraphy:</h4>
+                <ul>
+                    <li><strong>The Qalam (القَلَم):</strong> The traditional pen used for Arabic calligraphy is typically made from a dried reed or bamboo, cut at an angle. The width and angle of the nib are crucial as they determine the thickness and variation of the strokes.</li>
+                    <li><strong>The Nuqta (النُقْطَة):</strong> The dot, created by pressing the full width of the qalam's nib to the paper, serves as the fundamental unit of measurement. The height and width of letters, as well as the spaces between them, are often defined in terms of nuqta. For example, the Alif in Naskh script is typically 5-7 nuqtas tall.</li>
+                    <li><strong>Proportion and Balance (التناسب والتوازن):</strong> Great emphasis is placed on the correct proportion of letters and the overall balance of the composition. Each script has its own set of rules governing these aspects.</li>
+                    <li><strong>Basic Strokes:</strong> Letters are formed from a combination of specific strokes (e.g., vertical, horizontal, curved). Mastering these foundational strokes is essential.</li>
+                </ul>
+
+                <h4>Major Calligraphy Styles:</h4>
+                <p>There are numerous styles of Arabic calligraphy, each with its unique aesthetic and historical context. Some of the most well-known include:</p>
+                <ul>
+                    <li><strong>Naskh (نَسْخ):</strong> Known for its clarity and legibility, Naskh is one of the most common scripts. It's widely used for printing books, newspapers, and is the primary script for transcribing the Qur'an. It has a rounded, cursive appearance.<br/><em>(Visual example: An image showcasing Naskh script, perhaps a line from the Qur'an or a book page, would be illustrative here. You can search for "Naskh calligraphy example" to find images.)</em></li>
+                    <li><strong>Ruqʿah (رُقْعَة):</strong> A simpler, more functional script characterized by short, straight strokes and simple curves. It's commonly used for everyday handwriting, notes, and headlines due to its speed and ease of writing.<br/><em>(Visual example: An image of a handwritten note or a headline in Ruqʿah script would be helpful here. Search for "Ruqah calligraphy example".)</em></li>
+                    <li><strong>Thuluth (ثُلُث):</strong> A majestic and powerful script, often considered one of the most beautiful. Thuluth is characterized by its large size, elongated vertical strokes, and complex, interwoven letterforms. It's frequently used for monumental inscriptions, chapter headings in the Qur'an, and calligraphic art pieces.<br/><em>(Visual example: An image of an ornate Thuluth inscription or a piece of calligraphic art would demonstrate its grandeur. Search for "Thuluth calligraphy example".)</em></li>
+                    <li><strong>Diwani (دِيوَانِي):</strong> An ornate and highly cursive script developed during the Ottoman era. It's known for its beauty and complexity, with letters often intertwining. It was used for royal decrees and official documents.<br/><em>(Visual example: An image of a historical document or an artistic piece in Diwani script would showcase its elegance. Search for "Diwani calligraphy example".)</em></li>
+                    <li><strong>Kufic (كُوفِي):</strong> One of the oldest forms of Arabic script, characterized by its angularity and bold, geometric appearance. Early copies of the Qur'an were written in Kufic. It has many variations, from simple to highly decorative.<br/><em>(Visual example: An image of early Kufic script from a Qur'an manuscript or a modern geometric Kufic design would be very informative. Search for "Kufic calligraphy example".)</em></li>
+                </ul>
+
+                <h4>Essential Tools and Materials:</h4>
+                <ul>
+                    <li><strong>Qalam (Pen):</strong> As mentioned, traditionally a reed or bamboo pen. Modern calligraphers might also use metal-nibbed pens or specialized markers.</li>
+                    <li><strong>Hibr (Ink):</strong> Traditionally, a black or brown soot-based ink. Many colors are used today.</li>
+                    <li><strong>Waraq (Paper):</strong> Smooth, often coated paper (like 'aher' paper) is preferred to allow the pen to glide easily and to prevent ink from bleeding.</li>
+                </ul>
+
+                <h4>Cultural and Spiritual Significance:</h4>
+                <p>Arabic calligraphy is more than just beautiful writing; it is a highly respected art form with deep spiritual roots, particularly within Islamic culture. It has been used extensively to adorn mosques, manuscripts (especially the Qur'an), and various objects, transforming written words into visual expressions of faith, beauty, and heritage.</p>
+
+                <p>Learning calligraphy requires patience, discipline, and a deep understanding of the script's rules and aesthetics. Even a basic appreciation can greatly enhance one's connection to the Arabic language.</p>
+            </div>
+        </section>
+
+        <div class="back-link-container">
+            <a href="arabic.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Arabic Course</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 EduLang Hub. All rights reserved. Arabic Script Module.</p>
+    </footer>
+</body>
+</html>
