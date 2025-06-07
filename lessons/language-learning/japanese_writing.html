@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japanese Writing Systems - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+            background: linear-gradient(120deg, #e0f7fa 0%, #fff3e0 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: #00796b;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .navbar-logo img {
+            width: 36px;
+            height: 36px;
+        }
+        
+        .navbar-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .navbar-links a:hover {
+            color: #ffd180;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: url('https://images.unsplash.com/photo-1542051841857-5f90071e7989?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            color: white;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #00796b;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #ff7043;
+            margin: 15px auto 0;
+        }
+        
+        /* Writing Systems */
+        .writing-systems {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .writing-system {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .writing-system:hover {
+            transform: translateY(-5px);
+        }
+        
+        .writing-system h3 {
+            color: #00796b;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0f7fa;
+        }
+        
+        .writing-system p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .features {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        .features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00796b;
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #ff7043;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00796b;
+            color: #00796b;
+        }
+        
+        .btn-outline:hover {
+            background: #00796b;
+            color: white;
+        }
+        
+        /* Practice Section */
+        .practice-section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .practice-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .practice-card i {
+            font-size: 2.5rem;
+            color: #00796b;
+            margin-bottom: 15px;
+        }
+        
+        .practice-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .practice-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer h3 {
+            color: #4db6ac;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #4db6ac;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #4db6ac;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            
+            .navbar-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .writing-system {
+                padding: 20px;
+            }
+            
+            .practice-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-logo">
+            <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo">
+            <span>EduLang Hub</span>
+        </a>
+        <ul class="navbar-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../courses.html">Courses</a></li>
+            <li><a href="../../languages.html">Languages</a></li>
+            <li><a href="../../typing.html">Typing</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Japanese Writing Systems</h1>
+            <p>Master the three Japanese writing systems: Hiragana, Katakana, and Kanji</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <section>
+            <h2 class="section-title">The Three Writing Systems</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: #555; font-size: 1.1rem;">
+                Japanese uses three different writing systems, each with its own purpose and characteristics. 
+                Understanding all three is essential for reading and writing Japanese fluently.
+            </p>
+            
+            <div class="writing-systems">
+                <!-- Hiragana -->
+                <div class="writing-system">
+                    <h3>Hiragana (ひらがな)</h3>
+                    <p>A phonetic alphabet used for native Japanese words and grammatical elements.</p>
+                    <ul class="features">
+                        <li>46 basic characters</li>
+                        <li>Used for particles and word endings</li>
+                        <li>First writing system taught to children</li>
+                        <li>Represents all sounds in Japanese</li>
+                    </ul>
+                    <a href="#hiragana-practice" class="btn">
+                        <i class="fas fa-book-open"></i> Learn Hiragana
+                    </a>
+                </div>
+                
+                <!-- Katakana -->
+                <div class="writing-system">
+                    <h3>Katakana (カタカナ)</h3>
+                    <p>Used for foreign words, names, and onomatopoeia.</p>
+                    <ul class="features">
+                        <li>46 basic characters</li>
+                        <li>Used for loanwords and emphasis</li>
+                        <li>Similar structure to Hiragana</li>
+                        <li>Sharper, more angular appearance</li>
+                    </ul>
+                    <a href="#katakana-practice" class="btn">
+                        <i class="fas fa-pen"></i> Learn Katakana
+                    </a>
+                </div>
+                
+                <!-- Kanji -->
+                <div class="writing-system">
+                    <h3>Kanji (漢字)</h3>
+                    <p>Logographic characters borrowed from Chinese, each with meaning and pronunciation.</p>
+                    <ul class="features">
+                        <li>Over 2,000 common characters</li>
+                        <li>Each character has meaning</li>
+                        <li>Multiple readings per character</n                        <li>Essential for reading fluency</li>
+                    </ul>
+                    <a href="#kanji-practice" class="btn">
+                        <i class="fas fa-brush"></i> Learn Kanji
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Practice Section -->
+        <section class="practice-section" id="practice">
+            <h2 class="section-title">Practice Writing</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 30px; color: #555; font-size: 1.1rem;">
+                Practice writing Japanese characters with our interactive tools and exercises.
+            </p>
+            
+            <div class="practice-grid">
+                <div class="practice-card">
+                    <i class="fas fa-book"></i>
+                    <h4>Hiragana Chart</h4>
+                    <p>Learn and practice all 46 basic Hiragana characters with stroke order.</p>
+                    <a href="#hiragana-chart" class="btn btn-outline">View Chart</a>
+                </div>
+                
+                <div class="practice-card">
+                    <i class="fas fa-pen-nib"></i>
+                    <h4>Katakana Drills</h4>
+                    <p>Master Katakana through writing practice and recognition exercises.</p>
+                    <a href="#katakana-drills" class="btn btn-outline">Start Practice</a>
+                </div>
+                
+                <div class="practice-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h4>Kanji Builder</h4>
+                    <p>Learn Kanji radicals and build your vocabulary.</p>
+                    <a href="#kanji-builder" class="btn btn-outline" style="margin-top: 40px;">Explore Kanji</a>
+                </div>
+                
+                <div class="practice-card">
+                    <i class="fas fa-gamepad"></i>
+                    <h4>Writing Games</h4>
+                    <p>Fun games to test your knowledge of all three writing systems.</p>
+                    <a href="#writing-games" class="btn btn-outline" style="margin-top: 40px;">Play Now</a>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About EduLang Hub</h3>
+                <p>Making language learning accessible and enjoyable for everyone through interactive lessons and tools.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="../../courses.html">Courses</a></li>
+                    <li><a href="../../languages.html">Languages</a></li>
+                    <li><a href="../../typing.html">Typing Practice</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Grammar Guides</a></li>
+                    <li><a href="#">Vocabulary Lists</a></li>
+                    <li><a href="#">Pronunciation Help</a></li>
+                    <li><a href="#">Study Tips</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@edulanghub.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Language St, City, Country</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 EduLang Hub. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Add any interactive functionality here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add any other interactive elements here
+        });
+    </script>
+</body>
+</html>
