@@ -48,10 +48,88 @@ body {
     gap: 0.5rem;
 }
 
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 5px;
+}
+
+.hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
     align-items: center;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Mobile menu styles */
+@media (max-width: 992px) {
+    .hamburger {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 280px;
+        height: 100vh;
+        background: var(--white);
+        flex-direction: column;
+        padding: 100px 30px 30px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        z-index: 999;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+    
+    .nav-links.active {
+        right: 0;
+    }
+    
+    .nav-links a {
+        width: 100%;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .nav-links .btn-login,
+    .nav-links .btn-signup,
+    .nav-links .btn-creator {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+    
+    body.menu-open {
+        overflow: hidden;
+    }
 }
 
 .nav-links a {
