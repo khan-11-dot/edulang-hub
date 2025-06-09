@@ -204,7 +204,163 @@
             background: #004d40;
         }
         
+        /* Essential Phrases Section */
+        .phrases-section {
+            margin: 60px 0;
+        }
+        
+        .phrase-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .phrase-category {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .phrase-category h3 {
+            color: #00796b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0f7fa;
+        }
+        
+        .phrase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .phrase-item {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .phrase-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .urdu {
+            font-family: 'Jameel Noori Nastaleeq', 'Nastaliq', 'Urdu Typesetting', 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Scheherazade', 'Lateef', 'Traditional Arabic', 'Arial', sans-serif;
+            font-size: 1.4rem;
+            color: #333;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .transliteration {
+            color: #ff7043;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+        
+        .translation {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .practice-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+        
+        .practice-section h3 {
+            color: #00796b;
+            margin-bottom: 15px;
+        }
+        
+        .practice-section p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
         /* Urdu Script Section */
+        .script-section {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .script-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .script-card {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        
+        .script-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .script-card h3 {
+            color: #00796b;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #00796b;
+        }
+        
+        .urdu-text {
+            font-family: 'Jameel Noori Nastaleeq', 'Nastaliq', 'Urdu Typesetting', 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Scheherazade', 'Lateef', 'Traditional Arabic', 'Arial', sans-serif;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            text-align: right;
+            direction: rtl;
+        }
+        
+        .letter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .letter-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .letter-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .letter {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .letter-name {
+            font-size: 0.9rem;
+            color: #666;
+        }
         .script-section {
             background: white;
             border-radius: 10px;
@@ -527,7 +683,7 @@
                             <li>Travel and directions</li>
                             <li>Cultural expressions</li>
                         </ul>
-                        <a href="#" class="module-btn">Start Module</a>
+                        <a href="urdu-poetry.html" class="module-btn">Start Module</a>
                     </div>
                 </div>
                 
@@ -543,7 +699,7 @@
                             <li>Literary devices</li>
                             <li>Cultural context</li>
                         </ul>
-                        <a href="#poetry" class="module-btn">Start Module</a>
+                        <a href="urdu-poetry.html" class="module-btn">Start Module</a>
                     </div>
                 </div>
             </div>
@@ -592,6 +748,209 @@
         </section>
         
         <!-- Poetry Section -->
+        <section id="script" class="script-section">
+            <h2 class="section-title">Urdu Script Mastery</h2>
+            <p>Urdu is written in the Persian-Arabic script, which is written from right to left. It consists of 38 letters, most of which are derived from the Arabic and Persian alphabets, with some additional letters to represent sounds specific to Urdu.</p>
+            
+            <div class="script-grid">
+                <div class="script-card">
+                    <h3>Urdu Alphabet</h3>
+                    <div class="urdu-text">
+                        <p>اردو حروف تہجی</p>
+                    </div>
+                    <p>The Urdu alphabet has 38 letters. Here are the basic forms:</p>
+                    <div class="letter-grid">
+                        <div class="letter-card">
+                            <div class="letter">ا</div>
+                            <div class="letter-name">Alif</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">ب</div>
+                            <div class="letter-name">Bay</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">پ</div>
+                            <div class="letter-name">Pay</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">ت</div>
+                            <div class="letter-name">Tay</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">ٹ</div>
+                            <div class="letter-name">Ttay</div>
+                        </div>
+                        <div class="letter-card">
+                            <div class="letter">ث</div>
+                            <div class="letter-name">Say</div>
+                        </div>
+                    </div>
+                    <a href="#" class="module-btn">View All Letters</a>
+                </div>
+                
+                <div class="script-card">
+                    <h3>Letter Forms</h3>
+                    <p>Urdu letters change shape depending on their position in a word:</p>
+                    <div class="urdu-text">
+                        <p>ب (initial) - بـ (medial) - ـبـ (medial) - ـب (final)</p>
+                        <p>Example with 'Bay':</p>
+                        <p>ب + ی + ت = بیٹ (son)</p>
+                        <p>ک + ت + ا + ب = کتاب (book)</p>
+                    </div>
+                    <p>Notice how the letters connect differently in different positions.</p>
+                </div>
+                
+                <div class="script-card">
+                    <h3>Diacritical Marks</h3>
+                    <p>Urdu uses diacritical marks (harakat) to indicate short vowels and other sounds:</p>
+                    <div class="urdu-text">
+                        <p>ـَ (zabar) - a as in "cat"</p>
+                        <p>ـِ (zer) - i as in "sit"</p>
+                        <p>ـُ (pesh) - u as in "put"</p>
+                        <p>ـّ (tashdeed) - consonant doubling</p>
+                        <p>ٰ (madd) - vowel lengthening</p>
+                    </div>
+                    <p>Example: کِتاب (kitab - book)</p>
+                </div>
+                
+                <div class="script-card">
+                    <h3>Calligraphy Basics</h3>
+                    <p>Urdu calligraphy is an art form. Here are the basic strokes:</p>
+                    <div class="urdu-text">
+                        <p>1. Vertical stroke (Alif - ا)</p>
+                        <p>2. Horizontal stroke (Kaaf - ک)</p>
+                        <p>3. Curved stroke (Jeem - ج)</p>
+                        <p>4. Dots (Nuqta - نقطہ)</p>
+                    </div>
+                    <p>Start with practicing individual letters before connecting them.</p>
+                    <a href="#" class="module-btn">Practice Sheets</a>
+                </div>
+                
+                <div class="script-card">
+                    <h3>Common Letter Connections</h3>
+                    <p>Some letters connect differently than others. Here are common patterns:</p>
+                    <div class="urdu-text">
+                        <p>ب + ا = با</p>
+                        <p>ت + ی = تی</p>
+                        <p>ک + ر = کر</p>
+                        <p>م + ن = من</p>
+                    </div>
+                    <p>Practice these combinations to improve your writing.</p>
+                </div>
+                
+                <div class="script-card">
+                    <h3>Writing Practice</h3>
+                    <p>Practice writing these common words:</p>
+                    <div class="urdu-text">
+                        <p>کتاب (book)</p>
+                        <p>قلم (pen)</p>
+                        <p>مدرسہ (school)</p>
+                        <p>استاد (teacher)</p>
+                    </div>
+                    <p>Remember to write from right to left!</p>
+                    <a href="#" class="module-btn">More Practice Words</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Essential Phrases Section -->
+        <section id="phrases" class="phrases-section">
+            <h2 class="section-title">Essential Phrases</h2>
+            <p>Learn common Urdu phrases for everyday situations to help you communicate effectively in Urdu-speaking environments.</p>
+            
+            <div class="phrase-categories">
+                <div class="phrase-category">
+                    <h3>Greetings and Introductions</h3>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            <span class="urdu">السلام علیکم</span>
+                            <span class="transliteration">As-salamu alaykum</span>
+                            <span class="translation">Hello / Peace be upon you</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">آپ کا نام کیا ہے؟</span>
+                            <span class="transliteration">Aap ka naam kya hai?</span>
+                            <span class="translation">What is your name?</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">میرا نام ۔۔۔ ہے</span>
+                            <span class="transliteration">Mera naam ... hai</span>
+                            <span class="translation">My name is ...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phrase-category">
+                    <h3>Shopping and Dining</h3>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            <span class="urdu">یہ کتنے کا ہے؟</span>
+                            <span class="transliteration">Ye kitne ka hai?</span>
+                            <span class="translation">How much is this?</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">میں یہ لوں گا/لوں گی</span>
+                            <span class="transliteration">Main ye loonga/loongi</span>
+                            <span class="translation">I'll take this</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">مینو چاہیے</span>
+                            <span class="transliteration">Menu chahiye</span>
+                            <span class="translation">I would like the menu</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phrase-category">
+                    <h3>Travel and Directions</h3>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            <span class="urdu">یہاں کیسے جاؤں؟</span>
+                            <span class="transliteration">Yahan kaise jaaun?</span>
+                            <span class="translation">How do I get there?</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">بائیں / دائیں</span>
+                            <span class="transliteration">Baayein / Dayein</span>
+                            <span class="translation">Left / Right</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">قریب ترین میٹرو سٹیشن کہاں ہے؟</span>
+                            <span class="transliteration">Qareeb tareen metro station kahan hai?</span>
+                            <span class="translation">Where is the nearest metro station?</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="phrase-category">
+                    <h3>Cultural Expressions</h3>
+                    <div class="phrase-list">
+                        <div class="phrase-item">
+                            <span class="urdu">شکریہ</span>
+                            <span class="transliteration">Shukriya</span>
+                            <span class="translation">Thank you</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">براہ مہربانی</span>
+                            <span class="transliteration">Barah-e-meharbani</span>
+                            <span class="translation">Please / You're welcome</span>
+                        </div>
+                        <div class="phrase-item">
+                            <span class="urdu">معاف کیجئے گا</span>
+                            <span class="transliteration">Maaf kijiye ga</span>
+                            <span class="translation">Excuse me / I'm sorry</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="practice-section">
+                <h3>Practice These Phrases</h3>
+                <p>Try using these phrases in conversation or write them down to help with memorization.</p>
+                <a href="#" class="module-btn">Start Practicing</a>
+            </div>
+        </section>
+        
         <section id="poetry" class="poetry-section">
             <h2 class="section-title">Urdu Poetry</h2>
             <p>Urdu poetry is known for its beauty, depth, and emotional resonance. The ghazal is one of the most popular forms of Urdu poetry, consisting of rhyming couplets with a refrain.</p>
@@ -635,53 +994,7 @@
             </div>
         </section>
         
-        <!-- Progress Tracker -->
-        <section class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <p>Track your progress through the Urdu language learning modules.</p>
-            
-            <div class="progress-bars">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Urdu Script</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Essential Phrases</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Poetry & Literature</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Overall Progress</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </div>
     
     <!-- Footer -->
@@ -718,24 +1031,9 @@
     </footer>
     
     <script>
-        // Simple script to animate progress bars when they come into view
+        // Page initialization script can go here
         document.addEventListener('DOMContentLoaded', function() {
-            // Set up intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // When progress section is in view, animate progress bars
-                        setTimeout(() => {
-                            document.querySelectorAll('.progress-fill').forEach(bar => {
-                                bar.style.width = '0%'; // Reset first
-                            });
-                        }, 300);
-                    }
-                });
-            });
-            
-            // Observe the progress section
-            observer.observe(document.querySelector('.progress-section'));
+            // Any page initialization code can be added here
         });
     </script>
 </body>

@@ -204,19 +204,217 @@
             background: #004d40;
         }
         
-        /* Pronunciation Section */
+        /* Pronunciation & Basics Section */
         .pronunciation-section {
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 60px;
+            margin: 40px 0;
+            padding: 40px 30px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
         
-        .pronunciation-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 30px;
+        .section-intro {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .pronunciation-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #00796b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pronunciation-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pronunciation-card h3 {
+            color: #00796b;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .pronunciation-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #4db6ac;
+        }
+        
+        /* Alphabet Styles */
+        .alphabet-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .alphabet-letter {
+            background: white;
+            border-radius: 8px;
+            padding: 15px 5px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .alphabet-letter:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .alphabet-letter span:first-child {
+            display: block;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #00796b;
+            margin-bottom: 5px;
+        }
+        
+        .alphabet-letter span:last-child {
+            font-size: 0.9em;
+            color: #666;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        /* Sound Examples */
+        .sound-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .sound-example {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .sound-example span:first-child {
+            display: block;
+            font-weight: bold;
+            color: #00796b;
+            margin-bottom: 5px;
+        }
+        
+        .sound-example span:nth-child(2) {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .sound-example span:last-child {
+            display: block;
+            font-family: monospace;
+            margin: 10px 0;
+            color: #666;
+        }
+        
+        /* Accent Examples */
+        .accent-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .accent-example {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .accent-example:hover {
+            transform: translateY(-3px);
+        }
+        
+        .accent-example h4 {
+            color: #00796b;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .accent-example p {
+            color: #555;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        /* Greetings Grid */
+        .greetings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .greeting-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .greeting-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .greeting-card h4 {
+            color: #00796b;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        
+        .greeting-card p {
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .greeting-card .pronunciation {
+            font-family: monospace;
+            color: #888;
+            font-size: 0.9em;
+            margin: 10px 0;
+        }
+        
+
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .alphabet-container {
+                grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+                gap: 10px;
+            }
+            
+            .sound-examples,
+            .accent-examples,
+            .greetings-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pronunciation-card {
+                padding: 20px 15px;
+            }
         }
         
         .pronunciation-table th, .pronunciation-table td {
@@ -300,40 +498,75 @@
         
         .culture-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
             margin-top: 30px;
         }
         
-        .culture-card {
-            background: #f5f5f5;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s;
+        .culture-category {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        .culture-card:hover {
+        .culture-category:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
-        .culture-image {
-            height: 150px;
-            background-color: #e0f7fa;
+        .culture-category h3 {
+            color: #00796b;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0f7fa;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #00796b;
+            gap: 10px;
         }
         
-        .culture-content {
-            padding: 20px;
+        .culture-category h3 i {
+            color: #ff7043;
         }
         
-        .culture-content h3 {
-            color: #00796b;
+        .culture-subcategory {
+            margin-bottom: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        .culture-subcategory h4 {
+            color: #00897b;
             margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .culture-subcategory ul {
+            list-style-type: none;
+            padding-left: 5px;
+        }
+        
+        .culture-subcategory li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.5;
+        }
+        
+        .culture-subcategory li:before {
+            content: '•';
+            color: #ff7043;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .culture-subcategory strong {
+            color: #333;
         }
         
         /* Progress Tracker */
@@ -550,155 +783,1212 @@
             </div>
         </section>
         
-        <!-- Pronunciation Section -->
+        <!-- Pronunciation & Basics Section -->
         <section id="pronunciation" class="pronunciation-section">
-            <h2 class="section-title">French Pronunciation Guide</h2>
-            <p>French pronunciation can be challenging for English speakers due to nasal vowels, silent letters, and liaison. Here are some key pronunciation rules:</p>
+            <h2 class="section-title">French Pronunciation & Basics</h2>
+            <p class="section-intro">Master the fundamentals of French pronunciation with our comprehensive guide. Click on each section to learn more about different aspects of French sounds and basic expressions.</p>
             
-            <table class="pronunciation-table">
-                <thead>
-                    <tr>
-                        <th>Sound</th>
-                        <th>Description</th>
-                        <th>Examples</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Nasal Vowels</td>
-                        <td>Vowels followed by 'm' or 'n' are often nasalized</td>
-                        <td>bon [bõ], pain [pɛ̃], temps [tɑ̃]</td>
-                    </tr>
-                    <tr>
-                        <td>Silent Letters</td>
-                        <td>Many final consonants are not pronounced</td>
-                        <td>petit [pəti], chat [ʃa], temps [tɑ̃]</td>
-                    </tr>
-                    <tr>
-                        <td>The French 'R'</td>
-                        <td>Pronounced at the back of the throat</td>
-                        <td>rouge [ʁuʒ], Paris [paʁi]</td>
-                    </tr>
-                    <tr>
-                        <td>Liaison</td>
-                        <td>Connecting words by pronouncing normally silent consonants</td>
-                        <td>les amis [le‿zami], petit ami [pəti‿tami]</td>
-                    </tr>
-                    <tr>
-                        <td>E Caduc</td>
-                        <td>Unstressed 'e' often dropped in speech</td>
-                        <td>je ne sais pas [ʒənəsɛpa] → [ʒnsɛpa]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="pronunciation-content">
+                <!-- French Alphabet -->
+                <div class="pronunciation-card">
+                    <h3>1. The French Alphabet (L'alphabet français)</h3>
+                    <p class="alphabet-intro">The French alphabet has 26 letters, just like English, but with some additional accented characters and ligatures that are considered separate letters in French.</p>
+                    
+                    <h4>Basic Letters</h4>
+                    <div class="alphabet-container">
+                        <div class="alphabet-letter">
+                            <span>A a</span>
+                            <span>ah</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>B b</span>
+                            <span>bay</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>C c</span>
+                            <span>say</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>D d</span>
+                            <span>day</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>E e</span>
+                            <span>uh</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>F f</span>
+                            <span>eff</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>G g</span>
+                            <span>zhay</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>H h</span>
+                            <span>ahsh</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>I i</span>
+                            <span>ee</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>J j</span>
+                            <span>zhee</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>K k</span>
+                            <span>kah</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>L l</span>
+                            <span>ell</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>M m</span>
+                            <span>emm</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>N n</span>
+                            <span>enn</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>O o</span>
+                            <span>oh</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>P p</span>
+                            <span>pay</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Q q</span>
+                            <span>koo</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>R r</span>
+                            <span>air</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>S s</span>
+                            <span>ess</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>T t</span>
+                            <span>tay</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>U u</span>
+                            <span>oo</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>V v</span>
+                            <span>vay</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>W w</span>
+                            <span>doo-bluh-vay</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>X x</span>
+                            <span>eeks</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Y y</span>
+                            <span>ee-grek</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Z z</span>
+                            <span>zed</span>
+                        </div>
+                    </div>
+                    
+                    <h4>Accented Letters & Ligatures</h4>
+                    <div class="alphabet-container">
+                        <div class="alphabet-letter">
+                            <span>À à</span>
+                            <span>ah (grave)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Â â</span>
+                            <span>ah (circumflex)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ä ä</span>
+                            <span>ah (umlaut)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Æ æ</span>
+                            <span>e (ligature)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ç ç</span>
+                            <span>say cédille</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>É é</span>
+                            <span>ay (acute)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>È è</span>
+                            <span>eh (grave)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ê ê</span>
+                            <span>eh (circumflex)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ë ë</span>
+                            <span>eh (umlaut)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Î î</span>
+                            <span>ee (circumflex)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ï ï</span>
+                            <span>ee (umlaut)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ô ô</span>
+                            <span>oh (circumflex)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Œ œ</span>
+                            <span>oe (ligature)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ù ù</span>
+                            <span>oo (grave)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Û û</span>
+                            <span>oo (circumflex)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ü ü</span>
+                            <span>oo (umlaut)</span>
+                        </div>
+                        <div class="alphabet-letter">
+                            <span>Ÿ ÿ</span>
+                            <span>ee-grek (umlaut)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Nasal Sounds -->
+                <div class="pronunciation-card">
+                    <h3>2. Nasal Sounds</h3>
+                    <p>French has distinctive nasal vowel sounds that don't exist in English. The air flows through both the mouth and nose.</p>
+                    
+                    <div class="sound-examples">
+                        <div class="sound-example">
+                            <span>an/am/en/em</span>
+                            <span>as in "<strong>an</strong>" (year)</span>
+                            <span>[ɑ̃]</span>
+
+                        </div>
+                        <div class="sound-example">
+                            <span>on/om</span>
+                            <span>as in "b<strong>on</strong>" (good)</span>
+                            <span>[ɔ̃]</span>
+
+                        </div>
+                        <div class="sound-example">
+                            <span>in/im/ain/aim/ein</span>
+                            <span>as in "v<strong>in</strong>" (wine)</span>
+                            <span>[ɛ̃]</span>
+
+                        </div>
+                        <div class="sound-example">
+                            <span>un/um</span>
+                            <span>as in "un" (one)</span>
+                            <span>[œ̃]</span>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Accent Marks -->
+                <div class="pronunciation-card">
+                    <h3>3. French Accent Marks</h3>
+                    <p>French uses several accent marks that change the pronunciation of letters. Here are the main ones:</p>
+                    
+                    <div class="accent-examples">
+                        <div class="accent-example">
+                            <h4>Acute Accent (é)</h4>
+                            <p>Changes the sound to [e] as in "<strong>é</strong>té" (summer)</p>
+
+                        </div>
+                        
+                        <div class="accent-example">
+                            <h4>Grave Accent (è, à, ù)</h4>
+                            <p>Changes the sound to [ɛ] as in "p<strong>è</strong>re" (father)</p>
+
+                        </div>
+                        
+                        <div class="accent-example">
+                            <h4>Circumflex (â, ê, î, ô, û)</h4>
+                            <p>Can indicate a historical 's' or change the vowel sound as in "f<strong>ê</strong>te" (party)</p>
+
+                        </div>
+                        
+                        <div class="accent-example">
+                            <h4>Diaeresis (ë, ï, ü, ÿ)</h4>
+                            <p>Indicates that the vowel is pronounced separately as in "No<strong>ë</strong>l" (Christmas)</p>
+
+                        </div>
+                        
+                        <div class="accent-example">
+                            <h4>Cedilla (ç)</h4>
+                            <p>Makes 'c' sound like 's' before 'a', 'o', 'u' as in "<strong>ça</strong>" (that)</p>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Basic Greetings -->
+                <div class="pronunciation-card">
+                    <h3>4. Basic French Greetings</h3>
+                    <p>Master these essential French greetings and expressions for everyday conversations.</p>
+                    
+                    <div class="greetings-grid">
+                        <div class="greeting-card">
+                            <h4>Bonjour</h4>
+                            <p>Hello / Good day</p>
+                            <p class="pronunciation">[bɔ̃.ʒuʁ]</p>
+
+                        </div>
+                        
+                        <div class="greeting-card">
+                            <h4>Bonsoir</h4>
+                            <p>Good evening</p>
+                            <p class="pronunciation">[bɔ̃.swaʁ]</p>
+
+                        </div>
+                        
+                        <div class="greeting-card">
+                            <h4>Au revoir</h4>
+                            <p>Goodbye</p>
+                            <p class="pronunciation">[o.ʁə.vwaʁ]</p>
+
+                        </div>
+                        
+                        <div class="greeting-card">
+                            <h4>Comment ça va ?</h4>
+                            <p>How are you?</p>
+                            <p class="pronunciation">[kɔ.mɑ̃ sa va]</p>
+
+                        </div>
+                        
+                        <div class="greeting-card">
+                            <h4>Merci</h4>
+                            <p>Thank you</p>
+                            <p class="pronunciation">[mɛʁ.si]</p>
+
+                        </div>
+                        
+                        <div class="greeting-card">
+                            <h4>S'il vous plaît</h4>
+                            <p>Please (formal)</p>
+                            <p class="pronunciation">[s‿il vu plɛ]</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <!-- Vocabulary Section -->
         <section id="vocabulary" class="vocabulary-section">
-            <h2 class="section-title">Essential French Vocabulary</h2>
-            <p>Building your vocabulary is key to becoming fluent in French. Here are some essential words and phrases organized by category:</p>
+            <h2 class="section-title">Comprehensive French Vocabulary</h2>
+            <p class="section-intro">Master French with this extensive vocabulary list organized into practical categories. Each entry includes the French word, English translation, and phonetic pronunciation to help you speak with confidence.</p>
             
             <div class="vocabulary-categories">
+                <!-- Numbers -->
                 <div class="vocabulary-category">
-                    <h3>Greetings & Basics</h3>
-                    <ul class="vocabulary-list">
-                        <li class="vocabulary-item">
-                            <span class="french-word">Bonjour</span>
-                            <span class="english-translation">Hello/Good day</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Bonsoir</span>
-                            <span class="english-translation">Good evening</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Au revoir</span>
-                            <span class="english-translation">Goodbye</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Comment allez-vous?</span>
-                            <span class="english-translation">How are you? (formal)</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Ça va?</span>
-                            <span class="english-translation">How are you? (informal)</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Merci</span>
-                            <span class="english-translation">Thank you</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">S'il vous plaît</span>
-                            <span class="english-translation">Please (formal)</span>
-                        </li>
-                    </ul>
+                    <h3>Numbers & Counting</h3>
+                    <div class="vocabulary-grid">
+                        <!-- Basic Numbers 1-10 -->
+                        <div class="vocabulary-subcategory">
+                            <h4>Cardinal Numbers (1-20)</h4>
+                            <div class="vocabulary-grid">
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Un/une</span>
+                                    <span class="english-meaning">1 (m/f)</span>
+                                    <span class="pronunciation">[œ̃]/[yn]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Deux</span>
+                                    <span class="english-meaning">2</span>
+                                    <span class="pronunciation">[dø]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Trois</span>
+                                    <span class="english-meaning">3</span>
+                                    <span class="pronunciation">[tʁwɑ]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quatre</span>
+                                    <span class="english-meaning">4</span>
+                                    <span class="pronunciation">[katʁ]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Cinq</span>
+                                    <span class="english-meaning">5</span>
+                                    <span class="pronunciation">[sɛ̃k]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Six</span>
+                                    <span class="english-meaning">6</span>
+                                    <span class="pronunciation">[sis]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Sept</span>
+                                    <span class="english-meaning">7</span>
+                                    <span class="pronunciation">[sɛt]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Huit</span>
+                                    <span class="english-meaning">8</span>
+                                    <span class="pronunciation">[ɥit]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Neuf</span>
+                                    <span class="english-meaning">9</span>
+                                    <span class="pronunciation">[nœf]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Dix</span>
+                                    <span class="english-meaning">10</span>
+                                    <span class="pronunciation">[dis]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Onze</span>
+                                    <span class="english-meaning">11</span>
+                                    <span class="pronunciation">[ɔ̃z]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Douze</span>
+                                    <span class="english-meaning">12</span>
+                                    <span class="pronunciation">[duz]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Treize</span>
+                                    <span class="english-meaning">13</span>
+                                    <span class="pronunciation">[tʁɛz]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quatorze</span>
+                                    <span class="english-meaning">14</span>
+                                    <span class="pronunciation">[ka.tɔʁz]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quinze</span>
+                                    <span class="english-meaning">15</span>
+                                    <span class="pronunciation">[kɛ̃z]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Seize</span>
+                                    <span class="english-meaning">16</span>
+                                    <span class="pronunciation">[sɛz]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Dix-sept</span>
+                                    <span class="english-meaning">17</span>
+                                    <span class="pronunciation">[di.sɛt]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Dix-huit</span>
+                                    <span class="english-meaning">18</span>
+                                    <span class="pronunciation">[di.z‿ɥit]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Dix-neuf</span>
+                                    <span class="english-meaning">19</span>
+                                    <span class="pronunciation">[diz.nœf]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Vingt</span>
+                                    <span class="english-meaning">20</span>
+                                    <span class="pronunciation">[vɛ̃]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tens, Hundreds, Thousands -->
+                        <div class="vocabulary-subcategory">
+                            <h4>Tens & Beyond</h4>
+                            <div class="vocabulary-grid">
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Vingt</span>
+                                    <span class="english-meaning">20</span>
+                                    <span class="pronunciation">[vɛ̃]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Trente</span>
+                                    <span class="english-meaning">30</span>
+                                    <span class="pronunciation">[tʁɑ̃t]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quarante</span>
+                                    <span class="english-meaning">40</span>
+                                    <span class="pronunciation">[ka.ʁɑ̃t]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Cinquante</span>
+                                    <span class="english-meaning">50</span>
+                                    <span class="pronunciation">[sɛ̃kɑ̃t]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Soixante</span>
+                                    <span class="english-meaning">60</span>
+                                    <span class="pronunciation">[swasɑ̃t]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Soixante-dix</span>
+                                    <span class="english-meaning">70 (60+10)</span>
+                                    <span class="pronunciation">[swasɑ̃t.dis]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quatre-vingts</span>
+                                    <span class="english-meaning">80 (4×20)</span>
+                                    <span class="pronunciation">[kat.ʁə.vɛ̃]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quatre-vingt-dix</span>
+                                    <span class="english-meaning">90 (4×20+10)</span>
+                                    <span class="pronunciation">[kat.ʁə.vɛ̃.dis]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Cent</span>
+                                    <span class="english-meaning">100</span>
+                                    <span class="pronunciation">[sɑ̃]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Deux cents</span>
+                                    <span class="english-meaning">200</span>
+                                    <span class="pronunciation">[dø sɑ̃]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Mille</span>
+                                    <span class="english-meaning">1,000</span>
+                                    <span class="pronunciation">[mil]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Un million</span>
+                                    <span class="english-meaning">1,000,000</span>
+                                    <span class="pronunciation">[œ̃ mi.ljɔ̃]</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ordinal Numbers -->
+                        <div class="vocabulary-subcategory">
+                            <h4>Ordinal Numbers</h4>
+                            <div class="vocabulary-grid">
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Premier/première</span>
+                                    <span class="english-meaning">1st (m/f)</span>
+                                    <span class="pronunciation">[pʁə.mje]/[pʁə.mjɛʁ]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Deuxième</span>
+                                    <span class="english-meaning">2nd</span>
+                                    <span class="pronunciation">[dø.zjɛm]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Troisième</span>
+                                    <span class="english-meaning">3rd</span>
+                                    <span class="pronunciation">[tʁwa.zjɛm]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Quatrième</span>
+                                    <span class="english-meaning">4th</span>
+                                    <span class="pronunciation">[ka.tʁi.jɛm]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Cinquième</span>
+                                    <span class="english-meaning">5th</span>
+                                    <span class="pronunciation">[sɛ̃.kjɛm]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Dixième</span>
+                                    <span class="english-meaning">10th</span>
+                                    <span class="pronunciation">[di.zjɛm]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Vingtième</span>
+                                    <span class="english-meaning">20th</span>
+                                    <span class="pronunciation">[vɛ̃.tjɛm]</span>
+                                </div>
+                                <div class="vocabulary-item">
+                                    <span class="french-word">Centième</span>
+                                    <span class="english-meaning">100th</span>
+                                    <span class="pronunciation">[sɑ̃.tjɛm]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
+
+                <!-- Colors & Descriptions -->
                 <div class="vocabulary-category">
-                    <h3>Numbers & Colors</h3>
-                    <ul class="vocabulary-list">
-                        <li class="vocabulary-item">
-                            <span class="french-word">Un, deux, trois</span>
-                            <span class="english-translation">One, two, three</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Quatre, cinq, six</span>
-                            <span class="english-translation">Four, five, six</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Rouge</span>
-                            <span class="english-translation">Red</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Bleu</span>
-                            <span class="english-translation">Blue</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Vert</span>
-                            <span class="english-translation">Green</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Jaune</span>
-                            <span class="english-translation">Yellow</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Noir</span>
-                            <span class="english-translation">Black</span>
-                        </li>
-                    </ul>
+                    <h3>Colors & Descriptions</h3>
+                    <div class="vocabulary-subcategory">
+                        <h4>Basic Colors</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Rouge</span>
+                                <span class="english-meaning">Red</span>
+                                <span class="pronunciation">[ʁuʒ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Bleu/Bleue</span>
+                                <span class="english-meaning">Blue (m/f)</span>
+                                <span class="pronunciation">[blø]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Vert/Verte</span>
+                                <span class="english-meaning">Green (m/f)</span>
+                                <span class="pronunciation">[vɛʁ]/[vɛʁt]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Jaune</span>
+                                <span class="english-meaning">Yellow</span>
+                                <span class="pronunciation">[ʒon]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Noir/Noire</span>
+                                <span class="english-meaning">Black (m/f)</span>
+                                <span class="pronunciation">[nwaʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Blanc/Blanche</span>
+                                <span class="english-meaning">White (m/f)</span>
+                                <span class="pronunciation">[blɑ̃]/[blɑ̃ʃ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Violet(te)</span>
+                                <span class="english-meaning">Purple (m/f)</span>
+                                <span class="pronunciation">[vjɔ.lɛ]/[vjɔ.lɛt]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Orange</span>
+                                <span class="english-meaning">Orange</span>
+                                <span class="pronunciation">[ɔ.ʁɑ̃ʒ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Rose</span>
+                                <span class="english-meaning">Pink</span>
+                                <span class="pronunciation">[ʁoz]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Marron</span>
+                                <span class="english-meaning">Brown</span>
+                                <span class="pronunciation">[ma.ʁɔ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Gris/Grise</span>
+                                <span class="english-meaning">Gray (m/f)</span>
+                                <span class="pronunciation">[ɡʁi]/[ɡʁiz]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Beige</span>
+                                <span class="english-meaning">Beige</span>
+                                <span class="pronunciation">[bɛʒ]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vocabulary-subcategory">
+                        <h4>Color Descriptions</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Foncé(e)</span>
+                                <span class="english-meaning">Dark (m/f)</span>
+                                <span class="pronunciation">[fɔ̃.se]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Clair(e)</span>
+                                <span class="english-meaning">Light (m/f)</span>
+                                <span class="pronunciation">[klɛʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Vif/Vive</span>
+                                <span class="english-meaning">Bright (m/f)</span>
+                                <span class="pronunciation">[vif]/[viv]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Pâle</span>
+                                <span class="english-meaning">Pale</span>
+                                <span class="pronunciation">[pɑl]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Foncé</span>
+                                <span class="english-meaning">Deep (color)</span>
+                                <span class="pronunciation">[fɔ̃.se]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Vif</span>
+                                <span class="english-meaning">Vivid</span>
+                                <span class="pronunciation">[vif]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vocabulary-subcategory">
+                        <h4>Color Patterns</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Rayé(e)</span>
+                                <span class="english-meaning">Striped (m/f)</span>
+                                <span class="pronunciation">[ʁe.je]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">À pois</span>
+                                <span class="english-meaning">Polka-dotted</span>
+                                <span class="pronunciation">[a pwa]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">À carreaux</span>
+                                <span class="english-meaning">Checkered</span>
+                                <span class="pronunciation">[a ka.ʁo]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Uni(e)</span>
+                                <span class="english-meaning">Solid/Plain (m/f)</span>
+                                <span class="pronunciation">[y.ni]</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
+
+                <!-- Food & Dining -->
                 <div class="vocabulary-category">
                     <h3>Food & Dining</h3>
-                    <ul class="vocabulary-list">
-                        <li class="vocabulary-item">
-                            <span class="french-word">L'eau</span>
-                            <span class="english-translation">Water</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Le pain</span>
-                            <span class="english-translation">Bread</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Le fromage</span>
-                            <span class="english-translation">Cheese</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Le vin</span>
-                            <span class="english-translation">Wine</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Le restaurant</span>
-                            <span class="english-translation">Restaurant</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">L'addition</span>
-                            <span class="english-translation">The bill</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="french-word">Le petit déjeuner</span>
-                            <span class="english-translation">Breakfast</span>
-                        </li>
-                    </ul>
+                    <div class="vocabulary-subcategory">
+                        <h4>Meals & Dining</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le petit déjeuner</span>
+                                <span class="english-meaning">Breakfast</span>
+                                <span class="pronunciation">[pə.ti de.ʒœ.ne]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le déjeuner</span>
+                                <span class="english-meaning">Lunch</span>
+                                <span class="pronunciation">[de.ʒœ.ne]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le dîner</span>
+                                <span class="english-meaning">Dinner</span>
+                                <span class="pronunciation">[di.ne]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le goûter</span>
+                                <span class="english-meaning">Afternoon snack</span>
+                                <span class="pronunciation">[ɡu.te]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'apéritif</span>
+                                <span class="english-meaning">Aperitif</span>
+                                <span class="pronunciation">[a.pe.ʁi.tif]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le dessert</span>
+                                <span class="english-meaning">Dessert</span>
+                                <span class="pronunciation">[de.sɛʁ]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vocabulary-subcategory">
+                        <h4>Food Categories</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Les fruits (m)</span>
+                                <span class="english-meaning">Fruits</span>
+                                <span class="pronunciation">[fʁɥi]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Les légumes (m)</span>
+                                <span class="english-meaning">Vegetables</span>
+                                <span class="pronunciation">[le.ɡym]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La viande</span>
+                                <span class="english-meaning">Meat</span>
+                                <span class="pronunciation">[vjɑ̃d]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le poisson</span>
+                                <span class="english-meaning">Fish</span>
+                                <span class="pronunciation">[pwa.sɔ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Les produits laitiers</span>
+                                <span class="english-meaning">Dairy products</span>
+                                <span class="pronunciation">[pʁɔ.dɥi lɛ.tje]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Les céréales (f)</span>
+                                <span class="english-meaning">Grains/Cereals</span>
+                                <span class="pronunciation">[se.ʁe.al]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vocabulary-subcategory">
+                        <h4>Common Dishes</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">La baguette</span>
+                                <span class="english-meaning">French bread</span>
+                                <span class="pronunciation">[ba.ɡɛt]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le croissant</span>
+                                <span class="english-meaning">Croissant</span>
+                                <span class="pronunciation">[kʁwa.sɑ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La quiche</span>
+                                <span class="english-meaning">Quiche</span>
+                                <span class="pronunciation">[kiʃ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le coq au vin</span>
+                                <span class="english-meaning">Chicken in wine</span>
+                                <span class="pronunciation">[kɔk o vɛ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La bouillabaisse</span>
+                                <span class="english-meaning">Fish stew</span>
+                                <span class="pronunciation">[bu.ja.bɛs]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La ratatouille</span>
+                                <span class="english-meaning">Vegetable stew</span>
+                                <span class="pronunciation">[ʁa.ta.tuj]</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="vocabulary-subcategory">
+                        <h4>Dining Out</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">La carte</span>
+                                <span class="english-meaning">Menu</span>
+                                <span class="pronunciation">[kaʁt]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La commande</span>
+                                <span class="english-meaning">Order</span>
+                                <span class="pronunciation">[kɔ.mɑ̃d]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'addition</span>
+                                <span class="english-meaning">Bill</span>
+                                <span class="pronunciation">[a.di.sjɔ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le pourboire</span>
+                                <span class="english-meaning">Tip</span>
+                                <span class="pronunciation">[puʁ.bwaʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le serveur/La serveuse</span>
+                                <span class="english-meaning">Waiter/Waitress</span>
+                                <span class="pronunciation">[sɛʁ.vœʁ]/[sɛʁ.vøz]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La terrasse</span>
+                                <span class="english-meaning">Outdoor seating</span>
+                                <span class="pronunciation">[tɛ.ʁas]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Travel & Transportation -->
+                <div class="vocabulary-category">
+                    <h3>Travel & Transportation</h3>
+                    
+                    <div class="vocabulary-subcategory">
+                        <h4>Transportation</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'avion</span>
+                                <span class="english-meaning">Airplane</span>
+                                <span class="pronunciation">[a.vjɔ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le train</span>
+                                <span class="english-meaning">Train</span>
+                                <span class="pronunciation">[tʁɛ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le métro</span>
+                                <span class="english-meaning">Subway</span>
+                                <span class="pronunciation">[me.tʁo]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le bus</span>
+                                <span class="english-meaning">Bus</span>
+                                <span class="pronunciation">[bys]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le taxi</span>
+                                <span class="english-meaning">Taxi</span>
+                                <span class="pronunciation">[tak.si]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La voiture</span>
+                                <span class="english-meaning">Car</span>
+                                <span class="pronunciation">[vwa.tyʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le vélo</span>
+                                <span class="english-meaning">Bicycle</span>
+                                <span class="pronunciation">[ve.lo]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La moto</span>
+                                <span class="english-meaning">Motorcycle</span>
+                                <span class="pronunciation">[mɔ.to]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vocabulary-subcategory">
+                        <h4>Places</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'aéroport</span>
+                                <span class="english-meaning">Airport</span>
+                                <span class="pronunciation">[a.e.ʁɔ.pɔʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La gare</span>
+                                <span class="english-meaning">Train station</span>
+                                <span class="pronunciation">[ɡaʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'hôtel</span>
+                                <span class="english-meaning">Hotel</span>
+                                <span class="pronunciation">[o.tɛl]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'auberge de jeunesse</span>
+                                <span class="english-meaning">Youth hostel</span>
+                                <span class="pronunciation">[o.bɛʁʒ də ʒœ.nɛs]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La gare routière</span>
+                                <span class="english-meaning">Bus station</span>
+                                <span class="pronunciation">[ɡaʁ ʁu.tjɛʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'office de tourisme</span>
+                                <span class="english-meaning">Tourist office</span>
+                                <span class="pronunciation">[ɔ.fis də tu.ʁism]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vocabulary-subcategory">
+                        <h4>Travel Essentials</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le passeport</span>
+                                <span class="english-meaning">Passport</span>
+                                <span class="pronunciation">[pas.pɔʁ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le billet</span>
+                                <span class="english-meaning">Ticket</span>
+                                <span class="pronunciation">[bi.jɛ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La valise</span>
+                                <span class="english-meaning">Suitcase</span>
+                                <span class="pronunciation">[va.liz]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le sac à dos</span>
+                                <span class="english-meaning">Backpack</span>
+                                <span class="pronunciation">[sak a do]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La carte d'embarquement</span>
+                                <span class="english-meaning">Boarding pass</span>
+                                <span class="pronunciation">[kaʁt dɑ̃.baʁ.kə.mɑ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La réservation</span>
+                                <span class="english-meaning">Reservation</span>
+                                <span class="pronunciation">[ʁe.zɛʁ.va.sjɔ̃]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vocabulary-subcategory">
+                        <h4>Directions</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">La carte</span>
+                                <span class="english-meaning">Map</span>
+                                <span class="pronunciation">[kaʁt]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le plan</span>
+                                <span class="english-meaning">City map</span>
+                                <span class="pronunciation">[plɑ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le GPS</span>
+                                <span class="english-meaning">GPS</span>
+                                <span class="pronunciation">[ʒe.pe.ɛs]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">La boussole</span>
+                                <span class="english-meaning">Compass</span>
+                                <span class="pronunciation">[bu.sɔl]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Le nord/sud</span>
+                                <span class="english-meaning">North/south</span>
+                                <span class="pronunciation">[nɔʁ]/[syd]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">L'est/ouest</span>
+                                <span class="english-meaning">East/west</span>
+                                <span class="pronunciation">[ɛst]/[wɛst]</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vocabulary-subcategory">
+                        <h4>Useful Phrases</h4>
+                        <div class="vocabulary-grid">
+                            <div class="vocabulary-item">
+                                <span class="french-word">Où est...?</span>
+                                <span class="english-meaning">Where is...?</span>
+                                <span class="pronunciation">[u ɛ]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Comment aller à...?</span>
+                                <span class="english-meaning">How do I get to...?</span>
+                                <span class="pronunciation">[kɔ.mɑ̃ a.le a]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">C'est loin?</span>
+                                <span class="english-meaning">Is it far?</span>
+                                <span class="pronunciation">[sɛ lwɛ̃]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Je suis perdu(e)</span>
+                                <span class="english-meaning">I'm lost</span>
+                                <span class="pronunciation">[ʒə sɥi pɛʁ.dy]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Je voudrais réserver...</span>
+                                <span class="english-meaning">I would like to book...</span>
+                                <span class="pronunciation">[ʒə vu.dʁɛ ʁe.zɛʁ.ve]</span>
+                            </div>
+                            <div class="vocabulary-item">
+                                <span class="french-word">Combien coûte le billet?</span>
+                                <span class="english-meaning">How much is the ticket?</span>
+                                <span class="pronunciation">[kɔ̃.bjɛ̃ kut lə bi.jɛ]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Activities -->
+                <div class="vocabulary-category">
+                    <h3>Daily Activities</h3>
+                    <div class="vocabulary-grid">
+                        <div class="vocabulary-item">
+                            <span class="french-word">Se réveiller</span>
+                            <span class="english-meaning">To wake up</span>
+                            <span class="pronunciation">[sə ʁe.ve.je]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Manger</span>
+                            <span class="english-meaning">To eat</span>
+                            <span class="pronunciation">[mɑ̃.ʒe]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Boire</span>
+                            <span class="english-meaning">To drink</span>
+                            <span class="pronunciation">[bwaʁ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Travailler</span>
+                            <span class="english-meaning">To work</span>
+                            <span class="pronunciation">[tʁa.va.je]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Dormir</span>
+                            <span class="english-meaning">To sleep</span>
+                            <span class="pronunciation">[dɔʁ.miʁ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Lire</span>
+                            <span class="english-meaning">To read</span>
+                            <span class="pronunciation">[liʁ]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Common Phrases -->
+                <div class="vocabulary-category">
+                    <h3>Common Phrases</h3>
+                    <div class="vocabulary-grid">
+                        <div class="vocabulary-item">
+                            <span class="french-word">Comment ça va ?</span>
+                            <span class="english-meaning">How are you?</span>
+                            <span class="pronunciation">[kɔ.mɑ̃ sa va]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Je ne comprends pas</span>
+                            <span class="english-meaning">I don't understand</span>
+                            <span class="pronunciation">[ʒə nə kɔ̃.pʁɑ̃ pa]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Parlez-vous anglais ?</span>
+                            <span class="english-meaning">Do you speak English?</span>
+                            <span class="pronunciation">[paʁ.le vu ɑ̃.ɡlɛ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Où est... ?</span>
+                            <span class="english-meaning">Where is...?</span>
+                            <span class="pronunciation">[u ɛ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Combien ça coûte ?</span>
+                            <span class="english-meaning">How much does it cost?</span>
+                            <span class="pronunciation">[kɔ̃.bjɛ̃ sa kut]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Je voudrais...</span>
+                            <span class="english-meaning">I would like...</span>
+                            <span class="pronunciation">[ʒə vu.dʁɛ]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Family & Relationships -->
+                <div class="vocabulary-category">
+                    <h3>Family & Relationships</h3>
+                    <div class="vocabulary-grid">
+                        <div class="vocabulary-item">
+                            <span class="french-word">La famille</span>
+                            <span class="english-meaning">Family</span>
+                            <span class="pronunciation">[la fa.mij]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le père / La mère</span>
+                            <span class="english-meaning">Father / Mother</span>
+                            <span class="pronunciation">[l(ə) pɛʁ] / [la mɛʁ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le frère / La sœur</span>
+                            <span class="english-meaning">Brother / Sister</span>
+                            <span class="pronunciation">[l(ə) fʁɛʁ] / [la sœʁ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le fils / La fille</span>
+                            <span class="english-meaning">Son / Daughter</span>
+                            <span class="pronunciation">[l(ə) fis] / [la fij]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le mari / La femme</span>
+                            <span class="english-meaning">Husband / Wife</span>
+                            <span class="pronunciation">[l(ə) ma.ʁi] / [la fam]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">L'ami(e)</span>
+                            <span class="english-meaning">Friend (m/f)</span>
+                            <span class="pronunciation">[la.mi] / [la.mi]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather & Seasons -->
+                <div class="vocabulary-category">
+                    <h3>Weather & Seasons</h3>
+                    <div class="vocabulary-grid">
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le temps</span>
+                            <span class="english-meaning">Weather</span>
+                            <span class="pronunciation">[l(ə) tɑ̃]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Il fait beau</span>
+                            <span class="english-meaning">It's nice out</span>
+                            <span class="pronunciation">[il fɛ bo]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Il pleut</span>
+                            <span class="english-meaning">It's raining</span>
+                            <span class="pronunciation">[il plø]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Il neige</span>
+                            <span class="english-meaning">It's snowing</span>
+                            <span class="pronunciation">[il nɛʒ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Les saisons</span>
+                            <span class="english-meaning">Seasons</span>
+                            <span class="pronunciation">[le sɛ.zɔ̃]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">L'été / L'hiver</span>
+                            <span class="english-meaning">Summer / Winter</span>
+                            <span class="pronunciation">[le.te] / [li.vɛʁ]</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shopping & Commerce -->
+                <div class="vocabulary-category">
+                    <h3>Shopping & Commerce</h3>
+                    <div class="vocabulary-grid">
+                        <div class="vocabulary-item">
+                            <span class="french-word">Faire du shopping</span>
+                            <span class="english-meaning">To go shopping</span>
+                            <span class="pronunciation">[fɛʁ dy ʃɔ.piŋ]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le magasin</span>
+                            <span class="english-meaning">Store</span>
+                            <span class="pronunciation">[l(ə) ma.ɡa.zɛ̃]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Le prix</span>
+                            <span class="english-meaning">Price</span>
+                            <span class="pronunciation">[l(ə) pʁi]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">La réduction</span>
+                            <span class="english-meaning">Discount</span>
+                            <span class="pronunciation">[la ʁe.dyk.sjɔ̃]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">Payer</span>
+                            <span class="english-meaning">To pay</span>
+                            <span class="pronunciation">[pe.je]</span>
+                        </div>
+                        <div class="vocabulary-item">
+                            <span class="french-word">La caisse</span>
+                            <span class="english-meaning">Checkout</span>
+                            <span class="pronunciation">[la kɛs]</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -706,82 +1996,141 @@
         <!-- Culture Section -->
         <section id="culture" class="culture-section">
             <h2 class="section-title">French Culture</h2>
-            <p>Understanding French culture is essential for truly mastering the language. Here are some key aspects of French culture:</p>
+            <p class="section-intro">Understanding French culture is essential for truly mastering the language. France has a rich cultural heritage that influences art, cuisine, literature, and social norms around the world.</p>
             
             <div class="culture-grid">
-                <div class="culture-card">
-                    <div class="culture-image">🍷</div>
-                    <div class="culture-content">
-                        <h3>French Cuisine</h3>
-                        <p>French cuisine is renowned worldwide for its sophistication. From baguettes and croissants to coq au vin and ratatouille, food is an integral part of French culture and daily life.</p>
+                <!-- French Cuisine -->
+                <div class="culture-category">
+                    <h3><i class="fas fa-utensils"></i> French Cuisine</h3>
+                    <div class="culture-subcategory">
+                        <h4>Regional Specialties</h4>
+                        <ul>
+                            <li><strong>Provence:</strong> Ratatouille, bouillabaisse, tapenade</li>
+                            <li><strong>Burgundy:</strong> Boeuf bourguignon, coq au vin, escargots de Bourgogne</li>
+                            <li><strong>Alsace:</strong> Choucroute garnie, tarte flambée, baeckeoffe</li>
+                            <li><strong>Southwest France:</strong> Cassoulet, confit de canard, foie gras</li>
+                            <li><strong>Brittany:</strong> Crêpes, galettes, kouign-amann</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Meal Structure</h4>
+                        <ul>
+                            <li><strong>Le petit-déjeuner:</strong> Light breakfast with croissants, baguette, coffee</li>
+                            <li><strong>Le déjeuner:</strong> Main meal of the day, often 2+ courses</li>
+                            <li><strong>Le goûter:</strong> Afternoon snack (common for children)</li>
+                            <li><strong>Le dîner:</strong> Lighter evening meal, often served late (8-10pm)</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Dining Etiquette</h4>
+                        <ul>
+                            <li>Keep hands on the table (not in lap) during meals</li>
+                            <li>Wait for the host to say "Bon appétit" before eating</li>
+                            <li>Bread is placed directly on the table, not on a plate</li>
+                            <li>Cheese is served before dessert, not with crackers</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="culture-card">
-                    <div class="culture-image">🎨</div>
-                    <div class="culture-content">
-                        <h3>Art & Literature</h3>
-                        <p>France has a rich artistic heritage, from the Impressionist paintings of Monet and Renoir to the literary works of Victor Hugo and Albert Camus. The Louvre in Paris is the world's most visited museum.</p>
+
+                <!-- Art & Literature -->
+                <div class="culture-category">
+                    <h3><i class="fas fa-palette"></i> Art & Literature</h3>
+                    <div class="culture-subcategory">
+                        <h4>Art Movements</h4>
+                        <ul>
+                            <li><strong>Impressionism:</strong> Monet, Renoir, Degas</li>
+                            <li><strong>Post-Impressionism:</strong> Van Gogh, Cézanne, Gauguin</li>
+                            <li><strong>Fauvism:</strong> Matisse, Derain</li>
+                            <li><strong>Cubism:</strong> Picasso, Braque</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Literary Giants</h4>
+                        <ul>
+                            <li><strong>Victor Hugo:</strong> Les Misérables, The Hunchback of Notre-Dame</li>
+                            <li><strong>Alexandre Dumas:</strong> The Three Musketeers, The Count of Monte Cristo</li>
+                            <li><strong>Albert Camus:</strong> The Stranger, The Plague</li>
+                            <li><strong>Marcel Proust:</strong> In Search of Lost Time</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Cultural Institutions</h4>
+                        <ul>
+                            <li><strong>Musée du Louvre:</strong> World's largest art museum</li>
+                            <li><strong>Musée d'Orsay:</strong> Impressionist and Post-Impressionist masterpieces</li>
+                            <li><strong>Centre Pompidou:</strong> Modern and contemporary art</li>
+                            <li><strong>Palais Garnier:</strong> Historic opera house in Paris</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="culture-card">
-                    <div class="culture-image">👋</div>
-                    <div class="culture-content">
-                        <h3>Etiquette & Customs</h3>
-                        <p>French social etiquette includes greeting with "la bise" (cheek kisses), using formal "vous" versus informal "tu", and maintaining proper table manners. Politeness is highly valued in French society.</p>
+
+                <!-- Customs & Etiquette -->
+                <div class="culture-category">
+                    <h3><i class="fas fa-handshake"></i> Customs & Etiquette</h3>
+                    <div class="culture-subcategory">
+                        <h4>Social Greetings</h4>
+                        <ul>
+                            <li><strong>La bise:</strong> Cheek kisses (1-4 depending on region)</li>
+                            <li><strong>Bonjour:</strong> Essential greeting when entering shops/businesses</li>
+                            <li><strong>Vous vs. Tu:</strong> Use "vous" in formal situations and with strangers</li>
+                            <li>Handshakes are common in business settings</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Social Customs</h4>
+                        <ul>
+                            <li>Politeness is highly valued (say "bonjour", "merci", "au revoir")
+                            <li>Dress neatly when going out in public</li>
+                            <li>Maintain eye contact during conversations</li>
+                            <li>Avoid discussing money or personal finances</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Business Etiquette</h4>
+                        <ul>
+                            <li>Punctuality is important (5-10 minutes late is acceptable for social events)</li>
+                            <li>Business cards are exchanged without formal ritual</li>
+                            <li>Meetings may start with small talk before business</li>
+                            <li>Decisions are often made at the top of the hierarchy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Regional Differences -->
+                <div class="culture-category">
+                    <h3><i class="fas fa-map-marked-alt"></i> Regional Differences</h3>
+                    <div class="culture-subcategory">
+                        <h4>Northern France</h4>
+                        <ul>
+                            <li><strong>Climate:</strong> Cooler, more rainfall</li>
+                            <li><strong>Cuisine:</strong> Hearty dishes, butter-based sauces</li>
+                            <li><strong>Culture:</strong> More reserved, punctual</li>
+                            <li><strong>Dialect:</strong> Closer to standard French</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Southern France</h4>
+                        <ul>
+                            <li><strong>Climate:</strong> Mediterranean, warmer</li>
+                            <li><strong>Cuisine:</strong> Olive oil, garlic, herbs, seafood</li>
+                            <li><strong>Culture:</strong> More relaxed, "joie de vivre"</li>
+                            <li><strong>Dialect:</strong> Occitan influences, slower speech</li>
+                        </ul>
+                    </div>
+                    <div class="culture-subcategory">
+                        <h4>Key Regions</h4>
+                        <ul>
+                            <li><strong>Paris/Île-de-France:</strong> Fast-paced, cosmopolitan</li>
+                            <li><strong>Provence:</strong> Lavender fields, Mediterranean lifestyle</li>
+                            <li><strong>Brittany:</strong> Celtic influences, crepes, cider</li>
+                            <li><strong>Alsace:</strong> German influences, Christmas markets</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Progress Tracker -->
-        <section class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <p>Track your progress through the French language learning modules.</p>
-            
-            <div class="progress-bars">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Pronunciation & Basics</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Essential Vocabulary</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>French Culture</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Overall Progress</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
+
     </div>
     
     <!-- Footer -->
@@ -817,26 +2166,6 @@
         </div>
     </footer>
     
-    <script>
-        // Simple script to animate progress bars when they come into view
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set up intersection observer
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // When progress section is in view, animate progress bars
-                        setTimeout(() => {
-                            document.querySelectorAll('.progress-fill').forEach(bar => {
-                                bar.style.width = '0%'; // Reset first
-                            });
-                        }, 300);
-                    }
-                });
-            });
-            
-            // Observe the progress section
-            observer.observe(document.querySelector('.progress-section'));
-        });
-    </script>
+
 </body>
 </html>

@@ -300,6 +300,1477 @@
             color: #333;
         }
         
+        /* Pronunciation & Tones Section */
+        .pronunciation-section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
+        }
+        
+        .section-description {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pronunciation-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 4px solid #00796b;
+        }
+        
+        .pronunciation-card h3 {
+            color: #00796b;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .pronunciation-card ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .pronunciation-card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .pronunciation-card li:before {
+            content: '•';
+            color: #00796b;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .pinyin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .stat-item {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00796b;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #2e7d32;
+        }
+        
+        .pinyin-details {
+            margin-top: 30px;
+        }
+        
+        .detail-group {
+            margin-bottom: 25px;
+        }
+        
+        .detail-group h4 {
+            color: #00796b;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .consonants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .consonant-group {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #00796b;
+        }
+        
+        .consonant-group h5 {
+            margin: 0 0 8px 0;
+            color: #2e7d32;
+            font-size: 0.9rem;
+        }
+        
+        .consonant-group p {
+            margin: 0;
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        
+        .chinese-char {
+            font-size: 3rem;
+            color: #00796b;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+        
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .character-type {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .character-type:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .radicals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .radical {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #00796b;
+        }
+        
+        .radical-char {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00796b;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .radical-meaning {
+            display: block;
+            color: #2e7d32;
+            margin-bottom: 5px;
+        }
+        
+        .radical-examples {
+            display: block;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .structure-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .structure {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .structure-char {
+            font-size: 2.5rem;
+            color: #00796b;
+            margin-bottom: 10px;
+        }
+        
+        /* New styles for enhanced character learning */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .discovery-section {
+            margin-top: 30px;
+        }
+        
+        .discovery-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+        
+        .discovery-card h3 {
+            color: #00796b;
+            margin-top: 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0f2f1;
+        }
+        
+        .basic-characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .char-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .char-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .char-large {
+            font-size: 3.5rem;
+            color: #00796b;
+            margin-right: 20px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .char-details {
+            flex: 1;
+        }
+        
+        .pinyin {
+            display: block;
+            font-size: 1.2rem;
+            color: #e91e63;
+            margin-bottom: 5px;
+        }
+        
+        .meaning {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .char-tip {
+            font-size: 0.9rem;
+            color: #555;
+            background: #e8f5e9;
+            padding: 5px 10px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+        
+        .character-breakdown {
+            margin: 25px 0;
+        }
+        
+        .breakdown-item {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .breakdown {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .component, .result {
+            background: #e3f2fd;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .result {
+            background: #e8f5e9;
+            font-weight: bold;
+        }
+        
+        .plus, .equal {
+            font-size: 1.5rem;
+            color: #666;
+            margin: 0 5px;
+        }
+        
+        .char-explanation {
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f1f8e9;
+            border-right: 3px solid #8bc34a;
+        }
+        
+        .radicals-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .radical-card {
+            background: #f5f5f5;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .radical-char {
+            font-size: 2.5rem;
+            color: #00796b;
+            margin-right: 20px;
+            background: white;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .radical-info h4 {
+            margin: 0 0 10px 0;
+            color: #2e7d32;
+        }
+        
+        .radical-examples {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0 0;
+        }
+        
+        .radical-examples li {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .stroke-practice {
+            margin: 25px 0;
+        }
+        
+        .stroke-demo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .stroke-char {
+            font-size: 3rem;
+            margin-right: 25px;
+            min-width: 80px;
+            text-align: center;
+        }
+        
+        .stroke-info h4 {
+            margin: 0 0 5px 0;
+            color: #2e7d32;
+        }
+        
+        .stroke-animation img {
+            max-width: 100px;
+            height: auto;
+            margin-top: 10px;
+        }
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .char-practice {
+            text-align: center;
+        }
+        
+        .char-to-write {
+            font-size: 3rem;
+            color: #00796b;
+            margin-bottom: 10px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .practice-btn {
+            background: #00796b;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .practice-btn:hover {
+            background: #00695c;
+        }
+        
+        /* Essential Characters Section Styles */
+        .essential-characters {
+            margin: 50px 0;
+            padding: 30px 0;
+            border-top: 2px solid #e0f2f1;
+        }
+        
+        .section-intro {
+            font-size: 1.1rem;
+            color: #455a64;
+            margin-bottom: 30px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        .module-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .module-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #00796b;
+        }
+        
+        .module-card h3 {
+            color: #00796b;
+            margin: 10px 0;
+            font-size: 1.4rem;
+        }
+        
+        .module-card p {
+            color: #546e7a;
+            margin-bottom: 20px;
+        }
+        
+        /* Stroke Examples */
+        .stroke-examples {
+            margin: 15px 0;
+        }
+        
+        .stroke-example {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .stroke-demo {
+            font-size: 2rem;
+            margin-right: 15px;
+            min-width: 50px;
+            text-align: center;
+            color: #00796b;
+        }
+        
+        .stroke-info {
+            font-size: 0.9rem;
+            color: #37474f;
+            line-height: 1.5;
+        }
+        
+        .stroke-char-example {
+            display: block;
+            font-size: 0.85rem;
+            color: #e91e63;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        /* Structure Examples */
+        .structure-examples {
+            margin: 15px 0;
+        }
+        
+        .structure-type {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .structure-demo {
+            font-size: 2rem;
+            margin-right: 15px;
+            min-width: 50px;
+            text-align: center;
+            color: #00796b;
+        }
+        
+        .structure-info {
+            font-size: 0.9rem;
+        }
+        
+        .structure-rules {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .structure-rules ol {
+            margin: 10px 0 0 20px;
+            padding: 0;
+        }
+        
+        .structure-rules li {
+            margin: 8px 0;
+            color: #1b5e20;
+        }
+        
+        /* Radicals Section */
+        .radical-list {
+            margin: 15px 0;
+        }
+        
+        .radical-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 5px 0;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .radical-item:hover {
+            background: #f0f9ff;
+            border-color: #b3e0ff;
+        }
+        
+        .radical-examples {
+            display: none;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #e0e0e0;
+            font-size: 0.85rem;
+            color: #546e7a;
+        }
+        
+        .radical-examples span {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            padding: 2px 8px;
+            background: #e3f2fd;
+            border-radius: 10px;
+        }
+        
+        .radical-item.active .radical-examples {
+            display: block;
+        }
+        
+        .section-tip {
+            font-size: 0.85rem;
+            color: #78909c;
+            font-weight: normal;
+            margin-left: 10px;
+        }
+        
+        .radical-char {
+            font-size: 1.3rem;
+            min-width: 40px;
+            color: #00796b;
+            font-weight: bold;
+        }
+        
+        .radical-pinyin {
+            min-width: 50px;
+            color: #e91e63;
+            font-size: 0.9rem;
+        }
+        
+        .radical-meaning {
+            color: #455a64;
+            font-size: 0.9rem;
+        }
+        
+        /* Component Examples */
+        .component-examples {
+            margin: 20px 0;
+        }
+        
+        .component-example {
+            margin: 12px 0;
+            padding: 10px;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+        
+        .char-breakdown {
+            display: flex;
+            align-items: center;
+        }
+        
+        .char {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: #00796b;
+        }
+        
+        .breakdown {
+            font-size: 0.9rem;
+            color: #455a64;
+        }
+        
+        .char-meaning {
+            font-size: 0.9rem;
+            color: #455a64;
+            margin-top: 8px;
+            line-height: 1.5;
+            padding: 8px;
+            background: #f5f5f5;
+            border-radius: 6px;
+        }
+        
+        /* Writing Practice */
+        .writing-area {
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        .character-to-write {
+            margin-bottom: 15px;
+        }
+        
+        .char-large {
+            font-size: 4rem;
+            color: #00796b;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .char-stats {
+            font-size: 0.9rem;
+            color: #546e7a;
+        }
+        
+        .char-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex: 1;
+            min-width: 120px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #00796b;
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #546e7a;
+        }
+        
+        .character-evolution {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #00796b;
+        }
+        
+        .evolution-example {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .evolution-stage {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            min-width: 80px;
+        }
+        
+        .evolution-char {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        
+        .evolution-label {
+            font-size: 0.8rem;
+            color: #78909c;
+        }
+        
+        .evolution-arrow {
+            font-size: 1.5rem;
+            color: #90a4ae;
+            margin: 0 5px;
+        }
+        
+        .evolution-meaning {
+            margin-top: 15px;
+            padding: 12px;
+            background: #e8f5e9;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Conversation Basics Styles */
+        .conversation-basics {
+            margin: 50px 0;
+            padding: 30px 0;
+            border-top: 2px solid #e0f2f1;
+        }
+        
+        .conversation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .conversation-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .conversation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        
+        .conversation-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #2196f3;
+        }
+        
+        .conversation-card h3 {
+            color: #1976d2;
+            margin: 10px 0 20px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 10px;
+        }
+        
+        .phrase-list {
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        
+        .phrase-item {
+            margin-bottom: 15px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .phrase-item:hover {
+            background: #e3f2fd;
+            transform: translateX(5px);
+        }
+        
+        .chinese {
+            font-size: 1.3rem;
+            color: #0d47a1;
+            margin-bottom: 5px;
+        }
+        
+        .pinyin {
+            color: #e91e63;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .translation {
+            color: #455a64;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+        
+        .grammar-patterns {
+            flex-grow: 1;
+        }
+        
+        .pattern {
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .pattern h4 {
+            color: #1976d2;
+            margin: 0 0 10px 0;
+            font-size: 1rem;
+        }
+        
+        .example {
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 8px;
+            border-left: 3px solid #2196f3;
+        }
+        
+        .sentence {
+            font-size: 1.1rem;
+            color: #0d47a1;
+            margin-bottom: 5px;
+        }
+        
+        .measure-words {
+            flex-grow: 1;
+        }
+        
+        .measure-item {
+            background: #f8f9fa;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        
+        .measure-char {
+            font-size: 1.2rem;
+            color: #2196f3;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .measure-usage {
+            color: #455a64;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .conversation-tips {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f0f7ff;
+            border-radius: 12px;
+            border-left: 4px solid #2196f3;
+        }
+        
+        .conversation-tips h3 {
+            color: #1976d2;
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+        
+        .module-button {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .module-button:hover {
+            background: #1976d2;
+        }
+        
+        /* Vocabulary Section Styles */
+        .vocabulary-section {
+            margin: 50px 0;
+            padding: 30px 0;
+            background: #f9f9f9;
+            border-radius: 15px;
+        }
+        
+        .vocabulary-section h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+        }
+        
+        .vocab-categories {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .category-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+        
+        .category-btn {
+            padding: 8px 16px;
+            background: #e0f2f1;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #00796b;
+            transition: all 0.3s;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: #00796b;
+            color: white;
+        }
+        
+        .vocab-search {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+        
+        #vocab-search {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        #vocab-search:focus {
+            border-color: #00796b;
+        }
+        
+        .search-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: #757575;
+            cursor: pointer;
+        }
+        
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+        
+        .vocab-category {
+            display: none;
+        }
+        
+        .vocab-category.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        .vocab-category h3 {
+            color: #2e7d32;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .vocab-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .vocab-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .chinese {
+            font-size: 1.5rem;
+            color: #2e7d32;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        
+        .pinyin {
+            color: #e91e63;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .translation {
+            text-align: center;
+            color: #455a64;
+            font-size: 0.95rem;
+        }
+        
+        .vocab-practice {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .vocab-practice h3 {
+            color: #2e7d32;
+            margin-top: 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .practice-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .practice-btn {
+            background: #e8f5e9;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            color: #2e7d32;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .practice-btn:hover {
+            background: #c8e6c9;
+        }
+        
+        .progress-tracker {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .progress-tracker h4 {
+            margin: 0 0 10px 0;
+            color: #455a64;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: #4caf50;
+            width: 0;
+            transition: width 0.5s;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #757575;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 900px) {
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .vocab-practice {
+                position: static;
+                margin-top: 30px;
+            }
+            
+            .vocab-items {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .practice-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .vocab-items {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .stroke-order {
+            margin: 15px 0;
+        }
+        
+        .stroke-animation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 10px 0;
+        }
+        
+        .stroke {
+            font-size: 2rem;
+            color: #ff9800;
+        }
+        
+        .practice-tools {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .tool-button {
+            background: #e0e0e0;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .tool-button:hover {
+            background: #bdbdbd;
+        }
+        
+        #writing-canvas {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin: 10px 0;
+            background: #fff;
+        }
+        
+        .practice-words {
+            margin: 20px 0;
+        }
+        
+        .word-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .word {
+            background: #e3f2fd;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #1565c0;
+        }
+        
+        /* Module Buttons */
+        .module-button {
+            background: #00796b;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .module-button:hover {
+            background: #00695c;
+        }
+        
+        .start-practice {
+            background: #e91e63;
+        }
+        
+        .start-practice:hover {
+            background: #c2185b;
+        }
+        
+        /* Learning Tips */
+        .learning-tips {
+            margin-top: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .learning-tips h3 {
+            color: #00796b;
+            margin-top: 0;
+            text-align: center;
+            font-size: 1.6rem;
+            margin-bottom: 25px;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .tip {
+            display: flex;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .tip-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #00796b;
+        }
+        
+        .tip-content h4 {
+            margin: 0 0 5px 0;
+            color: #2e7d32;
+        }
+        
+        .tip-content p {
+            margin: 0;
+            color: #455a64;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        
+        .tones-container {
+            margin: 40px 0;
+        }
+        
+        .tone-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .tone-example {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            transition: transform 0.3s;
+        }
+        
+        .tone-example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .tone-visual {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #e0f7fa;
+            display: inline-block;
+            min-width: 100px;
+        }
+        
+        .first-tone { border-left: 5px solid #4caf50; }
+        .second-tone { border-left: 5px solid #2196f3; }
+        .third-tone { border-left: 5px solid #ff9800; }
+        .fourth-tone { border-left: 5px solid #f44336; }
+        
+        .drill-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .drill-group h4 {
+            color: #00796b;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .tone-pairs-section {
+            margin: 40px 0;
+        }
+        
+        .tone-pairs {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .tone-pair {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .tone-pair:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chinese {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .pinyin {
+            color: #e91e63;
+            font-style: italic;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .meaning {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .start-module-btn {
+            display: inline-block;
+            background: #00796b;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+        
+        .start-module-btn:hover {
+            background: #004d40;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .pronunciation-section {
+                padding: 20px;
+            }
+            
+            .tone-examples {
+                grid-template-columns: 1fr;
+            }
+            
+            .drill-examples {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Progress Tracker */
         .progress-section {
             background: white;
@@ -550,6 +2021,1203 @@
             </div>
         </section>
         
+        <!-- Pronunciation & Tones Section -->
+        <section id="pronunciation" class="pronunciation-section">
+            <h2 class="section-title">Pronunciation & Tones</h2>
+            <p class="section-description">Master the four tones of Mandarin Chinese and pinyin pronunciation.</p>
+            
+            <div class="pronunciation-content">
+                <div class="pronunciation-card">
+                    <h2>汉字 (Hànzì) - Understanding Chinese Characters</h2>
+                    <p class="intro-text">Chinese characters are beautiful logograms with thousands of years of history. Unlike alphabetic writing systems, each character represents both meaning and sound. Let's explore how they work!</p>
+                    
+                    <div class="discovery-section">
+                        <div class="discovery-card">
+                            <h3>1. Start with Basic Characters</h3>
+                            <p>Begin with these essential characters that form the building blocks of the language:</p>
+                            
+                            <div class="basic-characters">
+                                <div class="char-card">
+                                    <div class="char-large">人</div>
+                                    <div class="char-details">
+                                        <span class="pinyin">rén</span>
+                                        <span class="meaning">person</span>
+                                        <div class="char-evolution">
+                                            <span>Evolution: <img src="https://www.hanziyuan.net/img/evolution/ren.png" alt="Evolution of 人" class="evolution-img"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="char-card">
+                                    <div class="char-large">山</div>
+                                    <div class="char-details">
+                                        <span class="pinyin">shān</span>
+                                        <span class="meaning">mountain</span>
+                                        <div class="char-tip">Resembles three mountain peaks</div>
+                                    </div>
+                                </div>
+                                <div class="char-card">
+                                    <div class="char-large">水</div>
+                                    <div class="char-details">
+                                        <span class="pinyin">shuǐ</span>
+                                        <span class="meaning">water</span>
+                                        <div class="char-tip">Looks like flowing water</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="discovery-card">
+                            <h3>2. Understand Character Components</h3>
+                            <p>Characters are made of components called radicals and other elements. Let's break down some common characters:</p>
+                            
+                            <div class="character-breakdown">
+                                <div class="breakdown-item">
+                                    <div class="char-large">好</div>
+                                    <div class="breakdown">
+                                        <div class="component">女 (nǚ) woman</div>
+                                        <div class="plus">+</div>
+                                        <div class="component">子 (zǐ) child</div>
+                                        <div class="equal">=</div>
+                                        <div class="result">好 (hǎo) good</div>
+                                    </div>
+                                    <div class="char-explanation">A woman (女) with her child (子) is a "good" thing.</div>
+                                </div>
+                                
+                                <div class="breakdown-item">
+                                    <div class="char-large">明</div>
+                                    <div class="breakdown">
+                                        <div class="component">日 (rì) sun</div>
+                                        <div class="plus">+</div>
+                                        <div class="component">月 (yuè) moon</div>
+                                        <div class="equal">=</div>
+                                        <div class="result">明 (míng) bright</div>
+                                    </div>
+                                    <div class="char-explanation">The sun (日) and moon (月) together create "brightness".</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="discovery-card">
+                            <h3>3. Learn Radicals - The Building Blocks</h3>
+                            <p>Radicals help you understand meaning and look up characters in dictionaries. Here are some essential ones:</p>
+                            
+                            <div class="radicals-showcase">
+                                <div class="radical-card">
+                                    <div class="radical-char">口</div>
+                                    <div class="radical-info">
+                                        <h4>口 (kǒu) - Mouth</h4>
+                                        <p>Appears in characters related to mouth, speaking, or eating:</p>
+                                        <ul class="radical-examples">
+                                            <li>吃 (chī) - to eat</li>
+                                            <li>叫 (jiào) - to call</li>
+                                            <li>喝 (hē) - to drink</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="radical-card">
+                                    <div class="radical-char">心</div>
+                                    <div class="radical-info">
+                                        <h4>心 (xīn) - Heart</h4>
+                                        <p>Appears in characters related to emotions or thinking:</p>
+                                        <ul class="radical-examples">
+                                            <li>想 (xiǎng) - to think</li>
+                                            <li>爱 (ài) - love</li>
+                                            <li>感 (gǎn) - to feel</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="discovery-card">
+                            <h3>4. Practice Writing Characters</h3>
+                            <p>Chinese characters follow specific stroke orders. Let's practice some basic strokes:</p>
+                            
+                            <div class="stroke-practice">
+                                <div class="stroke-demo">
+                                    <div class="stroke-char">一</div>
+                                    <div class="stroke-info">
+                                        <h4>Horizontal Stroke (横 héng)</h4>
+                                        <p>Write from left to right</p>
+                                        <div class="stroke-animation">
+                                            <img src="https://www.hanziyuan.net/img/strokes/heng.gif" alt="Horizontal stroke animation">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="stroke-demo">
+                                    <div class="stroke-char">丨</div>
+                                    <div class="stroke-info">
+                                        <h4>Vertical Stroke (竖 shù)</h4>
+                                        <p>Write from top to bottom</p>
+                                        <div class="stroke-animation">
+                                            <img src="https://www.hanziyuan.net/img/strokes/shu.gif" alt="Vertical stroke animation">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="character-grid">
+                                <div class="char-practice">
+                                    <div class="char-to-write">人</div>
+                                    <button class="practice-btn">Practice Writing</button>
+                                </div>
+                                <div class="char-practice">
+                                    <div class="char-to-write">山</div>
+                                    <button class="practice-btn">Practice Writing</button>
+                                </div>
+                                <div class="char-practice">
+                                    <div class="char-to-write">水</div>
+                                    <button class="practice-btn">Practice Writing</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Essential Characters Section -->
+                <div class="essential-characters">
+                    <h2>Essential Characters Mastery</h2>
+                    <p class="section-intro">Master the building blocks of Chinese writing with our comprehensive character learning system. This section covers everything from basic strokes to complex characters, with interactive exercises to reinforce your learning.</p>
+                    
+                    <div class="character-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">214</div>
+                            <div class="stat-label">Radicals</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">3,500+</div>
+                            <div class="stat-label">Common Characters</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Basic Strokes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4</div>
+                            <div class="stat-label">Main Structures</div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-grid">
+                        <!-- Basic Strokes Module -->
+                        <div class="module-card">
+                            <div class="module-icon">✍️</div>
+                            <h3>1. Basic Strokes</h3>
+                            <p>Learn the fundamental strokes that form all Chinese characters.</p>
+                            <div class="stroke-examples">
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">一</div>
+                                    <div class="stroke-info">
+                                        <strong>横 (héng)</strong> - Horizontal<br>
+                                        Left to right<br>
+                                        <span class="stroke-char-example">Example: 三 (sān - three)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">丨</div>
+                                    <div class="stroke-info">
+                                        <strong>竖 (shù)</strong> - Vertical<br>
+                                        Top to bottom<br>
+                                        <span class="stroke-char-example">Example: 中 (zhōng - middle)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">丿</div>
+                                    <div class="stroke-info">
+                                        <strong>撇 (piě)</strong> - Left-falling<br>
+                                        Top-right to bottom-left<br>
+                                        <span class="stroke-char-example">Example: 人 (rén - person)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">丶</div>
+                                    <div class="stroke-info">
+                                        <strong>点 (diǎn)</strong> - Dot<br>
+                                        Light touch downward<br>
+                                        <span class="stroke-char-example">Example: 主 (zhǔ - main)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">㇂</div>
+                                    <div class="stroke-info">
+                                        <strong>捺 (nà)</strong> - Right-falling<br>
+                                        Top-left to bottom-right<br>
+                                        <span class="stroke-char-example">Example: 大 (dà - big)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">㇀</div>
+                                    <div class="stroke-info">
+                                        <strong>提 (tí)</strong> - Rising<br>
+                                        Bottom-left to top-right<br>
+                                        <span class="stroke-char-example">Example: 打 (dǎ - hit)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">𠃍</div>
+                                    <div class="stroke-info">
+                                        <strong>横折 (héng zhé)</strong> - Horizontal then down<br>
+                                        <span class="stroke-char-example">Example: 口 (kǒu - mouth)</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-example">
+                                    <div class="stroke-demo">㇕</div>
+                                    <div class="stroke-info">
+                                        <strong>横钩 (héng gōu)</strong> - Horizontal with hook<br>
+                                        <span class="stroke-char-example">Example: 买 (mǎi - buy)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="module-button">Practice Strokes</button>
+                        </div>
+                        
+                        <!-- Character Structure Module -->
+                        <div class="module-card">
+                            <div class="module-icon">🧩</div>
+                            <h3>2. Character Structure</h3>
+                            <p>Understand how characters are organized and formed.</p>
+                            <div class="structure-examples">
+                                <div class="structure-type">
+                                    <div class="structure-demo">好</div>
+                                    <div class="structure-info">
+                                        <strong>Left-Right</strong><br>
+                                        女 (nǚ) + 子 (zǐ)
+                                    </div>
+                                </div>
+                                <div class="structure-type">
+                                    <div class="structure-demo">字</div>
+                                    <div class="structure-info">
+                                        <strong>Top-Bottom</strong><br>
+                                        𠆢 (roof) + 子 (zǐ)
+                                    </div>
+                                </div>
+                                <div class="structure-type">
+                                    <div class="structure-demo">国</div>
+                                    <div class="structure-info">
+                                        <strong>Enclosed</strong><br>
+                                        囗 (enclosure) + 玉 (jade)
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="structure-rules">
+                                <h4>Key Rules:</h4>
+                                <ol>
+                                    <li>Top before bottom</li>
+                                    <li>Left before right</li>
+                                    <li>Outside before inside</li>
+                                    <li>Bottom enclosure last</li>
+                                </ol>
+                            </div>
+                            <button class="module-button">Learn Structures</button>
+                        </div>
+                        
+                        <!-- Radicals Module -->
+                        <div class="module-card">
+                            <div class="module-icon">🔍</div>
+                            <h3>3. Radicals & Components</h3>
+                            <p>Master the building blocks of Chinese characters.</p>
+                            
+                            <div class="radical-category">
+                                <h4>Common Radicals <span class="section-tip">(Click to see examples)</span></h4>
+                                <div class="radical-list">
+                                    <div class="radical-item" data-radical="人">
+                                        <span class="radical-char">人/亻</span>
+                                        <span class="radical-pinyin">rén</span>
+                                        <span class="radical-meaning">person</span>
+                                        <div class="radical-examples">
+                                            <span>你 (you)</span>
+                                            <span>他 (he)</span>
+                                            <span>们 (plural)</span>
+                                        </div>
+                                    </div>
+                                    <div class="radical-item" data-radical="口">
+                                        <span class="radical-char">口</span>
+                                        <span class="radical-pinyin">kǒu</span>
+                                        <span class="radical-meaning">mouth</span>
+                                        <div class="radical-examples">
+                                            <span>叫 (shout)</span>
+                                            <span>吃 (eat)</span>
+                                            <span>喝 (drink)</span>
+                                        </div>
+                                    </div>
+                                    <div class="radical-item" data-radical="心">
+                                        <span class="radical-char">心/忄</span>
+                                        <span class="radical-pinyin">xīn</span>
+                                        <span class="radical-meaning">heart</span>
+                                        <div class="radical-examples">
+                                            <span>想 (think)</span>
+                                            <span>感 (feel)</span>
+                                            <span>爱 (love)</span>
+                                        </div>
+                                    </div>
+                                    <div class="radical-item" data-radical="手">
+                                        <span class="radical-char">手/扌</span>
+                                        <span class="radical-pinyin">shǒu</span>
+                                        <span class="radical-meaning">hand</span>
+                                        <div class="radical-examples">
+                                            <span>打 (hit)</span>
+                                            <span>找 (find)</span>
+                                            <span>把 (handle)</span>
+                                        </div>
+                                    </div>
+                                    <div class="radical-item" data-radical="水">
+                                        <span class="radical-char">水/氵</span>
+                                        <span class="radical-pinyin">shuǐ</span>
+                                        <span class="radical-meaning">water</span>
+                                        <div class="radical-examples">
+                                            <span>河 (river)</span>
+                                            <span>海 (sea)</span>
+                                            <span>湖 (lake)</span>
+                                        </div>
+                                    </div>
+                                    <div class="radical-item" data-radical="火">
+                                        <span class="radical-char">火/灬</span>
+                                        <span class="radical-pinyin">huǒ</span>
+                                        <span class="radical-meaning">fire</span>
+                                        <div class="radical-examples">
+                                            <span>热 (hot)</span>
+                                            <span>煮 (boil)</span>
+                                            <span>煎 (fry)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="component-examples">
+                                <h4>Character Formation Examples</h4>
+                                <div class="component-example">
+                                    <div class="char-breakdown">
+                                        <span class="char">好</span>
+                                        <span class="breakdown">女 (nǚ - woman) + 子 (zǐ - child)</span>
+                                    </div>
+                                    <div class="char-meaning">好 (hǎo) - good (a woman with a child represents goodness)</div>
+                                </div>
+                                <div class="component-example">
+                                    <div class="char-breakdown">
+                                        <span class="char">明</span>
+                                        <span class="breakdown">日 (rì - sun) + 月 (yuè - moon)</span>
+                                    </div>
+                                    <div class="char-meaning">明 (míng) - bright (sun and moon together create brightness)</div>
+                                </div>
+                                <div class="component-example">
+                                    <div class="char-breakdown">
+                                        <span class="char">休</span>
+                                        <span class="breakdown">亻(person) + 木 (mù - tree)</span>
+                                    </div>
+                                    <div class="char-meaning">休 (xiū) - rest (a person leaning against a tree)</div>
+                                </div>
+                                <div class="component-example">
+                                    <div class="char-breakdown">
+                                        <span class="char">森</span>
+                                        <span class="breakdown">木 (mù - tree) + 木 + 木</span>
+                                    </div>
+                                    <div class="char-meaning">森 (sēn) - forest (three trees together)</div>
+                                </div>
+                                <div class="character-evolution">
+                                    <h4>Character Evolution</h4>
+                                    <div class="evolution-example">
+                                        <div class="evolution-stage">
+                                            <div class="evolution-char">山</div>
+                                            <div class="evolution-label">Oracle Bone Script</div>
+                                        </div>
+                                        <div class="evolution-arrow">→</div>
+                                        <div class="evolution-stage">
+                                            <div class="evolution-char">山</div>
+                                            <div class="evolution-label">Bronze Script</div>
+                                        </div>
+                                        <div class="evolution-arrow">→</div>
+                                        <div class="evolution-stage">
+                                            <div class="evolution-char">山</div>
+                                            <div class="evolution-label">Small Seal Script</div>
+                                        </div>
+                                        <div class="evolution-arrow">→</div>
+                                        <div class="evolution-stage">
+                                            <div class="evolution-char">山</div>
+                                            <div class="evolution-label">Modern</div>
+                                        </div>
+                                    </div>
+                                    <div class="evolution-meaning">
+                                        <strong>山 (shān)</strong> - mountain<br>
+                                        The character originally depicted three mountain peaks, which simplified over time.
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="module-button">Explore Radicals</button>
+                        </div>
+                        
+                        <!-- Writing Practice Module -->
+                        <div class="module-card">
+                            <div class="module-icon">✏️</div>
+                            <h3>4. Writing Practice</h3>
+                            <p>Practice writing characters with proper stroke order.</p>
+                            
+                            <div class="writing-area">
+                                <div class="character-to-write">
+                                    <div class="char-large">人</div>
+                                    <div class="char-stats">
+                                        <span>2 strokes</span>
+                                        <span>rén - person</span>
+                                    </div>
+                                </div>
+                                <div class="stroke-order">
+                                    <h4>Stroke Order:</h4>
+                                    <div class="stroke-animation">
+                                        <div class="stroke">㇓</div>
+                                        <div class="stroke">㇏</div>
+                                    </div>
+                                </div>
+                                <div class="practice-tools">
+                                    <button class="tool-button">Show Grid</button>
+                                    <button class="tool-button">Show Outline</button>
+                                    <button class="tool-button">Clear</button>
+                                </div>
+                                <canvas id="writing-canvas" width="200" height="200"></canvas>
+                            </div>
+                            
+                            <div class="practice-words">
+                                <h4>Practice Common Words:</h4>
+                                <div class="word-list">
+                                    <span class="word">你好 (nǐ hǎo)</span>
+                                    <span class="word">谢谢 (xièxie)</span>
+                                    <span class="word">中国 (Zhōngguó)</span>
+                                    <span class="word">学习 (xuéxí)</span>
+                                </div>
+                            </div>
+                            <button class="module-button start-practice">Start Practice</button>
+                        </div>
+                    </div>
+                    
+                    <div class="learning-tips">
+                        <h3>Learning Tips</h3>
+                        <div class="tips-grid">
+                            <div class="tip">
+                                <div class="tip-icon">📝</div>
+                                <div class="tip-content">
+                                    <h4>Practice Daily</h4>
+                                    <p>Even 10 minutes of daily practice is better than one long session per week.</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <div class="tip-icon">🔍</div>
+                                <div class="tip-content">
+                                    <h4>Look for Patterns</h4>
+                                    <p>Notice recurring components in different characters to remember them better.</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <div class="tip-icon">🔄</div>
+                                <div class="tip-content">
+                                    <h4>Review Regularly</h4>
+                                    <p>Use spaced repetition to reinforce your memory of characters.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Conversation Basics Section -->
+                <div class="conversation-basics">
+                    <h2>Conversation Basics</h2>
+                    <p class="section-intro">Master essential Chinese phrases and grammar patterns for everyday conversations.</p>
+                    
+                    <div class="conversation-grid">
+                        <!-- Greetings Card -->
+                        <div class="conversation-card">
+                            <div class="conversation-icon">👋</div>
+                            <h3>Greetings & Introductions</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="chinese">你好！</div>
+                                    <div class="pinyin">Nǐ hǎo!</div>
+                                    <div class="translation">Hello!</div>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="chinese">你叫什么名字？</div>
+                                    <div class="pinyin">Nǐ jiào shénme míngzì?</div>
+                                    <div class="translation">What's your name?</div>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="chinese">我叫...</div>
+                                    <div class="pinyin">Wǒ jiào...</div>
+                                    <div class="translation">My name is...</div>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="chinese">很高兴认识你！</div>
+                                    <div class="pinyin">Hěn gāoxìng rènshi nǐ!</div>
+                                    <div class="translation">Nice to meet you!</div>
+                                </div>
+                            </div>
+                            <button class="module-button">Practice Greetings</button>
+                        </div>
+                        
+                        <!-- Shopping & Dining Card -->
+                        <div class="conversation-card">
+                            <div class="conversation-icon">🛍️</div>
+                            <h3>Shopping & Dining</h3>
+                            <div class="phrase-list">
+                                <div class="phrase-item">
+                                    <div class="chinese">这个多少钱？</div>
+                                    <div class="pinyin">Zhège duōshǎo qián?</div>
+                                    <div class="translation">How much is this?</div>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="chinese">我要这个。</div>
+                                    <div class="pinyin">Wǒ yào zhège.</div>
+                                    <div class="translation">I want this one.</div>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="chinese">请给我菜单。</div>
+                                    <div class="pinyin">Qǐng gěi wǒ càidān.</div>
+                                    <div class="translation">Menu, please.</div>
+                                </div>
+                                <div class="phrase-item">
+                                    <div class="chinese">买单。</div>
+                                    <div class="pinyin">Mǎidān.</div>
+                                    <div class="translation">Bill/Check, please.</div>
+                                </div>
+                            </div>
+                            <button class="module-button">Learn More Phrases</button>
+                        </div>
+                        
+                        <!-- Basic Grammar Patterns -->
+                        <div class="conversation-card">
+                            <div class="conversation-icon">📚</div>
+                            <h3>Basic Grammar</h3>
+                            <div class="grammar-patterns">
+                                <div class="pattern">
+                                    <h4>Subject + 是 + Noun</h4>
+                                    <div class="example">
+                                        <div class="sentence">我是学生。</div>
+                                        <div class="pinyin">Wǒ shì xuéshēng.</div>
+                                        <div class="translation">I am a student.</div>
+                                    </div>
+                                </div>
+                                <div class="pattern">
+                                    <h4>Subject + 很 + Adjective</h4>
+                                    <div class="example">
+                                        <div class="sentence">你很好。</div>
+                                        <div class="pinyin">Nǐ hěn hǎo.</div>
+                                        <div class="translation">You are very good.</div>
+                                    </div>
+                                </div>
+                                <div class="pattern">
+                                    <h4>Subject + 在 + Place</h4>
+                                    <div class="example">
+                                        <div class="sentence">我在家。</div>
+                                        <div class="pinyin">Wǒ zài jiā.</div>
+                                        <div class="translation">I am at home.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="module-button">More Grammar</button>
+                        </div>
+                        
+                        <!-- Measure Words -->
+                        <div class="conversation-card">
+                            <div class="conversation-icon">🔢</div>
+                            <h3>Measure Words</h3>
+                            <p class="section-intro">Chinese uses measure words (量词 liàngcí) between numbers and nouns.</p>
+                            
+                            <div class="measure-words">
+                                <div class="measure-item">
+                                    <div class="measure-char">个 (gè)</div>
+                                    <div class="measure-usage">General purpose</div>
+                                    <div class="example">一个人 (yī gè rén) - one person</div>
+                                </div>
+                                <div class="measure-item">
+                                    <div class="measure-char">只 (zhī)</div>
+                                    <div class="measure-usage">Animals, one of a pair</div>
+                                    <div class="example">一只猫 (yī zhī māo) - one cat</div>
+                                </div>
+                                <div class="measure-item">
+                                    <div class="measure-char">张 (zhāng)</div>
+                                    <div class="measure-usage">Flat objects</div>
+                                    <div class="example">一张纸 (yī zhāng zhǐ) - one sheet of paper</div>
+                                </div>
+                                <div class="measure-item">
+                                    <div class="measure-char">本 (běn)</div>
+                                    <div class="measure-usage">Books, magazines</div>
+                                    <div class="example">一本书 (yī běn shū) - one book</div>
+                                </div>
+                            </div>
+                            <button class="module-button">Learn More</button>
+                        </div>
+                    </div>
+                    
+                    <div class="conversation-tips">
+                        <h3>Conversation Tips</h3>
+                        <div class="tips-grid">
+                            <div class="tip">
+                                <div class="tip-icon">🎯</div>
+                                <div class="tip-content">
+                                    <h4>Practice Daily</h4>
+                                    <p>Try using these phrases in daily conversations, even if just speaking to yourself.</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <div class="tip-icon">🔊</div>
+                                <div class="tip-content">
+                                    <h4>Listen & Repeat</h4>
+                                    <p>Pay attention to native speakers and try to mimic their pronunciation.</p>
+                                </div>
+                            </div>
+                            <div class="tip">
+                                <div class="tip-icon">🔄</div>
+                                <div class="tip-content">
+                                    <h4>Don't Fear Mistakes</h4>
+                                    <p>Making mistakes is part of learning. Native speakers will appreciate your effort!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vocabulary Section -->
+                <div class="vocabulary-section">
+                    <h2>Essential Chinese Vocabulary</h2>
+                    <p class="section-intro">Master over 400 essential Chinese words organized by categories for effective learning.</p>
+                    
+                    <div class="vocab-categories">
+                        <!-- Category Navigation -->
+                        <div class="category-nav">
+                            <button class="category-btn active" data-category="greetings">Greetings</button>
+                            <button class="category-btn" data-category="numbers">Numbers</button>
+                            <button class="category-btn" data-category="family">Family</button>
+                            <button class="category-btn" data-category="food">Food & Dining</button>
+                            <button class="category-btn" data-category="time">Time & Date</button>
+                            <button class="category-btn" data-category="travel">Travel</button>
+                            <button class="category-btn" data-category="shopping">Shopping</button>
+                            <button class="category-btn" data-category="verbs">Common Verbs</button>
+                            <button class="category-btn" data-category="adjectives">Adjectives</button>
+                        </div>
+                        
+                        <!-- Search and Filter -->
+                        <div class="vocab-search">
+                            <input type="text" id="vocab-search" placeholder="Search vocabulary...">
+                            <button class="search-btn">🔍</button>
+                        </div>
+                        
+                        <!-- Vocabulary Grid -->
+                        <div class="vocab-grid">
+                            <!-- Greetings -->
+                            <div class="vocab-category active" id="greetings">
+                                <h3>Greetings & Basics</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">你好</div>
+                                        <div class="pinyin">nǐ hǎo</div>
+                                        <div class="translation">Hello</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">早上好</div>
+                                        <div class="pinyin">zǎoshang hǎo</div>
+                                        <div class="translation">Good morning</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">晚上好</div>
+                                        <div class="pinyin">wǎnshang hǎo</div>
+                                        <div class="translation">Good evening</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">再见</div>
+                                        <div class="pinyin">zàijiàn</div>
+                                        <div class="translation">Goodbye</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">谢谢</div>
+                                        <div class="pinyin">xièxie</div>
+                                        <div class="translation">Thank you</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">不客气</div>
+                                        <div class="pinyin">bú kèqi</div>
+                                        <div class="translation">You're welcome</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">对不起</div>
+                                        <div class="pinyin">duìbuqǐ</div>
+                                        <div class="translation">I'm sorry</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">没关系</div>
+                                        <div class="pinyin">méi guānxi</div>
+                                        <div class="translation">It's okay</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Numbers -->
+                            <div class="vocab-category" id="numbers">
+                                <h3>Numbers</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">一</div>
+                                        <div class="pinyin">yī</div>
+                                        <div class="translation">1</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">二</div>
+                                        <div class="pinyin">èr</div>
+                                        <div class="translation">2</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">三</div>
+                                        <div class="pinyin">sān</div>
+                                        <div class="translation">3</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">四</div>
+                                        <div class="pinyin">sì</div>
+                                        <div class="translation">4</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">五</div>
+                                        <div class="pinyin">wǔ</div>
+                                        <div class="translation">5</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">六</div>
+                                        <div class="pinyin">liù</div>
+                                        <div class="translation">6</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">七</div>
+                                        <div class="pinyin">qī</div>
+                                        <div class="translation">7</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">八</div>
+                                        <div class="pinyin">bā</div>
+                                        <div class="translation">8</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">九</div>
+                                        <div class="pinyin">jiǔ</div>
+                                        <div class="translation">9</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">十</div>
+                                        <div class="pinyin">shí</div>
+                                        <div class="translation">10</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Family -->
+                            <div class="vocab-category" id="family">
+                                <h3>Family</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">家</div>
+                                        <div class="pinyin">jiā</div>
+                                        <div class="translation">Family/Home</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">爸爸</div>
+                                        <div class="pinyin">bàba</div>
+                                        <div class="translation">Father</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">妈妈</div>
+                                        <div class="pinyin">māma</div>
+                                        <div class="translation">Mother</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">哥哥</div>
+                                        <div class="pinyin">gēge</div>
+                                        <div class="translation">Older brother</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">姐姐</div>
+                                        <div class="pinyin">jiějie</div>
+                                        <div class="translation">Older sister</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">弟弟</div>
+                                        <div class="pinyin">dìdi</div>
+                                        <div class="translation">Younger brother</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">妹妹</div>
+                                        <div class="pinyin">mèimei</div>
+                                        <div class="translation">Younger sister</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Food & Dining -->
+                            <div class="vocab-category" id="food">
+                                <h3>Food & Dining</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">食物</div>
+                                        <div class="pinyin">shíwù</div>
+                                        <div class="translation">Food</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">水</div>
+                                        <div class="pinyin">shuǐ</div>
+                                        <div class="translation">Water</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">米饭</div>
+                                        <div class="pinyin">mǐfàn</div>
+                                        <div class="translation">Rice</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">面条</div>
+                                        <div class="pinyin">miàntiáo</div>
+                                        <div class="translation">Noodles</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">蔬菜</div>
+                                        <div class="pinyin">shūcài</div>
+                                        <div class="translation">Vegetables</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">水果</div>
+                                        <div class="pinyin">shuǐguǒ</div>
+                                        <div class="translation">Fruit</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">肉</div>
+                                        <div class="pinyin">ròu</div>
+                                        <div class="translation">Meat</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">鱼</div>
+                                        <div class="pinyin">yú</div>
+                                        <div class="translation">Fish</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Time & Date -->
+                            <div class="vocab-category" id="time">
+                                <h3>Time & Date</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">今天</div>
+                                        <div class="pinyin">jīntiān</div>
+                                        <div class="translation">Today</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">明天</div>
+                                        <div class="pinyin">míngtiān</div>
+                                        <div class="translation">Tomorrow</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">昨天</div>
+                                        <div class="pinyin">zuótiān</div>
+                                        <div class="translation">Yesterday</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">现在</div>
+                                        <div class="pinyin">xiànzài</div>
+                                        <div class="translation">Now</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">小时</div>
+                                        <div class="pinyin">xiǎoshí</div>
+                                        <div class="translation">Hour</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">分钟</div>
+                                        <div class="pinyin">fēnzhōng</div>
+                                        <div class="translation">Minute</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">星期</div>
+                                        <div class="pinyin">xīngqī</div>
+                                        <div class="translation">Week</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Travel -->
+                            <div class="vocab-category" id="travel">
+                                <h3>Travel</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">火车</div>
+                                        <div class="pinyin">huǒchē</div>
+                                        <div class="translation">Train</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">飞机</div>
+                                        <div class="pinyin">fēijī</div>
+                                        <div class="translation">Airplane</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">公共汽车</div>
+                                        <div class="pinyin">gōnggòng qìchē</div>
+                                        <div class="translation">Bus</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">地铁</div>
+                                        <div class="pinyin">dìtiě</div>
+                                        <div class="translation">Subway</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">出租车</div>
+                                        <div class="pinyin">chūzūchē</div>
+                                        <div class="translation">Taxi</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">酒店</div>
+                                        <div class="pinyin">jiǔdiàn</div>
+                                        <div class="translation">Hotel</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">护照</div>
+                                        <div class="pinyin">hùzhào</div>
+                                        <div class="translation">Passport</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Shopping -->
+                            <div class="vocab-category" id="shopping">
+                                <h3>Shopping</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">商店</div>
+                                        <div class="pinyin">shāngdiàn</div>
+                                        <div class="translation">Shop/Store</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">买</div>
+                                        <div class="pinyin">mǎi</div>
+                                        <div class="translation">To buy</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">卖</div>
+                                        <div class="pinyin">mài</div>
+                                        <div class="translation">To sell</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">钱</div>
+                                        <div class="pinyin">qián</div>
+                                        <div class="translation">Money</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">贵</div>
+                                        <div class="pinyin">guì</div>
+                                        <div class="translation">Expensive</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">便宜</div>
+                                        <div class="pinyin">piányi</div>
+                                        <div class="translation">Cheap</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">打折</div>
+                                        <div class="pinyin">dǎzhé</div>
+                                        <div class="translation">Discount</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Common Verbs -->
+                            <div class="vocab-category" id="verbs">
+                                <h3>Common Verbs</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">是</div>
+                                        <div class="pinyin">shì</div>
+                                        <div class="translation">To be</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">有</div>
+                                        <div class="pinyin">yǒu</div>
+                                        <div class="translation">To have</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">去</div>
+                                        <div class="pinyin">qù</div>
+                                        <div class="translation">To go</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">来</div>
+                                        <div class="pinyin">lái</div>
+                                        <div class="translation">To come</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">吃</div>
+                                        <div class="pinyin">chī</div>
+                                        <div class="translation">To eat</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">喝</div>
+                                        <div class="pinyin">hē</div>
+                                        <div class="translation">To drink</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">看</div>
+                                        <div class="pinyin">kàn</div>
+                                        <div class="translation">To see/watch</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">听</div>
+                                        <div class="pinyin">tīng</div>
+                                        <div class="translation">To listen</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">说</div>
+                                        <div class="pinyin">shuō</div>
+                                        <div class="translation">To speak</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">学习</div>
+                                        <div class="pinyin">xuéxí</div>
+                                        <div class="translation">To study</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Adjectives -->
+                            <div class="vocab-category" id="adjectives">
+                                <h3>Adjectives</h3>
+                                <div class="vocab-items">
+                                    <div class="vocab-card">
+                                        <div class="chinese">好</div>
+                                        <div class="pinyin">hǎo</div>
+                                        <div class="translation">Good</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">坏</div>
+                                        <div class="pinyin">huài</div>
+                                        <div class="translation">Bad</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">大</div>
+                                        <div class="pinyin">dà</div>
+                                        <div class="translation">Big</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">小</div>
+                                        <div class="pinyin">xiǎo</div>
+                                        <div class="translation">Small</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">多</div>
+                                        <div class="pinyin">duō</div>
+                                        <div class="translation">Many/Much</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">少</div>
+                                        <div class="pinyin">shǎo</div>
+                                        <div class="translation">Few/Little</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">热</div>
+                                        <div class="pinyin">rè</div>
+                                        <div class="translation">Hot</div>
+                                    </div>
+                                    <div class="vocab-card">
+                                        <div class="chinese">冷</div>
+                                        <div class="pinyin">lěng</div>
+                                        <div class="translation">Cold</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Practice Section -->
+                        <div class="vocab-practice">
+                            <h3>Practice These Words</h3>
+                            <div class="practice-options">
+                                <button class="practice-btn">Flashcards</button>
+                                <button class="practice-btn">Matching Game</button>
+                                <button class="practice-btn">Listening Quiz</button>
+                                <button class="practice-btn">Spelling Test</button>
+                            </div>
+                            <div class="progress-tracker">
+                                <h4>Your Progress</h4>
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 25%;"></div>
+                                </div>
+                                <div class="stats">
+                                    <span>Words learned: 100/400</span>
+                                    <span>Streak: 5 days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tones-container">
+                    <h3>The Four Tones</h3>
+                    <div class="tone-examples">
+                        <div class="tone-example">
+                            <div class="tone-visual first-tone">mā<br>妈 (mother)</div>
+                            <p>1st Tone: High and level (mā - 妈)</p>
+                        </div>
+                        <div class="tone-example">
+                            <div class="tone-visual second-tone">má<br>麻 (hemp)</div>
+                            <p>2nd Tone: Rising (má - 麻)</p>
+                        </div>
+                        <div class="tone-example">
+                            <div class="tone-visual third-tone">mǎ<br>马 (horse)</div>
+                            <p>3rd Tone: Falling then rising (mǎ - 马)</p>
+                        </div>
+                        <div class="tone-example">
+                            <div class="tone-visual fourth-tone">mà<br>骂 (scold)</div>
+                            <p>4th Tone: Falling (mà - 骂)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pronunciation-card">
+                    <h3>Pronunciation Drills</h3>
+                    <p>Practice these common sounds to improve your pronunciation:</p>
+                    <div class="drill-examples">
+                        <div class="drill-group">
+                            <h4>Initials:</h4>
+                            <p>zh, ch, sh, r - Retroflex sounds (try curling your tongue back)</p>
+                            <p>j, q, x - Alveolo-palatal sounds (smile while saying them)</p>
+                        </div>
+                        <div class="drill-group">
+                            <h4>Finals:</h4>
+                            <p>ü - Round your lips and say "ee"</p>
+                            <p>ian - Say "yen" but start with a "yee" sound</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tone-pairs-section">
+                    <h3>Tone Pairs Practice</h3>
+                    <p>Practice these common tone combinations:</p>
+                    <div class="tone-pairs">
+                        <div class="tone-pair">
+                            <span class="chinese">你好</span>
+                            <span class="pinyin">nǐ hǎo</span>
+                            <span class="meaning">Hello</span>
+                        </div>
+                        <div class="tone-pair">
+                            <span class="chinese">谢谢</span>
+                            <span class="pinyin">xiè xie</span>
+                            <span class="meaning">Thank you</span>
+                        </div>
+                        <div class="tone-pair">
+                            <span class="chinese">中国</span>
+                            <span class="pinyin">zhōng guó</span>
+                            <span class="meaning">China</span>
+                        </div>
+                        <div class="tone-pair">
+                            <span class="chinese">美国</span>
+                            <span class="pinyin">měi guó</span>
+                            <span class="meaning">America</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="#" class="start-module-btn">Start Pronunciation Practice</a>
+            </div>
+        </section>
+        
         <!-- Characters Section -->
         <section id="characters" class="characters-section">
             <h2 class="section-title">Essential Chinese Characters</h2>
@@ -629,54 +3297,6 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Progress Tracker -->
-        <section class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <p>Track your progress through the Chinese language learning modules.</p>
-            
-            <div class="progress-bars">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Pronunciation & Tones</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Essential Characters</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Conversation Basics</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Overall Progress</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
     </div>
     
     <!-- Footer -->
@@ -697,8 +3317,8 @@
             </div>
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>Email: info@edulanghub.com</p>
-                <p>Phone: +92 123 456 7890</p>
+                <p>Email: ahmadadalbilal@gmail.com</p>
+                <p>Phone: +92 343 9224280</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>

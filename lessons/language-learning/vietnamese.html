@@ -211,6 +211,72 @@
             padding: 30px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             margin-bottom: 60px;
+            line-height: 1.8;
+        }
+        
+        .pronunciation-section h3 {
+            color: #00796b;
+            margin: 30px 0 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e0f2f1;
+            padding-bottom: 8px;
+        }
+        
+        .pronunciation-section h4 {
+            color: #004d40;
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .alphabet-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0 25px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #00796b;
+        }
+        
+        .vowel-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .vowel-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .vowel-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .vowel-list li::before {
+            content: "•";
+            color: #00796b;
+            position: absolute;
+            left: 0;
+        }
+        
+        .consonant-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .pronunciation-note {
+            background-color: #e8f5e9;
+            border-left: 4px solid #2e7d32;
+            padding: 12px 20px;
+            margin: 20px 0;
+            font-size: 0.95em;
+            color: #1b5e20;
         }
         
         .tones-grid {
@@ -571,7 +637,96 @@
         
         <!-- Pronunciation Section -->
         <section id="pronunciation" class="pronunciation-section">
-            <h2 class="section-title">Vietnamese Tones</h2>
+            <h2 class="section-title">Vietnamese Pronunciation & Tones</h2>
+            <p>Master the fundamentals of Vietnamese pronunciation, including the alphabet, vowels, consonants, and the six distinct tones that change word meanings.</p>
+            
+            <h3>The Vietnamese Alphabet</h3>
+            <p>The modern Vietnamese alphabet (chữ Quốc ngữ) uses the Latin script with additional diacritics. It consists of 29 letters:</p>
+            
+            <div class="alphabet-grid">
+                <div class="alphabet-letter">A Ă Â B C D Đ E Ê G</div>
+                <div class="alphabet-letter">H I K L M N O Ô Ơ</div>
+                <div class="alphabet-letter">P Q R S T U Ư V X Y</div>
+            </div>
+            
+            <div class="pronunciation-note">
+                <p><strong>Note:</strong> F, J, W, and Z are only used in foreign loanwords.</p>
+            </div>
+            
+            <h3>Vowels and Diphthongs</h3>
+            <p>Vietnamese has a rich vowel system with monophthongs and diphthongs:</p>
+            
+            <div class="vowel-section">
+                <div class="vowel-category">
+                    <h4>Monophthongs:</h4>
+                    <ul class="vowel-list">
+                        <li><strong>a</strong> - as in "<strong>a</strong>nh" (brother)</li>
+                        <li><strong>ă</strong> - short a, as in "<strong>ă</strong>n" (to eat)</li>
+                        <li><strong>â</strong> - short ơ, as in "<strong>â</strong>n" (favor)</li>
+                        <li><strong>e</strong> - as in "<strong>e</strong>m" (younger sibling)</li>
+                        <li><strong>ê</strong> - as in "<strong>ê</strong>m" (calm)</li>
+                        <li><strong>i/y</strong> - as in "<strong>i</strong>n" (stamp)</li>
+                        <li><strong>o</strong> - as in "<strong>o</strong>n" (to be warm)</li>
+                        <li><strong>ô</strong> - as in "<strong>ô</strong>ng" (grandfather)</li>
+                        <li><strong>ơ</strong> - as in "<strong>ơ</strong>i" (hey)</li>
+                        <li><strong>u</strong> - as in "<strong>u</strong>" (boil)</li>
+                        <li><strong>ư</strong> - as in "<strong>ư</strong>" (hesitation)</li>
+                    </ul>
+                </div>
+                
+                <div class="vowel-category">
+                    <h4>Common Diphthongs:</h4>
+                    <ul class="vowel-list">
+                        <li><strong>ai</strong> - as in "<strong>ai</strong>" (who)</li>
+                        <li><strong>ao</strong> - as in "<strong>ao</strong>" (pond)</li>
+                        <li><strong>au</strong> - as in "<strong>au</strong>" (hurt)</li>
+                        <li><strong>ay</strong> - as in "<strong>ay</strong>" (to grind)</li>
+                        <li><strong>âu</strong> - as in "<strong>âu</strong>" (worry)</li>
+                        <li><strong>ây</strong> - as in "<strong>ây</strong>" (this)</li>
+                        <li><strong>eo</strong> - as in "<strong>eo</strong>" (waist)</li>
+                        <li><strong>ia/iê</strong> - as in "<strong>tiền</strong>" (money)</li>
+                        <li><strong>ua/ươ</strong> - as in "<strong>mưa</strong>" (rain)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Consonants</h3>
+            <p>Most Vietnamese consonants are pronounced similarly to English, with some important differences:</p>
+            
+            <div class="consonant-grid">
+                <div class="consonant-group">
+                    <h4>Similar to English:</h4>
+                    <ul>
+                        <li><strong>b</strong> - as in "<strong>b</strong>a" (three)</li>
+                        <li><strong>d/gi</strong> - as in "<strong>da</strong>" (skin)</li>
+                        <li><strong>đ</strong> - as in "<strong>đi</strong>" (go)</li>
+                        <li><strong>k/c/q</strong> - as in "<strong>c</strong>a" (fish)</li>
+                        <li><strong>l</strong> - as in "<strong>l</strong>a" (leaf)</li>
+                        <li><strong>m</strong> - as in "<strong>m</strong>e" (mother)</li>
+                        <li><strong>n</strong> - as in "<strong>n</strong>o" (enough)</li>
+                        <li><strong>ph</strong> - as in "<strong>ph</strong>ở" (pho)</li>
+                        <li><strong>s</strong> - as in "<strong>s</strong>ố" (number)</li>
+                        <li><strong>t</strong> - as in "<strong>t</strong>o" (big)</li>
+                        <li><strong>v</strong> - as in "<strong>v</strong>ề" (return)</li>
+                        <li><strong>x</strong> - as in "<strong>x</strong>a" (far)</li>
+                    </ul>
+                </div>
+                
+                <div class="consonant-group">
+                    <h4>Different from English:</h4>
+                    <ul>
+                        <li><strong>ch</strong> - like "ch" in "church"</li>
+                        <li><strong>kh</strong> - like "ch" in Scottish "loch"</li>
+                        <li><strong>ng/ngh</strong> - like "ng" in "sing"</li>
+                        <li><strong>nh</strong> - like "ny" in "canyon"</li>
+                        <li><strong>ph</strong> - like "f" in "fun"</li>
+                        <li><strong>th</strong> - aspirated "t" sound</li>
+                        <li><strong>tr</strong> - like "ch" but with tongue curled back</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Vietnamese Tones</h3>
             <p>Vietnamese is a tonal language with six distinct tones. The meaning of a word changes depending on the tone used.</p>
             
             <div class="tones-grid">
@@ -633,62 +788,78 @@
                             <span class="english-translation">Hello</span>
                         </li>
                         <li class="vocabulary-item">
+                            <span class="vietnamese-word">Chào buổi sáng/trưa/chiều/tối</span>
+                            <span class="english-translation">Good morning/afternoon/evening</span>
+                        </li>
+                        <li class="vocabulary-item">
                             <span class="vietnamese-word">Tạm biệt</span>
                             <span class="english-translation">Goodbye</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Cảm ơn</span>
-                            <span class="english-translation">Thank you</span>
+                            <span class="vietnamese-word">Cảm ơn / Cảm ơn rất nhiều</span>
+                            <span class="english-translation">Thank you / Thank you very much</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Xin lỗi</span>
-                            <span class="english-translation">Sorry/Excuse me</span>
+                            <span class="vietnamese-word">Xin lỗi / Không sao</span>
+                            <span class="english-translation">Sorry / It's okay</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Bạn khỏe không?</span>
-                            <span class="english-translation">How are you?</span>
+                            <span class="vietnamese-word">Bạn tên là gì? / Tôi tên là...</span>
+                            <span class="english-translation">What's your name? / My name is...</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Tôi khỏe</span>
-                            <span class="english-translation">I'm fine</span>
+                            <span class="vietnamese-word">Bạn có khỏe không? / Tôi khỏe, cảm ơn</span>
+                            <span class="english-translation">How are you? / I'm fine, thank you</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Vâng/Không</span>
-                            <span class="english-translation">Yes/No</span>
+                            <span class="vietnamese-word">Xin vui lòng / Làm ơn</span>
+                            <span class="english-translation">Please</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Vâng / Dạ / Không</span>
+                            <span class="english-translation">Yes (formal/casual) / No</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Tôi không hiểu / Làm ơn nói chậm lại</span>
+                            <span class="english-translation">I don't understand / Please speak slowly</span>
                         </li>
                     </ul>
                 </div>
                 
                 <div class="vocabulary-category">
-                    <h3>Numbers & Time</h3>
+                    <h3>Numbers, Time & Colors</h3>
                     <ul class="vocabulary-list">
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Một, hai, ba</span>
-                            <span class="english-translation">One, two, three</span>
+                            <span class="vietnamese-word">0-10: Không, một, hai, ba, bốn, năm, sáu, bảy, tám, chín, mười</span>
+                            <span class="english-translation">0-10: Zero, one, two, three, four, five, six, seven, eight, nine, ten</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Bốn, năm, sáu</span>
-                            <span class="english-translation">Four, five, six</span>
+                            <span class="vietnamese-word">11-20: Mười một, mười hai, ..., hai mươi</span>
+                            <span class="english-translation">11-20: Eleven, twelve, ..., twenty</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Bảy, tám, chín, mười</span>
-                            <span class="english-translation">Seven, eight, nine, ten</span>
+                            <span class="vietnamese-word">30, 40, 50: Ba mươi, bốn mươi, năm mươi</span>
+                            <span class="english-translation">30, 40, 50: Thirty, forty, fifty</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Hôm nay</span>
-                            <span class="english-translation">Today</span>
+                            <span class="vietnamese-word">100: Một trăm / 1,000: Một nghìn / 1,000,000: Một triệu</span>
+                            <span class="english-translation">100: One hundred / 1,000: One thousand / 1,000,000: One million</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Ngày mai</span>
-                            <span class="english-translation">Tomorrow</span>
+                            <span class="vietnamese-word">Mấy giờ rồi? - Bây giờ là 3 giờ</span>
+                            <span class="english-translation">What time is it? - It's 3 o'clock</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Hôm qua</span>
-                            <span class="english-translation">Yesterday</span>
+                            <span class="vietnamese-word">Hôm nay, ngày mai, hôm qua, tuần này, tháng tới, năm ngoái</span>
+                            <span class="english-translation">Today, tomorrow, yesterday, this week, next month, last year</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Mấy giờ rồi?</span>
-                            <span class="english-translation">What time is it?</span>
+                            <span class="vietnamese-word">Màu đỏ, xanh dương, xanh lá cây, vàng, đen, trắng</span>
+                            <span class="english-translation">Red, blue, green, yellow, black, white</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Màu cam, tím, hồng, nâu, xám</span>
+                            <span class="english-translation">Orange, purple, pink, brown, gray</span>
                         </li>
                     </ul>
                 </div>
@@ -697,32 +868,168 @@
                     <h3>Food & Dining</h3>
                     <ul class="vocabulary-list">
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Cơm</span>
-                            <span class="english-translation">Rice</span>
+                            <span class="vietnamese-word">Món ăn Sáng: Phở, bánh mì, xôi, bánh cuốn</span>
+                            <span class="english-translation">Breakfast: Pho, banh mi, sticky rice, rolled cake</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Phở</span>
-                            <span class="english-translation">Pho (noodle soup)</span>
+                            <span class="vietnamese-word">Món Chính: Cơm, phở, bún chả, bánh xèo</span>
+                            <span class="english-translation">Main dishes: Rice, pho, grilled pork with noodles, sizzling cake</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Bánh mì</span>
-                            <span class="english-translation">Baguette sandwich</span>
+                            <span class="vietnamese-word">Đồ Uống: Cà phê đá, trà đá, nước mía, nước dừa</span>
+                            <span class="english-translation">Drinks: Iced coffee, iced tea, sugarcane juice, coconut water</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Cà phê</span>
-                            <span class="english-translation">Coffee</span>
+                            <span class="vietnamese-word">Tráng Miệng: Chè, bánh flan, sữa chua</span>
+                            <span class="english-translation">Desserts: Sweet soup, flan, yogurt</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Nước</span>
-                            <span class="english-translation">Water</span>
+                            <span class="vietnamese-word">Tôi muốn đặt món... / Cho tôi...</span>
+                            <span class="english-translation">I would like to order... / Give me...</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Nhà hàng</span>
-                            <span class="english-translation">Restaurant</span>
+                            <span class="vietnamese-word">Bao nhiêu tiền? / Tính tiền</span>
+                            <span class="english-translation">How much is it? / The bill, please</span>
                         </li>
                         <li class="vocabulary-item">
-                            <span class="vietnamese-word">Tính tiền</span>
-                            <span class="english-translation">Bill, please</span>
+                            <span class="vietnamese-word">Tôi bị dị ứng với... / Tôi không ăn được...</span>
+                            <span class="english-translation">I'm allergic to... / I can't eat...</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="vocabulary-category">
+                    <h3>Travel & Directions</h3>
+                    <ul class="vocabulary-list">
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Xe buýt / Tàu hỏa / Máy bay / Xe ôm</span>
+                            <span class="english-translation">Bus / Train / Airplane / Motorbike taxi</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Bến xe / Sân bay / Ga tàu</span>
+                            <span class="english-translation">Bus station / Airport / Train station</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Khách sạn / Nhà nghỉ / Homestay</span>
+                            <span class="english-translation">Hotel / Guesthouse / Homestay</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Đi thẳng / Rẽ trái / Rẽ phải / Lùi lại</span>
+                            <span class="english-translation">Go straight / Turn left / Turn right / Go back</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Gần đây có nhà hàng nào không?</span>
+                            <span class="english-translation">Is there a restaurant nearby?</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Tôi bị lạc / Tôi cần giúp đỡ</span>
+                            <span class="english-translation">I'm lost / I need help</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Chụp hình giúp tôi được không?</span>
+                            <span class="english-translation">Can you take a photo for me?</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="vocabulary-category">
+                    <h3>Family & Relationships</h3>
+                    <ul class="vocabulary-list">
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Gia đình</span>
+                            <span class="english-translation">Family</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Bố/Mẹ</span>
+                            <span class="english-translation">Father/Mother</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Anh/Chị</span>
+                            <span class="english-translation">Older brother/sister</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Em trai/Em gái</span>
+                            <span class="english-translation">Younger brother/sister</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Con trai/Con gái</span>
+                            <span class="english-translation">Son/Daughter</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Bạn bè</span>
+                            <span class="english-translation">Friends</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Yêu</span>
+                            <span class="english-translation">To love</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="vocabulary-category">
+                    <h3>Weather & Seasons</h3>
+                    <ul class="vocabulary-list">
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Thời tiết</span>
+                            <span class="english-translation">Weather</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Nắng</span>
+                            <span class="english-translation">Sunny</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Mưa</span>
+                            <span class="english-translation">Rain</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Nóng/Lạnh</span>
+                            <span class="english-translation">Hot/Cold</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Mùa hè/Mùa đông</span>
+                            <span class="english-translation">Summer/Winter</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Mùa xuân/Mùa thu</span>
+                            <span class="english-translation">Spring/Autumn</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Nhiệt độ bao nhiêu?</span>
+                            <span class="english-translation">What's the temperature?</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="vocabulary-category">
+                    <h3>Shopping & Commerce</h3>
+                    <ul class="vocabulary-list">
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Đi mua sắm</span>
+                            <span class="english-translation">To go shopping</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Cửa hàng</span>
+                            <span class="english-translation">Shop/Store</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Giá bao nhiêu?</span>
+                            <span class="english-translation">How much does it cost?</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Đắt/Rẻ</span>
+                            <span class="english-translation">Expensive/Cheap</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Thanh toán</span>
+                            <span class="english-translation">To pay</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Giảm giá</span>
+                            <span class="english-translation">Discount</span>
+                        </li>
+                        <li class="vocabulary-item">
+                            <span class="vietnamese-word">Thẻ tín dụng</span>
+                            <span class="english-translation">Credit card</span>
                         </li>
                     </ul>
                 </div>
@@ -731,35 +1038,147 @@
         
         <!-- Culture Section -->
         <section id="culture" class="culture-section">
-            <h2 class="section-title">Vietnamese Culture</h2>
-            <p>Understanding Vietnamese culture is essential for truly mastering the language. Here are some key aspects of Vietnamese culture:</p>
+            <h2 class="section-title">Vietnamese Culture & Traditions</h2>
+            <p>Understanding Vietnamese culture is essential for truly mastering the language. Vietnamese culture is a rich tapestry of traditions, customs, and regional variations that have developed over thousands of years.</p>
             
             <div class="culture-grid">
+                <!-- Vietnamese Cuisine -->
                 <div class="culture-card">
                     <div class="culture-image">🍜</div>
                     <div class="culture-content">
                         <h3>Vietnamese Cuisine</h3>
-                        <p>Vietnamese cuisine is known for its fresh ingredients, minimal use of oil, and reliance on herbs and vegetables. Famous dishes include phở (noodle soup), bánh mì (sandwich), and gỏi cuốn (spring rolls).</p>
+                        <p>Vietnamese cuisine is celebrated for its balance of five fundamental taste elements: spicy (metal), sour (wood), bitter (fire), salty (water), and sweet (earth).</p>
+                        <ul class="culture-list">
+                            <li><strong>Signature Dishes:</strong> Phở (noodle soup), Bánh mì (sandwich), Gỏi cuốn (spring rolls), Bún chả (grilled pork with noodles)</li>
+                            <li><strong>Key Ingredients:</strong> Fish sauce (nước mắm), rice, fresh herbs, lemongrass, and chili</li>
+                            <li><strong>Dining Etiquette:</strong> Wait to be seated; use chopsticks properly; don't stick chopsticks upright in rice (resembles funeral incense)</li>
+                            <li><strong>Street Food Culture:</strong> Vibrant street food scene with regional specialties like bánh xèo (sizzling pancake) in the South and bún bò Huế in Central Vietnam</li>
+                        </ul>
                     </div>
                 </div>
                 
+                <!-- Festivals & Holidays -->
                 <div class="culture-card">
-                    <div class="culture-image">🧧</div>
+                    <div class="culture-image">🎆</div>
                     <div class="culture-content">
-                        <h3>Festivals & Traditions</h3>
-                        <p>Tết (Lunar New Year) is the most important Vietnamese holiday. Other significant celebrations include Mid-Autumn Festival, Hung Kings Commemoration Day, and various regional festivals throughout the year.</p>
+                        <h3>Festivals & Holidays</h3>
+                        <p>Vietnam's calendar is marked by numerous festivals that reflect its agricultural roots and spiritual traditions.</p>
+                        <ul class="culture-list">
+                            <li><strong>Tết Nguyên Đán (Lunar New Year):</strong> Most important holiday; family reunions, ancestral worship, and lucky money in red envelopes</li>
+                            <li><strong>Mid-Autumn Festival (Tết Trung Thu):</strong> Children's festival with mooncakes and lantern processions</li>
+                            <li><strong>Hung Kings' Temple Festival:</strong> Honors Vietnam's legendary founders in April</li>
+                            <li><strong>Hue Festival:</strong> Biennial cultural event showcasing traditional and contemporary arts</li>
+                            <li><strong>Wandering Souls Day (Vu Lan):</strong> Honors ancestors and the dead in the 7th lunar month</li>
+                        </ul>
                     </div>
                 </div>
                 
+                <!-- Customs & Etiquette -->
+                <div class="culture-card">
+                    <div class="culture-image">🙏</div>
+                    <div class="culture-content">
+                        <h3>Customs & Etiquette</h3>
+                        <p>Vietnamese social customs emphasize respect, harmony, and proper conduct in various situations.</p>
+                        <ul class="culture-list">
+                            <li><strong>Greetings:</strong> Handshake with both hands and a slight bow; use appropriate titles</li>
+                            <li><strong>Gift Giving:</strong> Present gifts with both hands; avoid black or white wrapping (funeral colors)</li>
+                            <li><strong>Body Language:</strong> Don't touch someone's head; avoid pointing with fingers</li>
+                            <li><strong>Table Manners:</strong> Wait to be seated; try a bit of everything; don't finish all food (suggests host didn't provide enough)</li>
+                            <li><strong>Business Etiquette:</strong> Punctuality is valued; exchange business cards with both hands</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Regional Differences -->
+                <div class="culture-card">
+                    <div class="culture-image">🗺️</div>
+                    <div class="culture-content">
+                        <h3>Regional Variations</h3>
+                        <p>Vietnam's long geography has led to distinct regional cultures from North to South.</p>
+                        <ul class="culture-list">
+                            <li><strong>Northern Vietnam:</strong> More traditional and formal; influenced by Chinese culture; distinct four seasons</li>
+                            <li><strong>Central Vietnam:</strong> Imperial heritage (Hue); spicier cuisine; more reserved culture</li>
+                            <li><strong>Southern Vietnam:</strong> More relaxed and open; influenced by Khmer and French cultures; tropical climate</li>
+                            <li><strong>Highlands:</strong> Home to ethnic minorities with distinct traditions and languages</li>
+                            <li><strong>Urban vs Rural:</strong> Major cities like Hanoi and Ho Chi Minh City are more cosmopolitan than rural areas</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Family & Society -->
                 <div class="culture-card">
                     <div class="culture-image">👪</div>
                     <div class="culture-content">
-                        <h3>Family & Society</h3>
-                        <p>Family is central to Vietnamese culture, with strong emphasis on filial piety and respect for elders. The Vietnamese language has complex pronouns that reflect age, gender, and social relationships.</p>
+                        <h3>Family & Social Structure</h3>
+                        <p>The family is the cornerstone of Vietnamese society, with Confucian values shaping social relationships.</p>
+                        <ul class="culture-list">
+                            <li><strong>Family Hierarchy:</strong> Respect for elders; father as head of household; strong extended family ties</li>
+                            <li><strong>Gender Roles:</strong> Traditionally defined but evolving; women often manage household finances</li>
+                            <li><strong>Education:</strong> Highly valued; parents make significant sacrifices for children's education</li>
+                            <li><strong>Social Harmony:</strong> Maintaining "face" and avoiding public confrontation is important</li>
+                            <li><strong>Marriage:</strong> Traditionally arranged, though love marriages are now common; elaborate wedding ceremonies</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Arts & Literature -->
+                <div class="culture-card">
+                    <div class="culture-image">🎭</div>
+                    <div class="culture-content">
+                        <h3>Arts & Literature</h3>
+                        <p>Vietnamese arts reflect the country's history, with Chinese, French, and indigenous influences.</p>
+                        <ul class="culture-list">
+                            <li><strong>Water Puppetry:</strong> Unique Vietnamese art form originating in rice paddies</li>
+                            <li><strong>Traditional Music:</strong> Includes ca trù, nhã nhạc (royal court music), and đờn ca tài tử</li>
+                            <li><strong>Literature:</strong> Rich tradition of poetry; notable works include "The Tale of Kieu" by Nguyễn Du</li>
+                            <li><strong>Visual Arts:</strong> Silk painting, lacquerware, and woodblock prints</li>
+                            <li><strong>Modern Arts:</strong> Flourishing contemporary art scene, especially in Hanoi and Ho Chi Minh City</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+            
+            <div class="culture-tip">
+                <h4>Cultural Tip:</h4>
+                <p>When visiting temples or pagodas, dress modestly and remove your shoes before entering. It's also customary to leave a small donation.</p>
+            </div>
         </section>
+        
+        <style>
+            .culture-list {
+                list-style-type: none;
+                padding-left: 0;
+                margin-top: 10px;
+            }
+            
+            .culture-list li {
+                margin-bottom: 8px;
+                position: relative;
+                padding-left: 20px;
+                font-size: 0.95em;
+                line-height: 1.5;
+            }
+            
+            .culture-list li:before {
+                content: "•";
+                color: #00796b;
+                position: absolute;
+                left: 0;
+            }
+            
+            .culture-tip {
+                background-color: #e8f5e9;
+                border-left: 4px solid #2e7d32;
+                padding: 15px 20px;
+                margin: 30px 0;
+                border-radius: 4px;
+            }
+            
+            .culture-tip h4 {
+                margin-top: 0;
+                color: #1b5e20;
+            }
+        </style>
         
         <!-- Progress Tracker -->
         <section class="progress-section">

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katakana Lessons - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', 'Roboto', Arial, sans-serif; background: #f5f5f5; color: #333; line-height: 1.6; }
+        .navbar { background: #5e35b1; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
+        .navbar-logo { color: white; text-decoration: none; font-size: 1.5rem; font-weight: bold; display: flex; align-items: center; gap: 10px; }
+        .navbar-links { display: flex; list-style: none; gap: 25px; }
+        .navbar-links a { color: white; text-decoration: none; transition: color 0.3s; }
+        .navbar-links a:hover { color: #ffd180; }
+        .header { text-align: center; padding: 80px 20px; background: url('https://images.unsplash.com/photo-1531538606174-0f90ff5dbe83?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover; color: white; position: relative; }
+        .header::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(94, 53, 177, 0.8); }
+        .header-content { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; }
+        .header h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .header p { font-size: 1.3rem; max-width: 800px; margin: 0 auto 30px; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .section { background: white; border-radius: 15px; padding: 40px; margin-bottom: 40px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .section-title { color: #5e35b1; font-size: 2.2rem; margin-bottom: 30px; text-align: center; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: #ff9800; border-radius: 2px; }
+        .katakana-table { width: 100%; border-collapse: collapse; margin: 30px 0; background: white; border-radius: 10px; overflow: hidden; }
+        .katakana-table th { background: #5e35b1; color: white; padding: 15px; text-align: center; font-weight: 500; }
+        .katakana-table td { padding: 15px; text-align: center; border: 1px solid #e0e0e0; transition: all 0.3s; }
+        .katakana-table tr:nth-child(even) { background: #f9f9f9; }
+        .katakana-table tr:hover td { background: #f3e5f5; transform: scale(1.02); }
+        .katakana-char { font-size: 2rem; display: block; margin-bottom: 5px; color: #5e35b1; }
+        .katakana-romaji { font-size: 0.9rem; color: #666; }
+        .practice-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; margin: 20px 0; }
+        .practice-card { background: white; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s; cursor: pointer; border: 2px solid transparent; }
+        .practice-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); border-color: #ff9800; }
+        .practice-char { font-size: 2.5rem; color: #5e35b1; margin-bottom: 10px; }
+        .practice-romaji { color: #666; font-size: 0.9rem; }
+        .progress-container { width: 100%; background: #e0e0e0; border-radius: 10px; margin: 30px 0; height: 10px; overflow: hidden; }
+        .progress-bar { height: 100%; background: #8bc34a; width: 0%; transition: width 0.5s ease-in-out; }
+        .footer { background: #5e35b1; color: white; padding: 40px 0; margin-top: 60px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-section h3 { font-size: 1.3rem; margin-bottom: 20px; position: relative; padding-bottom: 10px; }
+        .footer-section h3::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; height: 2px; background: #ff9800; }
+        .footer-section p, .footer-section a { color: #e1bee7; margin-bottom: 10px; display: block; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: #ffd180; }
+        .footer-bottom { text-align: center; padding-top: 20px; margin-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); color: #d1c4e9; font-size: 0.9rem; }
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.2rem; }
+            .header p { font-size: 1.1rem; }
+            .section { padding: 25px 15px; }
+            .section-title { font-size: 1.8rem; }
+            .katakana-char { font-size: 1.8rem; }
+            .practice-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="../../index.html" class="navbar-logo">
+            <img src="https://img.icons8.com/color/48/000000/language.png" alt="Logo" style="width: 36px; height: 36px;">
+            EduLang Hub
+        </a>
+        <ul class="navbar-links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="japanese.html">Japanese</a></li>
+            <li><a href="#">Courses</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>Katakana Mastery</h1>
+            <p>Master the 46 basic katakana characters used for foreign words, names, and onomatopoeia in Japanese.</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p>Your Progress: <span id="progressText">0%</span> Complete</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Katakana Mastery Path -->
+        <section class="section" style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);">
+            <h2 class="section-title">Your Katakana Journey</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 30px;">
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+                    <div style="width: 60px; height: 60px; background: #5e35b1; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; font-weight: bold;">1</div>
+                    <h3 style="color: #5e35b1; margin-bottom: 10px;">Basic Katakana</h3>
+                    <p style="color: #555; font-size: 0.9rem;">Master the 46 basic katakana characters</p>
+                    <div style="height: 4px; background: #e0e0e0; border-radius: 2px; margin-top: 15px; overflow: hidden;">
+                        <div style="width: 25%; height: 100%; background: #8bc34a;"></div>
+                    </div>
+                    <span style="display: inline-block; margin-top: 10px; font-size: 0.8rem; color: #8bc34a;">In Progress</span>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1); opacity: 0.7;">
+                    <div style="width: 60px; height: 60px; background: #b39ddb; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; font-weight: bold;">2</div>
+                    <h3 style="color: #5e35b1; margin-bottom: 10px;">Dakuten & Handakuten</h3>
+                    <p style="color: #9e9e9e; font-size: 0.9rem;">Learn modified sounds like ガ (ga) and パ (pa)</p>
+                    <div style="height: 4px; background: #f5f5f5; border-radius: 2px; margin-top: 15px;"></div>
+                    <span style="display: inline-block; margin-top: 10px; font-size: 0.8rem; color: #9e9e9e;">Locked</span>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.1); opacity: 0.7;">
+                    <div style="width: 60px; height: 60px; background: #b39ddb; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 1.5rem; font-weight: bold;">3</div>
+                    <h3 style="color: #5e35b1; margin-bottom: 10px;">Combined Characters</h3>
+                    <p style="color: #9e9e9e; font-size: 0.9rem;">Master small ャ, ュ, ョ combinations</p>
+                    <div style="height: 4px; background: #f5f5f5; border-radius: 2px; margin-top: 15px;"></div>
+                    <span style="display: inline-block; margin-top: 10px; font-size: 0.8rem; color: #9e9e9e;">Locked</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Basic Katakana Section -->
+        <section class="section">
+            <h2 class="section-title">Basic Katakana</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #555; font-size: 1.1rem;">
+                Start with the 46 basic katakana characters. Click on any character to hear its pronunciation.
+            </p>
+            
+            <table class="katakana-table">
+                <tr>
+                    <th>a</th>
+                    <th>i</th>
+                    <th>u</th>
+                    <th>e</th>
+                    <th>o</th>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="katakana-char">ア</span>
+                        <span class="katakana-romaji">a</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">イ</span>
+                        <span class="katakana-romaji">i</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">ウ</span>
+                        <span class="katakana-romaji">u</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">エ</span>
+                        <span class="katakana-romaji">e</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">オ</span>
+                        <span class="katakana-romaji">o</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="katakana-char">カ</span>
+                        <span class="katakana-romaji">ka</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">キ</span>
+                        <span class="katakana-romaji">ki</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">ク</span>
+                        <span class="katakana-romaji">ku</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">ケ</span>
+                        <span class="katakana-romaji">ke</span>
+                    </td>
+                    <td>
+                        <span class="katakana-char">コ</span>
+                        <span class="katakana-romaji">ko</span>
+                    </td>
+                </tr>
+                <!-- More rows for other katakana characters -->
+            </table>
+            
+            <div style="background: #f5f5f5; padding: 30px; border-radius: 10px; margin-top: 40px;">
+                <h3 style="color: #ff9800; font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-pen"></i> Practice Writing
+                </h3>
+                <p style="margin-bottom: 20px; color: #555;">
+                    Practice writing katakana characters in the correct stroke order. Click on a character to see the stroke order animation.
+                </p>
+                <div class="practice-grid">
+                    <div class="practice-card">
+                        <div class="practice-char">ア</div>
+                        <div class="practice-romaji">a</div>
+                    </div>
+                    <div class="practice-card">
+                        <div class="practice-char">イ</div>
+                        <div class="practice-romaji">i</div>
+                    </div>
+                    <div class="practice-card">
+                        <div class="practice-char">ウ</div>
+                        <div class="practice-romaji">u</div>
+                    </div>
+                    <div class="practice-card">
+                        <div class="practice-char">エ</div>
+                        <div class="practice-romaji">e</div>
+                    </div>
+                    <div class="practice-card">
+                        <div class="practice-char">オ</div>
+                        <div class="practice-romaji">o</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Katakana Usage Guide -->
+        <section class="section" style="background: #f8f5ff; border: 1px solid #e8e0ff;">
+            <h2 class="section-title">When to Use Katakana</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 30px;">
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #7e57c2; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem;">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 style="color: #5e35b1; text-align: center; margin-bottom: 15px;">Foreign Words</h3>
+                    <p style="color: #555; text-align: center;">
+                        Used for words borrowed from other languages, like コーヒー (koohii - coffee) and パン (pan - bread from Portuguese "pão")
+                    </p>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #7e57c2; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem;">
+                        <i class="fas fa-user-tag"></i>
+                    </div>
+                    <h3 style="color: #5e35b1; text-align: center; margin-bottom: 15px;">Foreign Names</h3>
+                    <p style="color: #555; text-align: center;">
+                        For non-Japanese names, like マイケル (Maikeru - Michael) and エマ (Ema - Emma)
+                    </p>
+                </div>
+                
+                <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #7e57c2; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem;">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h3 style="color: #5e35b1; text-align: center; margin-bottom: 15px;">Onomatopoeia</h3>
+                    <p style="color: #555; text-align: center;">
+                        For sound effects, like ドキドキ (dokidoki - heartbeat) and ワンワン (wanwan - dog barking)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loanwords Section -->
+        <section class="section">
+            <h2 class="section-title">Common Loanwords</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: #555; font-size: 1.1rem;">
+                Practice reading these common loanwords written in katakana. Click on the play button to hear the pronunciation.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #5e35b1;">
+                    <div style="font-size: 1.8rem; color: #5e35b1; margin-bottom: 10px;">コーヒー</div>
+                    <div style="font-size: 1.1rem; color: #333; margin-bottom: 10px;">Koohii</div>
+                    <div style="color: #666; font-style: italic;">Coffee</div>
+                </div>
+                <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #5e35b1;">
+                    <div style="font-size: 1.8rem; color: #5e35b1; margin-bottom: 10px;">テレビ</div>
+                    <div style="font-size: 1.1rem; color: #333; margin-bottom: 10px;">Terebi</div>
+                    <div style="color: #666; font-style: italic;">Television</div>
+                </div>
+                <div style="background: #f9f9f9; padding: 20px; border-radius: 10px; border-left: 4px solid #5e35b1;">
+                    <div style="font-size: 1.8rem; color: #5e35b1; margin-bottom: 10px;">パソコン</div>
+                    <div style="font-size: 1.1rem; color: #333; margin-bottom: 10px;">Pasokon</div>
+                    <div style="color: #666; font-style: italic;">Personal Computer</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Katakana Practice Game -->
+    <section class="section" style="background: linear-gradient(135deg, #f3e5ff 0%, #e1d2ff 100%); border: none; margin-top: 40px;">
+        <h2 class="section-title">Katakana Practice Game</h2>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 30px; color: #555; font-size: 1.1rem;">
+            Test your katakana knowledge with this interactive game. Match the katakana to its correct romaji reading!
+        </p>
+        
+        <div style="max-width: 800px; margin: 0 auto; background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.1);">
+            <div style="text-align: center; margin-bottom: 30px;">
+                <div style="font-size: 4rem; color: #5e35b1; margin: 20px 0;">ゲーム</div>
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 20px;">What is the correct reading?</p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px;">
+                    <button onclick="checkAnswer('geemu', this)" style="padding: 12px 25px; font-size: 1.1rem; background: #fff; color: #5e35b1; border: 2px solid #5e35b1; border-radius: 30px; cursor: pointer; transition: all 0.3s;">
+                        geemu
+                    </button>
+                    <button onclick="checkAnswer('geemu', this)" style="padding: 12px 25px; font-size: 1.1rem; background: #fff; color: #5e35b1; border: 2px solid #5e35b1; border-radius: 30px; cursor: pointer; transition: all 0.3s;">
+                        gēmu
+                    </button>
+                    <button onclick="checkAnswer('geemu', this)" style="padding: 12px 25px; font-size: 1.1rem; background: #fff; color: #5e35b1; border: 2px solid #5e35b1; border-radius: 30px; cursor: pointer; transition: all 0.3s;">
+                        gemu
+                    </button>
+                    <button onclick="checkAnswer('geemu', this)" style="padding: 12px 25px; font-size: 1.1rem; background: #fff; color: #5e35b1; border: 2px solid #5e35b1; border-radius: 30px; cursor: pointer; transition: all 0.3s;">
+                        game
+                    </button>
+                </div>
+                
+                <div id="gameFeedback" style="margin-top: 20px; min-height: 24px;"></div>
+                
+                <button id="nextQuestion" onclick="nextQuestion()" style="padding: 10px 25px; background: #5e35b1; color: white; border: none; border-radius: 30px; margin-top: 20px; cursor: pointer; display: none;">
+                    Next Question <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+            
+            <div style="margin-top: 40px; background: #f9f9f9; padding: 20px; border-radius: 10px;">
+                <h3 style="color: #5e35b1; margin-bottom: 15px; text-align: center;">Your Progress</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <span>Questions: <span id="questionCount">0</span>/10</span>
+                    <span>Score: <span id="score">0</span> points</span>
+                </div>
+                <div style="height: 10px; background: #e0e0e0; border-radius: 5px; overflow: hidden;">
+                    <div id="progressBarGame" style="height: 100%; width: 0%; background: #8bc34a; transition: width 0.5s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Katakana Cheat Sheet -->
+    <section class="section" style="background: white; border: 1px solid #e0e0e0;">
+        <h2 class="section-title">Katakana Cheat Sheet</h2>
+        <p style="text-align: center; margin-bottom: 30px; color: #555; font-size: 1.1rem;">
+            Download and print this cheat sheet for quick reference while practicing.
+        </p>
+        
+        <div style="background: #f9f9f9; padding: 30px; border-radius: 10px; text-align: center; border: 2px dashed #b39ddb;">
+            <img src="https://i.imgur.com/placeholder-katakana-chart.png" alt="Katakana Chart" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);">
+            <div>
+                <button style="padding: 12px 30px; background: #5e35b1; color: white; border: none; border-radius: 30px; font-size: 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; margin: 0 10px;">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+                <button style="padding: 12px 30px; background: #fff; color: #5e35b1; border: 2px solid #5e35b1; border-radius: 30px; font-size: 1.1rem; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; margin: 0 10px;">
+                    <i class="fas fa-print"></i> Print Cheat Sheet
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About EduLang Hub</h3>
+                <p>EduLang Hub is dedicated to providing high-quality language learning resources to help you achieve fluency in your target language.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">Courses</a>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-envelope"></i> info@edulanghub.com</p>
+                <p><i class="fas fa-phone"></i> +1 (123) 456-7890</p>
+                <div style="margin-top: 15px;">
+                    <a href="#" style="font-size: 1.5rem; margin-right: 15px; color: #d1c4e9;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="font-size: 1.5rem; margin-right: 15px; color: #d1c4e9;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="font-size: 1.5rem; margin-right: 15px; color: #d1c4e9;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="font-size: 1.5rem; color: #d1c4e9;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 EduLang Hub. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Simple progress tracking
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simulate progress (in a real app, this would be saved to a database)
+            let progress = 0;
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            // Update progress when practice cards are clicked
+            const practiceCards = document.querySelectorAll('.practice-card');
+            practiceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    progress = Math.min(progress + 2, 100);
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = progress + '%';
+                });
+            });
+            
+            // Add click effect to practice cards
+            practiceCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-5px)';
+                    }, 100);
+                });
+            });
+
+            // Game functionality
+            let score = 0;
+            let questionCount = 0;
+            const questions = [
+                { katakana: 'ゲーム', answer: 'geemu', options: ['geemu', 'gēmu', 'gemu', 'game'], english: 'game' },
+                { katakana: 'コーヒー', answer: 'koohii', options: ['koohii', 'kohi', 'kōhī', 'coffee'], english: 'coffee' },
+                { katakana: 'テレビ', answer: 'terebi', options: ['terebi', 'terebī', 'terebee', 'television'], english: 'TV' },
+                { katakana: 'パソコン', answer: 'pasokon', options: ['pasokon', 'pasocon', 'pasokonn', 'personal computer'], english: 'PC' },
+                { katakana: 'インターネット', answer: 'intaanetto', options: ['intaanetto', 'intanetto', 'internet', 'intānetto'], english: 'internet' }
+            ];
+
+            function loadQuestion() {
+                if (questionCount >= 5) {
+                    document.getElementById('gameFeedback').innerHTML = `
+                        <div style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 20px;">
+                            <h3 style="color: #2e7d32; margin-bottom: 10px;">Quiz Complete!</h3>
+                            <p>Your score: ${score} out of 5</p>
+                            <button onclick="resetGame()" style="padding: 8px 20px; background: #5e35b1; color: white; border: none; border-radius: 20px; margin-top: 10px; cursor: pointer;">
+                                Try Again
+                            </button>
+                        </div>
+                    `;
+                    document.getElementById('nextQuestion').style.display = 'none';
+                    return;
+                }
+
+                const question = questions[questionCount];
+                document.querySelector('.section-title').textContent = question.katakana;
+                
+                const buttons = document.querySelectorAll('#gameContainer button');
+                question.options.forEach((option, index) => {
+                    if (buttons[index]) {
+                        buttons[index].textContent = option;
+                        buttons[index].onclick = function() { checkAnswer(question.answer, this, option); };
+                        buttons[index].style.background = '#fff';
+                        buttons[index].style.color = '#5e35b1';
+                        buttons[index].disabled = false;
+                    }
+                });
+                
+                document.getElementById('questionCount').textContent = questionCount + 1;
+                document.getElementById('progressBarGame').style.width = (questionCount * 20) + '%';
+            }
+
+            window.checkAnswer = function(correctAnswer, button, selectedOption) {
+                const buttons = document.querySelectorAll('#gameContainer button');
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    if (btn.textContent === correctAnswer) {
+                        btn.style.background = '#4caf50';
+                        btn.style.color = 'white';
+                    } else if (btn === button && selectedOption !== correctAnswer) {
+                        btn.style.background = '#f44336';
+                        btn.style.color = 'white';
+                    }
+                });
+
+                const feedback = document.getElementById('gameFeedback');
+                if (selectedOption === correctAnswer) {
+                    score++;
+                    document.getElementById('score').textContent = score;
+                    feedback.innerHTML = `<div style="color: #2e7d32; font-weight: 500;"><i class="fas fa-check-circle"></i> Correct! ${question.katakana} is pronounced "${correctAnswer}"</div>`;
+                } else {
+                    feedback.innerHTML = `<div style="color: #d32f2f;"><i class="fas fa-times-circle"></i> Incorrect. The correct answer is "${correctAnswer}"</div>`;
+                }
+
+                document.getElementById('nextQuestion').style.display = 'inline-block';
+            };
+
+            window.nextQuestion = function() {
+                questionCount++;
+                document.getElementById('gameFeedback').innerHTML = '';
+                document.getElementById('nextQuestion').style.display = 'none';
+                loadQuestion();
+            };
+
+            window.resetGame = function() {
+                score = 0;
+                questionCount = 0;
+                document.getElementById('score').textContent = '0';
+                document.getElementById('gameFeedback').innerHTML = '';
+                loadQuestion();
+            };
+
+            // Initialize the game
+            loadQuestion();
+        });
+    </script>
+</body>
+</html>

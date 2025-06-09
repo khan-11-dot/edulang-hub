@@ -139,6 +139,145 @@
             margin: 15px auto 0;
         }
         
+        /* Pronunciation Section */
+        .pronunciation-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+        
+        .pronunciation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .pronunciation-card {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid #00796b;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .pronunciation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .pronunciation-card h3 {
+            color: #00796b;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        
+        .alphabet-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .letter-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 10px 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .letter-card:hover {
+            background: #00796b;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .pronunciation-rule {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #ff7043;
+        }
+        
+        .pronunciation-rule h4 {
+            color: #ff7043;
+            margin-bottom: 8px;
+        }
+        
+        .greeting-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid #4caf50;
+        }
+        
+        .greeting-text {
+            flex: 1;
+        }
+        
+        .greeting-text .spanish {
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 1.1rem;
+        }
+        
+        .greeting-text .english {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .play-btn {
+            background: #4caf50;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .play-btn:hover {
+            background: #388e3c;
+            transform: scale(1.1);
+        }
+        
+        .accent-rule {
+            margin-bottom: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border-left: 3px solid #7e57c2;
+        }
+        
+        .accent-rule h4 {
+            color: #7e57c2;
+            margin-bottom: 8px;
+        }
+        
+        .example-word {
+            font-weight: bold;
+            color: #5e35b1;
+        }
+        
         /* Learning Modules */
         .modules {
             display: grid;
@@ -233,6 +372,217 @@
         
         .grammar-table tr:hover {
             background-color: #f9f9f9;
+        }
+        
+        /* Grammar Section */
+        .grammar-section {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+        
+        /* Grammar Tabs */
+        .grammar-tabs {
+            display: flex;
+            gap: 10px;
+            margin: 0 auto 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #555;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .tab-btn i {
+            font-size: 0.9em;
+        }
+        
+        .tab-btn:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+        
+        .tab-btn.active {
+            background: #00796b;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .grammar-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .grammar-category {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 25px;
+            border-left: 5px solid #00796b;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .grammar-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        
+        .grammar-category h3 {
+            color: #00796b;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .grammar-category h3 i {
+            color: #ff7043;
+        }
+        
+        .grammar-content {
+            line-height: 1.8;
+        }
+        
+        .grammar-content h4 {
+            color: #00796b;
+            margin: 20px 0 10px;
+            font-size: 1.2rem;
+        }
+        
+        .grammar-content h5 {
+            color: #555;
+            margin: 15px 0 8px;
+            font-size: 1.1rem;
+        }
+        
+        .grammar-list, .usage-list, .irregular-verbs {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .grammar-list li, .usage-list li, .irregular-verbs li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .spanish-example {
+            color: #00796b;
+            font-weight: 600;
+        }
+        
+        .english-translation {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .grammar-tip {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 12px 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+        }
+        
+        .grammar-tip.important {
+            background: #fff3e0;
+            border-left-color: #ff9800;
+        }
+        
+        .verb-conjugation {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .verb-conjugation ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .verb-conjugation li {
+            padding: 5px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .tense {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .tense:last-child {
+            border-bottom: none;
+        }
+        
+        .example {
+            background: #f5f5f5;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-style: italic;
+        }
+        
+        .practice-section {
+            margin-top: 50px;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #ff7043;
+        }
+        
+        .practice-section h3 {
+            color: #ff7043;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .practice-questions {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .practice-questions h4 {
+            color: #00796b;
+            margin: 20px 0 10px;
+        }
+        
+        .practice-questions ol {
+            padding-left: 25px;
+        }
+        
+        .practice-questions li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
         }
         
         /* Vocabulary Section */
@@ -450,6 +800,167 @@
     
     <!-- Main Content -->
     <div class="container">
+        <!-- Pronunciation & Basics Section -->
+        <section class="pronunciation-section">
+            <h2 class="section-title">Pronunciation & Basics</h2>
+            <p class="section-intro">Master Spanish pronunciation and basic expressions to build a strong foundation for your language learning journey.</p>
+            
+            <div class="pronunciation-grid">
+                <!-- Spanish Alphabet -->
+                <div class="pronunciation-card">
+                    <div class="pronunciation-icon">🔤</div>
+                    <h3>Spanish Alphabet</h3>
+                    <p>The Spanish alphabet has 27 letters, including the letter <strong>ñ</strong> (eñe). While it's similar to the English alphabet, the pronunciation differs.</p>
+                    
+                    <div class="alphabet-container">
+                        <div class="letter-card">A a</div>
+                        <div class="letter-card">B b</div>
+                        <div class="letter-card">C c</div>
+                        <div class="letter-card">D d</div>
+                        <div class="letter-card">E e</div>
+                        <div class="letter-card">F f</div>
+                        <div class="letter-card">G g</div>
+                        <div class="letter-card">H h</div>
+                        <div class="letter-card">I i</div>
+                        <div class="letter-card">J j</div>
+                        <div class="letter-card">K k</div>
+                        <div class="letter-card">L l</div>
+                        <div class="letter-card">M m</div>
+                        <div class="letter-card">N n</div>
+                        <div class="letter-card">Ñ ñ</div>
+                        <div class="letter-card">O o</div>
+                        <div class="letter-card">P p</div>
+                        <div class="letter-card">Q q</div>
+                        <div class="letter-card">R r</div>
+                        <div class="letter-card">S s</div>
+                        <div class="letter-card">T t</div>
+                        <div class="letter-card">U u</div>
+                        <div class="letter-card">V v</div>
+                        <div class="letter-card">W w</div>
+                        <div class="letter-card">X x</div>
+                        <div class="letter-card">Y y</div>
+                        <div class="letter-card">Z z</div>
+                    </div>
+                </div>
+                
+                <!-- Pronunciation Rules -->
+                <div class="pronunciation-card">
+                    <div class="pronunciation-icon">🎙️</div>
+                    <h3>Pronunciation Rules</h3>
+                    <p>Spanish pronunciation is more consistent than English. Here are the key rules:</p>
+                    
+                    <div class="pronunciation-rule">
+                        <h4>Vowels</h4>
+                        <p>Spanish has five pure vowel sounds that are always pronounced the same way:</p>
+                        <ul>
+                            <li><strong>A</strong> - always like 'a' in "father"</li>
+                            <li><strong>E</strong> - like 'e' in "they"</li>
+                            <li><strong>I</strong> - like 'ee' in "see"</li>
+                            <li><strong>O</strong> - like 'o' in "more"</li>
+                            <li><strong>U</strong> - like 'oo' in "moon"</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="pronunciation-rule">
+                        <h4>Consonants</h4>
+                        <ul>
+                            <li><strong>C</strong> - before e/i: 'th' in Spain, 's' in Latin America; otherwise 'k'</li>
+                            <li><strong>G</strong> - before e/i: like 'h' in "hello"; otherwise like 'g' in "go"</li>
+                            <li><strong>H</strong> - always silent</li>
+                            <li><strong>J</strong> - like a strong 'h' sound</li>
+                            <li><strong>LL</strong> - like 'y' in "yes" or 'j' in "jeep"</li>
+                            <li><strong>Ñ</strong> - like 'ny' in "canyon"</li>
+                            <li><strong>R</strong> - tapped or rolled 'r' sound</li>
+                            <li><strong>RR</strong> - strongly rolled 'r'</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Accent Marks -->
+                <div class="pronunciation-card">
+                    <div class="pronunciation-icon">´</div>
+                    <h3>Accent Marks</h3>
+                    <p>Spanish uses accent marks (tildes) to indicate stress and distinguish between words.</p>
+                    
+                    <div class="accent-rule">
+                        <h4>Rules for Accent Marks</h4>
+                        <ol>
+                            <li>Words ending in a vowel, n, or s are stressed on the second-to-last syllable.
+                                <ul>
+                                    <li>Example: <span class="example-word">casa</span> (house), <span class="example-word">libros</span> (books)</li>
+                                </ul>
+                            </li>
+                            <li>Words ending in a consonant (except n or s) are stressed on the last syllable.
+                                <ul>
+                                    <li>Example: <span class="example-word">español</span> (Spanish), <span class="example-word">verdad</span> (truth)</li>
+                                </ul>
+                            </li>
+                            <li>Accent marks are used when the word doesn't follow the above rules.
+                                <ul>
+                                    <li>Example: <span class="example-word">teléfono</span> (telephone), <span class="example-word">canción</span> (song)</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- Basic Greetings -->
+                <div class="pronunciation-card">
+                    <div class="pronunciation-icon">👋</div>
+                    <h3>Basic Greetings</h3>
+                    <p>Essential Spanish greetings and expressions to get you started.</p>
+                    
+                    <div class="greeting-card">
+                        <div class="greeting-text">
+                            <div class="spanish">¡Hola!</div>
+                            <div class="english">Hello! / Hi!</div>
+                        </div>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                    
+                    <div class="greeting-card">
+                        <div class="greeting-text">
+                            <div class="spanish">Buenos días</div>
+                            <div class="english">Good morning</div>
+                        </div>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                    
+                    <div class="greeting-card">
+                        <div class="greeting-text">
+                            <div class="spanish">Buenas tardes</div>
+                            <div class="english">Good afternoon</div>
+                        </div>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                    
+                    <div class="greeting-card">
+                        <div class="greeting-text">
+                            <div class="spanish">Buenas noches</div>
+                            <div class="english">Good evening / night</div>
+                        </div>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                    
+                    <div class="greeting-card">
+                        <div class="greeting-text">
+                            <div class="spanish">¿Cómo estás?</div>
+                            <div class="english">How are you? (informal)</div>
+                        </div>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                    
+                    <div class="greeting-card">
+                        <div class="greeting-text">
+                            <div class="spanish">¿Qué tal?</div>
+                            <div class="english">What's up? / How's it going?</div>
+                        </div>
+                        <button class="play-btn">▶️</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         <section id="modules">
             <h2 class="section-title">Learning Modules</h2>
             <div class="modules">
@@ -497,7 +1008,7 @@
                             <li>Present, past, and future tenses</li>
                             <li>Ser vs. Estar</li>
                         </ul>
-                        <a href="#" class="module-btn">Start Module</a>
+                        <a href="#grammar" class="module-btn">Start Module</a>
                     </div>
                 </div>
             </div>
@@ -549,166 +1060,583 @@
         <!-- Vocabulary Section -->
         <section id="vocabulary" class="vocabulary-section">
             <h2 class="section-title">Essential Spanish Vocabulary</h2>
-            <p>Building your vocabulary is key to becoming fluent in Spanish. Here are some essential words and phrases organized by category:</p>
+            <p class="section-intro">Building a strong vocabulary is essential for effective communication. Here are carefully selected words and phrases organized by category to help you master Spanish.</p>
             
             <div class="vocabulary-categories">
+                <!-- Numbers & Colors -->
                 <div class="vocabulary-category">
-                    <h3>Greetings & Basics</h3>
-                    <ul class="vocabulary-list">
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Hola</span>
-                            <span class="english-translation">Hello</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Buenos días</span>
-                            <span class="english-translation">Good morning</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Buenas tardes</span>
-                            <span class="english-translation">Good afternoon</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Buenas noches</span>
-                            <span class="english-translation">Good evening/night</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">¿Cómo estás?</span>
-                            <span class="english-translation">How are you?</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Gracias</span>
-                            <span class="english-translation">Thank you</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Por favor</span>
-                            <span class="english-translation">Please</span>
-                        </li>
-                    </ul>
+                    <h3><i class="fas fa-sort-numeric-up"></i> Numbers & Colors</h3>
+                    <div class="vocabulary-subcategory">
+                        <h4>Numbers 1-20</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Uno, dos, tres</span> <span class="english-translation">One, two, three</span></li>
+                            <li><span class="spanish-word">Cuatro, cinco, seis</span> <span class="english-translation">Four, five, six</span></li>
+                            <li><span class="spanish-word">Siete, ocho, nueve, diez</span> <span class="english-translation">Seven, eight, nine, ten</span></li>
+                            <li><span class="spanish-word">Once, doce, trece</span> <span class="english-translation">Eleven, twelve, thirteen</span></li>
+                            <li><span class="spanish-word">Catorce, quince</span> <span class="english-translation">Fourteen, fifteen</span></li>
+                            <li><span class="spanish-word">Dieciséis, diecisiete</span> <span class="english-translation">Sixteen, seventeen</span></li>
+                            <li><span class="spanish-word">Dieciocho, diecinueve, veinte</span> <span class="english-translation">Eighteen, nineteen, twenty</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Colors</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Rojo/Roja</span> <span class="english-translation">Red</span></li>
+                            <li><span class="spanish-word">Azul</span> <span class="english-translation">Blue</span></li>
+                            <li><span class="spanish-word">Verde</span> <span class="english-translation">Green</span></li>
+                            <li><span class="spanish-word">Amarillo/Amarilla</span> <span class="english-translation">Yellow</span></li>
+                            <li><span class="spanish-word">Negro/Negra</span> <span class="english-translation">Black</span></li>
+                            <li><span class="spanish-word">Blanco/Blanca</span> <span class="english-translation">White</span></li>
+                            <li><span class="spanish-word">Gris</span> <span class="english-translation">Gray</span></li>
+                            <li><span class="spanish-word">Marrón</span> <span class="english-translation">Brown</span></li>
+                            <li><span class="spanish-word">Naranja</span> <span class="english-translation">Orange</span></li>
+                            <li><span class="spanish-word">Rosa/Rosado</span> <span class="english-translation">Pink</span></li>
+                            <li><span class="spanish-word">Morado/Morada</span> <span class="english-translation">Purple</span></li>
+                        </ul>
+                    </div>
                 </div>
                 
+                <!-- Food & Dining -->
                 <div class="vocabulary-category">
-                    <h3>Numbers & Colors</h3>
-                    <ul class="vocabulary-list">
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Uno, dos, tres</span>
-                            <span class="english-translation">One, two, three</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Cuatro, cinco, seis</span>
-                            <span class="english-translation">Four, five, six</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Rojo</span>
-                            <span class="english-translation">Red</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Azul</span>
-                            <span class="english-translation">Blue</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Verde</span>
-                            <span class="english-translation">Green</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Amarillo</span>
-                            <span class="english-translation">Yellow</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Negro</span>
-                            <span class="english-translation">Black</span>
-                        </li>
-                    </ul>
+                    <h3><i class="fas fa-utensils"></i> Food & Dining</h3>
+                    <div class="vocabulary-subcategory">
+                        <h4>Common Foods</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Pan</span> <span class="english-translation">Bread</span></li>
+                            <li><span class="spanish-word">Arroz</span> <span class="english-translation">Rice</span></li>
+                            <li><span class="spanish-word">Pasta</span> <span class="english-translation">Pasta</span></li>
+                            <li><span class="spanish-word">Carne</span> <span class="english-translation">Meat</span></li>
+                            <li><span class="spanish-word">Pollo</span> <span class="english-translation">Chicken</span></li>
+                            <li><span class="spanish-word">Pescado</span> <span class="english-translation">Fish</span></li>
+                            <li><span class="spanish-word">Verduras</span> <span class="english-translation">Vegetables</span></li>
+                            <li><span class="spanish-word">Frutas</span> <span class="english-translation">Fruits</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Dining Out</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Restaurante</span> <span class="english-translation">Restaurant</span></li>
+                            <li><span class="spanish-word">Menú</span> <span class="english-translation">Menu</span></li>
+                            <li><span class="spanish-word">La cuenta, por favor</span> <span class="english-translation">The bill, please</span></li>
+                            <li><span class="spanish-word">¿Tiene mesa para dos?</span> <span class="english-translation">Do you have a table for two?</span></li>
+                            <li><span class="spanish-word">La carta de vinos</span> <span class="english-translation">Wine list</span></li>
+                            <li><span class="spanish-word">Servicio incluido</span> <span class="english-translation">Service included</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Meal Times</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Desayuno</span> <span class="english-translation">Breakfast</span></li>
+                            <li><span class="spanish-word">Almuerzo</span> <span class="english-translation">Lunch</span></li>
+                            <li><span class="spanish-word">Cena</span> <span class="english-translation">Dinner</span></li>
+                            <li><span class="spanish-word">Postre</span> <span class="english-translation">Dessert</span></li>
+                        </ul>
+                    </div>
                 </div>
                 
+                <!-- Travel Vocabulary -->
                 <div class="vocabulary-category">
-                    <h3>Food & Dining</h3>
-                    <ul class="vocabulary-list">
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Agua</span>
-                            <span class="english-translation">Water</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Pan</span>
-                            <span class="english-translation">Bread</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Carne</span>
-                            <span class="english-translation">Meat</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Pescado</span>
-                            <span class="english-translation">Fish</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Restaurante</span>
-                            <span class="english-translation">Restaurant</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">La cuenta</span>
-                            <span class="english-translation">The bill</span>
-                        </li>
-                        <li class="vocabulary-item">
-                            <span class="spanish-word">Desayuno</span>
-                            <span class="english-translation">Breakfast</span>
-                        </li>
-                    </ul>
+                    <h3><i class="fas fa-plane"></i> Travel</h3>
+                    <div class="vocabulary-subcategory">
+                        <h4>Transportation</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Aeropuerto</span> <span class="english-translation">Airport</span></li>
+                            <li><span class="spanish-word">Estación de tren</span> <span class="english-translation">Train station</span></li>
+                            <li><span class="spanish-word">Autobús</span> <span class="english-translation">Bus</span></li>
+                            <li><span class="spanish-word">Metro</span> <span class="english-translation">Subway</span></li>
+                            <li><span class="spanish-word">Taxi</span> <span class="english-translation">Taxi</span></li>
+                            <li><span class="spanish-word">Billete/Boleto</span> <span class="english-translation">Ticket</span></li>
+                            <li><span class="spanish-word">Equipaje</span> <span class="english-translation">Luggage</span></li>
+                            <li><span class="spanish-word">Pasaporte</span> <span class="english-translation">Passport</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Accommodation</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Hotel</span> <span class="english-translation">Hotel</span></li>
+                            <li><span class="spanish-word">Habitación</span> <span class="english-translation">Room</span></li>
+                            <li><span class="spanish-word">Reserva</span> <span class="english-translation">Reservation</span></li>
+                            <li><span class="spanish-word">Recepción</span> <span class="english-translation">Reception</span></li>
+                            <li><span class="spanish-word">Llave</span> <span class="english-translation">Key</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Directions</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">¿Dónde está...?</span> <span class="english-translation">Where is...?</span></li>
+                            <li><span class="spanish-word">A la derecha</span> <span class="english-translation">To the right</span></li>
+                            <li><span class="spanish-word">A la izquierda</span> <span class="english-translation">To the left</span></li>
+                            <li><span class="spanish-word">Recto</span> <span class="english-translation">Straight ahead</span></li>
+                            <li><span class="spanish-word">Cerca/Lejos</span> <span class="english-translation">Near/Far</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Daily Activities -->
+                <div class="vocabulary-category">
+                    <h3><i class="fas fa-calendar-day"></i> Daily Activities</h3>
+                    <div class="vocabulary-subcategory">
+                        <h4>Morning Routine</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Despertarse</span> <span class="english-translation">To wake up</span></li>
+                            <li><span class="spanish-word">Levantarse</span> <span class="english-translation">To get up</span></li>
+                            <li><span class="spanish-word">Ducharse</span> <span class="english-translation">To take a shower</span></li>
+                            <li><span class="spanish-word">Vestirse</span> <span class="english-translation">To get dressed</span></li>
+                            <li><span class="spanish-word">Desayunar</span> <span class="english-translation">To have breakfast</span></li>
+                            <li><span class="spanish-word">Cepillarse los dientes</span> <span class="english-translation">To brush one's teeth</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Work & Study</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Trabajar</span> <span class="english-translation">To work</span></li>
+                            <li><span class="spanish-word">Estudiar</span> <span class="english-translation">To study</span></li>
+                            <li><span class="spanish-word">Leer</span> <span class="english-translation">To read</span></li>
+                            <li><span class="spanish-word">Escribir</span> <span class="english-translation">To write</span></li>
+                            <li><span class="spanish-word">Aprender</span> <span class="english-translation">To learn</span></li>
+                            <li><span class="spanish-word">Enseñar</span> <span class="english-translation">To teach</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Evening Routine</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Cenar</span> <span class="english-translation">To have dinner</span></li>
+                            <li><span class="spanish-word">Ver la televisión</span> <span class="english-translation">To watch TV</span></li>
+                            <li><span class="spanish-word">Leer un libro</span> <span class="english-translation">To read a book</span></li>
+                            <li><span class="spanish-word">Acostarse</span> <span class="english-translation">To go to bed</span></li>
+                            <li><span class="spanish-word">Dormir</span> <span class="english-translation">To sleep</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Greetings & Basics -->
+                <div class="vocabulary-category">
+                    <h3><i class="fas fa-handshake"></i> Greetings & Basics</h3>
+                    <div class="vocabulary-subcategory">
+                        <h4>Greetings</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Hola</span> <span class="english-translation">Hello/Hi</span></li>
+                            <li><span class="spanish-word">Buenos días</span> <span class="english-translation">Good morning</span></li>
+                            <li><span class="spanish-word">Buenas tardes</span> <span class="english-translation">Good afternoon</span></li>
+                            <li><span class="spanish-word">Buenas noches</span> <span class="english-translation">Good evening/night</span></li>
+                            <li><span class="spanish-word">¿Cómo estás?</span> <span class="english-translation">How are you? (informal)</span></li>
+                            <li><span class="spanish-word">¿Cómo está usted?</span> <span class="english-translation">How are you? (formal)</span></li>
+                            <li><span class="spanish-word">¿Qué tal?</span> <span class="english-translation">What's up?/How's it going?</span></li>
+                        </ul>
+                    </div>
+                    <div class="vocabulary-subcategory">
+                        <h4>Basic Phrases</h4>
+                        <ul class="vocabulary-list">
+                            <li><span class="spanish-word">Por favor</span> <span class="english-translation">Please</span></li>
+                            <li><span class="spanish-word">Gracias</span> <span class="english-translation">Thank you</span></li>
+                            <li><span class="spanish-word">De nada</span> <span class="english-translation">You're welcome</span></li>
+                            <li><span class="spanish-word">Lo siento</span> <span class="english-translation">I'm sorry</span></li>
+                            <li><span class="spanish-word">Perdón</span> <span class="english-translation">Excuse me/Sorry</span></li>
+                            <li><span class="spanish-word">¿Habla inglés?</span> <span class="english-translation">Do you speak English?</span></li>
+                            <li><span class="spanish-word">No entiendo</span> <span class="english-translation">I don't understand</span></li>
+                            <li><span class="spanish-word">Hasta luego</span> <span class="english-translation">See you later</span></li>
+                            <li><span class="spanish-word">Adiós</span> <span class="english-translation">Goodbye</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vocabulary-tips">
+                <h4>Vocabulary Learning Tips</h4>
+                <ul>
+                    <li>Practice with flashcards for better retention</li>
+                    <li>Group related words together (like food, travel, etc.)</li>
+                    <li>Use new words in sentences to remember them better</li>
+                    <li>Label objects around your home with their Spanish names</li>
+                    <li>Practice with a language partner or tutor</li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- Grammar Fundamentals Section -->
+        <section id="grammar" class="grammar-section">
+            <h2 class="section-title">Grammar Fundamentals</h2>
+            <p class="section-intro">Master the building blocks of Spanish grammar to form correct sentences and express yourself clearly. This comprehensive guide covers everything from basic to intermediate grammar concepts.</p>
+            
+            <div class="grammar-tabs">
+                <button class="tab-btn active" data-tab="basics">Basics</button>
+                <button class="tab-btn" data-tab="verbs">Verbs</button>
+                <button class="tab-btn" data-tab="sentence">Sentence Structure</button>
+                <button class="tab-btn" data-tab="advanced">Advanced Topics</button>
+            </div>
+            
+            <div class="grammar-categories active" id="basics-tab">
+                <!-- Noun Gender and Articles -->
+                <div class="grammar-category">
+                    <h3><i class="fas fa-venus-mars"></i> Noun Gender and Articles</h3>
+                    <div class="grammar-content">
+                        <p>In Spanish, all nouns have a gender (masculine or feminine) and number (singular or plural).</p>
+                        
+                        <h4>Definite Articles (The)</h4>
+                        <ul class="grammar-list">
+                            <li><span class="spanish-example">el</span> (masculine singular) - <span class="english-translation">the</span></li>
+                            <li><span class="spanish-example">la</span> (feminine singular) - <span class="english-translation">the</span></li>
+                            <li><span class="spanish-example">los</span> (masculine plural) - <span class="english-translation">the</span></li>
+                            <li><span class="spanish-example">las</span> (feminine plural) - <span class="english-translation">the</span></li>
+                        </ul>
+                        
+                        <h4>Indefinite Articles (A/An/Some)</h4>
+                        <ul class="grammar-list">
+                            <li><span class="spanish-example">un</span> (masculine singular) - <span class="english-translation">a/an</span></li>
+                            <li><span class="spanish-example">una</span> (feminine singular) - <span class="english-translation">a/an</span></li>
+                            <li><span class="spanish-example">unos</span> (masculine plural) - <span class="english-translation">some</span></li>
+                            <li><span class="spanish-example">unas</span> (feminine plural) - <span class="english-translation">some</span></li>
+                        </ul>
+                        
+                        <div class="grammar-tip">
+                            <strong>Tip:</strong> Most nouns ending in -o are masculine, and most ending in -a are feminine, but there are exceptions!
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Regular and Irregular Verbs -->
+                <div class="grammar-category">
+                    <h3><i class="fas fa-exchange-alt"></i> Regular and Irregular Verbs</h3>
+                    <div class="grammar-content">
+                        <h4>Regular Verb Conjugation (-AR, -ER, -IR)</h4>
+                        <p>Regular verbs follow predictable patterns based on their endings:</p>
+                        
+                        <div class="verb-conjugation">
+                            <h5>Hablar (to speak) - AR verb</h5>
+                            <ul>
+                                <li>Yo <span class="spanish-example">hablo</span> - I speak</li>
+                                <li>Tú <span class="spanish-example">hablas</span> - You speak (informal)</li>
+                                <li>Él/Ella/Usted <span class="spanish-example">habla</span> - He/She/You (formal) speaks</li>
+                                <li>Nosotros <span class="spanish-example">hablamos</span> - We speak</li>
+                                <li>Vosotros <span class="spanish-example">habláis</span> - You all speak (Spain)</li>
+                                <li>Ellos/Ellas/Ustedes <span class="spanish-example">hablan</span> - They/You all speak</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>Common Irregular Verbs</h4>
+                        <ul class="irregular-verbs">
+                            <li><span class="spanish-example">Ser</span> (to be) - soy, eres, es, somos, sois, son</li>
+                            <li><span class="spanish-example">Tener</span> (to have) - tengo, tienes, tiene, tenemos, tenéis, tienen</li>
+                            <li><span class="spanish-example">Ir</span> (to go) - voy, vas, va, vamos, vais, van</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Tenses -->
+                <div class="grammar-category">
+                    <h3><i class="far fa-clock"></i> Present, Past, and Future Tenses</h3>
+                    <div class="grammar-content">
+                        <h4>Present Tense</h4>
+                        <p>Used for current actions, habits, and general truths.</p>
+                        <p class="example">Example: <span class="spanish-example">Yo como pan.</span> (I eat bread.)</p>
+                        
+                        <h4>Past Tenses</h4>
+                        <div class="tense">
+                            <h5>Preterite (Simple Past)</h5>
+                            <p>Completed actions in the past.</p>
+                            <p class="example">Example: <span class="spanish-example">Ayer comí paella.</span> (Yesterday I ate paella.)</p>
+                        </div>
+                        
+                        <div class="tense">
+                            <h5>Imperfect</h5>
+                            <p>Ongoing or repeated past actions, descriptions.</p>
+                            <p class="example">Example: <span class="spanish-example">Cuando era niño, jugaba fútbol.</span> (When I was a child, I played soccer.)</p>
+                        </div>
+                        
+                        <h4>Future Tense</h4>
+                        <p>Actions that will happen.</p>
+                        <p class="example">Example: <span class="spanish-example">Mañana viajaré a Madrid.</span> (Tomorrow I will travel to Madrid.)</p>
+                    </div>
+                </div>
+                
+                <!-- Ser vs Estar -->
+                <div class="grammar-category">
+                    <h3><i class="fas fa-balance-scale"></i> Ser vs. Estar (Both mean "to be")</h3>
+                    <div class="grammar-content">
+                        <h4>When to use <span class="spanish-example">Ser</span>:</h4>
+                        <ul class="usage-list">
+                            <li>Identity/Origin: <span class="spanish-example">Soy de México.</span> (I am from Mexico.)</li>
+                            <li>Permanent characteristics: <span class="spanish-example">Ella es alta.</span> (She is tall.)</li>
+                            <li>Time/Dates: <span class="spanish-example">Hoy es lunes.</span> (Today is Monday.)</li>
+                            <li>Occupations: <span class="spanish-example">Soy profesor.</span> (I am a teacher.)</li>
+                        </ul>
+                        
+                        <h4>When to use <span class="spanish-example">Estar</span>:</h4>
+                        <ul class="usage-list">
+                            <li>Location: <span class="spanish-example">Estoy en casa.</span> (I am at home.)</li>
+                            <li>Temporary states: <span class="spanish-example">Estoy cansado.</span> (I am tired.)</li>
+                            <li>Present progressive: <span class="spanish-example">Estoy comiendo.</span> (I am eating.)</li>
+                            <li>Conditions: <span class="spanish-example">La ventana está abierta.</span> (The window is open.)</li>
+                        </ul>
+                        
+                        <div class="grammar-tip important">
+                            <strong>Remember:</strong> <span class="spanish-example">Ser</span> is for permanent or lasting attributes, while <span class="spanish-example">estar</span> is for temporary states and locations.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pronouns -->
+                <div class="grammar-category">
+                    <h3><i class="fas fa-user"></i> Pronouns</h3>
+                    <div class="grammar-content">
+                        <h4>Subject Pronouns</h4>
+                        <ul class="grammar-list">
+                            <li><span class="spanish-example">yo</span> - I</li>
+                            <li><span class="spanish-example">tú</span> - you (informal)</li>
+                            <li><span class="spanish-example">él/ella/usted</span> - he/she/you (formal)</li>
+                            <li><span class="spanish-example">nosotros/nosotras</span> - we</li>
+                            <li><span class="spanish-example">vosotros/vosotras</span> - you all (Spain)</li>
+                            <li><span class="spanish-example">ellos/ellas/ustedes</span> - they/you all</li>
+                        </ul>
+                        
+                        <h4>Direct Object Pronouns</h4>
+                        <ul class="grammar-list">
+                            <li><span class="spanish-example">me</span> - me</li>
+                            <li><span class="spanish-example">te</span> - you</li>
+                            <li><span class="spanish-example">lo/la</span> - him/her/it/you (formal)</li>
+                            <li><span class="spanish-example">nos</span> - us</li>
+                            <li><span class="spanish-example">os</span> - you all (Spain)</li>
+                            <li><span class="spanish-example">los/las</span> - them/you all</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Adjectives -->
+                <div class="grammar-category">
+                    <h3><i class="fas fa-adjust"></i> Adjectives</h3>
+                    <div class="grammar-content">
+                        <p>Adjectives in Spanish must agree in gender and number with the nouns they modify.</p>
+                        
+                        <h4>Agreement Rules</h4>
+                        <ul class="grammar-list">
+                            <li>Masculine singular: <span class="spanish-example">el libro rojo</span> (the red book)</li>
+                            <li>Feminine singular: <span class="spanish-example">la casa roja</span> (the red house)</li>
+                            <li>Masculine plural: <span class="spanish-example">los libros rojos</span> (the red books)</li>
+                            <li>Feminine plural: <span class="spanish-example">las casas rojas</span> (the red houses)</li>
+                        </ul>
+                        
+                        <h4>Position</h4>
+                        <p>Most adjectives come after the noun:</p>
+                        <p class="example"><span class="spanish-example">un chico alto</span> (a tall boy)<br>
+                        <span class="spanish-example">una chica inteligente</span> (a smart girl)</p>
+                        
+                        <div class="grammar-tip">
+                            <strong>Note:</strong> Some adjectives change meaning based on their position. For example: 
+                            <span class="spanish-example">un gran hombre</span> (a great man) vs 
+                            <span class="spanish-example">un hombre grande</span> (a big/tall man)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Verbs Tab -->
+            <div class="grammar-categories" id="verbs-tab" style="display: none;">
+                <!-- Existing verb content -->
+                <div class="grammar-category">
+                    <h3><i class="fas fa-exchange-alt"></i> Regular and Irregular Verbs</h3>
+                    <div class="grammar-content">
+                        <h4>Regular Verb Conjugation (-AR, -ER, -IR)</h4>
+                        <p>Regular verbs follow predictable patterns based on their endings:</p>
+                        
+                        <div class="verb-conjugation">
+                            <h5>Hablar (to speak) - AR verb</h5>
+                            <ul>
+                                <li>Yo <span class="spanish-example">hablo</span> - I speak</li>
+                                <li>Tú <span class="spanish-example">hablas</span> - You speak (informal)</li>
+                                <li>Él/Ella/Usted <span class="spanish-example">habla</span> - He/She/You (formal) speaks</li>
+                                <li>Nosotros <span class="spanish-example">hablamos</span> - We speak</li>
+                                <li>Vosotros <span class="spanish-example">habláis</span> - You all speak (Spain)</li>
+                                <li>Ellos/Ellas/Ustedes <span class="spanish-example">hablan</span> - They/You all speak</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>Common Irregular Verbs</h4>
+                        <ul class="irregular-verbs">
+                            <li><span class="spanish-example">Ser</span> (to be) - soy, eres, es, somos, sois, son</li>
+                            <li><span class="spanish-example">Tener</span> (to have) - tengo, tienes, tiene, tenemos, tenéis, tienen</li>
+                            <li><span class="spanish-example">Ir</span> (to go) - voy, vas, va, vamos, vais, van</li>
+                            <li><span class="spanish-example">Hacer</span> (to do/make) - hago, haces, hace, hacemos, hacéis, hacen</li>
+                            <li><span class="spanish-example">Decir</span> (to say) - digo, dices, dice, decimos, decís, dicen</li>
+                        </ul>
+                        
+                        <h4>Reflexive Verbs</h4>
+                        <p>Verbs where the subject and object are the same. They use reflexive pronouns:</p>
+                        <ul class="grammar-list">
+                            <li><span class="spanish-example">levantarse</span> (to get up)</li>
+                            <li><span class="spanish-example">ducharse</span> (to shower)</li>
+                            <li><span class="spanish-example">vestirse</span> (to get dressed)</li>
+                        </ul>
+                        <p>Example: <span class="spanish-example">Yo me levanto a las 7.</span> (I get up at 7.)</p>
+                    </div>
+                </div>
+                
+                <!-- More verb tenses -->
+                <div class="grammar-category">
+                    <h3><i class="far fa-clock"></i> Verb Tenses</h3>
+                    <div class="grammar-content">
+                        <h4>Present Progressive</h4>
+                        <p>estar + present participle (-ando/-iendo)</p>
+                        <p class="example"><span class="spanish-example">Estoy comiendo.</span> (I am eating.)<br>
+                        <span class="spanish-example">Están hablando.</span> (They are speaking.)</p>
+                        
+                        <h4>Present Perfect</h4>
+                        <p>haber + past participle</p>
+                        <p class="example"><span class="spanish-example">He comido.</span> (I have eaten.)<br>
+                        <span class="spanish-example">Han terminado.</span> (They have finished.)</p>
+                        
+                        <h4>Conditional</h4>
+                        <p>Used for polite requests and hypothetical situations</p>
+                        <p class="example"><span class="spanish-example">Yo hablaría</span> (I would speak)<br>
+                        <span class="spanish-example">¿Podrías ayudarme?</span> (Could you help me?)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sentence Structure Tab -->
+            <div class="grammar-categories" id="sentence-tab" style="display: none;">
+                <div class="grammar-category">
+                    <h3><i class="fas fa-align-left"></i> Word Order</h3>
+                    <div class="grammar-content">
+                        <h4>Basic Sentence Structure</h4>
+                        <p>Spanish typically follows a Subject-Verb-Object (SVO) order, but it's more flexible than English.</p>
+                        
+                        <h5>Declarative Sentences</h5>
+                        <p class="example"><span class="spanish-example">Yo como una manzana.</span> (I eat an apple.)<br>
+                        <span class="spanish-example">María lee un libro interesante.</span> (María reads an interesting book.)</p>
+                        
+                        <h5>Questions</h5>
+                        <p>In questions, the subject often comes after the verb:</p>
+                        <p class="example"><span class="spanish-example">¿Qué comes?</span> (What are you eating?)<br>
+                        <span class="spanish-example">¿Dónde está el baño?</span> (Where is the bathroom?)</p>
+                        
+                        <h4>Negative Sentences</h4>
+                        <p>Place <span class="spanish-example">no</span> before the verb:</p>
+                        <p class="example"><span class="spanish-example">No hablo ruso.</span> (I don't speak Russian.)<br>
+                        <span class="spanish-example">Ellos no van a la fiesta.</span> (They're not going to the party.)</p>
+                    </div>
+                </div>
+                
+                <div class="grammar-category">
+                    <h3><i class="fas fa-question"></i> Questions</h3>
+                    <div class="grammar-content">
+                        <h4>Question Words</h4>
+                        <ul class="grammar-list">
+                            <li><span class="spanish-example">¿Qué?</span> - What?</li>
+                            <li><span class="spanish-example">¿Quién? / ¿Quiénes?</span> - Who? (singular/plural)</li>
+                            <li><span class="spanish-example">¿Dónde?</span> - Where?</li>
+                            <li><span class="spanish-example">¿Cuándo?</span> - When?</li>
+                            <li><span class="spanish-example">¿Por qué?</span> - Why?</li>
+                            <li><span class="spanish-example">¿Cómo?</span> - How?</li>
+                            <li><span class="spanish-example">¿Cuál? / ¿Cuáles?</span> - Which? (singular/plural)</li>
+                            <li><span class="spanish-example">¿Cuánto/a? / ¿Cuántos/as?</span> - How much/many?</li>
+                        </ul>
+                        
+                        <h4>Yes/No Questions</h4>
+                        <p>Invert the subject and verb or just use question marks with rising intonation:</p>
+                        <p class="example"><span class="spanish-example">¿Hablas español?</span> (Do you speak Spanish?)<br>
+                        <span class="spanish-example">¿Tienes hermanos?</span> (Do you have siblings?)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Advanced Topics Tab -->
+            <div class="grammar-categories" id="advanced-tab" style="display: none;">
+                <div class="grammar-category">
+                    <h3><i class="fas fa-star"></i> Subjunctive Mood</h3>
+                    <div class="grammar-content">
+                        <p>The subjunctive is used to express desires, doubts, the unknown, the abstract, and emotions.</p>
+                        
+                        <h4>Common Triggers</h4>
+                        <ul class="grammar-list">
+                            <li>Wishes: <span class="spanish-example">Quiero que vengas.</span> (I want you to come.)</li>
+                            <li>Emotions: <span class="spanish-example">Me alegra que estés aquí.</span> (I'm happy you're here.)</li>
+                            <li>Doubt: <span class="spanish-example">Dudo que llueva mañana.</span> (I doubt it will rain tomorrow.)</li>
+                            <li>Impersonal expressions: <span class="spanish-example">Es importante que estudies.</span> (It's important that you study.)</li>
+                        </ul>
+                        
+                        <h4>Conjugation (Present Subjunctive)</h4>
+                        <p>Take the 'yo' form of the present indicative, drop the -o, and add:</p>
+                        <ul>
+                            <li>-ar verbs: e, es, e, emos, éis, en</li>
+                            <li>-er/-ir verbs: a, as, a, amos, áis, an</li>
+                        </ul>
+                        <p class="example"><span class="spanish-example">hablar → hable, hables, hable, hablemos, habléis, hablen</span><br>
+                        <span class="spanish-example">comer → coma, comas, coma, comamos, comáis, coman</span></p>
+                    </div>
+                </div>
+                
+                <div class="grammar-category">
+                    <h3><i class="fas fa-random"></i> Por vs. Para</h3>
+                    <div class="grammar-content">
+                        <h4>Uses of <span class="spanish-example">Por</span>:</h4>
+                        <ul class="grammar-list">
+                            <li>Duration: <span class="spanish-example">Estudié por dos horas.</span> (I studied for two hours.)</li>
+                            <li>Reason: <span class="spanish-example">Lo hice por ti.</span> (I did it for you.)</li>
+                            <li>Movement through: <span class="spanish-example">Caminamos por el parque.</span> (We walked through the park.)</li>
+                            <li>Price: <span class="spanish-example">Lo compré por diez dólares.</span> (I bought it for ten dollars.)</li>
+                        </ul>
+                        
+                        <h4>Uses of <span class="spanish-example">Para</span>:</h4>
+                        <ul class="grammar-list">
+                            <li>Destination: <span class="spanish-example">Salgo para Madrid.</span> (I'm leaving for Madrid.)</li>
+                            <li>Purpose: <span class="spanish-example">Es para estudiar.</span> (It's for studying.)</li>
+                            <li>Deadline: <span class="spanish-example">Necesito el informe para el lunes.</span> (I need the report by Monday.)</li>
+                            <li>Recipient: <span class="spanish-example">Este regalo es para ti.</span> (This gift is for you.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="practice-section">
+                <h3><i class="fas fa-pencil-alt"></i> Practice Exercises</h3>
+                <div class="practice-questions">
+                    <h4>1. Fill in the blanks with the correct form of the verb in parentheses:</h4>
+                    <ol>
+                        <li>Yo _____ (comer) una manzana todos los días.</li>
+                        <li>Nosotros _____ (vivir) en España el año pasado.</li>
+                        <li>¿Tú _____ (tener) hermanos?</li>
+                    </ol>
+                    
+                    <h4>2. Choose between Ser and Estar:</h4>
+                    <ol>
+                        <li>La casa _____ grande y bonita. (ser/estar)</li>
+                        <li>Ahora mismo yo _____ en el parque. (soy/estoy)</li>
+                        <li>Ellos _____ muy felices hoy. (son/están)</li>
+                    </ol>
                 </div>
             </div>
         </section>
         
-        <!-- Progress Tracker -->
-        <section class="progress-section">
-            <h2 class="section-title">Your Learning Progress</h2>
-            <p>Track your progress through the Spanish language learning modules.</p>
-            
-            <div class="progress-bars">
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Pronunciation & Basics</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About EduLang Hub</h3>
+                    <p>EduLang Hub is dedicated to providing high-quality language learning resources to help you achieve fluency in your target language.</p>
                 </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Essential Vocabulary</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="../../index.html">Home</a></li>
+                        <li><a href="../../courses.html">Courses</a></li>
+                        <li><a href="../../languages.html">Languages</a></li>
+                        <li><a href="../../typing.html">Typing</a></li>
+                    </ul>
                 </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Grammar Fundamentals</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
-                </div>
-                
-                <div class="progress-item">
-                    <div class="progress-label">
-                        <span>Overall Progress</span>
-                        <span>0%</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@edulanghub.com</p>
+                    <p>Phone: +92 123 456 7890</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
+            <div class="copyright">
+                &copy; 2025 EduLang Hub. All rights reserved.
                 <h3>About EduLang Hub</h3>
                 <p>EduLang Hub is dedicated to providing high-quality language learning resources to help you achieve fluency in your target language.</p>
             </div>
@@ -739,8 +1667,35 @@
     </footer>
     
     <script>
-        // Simple script to animate progress bars when they come into view
         document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality for Grammar section
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.grammar-categories');
+            
+            // Add click event listeners to tab buttons
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and hide all contents
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.style.display = 'none');
+                    
+                    // Add active class to clicked button and show corresponding content
+                    button.classList.add('active');
+                    const activeTab = document.getElementById(`${tabId}-tab`);
+                    if (activeTab) {
+                        activeTab.style.display = 'grid';
+                    }
+                });
+            });
+            
+            // Show the first tab by default if there are tabs
+            if (tabButtons.length > 0 && tabContents.length > 0) {
+                tabButtons[0].click();
+            }
+            
+            // Simple script to animate progress bars when they come into view
             // Set up intersection observer
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
