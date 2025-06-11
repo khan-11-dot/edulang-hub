@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Explore top educational boards and universities worldwide for your higher education journey">
+  <title>Global Education Hub | Top Boards & Universities</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0f1c38;
+      --primary-dark: #05143d;
+      --secondary: #06174e;
+      --light: #03101f85;
+      --dark: #0f172a;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 4rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .header-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      text-align: left;
+    }
+    
+    .header-logo {
+      font-size: 4.5rem;
+      color: rgba(255, 255, 255, 0.9);
+      background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin: 0 0 1rem;
+      line-height: 1.2;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 0 1.5rem;
+      opacity: 0.9;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+    
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #122031 0%, #112442 50%, #122031 100%);
+    }
+
+    /* Navigation */
+    nav {
+      background: white;
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    .search-container {
+      flex: 1;
+      max-width: 400px;
+      position: relative;
+    }
+    
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+    
+    .search-box i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-300);
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      border: 2px solid var(--gray-200);
+      border-radius: 50px;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .nav-tabs {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button.tab {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--gray-200);
+      background: white;
+      color: var(--dark);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: 0.3px;
+      text-transform: capitalize;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    button.tab i {
+      font-size: 1.1rem;
+    }
+
+    button.tab.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px -3px rgba(37, 99, 235, 0.3);
+    }
+    
+    button.tab:hover:not(.active) {
+      background: var(--gray-100);
+      transform: translateY(-2px);
+      border-color: var(--gray-300);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto 40px;
+      padding: 0 20px;
+      background: transparent;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h2 {
+      color: #02081a;
+      margin: 0 0 25px;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+      padding-bottom: 15px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+      border-radius: 2px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      background: #1e293b;
+      color: #f8fafc;
+      font-size: 0.9rem;
+      border-top: 1px solid #334155;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      
+      .header-logo {
+        font-size: 3.5rem;
+      }
+      
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+      
+      nav {
+        flex-direction: column;
+      }
+      
+      .nav-tabs {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      
+      button.tab {
+        margin: 0;
+        width: 100%;
+        justify-content: center;
+        font-size: 0.85rem;
+        padding: 0.6rem 0.5rem;
+      }
+    }
+
+    /* Professional Countries Section Styles */
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .country-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #e2e8f0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .country-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #60a5fa 0%, #3b82f6 50%, #2563eb 100%);
+      transition: all 0.3s ease;
+    }
+
+    .country-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      border-color: var(--primary-light);
+    }
+    
+    .country-card:hover h3 {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary) 100%);
+    }
+
+    .country-card h3 {
+      color: white;
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .country-card h3 i {
+      font-size: 1.2rem;
+    }
+
+    .country-card h3::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #3b82f6;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+
+    .highlight {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 0 0 8px 8px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .highlight strong {
+      color: var(--primary);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    .highlight ul {
+      margin: 0;
+      padding: 0 0 0 1.25rem;
+      flex-grow: 1;
+    }
+
+    .highlight li {
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-left: 0.5rem;
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+
+    .highlight li::before {
+      content: '›';
+      color: var(--primary);
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+      position: absolute;
+      left: 0;
+    }
+
+    @media (max-width: 1024px) {
+      .country-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .country-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      h2 {
+        font-size: 1.6rem;
+      }
+      
+      .country-card {
+        padding: 20px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header {
+        font-size: 1.8rem;
+        padding: 25px 15px;
+      }
+      
+      .container {
+        padding: 0 15px;
+      }
+      
+      .country-card h3 {
+        font-size: 1.3rem;
+      }
+      
+      .highlight {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+      <i class="fas fa-graduation-cap header-logo"></i>
+      <div>
+        <h1>Global Education Excellence</h1>
+        <p>Discover the world's top educational destinations and prestigious universities to shape your future</p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="nav-container">
+      <div class="search-container">
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search countries...">
+        </div>
+      </div>
+      <div class="nav-tabs">
+        <button class="tab active" onclick="showSection('countries')">
+          <i class="fas fa-globe"></i> Countries
+        </button>
+        <button class="tab" onclick="showSection('universities')">
+          <i class="fas fa-university"></i> Universities
+        </button>
+        <button class="tab" onclick="showSection('admission')">
+          <i class="fas fa-graduation-cap"></i> Admission
+        </button>
+        <button class="tab" onclick="showSection('scholarships')">
+          <i class="fas fa-award"></i> Scholarships
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="countries" class="section active">
+      <h2>Top Countries for Higher Education</h2>
+      <div class="country-grid">
+        <div class="country-card">
+          <h3>United States</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>World's top universities (MIT, Harvard)</li>
+              <li>Most preferred study destination</li>
+              <li>Diverse range of programs</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>United Kingdom</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Oxford, Cambridge universities</li>
+              <li>Strong in medicine, law, humanities</li>
+              <li>Rich academic heritage</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Canada</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Affordable education</li>
+              <li>Safe environment</li>
+              <li>Post-study visa support</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Australia</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Multicultural environment</li>
+              <li>Strong university system</li>
+              <li>Permanent residency opportunities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Germany</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>No tuition fees</li>
+              <li>Strong in tech/engineering</li>
+              <li>High-quality education</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>France</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Fashion and business hub</li>
+              <li>Strong arts programs</li>
+              <li>Low tuition fees</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Netherlands</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Innovative teaching methods</li>
+              <li>Many English-taught programs</li>
+              <li>Strong in tech and business</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Singapore</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Tech/business hub of Asia</li>
+              <li>Modern education system</li>
+              <li>Strong industry connections</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Japan</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Leading in robotics</li>
+              <li>Focus on innovation</li>
+              <li>Discipline-focused education</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>South Korea</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Top tech universities</li>
+              <li>Modern culture</li>
+              <li>Strong education system</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Sweden</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Free for EU students</li>
+              <li>Scholarships for non-EU</li>
+              <li>Focus on innovation</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>New Zealand</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Beautiful natural environment</li>
+              <li>Post-study work allowed</li>
+              <li>Quality education</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Switzerland</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Business and hospitality</li>
+              <li>High research output</li>
+              <li>Multilingual environment</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Finland</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Best school education globally</li>
+              <li>Modern universities</li>
+              <li>Innovative teaching methods</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Ireland</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Strong in IT and pharma</li>
+              <li>English-speaking</li>
+              <li>Friendly for international students</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>China</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Popular for MBBS, engineering</li>
+              <li>Scholarships available</li>
+              <li>Rapidly growing education sector</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>India</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>IITs/IIMs</li>
+              <li>Regional education hub</li>
+              <li>Major IT exporter</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Pakistan</h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Emerging education system</li>
+              <li>High student migration</li>
+              <li>Growing higher education sector</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="scholarships" class="section">
+    <div class="container">
+      <h2>Scholarships & Financial Aid</h2>
+      <p class="section-description">Explore various scholarship opportunities to support your educational journey at top universities worldwide.</p>
+      
+      <div class="scholarships-grid">
+        <div class="scholarship-card">
+          <div class="scholarship-icon">
+            <i class="fas fa-medal"></i>
+          </div>
+          <h3>Merit-Based Scholarships</h3>
+          <p>For students with outstanding academic achievements and test scores. These scholarships recognize and reward academic excellence.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="scholarship-card">
+          <div class="scholarship-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3>Need-Based Grants</h3>
+          <p>Financial assistance for students who demonstrate financial need. We believe in making education accessible to all talented students.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="scholarship-card">
+          <div class="scholarship-icon">
+            <i class="fas fa-running"></i>
+          </div>
+          <h3>Sports Scholarships</h3>
+          <p>For talented athletes who want to balance sports and academics. Excel both on the field and in the classroom.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="scholarship-card">
+          <div class="scholarship-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3>Arts & Music</h3>
+          <p>For students with exceptional talent in visual arts, music, theater, or creative writing.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="scholarship-card">
+          <div class="scholarship-icon">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <h3>International Student Aid</h3>
+          <p>Special scholarships and financial aid packages designed specifically for international students.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="scholarship-card">
+          <div class="scholarship-icon">
+            <i class="fas fa-flask"></i>
+          </div>
+          <h3>Research Fellowships</h3>
+          <p>For graduate students pursuing research in STEM fields, social sciences, and humanities.</p>
+          <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      
+      <div class="scholarship-cta">
+        <h3>Need Help With Your Application?</h3>
+        <p>Our advisors are here to help you find and apply for the best scholarship opportunities.</p>
+        <a href="#contact" class="cta-button">Contact Our Advisors</a>
+      </div>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 EduLang Hub | All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+    // Tab functionality
+    function showSection(id) {
+      // Update active tab
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Hide all sections with fade out
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected section with fade in
+      setTimeout(() => {
+        const section = document.getElementById(id);
+        section.classList.add('active');
+        
+        // Scroll to top of section
+        window.scrollTo({
+          top: section.offsetTop - 100,
+          behavior: 'smooth'
+        });
+      }, 50);
+    }
+    
+    // Search functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.getElementById('searchInput');
+      const countryCards = document.querySelectorAll('.country-card');
+      
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          const searchTerm = this.value.toLowerCase().trim();
+          
+          if (searchTerm === '') {
+            // Show all cards if search is empty
+            countryCards.forEach(card => {
+              card.style.display = 'block';
+              card.style.animation = 'fadeIn 0.4s ease-out';
+            });
+            return;
+          }
+          
+          // Filter and show matching cards
+          countryCards.forEach(card => {
+            const countryName = card.querySelector('h3').textContent.toLowerCase();
+            const highlights = card.textContent.toLowerCase();
+            
+            if (countryName.includes(searchTerm) || highlights.includes(searchTerm)) {
+              card.style.display = 'block';
+              card.style.animation = 'fadeIn 0.4s ease-out';
+            } else {
+              card.style.animation = 'fadeOut 0.3s ease-out';
+              setTimeout(() => {
+                card.style.display = 'none';
+              }, 250);
+            }
+          });
+        });
+      }
+      
+      // Back to top button
+      const backToTopButton = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTopButton.style.opacity = '1';
+          backToTopButton.style.visibility = 'visible';
+        } else {
+          backToTopButton.style.opacity = '0';
+          backToTopButton.style.visibility = 'hidden';
+        }
+      });
+      
+      backToTopButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+  
+  <style>
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(10px); }
+    }
+    
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+    }
+    
+    #backToTop:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    }
+    
+    /* Scholarships Section */
+    .scholarships-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .scholarship-card {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--gray-200);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .scholarship-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .scholarship-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: white;
+      font-size: 1.5rem;
+    }
+    
+    .scholarship-card h3 {
+      margin: 0 0 1rem;
+      color: var(--dark);
+      font-size: 1.3rem;
+    }
+    
+    .scholarship-card p {
+      color: var(--gray-600);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    
+    .learn-more {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .learn-more:hover {
+      color: var(--primary-dark);
+    }
+    
+    .section-description {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+    
+    .scholarship-cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+      color: white;
+    }
+    
+    .scholarship-cta h3 {
+      font-size: 1.8rem;
+      margin: 0 0 1rem;
+      color: white;
+    }
+    
+    .scholarship-cta p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      background: white;
+      color: var(--primary);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: 2px solid white;
+    }
+    
+    .cta-button:hover {
+      background: transparent;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--gray-300);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .learn-more i {
+      transition: transform 0.3s ease;
+    }
+    
+    .learn-more:hover i {
+      transform: translateX(3px);
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .country-card h3 {
+        font-size: 1.25rem;
+        padding: 1rem 1.25rem;
+      }
+      
+      .highlight {
+        padding: 1.25rem;
+      }
+      
+      #backToTop {
+        width: 2.5rem;
+        height: 2.5rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+    }
+  </style>
+
+</body>
+</html>

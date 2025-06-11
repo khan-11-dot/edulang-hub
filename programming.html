@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming Languages - EduLang Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --primary-light: #a29bfe;
+            --secondary: #00b894;
+            --accent: #fd79a8;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --gray: #636e72;
+            --light-gray: #dfe6e9;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 1.2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(108, 92, 231, 0.15);
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        
+        .nav-links li {
+            position: relative;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link i {
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        
+        .nav-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 1rem;
+        }
+        
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(30deg);
+        }
+        
+        .theme-toggle i {
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        .bar {
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 6rem 2rem 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s ease-in-out;
+                z-index: 1000;
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                color: var(--dark);
+                padding: 1rem;
+                width: 100%;
+                border-radius: 8px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .nav-link:hover,
+            .nav-link.active {
+                background: rgba(108, 92, 231, 0.1);
+                color: var(--primary);
+            }
+            
+            .theme-toggle {
+                margin-left: auto;
+                margin-right: 1rem;
+            }
+        }
+        
+        main {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .language-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .language-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .language-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .language-card h2 {
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .language-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            border-radius: 3px;
+        }
+        
+        .language-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+        
+        .features h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .features h3::before {
+            content: '✦';
+            color: var(--primary);
+            font-size: 1.1em;
+        }
+        
+        .features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .features li {
+            margin-bottom: 0.6rem;
+            color: var(--gray);
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: 0.98rem;
+        }
+        
+        .features li::before {
+            content: '→';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .features li:hover::before {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+        
+        .syntax {
+            background: #2d3436;
+            padding: 1.2rem;
+            border-radius: 10px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.95rem;
+            margin: 1.5rem 0;
+            color: #f5f6fa;
+            border-left: 4px solid var(--accent);
+            overflow-x: auto;
+            line-height: 1.6;
+            box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .syntax::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .syntax::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+        
+        .get-started {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            margin-top: 0.5rem;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .get-started::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--accent), #ff7675);
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .get-started:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
+        }
+        
+        .get-started:hover::before {
+            width: 100%;
+        }
+        
+        .search-container {
+            max-width: 800px;
+            margin: 3rem auto 2rem;
+            padding: 0 2rem;
+        }
+        
+        #searchInput {
+            width: 100%;
+            padding: 1rem 1.8rem;
+            border: 2px solid var(--light-gray);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            outline: none;
+            transition: var(--transition);
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #searchInput:focus {
+            border-color: var(--primary);
+            box-shadow: 0 5px 25px rgba(108, 92, 231, 0.15);
+        }
+        
+        #searchInput::placeholder {
+            color: #b2bec3;
+        }
+        
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem auto 3rem;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.4rem;
+            border: 2px solid var(--primary-light);
+            background: transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+        
+        .category-btn:hover,
+        .category-btn.active {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+            border-color: var(--primary);
+        }
+        
+        @media (max-width: 1024px) {
+            main {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 0 1.5rem;
+            }
+            
+            .language-card {
+                padding: 1.8rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .nav-links {
+                width: 100%;
+                justify-content: space-around;
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+                padding: 0.3rem 0;
+            }
+            
+            main {
+                grid-template-columns: 1fr;
+                padding: 0 1.2rem;
+                margin: 2rem auto;
+            }
+            
+            .search-container,
+            .category-buttons {
+                padding: 0 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+            
+            .language-card {
+                padding: 1.5rem 1.2rem;
+            }
+            
+            .category-buttons {
+                gap: 0.6rem;
+            }
+            
+            .category-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Dark Theme Styles */
+        body.dark-theme {
+            background: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .language-card {
+            background: #1e1e1e;
+            border-color: #333;
+        }
+        
+        body.dark-theme .language-card h2,
+        body.dark-theme .features h3,
+        body.dark-theme .language-card p,
+        body.dark-theme .features li {
+            color: #f5f5f5;
+        }
+        
+        body.dark-theme .syntax {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border-left-color: var(--accent);
+        }
+        
+        body.dark-theme .search-container input,
+        body.dark-theme .category-btn {
+            background: #2d2d2d;
+            color: #f5f5f5;
+            border-color: #444;
+        }
+        
+        body.dark-theme .category-btn.active,
+        body.dark-theme .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        body.dark-theme .nav-links {
+            background: #1e1e1e;
+        }
+        
+        body.dark-theme .nav-link {
+            color: #e0e0e0;
+        }
+        
+        body.dark-theme .nav-link:hover,
+        body.dark-theme .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .language-card {
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        /* Add delay to each card */
+        .language-card:nth-child(1) { animation-delay: 0.1s; }
+        .language-card:nth-child(2) { animation-delay: 0.2s; }
+        .language-card:nth-child(3) { animation-delay: 0.3s; }
+        .language-card:nth-child(4) { animation-delay: 0.4s; }
+        .language-card:nth-child(5) { animation-delay: 0.5s; }
+        .language-card:nth-child(6) { animation-delay: 0.6s; }
+        .language-card:nth-child(7) { animation-delay: 0.7s; }
+        .language-card:nth-child(8) { animation-delay: 0.8s; }
+        .language-card:nth-child(9) { animation-delay: 0.9s; }
+        .language-card:nth-child(10) { animation-delay: 1s; }
+        /* Add more if needed */
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-code"></i>
+                <span>EduLang Hub</span>
+            </a>
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="lessons/language-learning/english.html" class="nav-link"><i class="fas fa-language"></i> English</a></li>
+                <li><a href="lessons/language-learning/chinese.html" class="nav-link"><i class="fas fa-dragon"></i> Chinese</a></li>
+                <li><a href="programming.html" class="nav-link active"><i class="fas fa-laptop-code"></i> Programming</a></li>
+            </ul>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Programming Languages</h1>
+        <p>Explore and learn different programming languages</p>
+    </header>
+
+    <main>
+        <!-- Python -->
+        <div class="language-card">
+            <h2><i class="fab fa-python"></i> Python</h2>
+            <p>A high-level, interpreted programming language known for its readability and versatility.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Easy to learn syntax</li>
+                    <li>Extensive standard library</li>
+                    <li>Great for data science and web development</li>
+                    <li>Dynamically typed</li>
+                    <li>Large community support</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Python<br>
+                print("Hello, World!")
+            </div>
+            <a href="https://www.python.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- JavaScript -->
+        <div class="language-card">
+            <h2><i class="fab fa-js"></i> JavaScript</h2>
+            <p>The programming language of the web, enabling interactive web pages.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Client-side and server-side (Node.js)</li>
+                    <li>Event-driven programming</li>
+                    <li>Works across all browsers</li>
+                    <li>Asynchronous programming</li>
+                    <li>Huge ecosystem (npm)</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in JavaScript<br>
+                console.log("Hello, World!");
+            </div>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Java -->
+        <div class="language-card">
+            <h2><i class="fab fa-java"></i> Java</h2>
+            <p>A class-based, object-oriented programming language designed for portability.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Write once, run anywhere (WORA)</li>
+                    <li>Strongly typed language</li>
+                    <li>Extensive standard library</li>
+                    <li>Platform independence</li>
+                    <li>Widely used in enterprise</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Java<br>
+                public class Main {<br>
+                &nbsp;&nbsp;public static void main(String[] args) {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;System.out.println("Hello, World!");<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+            <a href="https://www.java.com/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- C++ -->
+        <div class="language-card">
+            <h2><i class="fas fa-code"></i> C++</h2>
+            <p>An extension of C with object-oriented features, used for system/software development.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>High performance</li>
+                    <li>Low-level memory manipulation</li>
+                    <li>Used in game development</li>
+                    <li>Supports multiple paradigms</li>
+                    <li>Standard Template Library (STL)</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in C++<br>
+                #include &lt;iostream&gt;<br>
+                int main() {<br>
+                &nbsp;&nbsp;std::cout << "Hello, World!" << std::endl;<br>
+                &nbsp;&nbsp;return 0;<br>
+                }
+            </div>
+            <a href="https://isocpp.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- C# -->
+        <div class="language-card">
+            <h2><i class="fas fa-code"></i> C#</h2>
+            <p>A modern, object-oriented language developed by Microsoft, part of the .NET platform.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Type-safe</li>
+                    <li>Component-oriented</li>
+                    <li>Used for Windows apps, games (Unity)</li>
+                    <li>Modern language features</li>
+                    <li>Great tooling support</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in C#<br>
+                using System;<br>
+                class Program {<br>
+                &nbsp;&nbsp;static void Main() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Hello, World!");<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- PHP -->
+        <div class="language-card">
+            <h2><i class="fab fa-php"></i> PHP</h2>
+            <p>A popular general-purpose scripting language especially suited to web development.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Server-side scripting</li>
+                    <li>Great for web development</li>
+                    <li>Large community</li>
+                    <li>Works with databases</li>
+                    <li>Widely used in CMS like WordPress</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in PHP<br>
+                &lt;?php<br>
+                echo "Hello, World!";<br>
+                ?&gt;
+            </div>
+            <a href="https://www.php.net/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Swift -->
+        <div class="language-card">
+            <h2><i class="fab fa-swift"></i> Swift</h2>
+            <p>Powerful and intuitive programming language for all Apple platforms.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Fast and powerful</li>
+                    <li>Modern syntax</li>
+                    <li>Safe by design</li>
+                    <li>Great for iOS/macOS apps</li>
+                    <li>Open source</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Swift<br>
+                print("Hello, World!")
+            </div>
+            <a href="https://swift.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Kotlin -->
+        <div class="language-card">
+            <h2><i class="fas fa-mobile-alt"></i> Kotlin</h2>
+            <p>Modern programming language that makes developers happier.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Concise</li>
+                    <li>Safe</li>
+                    <li>Interoperable with Java</li>
+                    <li>Official Android language</li>
+                    <li>Null safety</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Kotlin<br>
+                fun main() {<br>
+                &nbsp;&nbsp;println("Hello, World!")<br>
+                }
+            </div>
+            <a href="https://kotlinlang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Go -->
+        <div class="language-card">
+            <h2><i class="fas fa-code"></i> Go</h2>
+            <p>A statically typed, compiled language designed at Google for simplicity and efficiency.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Fast compilation</li>
+                    <li>Built-in concurrency</li>
+                    <li>Garbage collected</li>
+                    <li>Static typing</li>
+                    <li>Great for cloud services</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Go<br>
+                package main<br>
+                import "fmt"<br>
+                func main() {<br>
+                &nbsp;&nbsp;fmt.Println("Hello, World!")<br>
+                }
+            </div>
+            <a href="https://golang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Ruby -->
+        <div class="language-card">
+            <h2><i class="far fa-gem"></i> Ruby</h2>
+            <p>A dynamic, open source language with a focus on simplicity and productivity.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Elegant syntax</li>
+                    <li>Fully object-oriented</li>
+                    <li>Great for web development</li>
+                    <li>Metaprogramming</li>
+                    <li>Developer happiness</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Ruby<br>
+                puts "Hello, World!"
+            </div>
+            <a href="https://www.ruby-lang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Rust -->
+        <div class="language-card">
+            <h2><i class="fas fa-memory"></i> Rust</h2>
+            <p>A language empowering everyone to build reliable and efficient software.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Memory safety</li>
+                    <li>Thread safety</li>
+                    <li>Zero-cost abstractions</li>
+                    <li>Great performance</li>
+                    <li>Modern tooling</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Rust<br>
+                fn main() {<br>
+                &nbsp;&nbsp;println!("Hello, World!");<br>
+                }
+            </div>
+            <a href="https://www.rust-lang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- TypeScript -->
+        <div class="language-card">
+            <h2><i class="fas fa-code"></i> TypeScript</h2>
+            <p>Typed superset of JavaScript that compiles to plain JavaScript.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Static typing</li>
+                    <li>Better IDE support</li>
+                    <li>Modern JavaScript features</li>
+                    <li>Gradual adoption</li>
+                    <li>Great for large apps</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in TypeScript<br>
+                let message: string = 'Hello, World!';<br>
+                console.log(message);
+            </div>
+            <a href="https://www.typescriptlang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- SQL -->
+        <div class="language-card">
+            <h2><i class="fas fa-database"></i> SQL</h2>
+            <p>Standard language for managing and manipulating databases.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Manage databases</li>
+                    <li>Query data</li>
+                    <li>Data manipulation</li>
+                    <li>Data definition</li>
+                    <li>Used across all major databases</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                -- Basic SQL Query<br>
+                SELECT * FROM users WHERE age > 18;
+            </div>
+            <a href="https://www.w3schools.com/sql/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- R -->
+        <div class="language-card">
+            <h2><i class="fas fa-chart-line"></i> R</h2>
+            <p>Language for statistical computing and graphics.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Statistical analysis</li>
+                    <li>Data visualization</li>
+                    <li>Statistical modeling</li>
+                    <li>Wide range of packages</li>
+                    <li>Academic and research use</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in R<br>
+                print("Hello, World!")
+            </div>
+            <a href="https://www.r-project.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Dart -->
+        <div class="language-card">
+            <h2><i class="fas fa-mobile"></i> Dart</h2>
+            <p>Client-optimized language for fast apps on multiple platforms.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Used with Flutter framework</li>
+                    <li>Native performance</li>
+                    <li>Cross-platform development</li>
+                    <li>Strong typing</li>
+                    <li>Hot reload</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Dart<br>
+                void main() {<br>
+                &nbsp;&nbsp;print('Hello, World!');<br>
+                }
+            </div>
+            <a href="https://dart.dev/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- MATLAB -->
+        <div class="language-card">
+            <h2><i class="fas fa-calculator"></i> MATLAB</h2>
+            <p>High-level language for numerical computing and visualization.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Matrix manipulations</li>
+                    <li>Algorithm implementation</li>
+                    <li>Data visualization</li>
+                    <li>Simulation and modeling</li>
+                    <li>Widely used in academia</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                % Hello World in MATLAB<br>
+                disp('Hello, World!');
+            </div>
+            <a href="https://www.mathworks.com/products/matlab.html" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Bash -->
+        <div class="language-card">
+            <h2><i class="fas fa-terminal"></i> Bash</h2>
+            <p>Command language and Unix shell scripting.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Command-line interface</li>
+                    <li>Scripting automation</li>
+                    <li>File manipulation</li>
+                    <li>System administration</li>
+                    <li>Process management</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Bash<br>
+                #!/bin/bash<br>
+                echo "Hello, World!"
+            </div>
+            <a href="https://www.gnu.org/software/bash/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Assembly -->
+        <div class="language-card">
+            <h2><i class="fas fa-microchip"></i> Assembly</h2>
+            <p>Low-level programming language for computers and devices.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Close to machine code</li>
+                    <li>Hardware control</li>
+                    <li>High performance</li>
+                    <li>Small memory footprint</li>
+                    <li>Used in embedded systems</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                ; Hello World in x86 Assembly<br>
+                section .data<br>
+                &nbsp;&nbsp;msg db 'Hello, World!', 0xA<br>
+                section .text<br>
+                &nbsp;&nbsp;global _start<br>
+                _start:<br>
+                ; write system call
+            </div>
+            <a href="https://www.nasm.us/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Scala -->
+        <div class="language-card">
+            <h2><i class="fas fa-bolt"></i> Scala</h2>
+            <p>Modern multi-paradigm programming language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Functional and OOP</li>
+                    <li>Runs on JVM</li>
+                    <li>Used in big data (Spark)</li>
+                    <li>Type inference</li>
+                    <li>Immutability by default</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Scala<br>
+                object HelloWorld {<br>
+                &nbsp;&nbsp;def main(args: Array[String]): Unit = {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;println("Hello, World!")<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+            <a href="https://www.scala-lang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Haskell -->
+        <div class="language-card">
+            <h2><i class="fas fa-infinity"></i> Haskell</h2>
+            <p>Purely functional programming language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Pure functions</li>
+                    <li>Lazy evaluation</li>
+                    <li>Type inference</li>
+                    <li>Pattern matching</li>
+                    <li>Strong static typing</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                -- Hello World in Haskell<br>
+                main = putStrLn "Hello, World!"
+            </div>
+            <a href="https://www.haskell.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Perl -->
+        <div class="language-card">
+            <h2><i class="fas fa-camera-retro"></i> Perl</h2>
+            <p>Highly capable, feature-rich programming language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Text processing</li>
+                    <li>Powerful regex</li>
+                    <li>System administration</li>
+                    <li>CGI programming</li>
+                    <li>Cross-platform</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Perl<br>
+                print "Hello, World!\n";
+            </div>
+            <a href="https://www.perl.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Lua -->
+        <div class="language-card">
+            <h2><i class="fas fa-gamepad"></i> Lua</h2>
+            <p>Lightweight, high-level scripting language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Game scripting</li>
+                    <li>Embeddable</li>
+                    <li>Fast execution</li>
+                    <li>Small footprint</li>
+                    <li>Used in World of Warcraft</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                -- Hello World in Lua<br>
+                print("Hello, World!")
+            </div>
+            <a href="https://www.lua.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Julia -->
+        <div class="language-card">
+            <h2><i class="fas fa-rocket"></i> Julia</h2>
+            <p>High-level, high-performance dynamic programming language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Numerical computing</li>
+                    <li>Fast execution</li>
+                    <li>Dynamic typing</li>
+                    <li>Parallel computing</li>
+                    <li>Scientific computing</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Julia<br>
+                println("Hello, World!")
+            </div>
+            <a href="https://julialang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Objective-C -->
+        <div class="language-card">
+            <h2><i class="fab fa-apple"></i> Objective-C</h2>
+            <p>General-purpose, object-oriented programming language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>iOS/macOS development</li>
+                    <li>Dynamic runtime</li>
+                    <li>Smalltalk-style messaging</li>
+                    <li>Legacy Apple development</li>
+                    <li>C superset</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Objective-C<br>
+                #import &lt;Foundation/Foundation.h&gt;<br>
+                int main() {<br>
+                &nbsp;&nbsp;NSLog(@"Hello, World!");<br>
+                &nbsp;&nbsp;return 0;<br>
+                }
+            </div>
+            <a href="https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- VB.NET -->
+        <div class="language-card">
+            <h2><i class="fab fa-windows"></i> VB.NET</h2>
+            <p>Object-oriented programming language by Microsoft.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Rapid application development</li>
+                    <li>Windows Forms</li>
+                    <li>Part of .NET</li>
+                    <li>Type-safe</li>
+                    <li>Event-driven</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                ' Hello World in VB.NET<br>
+                Module HelloWorld<br>
+                &nbsp;&nbsp;Sub Main()<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Hello, World!")<br>
+                &nbsp;&nbsp;End Sub<br>
+                End Module
+            </div>
+            <a href="https://docs.microsoft.com/en-us/dotnet/visual-basic/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- COBOL -->
+        <div class="language-card">
+            <h2><i class="fas fa-building"></i> COBOL</h2>
+            <p>Common Business-Oriented Language for business applications.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Business applications</li>
+                    <li>Self-documenting code</li>
+                    <li>English-like syntax</li>
+                    <li>Used in banking</li>
+                    <li>Legacy systems</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                * Hello World in COBOL<br>
+                IDENTIFICATION DIVISION.<br>
+                PROGRAM-ID. HELLO.<br>
+                PROCEDURE DIVISION.<br>
+                &nbsp;&nbsp;DISPLAY 'Hello, World!'.<br>
+                STOP RUN.
+            </div>
+            <a href="https://www.ibm.com/products/cobol" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- F# -->
+        <div class="language-card">
+            <h2><i class="fas fa-function"></i> F#</h2>
+            <p>Functional-first programming language for .NET.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Functional programming</li>
+                    <li>Type inference</li>
+                    <li>Immutability</li>
+                    <li>Pattern matching</li>
+                    <li>.NET integration</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in F#<br>
+                printfn "Hello, World!"
+            </div>
+            <a href="https://fsharp.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Apex -->
+        <div class="language-card">
+            <h2><i class="fas fa-cloud"></i> Apex</h2>
+            <p>Strongly-typed programming language for Salesforce.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Salesforce development</li>
+                    <li>Database integration</li>
+                    <li>Business logic</li>
+                    <li>Cloud-based</li>
+                    <li>Similar to Java</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                // Hello World in Apex<br>
+                public class HelloWorld {<br>
+                &nbsp;&nbsp;public static void hello() {<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;System.debug('Hello, World!');<br>
+                &nbsp;&nbsp;}<br>
+                }
+            </div>
+            <a href="https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Nim -->
+        <div class="language-card">
+            <h2><i class="fas fa-bolt"></i> Nim</h2>
+            <p>Statically typed compiled systems language.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Python-like syntax</li>
+                    <li>Compiles to C</li>
+                    <li>Garbage collected</li>
+                    <li>Metaprogramming</li>
+                    <li>Performance</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Nim<br>
+                echo "Hello, World!"
+            </div>
+            <a href="https://nim-lang.org/" target="_blank" class="get-started">Get Started</a>
+        </div>
+
+        <!-- Elixir -->
+        <div class="language-card">
+            <h2><i class="fas fa-cogs"></i> Elixir</h2>
+            <p>Dynamic, functional language for scalable applications.</p>
+            <div class="features">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>Fault-tolerant</li>
+                    <li>Scalable</li>
+                    <li>Functional programming</li>
+                    <li>Erlang VM</li>
+                    <li>Phoenix framework</li>
+                </ul>
+            </div>
+            <div class="syntax">
+                # Hello World in Elixir<br>
+                IO.puts "Hello, World!"
+            </div>
+            <a href="https://elixir-lang.org/" target="_blank" class="get Started">Get Started</a>
+        </div>
+    </main>
+
+    <script>
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

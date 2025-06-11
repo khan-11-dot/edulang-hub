@@ -22,10 +22,12 @@
             </div>
             <div class="nav-links">
                 <a href="#study-notes">Study Notes</a>
+                <a href="about board & universities.html">About Boards & Universities</a>
                 <a href="#past-papers">Past Papers</a>
                 <a href="languages.html">Languages</a>
                 <a href="typing.html">Typing</a>
                 <a href="courses.html">Courses</a>
+                <a href="programming.html">Programming</a>
                 <a href="#login" class="btn-login">Login</a>
                 <a href="#signup" class="btn-signup">Sign Up</a>
                 <a href="creator.html" class="btn-creator">Creator</a>
@@ -189,24 +191,33 @@
             once: true
         });
 
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const body = document.body;
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            body.classList.toggle('menu-open');
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav-container') && navLinks.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                body.classList.remove('menu-open');
-            }
+        // Mobile menu toggle with dropdown functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            
+            // Toggle menu when hamburger is clicked
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                this.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav-container')) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+            
+            // Close menu when a nav link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
         });
     </script>
     <script src="js/main.js"></script>

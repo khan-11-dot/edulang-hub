@@ -95,40 +95,53 @@ body {
     }
     
     .nav-links {
-        position: fixed;
-        top: 0;
-        right: -300px;
-        width: 280px;
-        height: 100vh;
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 200px;
         background: var(--white);
         flex-direction: column;
-        padding: 100px 30px 30px;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        padding: 10px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-radius: 5px;
         z-index: 999;
-        gap: 1.5rem;
-        align-items: flex-start;
+        gap: 0;
+        margin-top: 10px;
     }
     
     .nav-links.active {
-        right: 0;
+        display: flex;
     }
     
     .nav-links a {
         width: 100%;
-        padding: 10px 0;
+        padding: 12px 20px;
         border-bottom: 1px solid rgba(0,0,0,0.05);
+        color: var(--text-color);
+    }
+    
+    .nav-links a:hover {
+        background-color: #f8f9fa;
     }
     
     .nav-links .btn-login,
     .nav-links .btn-signup,
     .nav-links .btn-creator {
         width: 100%;
-        text-align: center;
+        text-align: left;
         margin: 5px 0;
+        border-radius: 0;
+        padding: 12px 20px;
     }
     
-    body.menu-open {
-        overflow: hidden;
+    .nav-links .btn-login {
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    
+    .nav-links .btn-signup {
+        margin-bottom: 0;
     }
 }
 
