@@ -1,0 +1,2817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Universities</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      /* Primary Colors */
+      --primary: #2c3e50;     /* Deep Navy Blue - Primary brand color */
+      --primary-light: #3d5a80;  /* Lighter shade for hover states */
+      --secondary: #e74c3c;   /* Vibrant Red - For CTAs and important actions */
+      --accent: #3498db;      /* Bright Blue - For interactive elements */
+      
+      /* Neutral Colors */
+      --dark: #2c3e50;       /* Dark text and backgrounds */
+      --light: #f8f9fa;      /* Light backgrounds */
+      --gray-100: #f8f9fa;   /* Lightest gray */
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #ced4da;
+      --gray-500: #adb5bd;
+      --gray-600: #6c757d;
+      --gray-700: #495057;
+      --gray-800: #343a40;
+      --gray-900: #212529;
+      
+      /* UI Colors */
+      --success: #28a745;    /* Green */
+      --info: #17a2b8;       /* Teal */
+      --warning: #ffc107;    /* Yellow */
+      --danger: #dc3545;     /* Red */
+      
+      /* Backgrounds */
+      --card-bg: #ffffff;    /* White background for cards */
+      --body-bg: #f8f9fa;    /* Light gray background for page */
+      --input-bg: #ffffff;   /* White background for inputs */
+      
+      /* Text */
+      --text: #2c3e50;       /* Dark blue-gray for primary text */
+      --text-secondary: #6c757d; /* Gray for secondary text */
+      --text-light: #f8f9fa; /* Light text for dark backgrounds */
+      
+      /* Borders */
+      --border: #dee2e6;     /* Light gray border */
+      --border-radius: 8px;  /* Default border radius */
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      
+      /* Transitions */
+      --transition: all 0.3s ease;
+    }
+    
+    [data-theme="dark"] {
+      /* Dark theme overrides */
+      --primary: #3498db;        /* Brighter blue for dark mode */
+      --primary-light: #4aa3e8;  /* Lighter blue for hover states */
+      --secondary: #e74c3c;      /* Same red for consistency */
+      --accent: #5dade2;         /* Softer blue for dark mode */
+      
+      /* Dark theme backgrounds */
+      --card-bg: #2d3436;        /* Dark gray for cards */
+      --body-bg: #1e272e;        /* Dark blue-gray for page */
+      --input-bg: #2d3436;       /* Dark gray for inputs */
+      
+      /* Text colors for dark theme */
+      --text: #f8f9fa;           /* Light text for dark backgrounds */
+      --text-secondary: #b2bec3;  /* Lighter gray for secondary text */
+      
+      /* Borders */
+      --border: #3d484d;         /* Slightly lighter than card bg */
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--body-bg);
+      padding: 0;
+      margin: 0;
+      transition: var(--transition);
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: 0.75rem 2rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      background-color: rgba(44, 62, 80, 0.95);
+    }
+    
+    [data-theme="dark"] header {
+      background-color: rgba(30, 39, 46, 0.95);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo i {
+      color: var(--accent);
+      font-size: 1.75rem;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    
+    .theme-toggle,
+    .favorites-button {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .theme-toggle:hover,
+    .favorites-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .theme-toggle:active,
+    .favorites-button:active {
+      transform: translateY(0);
+    }
+    
+    .favorites-button {
+      position: relative;
+    }
+    
+    .favorite-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 2px solid var(--primary);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .search-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      align-items: end;
+      transition: var(--transition);
+    }
+    
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-width: 200px;
+      flex: 1;
+      position: relative;
+    }
+    
+    .filter-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    
+    .filter-group select,
+    .filter-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      background-color: var(--input-bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .filter-group select:focus,
+    .filter-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    }
+    
+    .search-button {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1px;
+    }
+    
+    .search-button button {
+      width: 100%;
+      height: 100%;
+      min-height: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border: none;
+      border-radius: var(--border-radius);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .search-button button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    }
+    
+    .search-button button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .result-count {
+      text-align: center;
+      color: var(--text-secondary);
+      margin: 1rem 0 2rem;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      max-width: 800px;
+      margin: 1rem auto 2rem;
+    }
+    
+    .university-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .university-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+    }
+    
+    .university-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    
+    .university-image {
+      position: relative;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .university-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .university-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    
+    .university-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 1000px;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .university-modal.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      transition: all 0.2s ease;
+    }
+    
+    .close-modal:hover {
+      background: rgba(0, 0, 0, 0.5);
+      transform: rotate(90deg);
+    }
+    
+    /* Modal Header */
+    .modal-header {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .modal-hero {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .modal-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .modal-hero:hover img {
+      transform: scale(1.05);
+    }
+    
+    .university-logo {
+      position: absolute;
+      bottom: -2rem;
+      left: 2rem;
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: white;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+    
+    .university-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .header-content {
+      padding: 2.5rem 2rem 1.5rem;
+      background: var(--card-bg);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header-content h1 {
+      margin: 0 0 0.5rem;
+      color: var(--primary);
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    
+    .university-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .university-type {
+      background: var(--primary-light);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .divider {
+      color: var(--gray-400);
+    }
+    
+    .university-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .stat i {
+      color: var(--primary);
+      font-size: 1.1rem;
+      width: 1.5rem;
+      text-align: center;
+    }
+    
+    /* Modal Body */
+    .modal-body {
+      padding: 0 2rem 2rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+    
+    .modal-columns {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    
+    .main-content {
+      min-width: 0; /* Fix for flexbox overflow */
+    }
+    
+    .sidebar {
+      position: relative;
+    }
+    
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    
+    /* Detail Sections */
+    .detail-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .detail-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .detail-section h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .detail-section h2 i {
+      color: var(--primary-light);
+      font-size: 1.2em;
+    }
+    
+    .detail-section h3 {
+      color: var(--text);
+      font-size: 1.25rem;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .detail-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0 0 1.5rem;
+    }
+    
+    /* Highlights */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    
+    .highlight {
+      background: rgba(52, 152, 219, 0.1);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .highlight i {
+      color: var(--primary-light);
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    /* Campus Features */
+    .campus-features {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .campus-features h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .campus-features ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .campus-features li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    
+    /* Admission Requirements */
+    .admission-requirements {
+      margin-top: 1.5rem;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .admission-requirements h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .requirement {
+      display: flex;
+      flex-direction: column;
+      background: rgba(var(--primary-rgb), 0.05);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+    }
+    
+    .requirement .label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .requirement .value {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    /* Campus Resources */
+    .campus-resources {
+      margin-top: 1.5rem;
+    }
+    
+    .campus-resources h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    
+    .resource {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    
+    .resource i {
+      color: var(--success);
+    }
+    
+    /* Enhanced Sidebar Styles */
+    .tour-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    
+    .cta-buttons {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    
+    .cta-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .cta-footer i {
+      color: var(--info);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .requirements-grid,
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tour-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .campus-stat {
+        flex: 1 1 100%;
+      }
+    }
+    
+    /* Academics Grid */
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .academic-info {
+      background: var(--card-bg);
+      padding: 1.25rem;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .academic-info:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .academic-info h3 {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+      justify-content: center;
+    }
+    
+    .academic-info .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .academic-info .subtext {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Programs Grid */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .program-card {
+      background: var(--body-bg);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-light);
+    }
+    
+    .program-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+    
+    .program-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+    
+    .program-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Campus Life */
+    .campus-life {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .campus-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .campus-stat i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-top: 0.25rem;
+    }
+    
+    .campus-stat .label {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    
+    .campus-stat .value {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Sidebar Cards */
+    .sidebar-card {
+      background: var(--body-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    
+    .sidebar-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sidebar-card h3 i {
+      color: var(--primary-light);
+    }
+    
+    /* Facts List */
+    .facts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .fact {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 1rem;
+    }
+    
+    .university-link {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    
+    .university-link:hover {
+      text-decoration: underline;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--gray-200);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .filters-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 2rem auto;
+      justify-content: center;
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 1200px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filters-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+    
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        color: #000;
+        font-size: 12pt;
+        line-height: 1.3;
+      }
+      
+      .search-container,
+      button,
+      .university-card button,
+      .theme-toggle,
+      .favorites-button {
+        display: none !important;
+      }
+      
+      .university-card {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      
+      .university-grid {
+        display: block;
+        padding: 0;
+      }
+      
+      .university-details h2 {
+        color: #000 !important;
+        font-size: 14pt !important;
+      }
+      
+      .university-stats {
+        display: none;
+      }
+      
+      .program-tags {
+        display: none;
+      }
+      
+      .university-actions {
+        display: none;
+      }
+      
+      .result-count {
+        display: none;
+      }
+      
+      @page {
+        margin: 1cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Canada Universities</h1>
+      <p>Find and explore universities across the Canada</p>
+    </header>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by name or location...">
+      <select id="provinceFilter">
+        <option value="">All Provinces</option>
+      </select>
+      <select id="typeFilter">
+        <option value="">All Types</option>
+      </select>
+      <button id="resetFilters">
+        <i class="fas fa-sync-alt"></i> Reset
+      </button>
+    </div>
+    
+    <div class="result-count">
+      Showing <span id="resultCount">0</span> of <span id="totalCount">0</span> institutions
+    </div>
+    
+    <div id="loadingIndicator" class="loading" style="display: none;">
+      <i class="fas fa-spinner"></i> Loading more universities...
+    </div>
+    
+    <div class="university-grid" id="universityGrid">
+      <!-- University cards will be loaded here -->
+    </div>
+  </div>
+
+  <script>
+    // University data
+    const universities = [
+  {
+    id: 1,
+    name: 'University of Toronto',
+    province: 'Ontario',
+    city: 'Toronto',
+    type: 'Public',
+    tier: 'Top 1 Canada',
+    founded: 1827,
+    students: 90000,
+    acceptanceRate: '43%',
+    website: 'https://www.utoronto.ca',
+    tuition: '$6,100 (domestic)',
+    popularPrograms: ['Engineering', 'Medicine', 'Law'],
+    description: 'Canada\'s leading university for research and teaching.'
+  },
+  {
+    id: 2,
+    name: 'University of British Columbia',
+    province: 'British Columbia',
+    city: 'Vancouver',
+    type: 'Public',
+    tier: 'Top 2 Canada',
+    founded: 1908,
+    students: 65000,
+    acceptanceRate: '52%',
+    website: 'https://www.ubc.ca',
+    tuition: '$5,506 (domestic)',
+    popularPrograms: ['Forestry', 'Computer Science', 'Economics'],
+    description: 'UBC is consistently ranked among the top 40 universities in the world.'
+  },
+  {
+    id: 3,
+    name: 'McGill University',
+    province: 'Quebec',
+    city: 'Montreal',
+    type: 'Public',
+    tier: 'Top 3 Canada',
+    founded: 1821,
+    students: 40000,
+    acceptanceRate: '46%',
+    website: 'https://www.mcgill.ca',
+    tuition: '$7,631 (domestic)',
+    popularPrograms: ['Medicine', 'Law', 'Arts'],
+    description: 'World-renowned university in Montreal with a diverse student body.'
+  },
+  {
+    id: 4,
+    name: "University of Alberta",
+    province: "Alberta",
+    city: "Edmonton",
+    type: "Public",
+    tier: "Top 10 Canada",
+    founded: 1908,
+    students: 40000,
+    acceptanceRate: "58%",
+    website: "https://www.ualberta.ca",
+    tuition: "$5,321 (domestic)",
+    popularPrograms: ["Engineering", "Business", "Nursing"],
+    description: "A major research university known for innovation and discovery in Alberta."
+  },
+  {
+    id: 5,
+    name: "University of Waterloo",
+    province: "Ontario",
+    city: "Waterloo",
+    type: "Public",
+    tier: "Top 10 Canada",
+    founded: 1957,
+    students: 42000,
+    acceptanceRate: "53%",
+    website: "https://www.uwaterloo.ca",
+    tuition: "$8,000 (domestic)",
+    popularPrograms: ["Computer Science", "Engineering", "Mathematics"],
+    description: "A tech powerhouse with strong industry ties, co-op programs, and innovation."
+  },
+  {
+    id: 6,
+    name: "Western University",
+    province: "Ontario",
+    city: "London",
+    type: "Public",
+    tier: "Top 10 Canada",
+    founded: 1878,
+    students: 31000,
+    acceptanceRate: "58%",
+    website: "https://www.uwo.ca",
+    tuition: "$7,576 (domestic)",
+    popularPrograms: ["Health Sciences", "Business", "Law"],
+    description: "Renowned for professional programs and a beautiful campus setting."
+  },
+  {
+    id: 7,
+    name: "Queen's University",
+    province: "Ontario",
+    city: "Kingston",
+    type: "Public",
+    tier: "Top 10 Canada",
+    founded: 1841,
+    students: 25000,
+    acceptanceRate: "42%",
+    website: "https://www.queensu.ca",
+    tuition: "$7,500 (domestic)",
+    popularPrograms: ["Commerce", "Law", "Engineering"],
+    description: "Prestigious and historic, Queen's offers academic excellence and community."
+  },
+  {
+    id: 8,
+    name: "Simon Fraser University",
+    province: "British Columbia",
+    city: "Burnaby",
+    type: "Public",
+    tier: "Top 10 Canada",
+    founded: 1965,
+    students: 35000,
+    acceptanceRate: "59%",
+    website: "https://www.sfu.ca",
+    tuition: "$6,200 (domestic)",
+    popularPrograms: ["Computer Science", "Business", "Environmental Studies"],
+    description: "Dynamic, modern university known for innovation and social responsibility."
+  },
+  {
+    id: 9,
+    name: "University of Ottawa",
+    province: "Ontario",
+    city: "Ottawa",
+    type: "Public",
+    tier: "Top 15 Canada",
+    founded: 1848,
+    students: 42000,
+    acceptanceRate: "54%",
+    website: "https://www.uottawa.ca",
+    tuition: "$6,300 (domestic)",
+    popularPrograms: ["Law", "Political Science", "Engineering"],
+    description: "Bilingual university with strengths in law, politics, and research."
+  },
+  {
+    id: 10,
+    name: "University of Calgary",
+    province: "Alberta",
+    city: "Calgary",
+    type: "Public",
+    tier: "Top 15 Canada",
+    founded: 1966,
+    students: 33000,
+    acceptanceRate: "60%",
+    website: "https://www.ucalgary.ca",
+    tuition: "$5,900 (domestic)",
+    popularPrograms: ["Geology", "Business", "Medicine"],
+    description: "A growing research university with close ties to Alberta's energy sector."
+  },
+  {
+    id: 11,
+    name: 'Carleton University',
+    province: 'British Columbia',
+    city: 'Vancouver',
+    type: 'Public',
+    tier: 'Top 50 Canada',
+    founded: 1913,
+    students: 13558,
+    acceptanceRate: '56%',
+    website: 'https://www.carletonuniversity.ca',
+    tuition: '$6495 (domestic)',
+    popularPrograms: ['Business', 'Technology', 'Nursing'],
+    description: 'Carleton University is a respected institution in British Columbia, offering quality education and research opportunities.'
+  },
+  {
+    id: 12,
+    name: 'York University',
+    province: 'Saskatchewan',
+    city: 'Saskatoon',
+    type: 'Public',
+    tier: 'Top 50 Canada',
+    founded: 1935,
+    students: 7082,
+    acceptanceRate: '68%',
+    website: 'https://www.yorkuniversity.ca',
+    tuition: '$6460 (domestic)',
+    popularPrograms: ['Business', 'Technology', 'Education'],
+    description: 'York University is a respected institution in Saskatchewan, offering quality education and research opportunities.'
+  },
+  {
+    id: 13,
+    name: 'Université de Montréal',
+    province: 'Quebec',
+    city: 'Gatineau',
+    type: 'College',
+    tier: 'Top 50 Canada',
+    founded: 1859,
+    students: 10499,
+    acceptanceRate: '78%',
+    website: 'https://www.universitédemontréal.ca',
+    tuition: '$5977 (domestic)',
+    popularPrograms: ['Education', 'Engineering', 'Business'],
+    description: 'Université de Montréal is a respected institution in Quebec, offering quality education and research opportunities.'
+  },
+  {
+    id: 14,
+    name: "University of Canada 14",
+    province: "Manitoba",
+    city: "City 14",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1914,
+    students: 6400,
+    acceptanceRate: "54%",
+    website: "https://www.universityofcanada14.ca",
+    tuition: "$5014 (domestic)",
+    popularPrograms: ["Engineering", "Science", "Law"],
+    description: "University of Canada 14 is a respected institution offering quality education and research opportunities."
+  },
+  {
+    id: 15,
+    name: "University of Canada 15",
+    province: "Nova Scotia",
+    city: "City 15",
+    type: "College",
+    tier: "Top 50 Canada",
+    founded: 1915,
+    students: 6500,
+    acceptanceRate: "55%",
+    website: "https://www.universityofcanada15.ca",
+    tuition: "$5015 (domestic)",
+    popularPrograms: ["Business", "Technology", "Arts"],
+    description: "University of Canada 15 is a respected institution offering quality education and research opportunities."
+  },
+  {
+    id: 16,
+    name: "University of Canada 16",
+    province: "Saskatchewan",
+    city: "City 16",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1916,
+    students: 6600,
+    acceptanceRate: "56%",
+    website: "https://www.universityofcanada16.ca",
+    tuition: "$5016 (domestic)",
+    popularPrograms: ["Engineering", "Science", "Law"],
+    description: "University of Canada 16 is a respected institution offering quality education and research opportunities."
+  },
+  {
+    id: 17,
+    name: "University of Canada 17",
+    province: "Ontario",
+    city: "City 17",
+    type: "College",
+    tier: "Top 50 Canada",
+    founded: 1917,
+    students: 6700,
+    acceptanceRate: "57%",
+    website: "https://www.universityofcanada17.ca",
+    tuition: "$5017 (domestic)",
+    popularPrograms: ["Business", "Technology", "Arts"],
+    description: "University of Canada 17 is a respected institution offering quality education and research opportunities."
+  },
+  {
+    id: 18,
+    name: "University of Canada 18",
+    province: "Nova Scotia",
+    city: "City 18",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1918,
+    students: 6800,
+    acceptanceRate: "58%",
+    website: "https://www.universityofcanada18.ca",
+    tuition: "$5018 (domestic)",
+    popularPrograms: ["Engineering", "Science", "Law"],
+    description: "University of Canada 18 is a respected institution offering quality education and research opportunities."
+  },
+  {
+    id: 19,
+    name: "University of Canada 19",
+    province: "Saskatchewan",
+    city: "City 19",
+    type: "College",
+    tier: "Top 50 Canada",
+    founded: 1919,
+    students: 6900,
+    acceptanceRate: "59%",
+    website: "https://www.universityofcanada19.ca",
+    tuition: "$5019 (domestic)",
+    popularPrograms: ["Business", "Technology", "Arts"],
+    description: "University of Canada 19 is a respected institution offering quality education and research opportunities."
+  },
+  {
+    id: 20,
+    name: "University of Canada 20",
+    province: "Ontario",
+    city: "City 20",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1920,
+    students: 7000,
+    acceptanceRate: "50%",
+    website: "https://www.universityofcanada20.ca",
+    tuition: "$5020 (domestic)",
+    popularPrograms: ["Engineering", "Science", "Law"],
+    description: "University of Canada 20 is a respected institution offering quality education and research opportunities."
+  },
+
+  {
+    id: 21,
+    name: "University of Canada 21",
+    province: "Manitoba",
+    city: "City 21",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1921,
+    students: 7100,
+    acceptanceRate: "56%",
+    website: "https://www.universityofcanada21.ca",
+    tuition: "$5021 (domestic)",
+    popularPrograms: ["Health Sciences", "Education", "Engineering"],
+    description: "University of Canada 21 is known for its innovation in teaching and research."
+  },
+  {
+    id: 22,
+    name: "University of Canada 22",
+    province: "British Columbia",
+    city: "City 22",
+    type: "College",
+    tier: "Top 50 Canada",
+    founded: 1922,
+    students: 7200,
+    acceptanceRate: "57%",
+    website: "https://www.universityofcanada22.ca",
+    tuition: "$5022 (domestic)",
+    popularPrograms: ["Business", "Hospitality", "Technology"],
+    description: "A forward-thinking college focused on career-ready education and student support."
+  },
+  {
+    id: 23,
+    name: "University of Canada 23",
+    province: "Alberta",
+    city: "City 23",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1923,
+    students: 7300,
+    acceptanceRate: "58%",
+    website: "https://www.universityofcanada23.ca",
+    tuition: "$5023 (domestic)",
+    popularPrograms: ["Environmental Science", "Computer Science", "Education"],
+    description: "A dynamic institution promoting research and real-world skills."
+  },
+  {
+    id: 24,
+    name: "University of Canada 24",
+    province: "Quebec",
+    city: "City 24",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1924,
+    students: 7400,
+    acceptanceRate: "59%",
+    website: "https://www.universityofcanada24.ca",
+    tuition: "$5024 (domestic)",
+    popularPrograms: ["French Studies", "Architecture", "Law"],
+    description: "Blending language, culture, and academics in one unique experience."
+  },
+  {
+    id: 25,
+    name: "University of Canada 25",
+    province: "Nova Scotia",
+    city: "City 25",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1925,
+    students: 7500,
+    acceptanceRate: "60%",
+    website: "https://www.universityofcanada25.ca",
+    tuition: "$5025 (domestic)",
+    popularPrograms: ["Marine Biology", "Nursing", "Education"],
+    description: "Coastal university known for its research in oceanography and nursing education."
+  },
+  {
+    id: 26,
+    name: "University of Canada 26",
+    province: "Ontario",
+    city: "City 26",
+    type: "College",
+    tier: "Top 50 Canada",
+    founded: 1926,
+    students: 7600,
+    acceptanceRate: "61%",
+    website: "https://www.universityofcanada26.ca",
+    tuition: "$5026 (domestic)",
+    popularPrograms: ["Business", "Design", "Health Sciences"],
+    description: "A leading career-focused college in the heart of Ontario."
+  },
+  {
+    id: 27,
+    name: "University of Canada 27",
+    province: "Saskatchewan",
+    city: "City 27",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1927,
+    students: 7700,
+    acceptanceRate: "62%",
+    website: "https://www.universityofcanada27.ca",
+    tuition: "$5027 (domestic)",
+    popularPrograms: ["Agriculture", "Veterinary Medicine", "Economics"],
+    description: "Known for excellence in agriculture and rural development."
+  },
+  {
+    id: 28,
+    name: "University of Canada 28",
+    province: "Alberta",
+    city: "City 28",
+    type: "College",
+    tier: "Top 50 Canada",
+    founded: 1928,
+    students: 7800,
+    acceptanceRate: "63%",
+    website: "https://www.universityofcanada28.ca",
+    tuition: "$5028 (domestic)",
+    popularPrograms: ["Oil & Gas Engineering", "Computer Science", "Trades"],
+    description: "Career-focused technical training and innovation hub."
+  },
+  {
+    id: 29,
+    name: "University of Canada 29",
+    province: "Manitoba",
+    city: "City 29",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1929,
+    students: 7900,
+    acceptanceRate: "64%",
+    website: "https://www.universityofcanada29.ca",
+    tuition: "$5029 (domestic)",
+    popularPrograms: ["Biology", "Physics", "Engineering"],
+    description: "Modern research facilities and a vibrant student community."
+  },
+  {
+    id: 30,
+    name: "University of Canada 30",
+    province: "British Columbia",
+    city: "City 30",
+    type: "Public",
+    tier: "Top 50 Canada",
+    founded: 1930,
+    students: 8000,
+    acceptanceRate: "65%",
+    website: "https://www.universityofcanada30.ca",
+    tuition: "$5030 (domestic)",
+    popularPrograms: ["Forestry", "Environmental Studies", "Education"],
+    description: "Leading environmental programs and sustainable campus."
+  },
+  {
+    id: 31,
+    name: "University of Canada 31",
+    province: "Ontario",
+    city: "City 31",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1931,
+    students: 8100,
+    acceptanceRate: "66%",
+    website: "https://www.universityofcanada31.ca",
+    tuition: "$5031 (domestic)",
+    popularPrograms: ["Graphic Design", "Animation", "Marketing"],
+    description: "Creative and technical programs with industry partnerships."
+  },
+  {
+    id: 32,
+    name: "University of Canada 32",
+    province: "Quebec",
+    city: "City 32",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1932,
+    students: 8200,
+    acceptanceRate: "67%",
+    website: "https://www.universityofcanada32.ca",
+    tuition: "$5032 (domestic)",
+    popularPrograms: ["Law", "Public Policy", "Sociology"],
+    description: "A bilingual institution known for law and public service."
+  },
+  {
+    id: 33,
+    name: "University of Canada 33",
+    province: "Nova Scotia",
+    city: "City 33",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1933,
+    students: 8300,
+    acceptanceRate: "68%",
+    website: "https://www.universityofcanada33.ca",
+    tuition: "$5033 (domestic)",
+    popularPrograms: ["Marine Science", "Education", "History"],
+    description: "A rich maritime heritage and close-knit academic community."
+  },
+  {
+    id: 34,
+    name: "University of Canada 34",
+    province: "Newfoundland and Labrador",
+    city: "City 34",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1934,
+    students: 8400,
+    acceptanceRate: "69%",
+    website: "https://www.universityofcanada34.ca",
+    tuition: "$5034 (domestic)",
+    popularPrograms: ["Ocean Engineering", "Environmental Studies", "Geography"],
+    description: "Focus on oceanic research and Atlantic studies."
+  },
+  {
+    id: 35,
+    name: "University of Canada 35",
+    province: "Alberta",
+    city: "City 35",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1935,
+    students: 8500,
+    acceptanceRate: "70%",
+    website: "https://www.universityofcanada35.ca",
+    tuition: "$5035 (domestic)",
+    popularPrograms: ["IT", "Welding", "Healthcare"],
+    description: "Hands-on learning and trades-focused education."
+  },
+  {
+    id: 36,
+    name: "University of Canada 36",
+    province: "Saskatchewan",
+    city: "City 36",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1936,
+    students: 8600,
+    acceptanceRate: "71%",
+    website: "https://www.universityofcanada36.ca",
+    tuition: "$5036 (domestic)",
+    popularPrograms: ["Agribusiness", "Biochemistry", "Mathematics"],
+    description: "Integrated research in agricultural innovation."
+  },
+  {
+    id: 37,
+    name: "University of Canada 37",
+    province: "British Columbia",
+    city: "City 37",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1937,
+    students: 8700,
+    acceptanceRate: "72%",
+    website: "https://www.universityofcanada37.ca",
+    tuition: "$5037 (domestic)",
+    popularPrograms: ["Film", "Performing Arts", "Tourism"],
+    description: "Creative industries and community culture hub."
+  },
+  {
+    id: 38,
+    name: "University of Canada 38",
+    province: "Manitoba",
+    city: "City 38",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1938,
+    students: 8800,
+    acceptanceRate: "73%",
+    website: "https://www.universityofcanada38.ca",
+    tuition: "$5038 (domestic)",
+    popularPrograms: ["Business", "Geology", "Education"],
+    description: "Supportive learning environment with strong alumni network."
+  },
+  {
+    id: 39,
+    name: "University of Canada 39",
+    province: "Ontario",
+    city: "City 39",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1939,
+    students: 8900,
+    acceptanceRate: "74%",
+    website: "https://www.universityofcanada39.ca",
+    tuition: "$5039 (domestic)",
+    popularPrograms: ["Culinary Arts", "Tourism", "Hospitality"],
+    description: "Premier training ground for culinary and hotel professionals."
+  },
+  {
+    id: 40,
+    name: "University of Canada 40",
+    province: "Quebec",
+    city: "City 40",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1940,
+    students: 9000,
+    acceptanceRate: "75%",
+    website: "https://www.universityofcanada40.ca",
+    tuition: "$5040 (domestic)",
+    popularPrograms: ["Political Science", "International Relations", "Economics"],
+    description: "Global studies focus in a multicultural setting."
+  },
+  {
+    id: 41,
+    name: "University of Canada 41",
+    province: "New Brunswick",
+    city: "City 41",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1941,
+    students: 9100,
+    acceptanceRate: "76%",
+    website: "https://www.universityofcanada41.ca",
+    tuition: "$5041 (domestic)",
+    popularPrograms: ["Psychology", "Business", "Engineering"],
+    description: "Strong student support and co-op opportunities."
+  },
+  {
+    id: 42,
+    name: "University of Canada 42",
+    province: "Nova Scotia",
+    city: "City 42",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1942,
+    students: 9200,
+    acceptanceRate: "77%",
+    website: "https://www.universityofcanada42.ca",
+    tuition: "$5042 (domestic)",
+    popularPrograms: ["Nursing", "Marine Transport", "Tourism"],
+    description: "Unique focus on ocean-based careers and care services."
+  },
+  {
+    id: 43,
+    name: "University of Canada 43",
+    province: "Ontario",
+    city: "City 43",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1943,
+    students: 9300,
+    acceptanceRate: "78%",
+    website: "https://www.universityofcanada43.ca",
+    tuition: "$5043 (domestic)",
+    popularPrograms: ["Digital Arts", "Web Development", "Marketing"],
+    description: "A tech-savvy institution for next-gen creatives."
+  },
+  {
+    id: 44,
+    name: "University of Canada 44",
+    province: "British Columbia",
+    city: "City 44",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1944,
+    students: 9400,
+    acceptanceRate: "79%",
+    website: "https://www.universityofcanada44.ca",
+    tuition: "$5044 (domestic)",
+    popularPrograms: ["Forestry", "Biology", "Education"],
+    description: "Deep commitment to sustainability and education."
+  },
+  {
+    id: 45,
+    name: "University of Canada 45",
+    province: "Quebec",
+    city: "City 45",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1945,
+    students: 9500,
+    acceptanceRate: "80%",
+    website: "https://www.universityofcanada45.ca",
+    tuition: "$5045 (domestic)",
+    popularPrograms: ["Physics", "Engineering", "French Literature"],
+    description: "Combining technical innovation with cultural learning."
+  },
+  {
+    id: 46,
+    name: "University of Canada 46",
+    province: "Ontario",
+    city: "City 46",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1946,
+    students: 9600,
+    acceptanceRate: "81%",
+    website: "https://www.universityofcanada46.ca",
+    tuition: "$5046 (domestic)",
+    popularPrograms: ["Cybersecurity", "Business Admin", "Medical Office"],
+    description: "Training the workforce of tomorrow through technology and healthcare."
+  },
+  {
+    id: 47,
+    name: "University of Canada 47",
+    province: "Manitoba",
+    city: "City 47",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1947,
+    students: 9700,
+    acceptanceRate: "82%",
+    website: "https://www.universityofcanada47.ca",
+    tuition: "$5047 (domestic)",
+    popularPrograms: ["Psychology", "Science", "Education"],
+    description: "Well-rounded academic programs and a vibrant campus life."
+  },
+  {
+    id: 48,
+    name: "University of Canada 48",
+    province: "Saskatchewan",
+    city: "City 48",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1948,
+    students: 9800,
+    acceptanceRate: "83%",
+    website: "https://www.universityofcanada48.ca",
+    tuition: "$5048 (domestic)",
+    popularPrograms: ["Auto Tech", "Agricultural Machinery", "Nursing"],
+    description: "Skilled trades and agriculture support rural innovation."
+  },
+  {
+    id: 49,
+    name: "University of Canada 49",
+    province: "British Columbia",
+    city: "City 49",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1949,
+    students: 9900,
+    acceptanceRate: "84%",
+    website: "https://www.universityofcanada49.ca",
+    tuition: "$5049 (domestic)",
+    popularPrograms: ["Environmental Law", "Engineering", "Urban Planning"],
+    description: "Environmentally conscious and future-facing education."
+  },
+  {
+    id: 50,
+    name: "University of Canada 50",
+    province: "Newfoundland and Labrador",
+    city: "City 50",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1950,
+    students: 10000,
+    acceptanceRate: "85%",
+    website: "https://www.universityofcanada50.ca",
+    tuition: "$5050 (domestic)",
+    popularPrograms: ["History", "Law", "Oceanography"],
+    description: "Cultural depth and scientific exploration at the Atlantic edge."
+  },
+  {
+    id: 51,
+    name: "University of Canada 51",
+    province: "Yukon",
+    city: "Whitehorse",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1963,
+    students: 1500,
+    acceptanceRate: "88%",
+    website: "https://www.yukonu.ca",
+    tuition: "$4500 (domestic)",
+    popularPrograms: ["Northern Studies", "Renewable Resources", "Education"],
+    description: "Canada's northernmost university with a unique Arctic focus."
+  },
+  {
+    id: 52,
+    name: "University of Canada 52",
+    province: "Alberta",
+    city: "City 52",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1952,
+    students: 10100,
+    acceptanceRate: "86%",
+    website: "https://www.universityofcanada52.ca",
+    tuition: "$5052 (domestic)",
+    popularPrograms: ["Oil & Gas Tech", "Mechanical Engineering", "Business"],
+    description: "Focused on Alberta's booming energy and industrial sectors."
+  },
+  {
+    id: 53,
+    name: "University of Canada 53",
+    province: "Ontario",
+    city: "City 53",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1953,
+    students: 10200,
+    acceptanceRate: "87%",
+    website: "https://www.universityofcanada53.ca",
+    tuition: "$5053 (domestic)",
+    popularPrograms: ["Healthcare", "Education", "Psychology"],
+    description: "Known for health science and teacher education."
+  },
+  {
+    id: 54,
+    name: "University of Canada 54",
+    province: "Quebec",
+    city: "City 54",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1954,
+    students: 10300,
+    acceptanceRate: "88%",
+    website: "https://www.universityofcanada54.ca",
+    tuition: "$5054 (domestic)",
+    popularPrograms: ["Art History", "Philosophy", "Engineering"],
+    description: "Strong humanities with growing engineering research."
+  },
+  {
+    id: 55,
+    name: "University of Canada 55",
+    province: "Nova Scotia",
+    city: "City 55",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1955,
+    students: 10400,
+    acceptanceRate: "89%",
+    website: "https://www.universityofcanada55.ca",
+    tuition: "$5055 (domestic)",
+    popularPrograms: ["Fisheries", "Marine Biology", "Hospitality"],
+    description: "Marine-centered programs with Atlantic opportunities."
+  },
+  {
+    id: 56,
+    name: "University of Canada 56",
+    province: "Manitoba",
+    city: "City 56",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1956,
+    students: 10500,
+    acceptanceRate: "90%",
+    website: "https://www.universityofcanada56.ca",
+    tuition: "$5056 (domestic)",
+    popularPrograms: ["Agriculture", "Veterinary Science", "Business"],
+    description: "Specialized in rural and agricultural development."
+  },
+  {
+    id: 57,
+    name: "University of Canada 57",
+    province: "Saskatchewan",
+    city: "City 57",
+    type: "College",
+    tier: "Top 60 Canada",
+    founded: 1957,
+    students: 10600,
+    acceptanceRate: "91%",
+    website: "https://www.universityofcanada57.ca",
+    tuition: "$5057 (domestic)",
+    popularPrograms: ["Computer Networking", "Trades", "Nursing"],
+    description: "Technical training for high-demand sectors."
+  },
+  {
+    id: 58,
+    name: "University of Canada 58",
+    province: "British Columbia",
+    city: "City 58",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1958,
+    students: 10700,
+    acceptanceRate: "92%",
+    website: "https://www.universityofcanada58.ca",
+    tuition: "$5058 (domestic)",
+    popularPrograms: ["Creative Writing", "Forestry", "Environmental Science"],
+    description: "West coast creativity meets ecological responsibility."
+  },
+  {
+    id: 59,
+    name: "University of Canada 59",
+    province: "New Brunswick",
+    city: "City 59",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1959,
+    students: 10800,
+    acceptanceRate: "93%",
+    website: "https://www.universityofcanada59.ca",
+    tuition: "$5059 (domestic)",
+    popularPrograms: ["Software Development", "Education", "Geography"],
+    description: "Affordable and inclusive tech-forward education."
+  },
+  {
+    id: 60,
+    name: "University of Canada 60",
+    province: "Northwest Territories",
+    city: "City 60",
+    type: "Public",
+    tier: "Top 60 Canada",
+    founded: 1960,
+    students: 10900,
+    acceptanceRate: "94%",
+    website: "https://www.universityofcanada60.ca",
+    tuition: "$5060 (domestic)",
+    popularPrograms: ["Indigenous Studies", "Resource Management", "Nursing"],
+    description: "Leading Arctic and Indigenous education in Canada North."
+  }
+];
+
+const caProvinces = {
+  Alberta: 'Alberta',
+  BritishColumbia: 'British Columbia',
+  Manitoba: 'Manitoba',
+  NewBrunswick: 'New Brunswick',
+  NewfoundlandAndLabrador: 'Newfoundland and Labrador',
+  NorthwestTerritories: 'Northwest Territories',
+  NovaScotia: 'Nova Scotia',
+  Nunavut: 'Nunavut',
+  Ontario: 'Ontario',
+  PrinceEdwardIsland: 'Prince Edward Island',
+  Quebec: 'Quebec',
+  Saskatchewan: 'Saskatchewan',
+  Yukon: 'Yukon'
+};
+
+    // University types and tiers
+     // University types and tiers
+     const universityTypes = [
+      'Public', 'Private', 'Collegiate', 'Specialist'
+    ];
+
+    const universityTiers = [
+      'Ivy League', 'Top 10 National', 'Top 25 National',
+      'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
+    ];
+
+    // App state
+    let isLoading = false;
+    let currentPage = 1;
+    const itemsPerPage = 12;
+    let filteredUniversities = [];
+
+    // DOM elements
+    let searchInput, provinceFilter, typeFilter, resetButton;
+    let resultCount, totalCount, loadingIndicator, universityGrid;
+
+    // Initialize the app
+    function init() {
+      // Get DOM elements
+      searchInput = document.getElementById('searchInput');
+      provinceFilter = document.getElementById('provinceFilter');
+      typeFilter = document.getElementById('typeFilter');
+      resetButton = document.getElementById('resetFilters');
+      resultCount = document.getElementById('resultCount');
+      totalCount = document.getElementById('totalCount');
+      loadingIndicator = document.getElementById('loadingIndicator');
+      universityGrid = document.getElementById('universityGrid');
+
+      // Initialize filters
+      initFilters();
+
+      // Add event listeners
+      searchInput.addEventListener('input', handleSearch);
+      provinceFilter.addEventListener('change', handleFilter);
+      typeFilter.addEventListener('change', handleFilter);
+      resetButton.addEventListener('click', resetFilters);
+      window.addEventListener('scroll', handleScroll);
+
+      // Initial load
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      loadMore();
+    }
+
+    // Initialize filter dropdowns
+    function initFilters() {
+      // Provinces
+      Object.entries(caProvinces).forEach(([code, name]) => {
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = name;
+        provinceFilter.appendChild(option);
+      });
+
+      // Types
+      universityTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeFilter.appendChild(option);
+      });
+    }
+
+    // Handle search input
+    function handleSearch() {
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Handle filter changes
+    function handleFilter() {
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Reset all filters
+    function resetFilters() {
+      searchInput.value = '';
+      provinceFilter.value = '';
+      typeFilter.value = '';
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Get filtered universities based on current filters
+    function getFilteredUniversities() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const province = provinceFilter.value;
+      const type = typeFilter.value;
+      
+      return universities.filter(univ => {
+        const matchesSearch = !searchTerm || 
+          univ.name.toLowerCase().includes(searchTerm) ||
+          univ.city.toLowerCase().includes(searchTerm) ||
+          (univ.province && univ.province.toLowerCase().includes(searchTerm)) ||
+          (caProvinces[univ.province] && caProvinces[univ.province].toLowerCase().includes(searchTerm));
+        
+        const matchesProvince = !province || univ.province === province;
+        const matchesType = !type || univ.type === type;
+        
+        return matchesSearch && matchesProvince && matchesType;
+      });
+    }
+
+    // Update result counts
+    function updateResultCounts() {
+      const displayedCount = Math.min(filteredUniversities.length, currentPage * itemsPerPage);
+      resultCount.textContent = displayedCount.toLocaleString();
+      totalCount.textContent = filteredUniversities.length.toLocaleString();
+    }
+
+    // Handle scroll for infinite loading
+    function handleScroll() {
+      if (isLoading) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const scrollThreshold = 100; // pixels from bottom
+      
+      if (scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+        loadMore();
+      }
+    }
+
+    // Load more universities
+    function loadMore() {
+      if (isLoading || (currentPage * itemsPerPage) >= filteredUniversities.length) {
+        return;
+      }
+      
+      isLoading = true;
+      loadingIndicator.style.display = 'block';
+      
+      // Simulate network delay
+      setTimeout(() => {
+        currentPage++;
+        const start = 0;
+        const end = currentPage * itemsPerPage;
+        const moreUniversities = filteredUniversities.slice(start, end);
+        
+        renderUniversities(moreUniversities, false);
+        updateResultCounts();
+        
+        isLoading = false;
+        loadingIndicator.style.display = 'none';
+      }, 500);
+    }
+
+    // Render universities to the grid
+    function renderUniversities(universitiesToRender, append = false) {
+      if (!append) {
+        universityGrid.innerHTML = '';
+      }
+      
+      if (universitiesToRender.length === 0) {
+        universityGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem;">No universities found matching your criteria.</p>';
+        return;
+      }
+      
+      universitiesToRender.forEach(univ => {
+        const card = createUniversityCard(univ);
+        universityGrid.appendChild(card);
+      });
+    }
+
+    function createUniversityCard(university) {
+  const card = document.createElement('div');
+  card.className = 'university-card';
+
+  // ... (favorite button code yahan rahe)
+
+  // Details section (hidden by default)
+  const detailsSection = document.createElement('div');
+  detailsSection.className = 'university-details-section';
+  detailsSection.style.display = 'none';
+  detailsSection.innerHTML = `
+    <div style="padding:1rem 0; border-top:1px solid #eee;">
+      <strong>Description:</strong>
+      <p>${university.description || 'No description available.'}</p>
+      <div><strong>Location:</strong> ${university.city}, ${caProvinces[university.province] || university.province}</div>
+      <div><strong>Founded:</strong> ${university.founded}</div>
+      <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
+      <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
+      ${university.tuition ? `<div><strong>Tuition:</strong> ${university.tuition}</div>` : ''}
+      ${university.website ? `<div><a href="${university.website}" target="_blank">Official Website</a></div>` : ''}
+    </div>
+  `;
+
+  // Card HTML
+  card.innerHTML = `
+    <div class="university-image" style="background-image: url('https://source.unsplash.com/random/600x400/?university,${encodeURIComponent(university.name.split(' ')[0])}')">
+      <div class="university-tier">${university.tier || 'University'}</div>
+    </div>
+    <div class="university-details">
+      <div class="university-header">
+        <h2>${university.name}</h2>
+        <div class="university-meta">
+          <span class="founded">
+            <i class="far fa-calendar"></i> Est. ${university.founded}
+          </span>
+          <span>•</span>
+          <span class="acceptance">
+            <i class="fas fa-user-graduate"></i> ${university.acceptanceRate}% acceptance
+          </span>
+        </div>
+      </div>
+      <div class="university-stats">
+        <div class="stat" title="Location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>${university.city}, ${caProvinces[university.province] || university.province}</span>
+        </div>
+        <div class="stat" title="Student population">
+          <i class="fas fa-users"></i>
+          <span>${university.students.toLocaleString()}</span>
+        </div>
+      </div>
+      <div class="university-description">
+        <p>${university.description || 'No description available.'}</p>
+      </div>
+      <div class="university-actions">
+        <button class="btn btn-outline details-btn" type="button">
+          <i class="fas fa-info-circle"></i> Details
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Add details section to card
+  card.appendChild(detailsSection);
+
+  // Details button click handler
+  card.querySelector('.details-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (detailsSection.style.display === 'none') {
+      detailsSection.style.display = 'block';
+      this.innerHTML = '<i class="fas fa-info-circle"></i> Hide Details';
+    } else {
+      detailsSection.style.display = 'none';
+      this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+    }
+  });
+
+  return card;
+}
+    
+    // Toggle favorite status for a university
+    function toggleFavorite(universityId) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const index = favorites.indexOf(universityId);
+      
+      if (index === -1) {
+        favorites.push(universityId);
+      } else {
+        favorites.splice(index, 1);
+      }
+      
+      localStorage.setItem('favoriteUniversities', JSON.stringify(favorites));
+      updateFavoriteBadge();
+    }
+    
+    // Check if a university is in favorites
+    function isFavorite(universityId) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      return favorites.includes(universityId);
+    }
+    
+    // Update the favorite badge count
+    function updateFavoriteBadge() {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const badge = document.getElementById('favoriteBadge');
+      if (badge) {
+        badge.textContent = favorites.length || '';
+        badge.style.display = favorites.length ? 'flex' : 'none';
+      }
+    }
+
+    // Show enhanced university details in a modal
+    function showUniversityDetails(universityId) {
+      const university = universities.find(u => u.id === universityId);
+      if (!university) return;
+      
+      // Generate campus images
+      const campusImage = `https://source.unsplash.com/random/1200x600/?campus,${encodeURIComponent(university.name.split(' ')[0])}`;
+      const logoImage = `https://logo.clearbit.com/${university.website?.replace('https://', '').replace('http://', '')}?size=200`;
+      
+      // Determine university characteristics
+      const isPublic = university.type === 'Public';
+      const isIvy = university.tier === 'Ivy League';
+      const isTechFocused = university.type.includes('Science') || university.type.includes('Engineering');
+      
+      // Generate realistic campus life data based on university type
+      const campusLife = {
+        housing: isIvy ? 'On-campus housing guaranteed for all 4 years' : 
+                  isPublic ? 'On-campus housing for freshmen and sophomores' : 'On-campus housing available',
+        clubs: isIvy ? `${Math.floor(Math.random() * 400) + 400} student organizations` :
+                isPublic ? `${Math.floor(Math.random() * 300) + 200} student organizations` : 
+                `${Math.floor(Math.random() * 150) + 100} student organizations`,
+        sports: isPublic ? 'NCAA Division I' : 
+                isIvy ? 'NCAA Division I (Ivy League)' :
+                'NCAA Division III',
+        greekLife: isIvy ? 'Active Greek life with historic fraternities/sororities' :
+                   isPublic ? 'Strong Greek life presence' :
+                   Math.random() > 0.5 ? 'Greek life available' : 'Limited Greek life',
+        diversity: isTechFocused ? `${Math.floor(Math.random() * 15) + 30}% international students` :
+                    isIvy ? `${Math.floor(Math.random() * 12) + 12}% international students` :
+                    `${Math.floor(Math.random() * 10) + 8}% international students`,
+        facilities: isTechFocused ? 
+                   ['Advanced Research Labs', 'Innovation Center', 'Tech Library'] :
+                   isIvy ? ['Historic Libraries', 'Museums', 'Performing Arts Centers'] :
+                   ['Modern Classrooms', 'Student Center', 'Recreation Center']
+      };
+      
+      // Generate realistic academic stats based on university type
+      const academicStats = {
+        studentFacultyRatio: isIvy ? `${Math.floor(Math.random() * 3) + 5}:1` :
+                              isTechFocused ? `${Math.floor(Math.random() * 4) + 6}:1` :
+                              `${Math.floor(Math.random() * 5) + 10}:1`,
+        averageClassSize: isIvy ? Math.floor(Math.random() * 8) + 10 :
+                            isTechFocused ? Math.floor(Math.random() * 10) + 15 :
+                            Math.floor(Math.random() * 15) + 20,
+        graduationRate: isIvy ? `${Math.floor(Math.random() * 5) + 90}%` :
+                          isPublic ? `${Math.floor(Math.random() * 15) + 70}%` :
+                          `${Math.floor(Math.random() * 10) + 80}%`,
+        retentionRate: isIvy ? `${Math.floor(Math.random() * 3) + 95}%` :
+                         isPublic ? `${Math.floor(Math.random() * 10) + 80}%` :
+                         `${Math.floor(Math.random() * 7) + 85}%`,
+        researchFunding: isTechFocused ? `$${(Math.random() * 300 + 100).toFixed(1)}M` :
+                            isIvy ? `$${(Math.random() * 200 + 50).toFixed(1)}M` :
+                            `$${(Math.random() * 150 + 30).toFixed(1)}M`
+      };
+      
+      // Generate admission requirements
+      const admissionRequirements = {
+        sat: isIvy ? '1450-1570' : 
+                  isTechFocused ? '1400-1550' :
+                  isPublic ? '1200-1450' : '1100-1350',
+        act: isIvy ? '33-35' :
+                  isTechFocused ? '32-35' :
+                  isPublic ? '26-32' : '24-30',
+        gpa: isIvy ? '3.9-4.0' :
+                  isTechFocused ? '3.8-4.0' :
+                  isPublic ? '3.5-4.0' : '3.3-4.0',
+        deadline: isIvy ? 'January 1 (Early Decision: November 1)' :
+                        'January 15 (Early Action: November 15)'
+      };
+      
+      // Create modal HTML
+      const modal = document.createElement('div');
+      modal.className = 'university-modal';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <button class="close-modal" aria-label="Close">&times;</button>
+          
+          <!-- Hero Section with University Image -->
+          <div class="modal-header">
+            <div class="modal-hero">
+              <img src="${campusImage}" alt="${university.name} Campus">
+            </div>
+            <div class="university-logo">
+              <img src="${logoImage}" alt="${university.name} Logo" onerror="this.src='https://via.placeholder.com/200?text=${encodeURIComponent(university.name.split(' ')[0])}';">
+            </div>
+            <div class="header-content">
+              <h1>${university.name}</h1>
+              <div class="university-meta">
+                <span>${university.city}, ${caProvinces[university.province] || university.province}</span>
+                <span class="divider">•</span>
+                <span>Est. ${university.founded}</span>
+                <span class="divider">•</span>
+                <span class="university-type">${university.type || 'University'}</span>
+              </div>
+              <div class="university-stats">
+                <div class="stat">
+                  <i class="fas fa-users"></i>
+                  <span>${university.students.toLocaleString()} Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>${university.acceptanceRate}% Acceptance Rate</span>
+                </div>
+                ${university.tuition ? `
+                  <div class="stat">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>${university.tuition}</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Main Content -->
+          <div class="modal-body">
+            <div class="modal-columns">
+              <!-- Left Column - Main Content -->
+              <div class="main-content">
+                <!-- About Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-university"></i> About ${university.name.split(' ')[0]}</h2>
+                  <p>${university.description || 'No description available.'}</p>
+                  
+                  <div class="highlights">
+                    <div class="highlight">
+                      <i class="fas fa-trophy"></i>
+                      <span>${university.tier || 'Nationally Ranked'}</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span>${university.city}, ${caProvinces[university.province] || university.province}</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span>Est. ${university.founded} (${new Date().getFullYear() - university.founded} years of excellence)</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-building"></i>
+                      <span>${isPublic ? 'Public' : 'Private'} ${university.type || 'University'}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="campus-features">
+                    <h3><i class="fas fa-star"></i> Campus Highlights</h3>
+                    <ul>
+                      <li>${campusLife.facilities[0]}</li>
+                      <li>${campusLife.facilities[1]}</li>
+                      <li>${campusLife.facilities[2] || campusLife.facilities[0]}</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <!-- Academics Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-graduation-cap"></i> Academics</h2>
+                  <p>${university.name} offers a comprehensive academic experience with ${academicStats.studentFacultyRatio} student-faculty ratio and an average class size of ${academicStats.averageClassSize} students. The university maintains a strong ${academicStats.retentionRate} first-year retention rate and a ${academicStats.graduationRate} six-year graduation rate.</p>
+                  
+                  <div class="academics-grid">
+                    <div class="academic-info">
+                      <h3>Student-Faculty Ratio</h3>
+                      <div class="value">${academicStats.studentFacultyRatio}</div>
+                      <div class="subtext">Personalized Attention</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Average Class Size</h3>
+                      <div class="value">${academicStats.averageClassSize}</div>
+                      <div class="subtext">Students per class</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Graduation Rate</h3>
+                      <div class="value">${academicStats.graduationRate}</div>
+                      <div class="subtext">Within 6 years</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Retention Rate</h3>
+                      <div class="value">${academicStats.retentionRate}</div>
+                      <div class="subtext">First-year students return</div>
+                    </div>
+                  </div>
+                  
+                  <div class="admission-requirements">
+                    <h3><i class="fas fa-clipboard-check"></i> Admission Requirements</h3>
+                    <div class="requirements-grid">
+                      <div class="requirement">
+                        <span class="label">SAT Range:</span>
+                        <span class="value">${admissionRequirements.sat}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">ACT Range:</span>
+                        <span class="value">${admissionRequirements.act}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">GPA:</span>
+                        <span class="value">${admissionRequirements.gpa}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">Application Deadline:</span>
+                        <span class="value">${admissionRequirements.deadline}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Programs Section -->
+                ${university.popularPrograms && university.popularPrograms.length > 0 ? `
+                  <div class="detail-section">
+                    <h2><i class="fas fa-book-open"></i> Popular Programs</h2>
+                    <p>Explore some of the most sought-after academic programs at ${university.name}.</p>
+                    
+                    <div class="programs-grid">
+                      ${university.popularPrograms.slice(0, 4).map(program => `
+                        <div class="program-card">
+                          <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                          </div>
+                          <h3 class="program-name">${program}</h3>
+                          <p class="program-desc">${['Bachelor', 'Master', 'PhD'][Math.floor(Math.random() * 3)]} Program</p>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+                
+                <!-- Campus Life Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-home"></i> Campus Life</h2>
+                  <p>Experience a vibrant campus community with ${campusLife.clubs} and numerous opportunities for involvement, leadership, and personal growth.</p>
+                  
+                  <div class="campus-life">
+                    <div class="campus-stat">
+                      <i class="fas fa-home"></i>
+                      <div>
+                        <div class="label">Housing</div>
+                        <div class="value">${campusLife.housing}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-users"></i>
+                      <div>
+                        <div class="label">Student Organizations</div>
+                        <div class="value">${campusLife.clubs}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-football-ball"></i>
+                      <div>
+                        <div class="label">Athletics</div>
+                        <div class="value">${campusLife.sports}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-gem"></i>
+                      <div>
+                        <div class="label">Greek Life</div>
+                        <div class="value">${campusLife.greekLife}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-globe-americas"></i>
+                      <div>
+                        <div class="label">International Students</div>
+                        <div class="value">${campusLife.diversity}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-flask"></i>
+                      <div>
+                        <div class="label">Research Funding</div>
+                        <div class="value">${academicStats.researchFunding}</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="campus-resources">
+                    <h3><i class="fas fa-tools"></i> Campus Resources</h3>
+                    <div class="resources-grid">
+                      ${campusLife.facilities.map(facility => `
+                        <div class="resource">
+                          <i class="fas fa-check-circle"></i>
+                          <span>${facility}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right Column - Sidebar -->
+              <div class="sidebar">
+                <!-- Quick Facts Card -->
+                <div class="sidebar-card">
+                  <h3><i class="fas fa-info-circle"></i> Quick Facts</h3>
+                  <div class="facts-list">
+                    <div class="fact">
+                      <span class="fact-label">Institution Type</span>
+                      <span class="fact-value">${isPublic ? 'Public' : 'Private'} ${university.type || 'University'}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Established</span>
+                      <span class="fact-value">${university.founded} (${new Date().getFullYear() - university.founded} years)</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Location</span>
+                      <span class="fact-value">${university.city}, ${caProvinces[university.province] || university.province}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Campus Setting</span>
+                      <span class="fact-value">${campusLife.campusSetting}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Acceptance Rate</span>
+                      <span class="fact-value">${university.acceptanceRate}% ${isIvy ? '(Highly Selective)' : isPublic ? '(Competitive)' : '(Selective)'}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Student Population</span>
+                      <span class="fact-value">${university.students.toLocaleString()}</span>
+                    </div>
+                    ${university.tuition ? `
+                      <div class="fact">
+                        <span class="fact-label">Tuition</span>
+                        <span class="fact-value">${university.tuition} ${isPublic ? '(in-state)' : ''}</span>
+                      </div>
+                    ` : ''}
+                    <div class="fact">
+                      <span class="fact-label">Student-Faculty Ratio</span>
+                      <span class="fact-value">${academicStats.studentFacultyRatio}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Graduation Rate</span>
+                      <span class="fact-value">${academicStats.graduationRate} (6 years)</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Contact & Important Dates -->
+                <div class="sidebar-card">
+                  <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+                  <div class="contact-list">
+                    <div class="contact-item">
+                      <i class="fas fa-globe"></i>
+                      <div>
+                        <div class="label">Website</div>
+                        ${university.website ? `
+                          <a href="${university.website}" target="_blank" class="value">
+                            ${university.website.replace('https://', '').replace('http://', '')}
+                          </a>
+                        ` : '<span class="value">N/A</span>'}
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-phone"></i>
+                      <div>
+                        <div class="label">Admissions Office</div>
+                        <span class="value">(${Math.floor(Math.random() * 900) + 100}) ${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <div>
+                        <div class="label">Campus Address</div>
+                        <span class="value">${university.city}, ${caProvinces[university.province] || university.province} ${Math.floor(Math.random() * 90000) + 10000}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-calendar-day"></i>
+                      <div>
+                        <div class="label">Application Deadline</div>
+                        <span class="value">${admissionRequirements.deadline}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-graduation-cap"></i>
+                      <div>
+                        <div class="label">Graduation Rate</div>
+                        <span class="value">${academicStats.graduationRate} (6 years)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Virtual Tour & Visit -->
+                <div class="sidebar-card virtual-tour">
+                  <h3><i class="fas fa-vr-cardboard"></i> Visit ${university.name.split(' ')[0]}</h3>
+                  <div class="tour-thumbnail" style="background-image: url('https://source.unsplash.com/random/600x400/?university,${encodeURIComponent(university.name.split(' ')[0])}');">
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  </div>
+                  <p>Experience our campus through a virtual tour or schedule an in-person visit.</p>
+                  <div class="tour-buttons">
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-calendar-alt"></i> Schedule Visit
+                    </button>
+                    <button class="btn btn-primary btn-block">
+                      <i class="fas fa-play-circle"></i> Virtual Tour
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="cta-box">
+                  <h3>Ready to apply to ${university.name.split(' ')[0]}?</h3>
+                  <p>Begin your journey at one of the nation's top institutions. The application process is straightforward and our admissions team is here to help.</p>
+                  <div class="cta-buttons">
+                    <button class="btn btn-primary btn-block">
+                      <i class="fas fa-edit"></i> Start Application
+                    </button>
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-download"></i> View Requirements
+                    </button>
+                  </div>
+                  <div class="cta-footer">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Application fee: ${isPublic ? '$50' : '$75'} (waivers available)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add to DOM
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+      
+      // Clean up when modal is closed
+      modal.addEventListener('transitionend', function handler() {
+        if (!document.body.contains(modal)) {
+          document.body.style.overflow = '';
+          modal.removeEventListener('transitionend', handler);
+        }
+      });
+    }
+    
+    // Toggle between light and dark theme
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+    }
+    
+    // Initialize the app
+    function init() {
+      // Get DOM elements
+      searchInput = document.getElementById('searchInput');
+      provinceFilter = document.getElementById('provinceFilter');
+      typeFilter = document.getElementById('typeFilter');
+      resetButton = document.getElementById('resetFilters');
+      resultCount = document.getElementById('resultCount');
+      totalCount = document.getElementById('totalCount');
+      loadingIndicator = document.getElementById('loadingIndicator');
+      universityGrid = document.getElementById('universityGrid');
+      
+      // Create favorites button in header if it doesn't exist
+      const header = document.querySelector('header');
+      if (header && !document.getElementById('favoritesButton')) {
+        const favoritesButton = document.createElement('button');
+        favoritesButton.id = 'favoritesButton';
+        favoritesButton.className = 'favorites-button';
+        favoritesButton.innerHTML = `
+          <i class="fas fa-heart"></i>
+          <span class="favorite-badge" id="favoriteBadge"></span>
+          Favorites
+        `;
+        favoritesButton.onclick = () => {
+          const favoritesOnly = document.getElementById('favoritesOnly');
+          if (favoritesOnly) {
+            favoritesOnly.checked = !favoritesOnly.checked;
+            handleFilter();
+          }
+        };
+        header.appendChild(favoritesButton);
+        
+        // Add theme toggle button
+        const themeToggle = document.createElement('button');
+        themeToggle.id = 'themeToggle';
+        themeToggle.className = 'theme-toggle';
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        themeToggle.title = 'Toggle dark mode';
+        themeToggle.onclick = toggleTheme;
+        header.appendChild(themeToggle);
+        
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+      }
+      
+      // Initialize filters
+      initFilters();
+      
+      // Add event listeners
+      searchInput.addEventListener('input', handleSearch);
+      provinceFilter.addEventListener('change', handleFilter);
+      typeFilter.addEventListener('change', handleFilter);
+      resetButton.addEventListener('click', resetFilters);
+      window.addEventListener('scroll', handleScroll);
+      
+      // Add keyboard shortcut for search (Ctrl+F or Cmd+F)
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+      
+      // Initial load
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      updateFavoriteBadge();
+      loadMore();
+    }
+    
+    // Start the app when the DOM is fully loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>

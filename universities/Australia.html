@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UK Universities</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      /* Primary Colors */
+      --primary: #2c3e50;     /* Deep Navy Blue - Primary brand color */
+      --primary-light: #3d5a80;  /* Lighter shade for hover states */
+      --secondary: #e74c3c;   /* Vibrant Red - For CTAs and important actions */
+      --accent: #3498db;      /* Bright Blue - For interactive elements */
+      
+      /* Neutral Colors */
+      --dark: #2c3e50;       /* Dark text and backgrounds */
+      --light: #f8f9fa;      /* Light backgrounds */
+      --gray-100: #f8f9fa;   /* Lightest gray */
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #ced4da;
+      --gray-500: #adb5bd;
+      --gray-600: #6c757d;
+      --gray-700: #495057;
+      --gray-800: #343a40;
+      --gray-900: #212529;
+      
+      /* UI Colors */
+      --success: #28a745;    /* Green */
+      --info: #17a2b8;       /* Teal */
+      --warning: #ffc107;    /* Yellow */
+      --danger: #dc3545;     /* Red */
+      
+      /* Backgrounds */
+      --card-bg: #ffffff;    /* White background for cards */
+      --body-bg: #f8f9fa;    /* Light gray background for page */
+      --input-bg: #ffffff;   /* White background for inputs */
+      
+      /* Text */
+      --text: #2c3e50;       /* Dark blue-gray for primary text */
+      --text-secondary: #6c757d; /* Gray for secondary text */
+      --text-light: #f8f9fa; /* Light text for dark backgrounds */
+      
+      /* Borders */
+      --border: #dee2e6;     /* Light gray border */
+      --border-radius: 8px;  /* Default border radius */
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      
+      /* Transitions */
+      --transition: all 0.3s ease;
+    }
+    
+    [data-theme="dark"] {
+      /* Dark theme overrides */
+      --primary: #3498db;        /* Brighter blue for dark mode */
+      --primary-light: #4aa3e8;  /* Lighter blue for hover states */
+      --secondary: #e74c3c;      /* Same red for consistency */
+      --accent: #5dade2;         /* Softer blue for dark mode */
+      
+      /* Dark theme backgrounds */
+      --card-bg: #2d3436;        /* Dark gray for cards */
+      --body-bg: #1e272e;        /* Dark blue-gray for page */
+      --input-bg: #2d3436;       /* Dark gray for inputs */
+      
+      /* Text colors for dark theme */
+      --text: #f8f9fa;           /* Light text for dark backgrounds */
+      --text-secondary: #b2bec3;  /* Lighter gray for secondary text */
+      
+      /* Borders */
+      --border: #3d484d;         /* Slightly lighter than card bg */
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--body-bg);
+      padding: 0;
+      margin: 0;
+      transition: var(--transition);
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: 0.75rem 2rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      background-color: rgba(44, 62, 80, 0.95);
+    }
+    
+    [data-theme="dark"] header {
+      background-color: rgba(30, 39, 46, 0.95);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo i {
+      color: var(--accent);
+      font-size: 1.75rem;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    
+    .theme-toggle,
+    .favorites-button {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .theme-toggle:hover,
+    .favorites-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .theme-toggle:active,
+    .favorites-button:active {
+      transform: translateY(0);
+    }
+    
+    .favorites-button {
+      position: relative;
+    }
+    
+    .favorite-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 2px solid var(--primary);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .search-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      align-items: end;
+      transition: var(--transition);
+    }
+    
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-width: 200px;
+      flex: 1;
+      position: relative;
+    }
+    
+    .filter-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    
+    .filter-group select,
+    .filter-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      background-color: var(--input-bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .filter-group select:focus,
+    .filter-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    }
+    
+    .search-button {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1px;
+    }
+    
+    .search-button button {
+      width: 100%;
+      height: 100%;
+      min-height: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border: none;
+      border-radius: var(--border-radius);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .search-button button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    }
+    
+    .search-button button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .result-count {
+      text-align: center;
+      color: var(--text-secondary);
+      margin: 1rem 0 2rem;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      max-width: 800px;
+      margin: 1rem auto 2rem;
+    }
+    
+    .university-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .university-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+    }
+    
+    .university-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    
+    .university-image {
+      position: relative;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .university-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .university-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    
+    .university-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 1000px;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .university-modal.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      transition: all 0.2s ease;
+    }
+    
+    .close-modal:hover {
+      background: rgba(0, 0, 0, 0.5);
+      transform: rotate(90deg);
+    }
+    
+    /* Modal Header */
+    .modal-header {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .modal-hero {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .modal-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .modal-hero:hover img {
+      transform: scale(1.05);
+    }
+    
+    .university-logo {
+      position: absolute;
+      bottom: -2rem;
+      left: 2rem;
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: white;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+    
+    .university-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .header-content {
+      padding: 2.5rem 2rem 1.5rem;
+      background: var(--card-bg);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header-content h1 {
+      margin: 0 0 0.5rem;
+      color: var(--primary);
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    
+    .university-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .university-type {
+      background: var(--primary-light);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .divider {
+      color: var(--gray-400);
+    }
+    
+    .university-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .stat i {
+      color: var(--primary);
+      font-size: 1.1rem;
+      width: 1.5rem;
+      text-align: center;
+    }
+    
+    /* Modal Body */
+    .modal-body {
+      padding: 0 2rem 2rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+    
+    .modal-columns {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    
+    .main-content {
+      min-width: 0; /* Fix for flexbox overflow */
+    }
+    
+    .sidebar {
+      position: relative;
+    }
+    
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    
+    /* Detail Sections */
+    .detail-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .detail-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .detail-section h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .detail-section h2 i {
+      color: var(--primary-light);
+      font-size: 1.2em;
+    }
+    
+    .detail-section h3 {
+      color: var(--text);
+      font-size: 1.25rem;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .detail-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0 0 1.5rem;
+    }
+    
+    /* Highlights */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    
+    .highlight {
+      background: rgba(52, 152, 219, 0.1);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .highlight i {
+      color: var(--primary-light);
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    /* Campus Features */
+    .campus-features {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .campus-features h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .campus-features ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .campus-features li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    
+    /* Admission Requirements */
+    .admission-requirements {
+      margin-top: 1.5rem;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .admission-requirements h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .requirement {
+      display: flex;
+      flex-direction: column;
+      background: rgba(var(--primary-rgb), 0.05);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+    }
+    
+    .requirement .label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .requirement .value {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    /* Campus Resources */
+    .campus-resources {
+      margin-top: 1.5rem;
+    }
+    
+    .campus-resources h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    
+    .resource {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    
+    .resource i {
+      color: var(--success);
+    }
+    
+    /* Enhanced Sidebar Styles */
+    .tour-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    
+    .cta-buttons {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    
+    .cta-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .cta-footer i {
+      color: var(--info);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .requirements-grid,
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tour-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .campus-stat {
+        flex: 1 1 100%;
+      }
+    }
+    
+    /* Academics Grid */
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .academic-info {
+      background: var(--card-bg);
+      padding: 1.25rem;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .academic-info:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .academic-info h3 {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+      justify-content: center;
+    }
+    
+    .academic-info .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .academic-info .subtext {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Programs Grid */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .program-card {
+      background: var(--body-bg);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-light);
+    }
+    
+    .program-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+    
+    .program-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+    
+    .program-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Campus Life */
+    .campus-life {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .campus-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .campus-stat i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-top: 0.25rem;
+    }
+    
+    .campus-stat .label {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    
+    .campus-stat .value {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Sidebar Cards */
+    .sidebar-card {
+      background: var(--body-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    
+    .sidebar-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sidebar-card h3 i {
+      color: var(--primary-light);
+    }
+    
+    /* Facts List */
+    .facts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .fact {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 1rem;
+    }
+    
+    .university-link {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    
+    .university-link:hover {
+      text-decoration: underline;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--gray-200);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .filters-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 2rem auto;
+      justify-content: center;
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 1200px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filters-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+    
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        color: #000;
+        font-size: 12pt;
+        line-height: 1.3;
+      }
+      
+      .search-container,
+      button,
+      .university-card button,
+      .theme-toggle,
+      .favorites-button {
+        display: none !important;
+      }
+      
+      .university-card {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      
+      .university-grid {
+        display: block;
+        padding: 0;
+      }
+      
+      .university-details h2 {
+        color: #000 !important;
+        font-size: 14pt !important;
+      }
+      
+      .university-stats {
+        display: none;
+      }
+      
+      .program-tags {
+        display: none;
+      }
+      
+      .university-actions {
+        display: none;
+      }
+      
+      .result-count {
+        display: none;
+      }
+      
+      @page {
+        margin: 1cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Australia Universities</h1>
+      <p>Find and explore universities across the Australia</p>
+    </header>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by name or location...">
+      <select id="stateFilter">
+        <option value="">All States</option>
+      </select>
+      <select id="typeFilter">
+        <option value="">All Types</option>
+      </select>
+      <button id="resetFilters">
+        <i class="fas fa-sync-alt"></i> Reset
+      </button>
+    </div>
+    
+    <div class="result-count">
+      Showing <span id="resultCount">0</span> of <span id="totalCount">0</span> institutions
+    </div>
+    
+    <div id="loadingIndicator" class="loading" style="display: none;">
+      <i class="fas fa-spinner"></i> Loading more universities...
+    </div>
+    
+    <div class="university-grid" id="universityGrid">
+      <!-- University cards will be loaded here -->
+    </div>
+  </div>
+
+  <script>
+    // University data
+     const universities = [
+  { id: 1, name: 'University of Sydney', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Group of Eight', founded: 1850, students: 70000, acceptanceRate: '30%', website: 'https://www.sydney.edu.au', tuition: 'AUD $36,000–$55,000', popularPrograms: ['Medicine', 'Law', 'Engineering'], description: 'Australia’s first university with global reputation in research and teaching.' },
+  { id: 2, name: 'University of Melbourne', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Group of Eight', founded: 1853, students: 65000, acceptanceRate: '33%', website: 'https://www.unimelb.edu.au', tuition: 'AUD $37,000–$58,000', popularPrograms: ['Medicine', 'Arts', 'Science'], description: 'One of the top universities in Australia, known for academic excellence.' },
+  { id: 3, name: 'University of Queensland', state: 'Queensland', city: 'Brisbane', type: 'Public', tier: 'Group of Eight', founded: 1909, students: 55000, acceptanceRate: '40%', website: 'https://www.uq.edu.au', tuition: 'AUD $35,000–$50,000', popularPrograms: ['Biotech', 'Engineering', 'Business'], description: 'Top research institution with strong international outlook.' },
+  { id: 4, name: 'Monash University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Group of Eight', founded: 1958, students: 78000, acceptanceRate: '40%', website: 'https://www.monash.edu', tuition: 'AUD $35,000–$50,000', popularPrograms: ['Pharmacy', 'Business', 'Medicine'], description: 'Globally recognized university with campuses in multiple countries.' },
+  { id: 5, name: 'University of New South Wales (UNSW)', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Group of Eight', founded: 1949, students: 63000, acceptanceRate: '32%', website: 'https://www.unsw.edu.au', tuition: 'AUD $37,000–$52,000', popularPrograms: ['Engineering', 'Law', 'Business'], description: 'Innovation-focused university with strong industry links.' },
+  { id: 6, name: 'Australian National University (ANU)', state: 'Australian Capital Territory', city: 'Canberra', type: 'Public', tier: 'Group of Eight', founded: 1946, students: 25000, acceptanceRate: '35%', website: 'https://www.anu.edu.au', tuition: 'AUD $36,000–$53,000', popularPrograms: ['Politics', 'Science', 'Economics'], description: 'World-leading research university located in the capital city.' },
+  { id: 7, name: 'University of Western Australia (UWA)', state: 'Western Australia', city: 'Perth', type: 'Public', tier: 'Group of Eight', founded: 1911, students: 25000, acceptanceRate: '38%', website: 'https://www.uwa.edu.au', tuition: 'AUD $34,000–$48,000', popularPrograms: ['Mining Engineering', 'Medicine', 'Law'], description: 'Premier institution in WA, known for innovation and quality education.' },
+  { id: 8, name: 'University of Adelaide', state: 'South Australia', city: 'Adelaide', type: 'Public', tier: 'Group of Eight', founded: 1874, students: 27000, acceptanceRate: '40%', website: 'https://www.adelaide.edu.au', tuition: 'AUD $33,000–$45,000', popularPrograms: ['Engineering', 'Agriculture', 'Law'], description: 'One of Australia’s oldest universities, leading in research and teaching.' },
+  { id: 9, name: 'Macquarie University', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Mid-tier', founded: 1964, students: 45000, acceptanceRate: '50%', website: 'https://www.mq.edu.au', tuition: 'AUD $32,000–$44,000', popularPrograms: ['Actuarial Studies', 'Linguistics', 'Finance'], description: 'Innovative and flexible university with strong industry focus.' },
+  { id: 10, name: 'University of Technology Sydney (UTS)', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Rising Star', founded: 1988, students: 47000, acceptanceRate: '48%', website: 'https://www.uts.edu.au', tuition: 'AUD $34,000–$46,000', popularPrograms: ['IT', 'Design', 'Business'], description: 'Modern university with focus on technology, creativity, and entrepreneurship.' },
+  { id: 11, name: 'RMIT University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Technology-Focused', founded: 1887, students: 87000, acceptanceRate: '55%', website: 'https://www.rmit.edu.au', tuition: 'AUD $30,000–$43,000', popularPrograms: ['Design', 'Aviation', 'Engineering'], description: 'Global university of technology and design with strong industry ties.' },
+  { id: 12, name: 'Deakin University', state: 'Victoria', city: 'Geelong / Melbourne', type: 'Public', tier: 'Mid-tier', founded: 1974, students: 64000, acceptanceRate: '60%', website: 'https://www.deakin.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Education', 'Health Sciences', 'IT'], description: 'Known for online education, innovation, and student satisfaction.' },
+  { id: 13, name: 'Griffith University', state: 'Queensland', city: 'Brisbane / Gold Coast', type: 'Public', tier: 'Modern', founded: 1971, students: 50000, acceptanceRate: '60%', website: 'https://www.griffith.edu.au', tuition: 'AUD $30,000–$42,000', popularPrograms: ['Tourism', 'Music', 'Environmental Science'], description: 'Progressive university with strong programs in arts and sciences.' },
+  { id: 14, name: 'La Trobe University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Modern', founded: 1964, students: 39000, acceptanceRate: '65%', website: 'https://www.latrobe.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Humanities', 'Nursing', 'Science'], description: 'Research-intensive university with a focus on social impact.' },
+  { id: 15, name: 'University of Wollongong', state: 'New South Wales', city: 'Wollongong', type: 'Public', tier: 'Rising Star', founded: 1975, students: 32000, acceptanceRate: '60%', website: 'https://www.uow.edu.au', tuition: 'AUD $29,000–$41,000', popularPrograms: ['Computer Science', 'Engineering', 'Education'], description: 'Highly ranked young university with global outlook.' },
+  { id: 16, name: 'Curtin University', state: 'Western Australia', city: 'Perth', type: 'Public', tier: 'Group of Eight*', founded: 1966, students: 60000, acceptanceRate: '55%', website: 'https://www.curtin.edu.au', tuition: 'AUD $32,000–$45,000', popularPrograms: ['Mining Engineering', 'Business', 'Health'], description: 'Large global university strong in mining and engineering.' },
+  { id: 17, name: 'University of Newcastle', state: 'New South Wales', city: 'Newcastle', type: 'Public', tier: 'Mid-tier', founded: 1965, students: 37000, acceptanceRate: '60%', website: 'https://www.newcastle.edu.au', tuition: 'AUD $30,000–$42,000', popularPrograms: ['Medicine', 'Engineering', 'Education'], description: 'Known for strong health & engineering research.' },
+  { id: 18, name: 'University of South Australia', state: 'South Australia', city: 'Adelaide', type: 'Public', tier: 'Modern', founded: 1991, students: 39000, acceptanceRate: '65%', website: 'https://www.unisa.edu.au', tuition: 'AUD $29,000–$40,000', popularPrograms: ['Business', 'Health', 'Law'], description: 'Australia’s largest university by campus area with strong business programs.' },
+  { id: 19, name: 'University of Tasmania', state: 'Tasmania', city: 'Hobart', type: 'Public', tier: 'Regional', founded: 1890, students: 33000, acceptanceRate: '70%', website: 'https://www.utas.edu.au', tuition: 'AUD $28,000–$38,000', popularPrograms: ['Marine Science', 'Environmental Studies', 'Law'], description: 'Focus on marine and Antarctic research.' },
+  { id: 20, name: 'Charles Sturt University', state: 'New South Wales', city: 'Bathurst', type: 'Public', tier: 'Regional', founded: 1989, students: 43000, acceptanceRate: '75%', website: 'https://www.csu.edu.au', tuition: 'AUD $27,000–$38,000', popularPrograms: ['Veterinary Science', 'Agriculture', 'Education'], description: 'Strong in agriculture, veterinary and health education.' },
+  { id: 21, name: 'Western Sydney University', state: 'New South Wales', city: 'Parramatta', type: 'Public', tier: 'Modern', founded: 1989, students: 48000, acceptanceRate: '70%', website: 'https://www.westernsydney.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Nursing', 'Social Sciences', 'Engineering'], description: 'Community-focused university with diverse campuses.' },
+  { id: 22, name: 'Victoria University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Urban', founded: 1916, students: 40000, acceptanceRate: '72%', website: 'https://www.vu.edu.au', tuition: 'AUD $26,000–$36,000', popularPrograms: ['Arts', 'Business', 'Sports Management'], description: 'Strong vocational pathways and city-based campuses.' },
+  { id: 23, name: 'Federation University Australia', state: 'Victoria', city: 'Ballarat', type: 'Public', tier: 'Regional', founded: 2014, students: 26000, acceptanceRate: '80%', website: 'https://federation.edu.au', tuition: 'AUD $25,000–$35,000', popularPrograms: ['Education', 'Health', 'Nursing'], description: 'Regional university with focus on local community needs.' },
+  { id: 24, name: 'TAFE NSW', state: 'New South Wales', city: 'Various', type: 'College', tier: 'TAFE', founded: 1878, students: 500000, acceptanceRate: 'Open', website: 'https://www.tafensw.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Trades', 'Hospitality', 'Business'], description: 'Largest vocational education and training provider in Australia.' },
+  { id: 25, name: 'TAFE Queensland', state: 'Queensland', city: 'Various', type: 'College', tier: 'TAFE', founded: 1882, students: 200000, acceptanceRate: 'Open', website: 'https://tafeqld.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Automotive', 'Health', 'Construction'], description: 'Leading provider of vocational training across Queensland.' },
+  { id: 26, name: 'Box Hill Institute', state: 'Victoria', city: 'Box Hill', type: 'College', tier: 'TAFE', founded: 1924, students: 30000, acceptanceRate: 'Open', website: 'https://www.boxhill.edu.au', tuition: 'AUD $6,000–$14,000', popularPrograms: ['Culinary Arts', 'Design', 'Business'], description: 'Specialist vocational training with strong industry links.' },
+  { id: 27, name: 'TAFE Western Australia', state: 'Western Australia', city: 'Various', type: 'College', tier: 'TAFE', founded: 1970, students: 150000, acceptanceRate: 'Open', website: 'https://www.dtwd.wa.gov.au/TAFE', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Mining', 'Trades', 'Health'], description: 'State-wide vocational provider across WA.' },
+  { id: 28, name: 'South Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 2009, students: 30000, acceptanceRate: 'Open', website: 'https://www.southmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Automotive', 'Hospitality', 'Business'], description: 'Perth based vocational training institute.' },
+  { id: 29, name: 'TAFE South Australia', state: 'South Australia', city: 'Various', type: 'College', tier: 'TAFE', founded: 1971, students: 100000, acceptanceRate: 'Open', website: 'https://www.tafesa.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Culinary Arts', 'Automotive', 'Health'], description: 'SA’s main vocational training provider.' },
+  { id: 30, name: 'TAFE Victoria', state: 'Victoria', city: 'Various', type: 'College', tier: 'TAFE', founded: 1854, students: 200000, acceptanceRate: 'Open', website: 'https://www.vic.gov.au/education/vet', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Trades', 'Health', 'Business'], description: 'Largest vocational education provider in Victoria.' },
+  { id: 31, name: 'Australian Catholic University (ACU)', state: 'Multiple States', city: 'Melbourne, Sydney, Brisbane', type: 'Public', tier: 'Specialized', founded: 1991, students: 34000, acceptanceRate: '65%', website: 'https://www.acu.edu.au', tuition: 'AUD $28,000–$36,000', popularPrograms: ['Education', 'Nursing', 'Theology'], description: 'National university with Christian ethos and strong focus on education and health sciences.' },
+  { id: 32, name: 'Southern Cross University', state: 'New South Wales', city: 'Lismore', type: 'Public', tier: 'Regional', founded: 1994, students: 16000, acceptanceRate: '70%', website: 'https://www.scu.edu.au', tuition: 'AUD $27,000–$36,000', popularPrograms: ['Marine Science', 'Tourism', 'Education'], description: 'Modern regional university with strong environmental and marine programs.' },
+  { id: 33, name: 'University of the Sunshine Coast (UniSC)', state: 'Queensland', city: 'Sippy Downs', type: 'Public', tier: 'Regional', founded: 1996, students: 18000, acceptanceRate: '75%', website: 'https://www.usc.edu.au', tuition: 'AUD $27,000–$35,000', popularPrograms: ['Education', 'Business', 'Health'], description: 'Fast-growing regional university with a modern campus.' },
+  { id: 34, name: 'Charles Darwin University', state: 'Northern Territory', city: 'Darwin', type: 'Public', tier: 'Regional', founded: 2003, students: 22000, acceptanceRate: '70%', website: 'https://www.cdu.edu.au', tuition: 'AUD $26,000–$35,000', popularPrograms: ['Indigenous Studies', 'Nursing', 'Environmental Science'], description: 'Primary university in Northern Territory with focus on remote and Indigenous education.' },
+  { id: 35, name: 'University of Notre Dame Australia', state: 'Western Australia', city: 'Fremantle', type: 'Private', tier: 'Faith-Based', founded: 1989, students: 12000, acceptanceRate: '55%', website: 'https://www.notredame.edu.au', tuition: 'AUD $30,000–$38,000', popularPrograms: ['Medicine', 'Nursing', 'Philosophy'], description: 'Catholic university known for ethics, education, and health sciences.' },
+  { id: 36, name: 'Australian Institute of Music (AIM)', state: 'New South Wales', city: 'Sydney, Melbourne', type: 'Private', tier: 'Specialized', founded: 1968, students: 1500, acceptanceRate: 'Open', website: 'https://www.aim.edu.au', tuition: 'AUD $25,000–$33,000', popularPrograms: ['Music', 'Performing Arts'], description: 'Leading specialist institution for music and performing arts.' },
+  { id: 37, name: 'Le Cordon Bleu Australia', state: 'South Australia', city: 'Adelaide, Sydney, Melbourne', type: 'Private', tier: 'Specialized', founded: 1996, students: 4000, acceptanceRate: 'Open', website: 'https://www.cordonbleu.edu/australia', tuition: 'AUD $35,000–$45,000', popularPrograms: ['Culinary Arts', 'Hospitality Management'], description: 'World-renowned culinary and hospitality institute.' },
+  { id: 38, name: 'JMC Academy', state: 'New South Wales', city: 'Sydney, Melbourne, Brisbane', type: 'Private', tier: 'Specialized', founded: 1982, students: 3000, acceptanceRate: 'Open', website: 'https://www.jmcacademy.edu.au', tuition: 'AUD $25,000–$35,000', popularPrograms: ['Animation', 'Audio Engineering', 'Game Design'], description: 'Creative arts college with industry-grade facilities.' },
+  { id: 39, name: 'Deakin College', state: 'Victoria', city: 'Melbourne', type: 'Private', tier: 'Pathway', founded: 1996, students: 2500, acceptanceRate: 'Open', website: 'https://www.deakincollege.edu.au', tuition: 'AUD $20,000–$30,000', popularPrograms: ['Business', 'IT', 'Health'], description: 'Pathway college for international students to enter Deakin University.' },
+  { id: 40, name: 'Melbourne Polytechnic', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1912, students: 30000, acceptanceRate: 'Open', website: 'https://www.melbournepolytechnic.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Trades', 'Design', 'Music'], description: 'One of Australia’s oldest and most respected polytechnic institutes.' },
+  { id: 41, name: 'Kangan Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1925, students: 40000, acceptanceRate: 'Open', website: 'https://www.kangan.edu.au', tuition: 'AUD $5,000–$10,000', popularPrograms: ['Automotive', 'Fashion', 'Business'], description: 'TAFE provider with a focus on automotive and fashion education.' },
+  { id: 42, name: 'Holmesglen Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1982, students: 50000, acceptanceRate: 'Open', website: 'https://www.holmesglen.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Nursing', 'Building Design', 'Hospitality'], description: 'Specialized in nursing, hospitality and building design.' },
+  { id: 43, name: 'North Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 1900s, students: 30000, acceptanceRate: 'Open', website: 'https://www.northmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Graphic Design', 'Cyber Security', 'Engineering'], description: 'Advanced vocational training in technology and design.' },
+  { id: 44, name: 'TAFE Gippsland', state: 'Victoria', city: 'Gippsland', type: 'College', tier: 'TAFE', founded: 1930s, students: 10000, acceptanceRate: 'Open', website: 'https://www.tafegippsland.edu.au', tuition: 'AUD $5,000–$10,000', popularPrograms: ['Agriculture', 'Nursing', 'Trades'], description: 'Regional TAFE focused on local industries.' },
+  { id: 45, name: 'Canberra Institute of Technology (CIT)', state: 'Australian Capital Territory', city: 'Canberra', type: 'College', tier: 'TAFE', founded: 1928, students: 26000, acceptanceRate: 'Open', website: 'https://cit.edu.au', tuition: 'AUD $5,000–$11,000', popularPrograms: ['IT', 'Trades', 'Design'], description: 'Main vocational provider in the nations capital.' },
+  { id: 46, name: 'South Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 1900s, students: 27000, acceptanceRate: 'Open', website: 'https://www.southmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Marine Studies', 'Engineering', 'Health'], description: 'Large TAFE institute offering diverse vocational training including maritime studies.' },
+  { id: 47, name: 'Box Hill Institute', state: 'Victoria', city: 'Box Hill', type: 'College', tier: 'TAFE', founded: 1924, students: 40000, acceptanceRate: 'Open', website: 'https://www.boxhill.edu.au', tuition: 'AUD $5,000–$11,000', popularPrograms: ['Music', 'Nursing', 'Automotive'], description: 'Renowned TAFE provider known for music, IT, and practical health training.' },
+  { id: 48, name: 'William Angliss Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1940, students: 23000, acceptanceRate: 'Open', website: 'https://www.angliss.edu.au', tuition: 'AUD $5,000–$14,000', popularPrograms: ['Hospitality', 'Culinary Arts', 'Event Management'], description: 'Premier training center for hospitality, food, and tourism industries.' },
+  { id: 49, name: 'TAFE Queensland', state: 'Queensland', city: 'Brisbane & Regional', type: 'College', tier: 'TAFE', founded: 1882, students: 120000, acceptanceRate: 'Open', website: 'https://tafeqld.edu.au', tuition: 'AUD $5,000–$13,000', popularPrograms: ['Trades', 'Business', 'Health'], description: 'Queensland’s largest vocational training provider offering a broad range of TAFE courses.' },
+  { id: 50, name: 'TAFE NSW', state: 'New South Wales', city: 'Sydney & Regional', type: 'College', tier: 'TAFE', founded: 1890s, students: 500000+, acceptanceRate: 'Open', website: 'https://www.tafensw.edu.au', tuition: 'AUD $5,000–$14,000', popularPrograms: ['Construction', 'Creative Industries', 'Health'], description: 'Australia’s largest vocational education provider with massive reach across NSW.' }
+];
+
+
+
+const usStates = {
+      England: 'England',
+      Scotland: 'Scotland',
+      Wales: 'Wales',
+      'Northern Ireland': 'Northern Ireland'
+    };
+    // University types and tiers
+     // University types and tiers
+     const universityTypes = [
+      'Public', 'Private', 'Collegiate', 'Specialist'
+    ];
+
+    const universityTiers = [
+      'Ivy League', 'Top 10 National', 'Top 25 National',
+      'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
+    ];
+
+    // App state
+    let isLoading = false;
+    let currentPage = 1;
+    const itemsPerPage = 12;
+    let filteredUniversities = [];
+
+    // DOM elements
+    let searchInput, stateFilter, typeFilter, resetButton;
+    let resultCount, totalCount, loadingIndicator, universityGrid;
+
+    // Initialize the app
+    function init() {
+      // Get DOM elements
+      searchInput = document.getElementById('searchInput');
+      stateFilter = document.getElementById('stateFilter');
+      typeFilter = document.getElementById('typeFilter');
+      resetButton = document.getElementById('resetFilters');
+      resultCount = document.getElementById('resultCount');
+      totalCount = document.getElementById('totalCount');
+      loadingIndicator = document.getElementById('loadingIndicator');
+      universityGrid = document.getElementById('universityGrid');
+
+      // Initialize filters
+      initFilters();
+
+      // Add event listeners
+      searchInput.addEventListener('input', handleSearch);
+      stateFilter.addEventListener('change', handleFilter);
+      typeFilter.addEventListener('change', handleFilter);
+      resetButton.addEventListener('click', resetFilters);
+      window.addEventListener('scroll', handleScroll);
+
+      // Initial load
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      loadMore();
+    }
+
+    // Initialize filter dropdowns
+    function initFilters() {
+      // States
+      Object.entries(usStates).forEach(([code, name]) => {
+        const option = document.createElement('option');
+        option.value = code;
+        option.textContent = name;
+        stateFilter.appendChild(option);
+      });
+
+      // Types
+      universityTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeFilter.appendChild(option);
+      });
+    }
+
+    // Handle search input
+    function handleSearch() {
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Handle filter changes
+    function handleFilter() {
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Reset all filters
+    function resetFilters() {
+      searchInput.value = '';
+      stateFilter.value = '';
+      typeFilter.value = '';
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Get filtered universities based on current filters
+    function getFilteredUniversities() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const state = stateFilter.value;
+      const type = typeFilter.value;
+      
+      return universities.filter(univ => {
+        const matchesSearch = !searchTerm || 
+          univ.name.toLowerCase().includes(searchTerm) ||
+          univ.city.toLowerCase().includes(searchTerm) ||
+          univ.state.toLowerCase().includes(searchTerm) ||
+          (usStates[univ.state] && usStates[univ.state].toLowerCase().includes(searchTerm));
+        
+        const matchesState = !state || univ.state === state;
+        const matchesType = !type || univ.type === type;
+        
+        return matchesSearch && matchesState && matchesType;
+      });
+    }
+
+    // Update result counts
+    function updateResultCounts() {
+      const displayedCount = Math.min(filteredUniversities.length, currentPage * itemsPerPage);
+      resultCount.textContent = displayedCount.toLocaleString();
+      totalCount.textContent = filteredUniversities.length.toLocaleString();
+    }
+
+    // Handle scroll for infinite loading
+    function handleScroll() {
+      if (isLoading) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const scrollThreshold = 100; // pixels from bottom
+      
+      if (scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+        loadMore();
+      }
+    }
+
+    // Load more universities
+    function loadMore() {
+      if (isLoading || (currentPage * itemsPerPage) >= filteredUniversities.length) {
+        return;
+      }
+      
+      isLoading = true;
+      loadingIndicator.style.display = 'block';
+      
+      // Simulate network delay
+      setTimeout(() => {
+        currentPage++;
+        const start = 0;
+        const end = currentPage * itemsPerPage;
+        const moreUniversities = filteredUniversities.slice(start, end);
+        
+        renderUniversities(moreUniversities, false);
+        updateResultCounts();
+        
+        isLoading = false;
+        loadingIndicator.style.display = 'none';
+      }, 500);
+    }
+
+    // Render universities to the grid
+    function renderUniversities(universitiesToRender, append = false) {
+      if (!append) {
+        universityGrid.innerHTML = '';
+      }
+      
+      if (universitiesToRender.length === 0) {
+        universityGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem;">No universities found matching your criteria.</p>';
+        return;
+      }
+      
+      universitiesToRender.forEach(univ => {
+        const card = createUniversityCard(univ);
+        universityGrid.appendChild(card);
+      });
+    }
+
+    function createUniversityCard(university) {
+  const card = document.createElement('div');
+  card.className = 'university-card';
+
+  // ... (favorite button code yahan rahe)
+
+  // Details section (hidden by default)
+  const detailsSection = document.createElement('div');
+  detailsSection.className = 'university-details-section';
+  detailsSection.style.display = 'none';
+  detailsSection.innerHTML = `
+    <div style="padding:1rem 0; border-top:1px solid #eee;">
+      <strong>Description:</strong>
+      <p>${university.description || 'No description available.'}</p>
+      <div><strong>Location:</strong> ${university.city}, ${usStates[university.state] || university.state}</div>
+      <div><strong>Founded:</strong> ${university.founded}</div>
+      <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
+      <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
+      ${university.tuition ? `<div><strong>Tuition:</strong> ${university.tuition}</div>` : ''}
+      ${university.website ? `<div><a href="${university.website}" target="_blank">Official Website</a></div>` : ''}
+    </div>
+  `;
+
+  // Card HTML
+  card.innerHTML = `
+    <div class="university-image" style="background-image: url('https://source.unsplash.com/random/600x400/?university,${encodeURIComponent(university.name.split(' ')[0])}')">
+      <div class="university-tier">${university.tier || 'University'}</div>
+    </div>
+    <div class="university-details">
+      <div class="university-header">
+        <h2>${university.name}</h2>
+        <div class="university-meta">
+          <span class="founded">
+            <i class="far fa-calendar"></i> Est. ${university.founded}
+          </span>
+          <span>•</span>
+          <span class="acceptance">
+            <i class="fas fa-user-graduate"></i> ${university.acceptanceRate}% acceptance
+          </span>
+        </div>
+      </div>
+      <div class="university-stats">
+        <div class="stat" title="Location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>${university.city}, ${usStates[university.state] || university.state}</span>
+        </div>
+        <div class="stat" title="Student population">
+          <i class="fas fa-users"></i>
+          <span>${university.students.toLocaleString()}</span>
+        </div>
+      </div>
+      <div class="university-description">
+        <p>${university.description || 'No description available.'}</p>
+      </div>
+      <div class="university-actions">
+        <button class="btn btn-outline details-btn" type="button">
+          <i class="fas fa-info-circle"></i> Details
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Add details section to card
+  card.appendChild(detailsSection);
+
+  // Details button click handler
+  card.querySelector('.details-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (detailsSection.style.display === 'none') {
+      detailsSection.style.display = 'block';
+      this.innerHTML = '<i class="fas fa-info-circle"></i> Hide Details';
+    } else {
+      detailsSection.style.display = 'none';
+      this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+    }
+  });
+
+  return card;
+}
+    
+    // Toggle favorite status for a university
+    function toggleFavorite(universityId) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const index = favorites.indexOf(universityId);
+      
+      if (index === -1) {
+        favorites.push(universityId);
+      } else {
+        favorites.splice(index, 1);
+      }
+      
+      localStorage.setItem('favoriteUniversities', JSON.stringify(favorites));
+      updateFavoriteBadge();
+    }
+    
+    // Check if a university is in favorites
+    function isFavorite(universityId) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      return favorites.includes(universityId);
+    }
+    
+    // Update the favorite badge count
+    function updateFavoriteBadge() {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const badge = document.getElementById('favoriteBadge');
+      if (badge) {
+        badge.textContent = favorites.length || '';
+        badge.style.display = favorites.length ? 'flex' : 'none';
+      }
+    }
+
+    // Show enhanced university details in a modal
+    function showUniversityDetails(universityId) {
+      const university = universities.find(u => u.id === universityId);
+      if (!university) return;
+      
+      // Generate campus images
+      const campusImage = `https://source.unsplash.com/random/1200x600/?campus,${encodeURIComponent(university.name.split(' ')[0])}`;
+      const logoImage = `https://logo.clearbit.com/${university.website?.replace('https://', '').replace('http://', '')}?size=200`;
+      
+      // Determine university characteristics
+      const isPublic = university.type === 'Public';
+      const isIvy = university.tier === 'Ivy League';
+      const isTechFocused = university.type.includes('Science') || university.type.includes('Engineering');
+      
+      // Generate realistic campus life data based on university type
+      const campusLife = {
+        housing: isIvy ? 'On-campus housing guaranteed for all 4 years' : 
+                  isPublic ? 'On-campus housing for freshmen and sophomores' : 'On-campus housing available',
+        clubs: isIvy ? `${Math.floor(Math.random() * 400) + 400} student organizations` :
+                isPublic ? `${Math.floor(Math.random() * 300) + 200} student organizations` : 
+                `${Math.floor(Math.random() * 150) + 100} student organizations`,
+        sports: isPublic ? 'NCAA Division I' : 
+                isIvy ? 'NCAA Division I (Ivy League)' :
+                'NCAA Division III',
+        greekLife: isIvy ? 'Active Greek life with historic fraternities/sororities' :
+                   isPublic ? 'Strong Greek life presence' :
+                   Math.random() > 0.5 ? 'Greek life available' : 'Limited Greek life',
+        diversity: isTechFocused ? `${Math.floor(Math.random() * 15) + 30}% international students` :
+                    isIvy ? `${Math.floor(Math.random() * 12) + 12}% international students` :
+                    `${Math.floor(Math.random() * 10) + 8}% international students`,
+        facilities: isTechFocused ? 
+                   ['Advanced Research Labs', 'Innovation Center', 'Tech Library'] :
+                   isIvy ? ['Historic Libraries', 'Museums', 'Performing Arts Centers'] :
+                   ['Modern Classrooms', 'Student Center', 'Recreation Center']
+      };
+      
+      // Generate realistic academic stats based on university type
+      const academicStats = {
+        studentFacultyRatio: isIvy ? `${Math.floor(Math.random() * 3) + 5}:1` :
+                              isTechFocused ? `${Math.floor(Math.random() * 4) + 6}:1` :
+                              `${Math.floor(Math.random() * 5) + 10}:1`,
+        averageClassSize: isIvy ? Math.floor(Math.random() * 8) + 10 :
+                            isTechFocused ? Math.floor(Math.random() * 10) + 15 :
+                            Math.floor(Math.random() * 15) + 20,
+        graduationRate: isIvy ? `${Math.floor(Math.random() * 5) + 90}%` :
+                          isPublic ? `${Math.floor(Math.random() * 15) + 70}%` :
+                          `${Math.floor(Math.random() * 10) + 80}%`,
+        retentionRate: isIvy ? `${Math.floor(Math.random() * 3) + 95}%` :
+                         isPublic ? `${Math.floor(Math.random() * 10) + 80}%` :
+                         `${Math.floor(Math.random() * 7) + 85}%`,
+        researchFunding: isTechFocused ? `$${(Math.random() * 300 + 100).toFixed(1)}M` :
+                            isIvy ? `$${(Math.random() * 200 + 50).toFixed(1)}M` :
+                            `$${(Math.random() * 150 + 30).toFixed(1)}M`
+      };
+      
+      // Generate admission requirements
+      const admissionRequirements = {
+        sat: isIvy ? '1450-1570' : 
+                  isTechFocused ? '1400-1550' :
+                  isPublic ? '1200-1450' : '1100-1350',
+        act: isIvy ? '33-35' :
+                  isTechFocused ? '32-35' :
+                  isPublic ? '26-32' : '24-30',
+        gpa: isIvy ? '3.9-4.0' :
+                  isTechFocused ? '3.8-4.0' :
+                  isPublic ? '3.5-4.0' : '3.3-4.0',
+        deadline: isIvy ? 'January 1 (Early Decision: November 1)' :
+                        'January 15 (Early Action: November 15)'
+      };
+      
+      // Create modal HTML
+      const modal = document.createElement('div');
+      modal.className = 'university-modal';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <button class="close-modal" aria-label="Close">&times;</button>
+          
+          <!-- Hero Section with University Image -->
+          <div class="modal-header">
+            <div class="modal-hero">
+              <img src="${campusImage}" alt="${university.name} Campus">
+            </div>
+            <div class="university-logo">
+              <img src="${logoImage}" alt="${university.name} Logo" onerror="this.src='https://via.placeholder.com/200?text=${encodeURIComponent(university.name.split(' ')[0])}';">
+            </div>
+            <div class="header-content">
+              <h1>${university.name}</h1>
+              <div class="university-meta">
+                <span>${university.city}, ${usStates[university.state] || university.state}</span>
+                <span class="divider">•</span>
+                <span>Est. ${university.founded}</span>
+                <span class="divider">•</span>
+                <span class="university-type">${university.type || 'University'}</span>
+              </div>
+              <div class="university-stats">
+                <div class="stat">
+                  <i class="fas fa-users"></i>
+                  <span>${university.students.toLocaleString()} Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>${university.acceptanceRate}% Acceptance Rate</span>
+                </div>
+                ${university.tuition ? `
+                  <div class="stat">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>${university.tuition}</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Main Content -->
+          <div class="modal-body">
+            <div class="modal-columns">
+              <!-- Left Column - Main Content -->
+              <div class="main-content">
+                <!-- About Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-university"></i> About ${university.name.split(' ')[0]}</h2>
+                  <p>${university.description || 'No description available.'}</p>
+                  
+                  <div class="highlights">
+                    <div class="highlight">
+                      <i class="fas fa-trophy"></i>
+                      <span>${university.tier || 'Nationally Ranked'}</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span>${university.city}, ${usStates[university.state] || university.state}</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span>Est. ${university.founded} (${new Date().getFullYear() - university.founded} years of excellence)</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-building"></i>
+                      <span>${isPublic ? 'Public' : 'Private'} ${university.type || 'University'}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="campus-features">
+                    <h3><i class="fas fa-star"></i> Campus Highlights</h3>
+                    <ul>
+                      <li>${campusLife.facilities[0]}</li>
+                      <li>${campusLife.facilities[1]}</li>
+                      <li>${campusLife.facilities[2] || campusLife.facilities[0]}</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <!-- Academics Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-graduation-cap"></i> Academics</h2>
+                  <p>${university.name} offers a comprehensive academic experience with ${academicStats.studentFacultyRatio} student-faculty ratio and an average class size of ${academicStats.averageClassSize} students. The university maintains a strong ${academicStats.retentionRate} first-year retention rate and a ${academicStats.graduationRate} six-year graduation rate.</p>
+                  
+                  <div class="academics-grid">
+                    <div class="academic-info">
+                      <h3>Student-Faculty Ratio</h3>
+                      <div class="value">${academicStats.studentFacultyRatio}</div>
+                      <div class="subtext">Personalized Attention</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Average Class Size</h3>
+                      <div class="value">${academicStats.averageClassSize}</div>
+                      <div class="subtext">Students per class</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Graduation Rate</h3>
+                      <div class="value">${academicStats.graduationRate}</div>
+                      <div class="subtext">Within 6 years</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Retention Rate</h3>
+                      <div class="value">${academicStats.retentionRate}</div>
+                      <div class="subtext">First-year students return</div>
+                    </div>
+                  </div>
+                  
+                  <div class="admission-requirements">
+                    <h3><i class="fas fa-clipboard-check"></i> Admission Requirements</h3>
+                    <div class="requirements-grid">
+                      <div class="requirement">
+                        <span class="label">SAT Range:</span>
+                        <span class="value">${admissionRequirements.sat}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">ACT Range:</span>
+                        <span class="value">${admissionRequirements.act}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">GPA:</span>
+                        <span class="value">${admissionRequirements.gpa}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">Application Deadline:</span>
+                        <span class="value">${admissionRequirements.deadline}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Programs Section -->
+                ${university.popularPrograms && university.popularPrograms.length > 0 ? `
+                  <div class="detail-section">
+                    <h2><i class="fas fa-book-open"></i> Popular Programs</h2>
+                    <p>Explore some of the most sought-after academic programs at ${university.name}.</p>
+                    
+                    <div class="programs-grid">
+                      ${university.popularPrograms.slice(0, 4).map(program => `
+                        <div class="program-card">
+                          <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                          </div>
+                          <h3 class="program-name">${program}</h3>
+                          <p class="program-desc">${['Bachelor', 'Master', 'PhD'][Math.floor(Math.random() * 3)]} Program</p>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+                
+                <!-- Campus Life Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-home"></i> Campus Life</h2>
+                  <p>Experience a vibrant campus community with ${campusLife.clubs} and numerous opportunities for involvement, leadership, and personal growth.</p>
+                  
+                  <div class="campus-life">
+                    <div class="campus-stat">
+                      <i class="fas fa-home"></i>
+                      <div>
+                        <div class="label">Housing</div>
+                        <div class="value">${campusLife.housing}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-users"></i>
+                      <div>
+                        <div class="label">Student Organizations</div>
+                        <div class="value">${campusLife.clubs}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-football-ball"></i>
+                      <div>
+                        <div class="label">Athletics</div>
+                        <div class="value">${campusLife.sports}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-gem"></i>
+                      <div>
+                        <div class="label">Greek Life</div>
+                        <div class="value">${campusLife.greekLife}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-globe-americas"></i>
+                      <div>
+                        <div class="label">International Students</div>
+                        <div class="value">${campusLife.diversity}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-flask"></i>
+                      <div>
+                        <div class="label">Research Funding</div>
+                        <div class="value">${academicStats.researchFunding}</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="campus-resources">
+                    <h3><i class="fas fa-tools"></i> Campus Resources</h3>
+                    <div class="resources-grid">
+                      ${campusLife.facilities.map(facility => `
+                        <div class="resource">
+                          <i class="fas fa-check-circle"></i>
+                          <span>${facility}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right Column - Sidebar -->
+              <div class="sidebar">
+                <!-- Quick Facts Card -->
+                <div class="sidebar-card">
+                  <h3><i class="fas fa-info-circle"></i> Quick Facts</h3>
+                  <div class="facts-list">
+                    <div class="fact">
+                      <span class="fact-label">Institution Type</span>
+                      <span class="fact-value">${isPublic ? 'Public' : 'Private'} ${university.type || 'University'}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Established</span>
+                      <span class="fact-value">${university.founded} (${new Date().getFullYear() - university.founded} years)</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Location</span>
+                      <span class="fact-value">${university.city}, ${usStates[university.state] || university.state}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Campus Setting</span>
+                      <span class="fact-value">${campusLife.campusSetting}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Acceptance Rate</span>
+                      <span class="fact-value">${university.acceptanceRate}% ${isIvy ? '(Highly Selective)' : isPublic ? '(Competitive)' : '(Selective)'}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Student Population</span>
+                      <span class="fact-value">${university.students.toLocaleString()}</span>
+                    </div>
+                    ${university.tuition ? `
+                      <div class="fact">
+                        <span class="fact-label">Tuition</span>
+                        <span class="fact-value">${university.tuition} ${isPublic ? '(in-state)' : ''}</span>
+                      </div>
+                    ` : ''}
+                    <div class="fact">
+                      <span class="fact-label">Student-Faculty Ratio</span>
+                      <span class="fact-value">${academicStats.studentFacultyRatio}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Graduation Rate</span>
+                      <span class="fact-value">${academicStats.graduationRate} (6 years)</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Contact & Important Dates -->
+                <div class="sidebar-card">
+                  <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+                  <div class="contact-list">
+                    <div class="contact-item">
+                      <i class="fas fa-globe"></i>
+                      <div>
+                        <div class="label">Website</div>
+                        ${university.website ? `
+                          <a href="${university.website}" target="_blank" class="value">
+                            ${university.website.replace('https://', '').replace('http://', '')}
+                          </a>
+                        ` : '<span class="value">N/A</span>'}
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-phone"></i>
+                      <div>
+                        <div class="label">Admissions Office</div>
+                        <span class="value">(${Math.floor(Math.random() * 900) + 100}) ${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <div>
+                        <div class="label">Campus Address</div>
+                        <span class="value">${university.city}, ${usStates[university.state] || university.state} ${Math.floor(Math.random() * 90000) + 10000}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-calendar-day"></i>
+                      <div>
+                        <div class="label">Application Deadline</div>
+                        <span class="value">${admissionRequirements.deadline}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-graduation-cap"></i>
+                      <div>
+                        <div class="label">Graduation Rate</div>
+                        <span class="value">${academicStats.graduationRate} (6 years)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Virtual Tour & Visit -->
+                <div class="sidebar-card virtual-tour">
+                  <h3><i class="fas fa-vr-cardboard"></i> Visit ${university.name.split(' ')[0]}</h3>
+                  <div class="tour-thumbnail" style="background-image: url('https://source.unsplash.com/random/600x400/?university,${encodeURIComponent(university.name.split(' ')[0])}');">
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  </div>
+                  <p>Experience our campus through a virtual tour or schedule an in-person visit.</p>
+                  <div class="tour-buttons">
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-calendar-alt"></i> Schedule Visit
+                    </button>
+                    <button class="btn btn-primary btn-block">
+                      <i class="fas fa-play-circle"></i> Virtual Tour
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="cta-box">
+                  <h3>Ready to apply to ${university.name.split(' ')[0]}?</h3>
+                  <p>Begin your journey at one of the nation's top institutions. The application process is straightforward and our admissions team is here to help.</p>
+                  <div class="cta-buttons">
+                    <button class="btn btn-primary btn-block">
+                      <i class="fas fa-edit"></i> Start Application
+                    </button>
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-download"></i> View Requirements
+                    </button>
+                  </div>
+                  <div class="cta-footer">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Application fee: ${isPublic ? '$50' : '$75'} (waivers available)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add to DOM
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+      
+      // Clean up when modal is closed
+      modal.addEventListener('transitionend', function handler() {
+        if (!document.body.contains(modal)) {
+          document.body.style.overflow = '';
+          modal.removeEventListener('transitionend', handler);
+        }
+      });
+    }
+    
+    // Toggle between light and dark theme
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+    }
+    
+    // Initialize the app
+    function init() {
+      // Get DOM elements
+      searchInput = document.getElementById('searchInput');
+      stateFilter = document.getElementById('stateFilter');
+      typeFilter = document.getElementById('typeFilter');
+      resetButton = document.getElementById('resetFilters');
+      resultCount = document.getElementById('resultCount');
+      totalCount = document.getElementById('totalCount');
+      loadingIndicator = document.getElementById('loadingIndicator');
+      universityGrid = document.getElementById('universityGrid');
+      
+      // Create favorites button in header if it doesn't exist
+      const header = document.querySelector('header');
+      if (header && !document.getElementById('favoritesButton')) {
+        const favoritesButton = document.createElement('button');
+        favoritesButton.id = 'favoritesButton';
+        favoritesButton.className = 'favorites-button';
+        favoritesButton.innerHTML = `
+          <i class="fas fa-heart"></i>
+          <span class="favorite-badge" id="favoriteBadge"></span>
+          Favorites
+        `;
+        favoritesButton.onclick = () => {
+          const favoritesOnly = document.getElementById('favoritesOnly');
+          if (favoritesOnly) {
+            favoritesOnly.checked = !favoritesOnly.checked;
+            handleFilter();
+          }
+        };
+        header.appendChild(favoritesButton);
+        
+        // Add theme toggle button
+        const themeToggle = document.createElement('button');
+        themeToggle.id = 'themeToggle';
+        themeToggle.className = 'theme-toggle';
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        themeToggle.title = 'Toggle dark mode';
+        themeToggle.onclick = toggleTheme;
+        header.appendChild(themeToggle);
+        
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+      }
+      
+      // Initialize filters
+      initFilters();
+      
+      // Add event listeners
+      searchInput.addEventListener('input', handleSearch);
+      stateFilter.addEventListener('change', handleFilter);
+      typeFilter.addEventListener('change', handleFilter);
+      resetButton.addEventListener('click', resetFilters);
+      window.addEventListener('scroll', handleScroll);
+      
+      // Add keyboard shortcut for search (Ctrl+F or Cmd+F)
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+      
+      // Initial load
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      updateFavoriteBadge();
+      loadMore();
+    }
+    
+    // Start the app when the DOM is fully loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  </script>
+</body>
+</html>

@@ -339,8 +339,37 @@
       padding: 1.25rem 1.5rem;
       background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 10px;
+      gap: 15px;
+    }
+    
+    .university-btn {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary);
+      border: none;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .university-btn:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .university-btn i {
+      font-size: 1rem;
     }
     
     .country-card h3 i {
@@ -485,7 +514,7 @@
       <h2>Top Countries for Higher Education</h2>
       <div class="country-grid">
         <div class="country-card">
-          <h3>United States</h3>
+          <h3>United States <a href="universities/united-states.html" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -497,7 +526,7 @@
         </div>
 
         <div class="country-card">
-          <h3>United Kingdom</h3>
+          <h3>United Kingdom <a href="universities/united-kingdom.html" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -509,7 +538,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Canada</h3>
+          <h3>Canada <a href="universities/canada.html" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -521,7 +550,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Australia</h3>
+          <h3>Australia <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -533,7 +562,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Germany</h3>
+          <h3>Germany <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -545,7 +574,7 @@
         </div>
 
         <div class="country-card">
-          <h3>France</h3>
+          <h3>France <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -557,7 +586,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Netherlands</h3>
+          <h3>Netherlands <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -569,7 +598,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Singapore</h3>
+          <h3>Singapore <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -581,7 +610,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Japan</h3>
+          <h3>Japan <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -593,7 +622,7 @@
         </div>
 
         <div class="country-card">
-          <h3>South Korea</h3>
+          <h3>South Korea <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -605,7 +634,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Sweden</h3>
+          <h3>Sweden <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -617,19 +646,7 @@
         </div>
 
         <div class="country-card">
-          <h3>New Zealand</h3>
-          <div class="highlight">
-            <strong>Highlights:</strong>
-            <ul>
-              <li>Beautiful natural environment</li>
-              <li>Post-study work allowed</li>
-              <li>Quality education</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="country-card">
-          <h3>Switzerland</h3>
+          <h3>Switzerland <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -641,7 +658,7 @@
         </div>
 
         <div class="country-card">
-          <h3>Finland</h3>
+          <h3>Finland <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -653,7 +670,43 @@
         </div>
 
         <div class="country-card">
-          <h3>Ireland</h3>
+          <h3>New Zealand <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>World-class education system</li>
+              <li>Stunning natural landscapes</li>
+              <li>Post-study work opportunities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>India <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Affordable education</li>
+              <li>Diverse courses</li>
+              <li>Rich cultural experience</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Pakistan <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
+          <div class="highlight">
+            <strong>Highlights:</strong>
+            <ul>
+              <li>Growing education sector</li>
+              <li>Affordable tuition fees</li>
+              <li>Scholarship opportunities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <h3>Ireland <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -665,7 +718,7 @@
         </div>
 
         <div class="country-card">
-          <h3>China</h3>
+          <h3>China <a href="#" class="university-btn"><i class="fas fa-university"></i> View Universities</a></h3>
           <div class="highlight">
             <strong>Highlights:</strong>
             <ul>
@@ -676,29 +729,7 @@
           </div>
         </div>
 
-        <div class="country-card">
-          <h3>India</h3>
-          <div class="highlight">
-            <strong>Highlights:</strong>
-            <ul>
-              <li>IITs/IIMs</li>
-              <li>Regional education hub</li>
-              <li>Major IT exporter</li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="country-card">
-          <h3>Pakistan</h3>
-          <div class="highlight">
-            <strong>Highlights:</strong>
-            <ul>
-              <li>Emerging education system</li>
-              <li>High student migration</li>
-              <li>Growing higher education sector</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   </div>
