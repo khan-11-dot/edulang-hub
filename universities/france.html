@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australia Universities</title>
+  <title>France Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,14 +1044,14 @@
 <body>
   <div class="container">
     <header>
-      <h1>Australia Universities</h1>
-      <p>Find and explore universities across the Australia</p>
+      <h1>France Universities</h1>
+      <p>Find and explore universities across France</p>
     </header>
     
     <div class="search-container">
-      <input type="text" id="searchInput" placeholder="Search by name or location...">
-      <select id="stateFilter">
-        <option value="">All States</option>
+      <input type="text" id="searchInput" placeholder="Search by name, city, or region...">
+      <select id="regionFilter">
+        <option value="">All Regions</option>
       </select>
       <select id="typeFilter">
         <option value="">All Types</option>
@@ -1076,116 +1076,101 @@
 
   <script>
     // University data
-     const universities = [
-  { id: 1, name: 'University of Sydney', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Group of Eight', founded: 1850, students: 70000, acceptanceRate: '30%', website: 'https://www.sydney.edu.au', tuition: 'AUD $36,000–$55,000', popularPrograms: ['Medicine', 'Law', 'Engineering'], description: 'Australia’s first university with global reputation in research and teaching.' },
-  { id: 2, name: 'University of Melbourne', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Group of Eight', founded: 1853, students: 65000, acceptanceRate: '33%', website: 'https://www.unimelb.edu.au', tuition: 'AUD $37,000–$58,000', popularPrograms: ['Medicine', 'Arts', 'Science'], description: 'One of the top universities in Australia, known for academic excellence.' },
-  { id: 3, name: 'University of Queensland', state: 'Queensland', city: 'Brisbane', type: 'Public', tier: 'Group of Eight', founded: 1909, students: 55000, acceptanceRate: '40%', website: 'https://www.uq.edu.au', tuition: 'AUD $35,000–$50,000', popularPrograms: ['Biotech', 'Engineering', 'Business'], description: 'Top research institution with strong international outlook.' },
-  { id: 4, name: 'Monash University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Group of Eight', founded: 1958, students: 78000, acceptanceRate: '40%', website: 'https://www.monash.edu', tuition: 'AUD $35,000–$50,000', popularPrograms: ['Pharmacy', 'Business', 'Medicine'], description: 'Globally recognized university with campuses in multiple countries.' },
-  { id: 5, name: 'University of New South Wales (UNSW)', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Group of Eight', founded: 1949, students: 63000, acceptanceRate: '32%', website: 'https://www.unsw.edu.au', tuition: 'AUD $37,000–$52,000', popularPrograms: ['Engineering', 'Law', 'Business'], description: 'Innovation-focused university with strong industry links.' },
-  { id: 6, name: 'Australian National University (ANU)', state: 'Australian Capital Territory', city: 'Canberra', type: 'Public', tier: 'Group of Eight', founded: 1946, students: 25000, acceptanceRate: '35%', website: 'https://www.anu.edu.au', tuition: 'AUD $36,000–$53,000', popularPrograms: ['Politics', 'Science', 'Economics'], description: 'World-leading research university located in the capital city.' },
-  { id: 7, name: 'University of Western Australia (UWA)', state: 'Western Australia', city: 'Perth', type: 'Public', tier: 'Group of Eight', founded: 1911, students: 25000, acceptanceRate: '38%', website: 'https://www.uwa.edu.au', tuition: 'AUD $34,000–$48,000', popularPrograms: ['Mining Engineering', 'Medicine', 'Law'], description: 'Premier institution in WA, known for innovation and quality education.' },
-  { id: 8, name: 'University of Adelaide', state: 'South Australia', city: 'Adelaide', type: 'Public', tier: 'Group of Eight', founded: 1874, students: 27000, acceptanceRate: '40%', website: 'https://www.adelaide.edu.au', tuition: 'AUD $33,000–$45,000', popularPrograms: ['Engineering', 'Agriculture', 'Law'], description: 'One of Australia’s oldest universities, leading in research and teaching.' },
-  { id: 9, name: 'Macquarie University', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Mid-tier', founded: 1964, students: 45000, acceptanceRate: '50%', website: 'https://www.mq.edu.au', tuition: 'AUD $32,000–$44,000', popularPrograms: ['Actuarial Studies', 'Linguistics', 'Finance'], description: 'Innovative and flexible university with strong industry focus.' },
-  { id: 10, name: 'University of Technology Sydney (UTS)', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Rising Star', founded: 1988, students: 47000, acceptanceRate: '48%', website: 'https://www.uts.edu.au', tuition: 'AUD $34,000–$46,000', popularPrograms: ['IT', 'Design', 'Business'], description: 'Modern university with focus on technology, creativity, and entrepreneurship.' },
-  { id: 11, name: 'RMIT University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Technology-Focused', founded: 1887, students: 87000, acceptanceRate: '55%', website: 'https://www.rmit.edu.au', tuition: 'AUD $30,000–$43,000', popularPrograms: ['Design', 'Aviation', 'Engineering'], description: 'Global university of technology and design with strong industry ties.' },
-  { id: 12, name: 'Deakin University', state: 'Victoria', city: 'Geelong / Melbourne', type: 'Public', tier: 'Mid-tier', founded: 1974, students: 64000, acceptanceRate: '60%', website: 'https://www.deakin.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Education', 'Health Sciences', 'IT'], description: 'Known for online education, innovation, and student satisfaction.' },
-  { id: 13, name: 'Griffith University', state: 'Queensland', city: 'Brisbane / Gold Coast', type: 'Public', tier: 'Modern', founded: 1971, students: 50000, acceptanceRate: '60%', website: 'https://www.griffith.edu.au', tuition: 'AUD $30,000–$42,000', popularPrograms: ['Tourism', 'Music', 'Environmental Science'], description: 'Progressive university with strong programs in arts and sciences.' },
-  { id: 14, name: 'La Trobe University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Modern', founded: 1964, students: 39000, acceptanceRate: '65%', website: 'https://www.latrobe.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Humanities', 'Nursing', 'Science'], description: 'Research-intensive university with a focus on social impact.' },
-  { id: 15, name: 'University of Wollongong', state: 'New South Wales', city: 'Wollongong', type: 'Public', tier: 'Rising Star', founded: 1975, students: 32000, acceptanceRate: '60%', website: 'https://www.uow.edu.au', tuition: 'AUD $29,000–$41,000', popularPrograms: ['Computer Science', 'Engineering', 'Education'], description: 'Highly ranked young university with global outlook.' },
-  { id: 16, name: 'Curtin University', state: 'Western Australia', city: 'Perth', type: 'Public', tier: 'Group of Eight*', founded: 1966, students: 60000, acceptanceRate: '55%', website: 'https://www.curtin.edu.au', tuition: 'AUD $32,000–$45,000', popularPrograms: ['Mining Engineering', 'Business', 'Health'], description: 'Large global university strong in mining and engineering.' },
-  { id: 17, name: 'University of Newcastle', state: 'New South Wales', city: 'Newcastle', type: 'Public', tier: 'Mid-tier', founded: 1965, students: 37000, acceptanceRate: '60%', website: 'https://www.newcastle.edu.au', tuition: 'AUD $30,000–$42,000', popularPrograms: ['Medicine', 'Engineering', 'Education'], description: 'Known for strong health & engineering research.' },
-  { id: 18, name: 'University of South Australia', state: 'South Australia', city: 'Adelaide', type: 'Public', tier: 'Modern', founded: 1991, students: 39000, acceptanceRate: '65%', website: 'https://www.unisa.edu.au', tuition: 'AUD $29,000–$40,000', popularPrograms: ['Business', 'Health', 'Law'], description: 'Australia’s largest university by campus area with strong business programs.' },
-  { id: 19, name: 'University of Tasmania', state: 'Tasmania', city: 'Hobart', type: 'Public', tier: 'Regional', founded: 1890, students: 33000, acceptanceRate: '70%', website: 'https://www.utas.edu.au', tuition: 'AUD $28,000–$38,000', popularPrograms: ['Marine Science', 'Environmental Studies', 'Law'], description: 'Focus on marine and Antarctic research.' },
-  { id: 20, name: 'Charles Sturt University', state: 'New South Wales', city: 'Bathurst', type: 'Public', tier: 'Regional', founded: 1989, students: 43000, acceptanceRate: '75%', website: 'https://www.csu.edu.au', tuition: 'AUD $27,000–$38,000', popularPrograms: ['Veterinary Science', 'Agriculture', 'Education'], description: 'Strong in agriculture, veterinary and health education.' },
-  { id: 21, name: 'Western Sydney University', state: 'New South Wales', city: 'Parramatta', type: 'Public', tier: 'Modern', founded: 1989, students: 48000, acceptanceRate: '70%', website: 'https://www.westernsydney.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Nursing', 'Social Sciences', 'Engineering'], description: 'Community-focused university with diverse campuses.' },
-  { id: 22, name: 'Victoria University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Urban', founded: 1916, students: 40000, acceptanceRate: '72%', website: 'https://www.vu.edu.au', tuition: 'AUD $26,000–$36,000', popularPrograms: ['Arts', 'Business', 'Sports Management'], description: 'Strong vocational pathways and city-based campuses.' },
-  { id: 23, name: 'Federation University Australia', state: 'Victoria', city: 'Ballarat', type: 'Public', tier: 'Regional', founded: 2014, students: 26000, acceptanceRate: '80%', website: 'https://federation.edu.au', tuition: 'AUD $25,000–$35,000', popularPrograms: ['Education', 'Health', 'Nursing'], description: 'Regional university with focus on local community needs.' },
-  { id: 24, name: 'TAFE NSW', state: 'New South Wales', city: 'Various', type: 'College', tier: 'TAFE', founded: 1878, students: 500000, acceptanceRate: 'Open', website: 'https://www.tafensw.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Trades', 'Hospitality', 'Business'], description: 'Largest vocational education and training provider in Australia.' },
-  { id: 25, name: 'TAFE Queensland', state: 'Queensland', city: 'Various', type: 'College', tier: 'TAFE', founded: 1882, students: 200000, acceptanceRate: 'Open', website: 'https://tafeqld.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Automotive', 'Health', 'Construction'], description: 'Leading provider of vocational training across Queensland.' },
-  { id: 26, name: 'Box Hill Institute', state: 'Victoria', city: 'Box Hill', type: 'College', tier: 'TAFE', founded: 1924, students: 30000, acceptanceRate: 'Open', website: 'https://www.boxhill.edu.au', tuition: 'AUD $6,000–$14,000', popularPrograms: ['Culinary Arts', 'Design', 'Business'], description: 'Specialist vocational training with strong industry links.' },
-  { id: 27, name: 'TAFE Western Australia', state: 'Western Australia', city: 'Various', type: 'College', tier: 'TAFE', founded: 1970, students: 150000, acceptanceRate: 'Open', website: 'https://www.dtwd.wa.gov.au/TAFE', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Mining', 'Trades', 'Health'], description: 'State-wide vocational provider across WA.' },
-  { id: 28, name: 'South Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 2009, students: 30000, acceptanceRate: 'Open', website: 'https://www.southmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Automotive', 'Hospitality', 'Business'], description: 'Perth based vocational training institute.' },
-  { id: 29, name: 'TAFE South Australia', state: 'South Australia', city: 'Various', type: 'College', tier: 'TAFE', founded: 1971, students: 100000, acceptanceRate: 'Open', website: 'https://www.tafesa.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Culinary Arts', 'Automotive', 'Health'], description: 'SA’s main vocational training provider.' },
-  { id: 30, name: 'TAFE Victoria', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1854, students: 200000, acceptanceRate: 'Open', website: 'https://www.vic.gov.au/education/vet', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Trades', 'Health', 'Business'], description: 'Largest vocational education provider in Victoria, offering diverse training programs.' },
-  { id: 31, name: 'Australian Catholic University (ACU)', state: 'Multiple States', city: 'Melbourne, Sydney, Brisbane', type: 'Public', tier: 'Specialized', founded: 1991, students: 34000, acceptanceRate: '65%', website: 'https://www.acu.edu.au', tuition: 'AUD $28,000–$36,000', popularPrograms: ['Education', 'Nursing', 'Theology'], description: 'National university with Christian ethos and strong focus on education and health sciences.' },
-  { id: 32, name: 'Southern Cross University', state: 'New South Wales', city: 'Lismore', type: 'Public', tier: 'Regional', founded: 1994, students: 16000, acceptanceRate: '70%', website: 'https://www.scu.edu.au', tuition: 'AUD $27,000–$36,000', popularPrograms: ['Marine Science', 'Tourism', 'Education'], description: 'Modern regional university with strong environmental and marine programs.' },
-  { id: 33, name: 'University of the Sunshine Coast (UniSC)', state: 'Queensland', city: 'Sippy Downs', type: 'Public', tier: 'Regional', founded: 1996, students: 18000, acceptanceRate: '75%', website: 'https://www.usc.edu.au', tuition: 'AUD $27,000–$35,000', popularPrograms: ['Education', 'Business', 'Health'], description: 'Fast-growing regional university with a modern campus.' },
-  { id: 34, name: 'Charles Darwin University', state: 'Northern Territory', city: 'Darwin', type: 'Public', tier: 'Regional', founded: 2003, students: 22000, acceptanceRate: '70%', website: 'https://www.cdu.edu.au', tuition: 'AUD $26,000–$35,000', popularPrograms: ['Indigenous Studies', 'Nursing', 'Environmental Science'], description: 'Primary university in Northern Territory with focus on remote and Indigenous education.' },
-  { id: 35, name: 'University of Notre Dame Australia', state: 'Western Australia', city: 'Fremantle', type: 'Private', tier: 'Faith-Based', founded: 1989, students: 12000, acceptanceRate: '55%', website: 'https://www.notredame.edu.au', tuition: 'AUD $30,000–$38,000', popularPrograms: ['Medicine', 'Nursing', 'Philosophy'], description: 'Catholic university known for ethics, education, and health sciences.' },
-  { id: 36, name: 'Australian Institute of Music (AIM)', state: 'New South Wales', city: 'Sydney, Melbourne', type: 'Private', tier: 'Specialized', founded: 1968, students: 1500, acceptanceRate: 'Open', website: 'https://www.aim.edu.au', tuition: 'AUD $25,000–$33,000', popularPrograms: ['Music', 'Performing Arts'], description: 'Leading specialist institution for music and performing arts.' },
-  { id: 37, name: 'Le Cordon Bleu Australia', state: 'South Australia', city: 'Adelaide, Sydney, Melbourne', type: 'Private', tier: 'Specialized', founded: 1996, students: 4000, acceptanceRate: 'Open', website: 'https://www.cordonbleu.edu/australia', tuition: 'AUD $35,000–$45,000', popularPrograms: ['Culinary Arts', 'Hospitality Management'], description: 'World-renowned culinary and hospitality institute.' },
-  { id: 38, name: 'JMC Academy', state: 'New South Wales', city: 'Sydney, Melbourne, Brisbane', type: 'Private', tier: 'Specialized', founded: 1982, students: 3000, acceptanceRate: 'Open', website: 'https://www.jmcacademy.edu.au', tuition: 'AUD $25,000–$35,000', popularPrograms: ['Animation', 'Audio Engineering', 'Game Design'], description: 'Creative arts college with industry-grade facilities.' },
-  { id: 39, name: 'Deakin College', state: 'Victoria', city: 'Melbourne', type: 'Private', tier: 'Pathway', founded: 1996, students: 2500, acceptanceRate: 'Open', website: 'https://www.deakincollege.edu.au', tuition: 'AUD $20,000–$30,000', popularPrograms: ['Business', 'IT', 'Health'], description: 'Pathway college for international students to enter Deakin University.' },
-  { id: 40, name: 'Melbourne Polytechnic', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1912, students: 30000, acceptanceRate: 'Open', website: 'https://www.melbournepolytechnic.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Trades', 'Design', 'Music'], description: 'One of Australia’s oldest and most respected polytechnic institutes.' },
-  { id: 41, name: 'Kangan Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1925, students: 40000, acceptanceRate: 'Open', website: 'https://www.kangan.edu.au', tuition: 'AUD $5,000–$10,000', popularPrograms: ['Automotive', 'Fashion', 'Business'], description: 'TAFE provider with a focus on automotive and fashion education.' },
-  { id: 42, name: 'Holmesglen Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1982, students: 50000, acceptanceRate: 'Open', website: 'https://www.holmesglen.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Nursing', 'Building Design', 'Hospitality'], description: 'Specialized in nursing, hospitality and building design.' },
-  { id: 43, name: 'North Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 1900, students: 30000, acceptanceRate: 'Open', website: 'https://www.northmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Graphic Design', 'Cyber Security', 'Engineering'], description: 'Advanced vocational training in technology and design.' },
-  { id: 44, name: 'TAFE Gippsland', state: 'Victoria', city: 'Gippsland', type: 'College', tier: 'TAFE', founded: 1930, students: 10000, acceptanceRate: 'Open', website: 'https://www.tafegippsland.edu.au', tuition: 'AUD $5,000–$10,000', popularPrograms: ['Agriculture', 'Nursing', 'Trades'], description: 'Regional TAFE focused on local industries.' },
-  { id: 45, name: 'Canberra Institute of Technology (CIT)', state: 'Australian Capital Territory', city: 'Canberra', type: 'College', tier: 'TAFE', founded: 1928, students: 26000, acceptanceRate: 'Open', website: 'https://cit.edu.au', tuition: 'AUD $5,000–$11,000', popularPrograms: ['IT', 'Trades', 'Design'], description: 'Main vocational provider in the nations capital.' },
-  { id: 46, name: 'William Angliss Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1940, students: 23000, acceptanceRate: 'Open', website: 'https://www.angliss.edu.au', tuition: 'AUD $5,000–$14,000', popularPrograms: ['Hospitality', 'Culinary Arts', 'Event Management'], description: 'Premier training center for hospitality, food, and tourism industries.' },
-  { id: 47, name: 'TAFE Queensland', state: 'Queensland', city: 'Brisbane & Regional', type: 'College', tier: 'TAFE', founded: 1882, students: 120000, acceptanceRate: 'Open', website: 'https://tafeqld.edu.au', tuition: 'AUD $5,000–$13,000', popularPrograms: ['Trades', 'Business', 'Health'], description: 'Queensland’s largest vocational training provider offering a broad range of TAFE courses.' },
-  { id: 48, name: 'TAFE NSW', state: 'New South Wales', city: 'Sydney & Regional', type: 'College', tier: 'TAFE', founded: 1890, students: 500000, acceptanceRate: 'Open', website: 'https://www.tafensw.edu.au', tuition: 'AUD $5,000–$14,000', popularPrograms: ['Construction', 'Creative Industries', 'Health'], description: 'Australia’s largest vocational education provider with massive reach across NSW.' }
+    const frenchUniversities = [
+  { id: 1, name: 'Sorbonne University', state: 'Île-de-France', city: 'Paris', type: 'Public', tier: 'Top-tier', founded: 1257, students: 43000, acceptanceRate: '20%', website: 'https://www.sorbonne-universite.fr', tuition: '€250–€500 (EU)', popularPrograms: ['Humanities', 'Science', 'Medicine'], description: 'One of France’s oldest and most prestigious universities.' },
+  { id: 2, name: 'École Polytechnique', state: 'Île-de-France', city: 'Palaiseau', type: 'Public', tier: 'Grandes Écoles', founded: 1794, students: 4500, acceptanceRate: '10%', website: 'https://www.polytechnique.edu', tuition: '€3,500–€15,000', popularPrograms: ['Engineering', 'Mathematics', 'Computer Science'], description: 'Elite engineering school part of Institut Polytechnique de Paris.' },
+  { id: 3, name: 'Sciences Po', state: 'Île-de-France', city: 'Paris', type: 'Public', tier: 'Grandes Écoles', founded: 1872, students: 14000, acceptanceRate: '21%', website: 'https://www.sciencespo.fr', tuition: '€10,000–€14,000', popularPrograms: ['Political Science', 'International Relations', 'Law'], description: 'Leading university in social sciences and public affairs.' },
+  { id: 4, name: 'Université PSL (Paris Sciences et Lettres)', state: 'Île-de-France', city: 'Paris', type: 'Public', tier: 'Top-tier', founded: 2010, students: 17000, acceptanceRate: 'Selective', website: 'https://www.psl.eu', tuition: '€250–€400', popularPrograms: ['Sciences', 'Arts', 'Engineering'], description: 'A prestigious university group uniting elite institutions in Paris.' },
+  { id: 5, name: 'Université Grenoble Alpes', state: 'Auvergne-Rhône-Alpes', city: 'Grenoble', type: 'Public', tier: 'Research University', founded: 1339, students: 47000, acceptanceRate: 'Open', website: 'https://www.univ-grenoble-alpes.fr', tuition: '€250–€500', popularPrograms: ['Physics', 'Geography', 'Engineering'], description: 'Strong in science and technology with scenic Alpine location.' },
+  { id: 6, name: 'University of Strasbourg', state: 'Grand Est', city: 'Strasbourg', type: 'Public', tier: 'Research University', founded: 1538, students: 51000, acceptanceRate: 'Open', website: 'https://www.unistra.fr', tuition: '€250–€500', popularPrograms: ['Chemistry', 'Law', 'Languages'], description: 'Renowned for interdisciplinary research and strong European links.' },
+  { id: 7, name: 'Université de Bordeaux', state: 'Nouvelle-Aquitaine', city: 'Bordeaux', type: 'Public', tier: 'Comprehensive', founded: 1441, students: 56000, acceptanceRate: 'Open', website: 'https://www.u-bordeaux.com', tuition: '€250–€500', popularPrograms: ['Medicine', 'Oenology', 'Science'], description: 'A major French university with strength in medicine and wine sciences.' },
+  { id: 8, name: 'École Normale Supérieure de Lyon', state: 'Auvergne-Rhône-Alpes', city: 'Lyon', type: 'Public', tier: 'Grandes Écoles', founded: 1880, students: 2400, acceptanceRate: 'Highly Selective', website: 'https://www.ens-lyon.fr', tuition: '€400–€800', popularPrograms: ['Science', 'Education', 'Humanities'], description: 'Highly competitive institution focused on elite teacher and researcher training.' },
+  { id: 9, name: 'Université de Lille', state: 'Hauts-de-France', city: 'Lille', type: 'Public', tier: 'Comprehensive', founded: 1559, students: 73000, acceptanceRate: 'Open', website: 'https://www.univ-lille.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Health', 'Engineering'], description: 'One of France’s largest universities with broad academic offerings.' },
+  { id: 10, name: 'Université de Nantes', state: 'Pays de la Loire', city: 'Nantes', type: 'Public', tier: 'Comprehensive', founded: 1460, students: 38000, acceptanceRate: 'Open', website: 'https://www.univ-nantes.fr', tuition: '€250–€500', popularPrograms: ['Medicine', 'Law', 'Humanities'], description: 'Dynamic university with strong community ties and diverse programs.' },
+
+  // ... previous entries (IDs 1–10)
+  { id: 11, name: 'Université de Lyon', state: 'Auvergne-Rhône-Alpes', city: 'Lyon', type: 'Public', tier: 'Comprehensive', founded: 2017, students: 120000, acceptanceRate: 'Open', website: 'https://www.universite-lyon.fr', tuition: '€250–€500', popularPrograms: ['Medicine', 'Law', 'Humanities'], description: 'Large university federation across Lyon’s campuses.' },
+  { id: 12, name: 'Université de Toulouse', state: 'Occitanie', city: 'Toulouse', type: 'Public', tier: 'Comprehensive', founded: 1229, students: 120000, acceptanceRate: 'Open', website: 'https://www.univ-toulouse.fr', tuition: '€250–€500', popularPrograms: ['Aeronautics', 'Science', 'Law'], description: 'One of France’s oldest centres of learning, strong in engineering.' },
+  { id: 13, name: 'Université de Rennes 1', state: 'Brittany', city: 'Rennes', type: 'Public', tier: 'Research University', founded: 1969, students: 30000, acceptanceRate: 'Open', website: 'https://www.univ-rennes1.fr', tuition: '€250–€500', popularPrograms: ['Science', 'Medicine', 'Law'], description: 'Major science and technology university in Brittany.' },
+  { id: 14, name: 'Université de Rennes 2', state: 'Brittany', city: 'Rennes', type: 'Public', tier: 'Comprehensive', founded: 1969, students: 20000, acceptanceRate: 'Open', website: 'https://www.univ-rennes2.fr', tuition: '€250–€500', popularPrograms: ['Arts', 'Education', 'Social Sciences'], description: 'Focus on humanities, arts and social sciences.' },
+  { id: 15, name: 'Université de Lorraine', state: 'Grand Est', city: 'Nancy', type: 'Public', tier: 'Comprehensive', founded: 2012, students: 61000, acceptanceRate: 'Open', website: 'https://www.univ-lorraine.fr', tuition: '€250–€500', popularPrograms: ['Engineering', 'Science', 'Medicine'], description: 'Large multidisciplinary university in eastern France.' },
+  { id: 16, name: "Université Côte d'Azur", state: 'Provence-Alpes-Côte d\'Azur', city: 'Nice', type: 'Public', tier: 'Comprehensive', founded: 2019, students: 65000, acceptanceRate: 'Open', website: 'https://www.univ-cotedazur.fr', tuition: '€250–€500', popularPrograms: ['Oceanography', 'Informatics', 'Arts'], description: 'Modern university federation in Côte d\'Azur region.' },
+  { id: 17, name: 'Université de Montpellier', state: 'Occitanie', city: 'Montpellier', type: 'Public', tier: 'Research University', founded: 1220, students: 48000, acceptanceRate: 'Open', website: 'https://www.umontpellier.fr', tuition: '€250–€500', popularPrograms: ['Medicine', 'Science', 'Law'], description: 'One of the world’s oldest universities with medical tradition.' },
+  { id: 18, name: 'Université Grenoble Alpes', state: 'Auvergne-Rhône-Alpes', city: 'Grenoble', type: 'Public', tier: 'Research University', founded: 1339, students: 47000, acceptanceRate: 'Open', website: 'https://www.univ-grenoble-alpes.fr', tuition: '€250–€500', popularPrograms: ['Science', 'Engineering', 'Geosciences'], description: 'Strong in scientific research and alpine studies.' },
+  { id: 19, name: 'Université Lille 2 – Droit et Santé', state: 'Hauts-de-France', city: 'Lille', type: 'Public', tier: 'Specialist', founded: 1970, students: 23000, acceptanceRate: 'Open', website: 'https://www.u-lille2.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Health', 'Sports Sciences'], description: 'Law and health sciences specialization.' },
+  { id: 20, name: 'Université Calais', state: 'Hauts-de-France', city: 'Calais', type: 'Public', tier: 'Regional', founded: 1991, students: 10000, acceptanceRate: 'Open', website: 'https://www.univ-littoral.fr', tuition: '€250–€500', popularPrograms: ['Marine Biology', 'Business', 'Education'], description: 'Regional university focused on coastal and maritime studies.' },
+  { id: 21, name: 'Université Clermont Auvergne', state: 'Auvergne-Rhône-Alpes', city: 'Clermont-Ferrand', type: 'Public', tier: 'Comprehensive', founded: 2017, students: 28000, acceptanceRate: 'Open', website: 'https://www.uca.fr', tuition: '€250–€500', popularPrograms: ['Volcanology', 'Science', 'Medicine'], description: 'Young with strong natural sciences focus.' },
+  { id: 22, name: 'Université de Nice Sophia Antipolis', state: 'Provence-Alpes-Côte d\'Azur', city: 'Nice', type: 'Public', tier: 'Comprehensive', founded: 1965, students: 26000, acceptanceRate: 'Open', website: 'https://unice.fr', tuition: '€250–€500', popularPrograms: ['Arts', 'Law', 'Science'], description: 'Cultural and academic hub on the French Riviera.' },
+  { id: 23, name: 'Université Paul-Valéry Montpellier 3', state: 'Occitanie', city: 'Montpellier', type: 'Public', tier: 'Specialist', founded: 1970, students: 18000, acceptanceRate: 'Open', website: 'https://www.univ-montp3.fr', tuition: '€250–€500', popularPrograms: ['Language', 'Arts', 'Education'], description: 'Centre for humanities and arts studies.' },
+  { id: 24, name: 'Université François-Rabelais Tours', state: 'Centre-Val de Loire', city: 'Tours', type: 'Public', tier: 'Research University', founded: 1969, students: 25000, acceptanceRate: 'Open', website: 'https://www.univ-tours.fr', tuition: '€250–€500', popularPrograms: ['Science', 'Health', 'Education'], description: 'Robust programs in science and medical fields.' },
+  { id: 25, name: 'Université Bourgogne Franche‑Comté', state: 'Bourgogne‑Franche‑Comté', city: 'Dijon', type: 'Public', tier: 'Comprehensive', founded: 2009, students: 28000, acceptanceRate: 'Open', website: 'https://www.u‑bfc.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Science', 'Health'], description: 'Regional university with strong programs across disciplines.' },
+  { id: 26, name: 'Université de Lorraine', state: 'Grand Est', city: 'Nancy & Metz', type: 'Public', tier: 'Comprehensive', founded: 2012, students: 61000, acceptanceRate: 'Open', website: 'https://www.univ-lorraine.fr', tuition: '€250–€500', popularPrograms: ['Engineering', 'Science', 'Medicine'], description: 'Merged multi-campus university with broad academic range.' },
+  { id: 27, name: 'Université de Reims Champagne‑Ardenne', state: 'Grand Est', city: 'Reims', type: 'Public', tier: 'Comprehensive', founded: 1548, students: 27000, acceptanceRate: 'Open', website: 'https://www.univ-reims.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Sciences', 'Arts'], description: 'Historic university in the Champagne region.' },
+  { id: 28, name: 'Université de Rouen Normandie', state: 'Normandy', city: 'Rouen', type: 'Public', tier: 'Comprehensive', founded: 1966, students: 30000, acceptanceRate: 'Open', website: 'https://www.univ‑rouen.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Economics', 'Science'], description: 'Well-rounded university with regional influence.' },
+  { id: 29, name: 'Université d’Orléans', state: 'Centre-Val de Loire', city: 'Orléans', type: 'Public', tier: 'Research University', founded: 1306, students: 20000, acceptanceRate: 'Open', website: 'https://www.univ-orleans.fr', tuition: '€250–€500', popularPrograms: ['Sciences', 'Law', 'Health'], description: 'Historic institution with multidisciplinary programs.' },
+  { id: 30, name: 'Université Jean Monnet Saint‑Étienne', state: 'Auvergne-Rhône-Alpes', city: 'Saint‑Étienne', type: 'Public', tier: 'Comprehensive', founded: 1969, students: 25000, acceptanceRate: 'Open', website: 'https://www.univ‑st-etienne.fr', tuition: '€250–€500', popularPrograms: ['Engineering', 'Arts', 'Law'], description: 'Strong regional presence with growing research.' },
+  { id: 31, name: 'Université de Caen Normandie', state: 'Normandy', city: 'Caen', type: 'Public', tier: 'Research University', founded: 1432, students: 26000, acceptanceRate: 'Open', website: 'https://www.unicaen.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Medicine', 'Science'], description: 'Historic Normandy university with broad programs.' },
+  { id: 32, name: 'Université de la Réunion', state: 'Outre‑Mer', city: 'Saint‑Denis', type: 'Public', tier: 'Regional University', founded: 1982, students: 24000, acceptanceRate: 'Open', website: 'https://www.univ-reunion.fr', tuition: '€250–€500', popularPrograms: ['Marine Sciences', 'Tourism', 'Education'], description: 'Uniquely located on Reunion Island with regional focus.' },
+  { id: 33, name: 'Université de Corse Pascal Paoli', state: 'Corsica', city: 'Corte', type: 'Public', tier: 'Regional University', founded: 1981, students: 6000, acceptanceRate: 'Open', website: 'https://www.univ-corsica.fr', tuition: '€250–€500', popularPrograms: ['Environment', 'Tourism', 'Law'], description: 'Corsica’s only university with local impact.' },
+  { id: 34, name: 'Université de La Rochelle', state: 'Nouvelle-Aquitaine', city: 'La Rochelle', type: 'Public', tier: 'Regional University', founded: 1993, students: 11000, acceptanceRate: 'Open', website: 'https://www.univ-larochelle.fr', tuition: '€250–€500', popularPrograms: ['Marine Sciences', 'Engineering', 'Tourism'], description: 'Coastal university focused on maritime fields.' },
+  { id: 35, name: 'Université d’Aix‑Marseille', state: 'Provence-Alpes-Côte d\'Azur', city: 'Aix & Marseille', type: 'Public', tier: 'Research University', founded: 1409, students: 80000, acceptanceRate: 'Open', website: 'https://www.univ-amu.fr', tuition: '€250–€500', popularPrograms: ['Science', 'Law', 'Arts'], description: 'One of France’s largest universities with multiple campuses.' },
+  { id: 36, name: 'Université Nice Sophia Antipolis', state: 'Provence-Alpes-Côte d\'Azur', city: 'Nice', type: 'Public', tier: 'Comprehensive', founded: 1965, students: 26000, acceptanceRate: 'Open', website: 'https://www.unice.fr', tuition: '€250–€500', popularPrograms: ['Arts', 'Law', 'Science'], description: 'Diverse university on the French Riviera.' },
+  { id: 37, name: 'Université de Poitiers', state: 'Nouvelle-Aquitaine', city: 'Poitiers', type: 'Public', tier: 'Comprehensive', founded: 1431, students: 26000, acceptanceRate: 'Open', website: 'https://www.univ‑poitiers.fr', tuition: '€250–€500', popularPrograms: ['History', 'Law', 'Science'], description: 'Historic university with cultural prominence.' },
+  { id: 38, name: 'Université Paris Nanterre', state: 'Île-de-France', city: 'Nanterre', type: 'Public', tier: 'Research University', founded: 1964, students: 38000, acceptanceRate: 'Open', website: 'https://www.parisnanterre.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Social Sciences', 'Arts'], description: 'Strong humanities & law programs near Paris.' },
+  { id: 39, name: 'Université Paris 1 Panthéon‑Sorbonne', state: 'Île-de-France', city: 'Paris', type: 'Public', tier: 'Elite', founded: 1970, students: 40000, acceptanceRate: '20%', website: 'https://www.pantheonsorbonne.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Economics', 'Arts'], description: 'Prestigious Parisian university rooted in the historical Sorbonne.' },
+  { id: 40, name: 'Université Paris-Saclay', state: 'Île-de-France', city: 'Saclay', type: 'Public', tier: 'Elite Research', founded: 2014, students: 60000, acceptanceRate: 'Selective', website: 'https://www.universite-paris-saclay.fr', tuition: '€250–€500', popularPrograms: ['Science', 'Technology', 'Engineering'], description: 'High-performing research cluster near Paris.' },
+  { id: 41, name: 'Université de Strasbourg', state: 'Grand Est', city: 'Strasbourg', type: 'Public', tier: 'Research University', founded: 1538, students: 52000, acceptanceRate: 'Open', website: 'https://www.unistra.fr', tuition: '€250–€500', popularPrograms: ['Sciences', 'Humanities', 'Medicine'], description: 'Renowned university with strong international collaborations.' },
+  { id: 42, name: 'Université d’Angers', state: 'Pays de la Loire', city: 'Angers', type: 'Public', tier: 'Comprehensive', founded: 1971, students: 25000, acceptanceRate: 'Open', website: 'https://www.univ-angers.fr', tuition: '€250–€500', popularPrograms: ['Medicine', 'Tourism', 'Sciences'], description: 'Modern university with diverse programs and student support.' },
+  { id: 43, name: 'Université de Perpignan Via Domitia', state: 'Occitanie', city: 'Perpignan', type: 'Public', tier: 'Regional University', founded: 1350, students: 10000, acceptanceRate: 'Open', website: 'https://www.univ-perp.fr', tuition: '€250–€500', popularPrograms: ['Tourism', 'Law', 'Science'], description: 'Historic university in southern France with local impact.' },
+  { id: 44, name: 'Université d’Artois', state: 'Hauts-de-France', city: 'Arras', type: 'Public', tier: 'Regional University', founded: 1992, students: 11000, acceptanceRate: 'Open', website: 'https://www.univ-artois.fr', tuition: '€250–€500', popularPrograms: ['Literature', 'Education', 'Sciences'], description: 'Growing institution serving the Artois region.' },
+  { id: 45, name: 'Université de Picardie Jules Verne', state: 'Hauts-de-France', city: 'Amiens', type: 'Public', tier: 'Comprehensive', founded: 1969, students: 30000, acceptanceRate: 'Open', website: 'https://www.u-picardie.fr', tuition: '€250–€500', popularPrograms: ['Medicine', 'Arts', 'Sciences'], description: 'Named after Jules Verne, offering diverse degree options.' },
+  { id: 46, name: 'Université de Franche-Comté', state: 'Bourgogne-Franche-Comté', city: 'Besançon', type: 'Public', tier: 'Comprehensive', founded: 1423, students: 29000, acceptanceRate: 'Open', website: 'https://www.univ-fcomte.fr', tuition: '€250–€500', popularPrograms: ['Science', 'Law', 'Linguistics'], description: 'Historic university with strong language research.' },
+  { id: 47, name: 'Université de Technologie de Belfort-Montbéliard (UTBM)', state: 'Bourgogne-Franche-Comté', city: 'Belfort', type: 'Public', tier: 'Engineering School', founded: 1999, students: 3500, acceptanceRate: 'Selective', website: 'https://www.utbm.fr', tuition: '€250–€500', popularPrograms: ['Engineering', 'IT', 'Mechanics'], description: 'Renowned tech-focused institution offering engineering degrees.' },
+  { id: 48, name: 'Université Paris 13 – Sorbonne Paris Nord', state: 'Île-de-France', city: 'Villetaneuse', type: 'Public', tier: 'Comprehensive', founded: 1970, students: 25000, acceptanceRate: 'Open', website: 'https://www.univ-paris13.fr', tuition: '€250–€500', popularPrograms: ['Law', 'Health', 'Economics'], description: 'Part of the Sorbonne group with wide academic offerings.' },
+  { id: 49, name: 'Université Paris-Est Créteil (UPEC)', state: 'Île-de-France', city: 'Créteil', type: 'Public', tier: 'Comprehensive', founded: 1970, students: 39000, acceptanceRate: 'Open', website: 'https://www.u-pec.fr', tuition: '€250–€500', popularPrograms: ['Medicine', 'Law', 'Sociology'], description: 'Major suburban Paris university with health and law focus.' },
+  { id: 50, name: 'Université de Versailles Saint-Quentin-en-Yvelines (UVSQ)', state: 'Île-de-France', city: 'Versailles', type: 'Public', tier: 'Comprehensive', founded: 1991, students: 20000, acceptanceRate: 'Open', website: 'https://www.uvsq.fr', tuition: '€250–€500', popularPrograms: ['Engineering', 'Medicine', 'History'], description: 'Well-regarded Paris-area institution with diverse programs.' }
 ];
 
-
-
-const australianStates = {
-      'New South Wales': 'New South Wales',
-      'Victoria': 'Victoria',
-      'Queensland': 'Queensland',
-      'Western Australia': 'Western Australia',
-      'South Australia': 'South Australia',
-      'Tasmania': 'Tasmania',
-      'Australian Capital Territory': 'Australian Capital Territory',
-      'Northern Territory': 'Northern Territory'
+    const franceRegions = {
+      'Île-de-France': 'Île-de-France',
+      'Provence-Alpes-Côte d\'Azur': 'Provence-Alpes-Côte d\'Azur',
+      'Auvergne-Rhône-Alpes': 'Auvergne-Rhône-Alpes',
+      'Hauts-de-France': 'Hauts-de-France',
+      'Grand Est': 'Grand Est',
+      'Bourgogne-Franche-Comté': 'Bourgogne-Franche-Comté',
+      'Normandie': 'Normandie',
+      'Occitanie': 'Occitanie',
+      'Nouvelle-Aquitaine': 'Nouvelle-Aquitaine',
+      'Centre-Val de Loire': 'Centre-Val de Loire',
+      'Pays de la Loire': 'Pays de la Loire',
+      'Bretagne': 'Bretagne',
+      'Corse': 'Corse'
     };
-    // University types and tiers
-     const universityTypes = [
-      'Public', 'Private', 'Collegiate', 'Specialist'
-    ];
 
     const universityTiers = [
       'Ivy League', 'Top 10 National', 'Top 25 National',
       'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
     ];
 
-    // App state
-    let isLoading = false;
-    let currentPage = 1;
-    const itemsPerPage = 12;
-    let filteredUniversities = [];
-
-    // DOM elements
-    let searchInput, stateFilter, typeFilter, resetButton;
-    let resultCount, totalCount, loadingIndicator, universityGrid;
-
-
+    
 
     // Initialize filter dropdowns
     function initFilters() {
       // Clear existing options first
-      stateFilter.innerHTML = '<option value="">All States</option>';
+      regionFilter.innerHTML = '<option value="">All Regions</option>';
       
-      // States
-      Object.entries(australianStates).forEach(([name, value]) => {
+      // Regions
+      Object.entries(franceRegions).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
-        stateFilter.appendChild(option);
+        regionFilter.appendChild(option);
       });
 
       // Clear and add type filters
       typeFilter.innerHTML = '<option value="">All Types</option>';
-      const types = [...new Set(universities.map(u => u.type))];
+      const types = [...new Set(frenchUniversities.map(u => u.type))];
       types.forEach(type => {
-        const option = document.createElement('option');
-        option.value = type;
-        option.textContent = type;
-        typeFilter.appendChild(option);
-      });
-
-      // Types
-      universityTypes.forEach(type => {
         const option = document.createElement('option');
         option.value = type;
         option.textContent = type;
@@ -1212,7 +1197,7 @@ const australianStates = {
     // Reset all filters
     function resetFilters() {
       searchInput.value = '';
-      stateFilter.value = '';
+      regionFilter.value = '';
       typeFilter.value = '';
       currentPage = 1;
       filteredUniversities = getFilteredUniversities();
@@ -1223,20 +1208,19 @@ const australianStates = {
     // Get filtered universities based on current filters
     function getFilteredUniversities() {
       const searchTerm = searchInput.value.toLowerCase();
-      const state = stateFilter.value;
+      const region = regionFilter.value;
       const type = typeFilter.value;
       
-      return universities.filter(univ => {
+      return frenchUniversities.filter(univ => {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
-          univ.state.toLowerCase().includes(searchTerm) ||
-          (australianStates[univ.state] && australianStates[univ.state].toLowerCase().includes(searchTerm));
+          univ.region.toLowerCase().includes(searchTerm);
         
-        const matchesState = !state || univ.state === state;
+        const matchesRegion = !region || univ.region === region;
         const matchesType = !type || univ.type === type;
         
-        return matchesSearch && matchesState && matchesType;
+        return matchesSearch && matchesRegion && matchesType;
       });
     }
 
@@ -1271,11 +1255,11 @@ const australianStates = {
       // Simulate network delay
       setTimeout(() => {
         currentPage++;
-        const start = 0;
+        const start = (currentPage - 1) * itemsPerPage;
         const end = currentPage * itemsPerPage;
         const moreUniversities = filteredUniversities.slice(start, end);
         
-        renderUniversities(moreUniversities, false);
+        renderUniversities(moreUniversities, true);
         updateResultCounts();
         
         isLoading = false;
@@ -1314,7 +1298,7 @@ const australianStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${australianStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${university.region}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1344,7 +1328,7 @@ const australianStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${australianStates[university.state] || university.state}</span>
+          <span>${university.city}, ${university.region}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1382,7 +1366,7 @@ const australianStates = {
     
     // Toggle favorite status for a university
     function toggleFavorite(universityId) {
-      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const favorites = JSON.parse(localStorage.getItem('frenchUniversityFavorites') || '[]');
       const index = favorites.indexOf(universityId);
       
       if (index === -1) {
@@ -1391,19 +1375,19 @@ const australianStates = {
         favorites.splice(index, 1);
       }
       
-      localStorage.setItem('favoriteUniversities', JSON.stringify(favorites));
+      localStorage.setItem('frenchUniversityFavorites', JSON.stringify(favorites));
       updateFavoriteBadge();
     }
     
     // Check if a university is in favorites
     function isFavorite(universityId) {
-      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const favorites = JSON.parse(localStorage.getItem('frenchUniversityFavorites') || '[]');
       return favorites.includes(universityId);
     }
     
     // Update the favorite badge count
     function updateFavoriteBadge() {
-      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const favorites = JSON.parse(localStorage.getItem('frenchUniversityFavorites') || '[]');
       const badge = document.getElementById('favoriteBadge');
       if (badge) {
         badge.textContent = favorites.length || '';
@@ -1413,7 +1397,7 @@ const australianStates = {
 
     // Show enhanced university details in a modal
     function showUniversityDetails(universityId) {
-      const university = universities.find(u => u.id === universityId);
+      const university = frenchUniversities.find(u => u.id === universityId);
       if (!university) return;
       
       // Generate campus images
@@ -1499,7 +1483,7 @@ const australianStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${australianStates[university.state] || university.state}</span>
+                <span>${university.city}, ${university.region}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1517,7 +1501,7 @@ const australianStates = {
                 ${university.tuition ? `
                   <div class="stat">
                     <i class="fas fa-dollar-sign"></i>
-                    <span>${university.tuition}</span>
+                    <span>${university.tuition} ${isPublic ? '(in-state)' : ''}</span>
                   </div>
                 ` : ''}
               </div>
@@ -1541,7 +1525,7 @@ const australianStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${australianStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${university.region}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>
@@ -1714,7 +1698,7 @@ const australianStates = {
                     </div>
                     <div class="fact">
                       <span class="fact-label">Location</span>
-                      <span class="fact-value">${university.city}, ${usStates[university.state] || university.state}</span>
+                      <span class="fact-value">${university.city}, ${university.region}</span>
                     </div>
                     <div class="fact">
                       <span class="fact-label">Campus Setting</span>
@@ -1771,7 +1755,7 @@ const australianStates = {
                       <i class="fas fa-map-marker-alt"></i>
                       <div>
                         <div class="label">Campus Address</div>
-                        <span class="value">${university.city}, ${usStates[university.state] || university.state} ${Math.floor(Math.random() * 90000) + 10000}</span>
+                        <span class="value">${university.city}, ${university.region} ${Math.floor(Math.random() * 90000) + 10000}</span>
                       </div>
                     </div>
                     <div class="contact-item">
@@ -1866,7 +1850,7 @@ const australianStates = {
     function init() {
       // Get DOM elements
       searchInput = document.getElementById('searchInput');
-      stateFilter = document.getElementById('stateFilter');
+      regionFilter = document.getElementById('regionFilter');
       typeFilter = document.getElementById('typeFilter');
       resetButton = document.getElementById('resetFilters');
       resultCount = document.getElementById('resultCount');
@@ -1874,66 +1858,30 @@ const australianStates = {
       loadingIndicator = document.getElementById('loadingIndicator');
       universityGrid = document.getElementById('universityGrid');
       
-      // Create favorites button in header if it doesn't exist
-      const header = document.querySelector('header');
-      if (header && !document.getElementById('favoritesButton')) {
-        const favoritesButton = document.createElement('button');
-        favoritesButton.id = 'favoritesButton';
-        favoritesButton.className = 'favorites-button';
-        favoritesButton.innerHTML = `
-          <i class="fas fa-heart"></i>
-          <span class="favorite-badge" id="favoriteBadge"></span>
-          Favorites
-        `;
-        favoritesButton.onclick = () => {
-          const favoritesOnly = document.getElementById('favoritesOnly');
-          if (favoritesOnly) {
-            favoritesOnly.checked = !favoritesOnly.checked;
-            handleFilter();
-          }
-        };
-        header.appendChild(favoritesButton);
-        
-        // Add theme toggle button
-        const themeToggle = document.createElement('button');
-        themeToggle.id = 'themeToggle';
-        themeToggle.className = 'theme-toggle';
-        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        themeToggle.title = 'Toggle dark mode';
-        themeToggle.onclick = toggleTheme;
-        header.appendChild(themeToggle);
-        
-        // Apply saved theme
-        if (localStorage.getItem('theme') === 'dark') {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
-      }
-      
       // Initialize filters
       initFilters();
       
       // Add event listeners
       searchInput.addEventListener('input', handleSearch);
-      stateFilter.addEventListener('change', handleFilter);
+      regionFilter.addEventListener('change', handleFilter);
       typeFilter.addEventListener('change', handleFilter);
       resetButton.addEventListener('click', resetFilters);
       window.addEventListener('scroll', handleScroll);
       
-      // Add keyboard shortcut for search (Ctrl+F or Cmd+F)
-      document.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
-          e.preventDefault();
-          searchInput.focus();
-        }
-      });
-      
       // Initial load
       filteredUniversities = getFilteredUniversities();
       updateResultCounts();
-      updateFavoriteBadge();
-      loadMore();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
     }
+    
+    // Initialize variables
+    let searchInput, regionFilter, typeFilter, resetButton, resultCount, totalCount, loadingIndicator, universityGrid;
+    let filteredUniversities = [];
+    let visibleCount = 0;
+    let currentPage = 1;
+    const itemsPerPage = 10; // Number of universities to load at once
+    let isLoading = false;
+    let favorites = JSON.parse(localStorage.getItem('frenchUniversityFavorites') || '[]');
     
     // Start the app when the DOM is fully loaded
     if (document.readyState === 'loading') {

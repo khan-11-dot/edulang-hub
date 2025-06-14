@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Australia Universities</title>
+  <title>Germany Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Australia Universities</h1>
-      <p>Find and explore universities across the Australia</p>
+      <h1>Germany Universities</h1>
+      <p>Find and explore universities across Germany</p>
     </header>
     
     <div class="search-container">
@@ -1075,71 +1075,794 @@
   </div>
 
   <script>
-    // University data
-     const universities = [
-  { id: 1, name: 'University of Sydney', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Group of Eight', founded: 1850, students: 70000, acceptanceRate: '30%', website: 'https://www.sydney.edu.au', tuition: 'AUD $36,000–$55,000', popularPrograms: ['Medicine', 'Law', 'Engineering'], description: 'Australia’s first university with global reputation in research and teaching.' },
-  { id: 2, name: 'University of Melbourne', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Group of Eight', founded: 1853, students: 65000, acceptanceRate: '33%', website: 'https://www.unimelb.edu.au', tuition: 'AUD $37,000–$58,000', popularPrograms: ['Medicine', 'Arts', 'Science'], description: 'One of the top universities in Australia, known for academic excellence.' },
-  { id: 3, name: 'University of Queensland', state: 'Queensland', city: 'Brisbane', type: 'Public', tier: 'Group of Eight', founded: 1909, students: 55000, acceptanceRate: '40%', website: 'https://www.uq.edu.au', tuition: 'AUD $35,000–$50,000', popularPrograms: ['Biotech', 'Engineering', 'Business'], description: 'Top research institution with strong international outlook.' },
-  { id: 4, name: 'Monash University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Group of Eight', founded: 1958, students: 78000, acceptanceRate: '40%', website: 'https://www.monash.edu', tuition: 'AUD $35,000–$50,000', popularPrograms: ['Pharmacy', 'Business', 'Medicine'], description: 'Globally recognized university with campuses in multiple countries.' },
-  { id: 5, name: 'University of New South Wales (UNSW)', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Group of Eight', founded: 1949, students: 63000, acceptanceRate: '32%', website: 'https://www.unsw.edu.au', tuition: 'AUD $37,000–$52,000', popularPrograms: ['Engineering', 'Law', 'Business'], description: 'Innovation-focused university with strong industry links.' },
-  { id: 6, name: 'Australian National University (ANU)', state: 'Australian Capital Territory', city: 'Canberra', type: 'Public', tier: 'Group of Eight', founded: 1946, students: 25000, acceptanceRate: '35%', website: 'https://www.anu.edu.au', tuition: 'AUD $36,000–$53,000', popularPrograms: ['Politics', 'Science', 'Economics'], description: 'World-leading research university located in the capital city.' },
-  { id: 7, name: 'University of Western Australia (UWA)', state: 'Western Australia', city: 'Perth', type: 'Public', tier: 'Group of Eight', founded: 1911, students: 25000, acceptanceRate: '38%', website: 'https://www.uwa.edu.au', tuition: 'AUD $34,000–$48,000', popularPrograms: ['Mining Engineering', 'Medicine', 'Law'], description: 'Premier institution in WA, known for innovation and quality education.' },
-  { id: 8, name: 'University of Adelaide', state: 'South Australia', city: 'Adelaide', type: 'Public', tier: 'Group of Eight', founded: 1874, students: 27000, acceptanceRate: '40%', website: 'https://www.adelaide.edu.au', tuition: 'AUD $33,000–$45,000', popularPrograms: ['Engineering', 'Agriculture', 'Law'], description: 'One of Australia’s oldest universities, leading in research and teaching.' },
-  { id: 9, name: 'Macquarie University', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Mid-tier', founded: 1964, students: 45000, acceptanceRate: '50%', website: 'https://www.mq.edu.au', tuition: 'AUD $32,000–$44,000', popularPrograms: ['Actuarial Studies', 'Linguistics', 'Finance'], description: 'Innovative and flexible university with strong industry focus.' },
-  { id: 10, name: 'University of Technology Sydney (UTS)', state: 'New South Wales', city: 'Sydney', type: 'Public', tier: 'Rising Star', founded: 1988, students: 47000, acceptanceRate: '48%', website: 'https://www.uts.edu.au', tuition: 'AUD $34,000–$46,000', popularPrograms: ['IT', 'Design', 'Business'], description: 'Modern university with focus on technology, creativity, and entrepreneurship.' },
-  { id: 11, name: 'RMIT University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Technology-Focused', founded: 1887, students: 87000, acceptanceRate: '55%', website: 'https://www.rmit.edu.au', tuition: 'AUD $30,000–$43,000', popularPrograms: ['Design', 'Aviation', 'Engineering'], description: 'Global university of technology and design with strong industry ties.' },
-  { id: 12, name: 'Deakin University', state: 'Victoria', city: 'Geelong / Melbourne', type: 'Public', tier: 'Mid-tier', founded: 1974, students: 64000, acceptanceRate: '60%', website: 'https://www.deakin.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Education', 'Health Sciences', 'IT'], description: 'Known for online education, innovation, and student satisfaction.' },
-  { id: 13, name: 'Griffith University', state: 'Queensland', city: 'Brisbane / Gold Coast', type: 'Public', tier: 'Modern', founded: 1971, students: 50000, acceptanceRate: '60%', website: 'https://www.griffith.edu.au', tuition: 'AUD $30,000–$42,000', popularPrograms: ['Tourism', 'Music', 'Environmental Science'], description: 'Progressive university with strong programs in arts and sciences.' },
-  { id: 14, name: 'La Trobe University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Modern', founded: 1964, students: 39000, acceptanceRate: '65%', website: 'https://www.latrobe.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Humanities', 'Nursing', 'Science'], description: 'Research-intensive university with a focus on social impact.' },
-  { id: 15, name: 'University of Wollongong', state: 'New South Wales', city: 'Wollongong', type: 'Public', tier: 'Rising Star', founded: 1975, students: 32000, acceptanceRate: '60%', website: 'https://www.uow.edu.au', tuition: 'AUD $29,000–$41,000', popularPrograms: ['Computer Science', 'Engineering', 'Education'], description: 'Highly ranked young university with global outlook.' },
-  { id: 16, name: 'Curtin University', state: 'Western Australia', city: 'Perth', type: 'Public', tier: 'Group of Eight*', founded: 1966, students: 60000, acceptanceRate: '55%', website: 'https://www.curtin.edu.au', tuition: 'AUD $32,000–$45,000', popularPrograms: ['Mining Engineering', 'Business', 'Health'], description: 'Large global university strong in mining and engineering.' },
-  { id: 17, name: 'University of Newcastle', state: 'New South Wales', city: 'Newcastle', type: 'Public', tier: 'Mid-tier', founded: 1965, students: 37000, acceptanceRate: '60%', website: 'https://www.newcastle.edu.au', tuition: 'AUD $30,000–$42,000', popularPrograms: ['Medicine', 'Engineering', 'Education'], description: 'Known for strong health & engineering research.' },
-  { id: 18, name: 'University of South Australia', state: 'South Australia', city: 'Adelaide', type: 'Public', tier: 'Modern', founded: 1991, students: 39000, acceptanceRate: '65%', website: 'https://www.unisa.edu.au', tuition: 'AUD $29,000–$40,000', popularPrograms: ['Business', 'Health', 'Law'], description: 'Australia’s largest university by campus area with strong business programs.' },
-  { id: 19, name: 'University of Tasmania', state: 'Tasmania', city: 'Hobart', type: 'Public', tier: 'Regional', founded: 1890, students: 33000, acceptanceRate: '70%', website: 'https://www.utas.edu.au', tuition: 'AUD $28,000–$38,000', popularPrograms: ['Marine Science', 'Environmental Studies', 'Law'], description: 'Focus on marine and Antarctic research.' },
-  { id: 20, name: 'Charles Sturt University', state: 'New South Wales', city: 'Bathurst', type: 'Public', tier: 'Regional', founded: 1989, students: 43000, acceptanceRate: '75%', website: 'https://www.csu.edu.au', tuition: 'AUD $27,000–$38,000', popularPrograms: ['Veterinary Science', 'Agriculture', 'Education'], description: 'Strong in agriculture, veterinary and health education.' },
-  { id: 21, name: 'Western Sydney University', state: 'New South Wales', city: 'Parramatta', type: 'Public', tier: 'Modern', founded: 1989, students: 48000, acceptanceRate: '70%', website: 'https://www.westernsydney.edu.au', tuition: 'AUD $28,000–$40,000', popularPrograms: ['Nursing', 'Social Sciences', 'Engineering'], description: 'Community-focused university with diverse campuses.' },
-  { id: 22, name: 'Victoria University', state: 'Victoria', city: 'Melbourne', type: 'Public', tier: 'Urban', founded: 1916, students: 40000, acceptanceRate: '72%', website: 'https://www.vu.edu.au', tuition: 'AUD $26,000–$36,000', popularPrograms: ['Arts', 'Business', 'Sports Management'], description: 'Strong vocational pathways and city-based campuses.' },
-  { id: 23, name: 'Federation University Australia', state: 'Victoria', city: 'Ballarat', type: 'Public', tier: 'Regional', founded: 2014, students: 26000, acceptanceRate: '80%', website: 'https://federation.edu.au', tuition: 'AUD $25,000–$35,000', popularPrograms: ['Education', 'Health', 'Nursing'], description: 'Regional university with focus on local community needs.' },
-  { id: 24, name: 'TAFE NSW', state: 'New South Wales', city: 'Various', type: 'College', tier: 'TAFE', founded: 1878, students: 500000, acceptanceRate: 'Open', website: 'https://www.tafensw.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Trades', 'Hospitality', 'Business'], description: 'Largest vocational education and training provider in Australia.' },
-  { id: 25, name: 'TAFE Queensland', state: 'Queensland', city: 'Various', type: 'College', tier: 'TAFE', founded: 1882, students: 200000, acceptanceRate: 'Open', website: 'https://tafeqld.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Automotive', 'Health', 'Construction'], description: 'Leading provider of vocational training across Queensland.' },
-  { id: 26, name: 'Box Hill Institute', state: 'Victoria', city: 'Box Hill', type: 'College', tier: 'TAFE', founded: 1924, students: 30000, acceptanceRate: 'Open', website: 'https://www.boxhill.edu.au', tuition: 'AUD $6,000–$14,000', popularPrograms: ['Culinary Arts', 'Design', 'Business'], description: 'Specialist vocational training with strong industry links.' },
-  { id: 27, name: 'TAFE Western Australia', state: 'Western Australia', city: 'Various', type: 'College', tier: 'TAFE', founded: 1970, students: 150000, acceptanceRate: 'Open', website: 'https://www.dtwd.wa.gov.au/TAFE', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Mining', 'Trades', 'Health'], description: 'State-wide vocational provider across WA.' },
-  { id: 28, name: 'South Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 2009, students: 30000, acceptanceRate: 'Open', website: 'https://www.southmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Automotive', 'Hospitality', 'Business'], description: 'Perth based vocational training institute.' },
-  { id: 29, name: 'TAFE South Australia', state: 'South Australia', city: 'Various', type: 'College', tier: 'TAFE', founded: 1971, students: 100000, acceptanceRate: 'Open', website: 'https://www.tafesa.edu.au', tuition: 'AUD $5,000–$15,000', popularPrograms: ['Culinary Arts', 'Automotive', 'Health'], description: 'SA’s main vocational training provider.' },
-  { id: 30, name: 'TAFE Victoria', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1854, students: 200000, acceptanceRate: 'Open', website: 'https://www.vic.gov.au/education/vet', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Trades', 'Health', 'Business'], description: 'Largest vocational education provider in Victoria, offering diverse training programs.' },
-  { id: 31, name: 'Australian Catholic University (ACU)', state: 'Multiple States', city: 'Melbourne, Sydney, Brisbane', type: 'Public', tier: 'Specialized', founded: 1991, students: 34000, acceptanceRate: '65%', website: 'https://www.acu.edu.au', tuition: 'AUD $28,000–$36,000', popularPrograms: ['Education', 'Nursing', 'Theology'], description: 'National university with Christian ethos and strong focus on education and health sciences.' },
-  { id: 32, name: 'Southern Cross University', state: 'New South Wales', city: 'Lismore', type: 'Public', tier: 'Regional', founded: 1994, students: 16000, acceptanceRate: '70%', website: 'https://www.scu.edu.au', tuition: 'AUD $27,000–$36,000', popularPrograms: ['Marine Science', 'Tourism', 'Education'], description: 'Modern regional university with strong environmental and marine programs.' },
-  { id: 33, name: 'University of the Sunshine Coast (UniSC)', state: 'Queensland', city: 'Sippy Downs', type: 'Public', tier: 'Regional', founded: 1996, students: 18000, acceptanceRate: '75%', website: 'https://www.usc.edu.au', tuition: 'AUD $27,000–$35,000', popularPrograms: ['Education', 'Business', 'Health'], description: 'Fast-growing regional university with a modern campus.' },
-  { id: 34, name: 'Charles Darwin University', state: 'Northern Territory', city: 'Darwin', type: 'Public', tier: 'Regional', founded: 2003, students: 22000, acceptanceRate: '70%', website: 'https://www.cdu.edu.au', tuition: 'AUD $26,000–$35,000', popularPrograms: ['Indigenous Studies', 'Nursing', 'Environmental Science'], description: 'Primary university in Northern Territory with focus on remote and Indigenous education.' },
-  { id: 35, name: 'University of Notre Dame Australia', state: 'Western Australia', city: 'Fremantle', type: 'Private', tier: 'Faith-Based', founded: 1989, students: 12000, acceptanceRate: '55%', website: 'https://www.notredame.edu.au', tuition: 'AUD $30,000–$38,000', popularPrograms: ['Medicine', 'Nursing', 'Philosophy'], description: 'Catholic university known for ethics, education, and health sciences.' },
-  { id: 36, name: 'Australian Institute of Music (AIM)', state: 'New South Wales', city: 'Sydney, Melbourne', type: 'Private', tier: 'Specialized', founded: 1968, students: 1500, acceptanceRate: 'Open', website: 'https://www.aim.edu.au', tuition: 'AUD $25,000–$33,000', popularPrograms: ['Music', 'Performing Arts'], description: 'Leading specialist institution for music and performing arts.' },
-  { id: 37, name: 'Le Cordon Bleu Australia', state: 'South Australia', city: 'Adelaide, Sydney, Melbourne', type: 'Private', tier: 'Specialized', founded: 1996, students: 4000, acceptanceRate: 'Open', website: 'https://www.cordonbleu.edu/australia', tuition: 'AUD $35,000–$45,000', popularPrograms: ['Culinary Arts', 'Hospitality Management'], description: 'World-renowned culinary and hospitality institute.' },
-  { id: 38, name: 'JMC Academy', state: 'New South Wales', city: 'Sydney, Melbourne, Brisbane', type: 'Private', tier: 'Specialized', founded: 1982, students: 3000, acceptanceRate: 'Open', website: 'https://www.jmcacademy.edu.au', tuition: 'AUD $25,000–$35,000', popularPrograms: ['Animation', 'Audio Engineering', 'Game Design'], description: 'Creative arts college with industry-grade facilities.' },
-  { id: 39, name: 'Deakin College', state: 'Victoria', city: 'Melbourne', type: 'Private', tier: 'Pathway', founded: 1996, students: 2500, acceptanceRate: 'Open', website: 'https://www.deakincollege.edu.au', tuition: 'AUD $20,000–$30,000', popularPrograms: ['Business', 'IT', 'Health'], description: 'Pathway college for international students to enter Deakin University.' },
-  { id: 40, name: 'Melbourne Polytechnic', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1912, students: 30000, acceptanceRate: 'Open', website: 'https://www.melbournepolytechnic.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Trades', 'Design', 'Music'], description: 'One of Australia’s oldest and most respected polytechnic institutes.' },
-  { id: 41, name: 'Kangan Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1925, students: 40000, acceptanceRate: 'Open', website: 'https://www.kangan.edu.au', tuition: 'AUD $5,000–$10,000', popularPrograms: ['Automotive', 'Fashion', 'Business'], description: 'TAFE provider with a focus on automotive and fashion education.' },
-  { id: 42, name: 'Holmesglen Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1982, students: 50000, acceptanceRate: 'Open', website: 'https://www.holmesglen.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Nursing', 'Building Design', 'Hospitality'], description: 'Specialized in nursing, hospitality and building design.' },
-  { id: 43, name: 'North Metropolitan TAFE', state: 'Western Australia', city: 'Perth', type: 'College', tier: 'TAFE', founded: 1900, students: 30000, acceptanceRate: 'Open', website: 'https://www.northmetrotafe.wa.edu.au', tuition: 'AUD $5,000–$12,000', popularPrograms: ['Graphic Design', 'Cyber Security', 'Engineering'], description: 'Advanced vocational training in technology and design.' },
-  { id: 44, name: 'TAFE Gippsland', state: 'Victoria', city: 'Gippsland', type: 'College', tier: 'TAFE', founded: 1930, students: 10000, acceptanceRate: 'Open', website: 'https://www.tafegippsland.edu.au', tuition: 'AUD $5,000–$10,000', popularPrograms: ['Agriculture', 'Nursing', 'Trades'], description: 'Regional TAFE focused on local industries.' },
-  { id: 45, name: 'Canberra Institute of Technology (CIT)', state: 'Australian Capital Territory', city: 'Canberra', type: 'College', tier: 'TAFE', founded: 1928, students: 26000, acceptanceRate: 'Open', website: 'https://cit.edu.au', tuition: 'AUD $5,000–$11,000', popularPrograms: ['IT', 'Trades', 'Design'], description: 'Main vocational provider in the nations capital.' },
-  { id: 46, name: 'William Angliss Institute', state: 'Victoria', city: 'Melbourne', type: 'College', tier: 'TAFE', founded: 1940, students: 23000, acceptanceRate: 'Open', website: 'https://www.angliss.edu.au', tuition: 'AUD $5,000–$14,000', popularPrograms: ['Hospitality', 'Culinary Arts', 'Event Management'], description: 'Premier training center for hospitality, food, and tourism industries.' },
-  { id: 47, name: 'TAFE Queensland', state: 'Queensland', city: 'Brisbane & Regional', type: 'College', tier: 'TAFE', founded: 1882, students: 120000, acceptanceRate: 'Open', website: 'https://tafeqld.edu.au', tuition: 'AUD $5,000–$13,000', popularPrograms: ['Trades', 'Business', 'Health'], description: 'Queensland’s largest vocational training provider offering a broad range of TAFE courses.' },
-  { id: 48, name: 'TAFE NSW', state: 'New South Wales', city: 'Sydney & Regional', type: 'College', tier: 'TAFE', founded: 1890, students: 500000, acceptanceRate: 'Open', website: 'https://www.tafensw.edu.au', tuition: 'AUD $5,000–$14,000', popularPrograms: ['Construction', 'Creative Industries', 'Health'], description: 'Australia’s largest vocational education provider with massive reach across NSW.' }
+    // University data with Bundesland codes
+    const germanUniversities = [
+      {
+        id: 1,
+        name: 'Technical University of Munich',
+        bundesland: 'BY',  // Bayern (Bavaria)
+        city: 'Munich',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1868,
+        students: 45000,
+        acceptanceRate: '35%',
+        website: 'https://www.tum.de',
+        tuition: '€Free (public university)',
+        popularPrograms: ['Engineering', 'Computer Science', 'Economics'],
+        description: 'Top-ranked German university, QS #28 globally, leading in engineering & research.'
+      },
+      {
+        id: 2,
+        name: 'Ludwig Maximilian University of Munich',
+        bundesland: 'BY',  // Bayern (Bavaria)
+        city: 'Munich',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1472,
+        students: 52000,
+        acceptanceRate: '30%',
+        website: 'https://www.lmu.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Medicine', 'Law', 'Arts & Humanities'],
+        description: 'Germany’s 2nd highest ranked; QS #59; world-class arts, natural sciences, and humanities.'
+      },
+      {
+        id: 3,
+        name: 'Heidelberg University',
+        bundesland: 'BW',  // Baden-Württemberg
+        city: 'Heidelberg',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1386,
+        students: 31000,
+        acceptanceRate: '40%',
+        website: 'https://www.uni-heidelberg.de',
+        tuition: '€Free',
+        popularPrograms: ['Medicine', 'Science', 'Law'],
+        description: 'One of Germany’s oldest and top universities; QS #84 globally, THE #47.'
+      },
+      {
+        id: 4,
+        name: 'RWTH Aachen University',
+        state: 'North Rhine-Westphalia',
+        city: 'Aachen',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1870,
+        students: 45000,
+        acceptanceRate: '35%',
+        website: 'https://www.rwth-aachen.de',
+        tuition: '€Free',
+        popularPrograms: ['Mechanical Engineering', 'Materials Science', 'Computer Science'],
+        description: 'Leading technical university; top in mechanical & chemical engineering in Germany.'
+      },
+      {
+        id: 5,
+        name: 'Karlsruhe Institute of Technology (KIT)',
+        state: 'Baden-Württemberg',
+        city: 'Karlsruhe',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 2009, 
+        students: 24000,
+        acceptanceRate: '40%',
+        website: 'https://www.kit.edu',
+        name: 'Humboldt University of Berlin',
+        bundesland: 'BE',  // Berlin
+        city: 'Berlin',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1810,
+        students: 36000,
+        acceptanceRate: '45%',
+        website: 'https://www.hu-berlin.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Arts', 'Humanities', 'Social Sciences'],
+        description: 'Alumni include 55 Nobel Prize winners; strong in philosophy and social sciences.'
+      },
+      {
+        id: 5,
+        name: 'Free University of Berlin',
+        bundesland: 'BE',  // Berlin
+        city: 'Berlin',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1948,
+        students: 38000,
+        acceptanceRate: '50%',
+        website: 'https://www.fu-berlin.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Political Science', 'History', 'Biology'],
+        description: 'Top 10 in Germany; known for social sciences and humanities; international focus.'
+      },
+      {
+        id: 6,
+        name: 'RWTH Aachen University',
+        bundesland: 'NW',  // Nordrhein-Westfalen
+        city: 'Aachen',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1870,
+        students: 47000,
+        acceptanceRate: '40%',
+        website: 'https://www.rwth-aachen.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Engineering', 'Natural Sciences', 'Medicine'],
+        description: 'Germany\'s largest technical university; strong industry connections.'
+      },
+      {
+        id: 7,
+        name: 'University of Freiburg',
+        bundesland: 'BW',  // Baden-Württemberg
+        city: 'Freiburg',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1457,
+        students: 25000,
+        acceptanceRate: '45%',
+        website: 'https://uni-freiburg.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Environmental Sciences', 'Medicine', 'Law'],
+        description: 'Renowned for sustainability research; beautiful historic campus.'
+      },
+      {
+        id: 8,
+        name: 'Karlsruhe Institute of Technology',
+        bundesland: 'BW',  // Baden-Württemberg
+        city: 'Karlsruhe',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1825,
+        students: 26000,
+        acceptanceRate: '40%',
+        website: 'https://www.kit.edu',
+        tuition: '€Free (public)',
+        popularPrograms: ['Computer Science', 'Engineering', 'Natural Sciences'],
+        description: 'Leading in AI and engineering; close ties with research institutions.'
+      },
+      {
+        id: 9,
+        name: 'University of Tübingen',
+        bundesland: 'BW',  // Baden-Württemberg
+        city: 'Tübingen',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1477,
+        students: 28000,
+        acceptanceRate: '50%',
+        website: 'https://uni-tuebingen.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Medicine', 'Law', 'Theology'],
+        description: 'Historic university with strong medical and life sciences programs.'
+      },
+      {
+        id: 10,
+        name: 'Dresden University of Technology (TU Dresden)',
+        bundesland: 'SN',  // Sachsen
+        city: 'Dresden',
+        type: 'Public',
+        tier: 'Elite',
+        founded: 1828,
+        students: 32000,
+        acceptanceRate: '55%',
+        website: 'https://tu-dresden.de',
+        tuition: '€Free (public)',
+        popularPrograms: ['Engineering', 'Computer Science', 'Natural Sciences'],
+        description: 'One of Germany\'s oldest technical universities; strong in engineering.'
+      },
+      {
+        id: 11,
+        name: 'University of Hamburg',
+        bundesland: 'HH',  // Hamburg
+        city: 'Hamburg',
+        type: 'Public',
+        tier: 'Top 20 Germany',
+        founded: 1919,
+        students: 43000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-hamburg.de',
+        tuition: '€Free',
+        popularPrograms: ['Law', 'Business', 'Social Sciences'],
+        description: 'Large and diverse public university with a strong reputation in social sciences.'
+      },
+      {
+        id: 12,
+        name: 'University of Mannheim',
+        bundesland: 'BW',  // Baden-Württemberg
+        city: 'Mannheim',
+        type: 'Public',
+        tier: 'Top 25 Germany',
+        founded: 1967,
+        students: 12000,
+        acceptanceRate: '50%',
+        website: 'https://www.uni-mannheim.de',
+        tuition: '€Free',
+        popularPrograms: ['Business Administration', 'Economics', 'Social Sciences'],
+        description: 'Renowned business school; ranked within Germany\'s top 20–25.'
+      },
+      {
+        id: 15,
+        name: 'University of Cologne',
+        bundesland: 'NW',  // Nordrhein-Westfalen
+        city: 'Cologne',
+        type: 'Public',
+        tier: 'Top 20 Germany',
+        founded: 1388,
+        students: 50000,
+        acceptanceRate: '55%',
+        website: 'https://www.uni-koeln.de',
+        tuition: '€Free',
+        popularPrograms: ['Business', 'Law', 'Economics'],
+        description: 'One of Germany\'s largest; strong in business and social sciences.'
+      },
+      {
+        id: 16,
+        name: 'University of Bremen',
+        bundesland: 'HB',  // Bremen
+        city: 'Bremen',
+        type: 'Public',
+        tier: 'Top 30 Germany',
+        founded: 1971,
+        students: 20000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-bremen.de',
+        tuition: '€Free',
+        popularPrograms: ['Marine Biology', 'Physics', 'Computer Science'],
+        description: 'Young, research-oriented university known for innovation and interdisciplinarity.'
+      },
+      {
+        id: 15,
+        name: 'Jacobs University Bremen',
+        state: 'Bremen',
+        city: 'Bremen',
+        type: 'Private',
+        tier: 'Top Private',
+        founded: 2001,
+        students: 1500,
+        acceptanceRate: 'Selective',
+        website: 'https://www.jacobs-university.de',
+        tuition: '€20,000+',
+        popularPrograms: ['International Relations', 'Biochemistry', 'Computer Science'],
+        description: 'International private English-language university with high-quality academic programs.'
+      },
+      {
+        id: 16,
+        name: 'University of Passau',
+        state: 'Bavaria',
+        city: 'Passau',
+        type: 'Public',
+        tier: 'Top 40 Germany',
+        founded: 1978,
+        students: 13000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-passau.de',
+        tuition: '€Free',
+        popularPrograms: ['Law', 'Computer Science', 'Media Studies'],
+        description: 'Modern university near the Austrian border, known for law and informatics.'
+      },
+      {
+        id: 17,
+        name: 'Frankfurt University of Applied Sciences',
+        state: 'Hesse',
+        city: 'Frankfurt',
+        type: 'Public',
+        tier: 'Applied Sciences',
+        founded: 1971,
+        students: 15000,
+        acceptanceRate: 'Open',
+        website: 'https://www.frankfurt-university.de',
+        tuition: '€Free',
+        popularPrograms: ['Engineering', 'Social Work', 'Business'],
+        description: 'Practice-oriented education in Germany’s financial capital.'
+      },
+      {
+        id: 18,
+        name: 'Hochschule München (Munich University of Applied Sciences)',
+        state: 'Bavaria',
+        city: 'Munich',
+        type: 'Public',
+        tier: 'Applied Sciences',
+        founded: 1971,
+        students: 18000,
+        acceptanceRate: 'Open',
+        website: 'https://www.hm.edu',
+        tuition: '€Free',
+        popularPrograms: ['Engineering', 'Architecture', 'Design'],
+        description: 'One of Germany’s largest universities of applied sciences.'
+      },
+      {
+        id: 19,
+        name: 'HTW Berlin – University of Applied Sciences',
+        state: 'Berlin',
+        city: 'Berlin',
+        type: 'Public',
+        tier: 'Applied Sciences',
+        founded: 1994,
+        students: 14000,
+        acceptanceRate: 'Open',
+        website: 'https://www.htw-berlin.de',
+        tuition: '€Free',
+        popularPrograms: ['Engineering', 'Design', 'Business'],
+        description: 'Modern, career-focused university with high employment outcomes.'
+      },
+      {
+        id: 20,
+        name: 'University of Leipzig',
+        state: 'Saxony',
+        city: 'Leipzig',
+        type: 'Public',
+        tier: 'Top 30 Germany',
+        founded: 1409,
+        students: 31000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-leipzig.de',
+        tuition: '€Free',
+        popularPrograms: ['Humanities', 'Medicine', 'Social Sciences'],
+        description: 'Historically prestigious and culturally rich university in eastern Germany.'
+      },
+      {
+        id: 21,
+        name: 'University of Stuttgart',
+        state: 'Baden-Württemberg',
+        city: 'Stuttgart',
+        type: 'Public',
+        tier: 'Top 20 Germany',
+        founded: 1829,
+        students: 24000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-stuttgart.de',
+        tuition: '€Free',
+        popularPrograms: ['Engineering', 'Architecture', 'Computer Science'],
+        description: 'Known for advanced engineering and architectural studies.'
+      },
+      {
+        id: 22,
+        name: 'University of Erlangen–Nuremberg (FAU)',
+        state: 'Bavaria',
+        city: 'Erlangen',
+        type: 'Public',
+        tier: 'Top 20 Germany',
+        founded: 1743,
+        students: 38000,
+        acceptanceRate: 'Open',
+        website: 'https://www.fau.eu',
+        tuition: '€Free',
+        popularPrograms: ['Medicine', 'Engineering', 'Philosophy'],
+        description: 'Large interdisciplinary university with strong research output.'
+      },
+      {
+        id: 23,
+        name: 'University of Potsdam',
+        state: 'Brandenburg',
+        city: 'Potsdam',
+        type: 'Public',
+        tier: 'Top 30 Germany',
+        founded: 1991,
+        students: 21000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-potsdam.de',
+        tuition: '€Free',
+        popularPrograms: ['Law', 'Education', 'IT Systems'],
+        description: 'Young and rapidly growing university with modern facilities.'
+      },
+      {
+        id: 24,
+        name: 'University of Duisburg-Essen',
+        state: 'North Rhine-Westphalia',
+        city: 'Duisburg/Essen',
+        type: 'Public',
+        tier: 'Top 25 Germany',
+        founded: 2003,
+        students: 42000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-due.de',
+        tuition: '€Free',
+        popularPrograms: ['Business', 'Education', 'Engineering'],
+        description: 'Amalgamated institution with strong regional influence and student diversity.'
+      },
+      {
+        id: 25,
+        name: 'University of Kassel',
+        state: 'Hesse',
+        city: 'Kassel',
+        type: 'Public',
+        tier: 'Top 40 Germany',
+        founded: 1971,
+        students: 25000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-kassel.de',
+        tuition: '€Free',
+        popularPrograms: ['Environmental Science', 'Engineering', 'Social Work'],
+        description: 'Sustainability-oriented programs with a modern campus and international reach.'
+      },
+      {
+        id: 26,
+        name: 'University of Regensburg',
+        state: 'Bavaria',
+        city: 'Regensburg',
+        type: 'Public',
+        tier: 'Top 30 Germany',
+        founded: 1962,
+        students: 21000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-regensburg.de',
+        tuition: '€Free',
+        popularPrograms: ['Medicine', 'History', 'Economics'],
+        description: 'Research-focused university with strong humanities and medical faculties.'
+      },
+      {
+        id: 27,
+        name: 'University of Ulm',
+        state: 'Baden-Württemberg',
+        city: 'Ulm',
+        type: 'Public',
+        tier: 'Top 30 Germany',
+        founded: 1967,
+        students: 10000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-ulm.de',
+        tuition: '€Free',
+        popularPrograms: ['Biology', 'Medicine', 'Mathematics'],
+        description: 'Specializes in natural sciences and life sciences research.'
+      },
+      {
+        id: 28,
+        name: 'University of Wuppertal',
+        state: 'North Rhine-Westphalia',
+        city: 'Wuppertal',
+        type: 'Public',
+        tier: 'Top 40 Germany',
+        founded: 1972,
+        students: 23000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-wuppertal.de',
+        tuition: '€Free',
+        popularPrograms: ['Industrial Engineering', 'Design', 'Economics'],
+        description: 'Innovative, future-focused university with diverse programs.'
+      },
+          {
+        id: 29,
+        name: 'University of Rostock',
+        state: 'Mecklenburg-Vorpommern',
+        city: 'Rostock',
+        type: 'Public',
+        tier: 'Top 40 Germany',
+        founded: 1419,
+        students: 13000,
+        acceptanceRate: 'Open',
+        website: 'https://www.uni-rostock.de',
+        tuition: '€Free',
+        popularPrograms: ['Mechanical Engineering', 'Agricultural Science', 'Law'],
+        description: 'Germany’s third oldest university with a maritime academic culture.'
+      },
+  {
+    id: 21,
+    name: 'University of Stuttgart',
+    state: 'Baden-Württemberg',
+    city: 'Stuttgart',
+    type: 'Public',
+    tier: 'Top 20 Germany',
+    founded: 1829,
+    students: 24000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-stuttgart.de',
+    tuition: '€Free',
+    popularPrograms: ['Engineering', 'Architecture', 'Computer Science'],
+    description: 'Known for advanced engineering and architectural studies.'
+  },
+  {
+    id: 22,
+    name: 'University of Erlangen–Nuremberg (FAU)',
+    state: 'Bavaria',
+    city: 'Erlangen',
+    type: 'Public',
+    tier: 'Top 20 Germany',
+    founded: 1743,
+    students: 38000,
+    acceptanceRate: 'Open',
+    website: 'https://www.fau.eu',
+    tuition: '€Free',
+    popularPrograms: ['Medicine', 'Engineering', 'Philosophy'],
+    description: 'Large interdisciplinary university with strong research output.'
+  },
+  {
+    id: 23,
+    name: 'University of Potsdam',
+    state: 'Brandenburg',
+    city: 'Potsdam',
+    type: 'Public',
+    tier: 'Top 30 Germany',
+    founded: 1991,
+    students: 21000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-potsdam.de',
+    tuition: '€Free',
+    popularPrograms: ['Law', 'Education', 'IT Systems'],
+    description: 'Young and rapidly growing university with modern facilities.'
+  },
+  {
+    id: 24,
+    name: 'University of Duisburg-Essen',
+    state: 'North Rhine-Westphalia',
+    city: 'Duisburg/Essen',
+    type: 'Public',
+    tier: 'Top 25 Germany',
+    founded: 2003,
+    students: 42000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-due.de',
+    tuition: '€Free',
+    popularPrograms: ['Business', 'Education', 'Engineering'],
+    description: 'Amalgamated institution with strong regional influence and student diversity.'
+  },
+  {
+    id: 25,
+    name: 'University of Kassel',
+    state: 'Hesse',
+    city: 'Kassel',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1971,
+    students: 25000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-kassel.de',
+    tuition: '€Free',
+    popularPrograms: ['Environmental Science', 'Engineering', 'Social Work'],
+    description: 'Sustainability-oriented programs with a modern campus and international reach.'
+  },
+  {
+    id: 26,
+    name: 'University of Regensburg',
+    state: 'Bavaria',
+    city: 'Regensburg',
+    type: 'Public',
+    tier: 'Top 30 Germany',
+    founded: 1962,
+    students: 21000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-regensburg.de',
+    tuition: '€Free',
+    popularPrograms: ['Medicine', 'History', 'Economics'],
+    description: 'Research-focused university with strong humanities and medical faculties.'
+  },
+  {
+    id: 27,
+    name: 'University of Ulm',
+    state: 'Baden-Württemberg',
+    city: 'Ulm',
+    type: 'Public',
+    tier: 'Top 30 Germany',
+    founded: 1967,
+    students: 10000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-ulm.de',
+    tuition: '€Free',
+    popularPrograms: ['Biology', 'Medicine', 'Mathematics'],
+    description: 'Specializes in natural sciences and life sciences research.'
+  },
+  {
+    id: 28,
+    name: 'University of Wuppertal',
+    state: 'North Rhine-Westphalia',
+    city: 'Wuppertal',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1972,
+    students: 23000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-wuppertal.de',
+    tuition: '€Free',
+    popularPrograms: ['Industrial Engineering', 'Design', 'Economics'],
+    description: 'Innovative, future-focused university with diverse programs.'
+  },
+  {
+    id: 29,
+    name: 'University of Rostock',
+    state: 'Mecklenburg-Vorpommern',
+    city: 'Rostock',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1419,
+    students: 13000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-rostock.de',
+    tuition: '€Free',
+    popularPrograms: ['Mechanical Engineering', 'Agricultural Science', 'Law'],
+    description: 'Germany’s third oldest university with a maritime academic culture.'
+  },
+  {
+    id: 30,
+    name: 'University of Greifswald',
+    state: 'Mecklenburg-Vorpommern',
+    city: 'Greifswald',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1456,
+    students: 10000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-greifswald.de',
+    tuition: '€Free',
+    popularPrograms: ['Medicine', 'Theology', 'German Studies'],
+    description: 'Traditional research university with strong emphasis on life sciences.'
+  },
+  {
+    id: 31,
+    name: 'University of Bayreuth',
+    state: 'Bavaria',
+    city: 'Bayreuth',
+    type: 'Public',
+    tier: 'Top 35 Germany',
+    founded: 1975,
+    students: 13000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-bayreuth.de',
+    tuition: '€Free',
+    popularPrograms: ['African Studies', 'Business', 'Law'],
+    description: 'Known globally for its unique African studies and interdisciplinary focus.'
+  },
+  {
+    id: 32,
+    name: 'Hochschule Bonn-Rhein-Sieg',
+    state: 'North Rhine-Westphalia',
+    city: 'Sankt Augustin',
+    type: 'Public',
+    tier: 'Applied Sciences',
+    founded: 1995,
+    students: 9000,
+    acceptanceRate: 'Open',
+    website: 'https://www.h-brs.de',
+    tuition: '€Free',
+    popularPrograms: ['Cyber Security', 'Business IT', 'Social Protection'],
+    description: 'High-tech focused applied sciences university with global partnerships.'
+  },
+  {
+    id: 33,
+    name: 'University of Siegen',
+    state: 'North Rhine-Westphalia',
+    city: 'Siegen',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1972,
+    students: 20000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-siegen.de',
+    tuition: '€Free',
+    popularPrograms: ['Media Studies', 'Computer Science', 'Education'],
+    description: 'Innovative and inclusive mid-sized university with international orientation.'
+  },
+  {
+    id: 34,
+    name: 'University of Hohenheim',
+    state: 'Baden-Württemberg',
+    city: 'Stuttgart',
+    type: 'Public',
+    tier: 'Top 35 Germany',
+    founded: 1818,
+    students: 9000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-hohenheim.de',
+    tuition: '€Free',
+    popularPrograms: ['Agricultural Economics', 'Food Science', 'Biology'],
+    description: 'Germany’s oldest agricultural university with strong research in life sciences.'
+  },
+  {
+    id: 35,
+    name: 'University of Oldenburg',
+    state: 'Lower Saxony',
+    city: 'Oldenburg',
+    type: 'Public',
+    tier: 'Top 30 Germany',
+    founded: 1973,
+    students: 15000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uol.de',
+    tuition: '€Free',
+    popularPrograms: ['Environmental Sciences', 'Renewable Energy', 'Education'],
+    description: 'Known for sustainable energy research and teacher training programs.'
+  },
+  {
+    id: 36,
+    name: 'Hochschule Karlsruhe',
+    state: 'Baden-Württemberg',
+    city: 'Karlsruhe',
+    type: 'Public',
+    tier: 'Applied Sciences',
+    founded: 1878,
+    students: 8000,
+    acceptanceRate: 'Open',
+    website: 'https://www.h-ka.de',
+    tuition: '€Free',
+    popularPrograms: ['Mechanical Engineering', 'IT', 'Media Design'],
+    description: 'Strong in applied engineering and technology disciplines.'
+  },
+  {
+    id: 37,
+    name: 'Hochschule Furtwangen University (HFU)',
+    state: 'Baden-Württemberg',
+    city: 'Furtwangen',
+    type: 'Public',
+    tier: 'Applied Sciences',
+    founded: 1850,
+    students: 6500,
+    acceptanceRate: 'Open',
+    website: 'https://www.hs-furtwangen.de',
+    tuition: '€Free',
+    popularPrograms: ['Medical Engineering', 'IT', 'Business Informatics'],
+    description: 'Germany’s oldest tech university of applied sciences.'
+  },
+  {
+    id: 38,
+    name: 'Hochschule Darmstadt',
+    state: 'Hesse',
+    city: 'Darmstadt',
+    type: 'Public',
+    tier: 'Applied Sciences',
+    founded: 1971,
+    students: 17000,
+    acceptanceRate: 'Open',
+    website: 'https://h-da.de',
+    tuition: '€Free',
+    popularPrograms: ['Media Technology', 'IT Security', 'Engineering'],
+    description: 'Prominent applied sciences school with a focus on digital technologies.'
+  },
+  {
+    id: 39,
+    name: 'University of Giessen (Justus Liebig University)',
+    state: 'Hesse',
+    city: 'Giessen',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1607,
+    students: 28000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-giessen.de',
+    tuition: '€Free',
+    popularPrograms: ['Veterinary Medicine', 'Law', 'Life Sciences'],
+    description: 'Historic and diverse university with strength in biology and veterinary medicine.'
+  },
+  {
+    id: 40,
+    name: 'University of Paderborn',
+    state: 'North Rhine-Westphalia',
+    city: 'Paderborn',
+    type: 'Public',
+    tier: 'Top 40 Germany',
+    founded: 1972,
+    students: 20000,
+    acceptanceRate: 'Open',
+    website: 'https://www.uni-paderborn.de',
+    tuition: '€Free',
+    popularPrograms: ['Computer Science', 'Electrical Engineering', 'Mechanical Engineering'],
+    description: 'Popular among tech students and innovators; modern labs and AI focus.'
+  }
 ];
 
+// German states with their ISO 3166-2:DE codes and full names
+const germanBundeslaender = {
+  'BW': 'Baden-Württemberg',
+  'BY': 'Bavaria (Bayern)',
+  'BE': 'Berlin',
+  'BB': 'Brandenburg',
+  'HB': 'Bremen',
+  'HH': 'Hamburg',
+  'HE': 'Hesse (Hessen)',
+  'NI': 'Lower Saxony (Niedersachsen)',
+  'MV': 'Mecklenburg-Vorpommern',
+  'NW': 'North Rhine-Westphalia (Nordrhein-Westfalen)',
+  'RP': 'Rhineland-Palatinate (Rheinland-Pfalz)',
+  'SL': 'Saarland',
+  'SN': 'Saxony (Sachsen)',
+  'ST': 'Saxony-Anhalt (Sachsen-Anhalt)',
+  'SH': 'Schleswig-Holstein',
+  'TH': 'Thuringia (Thüringen)'
+};
 
+// Legacy support (remove after updating all references)
+const germanStates = germanBundeslaender;
 
-const australianStates = {
-      'New South Wales': 'New South Wales',
-      'Victoria': 'Victoria',
-      'Queensland': 'Queensland',
-      'Western Australia': 'Western Australia',
-      'South Australia': 'South Australia',
-      'Tasmania': 'Tasmania',
-      'Australian Capital Territory': 'Australian Capital Territory',
-      'Northern Territory': 'Northern Territory'
-    };
     // University types and tiers
+     // University types and tiers
      const universityTypes = [
       'Public', 'Private', 'Collegiate', 'Specialist'
     ];
@@ -1152,45 +1875,28 @@ const australianStates = {
     // App state
     let isLoading = false;
     let currentPage = 1;
-    const itemsPerPage = 12;
-    let filteredUniversities = [];
+    const itemsPerPage = 12; // Number of items to show per page
 
-    // DOM elements
-    let searchInput, stateFilter, typeFilter, resetButton;
-    let resultCount, totalCount, loadingIndicator, universityGrid;
-
-
+    // DOM elements will be initialized in the init function
+    
 
     // Initialize filter dropdowns
     function initFilters() {
-      // Clear existing options first
-      stateFilter.innerHTML = '<option value="">All States</option>';
-      
       // States
-      Object.entries(australianStates).forEach(([name, value]) => {
-        const option = document.createElement('option');
-        option.value = name;
-        option.textContent = name;
-        stateFilter.appendChild(option);
-      });
-
-      // Clear and add type filters
-      typeFilter.innerHTML = '<option value="">All Types</option>';
-      const types = [...new Set(universities.map(u => u.type))];
-      types.forEach(type => {
-        const option = document.createElement('option');
-        option.value = type;
-        option.textContent = type;
-        typeFilter.appendChild(option);
-      });
+      Object.entries(germanStates).forEach(([code, name]) => {
+          const option = document.createElement('option');
+          option.value = code;
+          option.textContent = name;
+          stateFilter.appendChild(option);
+        });
 
       // Types
       universityTypes.forEach(type => {
-        const option = document.createElement('option');
-        option.value = type;
-        option.textContent = type;
-        typeFilter.appendChild(option);
-      });
+          const option = document.createElement('option');
+          option.value = type;
+          option.textContent = type;
+          typeFilter.appendChild(option);
+        });
     }
 
     // Handle search input
@@ -1222,22 +1928,35 @@ const australianStates = {
 
     // Get filtered universities based on current filters
     function getFilteredUniversities() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const state = stateFilter.value;
-      const type = typeFilter.value;
-      
-      return universities.filter(univ => {
-        const matchesSearch = !searchTerm || 
-          univ.name.toLowerCase().includes(searchTerm) ||
-          univ.city.toLowerCase().includes(searchTerm) ||
-          univ.state.toLowerCase().includes(searchTerm) ||
-          (australianStates[univ.state] && australianStates[univ.state].toLowerCase().includes(searchTerm));
+      try {
+        const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+        const bundesland = stateFilter ? stateFilter.value : '';
+        const type = typeFilter ? typeFilter.value : '';
         
-        const matchesState = !state || univ.state === state;
-        const matchesType = !type || univ.type === type;
+        console.log('Filtering with:', { searchTerm, bundesland, type });
         
-        return matchesSearch && matchesState && matchesType;
-      });
+        return germanUniversities.filter(univ => {
+          try {
+            const matchesSearch = !searchTerm || 
+              (univ.name && univ.name.toLowerCase().includes(searchTerm)) ||
+              (univ.city && univ.city.toLowerCase().includes(searchTerm)) ||
+              (univ.bundesland && univ.bundesland.toLowerCase().includes(searchTerm)) ||
+              (germanBundeslaender[univ.bundesland] && 
+               germanBundeslaender[univ.bundesland].toLowerCase().includes(searchTerm));
+            
+            const matchesBundesland = !bundesland || univ.bundesland === bundesland;
+            const matchesType = !type || (univ.type && univ.type === type);
+            
+            return matchesSearch && matchesBundesland && matchesType;
+          } catch (e) {
+            console.error('Error filtering university:', univ, e);
+            return false;
+          }
+        });
+      } catch (error) {
+        console.error('Error in getFilteredUniversities:', error);
+        return [];
+      }
     }
 
     // Update result counts
@@ -1260,27 +1979,31 @@ const australianStates = {
     }
 
     // Load more universities
-    function loadMore() {
-      if (isLoading || (currentPage * itemsPerPage) >= filteredUniversities.length) {
-        return;
-      }
+    function loadMore(initialLoad = false) {
+      if (isLoading) return;
+      
+      const start = initialLoad ? 0 : (currentPage - 1) * itemsPerPage;
+      const end = currentPage * itemsPerPage;
+      
+      // If we've already loaded all universities, don't do anything
+      if (start >= filteredUniversities.length) return;
       
       isLoading = true;
       loadingIndicator.style.display = 'block';
       
       // Simulate network delay
       setTimeout(() => {
-        currentPage++;
-        const start = 0;
-        const end = currentPage * itemsPerPage;
-        const moreUniversities = filteredUniversities.slice(start, end);
-        
-        renderUniversities(moreUniversities, false);
+        const universitiesToRender = filteredUniversities.slice(0, end);
+        renderUniversities(universitiesToRender, false);
         updateResultCounts();
+        
+        if (!initialLoad) {
+          currentPage++;
+        }
         
         isLoading = false;
         loadingIndicator.style.display = 'none';
-      }, 500);
+      }, 100);
     }
 
     // Render universities to the grid
@@ -1289,15 +2012,25 @@ const australianStates = {
         universityGrid.innerHTML = '';
       }
       
-      if (universitiesToRender.length === 0) {
+      if (!universitiesToRender || universitiesToRender.length === 0) {
         universityGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem;">No universities found matching your criteria.</p>';
         return;
       }
       
+      const fragment = document.createDocumentFragment();
+      
       universitiesToRender.forEach(univ => {
-        const card = createUniversityCard(univ);
-        universityGrid.appendChild(card);
+        try {
+          const card = createUniversityCard(univ);
+          if (card) {
+            fragment.appendChild(card);
+          }
+        } catch (error) {
+          console.error('Error creating university card:', error);
+        }
       });
+      
+      universityGrid.appendChild(fragment);
     }
 
     function createUniversityCard(university) {
@@ -1314,7 +2047,7 @@ const australianStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${australianStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${germanStates[university.state] || university.state}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1344,7 +2077,7 @@ const australianStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${australianStates[university.state] || university.state}</span>
+          <span>${university.city}, ${germanBundeslaender[university.bundesland] || university.bundesland || university.state || 'N/A'}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1499,7 +2232,7 @@ const australianStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${australianStates[university.state] || university.state}</span>
+                <span>${university.city}, ${usStates[university.state] || university.state}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1541,7 +2274,7 @@ const australianStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${australianStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${usStates[university.state] || university.state}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>
@@ -1864,15 +2597,53 @@ const australianStates = {
     
     // Initialize the app
     function init() {
-      // Get DOM elements
-      searchInput = document.getElementById('searchInput');
-      stateFilter = document.getElementById('stateFilter');
-      typeFilter = document.getElementById('typeFilter');
-      resetButton = document.getElementById('resetFilters');
-      resultCount = document.getElementById('resultCount');
-      totalCount = document.getElementById('totalCount');
-      loadingIndicator = document.getElementById('loadingIndicator');
-      universityGrid = document.getElementById('universityGrid');
+      try {
+        console.log('Initializing app...');
+        
+        // Get DOM elements
+        searchInput = document.getElementById('searchInput');
+        stateFilter = document.getElementById('stateFilter');
+        typeFilter = document.getElementById('typeFilter');
+        resetButton = document.getElementById('resetFilters');
+        resultCount = document.getElementById('resultCount');
+        totalCount = document.getElementById('totalCount');
+        loadingIndicator = document.getElementById('loadingIndicator');
+        universityGrid = document.getElementById('universityGrid');
+        
+        console.log('DOM elements loaded');
+        
+        // Initialize filters
+        initFilters();
+        
+        // Reset state
+        currentPage = 1;
+        
+        // Get filtered universities
+        console.log('Filtering universities...');
+        filteredUniversities = getFilteredUniversities();
+        console.log('Filtered universities:', filteredUniversities.length);
+        
+        // Update result counts
+        updateResultCounts();
+        
+        // Load initial set of universities
+        console.log('Loading initial universities...');
+        loadMore(true);
+        
+        console.log('App initialized successfully');
+      } catch (error) {
+        console.error('Error initializing app:', error);
+        if (universityGrid) {
+          universityGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: red;">Error loading universities: ' + error.message + '</p>';
+        }
+      }
+      
+      // Add event listeners
+      searchInput.addEventListener('input', handleSearch);
+      stateFilter.addEventListener('change', handleFilter);
+      typeFilter.addEventListener('change', handleFilter);
+      resetButton.addEventListener('click', resetFilters);
+      window.addEventListener('scroll', handleScroll);
       
       // Create favorites button in header if it doesn't exist
       const header = document.querySelector('header');
@@ -1910,16 +2681,6 @@ const australianStates = {
         }
       }
       
-      // Initialize filters
-      initFilters();
-      
-      // Add event listeners
-      searchInput.addEventListener('input', handleSearch);
-      stateFilter.addEventListener('change', handleFilter);
-      typeFilter.addEventListener('change', handleFilter);
-      resetButton.addEventListener('click', resetFilters);
-      window.addEventListener('scroll', handleScroll);
-      
       // Add keyboard shortcut for search (Ctrl+F or Cmd+F)
       document.addEventListener('keydown', (e) => {
         if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
@@ -1928,19 +2689,28 @@ const australianStates = {
         }
       });
       
-      // Initial load
-      filteredUniversities = getFilteredUniversities();
-      updateResultCounts();
+      // Update favorite badge
       updateFavoriteBadge();
-      loadMore();
     }
     
-    // Start the app when the DOM is fully loaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-    } else {
-      init();
-    }
+    // Initialize variables
+    let searchInput, stateFilter, typeFilter, resetButton, resultCount, totalCount, loadingIndicator, universityGrid;
+    let filteredUniversities = [];
+    let visibleCount = 0;
+    
+    // Initialize the app when the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM fully loaded, initializing app...');
+      try {
+        init();
+      } catch (error) {
+        console.error('Error during initialization:', error);
+        if (document.getElementById('universityGrid')) {
+          document.getElementById('universityGrid').innerHTML = 
+            '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem; color: red;">Error initializing the application: ' + error.message + '</p>';
+        }
+      }
+    });
   </script>
 </body>
 </html>
