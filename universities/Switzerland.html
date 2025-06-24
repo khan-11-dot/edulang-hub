@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>Switzerland Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>Switzerland Universities</h1>
+      <p>Find and explore universities across the Switzerland</p>
     </header>
     
     <div class="search-container">
@@ -1076,62 +1076,58 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
+    const universities = [
+  { id: 1, name: 'ETH Zurich', canton: 'Zürich', city: 'Zurich', type: 'Public', tier: 'Top Swiss', founded: 1855, students: 24000, acceptanceRate: '20%', website: 'https://ethz.ch', tuition: 'CHF 730/semester', popularPrograms: ['Engineering', 'Natural Sciences'], description: 'World‑leading science and technology university.' },
+  { id: 2, name: 'EPFL', canton: 'Vaud', city: 'Lausanne', type: 'Public', tier: 'Top Swiss', founded: 1969, students: 16000, acceptanceRate: '20%', website: 'https://epfl.ch', tuition: 'CHF 730/semester', popularPrograms: ['Engineering', 'Computer Science'], description: 'Leading French‑speaking polytechnic known for innovation.' },
+  { id: 3, name: 'University of Zurich', canton: 'Zürich', city: 'Zurich', type: 'Public', tier: 'Comprehensive', founded: 1833, students: 27000, acceptanceRate: '50%', website: 'https://uzh.ch', tuition: 'CHF 730/semester', popularPrograms: ['Medicine', 'Law', 'Economics'], description: 'Largest university in Switzerland, strong in medicine and law.' },
+  { id: 4, name: 'University of Geneva', canton: 'Geneva', city: 'Geneva', type: 'Public', tier: 'Comprehensive', founded: 1559, students: 18000, acceptanceRate: '45%', website: 'https://unige.ch', tuition: 'CHF 730/semester', popularPrograms: ['International Relations', 'Law', 'Science'], description: 'Strong tradition in diplomacy, sciences, and humanities.' },
+  { id: 5, name: 'University of Bern', canton: 'Bern', city: 'Bern', type: 'Public', tier: 'Comprehensive', founded: 1834, students: 18000, acceptanceRate: '45%', website: 'https://unibe.ch', tuition: 'CHF 730/semester', popularPrograms: ['Medicine', 'Science', 'Law'], description: 'Historic bilingual university with strong research output.' },
+  { id: 6, name: 'University of Lausanne', canton: 'Vaud', city: 'Lausanne', type: 'Public', tier: 'Comprehensive', founded: 1537, students: 16000, acceptanceRate: '45%', website: 'https://unil.ch', tuition: 'CHF 730/semester', popularPrograms: ['Life Sciences', 'Law', 'Business'], description: 'Leading French‑speaking academic and research institution.' },
+  { id: 7, name: 'University of Basel', canton: 'Basel-Stadt', city: 'Basel', type: 'Public', tier: 'Comprehensive', founded: 1460, students: 13000, acceptanceRate: '50%', website: 'https://unibas.ch', tuition: 'CHF 730/semester', popularPrograms: ['Pharmacy', 'Life Sciences', 'Art History'], description: 'Switzerland’s oldest university with rich humanities tradition.' },
+  { id: 8, name: 'University of Fribourg', canton: 'Fribourg', city: 'Fribourg', type: 'Public', tier: 'Comprehensive', founded: 1889, students: 11000, acceptanceRate: '55%', website: 'https://unifr.ch', tuition: 'CHF 730/semester', popularPrograms: ['Theology', 'Law', 'Science'], description: 'Bilingual (French/German) university with diverse programs.' },
+  { id: 9, name: 'University of Lausanne Music Conservatory', canton: 'Vaud', city: 'Lausanne', type: 'Public', tier: 'Specialized', founded: 1835, students: 400, acceptanceRate: 'Selective', website: 'https://www.hes-so.ch', tuition: 'CHF 730/semester', popularPrograms: ['Music Performance', 'Composition'], description: 'Major conservatory affiliated with HES‑SO for advanced music training.' },
+  { id: 10, name: 'Glion Institute of Higher Education', canton: 'Vaud', city: 'Glion', type: 'Private', tier: 'Specialized', founded: 1962, students: 1300, acceptanceRate: 'Selective', website: 'https://glion.edu', tuition: 'CHF 40,000/year', popularPrograms: ['Hospitality Management'], description: 'World‑renowned hospitality and luxury management school.' },
+  { id: 11, name: 'Les Roches Global Hospitality Education', canton: 'Valais', city: 'Crans-Montana', type: 'Private', tier: 'Specialized', founded: 1954, students: 1200, acceptanceRate: 'Selective', website: 'https://lesroches.edu', tuition: 'CHF 40,000/year', popularPrograms: ['Hospitality Management'], description: 'Prestigious Swiss hospitality school with global campuses.' },
+  { id: 12, name: 'Zurich University of Applied Sciences (ZHAW)', canton: 'Zürich', city: 'Winterthur', type: 'Public', tier: 'Applied Sciences', founded: 2007, students: 13000, acceptanceRate: 'Open', website: 'https://zhaw.ch', tuition: 'CHF 720/semester', popularPrograms: ['Engineering', 'Business', 'Health'], description: 'Top applied science university with focus on practical education.' },
+  { id: 13, name: 'Lucerne University of Applied Sciences and Arts (HSLU)', canton: 'Lucerne', city: 'Lucerne', type: 'Public', tier: 'Applied Sciences', founded: 1997, students: 8000, acceptanceRate: 'Open', website: 'https://hslu.ch', tuition: 'CHF 800/semester', popularPrograms: ['Design', 'Engineering', 'Music'], description: 'Multidisciplinary institution with strong arts and tech programs.' },
+  { id: 14, name: 'Bern University of Applied Sciences (BFH)', canton: 'Bern', city: 'Bern', type: 'Public', tier: 'Applied Sciences', founded: 1997, students: 7500, acceptanceRate: 'Open', website: 'https://www.bfh.ch', tuition: 'CHF 750/semester', popularPrograms: ['Agriculture', 'Engineering', 'Health'], description: 'Known for agriculture and sustainable engineering education.' },
+  { id: 15, name: 'University of Applied Sciences and Arts Northwestern Switzerland (FHNW)', canton: 'Aargau', city: 'Brugg-Windisch', type: 'Public', tier: 'Applied Sciences', founded: 2006, students: 12000, acceptanceRate: 'Open', website: 'https://www.fhnw.ch', tuition: 'CHF 700/semester', popularPrograms: ['Education', 'Design', 'Engineering'], description: 'Diverse programs across multiple campuses and cantons.' },
+  { id: 16, name: 'University of Applied Sciences of Eastern Switzerland (OST)', canton: 'St. Gallen', city: 'Rapperswil-Jona', type: 'Public', tier: 'Applied Sciences', founded: 2020, students: 8000, acceptanceRate: 'Open', website: 'https://www.ost.ch', tuition: 'CHF 700/semester', popularPrograms: ['Engineering', 'IT', 'Business'], description: 'Formed from a merger of several tech-focused universities.' },
+  { id: 17, name: 'SUPSI – University of Applied Sciences and Arts of Southern Switzerland', canton: 'Ticino', city: 'Lugano', type: 'Public', tier: 'Applied Sciences', founded: 1997, students: 5500, acceptanceRate: 'Open', website: 'https://www.supsi.ch', tuition: 'CHF 800/semester', popularPrograms: ['Engineering', 'Arts', 'Economics'], description: 'Major institution in Italian-speaking Switzerland with tech and art focus.' },
+  { id: 18, name: 'FHGR – University of Applied Sciences of the Grisons', canton: 'Grisons', city: 'Chur', type: 'Public', tier: 'Applied Sciences', founded: 1963, students: 2500, acceptanceRate: 'Open', website: 'https://www.fhgr.ch', tuition: 'CHF 700/semester', popularPrograms: ['Tourism', 'IT', 'Design'], description: 'Small university with strong tourism and alpine focus.' },
+  { id: 19, name: 'Geneva School of Diplomacy and International Relations', canton: 'Geneva', city: 'Geneva', type: 'Private', tier: 'Specialized', founded: 2003, students: 200, acceptanceRate: 'Selective', website: 'https://www.genevadiplomacy.com', tuition: 'CHF 32,000/year', popularPrograms: ['International Relations', 'Diplomacy'], description: 'Boutique institute focused on diplomatic training.' },
+  { id: 20, name: 'Franklin University Switzerland', canton: 'Ticino', city: 'Lugano', type: 'Private', tier: 'Liberal Arts', founded: 1969, students: 400, acceptanceRate: '60%', website: 'https://www.fus.edu', tuition: 'CHF 40,000/year', popularPrograms: ['International Studies', 'Environmental Science'], description: 'American-style liberal arts university in the heart of Europe.' },
+  { id: 21, name: 'Kalaidos University of Applied Sciences', canton: 'Zurich', city: 'Zurich', type: 'Private', tier: 'Applied Sciences', founded: 1997, students: 4000, acceptanceRate: 'Open', website: 'https://www.kalaidos-fh.ch', tuition: 'CHF 5,000–12,000/year', popularPrograms: ['Business', 'Law', 'Health'], description: 'Accredited private university offering flexible and part-time programs.' },
+  { id: 22, name: 'IBZ Schools of Technology', canton: 'Zurich', city: 'Zurich', type: 'Private', tier: 'Technical', founded: 1945, students: 1000, acceptanceRate: 'Open', website: 'https://www.ibz.ch', tuition: 'CHF 6,000–10,000/year', popularPrograms: ['Engineering', 'IT', 'Electronics'], description: 'Technical institute offering vocational and advanced studies.' },
+  { id: 23, name: 'Business School Lausanne (BSL)', canton: 'Vaud', city: 'Lausanne', type: 'Private', tier: 'Business', founded: 1987, students: 300, acceptanceRate: 'Selective', website: 'https://www.bsl-lausanne.ch', tuition: 'CHF 30,000–40,000/year', popularPrograms: ['Business Administration', 'Entrepreneurship'], description: 'Innovative business school with strong entrepreneurial focus.' },
+  { id: 24, name: 'University of Lucerne', canton: 'Lucerne', city: 'Lucerne', type: 'Public', tier: 'Modern', founded: 2000, students: 3000, acceptanceRate: '55%', website: 'https://www.unilu.ch', tuition: 'CHF 1000/year', popularPrograms: ['Law', 'Humanities', 'Social Sciences'], description: 'Newest of Switzerland’s traditional universities with focused academic offerings.' },
+  { id: 25, name: 'Swiss Distance University of Applied Sciences (FFHS)', canton: 'Valais', city: 'Brig', type: 'Public', tier: 'Distance Learning', founded: 1998, students: 2500, acceptanceRate: 'Open', website: 'https://www.ffhs.ch', tuition: 'CHF 5,000/year', popularPrograms: ['Informatics', 'Business', 'Engineering'], description: 'Leading distance education university for professionals.' },
+  { id: 26, name: 'Swiss School of Business and Management (SSBM)', canton: 'Geneva', city: 'Geneva', type: 'Private', tier: 'Business', founded: 2018, students: 800, acceptanceRate: 'Open', website: 'https://www.ssbm.ch', tuition: 'CHF 10,000–25,000/year', popularPrograms: ['MBA', 'Leadership', 'Finance'], description: 'New business school with modern curriculum and executive focus.' },
+  { id: 27, name: 'IFM Business School', canton: 'Geneva', city: 'Geneva', type: 'Private', tier: 'Business', founded: 1971, students: 200, acceptanceRate: 'Moderate', website: 'https://www.ifm.ch', tuition: 'CHF 32,000/year', popularPrograms: ['Business Administration', 'Finance'], description: 'Accredited institution focused on real-world business education.' },
+  { id: 28, name: 'Geneva Business School', canton: 'Geneva', city: 'Geneva', type: 'Private', tier: 'Business', founded: 1995, students: 600, acceptanceRate: 'Moderate', website: 'https://www.gbsge.com', tuition: 'CHF 22,000–28,000/year', popularPrograms: ['International Management', 'Digital Marketing'], description: 'International private business school with campuses in Europe.' },
+  { id: 29, name: 'EU Business School Geneva', canton: 'Geneva', city: 'Geneva', type: 'Private', tier: 'Business', founded: 1973, students: 1500, acceptanceRate: 'Open', website: 'https://www.euruni.edu', tuition: 'CHF 25,000–30,000/year', popularPrograms: ['Business', 'Communication', 'Entrepreneurship'], description: 'Global business school offering English-taught programs in Geneva.' },
+  { id: 30, name: 'César Ritz Colleges Switzerland', canton: 'Valais', city: 'Le Bouveret', type: 'Private', tier: 'Hospitality', founded: 1982, students: 1000, acceptanceRate: 'Open', website: 'https://www.cesarritzcolleges.edu', tuition: 'CHF 30,000–40,000/year', popularPrograms: ['Hospitality Management', 'Tourism'], description: 'Prestigious hospitality school named after legendary hotelier César Ritz.' }
+
 ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
+
+
+const swissCantons = {
+  'Zurich': 'Zurich',
+  'Geneva': 'Geneva',
+  'Vaud': 'Vaud',
+  'Bern': 'Bern',
+  'Basel-Stadt': 'Basel-Stadt',
+  'St. Gallen': 'St. Gallen',
+  'Ticino': 'Ticino',
+  'Neuchâtel': 'Neuchâtel',
+  'Fribourg': 'Fribourg',
+  'Lucerne': 'Lucerne',
+  'Valais': 'Valais',
+  'Aargau': 'Aargau',
+  'Solothurn': 'Solothurn',
+  'Schwyz': 'Schwyz',
+  'Thurgau': 'Thurgau'
 };
 
     // University types and tiers
@@ -1162,7 +1158,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(swissCantons).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1225,8 +1221,8 @@ const singaporeStates = {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
-          univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          univ.canton.toLowerCase().includes(searchTerm) ||
+          (swissCantons[univ.canton] && swissCantons[univ.canton].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1305,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${swissCantons[university.canton] || university.canton}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1335,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${swissCantons[university.canton] || university.canton}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1490,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${swissCantons[university.canton] || university.canton}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1532,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${swissCantons[university.canton] || university.canton}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>

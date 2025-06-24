@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>Finland Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>Finland Universities</h1>
+      <p>Find and explore universities across the Finland</p>
     </header>
     
     <div class="search-container">
@@ -1076,62 +1076,61 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
+    const universities = [
+  { id: 1, name: 'University of Helsinki', region: 'Uusimaa', city: 'Helsinki', type: 'Public', tier: 'Research', founded: 1640, students: 31000, acceptanceRate: 'Selective', website: 'https://www.helsinki.fi', tuition: '€0–€15,000 (non‑EU)', popularPrograms: ['Medicine','Law','Environmental Science'], description: 'Finland’s oldest and highest-ranked university.' },
+  { id: 2, name: 'Aalto University', region: 'Uusimaa', city: 'Espoo', type: 'Public', tier: 'Research & Tech', founded: 2010, students: 17235, acceptanceRate: 'Selective', website: 'https://www.aalto.fi', tuition: '€0–€15,000 (non‑EU)', popularPrograms: ['Engineering','Design','Business'], description: 'Merged institute focusing on science, business & art.' },
+  { id: 3, name: 'University of Turku', region: 'Southwest Finland', city: 'Turku', type: 'Public', tier: 'Research', founded: 1920, students: 21900, acceptanceRate: 'Open', website: 'https://www.utu.fi', tuition: '€0–€15,000 (non‑EU)', popularPrograms: ['Biosciences','Education','Humanities'], description: 'Large multidisciplinary university in Turku.' },
+  { id: 4, name: 'University of Oulu', region: 'North Ostrobothnia', city: 'Oulu', type: 'Public', tier: 'Research', founded: 1958, students: 15000, acceptanceRate: 'Open', website: 'https://www.oulu.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['IT','Engineering','Health'], description: 'Tech‑oriented university with strong industry ties.' },
+  { id: 5, name: 'Tampere University', region: 'Pirkanmaa', city: 'Tampere', type: 'Public', tier: 'Research', founded: 2019, students: 21000, acceptanceRate: 'Open', website: 'https://www.tuni.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['Engineering','Health','Social Sciences'], description: 'Merged institution strong in STEM and social sciences.' },
+  { id: 6, name: 'University of Eastern Finland', region: 'North Karelia/Juva', city: 'Joensuu/Kuopio', type: 'Public', tier: 'Research', founded: 2010, students: 15000, acceptanceRate: 'Open', website: 'https://www.uef.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['Medicine','Environmental Science','Education'], description: 'Research‑intensive with multiple campuses.' },
+  { id: 7, name: 'University of Jyväskylä', region: 'Central Finland', city: 'Jyväskylä', type: 'Public', tier: 'Research', founded: 1934, students: 14000, acceptanceRate: 'Open', website: 'https://www.jyu.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['Education','Sports Science','Psychology'], description: 'Leader in teacher education and sports science.' },
+  { id: 8, name: 'LUT University', region: 'South Karelia', city: 'Lappeenranta/Lahti', type: 'Public', tier: 'Tech & Business', founded: 1969, students: 8800, acceptanceRate: 'Open', website: 'https://www.lut.fi', tuition: '€0–€11,000 (non‑EU)', popularPrograms: ['Sustainability','Tech','Business'], description: 'Focus on technology, business and environmental sustainability.' },
+  { id: 9, name: 'Åbo Akademi University', region: 'Southwest Finland', city: 'Turku/Vaasa', type: 'Public', tier: 'Research', founded: 1918, students: 5500, acceptanceRate: 'Open', website: 'https://www.abo.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['Humanities','Psychology','Science'], description: 'Swedish-language university in Turku and Vaasa.' },
+  { id: 10, name: 'Hanken School of Economics', region: 'Uusimaa', city: 'Helsinki/Vaasa', type: 'Public', tier: 'Business', founded: 1909, students: 2500, acceptanceRate: 'Selective', website: 'https://www.hanken.fi', tuition: '€0–€15,000 (non‑EU)', popularPrograms: ['Economics','Business'],'description':'Prestigious business school noted for economics education.'},
+  { id: 11, name: 'University of Vaasa', region: 'Ostrobothnia', city: 'Vaasa', type: 'Public', tier: 'Research', founded: 1968, students: 6000, acceptanceRate: 'Open', website: 'https://www.univaasa.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['Business','Technology','Law'], description: 'Specialises in business and technology education.' },
+  { id: 12, name: 'Tampere University of Technology', region: 'Pirkanmaa', city: 'Tampere', type: 'Public', tier: 'Engineering', founded: 1965, students: 5000, acceptanceRate: 'Open', website: 'https://www.tut.fi', tuition: '€0–€12,000 (non‑EU)', popularPrograms: ['Engineering','Architecture'], description: 'Merged into Tampere University, focused on tech.' },
+  { id: 13, name: 'Oulu University of Applied Sciences', region: 'North Ostrobothnia', city: 'Oulu', type: 'Public', tier: 'UAS', founded: 1996, students: 9000, acceptanceRate: 'Open', website: 'https://www.oamk.fi', tuition: '€6,000–€12,000', popularPrograms: ['IT','Business','Natural Resources'], description: 'Polytechnic offering career-orientated degrees.' },
+  { id: 14, name: 'Metropolia UAS', region: 'Uusimaa', city: 'Helsinki', type: 'Public', tier: 'UAS', founded: 2008, students: 16000, acceptanceRate: 'Open', website: 'https://www.metropolia.fi', tuition: '€6,000–€12,000', popularPrograms: ['Technology','Health','Business'], description: 'Largest UAS in Finland with practical programs.' },
+  { id: 15, name: 'Tampere UAS', region: 'Pirkanmaa', city: 'Tampere', type: 'Public', tier: 'UAS', founded: 1996, students: 9000, acceptanceRate: 'Open', website: 'https://www.tuni.fi/uas', tuition: '€6,000–€12,000', popularPrograms: ['Tech','Health','Social Services'], description: 'Provides applied science education in Tampere.' },
+  { id: 16, name: 'Laurea UAS', region: 'Uusimaa', city: 'Espoo/Vantaa', type: 'Public', tier: 'UAS', founded: 1992, students: 12000, acceptanceRate: 'Open', website: 'https://www.laurea.fi', tuition: '€6,000–€12,000', popularPrograms: ['Health','Social Services','Business'], description: 'Focuses on wellbeing, service design and innovation.' },
+  { id: 17, name: 'Häme UAS (HAMK)', region: 'Kanta‑Häme', city: 'Hämeenlinna', type: 'Public', tier: 'UAS', founded: 1840, students: 8000, acceptanceRate: 'Open', website: 'https://www.hamk.fi', tuition: '€6,000–€12,000', popularPrograms: ['Automotive','Bioeconomy','ICT'], description: 'Strong in vocational and higher-level applied fields.' },
+  { id: 18, name: 'Satakunta UAS', region: 'Satakunta', city: 'Pori', type: 'Public', tier: 'UAS', founded: 1993, students: 6000, acceptanceRate: 'Open', website: 'https://www.samk.fi', tuition: '€6,000–€12,000', popularPrograms: ['Engineering','Business','Health'], description: 'Offerings include maritime, engineering, social care.' },
+  { id: 19, name: 'Savonia UAS', region: 'North Savo', city: 'Kuopio', type: 'Public', tier: 'UAS', founded: 1992, students: 8000, acceptanceRate: 'Open', website: 'https://www.savonia.fi', tuition: '€6,000–€12,000', popularPrograms: ['Health Care','Engineering','Business'], description: 'Regional UAS with practical focus.' },
+  { id: 20, name: 'Lapland UAS', region: 'Lapland', city: 'Rovaniemi', type: 'Public', tier: 'UAS', founded: 1996, students: 5000, acceptanceRate: 'Open', website: 'https://www.lapinamk.fi', tuition: '€6,000–€12,000', popularPrograms: ['Tourism','Arctic Tech','Social Services'], description: 'Specialist college for Arctic education.' },
+
+  { id: 21, name: 'Seinäjoki University of Applied Sciences (SeAMK)', region: 'South Ostrobothnia', city: 'Seinäjoki', type: 'Public', tier: 'UAS', founded: 1992, students: 5000, acceptanceRate: 'Open', website: 'https://www.seamk.fi', tuition: '€6,000–€10,000', popularPrograms: ['Business', 'Engineering', 'Health'], description: 'Strong practical education with industry collaboration.' },
+  { id: 22, name: 'Karelia University of Applied Sciences', region: 'North Karelia', city: 'Joensuu', type: 'Public', tier: 'UAS', founded: 1992, students: 4000, acceptanceRate: 'Open', website: 'https://www.karelia.fi', tuition: '€6,000–€10,000', popularPrograms: ['Social Services', 'Business', 'Engineering'], description: 'Regional UAS focused on practical training and wellbeing.' },
+  { id: 23, name: 'Centria University of Applied Sciences', region: 'Central Ostrobothnia', city: 'Kokkola', type: 'Public', tier: 'UAS', founded: 1995, students: 4000, acceptanceRate: 'Open', website: 'https://www.centria.fi', tuition: '€6,000–€10,000', popularPrograms: ['Engineering', 'Business', 'Health'], description: 'Known for international collaboration and tech programs.' },
+  { id: 24, name: 'South-Eastern Finland University of Applied Sciences (Xamk)', region: 'South Savo', city: 'Mikkeli', type: 'Public', tier: 'UAS', founded: 2017, students: 10000, acceptanceRate: 'Open', website: 'https://www.xamk.fi', tuition: '€6,000–€10,000', popularPrograms: ['Welfare', 'Business', 'ICT'], description: 'Large UAS formed from merger, strong in RDI and wellbeing.' },
+  { id: 25, name: 'Arcada University of Applied Sciences', region: 'Uusimaa', city: 'Helsinki', type: 'Private', tier: 'UAS', founded: 1996, students: 3000, acceptanceRate: 'Open', website: 'https://www.arcada.fi', tuition: '€6,000–€10,000', popularPrograms: ['Health', 'Media', 'Business'], description: 'Swedish-language polytechnic focused on innovation and entrepreneurship.' },
+  { id: 26, name: 'Diaconia University of Applied Sciences (Diak)', region: 'Uusimaa', city: 'Helsinki', type: 'Private', tier: 'UAS', founded: 1996, students: 3000, acceptanceRate: 'Open', website: 'https://www.diak.fi', tuition: '€6,000–€10,000', popularPrograms: ['Social Work', 'Health Care'], description: 'Christian-based UAS with focus on social responsibility.' },
+  { id: 27, name: 'Humak University of Applied Sciences', region: 'Uusimaa', city: 'Helsinki', type: 'Private', tier: 'UAS', founded: 1998, students: 1500, acceptanceRate: 'Open', website: 'https://www.humak.fi', tuition: '€6,000–€10,000', popularPrograms: ['Youth Work', 'Cultural Management'], description: 'Specialist UAS in culture and civic engagement.' },
+  { id: 28, name: 'Novia University of Applied Sciences', region: 'Ostrobothnia', city: 'Vaasa', type: 'Private', tier: 'UAS', founded: 2008, students: 4000, acceptanceRate: 'Open', website: 'https://www.novia.fi', tuition: '€6,000–€10,000', popularPrograms: ['Technology', 'Culture', 'Health'], description: 'Swedish-language UAS with technical and creative programs.' },
+  { id: 29, name: 'Haaga-Helia University of Applied Sciences', region: 'Uusimaa', city: 'Helsinki', type: 'Public', tier: 'UAS', founded: 2007, students: 11000, acceptanceRate: 'Open', website: 'https://www.haaga-helia.fi', tuition: '€6,000–€11,000', popularPrograms: ['Hospitality', 'Business', 'Tourism'], description: 'Focus on business and service industry education.' },
+  { id: 30, name: 'LAB University of Applied Sciences', region: 'South Karelia', city: 'Lahti', type: 'Public', tier: 'UAS', founded: 2020, students: 8500, acceptanceRate: 'Open', website: 'https://www.lab.fi', tuition: '€6,000–€10,000', popularPrograms: ['Design', 'Welfare', 'Engineering'], description: 'Recently formed UAS with modern, sustainability-driven curriculum.' }
 ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
+
+
+
+
+const finnishRegions = {
+  'Uusimaa': 'Uusimaa',
+  'Pirkanmaa': 'Pirkanmaa',
+  'Varsinais-Suomi': 'Varsinais-Suomi',
+  'North Ostrobothnia': 'North Ostrobothnia',
+  'Central Finland': 'Central Finland',
+  'South Ostrobothnia': 'South Ostrobothnia',
+  'North Karelia': 'North Karelia',
+  'Lapland': 'Lapland',
+  'Kymenlaakso': 'Kymenlaakso',
+  'Satakunta': 'Satakunta',
+  'South Savo': 'South Savo',
+  'Päijät-Häme': 'Päijät-Häme',
+  'Ostrobothnia': 'Ostrobothnia',
+  'South Karelia': 'South Karelia',
+  'Kainuu': 'Kainuu',
+  'Central Ostrobothnia': 'Central Ostrobothnia'
 };
 
     // University types and tiers
@@ -1162,7 +1161,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(finnishRegions).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1225,8 +1224,8 @@ const singaporeStates = {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
-          univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          univ.region.toLowerCase().includes(searchTerm) ||
+          (finnishRegions[univ.region] && finnishRegions[univ.region].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1308,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${finnishRegions[university.region] || university.region}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1338,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${finnishRegions[university.region] || university.region}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1493,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${finnishRegions[university.region] || university.region}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1535,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${finnishRegions[university.region] || university.region}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>

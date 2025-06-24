@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>New Zealand Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>New Zealand Universities</h1>
+      <p>Find and explore universities across the New Zealand</p>
     </header>
     
     <div class="search-container">
@@ -1076,73 +1076,107 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-];
+    const nzUniversities = [
+  { id: 1, name: 'University of Auckland', region: 'Auckland', city: 'Auckland', type: 'Public', tier: 'Research', founded: 1883, students: 42800, acceptanceRate: 'Moderate', website: 'https://www.auckland.ac.nz', popularPrograms: ['Business', 'Engineering', 'Health'], description: 'New Zealand’s largest and highest-ranked university.' },
+  { id: 2, name: 'University of Otago', region: 'Otago', city: 'Dunedin', type: 'Public', tier: 'Research', founded: 1869, students: 21000, acceptanceRate: 'Moderate', website: 'https://www.otago.ac.nz', popularPrograms: ['Medicine', 'Health Sciences', 'Arts'], description: 'Oldest university in New Zealand, strong in medicine and arts.' },
+  { id: 3, name: 'Victoria University of Wellington', region: 'Wellington', city: 'Wellington', type: 'Public', tier: 'Research', founded: 1897, students: 23000, acceptanceRate: 'Moderate', website: 'https://www.wgtn.ac.nz', popularPrograms: ['Law', 'Arts', 'Science'], description: 'Capital city university known for humanities and law.' },
+  { id: 4, name: 'University of Canterbury', region: 'Canterbury', city: 'Christchurch', type: 'Public', tier: 'Research', founded: 1873, students: 18800, acceptanceRate: 'Moderate', website: 'https://www.canterbury.ac.nz', popularPrograms: ['Engineering', 'Science', 'Arts'], description: 'Strong engineering and science programs in Christchurch.' },
+  { id: 5, name: 'Massey University', region: 'Manawatu-Wanganui', city: 'Palmerston North', type: 'Public', tier: 'Research', founded: 1927, students: 31900, acceptanceRate: 'Moderate', website: 'https://www.massey.ac.nz', popularPrograms: ['Veterinary Science', 'Agriculture', 'Business'], description: 'Large multi-campus institution with strong agriculture and vet programmes.' },
+  { id: 6, name: 'University of Waikato', region: 'Waikato', city: 'Hamilton', type: 'Public', tier: 'Research', founded: 1964, students: 14000, acceptanceRate: 'Moderate', website: 'https://www.waikato.ac.nz', popularPrograms: ['Education', 'Engineering', 'Business'], description: 'Known for teaching and research with a strong regional focus.' },
+  { id: 7, name: 'Lincoln University', region: 'Canterbury', city: 'Lincoln', type: 'Public', tier: 'Specialist', founded: 1878, students: 6000, acceptanceRate: 'Moderate', website: 'https://www.lincoln.ac.nz', popularPrograms: ['Agriculture', 'Landscape Architecture'], description: 'Small specialist institution focused on land-based sciences.' },
+  { id: 8, name: 'Auckland University of Technology (AUT)', region: 'Auckland', city: 'Auckland', type: 'Public', tier: 'Modern', founded: 2000, students: 29900, acceptanceRate: 'Open', website: 'https://www.aut.ac.nz', popularPrograms: ['Design', 'Business', 'Engineering'], description: 'Fast-growing modern university with industry partnership.' },
+  { id: 9, name: 'University of Plymouth NZ (campus)', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'International Branch', founded: 2014, students: 2000, acceptanceRate: 'Moderate', website: 'https://plymouth.ac.nz', popularPrograms: ['Business', 'Nursing'], description: 'Branch campus of UK university offering select programmes.' },
+  { id: 10, name: 'Eastern Institute of Technology (EIT)', region: 'Hawke’s Bay', city: 'Napier', type: 'Public', tier: 'Polytechnic', founded: 1970, students: 8000, acceptanceRate: 'Open', website: 'https://www.eit.ac.nz', popularPrograms: ['Nursing', 'IT', 'Business'], description: 'Regional polytechnic offering vocational and degree courses.' },
+  { id: 11, name: 'Ara Institute of Canterbury', region: 'Canterbury', city: 'Christchurch', type: 'Public', tier: 'Polytechnic', founded: 2016, students: 19000, acceptanceRate: 'Open', website: 'https://www.ara.ac.nz', popularPrograms: ['Trades', 'Creative Arts', 'IT'], description: 'Largest tertiary polytechnic in the South Island.' },
+  { id: 12, name: 'Unitec Institute of Technology', region: 'Auckland', city: 'Auckland', type: 'Public', tier: 'Polytechnic', founded: 1976, students: 18000, acceptanceRate: 'Open', website: 'https://www.unitec.ac.nz', popularPrograms: ['Health Sciences', 'Engineering', 'Creative Arts'], description: 'Comprehensive polytechnic with practical programmes.' },
+  { id: 13, name: 'Southern Institute of Technology (SIT)', region: 'Otago', city: 'Invercargill', type: 'Public', tier: 'Polytechnic', founded: 1971, students: 7000, acceptanceRate: 'Open', website: 'https://www.sit.ac.nz', popularPrograms: ['Culinary Arts', 'Trades', 'Health'], description: 'Known for the Zero Fees Scheme and applied learning.' },
+  { id: 14, name: 'Western Institute of Technology at Taranaki (WITT)', region: 'Taranaki', city: 'New Plymouth', type: 'Public', tier: 'Polytechnic', founded: 1852, students: 4000, acceptanceRate: 'Open', website: 'https://www.witt.ac.nz', popularPrograms: ['Engineering', 'Business', 'Health'], description: 'Regional polytechnic with growing degree offerings.' },
+  { id: 15, name: 'Manukau Institute of Technology (MIT)', region: 'Auckland', city: 'Auckland', type: 'Public', tier: 'Polytechnic', founded: 1970, students: 18000, acceptanceRate: 'Open', website: 'https://www.manukau.ac.nz', popularPrograms: ['Trades', 'Business', 'Health'], description: 'Culturally diverse institution with strong vocational focus.' },
+  { id: 16, name: 'NorthTec', region: 'Northland', city: 'Whangarei', type: 'Public', tier: 'Polytechnic', founded: 1978, students: 5000, acceptanceRate: 'Open', website: 'https://www.northtec.ac.nz', popularPrograms: ['Construction', 'Sustainability', 'Business'], description: 'Northern polytechnic serving Northland communities.' },
+  { id: 17, name: 'Toi Ohomai Institute of Technology', region: 'Bay of Plenty', city: 'Tauranga', type: 'Public', tier: 'Polytechnic', founded: 2016, students: 9000, acceptanceRate: 'Open', website: 'https://www.toiohomai.ac.nz', popularPrograms: ['Trade Skills', 'Health', 'Business'], description: 'Merged polytechnic focusing on trade and tech education.' },
+  { id: 18, name: 'Wairarapa Institute of Technology', region: 'Wellington', city: 'Masterton', type: 'Public', tier: 'Polytechnic', founded: 1988, students: 2000, acceptanceRate: 'Open', website: 'https://www.wintec.ac.nz', popularPrograms: ['Creative Arts', 'Business'], description: 'Small polytechnic serving Wairarapa region.' },
+  { id: 19, name: 'Eastern Institute of Technology – Tairāwhiti Campus', region: 'Gisborne', city: 'Gisborne', type: 'Public', tier: 'Polytechnic', founded: 2010, students: 3000, acceptanceRate: 'Open', website: 'https://www.eit.ac.nz/tairawhiti', popularPrograms: ['Māori Studies', 'Arts'], description: 'Regional campus focused on Māori language and arts.' },
+  { id: 20, name: 'Western Waikato Institute of Technology (Wintec Hamilton)', region: 'Waikato', city: 'Hamilton', type: 'Public', tier: 'Polytechnic', founded: 1971, students: 15000, acceptanceRate: 'Open', website: 'https://www.wintec.ac.nz', popularPrograms: ['Creative Arts', 'Health', 'Technology'], description: 'Large polytechnic with campuses across Waikato.' },
+  { id: 21, name: 'UUNZ Institute of Business', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Specialist', founded: 2002, students: 1000, acceptanceRate: 'Open', website: 'https://www.uunz.ac.nz', popularPrograms: ['Business', 'Management'], description: 'International institute offering business programs in partnership with overseas universities.' },
+{ id: 22, name: 'AIS (Auckland Institute of Studies)', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Specialist', founded: 1990, students: 1500, acceptanceRate: 'Open', website: 'https://www.ais.ac.nz', popularPrograms: ['IT', 'Business', 'Tourism'], description: 'Independent tertiary institution with focus on international education.' },
+{ id: 23, name: 'Whitecliffe College', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Specialist', founded: 1983, students: 800, acceptanceRate: 'Open', website: 'https://www.whitecliffe.ac.nz', popularPrograms: ['Fine Arts', 'Fashion Design', 'IT'], description: 'Creative arts and technology college with industry-aligned courses.' },
+{ id: 24, name: 'Media Design School', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Creative Tech', founded: 1998, students: 1200, acceptanceRate: 'Open', website: 'https://www.mediadesignschool.com', popularPrograms: ['Game Design', 'Animation', 'UX/UI Design'], description: 'Premier digital design and technology school in New Zealand.' },
+{ id: 25, name: 'New Zealand Tertiary College (NZTC)', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Specialist', founded: 1982, students: 1800, acceptanceRate: 'Open', website: 'https://www.nztertiarycollege.ac.nz', popularPrograms: ['Early Childhood Education', 'Health'], description: 'Focused on teacher training and health sciences.' },
+{ id: 26, name: 'Wellington Institute of Technology (WelTec)', region: 'Wellington', city: 'Lower Hutt', type: 'Public', tier: 'Polytechnic', founded: 1904, students: 7000, acceptanceRate: 'Open', website: 'https://www.weltec.ac.nz', popularPrograms: ['Engineering', 'IT', 'Health'], description: 'Oldest vocational training provider in Wellington region.' },
+{ id: 27, name: 'Whitireia New Zealand', region: 'Wellington', city: 'Porirua', type: 'Public', tier: 'Polytechnic', founded: 1986, students: 5000, acceptanceRate: 'Open', website: 'https://www.whitireia.ac.nz', popularPrograms: ['Nursing', 'Performing Arts', 'IT'], description: 'Diverse institution with strong Māori and Pasifika focus.' },
+{ id: 28, name: 'IPU New Zealand (International Pacific University)', region: 'Manawatu-Wanganui', city: 'Palmerston North', type: 'Private', tier: 'International', founded: 1990, students: 600, acceptanceRate: 'Open', website: 'https://www.ipu.ac.nz', popularPrograms: ['International Relations', 'Business'], description: 'Bicultural institute promoting international education and leadership.' },
+{ id: 29, name: 'Yoobee Colleges', region: 'National', city: 'Various', type: 'Private', tier: 'Creative Tech', founded: 1997, students: 3000, acceptanceRate: 'Open', website: 'https://www.yoobee.ac.nz', popularPrograms: ['Graphic Design', 'Animation', 'Film'], description: 'Creative digital design school with multiple campuses.' },
+{ id: 30, name: 'Academy of Performing Arts NZ', region: 'Wellington', city: 'Wellington', type: 'Private', tier: 'Specialist', founded: 2005, students: 500, acceptanceRate: 'Open', website: 'https://www.performingarts.co.nz', popularPrograms: ['Drama', 'Music', 'Dance'], description: 'Specialized institute offering performing arts training in New Zealand’s capital.' },
+{ id: 31, name: 'Pacific International Hotel Management School (PIHMS)', region: 'Taranaki', city: 'New Plymouth', type: 'Private', tier: 'Specialist', founded: 1995, students: 300, acceptanceRate: 'Open', website: 'https://www.pihms.ac.nz', popularPrograms: ['Hospitality Management', 'Hotel Operations'], description: 'Industry-based hotel management training institute offering real-world experience.' },
+{ id: 32, name: 'Cut Above Academy', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Specialist', founded: 1972, students: 800, acceptanceRate: 'Open', website: 'https://www.cutabove.ac.nz', popularPrograms: ['Hairdressing', 'Makeup Artistry', 'Beauty Therapy'], description: 'Creative college for beauty, hair, and makeup training.' },
+{ id: 33, name: 'Otago Polytechnic Auckland International Campus (OPAIC)', region: 'Auckland', city: 'Auckland', type: 'Public', tier: 'Polytechnic', founded: 2012, students: 1000, acceptanceRate: 'Open', website: 'https://www.opaic.ac.nz', popularPrograms: ['Business', 'IT'], description: 'Urban learning center for international students operated by Otago Polytechnic.' },
+{ id: 34, name: 'NorthTec', region: 'Northland', city: 'Whangārei', type: 'Public', tier: 'Polytechnic', founded: 1978, students: 4000, acceptanceRate: 'Open', website: 'https://www.northtec.ac.nz', popularPrograms: ['Nursing', 'Construction', 'Māori Studies'], description: 'Regional provider with focus on indigenous education and trades.' },
+{ id: 35, name: 'UC International College (UCIC)', region: 'Canterbury', city: 'Christchurch', type: 'Private', tier: 'Pathway', founded: 2013, students: 500, acceptanceRate: 'Open', website: 'https://www.ucic.ac.nz', popularPrograms: ['Business', 'Engineering', 'IT'], description: 'Pathway college for international students entering University of Canterbury.' },
+{ id: 36, name: 'SAE Creative Media Institute', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Creative Tech', founded: 1986, students: 700, acceptanceRate: 'Open', website: 'https://auckland.sae.edu', popularPrograms: ['Audio Production', 'Film', 'Animation'], description: 'Global creative media institute with studio-focused training.' },
+{ id: 37, name: 'International College of Auckland (ICA)', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Technology', founded: 2002, students: 600, acceptanceRate: 'Open', website: 'https://www.ica.ac.nz', popularPrograms: ['IT', 'Engineering'], description: 'Private technical institute with programs tailored for job readiness.' },
+{ id: 38, name: 'EDENZ Colleges', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Pathway', founded: 1988, students: 1200, acceptanceRate: 'Open', website: 'https://www.edenz.ac.nz', popularPrograms: ['English Language', 'Business', 'Film'], description: 'Pathway and English language college with creative arts options.' },
+{ id: 39, name: 'Newton College of Business and Technology (NCBT)', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Vocational', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.ncbt.ac.nz', popularPrograms: ['Business', 'IT'], description: 'Vocational and diploma programs aimed at international students.' },
+{ id: 40, name: 'Cornell Institute of Business & Technology (CIBT)', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Vocational', founded: 2003, students: 900, acceptanceRate: 'Open', website: 'https://www.cornell.ac.nz', popularPrograms: ['Hospitality', 'Cookery', 'Business'], description: 'Training institute offering hands-on vocational programs in Auckland.' },
+{ id: 41, name: 'The Learning Connexion (TLC)', region: 'Wellington', city: 'Lower Hutt', type: 'Private', tier: 'Creative', founded: 1980, students: 600, acceptanceRate: 'Open', website: 'https://www.tlc.ac.nz', popularPrograms: ['Art & Creativity'], description: 'Creative arts school specializing in art and personal development.' },
+{ id: 42, name: 'UUNZ Institute of Business', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Business', founded: 2003, students: 800, acceptanceRate: 'Open', website: 'https://www.uunz.ac.nz', popularPrograms: ['Business', 'IT'], description: 'Business and IT institute with international collaboration.' },
+{ id: 43, name: 'New Zealand Institute of Education (NZIE)', region: 'Auckland', city: 'Takapuna', type: 'Private', tier: 'Vocational', founded: 1994, students: 700, acceptanceRate: 'Open', website: 'https://www.nzie.ac.nz', popularPrograms: ['Digital Marketing', 'Business'], description: 'Career-focused education for marketing and digital skills.' },
+{ id: 44, name: 'Whitecliffe College of Arts and Design', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Creative', founded: 1982, students: 900, acceptanceRate: 'Open', website: 'https://www.whitecliffe.ac.nz', popularPrograms: ['Fine Arts', 'Fashion Design', 'Photography'], description: 'Respected school of arts, design, and innovation in Auckland.' },
+{ id: 45, name: 'NSIA – The Professional Hospitality Academy', region: 'Auckland', city: 'Auckland', type: 'Private', tier: 'Hospitality', founded: 1995, students: 500, acceptanceRate: 'Open', website: 'https://www.nsia.co.nz', popularPrograms: ['Hospitality', 'Cookery'], description: 'Industry-acclaimed training center for hospitality and culinary students.' }
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
+];
+const universities = nzUniversities;
+
+const nzRegions = {
+  'Auckland': 'Auckland',
+  'Wellington': 'Wellington',
+  'Canterbury': 'Canterbury',
+  'Otago': 'Otago',
+  'Waikato': 'Waikato',
+  'Manawatū-Whanganui': 'Manawatū-Whanganui',
+  'Hawke\'s Bay': 'Hawke\'s Bay',
+  'Bay of Plenty': 'Bay of Plenty',
+  'Northland': 'Northland',
+  'Taranaki': 'Taranaki',
+  'Southland': 'Southland',
+  'Nelson': 'Nelson',
+  'Tasman': 'Tasman',
+  'Marlborough': 'Marlborough',
+  'Gisborne': 'Gisborne',
+  'West Coast': 'West Coast'
 };
 
-    // University types and tiers
-     const universityTypes = [
-      'Public', 'Private', 'Collegiate', 'Specialist'
-    ];
+   // University types
+const universityTypes = [
+  'Public',
+  'Private',
+  'Collegiate',
+  'Specialist',
+  'Technical',
+  'Vocational',
+  'Polytechnic',
+  'Faith-Based',
+  'Institute of Technology',
+  'Research University',
+  'Community College'
+];
 
-    const universityTiers = [
-      'Ivy League', 'Top 10 National', 'Top 25 National',
-      'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
-    ];
+// University tiers
+const universityTiers = [
+  'Top-tier',
+  'Mid-tier',
+  'Regional',
+  'International',
+  'Ivy League Equivalent',
+  'Elite',
+  'National',
+  'Rising Star',
+  'Modern',
+  'Traditional',
+  'Specialized',
+  'Technology-Focused',
+  'Pathway',
+  'TAFE'
+];
 
     // App state
     let isLoading = false;
@@ -1162,7 +1196,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(nzRegions).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1225,8 +1259,8 @@ const singaporeStates = {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
-          univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          univ.region.toLowerCase().includes(searchTerm) ||
+          (nzRegions[univ.region] && nzRegions[univ.region].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1343,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${nzRegions[university.region] || university.region}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1373,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${nzRegions[university.region] || university.region}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1528,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${nzRegions[university.region] || university.region}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1570,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${nzRegions[university.region] || university.region}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>

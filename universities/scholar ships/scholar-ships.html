@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Scholarships Hub - Find Your Perfect Scholarship</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #3b82f6;
+      --secondary: #10b981;
+      --dark: #1f2937;
+      --light: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-700: #374151;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: var(--light);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 4rem 0;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+    }
+
+    /* Search Bar */
+    .search-container {
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 50px;
+      box-shadow: var(--shadow);
+      padding-right: 3.5rem;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 5px;
+      background: var(--primary);
+      border: none;
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .search-btn:hover {
+      background: var(--primary-light);
+    }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+      align-items: center;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .filter-group label {
+      font-weight: 500;
+    }
+
+    select, .filter-btn {
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .filter-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      transition: var(--transition);
+    }
+
+    .filter-btn:hover {
+      background: var(--primary-light);
+    }
+
+    /* Scholarship Grid */
+    .scholarship-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .scholarship-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .scholarship-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .card-header {
+      padding: 1.5rem;
+      background: var(--primary);
+      color: white;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .scholarship-amount {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0.5rem 0;
+    }
+
+    .scholarship-deadline {
+      color: #ef4444;
+      font-weight: 500;
+      margin: 0.5rem 0;
+    }
+
+    .scholarship-description {
+      color: var(--gray-700);
+      margin: 1rem 0;
+      min-height: 60px;
+    }
+
+    .scholarship-country {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--gray-700);
+      font-size: 0.9rem;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn:hover {
+      background: var(--primary-light);
+    }
+
+    .btn-outline:hover {
+      background: var(--gray-100);
+    }
+
+    /* Featured Section */
+    .featured-section {
+      margin: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: var(--gray-100);
+      padding: 3rem 1rem;
+      text-align: center;
+      margin: 4rem 0;
+      border-radius: 10px;
+    }
+
+    .newsletter-form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #d1d5db;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: #9ca3af;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .filters {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .filter-group {
+        width: 100%;
+      }
+      
+      select {
+        width: 100%;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <h1>Find Your Perfect Scholarship</h1>
+        <p class="subtitle">Discover thousands of scholarships from around the world to fund your education</p>
+        <div class="search-container">
+          <input type="text" class="search-bar" placeholder="Search scholarships by keyword, university, or country...">
+          <button class="search-btn">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Filters -->
+    <div class="filters">
+      <div class="filter-group">
+        <label for="degree">Degree:</label>
+        <select id="degree">
+          <option value="">All Degrees</option>
+          <option value="undergraduate">Undergraduate</option>
+          <option value="masters">Masters</option>
+          <option value="phd">PhD</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="country">Country:</label>
+        <select id="country">
+          <option value="">All Countries</option>
+          <option value="usa">United States</option>
+          <option value="uk">United Kingdom</option>
+          <option value="canada">Canada</option>
+          <option value="australia">Australia</option>
+          <option value="germany">Germany</option>
+          <option value="france">France</option>
+          <option value="china">China</option>
+          <option value="newzealand">New Zealand</option>
+          <option value="europe">Europe</option>
+          <option value="middleeast">Middle East</option>
+          <option value="africa">Africa</option>
+          <option value="sweden">Sweden</option>
+          <option value="netherland">Netherlands</option>
+          <option value="singapore">Singapore</option>
+          <option value="switzerland">Switzerland</option>
+          <option value="finland">Finland</option>
+          <option value="denmark">Denmark</option>
+          <option value="south-korea">South Korea</option>
+          <option value="japan">Japan</option>
+          <option value="ireland">Ireland</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="type">Type:</label>
+        <select id="type">
+          <option value="">All Types</option>
+          <option value="merit">Merit-based</option>
+          <option value="need">Need-based</option>
+          <option value="athletic">Athletic</option>
+          <option value="research">Research</option>
+        </select>
+      </div>
+      
+      <button class="filter-btn">Apply Filters</button>
+      <button class="filter-btn btn-outline">Reset</button>
+    </div>
+
+    <!-- Featured Scholarships -->
+    <section class="featured-section">
+      <h2 class="section-title">Featured Scholarships</h2>
+      <div class="scholarship-grid">
+        <!-- Chevening Scholarships (UK) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #1D70B8;">
+            <h3>Chevening Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Fully Funded</div>
+            <div class="scholarship-deadline">Deadline: November 7, 2024</div>
+            <p class="scholarship-description">UK government's global scholarship program for future leaders to study in the UK.</p>
+            <div class="scholarship-country"><i class="fas fa-globe-europe"></i> United Kingdom</div>
+            <button class="btn" style="background: #1D70B8;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="chevening">View Details</button>
+          </div>
+        </div>
+
+        <!-- Fulbright Program (USA) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #0A3161;">
+            <h3>Fulbright Program</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Funding</div>
+            <div class="scholarship-deadline">Deadline: Varies by Country</div>
+            <p class="scholarship-description">US government's flagship international educational exchange program.</p>
+            <div class="scholarship-country"><i class="fas fa-flag-usa"></i> United States</div>
+            <button class="btn" style="background: #0A3161;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="fulbright">View Details</button>
+          </div>
+        </div>
+
+        <!-- Australia Awards -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #012169;">
+            <h3>Australia Awards</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Living</div>
+            <div class="scholarship-deadline">Deadline: April 30, 2025</div>
+            <p class="scholarship-description">Australian government scholarships for developing countries.</p>
+            <div class="scholarship-country"><i class="fas fa-globe-asia"></i> Australia</div>
+            <button class="btn" style="background: #012169;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="australia">View Details</button>
+          </div>
+        </div>
+
+        <!-- DAAD Scholarships (Germany) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #FFCC00; color: #000;">
+            <h3>DAAD Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">€861-1,200/month</div>
+            <div class="scholarship-deadline">Deadline: October 15, 2024</div>
+            <p class="scholarship-description">German Academic Exchange Service scholarships for international students.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Germany</div>
+            <button class="btn" style="background: #FFCC00; color: #000;">Apply Now</button>
+            <button class="btn btn-outline">View Details</button>
+          </div>
+        </div>
+
+        <!-- MEXT Scholarships (Japan) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #BC002D;">
+            <h3>MEXT Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Stipend</div>
+            <div class="scholarship-deadline">Deadline: Varies by Country</div>
+            <p class="scholarship-description">Japanese government scholarships for international students.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Japan</div>
+            <button class="btn" style="background: #BC002D;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="mext">View Details</button>
+          </div>
+        </div>
+
+        <!-- Vanier Canada Graduate Scholarships -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #D52B1E;">
+            <h3>Vanier CGS</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">$50,000/year</div>
+            <div class="scholarship-deadline">Deadline: November 1, 2024</div>
+            <p class="scholarship-description">Canadian government scholarships for doctoral students.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Canada</div>
+            <button class="btn" style="background: #D52B1E;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="vanier">View Details</button>
+          </div>
+        </div>
+
+        <!-- Chinese Government Scholarship (CSC) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #DE2910;">
+            <h3>CSC Scholarship</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Fully Funded</div>
+            <div class="scholarship-deadline">Deadline: February - April 2025</div>
+            <p class="scholarship-description">Chinese government scholarships for international students at all degree levels.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> China</div>
+            <button class="btn" style="background: #DE2910;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="csc">View Details</button>
+          </div>
+        </div>
+
+        <!-- Confucius Institute Scholarship -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #FFD700; color: #000;">
+            <h3>Confucius Institute Scholarship</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Stipend</div>
+            <div class="scholarship-deadline">Deadline: March - May 2025</div>
+            <p class="scholarship-description">For Chinese language and culture studies at Chinese universities.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> China</div>
+            <button class="btn" style="background: #FFD700; color: #000;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="confucius">View Details</button>
+          </div>
+        </div>
+
+        <!-- Jiangsu Government Scholarship -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #FF0000;">
+            <h3>Jiangsu Government Scholarship</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Up to ¥30,000/year</div>
+            <div class="scholarship-deadline">Deadline: March - June 2025</div>
+            <p class="scholarship-description">For international students studying in Jiangsu province universities.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> China</div>
+            <button class="btn" style="background: #FF0000;">Apply Now</button>
+            <button class="btn btn-outline">View Details</button>
+          </div>
+        </div>
+
+        <!-- Schwarzman Scholars Program -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #000000;">
+            <h3>Schwarzman Scholars</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Fully Funded</div>
+            <div class="scholarship-deadline">Deadline: September 2024</div>
+            <p class="scholarship-description">One-year master's program at Tsinghua University in Beijing.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> China</div>
+            <button class="btn" style="background: #000000;">Apply Now</button>
+            <button class="btn btn-outline">View Details</button>
+          </div>
+        </div>
+
+        <!-- Yenching Academy Scholarship -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #990000;">
+            <h3>Yenching Academy Scholarship</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Stipend</div>
+            <div class="scholarship-deadline">Deadline: November 2024</div>
+            <p class="scholarship-description">Master's in China Studies at Peking University, Beijing.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> China</div>
+            <button class="btn" style="background: #990000;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="yenching">View Details</button>
+          </div>
+        </div>
+
+        <!-- Zhejiang University Scholarship -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #003366;">
+            <h3>ZJU Scholarship</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Partial to Full Tuition</div>
+            <div class="scholarship-deadline">Deadline: March 2025</div>
+            <p class="scholarship-description">Scholarships for international students at Zhejiang University.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> China</div>
+            <button class="btn" style="background: #003366;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="zju">View Details</button>
+          </div>
+        </div>
+
+        <!-- Erasmus Mundus (EU) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #0033A0;">
+            <h3>Erasmus Mundus</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Funding</div>
+            <div class="scholarship-deadline">Deadline: January 2025</div>
+            <p class="scholarship-description">EU's joint master's and PhD programs across multiple European countries.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> European Union</div>
+            <button class="btn" style="background: #0033A0;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="erasmus">View Details</button>
+          </div>
+        </div>
+
+        <!-- Swiss Government Excellence (Switzerland) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #FF0000;">
+            <h3>Swiss Government Excellence</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">CHF 1,920/month</div>
+            <div class="scholarship-deadline">Deadline: Varies by Country</div>
+            <p class="scholarship-description">For researchers and artists from abroad at Swiss universities.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Switzerland</div>
+            <button class="btn" style="background: #FF0000;">Apply Now</button>
+            <button class="btn btn-outline">View Details</button>
+          </div>
+        </div>
+
+        <!-- Korean Government Scholarship (South Korea) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #003478;">
+            <h3>KGSP</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Stipend</div>
+            <div class="scholarship-deadline">Deadline: Varies by Country</div>
+            <p class="scholarship-description">Korean Government Scholarship Program for international students.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> South Korea</div>
+            <button class="btn" style="background: #003478;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="kgsp">View Details</button>
+          </div>
+        </div>
+
+        <!-- New Zealand Scholarships -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #000000;">
+            <h3>New Zealand Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Living</div>
+            <div class="scholarship-deadline">Deadline: February 2025</div>
+            <p class="scholarship-description">For students from eligible countries to study in New Zealand.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> New Zealand</div>
+            <button class="btn" style="background: #000000;">Apply Now</button>
+            <button class="btn btn-outline">View Details</button>
+          </div>
+        </div>
+
+        <!-- Singapore International Graduate Award (Singapore) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #ED1C24;">
+            <h3>SINGA</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">S$2,200/month + Tuition</div>
+            <div class="scholarship-deadline">Deadline: June 2024</div>
+            <p class="scholarship-description">For international students to pursue PhD studies in Singapore.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Singapore</div>
+            <button class="btn" style="background: #ED1C24;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="singa">View Details</button>
+          </div>
+        </div>
+
+        <!-- King Abdullah Scholarship (Saudi Arabia) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #245F36;">
+            <h3>KAUST Scholarship</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Funding + Benefits</div>
+            <div class="scholarship-deadline">Deadline: Rolling Admission</div>
+            <p class="scholarship-description">For graduate studies at King Abdullah University of Science and Technology.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Saudi Arabia</div>
+            <button class="btn" style="background: #245F36;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="kaust">View Details</button>
+          </div>
+        </div>
+
+        <!-- Türkiye Scholarships -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #E30A17;">
+            <h3>Türkiye Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Funding</div>
+            <div class="scholarship-deadline">Deadline: February 2025</div>
+            <p class="scholarship-description">Turkish government scholarships for international students.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Turkey</div>
+            <button class="btn" style="background: #E30A17;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="turkey">View Details</button>
+          </div>
+        </div>
+
+        <!-- Mexican Government Scholarships -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #006341;">
+            <h3>AMEXCID Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Monthly Stipend + Benefits</div>
+            <div class="scholarship-deadline">Deadline: July 2024</div>
+            <p class="scholarship-description">For international students to study in Mexico.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Mexico</div>
+            <button class="btn" style="background: #006341;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="mexico">View Details</button>
+          </div>
+        </div>
+
+        <!-- VLIR-UOS (Belgium) -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #FFCC00; color: #000;">
+            <h3>VLIR-UOS Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">€1,150/month + Benefits</div>
+            <div class="scholarship-deadline">Deadline: February 2025</div>
+            <p class="scholarship-description">For students from developing countries to study in Flanders, Belgium.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Belgium</div>
+            <button class="btn" style="background: #FFCC00; color: #000;">Apply Now</button>
+            <button class="btn btn-outline">View Details</button>
+          </div>
+        </div>
+
+        <!-- Swedish Institute Scholarships -->
+        <div class="scholarship-card">
+          <div class="card-header" style="background: #005293;">
+            <h3>SI Scholarships</h3>
+          </div>
+          <div class="card-body">
+            <div class="scholarship-amount">Full Tuition + Stipend</div>
+            <div class="scholarship-deadline">Deadline: January 2025</div>
+            <p class="scholarship-description">For global professionals to study in Sweden.</p>
+            <div class="scholarship-country"><i class="fas fa-flag"></i> Sweden</div>
+            <button class="btn" style="background: #005293;">Apply Now</button>
+            <button class="btn btn-outline view-details-btn" data-scholarship="si">View Details</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Deadlines -->
+    <section>
+      <h2 class="section-title">Upcoming Deadlines</h2>
+      <div class="scholarship-grid">
+        <!-- Add more scholarship cards here -->
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <h2>Never Miss a Scholarship Opportunity</h2>
+      <p>Subscribe to our newsletter and get the latest scholarships delivered to your inbox.</p>
+      <form class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="Enter your email address">
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Us</h3>
+          <p>We connect students with scholarship opportunities worldwide to make education accessible to all.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Scholarships</a></li>
+            <li><a href="#">Universities</a></li>
+            <li><a href="#">How to Apply</a></li>
+            <li><a href="#">Success Stories</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#">Scholarship Tips</a></li>
+            <li><a href="#">Application Guide</a></li>
+            <li><a href="#">Essay Writing</a></li>
+            <li><a href="#">Interview Tips</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-envelope"></i> info@scholarshiphub.com</li>
+            <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Education St, Learn City</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Global Scholarships Hub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // JavaScript functionality will be added here
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize tooltips
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+      });
+
+      // Search functionality
+      const searchBar = document.querySelector('.search-bar');
+      const searchBtn = document.querySelector('.search-btn');
+      
+      searchBtn.addEventListener('click', function() {
+        const searchTerm = searchBar.value.trim();
+        if (searchTerm) {
+          // Implement search functionality
+          alert('Searching for: ' + searchTerm);
+        }
+      });
+
+      // Filter functionality
+      const filterBtn = document.querySelector('.filter-btn');
+      filterBtn.addEventListener('click', function() {
+        const degree = document.getElementById('degree').value;
+        const country = document.getElementById('country').value;
+        const type = document.getElementById('type').value;
+        
+        // Implement filter functionality
+        console.log('Filters applied:', { degree, country, type });
+      });
+
+      // Reset filters
+      const resetBtn = document.querySelector('.btn-outline');
+      resetBtn.addEventListener('click', function() {
+        document.getElementById('degree').value = '';
+        document.getElementById('country').value = '';
+        document.getElementById('type').value = '';
+        
+        // Reset any filtered results
+        console.log('Filters reset');
+      });
+    });
+  </script>
+</body>
+</html>

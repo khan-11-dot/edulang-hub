@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>China Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>China Universities</h1>
+      <p>Find and explore universities across the China</p>
     </header>
     
     <div class="search-container">
@@ -1076,73 +1076,102 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
+    const universitiesChina = [
+  { id: 1, name: 'Tsinghua University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 10 Global', founded: 1911, students: 55000, acceptanceRate: 'Highly Selective', website: 'https://www.tsinghua.edu.cn', popularPrograms: ['Engineering', 'Computer Science'], description: 'China’s leading STEM institution, ranked #1 nationally and top in Asia.' },
+  { id: 2, name: 'Peking University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 10 Global', founded: 1898, students: 44000, acceptanceRate: 'Highly Selective', website: 'https://www.pku.edu.cn', popularPrograms: ['Humanities', 'Law', 'Science'], description: 'Prestigious comprehensive university, ranked among world’s best.' },
+  { id: 3, name: 'Zhejiang University', state: 'Zhejiang', city: 'Hangzhou', type: 'Public', tier: 'Top 25 Global', founded: 1897, students: 60000, acceptanceRate: 'Selective', website: 'https://www.zju.edu.cn', popularPrograms: ['Engineering', 'Agriculture', 'Medicine'], description: 'Elite research university, strong in engineering & life sciences.' },
+  { id: 4, name: 'Fudan University', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 25 Global', founded: 1905, students: 40000, acceptanceRate: 'Selective', website: 'https://www.fudan.edu.cn', popularPrograms: ['Economics', 'Medicine', 'Arts'], description: 'Highly ranked comprehensive university in Shanghai.' },
+  { id: 5, name: 'Shanghai Jiao Tong University', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 50 Global', founded: 1896, students: 38000, acceptanceRate: 'Selective', website: 'https://www.sjtu.edu.cn', popularPrograms: ['Engineering', 'Technology', 'Business'], description: 'Renowned for engineering and global partnerships.' },
+  { id: 6, name: 'University of Science and Technology of China', state: 'Anhui', city: 'Hefei', type: 'Public', tier: 'Top 50 Global', founded: 1958, students: 20000, acceptanceRate: 'Selective', website: 'https://www.ustc.edu.cn', popularPrograms: ['Physics', 'Chemistry', 'Computer Science'], description: 'Project 985/211 university excellence in sciences.' },
+  { id: 7, name: 'Nanjing University', state: 'Jiangsu', city: 'Nanjing', type: 'Public', tier: 'Top 50 Global', founded: 1902, students: 36000, acceptanceRate: 'Selective', website: 'https://www.nju.edu.cn', popularPrograms: ['Science', 'Humanities', 'Social Sciences'], description: 'Strong in research, regularly top‑10 in China.' },
+  { id: 8, name: 'Wuhan University', state: 'Hubei', city: 'Wuhan', type: 'Public', tier: 'Top 100 Global', founded: 1893, students: 55000, acceptanceRate: 'Selective', website: 'https://www.whu.edu.cn', popularPrograms: ['Law', 'Engineering', 'Earth Sciences'], description: 'Comprehensive university known for scenic campus and research.' },
+  { id: 9, name: 'Beijing Normal University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 100 Global', founded: 1902, students: 30000, acceptanceRate: 'Selective', website: 'https://www.bnu.edu.cn', popularPrograms: ['Education', 'Psychology', 'Science'], description: 'Pioneer in teacher education, strong in social sciences.' },
+  { id: 10, name: 'Harbin Institute of Technology', state: 'Heilongjiang', city: 'Harbin', type: 'Public', tier: 'Top 100 Global', founded: 1920, students: 36000, acceptanceRate: 'Selective', website: 'https://www.hit.edu.cn', popularPrograms: ['Aerospace', 'Mechanical Engineering', 'Cyber‑Physical Systems'], description: 'Engineering powerhouse, part of C9 League.' },
+  { id: 11, name: 'Xi’an Jiaotong University', state: 'Shaanxi', city: 'Xi’an', type: 'Public', tier: 'Top 100 Global', founded: 1896, students: 40000, acceptanceRate: 'Selective', website: 'https://www.xjtu.edu.cn', popularPrograms: ['Engineering', 'Management', 'Medicine'], description: 'Key national university with roots in Shanghai Jiao Tong.' },
+  { id: 12, name: 'Tongji University', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 100 Global', founded: 1907, students: 36000, acceptanceRate: 'Selective', website: 'https://www.tongji.edu.cn', popularPrograms: ['Architecture', 'Engineering', 'Design'], description: 'Famous for architecture, design, and civil engineering.' },
+  { id: 13, name: 'Huazhong University of Science and Technology', state: 'Hubei', city: 'Wuhan', type: 'Public', tier: 'Top 100 Global', founded: 1953, students: 55000, acceptanceRate: 'Selective', website: 'https://www.hust.edu.cn', popularPrograms: ['Engineering', 'Medicine', 'Computer Science'], description: 'Major engineering and medical research university.' },
+  { id: 14, name: 'Beihang University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 100 National', founded: 1952, students: 30000, acceptanceRate: 'Selective', website: 'https://www.buaa.edu.cn', popularPrograms: ['Aerospace Engineering', 'Robotics', 'Computer Science'], description: 'China’s top university in aerospace and aviation.' },
+  { id: 15, name: 'South China University of Technology', state: 'Guangdong', city: 'Guangzhou', type: 'Public', tier: 'Top 100 National', founded: 1952, students: 40000, acceptanceRate: 'Moderate', website: 'https://www.scut.edu.cn', popularPrograms: ['Engineering', 'Business', 'Materials'], description: 'Premier tech university in Southern China.' },
+  { id: 16, name: 'Sun Yat-sen University', state: 'Guangdong', city: 'Guangzhou', type: 'Public', tier: 'Top 50 Global', founded: 1924, students: 60000, acceptanceRate: 'Selective', website: 'https://www.sysu.edu.cn', popularPrograms: ['Medicine', 'Economics', 'Humanities'], description: 'Named after China’s founding father, strong in research and teaching.' },
+  { id: 17, name: 'Nankai University', state: 'Tianjin', city: 'Tianjin', type: 'Public', tier: 'Top 100 Global', founded: 1919, students: 32000, acceptanceRate: 'Selective', website: 'https://www.nankai.edu.cn', popularPrograms: ['Mathematics', 'Economics', 'History'], description: 'Renowned for economics, social sciences, and math.' },
+  { id: 18, name: 'Beijing Institute of Technology', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 100 National', founded: 1940, students: 27000, acceptanceRate: 'Selective', website: 'https://www.bit.edu.cn', popularPrograms: ['Mechanical Engineering', 'AI', 'Materials Science'], description: 'Key university in defense tech and innovation.' },
+  { id: 19, name: 'Jilin University', state: 'Jilin', city: 'Changchun', type: 'Public', tier: 'Top 100 National', founded: 1946, students: 70000, acceptanceRate: 'Moderate', website: 'https://www.jlu.edu.cn', popularPrograms: ['Automotive Engineering', 'Geoscience', 'Law'], description: 'One of China’s largest universities by enrollment.' },
+  { id: 20, name: 'Shandong University', state: 'Shandong', city: 'Jinan', type: 'Public', tier: 'Top 100 National', founded: 1901, students: 60000, acceptanceRate: 'Moderate', website: 'https://www.sdu.edu.cn', popularPrograms: ['Philosophy', 'Engineering', 'Medicine'], description: 'Comprehensive university with long academic tradition.' },
+  { id: 21, name: 'East China Normal University', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 100 National', founded: 1951, students: 30000, acceptanceRate: 'Selective', website: 'https://www.ecnu.edu.cn', popularPrograms: ['Education', 'Psychology', 'Geography'], description: 'Elite teaching and research university with global partnerships.' },
+  { id: 22, name: 'Southwestern University of Finance and Economics', state: 'Sichuan', city: 'Chengdu', type: 'Public', tier: 'Top 100 National', founded: 1952, students: 25000, acceptanceRate: 'Moderate', website: 'https://www.swufe.edu.cn', popularPrograms: ['Finance', 'Economics', 'Business'], description: 'Top economics and finance school in western China.' },
+  { id: 23, name: 'Central South University', state: 'Hunan', city: 'Changsha', type: 'Public', tier: 'Top 100 National', founded: 2000, students: 55000, acceptanceRate: 'Moderate', website: 'https://www.csu.edu.cn', popularPrograms: ['Engineering', 'Medical Sciences', 'Metallurgy'], description: 'Strong in mining, engineering, and health sciences.' },
+  { id: 24, name: 'Harbin Institute of Technology', state: 'Heilongjiang', city: 'Harbin', type: 'Public', tier: 'Top 50 Global', founded: 1920, students: 40000, acceptanceRate: 'Selective', website: 'https://www.hit.edu.cn', popularPrograms: ['Aerospace', 'Robotics', 'Engineering'], description: 'Flagship engineering university in northern China.' },
+  { id: 25, name: 'Renmin University of China', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 50 Global', founded: 1937, students: 25000, acceptanceRate: 'Selective', website: 'https://www.ruc.edu.cn', popularPrograms: ['Law', 'Sociology', 'Economics'], description: 'Leading university for humanities and social sciences.' },
+  { id: 26, name: 'University of Science and Technology Beijing', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 100 National', founded: 1952, students: 22000, acceptanceRate: 'Moderate', website: 'https://www.ustb.edu.cn', popularPrograms: ['Materials', 'Engineering', 'Computer Science'], description: 'Known for materials science and metallurgy.' },
+  { id: 27, name: 'Beijing Normal University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 50 Global', founded: 1902, students: 25000, acceptanceRate: 'Selective', website: 'https://www.bnu.edu.cn', popularPrograms: ['Education', 'History', 'Psychology'], description: 'China’s top teacher-training university.' },
+  { id: 28, name: 'Donghua University', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 100 National', founded: 1951, students: 25000, acceptanceRate: 'Moderate', website: 'https://www.dhu.edu.cn', popularPrograms: ['Textile Engineering', 'Fashion Design', 'Materials'], description: 'Leader in fashion, textile, and material sciences.' },
+  { id: 29, name: 'Chongqing University', state: 'Chongqing', city: 'Chongqing', type: 'Public', tier: 'Top 100 National', founded: 1929, students: 48000, acceptanceRate: 'Moderate', website: 'https://www.cqu.edu.cn', popularPrograms: ['Architecture', 'Civil Engineering', 'Law'], description: 'Major engineering and construction university.' },
+  { id: 30, name: 'Southeast University', state: 'Jiangsu', city: 'Nanjing', type: 'Public', tier: 'Top 100 Global', founded: 1902, students: 36000, acceptanceRate: 'Selective', website: 'https://www.seu.edu.cn', popularPrograms: ['Architecture', 'Engineering', 'Design'], description: 'Famous for architecture, civil engineering, and urban planning.' },
+  { id: 31, name: 'Shanghai University of Finance and Economics', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 100 National', founded: 1917, students: 20000, acceptanceRate: 'Moderate', website: 'https://www.shufe.edu.cn', popularPrograms: ['Finance', 'Economics', 'Accounting'], description: 'Premier business school with strong industry ties in China.' },
+  { id: 32, name: 'Beihang University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 50 Global', founded: 1952, students: 28000, acceptanceRate: 'Selective', website: 'https://www.buaa.edu.cn', popularPrograms: ['Aerospace', 'Computer Science', 'Engineering'], description: 'Top aerospace engineering university in China.' },
+  { id: 33, name: 'Sun Yat-sen University', state: 'Guangdong', city: 'Guangzhou', type: 'Public', tier: 'Top 50 Global', founded: 1924, students: 50000, acceptanceRate: 'Selective', website: 'https://www.sysu.edu.cn', popularPrograms: ['Medicine', 'Marine Science', 'Business'], description: 'Comprehensive research university in southern China.' },
+  { id: 34, name: 'East China University of Science and Technology', state: 'Shanghai', city: 'Shanghai', type: 'Public', tier: 'Top 100 National', founded: 1952, students: 25000, acceptanceRate: 'Moderate', website: 'https://www.ecust.edu.cn', popularPrograms: ['Chemical Engineering', 'Biotech', 'Materials'], description: 'Top-ranked for chemical and process engineering.' },
+  { id: 35, name: 'South China University of Technology', state: 'Guangdong', city: 'Guangzhou', type: 'Public', tier: 'Top 100 National', founded: 1952, students: 40000, acceptanceRate: 'Moderate', website: 'https://www.scut.edu.cn', popularPrograms: ['Engineering', 'Business', 'IT'], description: 'Key university in South China for engineering and innovation.' },
+  { id: 36, name: 'Dalian University of Technology', state: 'Liaoning', city: 'Dalian', type: 'Public', tier: 'Top 100 National', founded: 1949, students: 37000, acceptanceRate: 'Moderate', website: 'https://www.dlut.edu.cn', popularPrograms: ['Engineering', 'Naval Architecture', 'Science'], description: 'Renowned for naval architecture and mechanical engineering.' },
+  { id: 37, name: 'Beijing University of Posts and Telecommunications', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 100 National', founded: 1955, students: 16000, acceptanceRate: 'Moderate', website: 'https://www.bupt.edu.cn', popularPrograms: ['Telecommunications', 'IT', 'Cyber Security'], description: 'Top ICT and telecommunications university in China.' },
+  { id: 38, name: 'University of Science and Technology of China (USTC)', state: 'Anhui', city: 'Hefei', type: 'Public', tier: 'Top 10 National', founded: 1958, students: 16000, acceptanceRate: 'Highly Selective', website: 'https://www.ustc.edu.cn', popularPrograms: ['Physics', 'Engineering', 'AI'], description: 'Elite university known for top-tier research in sciences.' },
+  { id: 39, name: 'Shandong University', state: 'Shandong', city: 'Jinan', type: 'Public', tier: 'Top 100 National', founded: 1901, students: 60000, acceptanceRate: 'Moderate', website: 'https://www.sdu.edu.cn', popularPrograms: ['Engineering', 'Medicine', 'Liberal Arts'], description: 'One of China’s oldest and largest comprehensive universities.' },
+  { id: 40, name: 'China Agricultural University', state: 'Beijing', city: 'Beijing', type: 'Public', tier: 'Top 100 National', founded: 1905, students: 26000, acceptanceRate: 'Moderate', website: 'https://www.cau.edu.cn', popularPrograms: ['Agriculture', 'Food Science', 'Environmental Studies'], description: 'Leading university for agricultural sciences and innovation.' },
+  { id: 41, name: "Shandong University", city: "Jinan", province: "Shandong", type: "Public", tier: "Top 50 National", founded: 1901, students: 60000, acceptanceRate: "25%", website: "https://en.sdu.edu.cn", tuition: "CNY ¥25,000–¥35,000", popularPrograms: ["Engineering", "Medicine", "Law"], description: "Comprehensive university known for research and cultural tradition." },
+{ id: 42, name: "Nanjing University of Science and Technology", city: "Nanjing", province: "Jiangsu", type: "Public", tier: "Top 100 National", founded: 1953, students: 30000, acceptanceRate: "30%", website: "https://english.njust.edu.cn", tuition: "CNY ¥23,000–¥33,000", popularPrograms: ["Engineering", "Physics", "Computer Science"], description: "A key university under the Ministry of Industry and Information Technology." },
+{ id: 43, name: "China Agricultural University", city: "Beijing", province: "Beijing", type: "Public", tier: "Top 50 National", founded: 1905, students: 25000, acceptanceRate: "40%", website: "https://www.cau.edu.cn", tuition: "CNY ¥20,000–¥30,000", popularPrograms: ["Agriculture", "Veterinary Science", "Food Science"], description: "Top institution in agriculture and life sciences." },
+{ id: 44, name: "Beijing University of Chemical Technology", city: "Beijing", province: "Beijing", type: "Public", tier: "Top 100 National", founded: 1958, students: 20000, acceptanceRate: "35%", website: "https://www.buct.edu.cn", tuition: "CNY ¥22,000–¥32,000", popularPrograms: ["Chemical Engineering", "Materials Science", "Environmental Science"], description: "Known for excellence in chemical technology and innovation." },
+{ id: 45, name: "ShanghaiTech University", city: "Shanghai", province: "Shanghai", type: "Public", tier: "Top 25 National", founded: 2013, students: 3000, acceptanceRate: "Highly Selective", website: "https://www.shanghaitech.edu.cn", tuition: "CNY ¥30,000–¥40,000", popularPrograms: ["IT", "Biology", "Engineering"], description: "Modern research-focused university in Zhangjiang Hi-Tech Park." }
+
+
 ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
+
+
+
+const chineseRegions = {
+  'Beijing': 'Beijing',
+  'Shanghai': 'Shanghai',
+  'Guangdong': 'Guangdong',
+  'Zhejiang': 'Zhejiang',
+  'Jiangsu': 'Jiangsu',
+  'Sichuan': 'Sichuan',
+  'Hunan': 'Hunan',
+  'Hubei': 'Hubei',
+  'Shandong': 'Shandong',
+  'Tianjin': 'Tianjin',
+  'Chongqing': 'Chongqing',
+  'Anhui': 'Anhui',
+  'Fujian': 'Fujian',
+  'Jiangxi': 'Jiangxi',
+  'Henan': 'Henan',
+  'Hebei': 'Hebei',
+  'Liaoning': 'Liaoning',
+  'Shaanxi': 'Shaanxi',
+  'Yunnan': 'Yunnan',
+  'Guangxi': 'Guangxi',
+  'Xinjiang': 'Xinjiang',
+  'Inner Mongolia': 'Inner Mongolia',
+  'Gansu': 'Gansu',
+  'Ningxia': 'Ningxia',
+  'Heilongjiang': 'Heilongjiang',
+  'Jilin': 'Jilin',
+  'Tibet': 'Tibet',
+  'Qinghai': 'Qinghai',
+  'Guizhou': 'Guizhou',
+  'Shanxi': 'Shanxi'
 };
 
-    // University types and tiers
-     const universityTypes = [
-      'Public', 'Private', 'Collegiate', 'Specialist'
-    ];
+const universityTypesChina = [
+  'Public', 'Private', 'Specialist', 'Collegiate'
+];
 
-    const universityTiers = [
-      'Ivy League', 'Top 10 National', 'Top 25 National',
-      'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
-    ];
+const universityTiersChina = [
+  'Double First Class', 'Project 985', 'Project 211',
+  'Top 10 National', 'Top 25 National', 'Top 50 National',
+  'Top 100 National', 'Regional', 'Local'
+];
+
 
     // App state
     let isLoading = false;
@@ -1162,7 +1191,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(chineseRegions).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1171,7 +1200,7 @@ const singaporeStates = {
 
       // Clear and add type filters
       typeFilter.innerHTML = '<option value="">All Types</option>';
-      const types = [...new Set(universities.map(u => u.type))];
+      const types = [...new Set(universitiesChina.map(u => u.type))];
       types.forEach(type => {
         const option = document.createElement('option');
         option.value = type;
@@ -1180,11 +1209,13 @@ const singaporeStates = {
       });
 
       // Types
-      universityTypes.forEach(type => {
-        const option = document.createElement('option');
-        option.value = type;
-        option.textContent = type;
-        typeFilter.appendChild(option);
+      universityTypesChina.forEach(type => {
+        if (!types.includes(type)) {  // Only add if not already in the list
+          const option = document.createElement('option');
+          option.value = type;
+          option.textContent = type;
+          typeFilter.appendChild(option);
+        }
       });
     }
 
@@ -1221,12 +1252,12 @@ const singaporeStates = {
       const state = stateFilter.value;
       const type = typeFilter.value;
       
-      return universities.filter(univ => {
+      return universitiesChina.filter(univ => {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
           univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          (chineseRegions[univ.state] && chineseRegions[univ.state].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1340,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${chineseRegions[university.state] || university.state}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1370,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${chineseRegions[university.state] || university.state}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1525,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${chineseRegions[university.state] || university.state}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1567,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${chineseRegions[university.state] || university.state}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>India Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>India Universities</h1>
+      <p>Find and explore universities across the India</p>
     </header>
     
     <div class="search-container">
@@ -1076,73 +1076,140 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-];
+     const universities = [
+     { id: 1, name: 'Indian Institute of Technology Madras (IIT Madras)', state: 'Tamil Nadu', city: 'Chennai', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1959, students: 10000, acceptanceRate: 'Selective', website: 'https://www.iitm.ac.in', popularPrograms: ['Engineering', 'Technology'], description: 'Top engineering university, #1 in NIRF overall.' },
+{ id: 2, name: 'Indian Institute of Science (IISc)', state: 'Karnataka', city: 'Bengaluru', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1909, students: 4500, acceptanceRate: 'Highly Selective', website: 'https://www.iisc.ac.in', popularPrograms: ['Science', 'Research'], description: 'India’s leading research university, top NIRF-ranked.' },
+{ id: 3, name: 'Indian Institute of Technology Bombay (IIT Bombay)', state: 'Maharashtra', city: 'Mumbai', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1958, students: 10000, acceptanceRate: 'Highly Selective', website: 'https://www.iitb.ac.in', popularPrograms: ['Engineering', 'Management'], description: 'Top engineering institute, top pick for JEE toppers.' },
+{ id: 4, name: 'Indian Institute of Technology Delhi (IIT Delhi)', state: 'Delhi', city: 'New Delhi', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1961, students: 8500, acceptanceRate: 'Highly Selective', website: 'https://www.iitd.ac.in', popularPrograms: ['Engineering', 'Technology'], description: 'Top-tier IIT, highest-ranked Indian university in QS 2026.' },
+{ id: 5, name: 'Jawaharlal Nehru University (JNU)', state: 'Delhi', city: 'New Delhi', type: 'Central University', tier: 'Top-tier', founded: 1969, students: 35000, acceptanceRate: 'Selective', website: 'https://www.jnu.ac.in', popularPrograms: ['Social Sciences', 'International Studies'], description: 'Renowned for humanities, NIRF #2 overall.' },
+{ id: 6, name: 'Banaras Hindu University (BHU)', state: 'Uttar Pradesh', city: 'Varanasi', type: 'Central University', tier: 'Top-tier', founded: 1916, students: 30000, acceptanceRate: 'Moderate', website: 'https://www.bhu.ac.in', popularPrograms: ['Arts', 'Sciences', 'Engineering'], description: 'Historic central university ranked NIRF #5.' },
+{ id: 7, name: 'Jamia Millia Islamia (JMI)', state: 'Delhi', city: 'New Delhi', type: 'Central University', tier: 'Top-tier', founded: 1920, students: 25000, acceptanceRate: 'Moderate', website: 'https://www.jmi.ac.in', popularPrograms: ['Education', 'Mass Communication'], description: 'Public central university, NIRF #3 overall.' },
+{ id: 8, name: 'Amrita Vishwa Vidyapeetham (Amrita University)', state: 'Tamil Nadu', city: 'Coimbatore', type: 'Deemed-to-be University', tier: 'National Leader', founded: 1994, students: 40000, acceptanceRate: 'Moderate', website: 'https://www.amrita.edu', popularPrograms: ['Engineering', 'Medicine'], description: 'Private deemed university, in THE Impact top‑50 globally.' },
+{ id: 9, name: 'Vellore Institute of Technology (VIT)', state: 'Tamil Nadu', city: 'Vellore', type: 'Private', tier: 'National Leader', founded: 1984, students: 35000, acceptanceRate: 'Moderate', website: 'https://www.vit.ac.in', popularPrograms: ['Engineering', 'Management'], description: 'Top private engineering university in India.' },
+{ id: 10, name: 'Jadavpur University', state: 'West Bengal', city: 'Kolkata', type: 'State University', tier: 'Top-tier', founded: 1906, students: 13351, acceptanceRate: 'Selective', website: 'https://www.jaduniv.edu.in', popularPrograms: ['Engineering', 'Arts'], description: 'Public state university, NIRF #9 overall, strong research output.' },
+{ id: 1, name: 'Indian Institute of Technology Madras (IIT Madras)', state: 'Tamil Nadu', city: 'Chennai', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1959, students: 10000, acceptanceRate: 'Selective', website: 'https://www.iitm.ac.in', popularPrograms: ['Engineering', 'Technology'], description: 'Top engineering university, #1 in NIRF overall.' },
+{ id: 2, name: 'Indian Institute of Science (IISc)', state: 'Karnataka', city: 'Bengaluru', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1909, students: 4500, acceptanceRate: 'Highly Selective', website: 'https://www.iisc.ac.in', popularPrograms: ['Science', 'Research'], description: 'India’s leading research university, top NIRF-ranked.' },
+{ id: 3, name: 'Indian Institute of Technology Bombay (IIT Bombay)', state: 'Maharashtra', city: 'Mumbai', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1958, students: 10000, acceptanceRate: 'Highly Selective', website: 'https://www.iitb.ac.in', popularPrograms: ['Engineering', 'Management'], description: 'Top engineering institute, top pick for JEE toppers.' },
+{ id: 4, name: 'Indian Institute of Technology Delhi (IIT Delhi)', state: 'Delhi', city: 'New Delhi', type: 'Institute of National Importance', tier: 'Top-tier', founded: 1961, students: 8500, acceptanceRate: 'Highly Selective', website: 'https://www.iitd.ac.in', popularPrograms: ['Engineering', 'Technology'], description: 'Top-tier IIT, highest-ranked Indian university in QS 2026.' },
+{ id: 5, name: 'Jawaharlal Nehru University (JNU)', state: 'Delhi', city: 'New Delhi', type: 'Central University', tier: 'Top-tier', founded: 1969, students: 35000, acceptanceRate: 'Selective', website: 'https://www.jnu.ac.in', popularPrograms: ['Social Sciences', 'International Studies'], description: 'Renowned for humanities, NIRF #2 overall.' },
+{ id: 6, name: 'Banaras Hindu University (BHU)', state: 'Uttar Pradesh', city: 'Varanasi', type: 'Central University', tier: 'Top-tier', founded: 1916, students: 30000, acceptanceRate: 'Moderate', website: 'https://www.bhu.ac.in', popularPrograms: ['Arts', 'Sciences', 'Engineering'], description: 'Historic central university ranked NIRF #5.' },
+{ id: 7, name: 'Jamia Millia Islamia (JMI)', state: 'Delhi', city: 'New Delhi', type: 'Central University', tier: 'Top-tier', founded: 1920, students: 25000, acceptanceRate: 'Moderate', website: 'https://www.jmi.ac.in', popularPrograms: ['Education', 'Mass Communication'], description: 'Public central university, NIRF #3 overall.' },
+{ id: 8, name: 'Amrita Vishwa Vidyapeetham (Amrita University)', state: 'Tamil Nadu', city: 'Coimbatore', type: 'Deemed-to-be University', tier: 'National Leader', founded: 1994, students: 40000, acceptanceRate: 'Moderate', website: 'https://www.amrita.edu', popularPrograms: ['Engineering', 'Medicine'], description: 'Private deemed university, in THE Impact top‑50 globally.' },
+{ id: 9, name: 'Vellore Institute of Technology (VIT)', state: 'Tamil Nadu', city: 'Vellore', type: 'Private', tier: 'National Leader', founded: 1984, students: 35000, acceptanceRate: 'Moderate', website: 'https://www.vit.ac.in', popularPrograms: ['Engineering', 'Management'], description: 'Top private engineering university in India.' },
+{ id: 10, name: 'Jadavpur University', state: 'West Bengal', city: 'Kolkata', type: 'State University', tier: 'Top-tier', founded: 1906, students: 13351, acceptanceRate: 'Selective', website: 'https://www.jaduniv.edu.in', popularPrograms: ['Engineering', 'Arts'], description: 'Public state university, NIRF #9 overall, strong research output.' },
+{ id: 21, name: 'Vellore Institute of Technology (VIT)', state: 'Tamil Nadu', city: 'Vellore', type: 'Private', tier: 'National Leader', founded: 1984, students: 60000, acceptanceRate: 'Moderate', website: 'https://vit.ac.in', popularPrograms: ['Engineering', 'Sciences', 'Business'], description: 'Top private engineering institute known for placements and infrastructure.' },
+{ id: 22, name: 'University of Calcutta', state: 'West Bengal', city: 'Kolkata', type: 'State University', tier: 'Historic', founded: 1857, students: 200000, acceptanceRate: 'Open', website: 'https://www.caluniv.ac.in', popularPrograms: ['Law', 'Science', 'Arts'], description: 'One of the oldest universities in India with historic significance.' },
+{ id: 23, name: 'Jamia Millia Islamia', state: 'Delhi', city: 'New Delhi', type: 'Central University', tier: 'Top-tier', founded: 1920, students: 20000, acceptanceRate: 'Selective', website: 'https://www.jmi.ac.in', popularPrograms: ['Mass Communication', 'Law', 'Engineering'], description: 'Renowned for its inclusive culture and academic quality.' },
+{ id: 24, name: 'Lovely Professional University (LPU)', state: 'Punjab', city: 'Phagwara', type: 'Private', tier: 'Largest Campus', founded: 2005, students: 70000, acceptanceRate: 'Open', website: 'https://www.lpu.in', popularPrograms: ['Engineering', 'Management', 'Design'], description: 'India’s largest private university campus with diverse programs.' },
+{ id: 25, name: 'University of Mumbai', state: 'Maharashtra', city: 'Mumbai', type: 'State University', tier: 'Historic', founded: 1857, students: 700000, acceptanceRate: 'Open', website: 'https://www.mu.ac.in', popularPrograms: ['Commerce', 'Law', 'Arts'], description: 'One of India’s oldest and largest affiliating universities.' },
+{ id: 26, name: 'Banaras Hindu University (BHU)', state: 'Uttar Pradesh', city: 'Varanasi', type: 'Central University', tier: 'Top-tier', founded: 1916, students: 30000, acceptanceRate: 'Moderate', website: 'https://www.bhu.ac.in', popularPrograms: ['Science', 'Law', 'Engineering'], description: 'Culturally rich and academically prestigious university in India.' },
+{ id: 27, name: 'Chandigarh University', state: 'Punjab', city: 'Mohali', type: 'Private', tier: 'Emerging', founded: 2012, students: 40000, acceptanceRate: 'Open', website: 'https://www.cuchd.in', popularPrograms: ['Engineering', 'Management', 'Pharmacy'], description: 'Rapidly growing private university with global collaborations.' },
+{ id: 28, name: 'Jadavpur University', state: 'West Bengal', city: 'Kolkata', type: 'State University', tier: 'Top-tier', founded: 1955, students: 12000, acceptanceRate: 'Selective', website: 'https://www.jaduniv.edu.in', popularPrograms: ['Engineering', 'Arts', 'Science'], description: 'Highly ranked state university known for technical education.' },
+{ id: 29, name: 'Symbiosis International University', state: 'Maharashtra', city: 'Pune', type: 'Deemed-to-be University', tier: 'Specialized', founded: 2002, students: 35000, acceptanceRate: 'Moderate', website: 'https://www.symbiosis.ac.in', popularPrograms: ['Law', 'Business', 'Media'], description: 'Prestigious private university focused on law and management education.' },
+{ id: 30, name: 'OP Jindal Global University', state: 'Haryana', city: 'Sonipat', type: 'Private', tier: 'Global Focus', founded: 2009, students: 10000, acceptanceRate: 'Selective', website: 'https://www.jgu.edu.in', popularPrograms: ['Law', 'International Affairs', 'Business'], description: 'Private university with a strong global reputation in law and social sciences.' },
+{ id: 31, name: 'Amity University', state: 'Uttar Pradesh', city: 'Noida', type: 'Private', tier: 'Large Private', founded: 2005, students: 60000, acceptanceRate: 'Open', website: 'https://www.amity.edu', popularPrograms: ['Engineering', 'Business', 'Law'], description: 'One of India’s largest private universities with global presence.' },
+{ id: 32, name: 'Guru Gobind Singh Indraprastha University', state: 'Delhi', city: 'New Delhi', type: 'State University', tier: 'Urban', founded: 1998, students: 20000, acceptanceRate: 'Moderate', website: 'http://www.ipu.ac.in', popularPrograms: ['Engineering', 'Management', 'Law'], description: 'Urban-focused university with strong technical and legal programs.' },
+{ id: 33, name: 'Manipal Academy of Higher Education (MAHE)', state: 'Karnataka', city: 'Manipal', type: 'Deemed University', tier: 'Private Elite', founded: 1953, students: 33000, acceptanceRate: 'Moderate', website: 'https://www.manipal.edu', popularPrograms: ['Medicine', 'Engineering', 'Management'], description: 'Premier private institution with global collaborations and medical excellence.' },
+{ id: 34, name: 'Indian Institute of Science Education and Research (IISER)', state: 'Multiple', city: 'Pune, Kolkata, Mohali, etc.', type: 'Public', tier: 'Research Institute', founded: 2006, students: 7000, acceptanceRate: 'Highly Selective', website: 'https://www.iiseradmission.in', popularPrograms: ['Basic Sciences', 'Research'], description: 'Specialized institutes for advanced science education and research.' },
+{ id: 35, name: 'Shiv Nadar University', state: 'Uttar Pradesh', city: 'Dadri', type: 'Private', tier: 'Emerging Elite', founded: 2011, students: 8000, acceptanceRate: 'Selective', website: 'https://www.snu.edu.in', popularPrograms: ['Engineering', 'Natural Sciences', 'Humanities'], description: 'Rapidly growing private research university with liberal arts focus.' },
+{ id: 36, name: 'Indian Statistical Institute (ISI)', state: 'West Bengal', city: 'Kolkata', type: 'Public', tier: 'Specialized', founded: 1931, students: 1200, acceptanceRate: 'Highly Selective', website: 'https://www.isical.ac.in', popularPrograms: ['Statistics', 'Mathematics', 'Computer Science'], description: 'Prestigious research institute for statistics and quantitative sciences.' },
+{ id: 37, name: 'National Institute of Design (NID)', state: 'Gujarat', city: 'Ahmedabad', type: 'Public', tier: 'Specialized', founded: 1961, students: 2500, acceptanceRate: 'Highly Selective', website: 'https://www.nid.edu', popularPrograms: ['Design', 'Industrial Design', 'Animation'], description: 'Premier design institute with strong national and global reputation.' },
+{ id: 38, name: 'International Institute of Information Technology (IIIT Hyderabad)', state: 'Telangana', city: 'Hyderabad', type: 'Deemed University', tier: 'Elite Tech', founded: 1998, students: 2000, acceptanceRate: 'Highly Selective', website: 'https://www.iiit.ac.in', popularPrograms: ['Computer Science', 'AI', 'Robotics'], description: 'Top-tier tech institute known for cutting-edge research and innovation.' },
+{ id: 39, name: 'Indian Institute of Space Science and Technology (IIST)', state: 'Kerala', city: 'Thiruvananthapuram', type: 'Deemed University', tier: 'Specialized', founded: 2007, students: 1000, acceptanceRate: 'Highly Selective', website: 'https://www.iist.ac.in', popularPrograms: ['Aerospace Engineering', 'Physics', 'Avionics'], description: 'ISRO-run institution for future space scientists and engineers.' },
+{ id: 40, name: 'SRM Institute of Science and Technology', state: 'Tamil Nadu', city: 'Chennai', type: 'Private', tier: 'Popular Private', founded: 1985, students: 50000, acceptanceRate: 'Open', website: 'https://www.srmist.edu.in', popularPrograms: ['Engineering', 'Health Sciences', 'Management'], description: 'Large private university with extensive infrastructure and global programs.' },
+{ id: 41, name: 'Vellore Institute of Technology (VIT)', state: 'Tamil Nadu', city: 'Vellore', type: 'Private', tier: 'Elite Private', founded: 1984, students: 39000, acceptanceRate: 'Moderate', website: 'https://vit.ac.in', popularPrograms: ['Engineering', 'Science', 'Management'], description: 'Top-ranked private institution with focus on innovation and placements.' },
+{ id: 42, name: 'Birla Institute of Technology, Mesra (BIT Mesra)', state: 'Jharkhand', city: 'Ranchi', type: 'Deemed University', tier: 'Technical', founded: 1955, students: 10000, acceptanceRate: 'Competitive', website: 'https://www.bitmesra.ac.in', popularPrograms: ['Engineering', 'Pharmacy', 'Architecture'], description: 'Premier technical institute with strong academic legacy and research.' },
+{ id: 43, name: 'Banasthali Vidyapith', state: 'Rajasthan', city: 'Banasthali', type: 'Private', tier: 'Women’s University', founded: 1935, students: 12000, acceptanceRate: 'Open', website: 'https://www.banasthali.org', popularPrograms: ['Science', 'Arts', 'Aviation'], description: 'Women-only university known for comprehensive education and empowerment.' },
+{ id: 44, name: 'Indian Institute of Foreign Trade (IIFT)', state: 'Delhi', city: 'New Delhi', type: 'Public', tier: 'Specialized', founded: 1963, students: 1500, acceptanceRate: 'Selective', website: 'https://www.iift.ac.in', popularPrograms: ['International Business', 'Economics', 'Trade Law'], description: 'Premier B-school for global trade and economics education.' },
+{ id: 45, name: 'Ashoka University', state: 'Haryana', city: 'Sonipat', type: 'Private', tier: 'Liberal Arts', founded: 2014, students: 3000, acceptanceRate: 'Selective', website: 'https://www.ashoka.edu.in', popularPrograms: ['Liberal Arts', 'Economics', 'Computer Science'], description: 'Leading liberal arts university with strong faculty and global collaborations.' },
+{ id: 46, name: 'OP Jindal Global University', state: 'Haryana', city: 'Sonipat', type: 'Private', tier: 'Liberal Arts / Law', founded: 2009, students: 8500, acceptanceRate: 'Moderate', website: 'https://jgu.edu.in', popularPrograms: ['Law', 'International Relations', 'Business'], description: 'Multi-disciplinary global university ranked among top private institutions.' },
+{ id: 47, name: 'Kalinga Institute of Industrial Technology (KIIT)', state: 'Odisha', city: 'Bhubaneswar', type: 'Deemed University', tier: 'Private Tech', founded: 1992, students: 27000, acceptanceRate: 'Open', website: 'https://kiit.ac.in', popularPrograms: ['Engineering', 'Medical', 'Management'], description: 'Large private university known for technical education and outreach.' },
+{ id: 48, name: 'Indian Institute of Mass Communication (IIMC)', state: 'Delhi', city: 'New Delhi', type: 'Public', tier: 'Specialized', founded: 1965, students: 1000, acceptanceRate: 'Competitive', website: 'https://iimc.gov.in', popularPrograms: ['Mass Communication', 'Journalism', 'Media Studies'], description: 'India’s premier institution for media and communication studies.' },
+{ id: 49, name: 'Tata Institute of Social Sciences (TISS)', state: 'Maharashtra', city: 'Mumbai', type: 'Deemed University', tier: 'Social Sciences', founded: 1936, students: 4500, acceptanceRate: 'Moderate', website: 'https://www.tiss.edu', popularPrograms: ['Social Work', 'Development Studies', 'Public Policy'], description: 'Nationally recognized institute for social sciences and public research.' },
+{ id: 50, name: 'Azim Premji University', state: 'Karnataka', city: 'Bangalore', type: 'Private', tier: 'Liberal Arts / Development', founded: 2010, students: 2500, acceptanceRate: 'Open', website: 'https://azimpremjiuniversity.edu.in', popularPrograms: ['Education', 'Development', 'Public Policy'], description: 'University focused on social development and equity in education.' },
+{ id: 51, name: 'Shiv Nadar University', state: 'Uttar Pradesh', city: 'Greater Noida', type: 'Private', tier: 'Liberal Arts / Research', founded: 2011, students: 4000, acceptanceRate: 'Selective', website: 'https://www.snu.edu.in', popularPrograms: ['Engineering', 'Economics', 'Natural Sciences'], description: 'Interdisciplinary university focused on research and global education.' },
+{ id: 52, name: 'Amrita Vishwa Vidyapeetham', state: 'Tamil Nadu', city: 'Coimbatore', type: 'Deemed University', tier: 'Private Tech', founded: 2003, students: 24000, acceptanceRate: 'Open', website: 'https://www.amrita.edu', popularPrograms: ['Engineering', 'Medicine', 'Social Work'], description: 'Multi-campus university ranked highly in India for technical education.' },
+{ id: 53, name: 'FLAME University', state: 'Maharashtra', city: 'Pune', type: 'Private', tier: 'Liberal Arts', founded: 2015, students: 1500, acceptanceRate: 'Open', website: 'https://www.flame.edu.in', popularPrograms: ['Liberal Arts', 'Management', 'Communication'], description: 'Liberal arts-focused university with emphasis on creativity and leadership.' },
+{ id: 54, name: 'SRM Institute of Science and Technology', state: 'Tamil Nadu', city: 'Chennai', type: 'Deemed University', tier: 'Private Tech', founded: 1985, students: 52000, acceptanceRate: 'Open', website: 'https://www.srmist.edu.in', popularPrograms: ['Engineering', 'Management', 'Health Sciences'], description: 'Large private university known for technical and healthcare education.' },
+{ id: 55, name: 'Amity University', state: 'Uttar Pradesh', city: 'Noida', type: 'Private', tier: 'Private Tech / Management', founded: 2005, students: 60000, acceptanceRate: 'Open', website: 'https://www.amity.edu', popularPrograms: ['Engineering', 'Management', 'Law'], description: 'Large private institution with strong national and international presence.' },
+{ id: 56, name: 'Jain University (JAIN - Deemed-to-be University)', state: 'Karnataka', city: 'Bangalore', type: 'Deemed University', tier: 'Private', founded: 1990, students: 15000, acceptanceRate: 'Open', website: 'https://www.jainuniversity.ac.in', popularPrograms: ['Commerce', 'Sports Management', 'Engineering'], description: 'Well-known for entrepreneurship, academics, and sports education.' },
+{ id: 57, name: 'Christ University', state: 'Karnataka', city: 'Bangalore', type: 'Deemed University', tier: 'Liberal Arts / Management', founded: 1969, students: 25000, acceptanceRate: 'Moderate', website: 'https://www.christuniversity.in', popularPrograms: ['Commerce', 'Psychology', 'Business'], description: 'Popular among students for liberal education and discipline.' },
+{ id: 58, name: 'Lovely Professional University (LPU)', state: 'Punjab', city: 'Phagwara', type: 'Private', tier: 'Massive Private', founded: 2005, students: 30000, acceptanceRate: 'Open', website: 'https://www.lpu.in', popularPrograms: ['Engineering', 'Design', 'Management'], description: 'One of the largest private universities in India offering wide range of programs.' },
+{ id: 59, name: 'Graphic Era University', state: 'Uttarakhand', city: 'Dehradun', type: 'Deemed University', tier: 'Private', founded: 1993, students: 10000, acceptanceRate: 'Open', website: 'https://www.geu.ac.in', popularPrograms: ['Engineering', 'Business', 'Science'], description: 'NAAC A+ accredited university known for innovation and placements.' },
+{ id: 60, name: 'NorthCap University (NCU)', state: 'Haryana', city: 'Gurugram', type: 'Private', tier: 'Urban Private', founded: 1996, students: 4000, acceptanceRate: 'Open', website: 'https://www.ncuindia.edu', popularPrograms: ['Engineering', 'Law', 'Management'], description: 'Urban campus offering tech and law programs with global collaborations.' },
+{ id: 61, name: 'Symbiosis International University', state: 'Maharashtra', city: 'Pune', type: 'Deemed University', tier: 'Management / Liberal Arts', founded: 2002, students: 35000, acceptanceRate: 'Moderate', website: 'https://www.siu.edu.in', popularPrograms: ['Management', 'Law', 'Media'], description: 'Renowned for its management and law schools with strong international focus.' },
+{ id: 62, name: 'OP Jindal Global University', state: 'Haryana', city: 'Sonipat', type: 'Private', tier: 'Liberal Arts / Law', founded: 2009, students: 8000, acceptanceRate: 'Selective', website: 'https://www.jgu.edu.in', popularPrograms: ['Law', 'International Affairs', 'Liberal Arts'], description: 'World-class private university known for its law and social sciences programs.' },
+{ id: 63, name: 'Ashoka University', state: 'Haryana', city: 'Sonipat', type: 'Private', tier: 'Liberal Arts / Research', founded: 2014, students: 2500, acceptanceRate: 'Highly Selective', website: 'https://www.ashoka.edu.in', popularPrograms: ['Liberal Arts', 'Economics', 'Computer Science'], description: 'Top-ranked liberal arts university with strong research focus and global faculty.' },
+{ id: 64, name: 'IIIT Hyderabad', state: 'Telangana', city: 'Hyderabad', type: 'Deemed University', tier: 'Tech Specialized', founded: 1998, students: 2000, acceptanceRate: 'Highly Selective', website: 'https://www.iiit.ac.in', popularPrograms: ['Computer Science', 'AI', 'Robotics'], description: 'Premier tech-focused institute known for AI and CS research.' },
+{ id: 65, name: 'Sharda University', state: 'Uttar Pradesh', city: 'Greater Noida', type: 'Private', tier: 'Urban Private', founded: 2009, students: 20000, acceptanceRate: 'Open', website: 'https://www.sharda.ac.in', popularPrograms: ['Engineering', 'Business', 'Dental Sciences'], description: 'Multi-disciplinary university with international presence and modern campus.' },
+{ id: 66, name: 'Banasthali Vidyapith', state: 'Rajasthan', city: 'Tonk', type: 'Deemed University', tier: 'Women’s University', founded: 1935, students: 10000, acceptanceRate: 'Moderate', website: 'https://www.banasthali.org', popularPrograms: ['Science', 'Education', 'Aviation'], description: 'Women-only university promoting education and empowerment.' },
+{ id: 67, name: 'NIIT University', state: 'Rajasthan', city: 'Neemrana', type: 'Private', tier: 'Tech & Innovation', founded: 2009, students: 1500, acceptanceRate: 'Open', website: 'https://www.niituniversity.in', popularPrograms: ['Computer Science', 'Business', 'Data Science'], description: 'Innovation-driven tech university with industry-integrated curriculum.' },
+{ id: 68, name: 'Azim Premji University', state: 'Karnataka', city: 'Bangalore', type: 'Private', tier: 'Social Sciences / Education', founded: 2010, students: 2000, acceptanceRate: 'Selective', website: 'https://www.azimpremjiuniversity.edu.in', popularPrograms: ['Education', 'Development', 'Public Policy'], description: 'Focused on social change, development studies, and quality education.' },
+{ id: 69, name: 'Indian Institute of Foreign Trade (IIFT)', state: 'Delhi', city: 'New Delhi', type: 'Deemed University', tier: 'Specialized', founded: 1963, students: 1200, acceptanceRate: 'Highly Selective', website: 'https://www.iift.ac.in', popularPrograms: ['International Business', 'Economics'], description: 'Specialized institute for international trade and global business.' },
+{ id: 70, name: 'Tata Institute of Social Sciences (TISS)', state: 'Maharashtra', city: 'Mumbai', type: 'Deemed University', tier: 'Social Sciences', founded: 1936, students: 4000, acceptanceRate: 'Selective', website: 'https://www.tiss.edu', popularPrograms: ['Social Work', 'Public Policy', 'Human Resources'], description: 'Premier institution in India for social science research and education.' }
+  ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
+
+
+const indianStates = {
+  'Andhra Pradesh': 'Andhra Pradesh',
+  'Arunachal Pradesh': 'Arunachal Pradesh',
+  'Assam': 'Assam',
+  'Bihar': 'Bihar',
+  'Chhattisgarh': 'Chhattisgarh',
+  'Goa': 'Goa',
+  'Gujarat': 'Gujarat',
+  'Haryana': 'Haryana',
+  'Himachal Pradesh': 'Himachal Pradesh',
+  'Jharkhand': 'Jharkhand',
+  'Karnataka': 'Karnataka',
+  'Kerala': 'Kerala',
+  'Madhya Pradesh': 'Madhya Pradesh',
+  'Maharashtra': 'Maharashtra',
+  'Manipur': 'Manipur',
+  'Meghalaya': 'Meghalaya',
+  'Mizoram': 'Mizoram',
+  'Nagaland': 'Nagaland',
+  'Odisha': 'Odisha',
+  'Punjab': 'Punjab',
+  'Rajasthan': 'Rajasthan',
+  'Sikkim': 'Sikkim',
+  'Tamil Nadu': 'Tamil Nadu',
+  'Telangana': 'Telangana',
+  'Tripura': 'Tripura',
+  'Uttar Pradesh': 'Uttar Pradesh',
+  'Uttarakhand': 'Uttarakhand',
+  'West Bengal': 'West Bengal',
+  'Delhi': 'Delhi',
+  'J&K': 'Jammu & Kashmir',
+  'Puducherry': 'Puducherry'
 };
 
-    // University types and tiers
-     const universityTypes = [
-      'Public', 'Private', 'Collegiate', 'Specialist'
-    ];
+const universityTypes = [
+  'Public',
+  'Private',
+  'Institute of National Importance',
+  'Deemed-to-be University',
+  'Central University',
+  'State University',
+  'Technology Institute',
+  'Collage or College',
+  'Research University'
+];
 
-    const universityTiers = [
-      'Ivy League', 'Top 10 National', 'Top 25 National',
-      'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
-    ];
+const universityTiers = [
+  'Top-tier',
+  'National Leader',
+  'Regional',
+  'Emerging',
+  'Specialized',
+  'Engineering',
+  'Management',
+  'Medical',
+  'Law',
+  'Polytechnic'
+];
+
 
     // App state
     let isLoading = false;
@@ -1162,7 +1229,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(indianStates).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1226,7 +1293,7 @@ const singaporeStates = {
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
           univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          (indianStates[univ.state] && indianStates[univ.state].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1376,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${indianStates[university.state] || university.state}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1406,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${indianStates[university.state] || university.state}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1561,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${indianStates[university.state] || university.state}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1603,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${indianStates[university.state] || university.state}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>
@@ -1936,6 +2003,40 @@ const singaporeStates = {
     } else {
       init();
     }
+    
+  document.addEventListener("DOMContentLoaded", function () {
+    // DOM elements ko assign karo
+    searchInput = document.getElementById('searchInput');
+    stateFilter = document.getElementById('stateFilter');
+    typeFilter = document.getElementById('typeFilter');
+    resetButton = document.getElementById('resetFilters');
+    resultCount = document.getElementById('resultCount');
+    totalCount = document.getElementById('totalCount');
+    loadingIndicator = document.getElementById('loadingIndicator');
+    universityGrid = document.getElementById('universityGrid');
+
+    // Filters set karo
+    initFilters();
+
+    // Pehle hi filtered list lo
+    filteredUniversities = getFilteredUniversities();
+
+    // Pehle universities dikhado
+    renderUniversities(filteredUniversities.slice(0, itemsPerPage), false);
+
+    // Count update karo
+    updateResultCounts();
+
+    // Jab filter ya search ho to update karo
+    searchInput.addEventListener('input', handleSearch);
+    stateFilter.addEventListener('change', handleFilter);
+    typeFilter.addEventListener('change', handleFilter);
+    resetButton.addEventListener('click', resetFilters);
+    window.addEventListener('scroll', handleScroll);
+  });
+</script>
+
   </script>
+  
 </body>
 </html>

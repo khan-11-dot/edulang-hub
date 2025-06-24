@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>Sweden Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>Sweden Universities</h1>
+      <p>Find and explore universities across the Sweden</p>
     </header>
     
     <div class="search-container">
@@ -1076,64 +1076,61 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
+    const universities = [
+  { id: 1, name: 'Karolinska Institute', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Top 1 Medicine', founded: 1810, students: 8000, acceptanceRate: 'Highly Selective', website: 'https://ki.se', tuition: 'Free (EU/SE)', popularPrograms: ['Medicine','Biomedical Sciences'], description: 'World‑leading medical university, awards the Nobel Prize in Physiology or Medicine.' },
+  { id: 2, name: 'KTH Royal Institute of Technology', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Top Tech', founded: 1827, students: 13269, acceptanceRate: 'Selective', website: 'https://kth.se', tuition: 'Free (EU/SE)', popularPrograms: ['Engineering','Architecture','Computer Science'], description: 'Sweden’s premier technical university with top global rankings.' },
+  { id: 3, name: 'Lund University', province: 'Skåne County', city: 'Lund', type: 'Public', tier: 'Top Comprehensive', founded: 1666, students: 40000, acceptanceRate: 'Selective', website: 'https://lu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Engineering','Business','Humanities'], description: 'Historic research leader, highly international, strong in innovation.' },
+  { id: 4, name: 'Uppsala University', province: 'Uppsala County', city: 'Uppsala', type: 'Public', tier: 'Top Comprehensive', founded: 1477, students: 23000, acceptanceRate: 'Selective', website: 'https://uu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Law','Medicine','Science'], description: 'Oldest in Nordics, top-ranked in life sciences and humanities.' },
+  { id: 5, name: 'Stockholm University', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Top Comprehensive', founded: 1878, students: 34000, acceptanceRate: 'Moderate', website: 'https://su.se', tuition: 'Free (EU/SE)', popularPrograms: ['Environmental Science','Political Science','Law'], description: 'Major urban university strong in social and natural sciences.' },
+  { id: 6, name: 'Chalmers University of Technology', province: 'Västra Götaland County', city: 'Gothenburg', type: 'Public', tier: 'Top Tech', founded: 1829, students: 11000, acceptanceRate: 'Selective', website: 'https://chalmers.se', tuition: 'Free (EU/SE)', popularPrograms: ['Engineering','Technology Management','Sustainability'], description: 'Leading engineering university known for innovation and research.' },
+  { id: 7, name: 'University of Gothenburg', province: 'Västra Götaland County', city: 'Gothenburg', type: 'Public', tier: 'Top Comprehensive', founded: 1891, students: 37000, acceptanceRate: 'Moderate', website: 'https://gu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Arts','Business','Education'], description: 'Broad-based university with strong programs in arts and business.' },
+  { id: 8, name: 'Linköping University', province: 'Östergötland County', city: 'Linköping', type: 'Public', tier: 'Mid‑Top', founded: 1975, students: 28000, acceptanceRate: 'Moderate', website: 'https://liu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Engineering','Computer Science','Business'], description: 'Known for its problem-based learning and engineering focus.' },
+  { id: 9, name: 'Umeå University', province: 'Västerbotten County', city: 'Umeå', type: 'Public', tier: 'Mid‑Top', founded: 1965, students: 33000, acceptanceRate: 'Moderate', website: 'https://umu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Medicine','Environmental Science','Design'], description: 'Strong research university in northern Sweden.' },
+  { id: 10,name: 'Swedish University of Agricultural Sciences (SLU)', province: 'Uppsala County', city: 'Uppsala', type: 'Public', tier: 'Specialist', founded: 1977, students: 17000, acceptanceRate: 'Moderate', website: 'https://slu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Agriculture','Animal Science','Environmental Science'], description: 'Leader in life science and sustainable agriculture.' },
+  { id: 11, name: 'Örebro University', province: 'Örebro County', city: 'Örebro', type: 'Public', tier: 'Mid‑Tier', founded: 1999, students: 17000, acceptanceRate: 'Moderate', website: 'https://oru.se', tuition: 'Free (EU/SE)', popularPrograms: ['Education','Health','Engineering'], description: 'Regional university with growing research capacity.' },
+  { id: 12, name: 'Jönköping University', province: 'Jönköping County', city: 'Jönköping', type: 'Private', tier: 'Mid‑Tier', founded: 1994, students: 12000, acceptanceRate: 'Moderate', website: 'https://ju.se', tuition: 'Free (EU/SE)', popularPrograms: ['Nursing','Engineering','Business'], description: 'Well‑connected to industry, with vocational and international focus.' },
+  { id: 13, name: 'Linnaeus University', province: 'Kronoberg County', city: 'Växjö/Kalmar', type: 'Public', tier: 'Mid‑Tier', founded: 2010, students: 16000, acceptanceRate: 'Moderate', website: 'https://lnu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Entrepreneurship','Media','Environmental Science'], description: 'Young, sustainability‑focused university in southern Sweden.' },
+  { id: 14, name: 'Luleå University of Technology', province: 'Norrbotten County', city: 'Luleå', type: 'Public', tier: 'Specialist Tech', founded: 1971, students: 15000, acceptanceRate: 'Moderate', website: 'https://ltu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Mining Engineering','IT','Architecture'], description: 'Technical university in Arctic region, with strong engineering.' },
+  { id: 15, name: 'Malmö University', province: 'Skåne County', city: 'Malmö', type: 'Public', tier: 'Mid‑Tier', founded: 1998, students: 21000, acceptanceRate: 'Moderate', website: 'https://mau.se', tuition: 'Free (EU/SE)', popularPrograms: ['Urban Studies',' Health','Media'], description: 'Urban university with focus on inclusion, sustainability and media.' },
+  { id: 16, name: 'Blekinge Institute of Technology', province: 'Blekinge County', city: 'Karlskrona', type: 'Public', tier: 'Tech', founded: 1989, students: 5000, acceptanceRate: 'Moderate', website: 'https://bth.se', tuition: 'Free (EU/SE)', popularPrograms: ['Software Engineering','IT','Sustainable Development'], description: 'Focused technical university known for IT and engineering.' },
+  { id: 17, name: 'Halmstad University', province: 'Halland County', city: 'Halmstad', type: 'Public', tier: 'Mid‑Tier', founded: 1983, students: 9000, acceptanceRate: 'Moderate', website: 'https://hh.se', tuition: 'Free (EU/SE)', popularPrograms: ['Engineering','Health','Innovation'], description: 'Regional innovation‑oriented university with applied research.' },
+  { id: 18, name: 'Mid Sweden University', province: 'Västernorrland County', city: 'Sundsvall/Östersund', type: 'Public', tier: 'Mid‑Tier', founded: 1993, students: 23000, acceptanceRate: 'Moderate', website: 'https://miun.se', tuition: 'Free (EU/SE)', popularPrograms: ['Forestry','Media','Education'], description: 'Regional university with strong applied science and education programs.' },
+  { id: 19, name: 'Stockholm School of Economics', province: 'Stockholm County', city: 'Stockholm', type: 'Private', tier: 'Elite Business', founded: 1909, students: 2000, acceptanceRate: 'Highly Selective', website: 'https://hhs.se', tuition: 'Paid (non-EU)', popularPrograms: ['Business','Economics','Finance'], description: 'Sweden’s top business school with global reputation.' },
+  { id: 20, name: 'University of Borås', province: 'Västra Götaland County', city: 'Borås', type: 'Public', tier: 'Mid‑Tier', founded: 1977, students: 17000, acceptanceRate: 'Moderate', website: 'https://hb.se', tuition: 'Free (EU/SE)', popularPrograms: ['Textile Engineering','Library Science','Logistics'], description: 'Specialized public university known for textiles and logistics.' },
+  { id: 21, name: 'Dalarna University', province: 'Dalarna County', city: 'Falun/Borlänge', type: 'Public', tier: 'Regional', founded: 1977, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.du.se', tuition: 'Free (EU/SE)', popularPrograms: ['Tourism', 'Education', 'Energy Systems'], description: 'Student-focused university with online learning and energy research.' },
+  { id: 22, name: 'Kristianstad University', province: 'Skåne County', city: 'Kristianstad', type: 'Public', tier: 'Regional', founded: 1977, students: 12000, acceptanceRate: 'Moderate', website: 'https://www.hkr.se', tuition: 'Free (EU/SE)', popularPrograms: ['Nursing', 'Education', 'Business'], description: 'Professional training-focused with strong teacher and nursing programs.' },
+  { id: 23, name: 'Södertörn University', province: 'Stockholm County', city: 'Huddinge', type: 'Public', tier: 'Mid-tier', founded: 1996, students: 13000, acceptanceRate: 'Moderate', website: 'https://www.sh.se', tuition: 'Free (EU/SE)', popularPrograms: ['Media', 'Social Sciences', 'Environmental Science'], description: 'Modern university with progressive education in the Stockholm region.' },
+  { id: 24, name: 'University of Gävle', province: 'Gävleborg County', city: 'Gävle', type: 'Public', tier: 'Regional', founded: 1977, students: 16000, acceptanceRate: 'Moderate', website: 'https://www.hig.se', tuition: 'Free (EU/SE)', popularPrograms: ['Sustainability', 'Built Environment', 'Education'], description: 'Applied sciences university with environmental focus.' },
+  { id: 25, name: 'University West', province: 'Västra Götaland County', city: 'Trollhättan', type: 'Public', tier: 'Applied', founded: 1990, students: 13000, acceptanceRate: 'Moderate', website: 'https://www.hv.se', tuition: 'Free (EU/SE)', popularPrograms: ['Work-integrated Learning', 'Engineering', 'Nursing'], description: 'Pioneering in work-integrated learning with strong tech programs.' },
+  { id: 26, name: 'The Swedish Defence University', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Specialized', founded: 1997, students: 1500, acceptanceRate: 'Moderate', website: 'https://www.fhs.se', tuition: 'Free (EU/SE)', popularPrograms: ['Security Studies', 'Military Science'], description: 'National institution for military and security research and education.' },
+  { id: 27, name: 'Ersta Sköndal Bräcke University College', province: 'Stockholm County', city: 'Stockholm', type: 'Private', tier: 'Specialized', founded: 1998, students: 1300, acceptanceRate: 'Moderate', website: 'https://www.esh.se', tuition: 'Free (EU/SE)', popularPrograms: ['Nursing', 'Social Work', 'Theology'], description: 'Christian university college focused on health and ethics.' },
+  { id: 28, name: 'Beckmans College of Design', province: 'Stockholm County', city: 'Stockholm', type: 'Private', tier: 'Art & Design', founded: 1939, students: 300, acceptanceRate: 'Selective', website: 'https://www.beckmans.se', tuition: 'Free (EU/SE)', popularPrograms: ['Fashion Design', 'Product Design', 'Visual Communication'], description: 'Elite design school with international influence in fashion and art.' },
+  { id: 29, name: 'Konstfack University of Arts, Crafts and Design', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Art & Design', founded: 1844, students: 900, acceptanceRate: 'Selective', website: 'https://www.konstfack.se', tuition: 'Free (EU/SE)', popularPrograms: ['Fine Arts', 'Design', 'Crafts'], description: 'Sweden’s largest art and design university, with international acclaim.' },
+  { id: 30, name: 'Royal College of Music in Stockholm (KMH)', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Specialized', founded: 1771, students: 900, acceptanceRate: 'Selective', website: 'https://www.kmh.se', tuition: 'Free (EU/SE)', popularPrograms: ['Music Performance', 'Composition', 'Music Education'], description: 'Sweden’s leading music conservatory, rich in classical and modern traditions.' },
+  { id: 31, name: 'Royal Institute of Art', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Art & Design', founded: 1735, students: 250, acceptanceRate: 'Selective', website: 'https://www.kkh.se', tuition: 'Free (EU/SE)', popularPrograms: ['Fine Arts', 'Art Theory'], description: 'Prestigious art academy focusing on contemporary visual arts and research.' },
+  { id: 32, name: 'Stockholm School of Economics (SSE)', province: 'Stockholm County', city: 'Stockholm', type: 'Private', tier: 'Elite', founded: 1909, students: 2000, acceptanceRate: 'Highly Selective', website: 'https://www.hhs.se', tuition: 'Free (EU/SE)', popularPrograms: ['Economics', 'Finance', 'Business'], description: 'Top-ranked business school with global connections and elite MBA programs.' },
+  { id: 33, name: 'Örebro University School of Music, Theatre and Art', province: 'Örebro County', city: 'Örebro', type: 'Public', tier: 'Specialized', founded: 1999, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.oru.se/utbildning/musik', tuition: 'Free (EU/SE)', popularPrograms: ['Music', 'Theatre', 'Art'], description: 'Creative arts faculty within Örebro University.' },
+  { id: 34, name: 'Malmö Academy of Music', province: 'Skåne County', city: 'Malmö', type: 'Public', tier: 'Specialized', founded: 1907, students: 600, acceptanceRate: 'Selective', website: 'https://www.mhm.lu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Music Performance', 'Composition', 'Music Education'], description: 'Music conservatory under Lund University with international faculty.' },
+  { id: 35, name: 'Malmö Art Academy', province: 'Skåne County', city: 'Malmö', type: 'Public', tier: 'Art & Design', founded: 1995, students: 75, acceptanceRate: 'Highly Selective', website: 'https://www.khm.lu.se', tuition: 'Free (EU/SE)', popularPrograms: ['Fine Arts', 'Contemporary Art'], description: 'Highly competitive academy focusing on contemporary art and exhibitions.' },
+  { id: 36, name: 'Stockholm University of the Arts', province: 'Stockholm County', city: 'Stockholm', type: 'Public', tier: 'Art & Design', founded: 2014, students: 900, acceptanceRate: 'Selective', website: 'https://www.uniarts.se', tuition: 'Free (EU/SE)', popularPrograms: ['Dance', 'Opera', 'Performing Arts'], description: 'Merges major art schools into one creative powerhouse for performance education.' },
+  { id: 37, name: 'BTH – Blekinge Institute of Technology', province: 'Blekinge County', city: 'Karlskrona', type: 'Public', tier: 'Technology-Focused', founded: 1989, students: 7000, acceptanceRate: 'Moderate', website: 'https://www.bth.se', tuition: 'Free (EU/SE)', popularPrograms: ['Software Engineering', 'Sustainability', 'AI'], description: 'Tech-driven university with research in digitalization and sustainability.' },
+  { id: 38, name: 'Newman Institute', province: 'Uppsala County', city: 'Uppsala', type: 'Private', tier: 'Specialized', founded: 2001, students: 300, acceptanceRate: 'Open', website: 'https://www.newman.se', tuition: 'Free (EU/SE)', popularPrograms: ['Theology', 'Philosophy'], description: 'Jesuit college for philosophy and theology based in Uppsala.' },
+  { id: 39, name: 'Sámi Education Institute', province: 'Norrbotten County', city: 'Jokkmokk', type: 'Public', tier: 'Specialized', founded: 1942, students: 200, acceptanceRate: 'Open', website: 'https://www.samernas.se', tuition: 'Free (EU/SE)', popularPrograms: ['Sámi Culture', 'Handicrafts', 'Reindeer Husbandry'], description: 'Focuses on preserving indigenous Sámi language, culture, and education.' },
+  { id: 40, name: 'Sigtunaskolan Humanistiska Läroverket (SSHL)', province: 'Stockholm County', city: 'Sigtuna', type: 'Private', tier: 'Elite High School/Pathway', founded: 1925, students: 500, acceptanceRate: 'Selective', website: 'https://www.sshl.se', tuition: 'SEK 285,000–330,000/year', popularPrograms: ['International Baccalaureate', 'Humanities'], description: 'Sweden’s elite boarding school offering IB and preparing students for top universities.' }
 ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
-};
 
+
+
+const swedishProvinces = {
+  'Stockholm County': 'Stockholm County',
+  'Skåne County': 'Skåne County',
+  'Uppsala County': 'Uppsala County',
+  'Västra Götaland County': 'Västra Götaland County',
+  'Östergötland County': 'Östergötland County',
+  'Västerbotten County': 'Västerbotten County',
+  'Gävleborg County': 'Gävleborg County'
+};
     // University types and tiers
      const universityTypes = [
       'Public', 'Private', 'Collegiate', 'Specialist'
@@ -1162,7 +1159,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(swedishProvinces).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1225,8 +1222,8 @@ const singaporeStates = {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
-          univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          univ.province.toLowerCase().includes(searchTerm) ||
+          (swedishProvinces[univ.province] && swedishProvinces[univ.province].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1306,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${swedishProvinces[university.province] || university.province}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1336,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${swedishProvinces[university.province] || university.province}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1491,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${swedishProvinces[university.province] || university.province}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1533,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${swedishProvinces[university.province] || university.province}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>

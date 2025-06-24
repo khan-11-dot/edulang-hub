@@ -1,0 +1,2440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pakistan Universities</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    :root {
+      /* Primary Colors */
+      --primary: #2c3e50;     /* Deep Navy Blue - Primary brand color */
+      --primary-light: #3d5a80;  /* Lighter shade for hover states */
+      --secondary: #e74c3c;   /* Vibrant Red - For CTAs and important actions */
+      --accent: #3498db;      /* Bright Blue - For interactive elements */
+      
+      /* Neutral Colors */
+      --dark: #2c3e50;       /* Dark text and backgrounds */
+      --light: #f8f9fa;      /* Light backgrounds */
+      --gray-100: #f8f9fa;   /* Lightest gray */
+      --gray-200: #e9ecef;
+      --gray-300: #dee2e6;
+      --gray-400: #ced4da;
+      --gray-500: #adb5bd;
+      --gray-600: #6c757d;
+      --gray-700: #495057;
+      --gray-800: #343a40;
+      --gray-900: #212529;
+      
+      /* UI Colors */
+      --success: #28a745;    /* Green */
+      --info: #17a2b8;       /* Teal */
+      --warning: #ffc107;    /* Yellow */
+      --danger: #dc3545;     /* Red */
+      
+      /* Backgrounds */
+      --card-bg: #ffffff;    /* White background for cards */
+      --body-bg: #f8f9fa;    /* Light gray background for page */
+      --input-bg: #ffffff;   /* White background for inputs */
+      
+      /* Text */
+      --text: #2c3e50;       /* Dark blue-gray for primary text */
+      --text-secondary: #6c757d; /* Gray for secondary text */
+      --text-light: #f8f9fa; /* Light text for dark backgrounds */
+      
+      /* Borders */
+      --border: #dee2e6;     /* Light gray border */
+      --border-radius: 8px;  /* Default border radius */
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+      
+      /* Transitions */
+      --transition: all 0.3s ease;
+    }
+    
+    [data-theme="dark"] {
+      /* Dark theme overrides */
+      --primary: #3498db;        /* Brighter blue for dark mode */
+      --primary-light: #4aa3e8;  /* Lighter blue for hover states */
+      --secondary: #e74c3c;      /* Same red for consistency */
+      --accent: #5dade2;         /* Softer blue for dark mode */
+      
+      /* Dark theme backgrounds */
+      --card-bg: #2d3436;        /* Dark gray for cards */
+      --body-bg: #1e272e;        /* Dark blue-gray for page */
+      --input-bg: #2d3436;       /* Dark gray for inputs */
+      
+      /* Text colors for dark theme */
+      --text: #f8f9fa;           /* Light text for dark backgrounds */
+      --text-secondary: #b2bec3;  /* Lighter gray for secondary text */
+      
+      /* Borders */
+      --border: #3d484d;         /* Slightly lighter than card bg */
+      
+      /* Shadows */
+      --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.25);
+      --shadow-md: 0 6px 12px rgba(0, 0, 0, 0.25);
+      --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--body-bg);
+      padding: 0;
+      margin: 0;
+      transition: var(--transition);
+    }
+    
+    header {
+      background-color: var(--primary);
+      color: var(--text-light);
+      padding: 0.75rem 2rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+      background-color: rgba(44, 62, 80, 0.95);
+    }
+    
+    [data-theme="dark"] header {
+      background-color: rgba(30, 39, 46, 0.95);
+    }
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .logo i {
+      color: var(--accent);
+      font-size: 1.75rem;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    
+    .theme-toggle,
+    .favorites-button {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .theme-toggle:hover,
+    .favorites-button:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .theme-toggle:active,
+    .favorites-button:active {
+      transform: translateY(0);
+    }
+    
+    .favorites-button {
+      position: relative;
+    }
+    
+    .favorite-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: var(--danger);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      border: 2px solid var(--primary);
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .search-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      align-items: end;
+      transition: var(--transition);
+    }
+    
+    .filter-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-width: 200px;
+      flex: 1;
+      position: relative;
+    }
+    
+    .filter-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+    
+    .filter-group select,
+    .filter-group input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--border-radius);
+      background-color: var(--input-bg);
+      color: var(--text);
+      font-size: 0.95rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .filter-group select:focus,
+    .filter-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+    }
+    
+    .search-button {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 1px;
+    }
+    
+    .search-button button {
+      width: 100%;
+      height: 100%;
+      min-height: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border: none;
+      border-radius: var(--border-radius);
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .search-button button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(135deg, var(--primary-light), var(--accent));
+    }
+    
+    .search-button button:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .result-count {
+      text-align: center;
+      color: var(--text-secondary);
+      margin: 1rem 0 2rem;
+      font-size: 0.95rem;
+      background: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      max-width: 800px;
+      margin: 1rem auto 2rem;
+    }
+    
+    .university-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      padding: 0 1rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .university-card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      position: relative;
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+    }
+    
+    .university-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent);
+    }
+    
+    .university-image {
+      position: relative;
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px 8px 0 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .university-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .university-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    
+    .university-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 12px;
+      width: 100%;
+      max-width: 1000px;
+      max-height: 90vh;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .university-modal.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      transition: all 0.2s ease;
+    }
+    
+    .close-modal:hover {
+      background: rgba(0, 0, 0, 0.5);
+      transform: rotate(90deg);
+    }
+    
+    /* Modal Header */
+    .modal-header {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .modal-hero {
+      width: 100%;
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .modal-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .modal-hero:hover img {
+      transform: scale(1.05);
+    }
+    
+    .university-logo {
+      position: absolute;
+      bottom: -2rem;
+      left: 2rem;
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      background: white;
+      padding: 0.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 2;
+    }
+    
+    .university-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .header-content {
+      padding: 2.5rem 2rem 1.5rem;
+      background: var(--card-bg);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .header-content h1 {
+      margin: 0 0 0.5rem;
+      color: var(--primary);
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+    
+    .university-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .university-type {
+      background: var(--primary-light);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .divider {
+      color: var(--gray-400);
+    }
+    
+    .university-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .stat i {
+      color: var(--primary);
+      font-size: 1.1rem;
+      width: 1.5rem;
+      text-align: center;
+    }
+    
+    /* Modal Body */
+    .modal-body {
+      padding: 0 2rem 2rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+    
+    .modal-columns {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    
+    .main-content {
+      min-width: 0; /* Fix for flexbox overflow */
+    }
+    
+    .sidebar {
+      position: relative;
+    }
+    
+    .sidebar::before {
+      content: '';
+      position: absolute;
+      left: -1rem;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    
+    /* Detail Sections */
+    .detail-section {
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .detail-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .detail-section h2 {
+      color: var(--primary);
+      font-size: 1.5rem;
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .detail-section h2 i {
+      color: var(--primary-light);
+      font-size: 1.2em;
+    }
+    
+    .detail-section h3 {
+      color: var(--text);
+      font-size: 1.25rem;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .detail-section p {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin: 0 0 1.5rem;
+    }
+    
+    /* Highlights */
+    .highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1.5rem 0;
+    }
+    
+    .highlight {
+      background: rgba(52, 152, 219, 0.1);
+      color: var(--primary);
+      padding: 0.5rem 1rem;
+      border-radius: 1.5rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .highlight i {
+      color: var(--primary-light);
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    /* Campus Features */
+    .campus-features {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      margin-top: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .campus-features h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .campus-features ul {
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+    
+    .campus-features li {
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+    
+    /* Admission Requirements */
+    .admission-requirements {
+      margin-top: 1.5rem;
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    
+    .admission-requirements h3 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .requirement {
+      display: flex;
+      flex-direction: column;
+      background: rgba(var(--primary-rgb), 0.05);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+    }
+    
+    .requirement .label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .requirement .value {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    /* Campus Resources */
+    .campus-resources {
+      margin-top: 1.5rem;
+    }
+    
+    .campus-resources h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    
+    .resource {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      padding: 0.75rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    
+    .resource i {
+      color: var(--success);
+    }
+    
+    /* Enhanced Sidebar Styles */
+    .tour-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    
+    .cta-buttons {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    
+    .cta-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .cta-footer i {
+      color: var(--info);
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .requirements-grid,
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tour-buttons {
+        grid-template-columns: 1fr;
+      }
+      
+      .campus-stat {
+        flex: 1 1 100%;
+      }
+    }
+    
+    /* Academics Grid */
+    .academics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .academic-info {
+      background: var(--card-bg);
+      padding: 1.25rem;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .academic-info:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .academic-info h3 {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+      justify-content: center;
+    }
+    
+    .academic-info .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .academic-info .subtext {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Programs Grid */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .program-card {
+      background: var(--body-bg);
+      border-radius: 8px;
+      padding: 1.25rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 1px solid var(--border);
+    }
+    
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-light);
+    }
+    
+    .program-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(52, 152, 219, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+    
+    .program-name {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+    
+    .program-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Campus Life */
+    .campus-life {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .campus-stat {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .campus-stat i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-top: 0.25rem;
+    }
+    
+    .campus-stat .label {
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    
+    .campus-stat .value {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    
+    /* Sidebar Cards */
+    .sidebar-card {
+      background: var(--body-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid var(--border);
+    }
+    
+    .sidebar-card h3 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sidebar-card h3 i {
+      color: var(--primary-light);
+    }
+    
+    /* Facts List */
+    .facts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .fact {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+      display: flex;
+      gap: 0.75rem;
+      padding-top: 1rem;
+    }
+    
+    .university-link {
+      display: inline-block;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    
+    .university-link:hover {
+      text-decoration: underline;
+    }
+    
+    .university-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .university-link, .details-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .university-link {
+      background-color: var(--primary);
+      color: white;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .university-link:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .details-button {
+      background-color: var(--gray-200);
+      color: var(--text);
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .details-button:hover {
+      background-color: var(--gray-300);
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .details-button i {
+      margin-right: 6px;
+    }
+  
+    /* Ensure buttons stack on small screens */
+    @media (max-width: 480px) {
+      .university-actions {
+        flex-direction: column;
+      }
+      
+      .university-link, .details-button {
+        width: 100%;
+      }
+    }
+    
+    /* Modal Styles */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 700px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+    
+    .modal-header {
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+    
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      padding: 0 10px;
+    }
+    
+    .close-button:hover {
+      color: var(--text);
+    }
+    
+    .modal-body {
+      padding: 20px;
+    }
+    
+    .university-info p {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    
+    .university-description {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    
+    .university-description h3 {
+      margin-top: 0;
+      color: var(--text);
+    }
+    
+    .modal-actions {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    @media (max-width: 768px) {
+      .university-actions {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .university-link, .details-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid var(--gray-200);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .filters-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin: 2rem auto;
+      justify-content: center;
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      max-width: 1200px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filters-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+    
+    /* Print styles */
+    @media print {
+      body {
+        background: white;
+        color: #000;
+        font-size: 12pt;
+        line-height: 1.3;
+      }
+      
+      .search-container,
+      button,
+      .university-card button,
+      .theme-toggle,
+      .favorites-button {
+        display: none !important;
+      }
+      
+      .university-card {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        page-break-inside: avoid;
+      }
+      
+      .university-grid {
+        display: block;
+        padding: 0;
+      }
+      
+      .university-details h2 {
+        color: #000 !important;
+        font-size: 14pt !important;
+      }
+      
+      .university-stats {
+        display: none;
+      }
+      
+      .program-tags {
+        display: none;
+      }
+      
+      .university-actions {
+        display: none;
+      }
+      
+      .result-count {
+        display: none;
+      }
+      
+      @page {
+        margin: 1cm;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Pakistan Universities</h1>
+      <p>Find and explore universities across the Pakistan</p>
+    </header>
+    
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search by name or location...">
+      <select id="stateFilter">
+        <option value="">All States</option>
+      </select>
+      <select id="typeFilter">
+        <option value="">All Types</option>
+      </select>
+      <button id="resetFilters">
+        <i class="fas fa-sync-alt"></i> Reset
+      </button>
+    </div>
+    
+    <div class="result-count">
+      Showing <span id="resultCount">0</span> of <span id="totalCount">0</span> institutions
+    </div>
+    
+    <div id="loadingIndicator" class="loading" style="display: none;">
+      <i class="fas fa-spinner"></i> Loading more universities...
+    </div>
+    
+    <div class="university-grid" id="universityGrid">
+      <!-- University cards will be loaded here -->
+    </div>
+  </div>
+
+  <script>
+    // University data
+     const universities = [
+  { id: 1, name: 'University of the Punjab', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Top', founded: 1882, students: 45000, acceptanceRate: '30%', website: 'http://www.pu.edu.pk', tuition: 'PKR 30,000–60,000', popularPrograms: ['Science', 'Law', 'Arts'], description: 'Oldest public university in Pakistan with a wide range of disciplines.' },
+  { id: 2, name: 'National University of Sciences and Technology (NUST)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Top', founded: 1991, students: 16000, acceptanceRate: '15%', website: 'https://nust.edu.pk', tuition: 'PKR 80,000–150,000', popularPrograms: ['Engineering', 'IT', 'Business'], description: 'Leading university in engineering and tech innovation in Pakistan.' },
+  { id: 3, name: 'Lahore University of Management Sciences (LUMS)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Elite', founded: 1984, students: 5000, acceptanceRate: '10%', website: 'https://www.lums.edu.pk', tuition: 'PKR 800,000–1,200,000', popularPrograms: ['Business', 'Economics', 'Law'], description: 'Premier private university known for academic excellence and research.' },
+  { id: 4, name: 'COMSATS University Islamabad', state: 'Punjab', city: 'Islamabad', type: 'Public', tier: 'Research-Focused', founded: 1998, students: 38000, acceptanceRate: '50%', website: 'https://www.comsats.edu.pk', tuition: 'PKR 80,000–120,000', popularPrograms: ['Computer Science', 'Engineering', 'Management'], description: 'Top university with strong emphasis on IT and engineering fields.' },
+  { id: 5, name: 'University of Karachi', state: 'Sindh', city: 'Karachi', type: 'Public', tier: 'Large', founded: 1951, students: 41000, acceptanceRate: '40%', website: 'https://www.uok.edu.pk', tuition: 'PKR 20,000–50,000', popularPrograms: ['Science', 'Pharmacy', 'Arts'], description: 'One of the largest universities in Pakistan, offering diverse programs.' },
+  { id: 6, name: 'Institute of Business Administration (IBA)', state: 'Sindh', city: 'Karachi', type: 'Public', tier: 'Top Business School', founded: 1955, students: 4000, acceptanceRate: '20%', website: 'https://www.iba.edu.pk', tuition: 'PKR 600,000–1,000,000', popularPrograms: ['Business', 'Economics', 'Computer Science'], description: 'Renowned business school with competitive admissions and high reputation.' },
+  { id: 7, name: 'University of Engineering and Technology (UET) Lahore', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Engineering', founded: 1921, students: 12000, acceptanceRate: '25%', website: 'https://uet.edu.pk', tuition: 'PKR 50,000–90,000', popularPrograms: ['Engineering', 'Architecture'], description: 'Top-ranked engineering university in Pakistan.' },
+  { id: 8, name: 'FAST National University (NUCES)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Tech-Focused', founded: 2000, students: 10000, acceptanceRate: '40%', website: 'https://www.nu.edu.pk', tuition: 'PKR 150,000–200,000', popularPrograms: ['Computer Science', 'Software Engineering'], description: 'Highly regarded for CS and software-related programs.' },
+  { id: 9, name: 'Ghulam Ishaq Khan Institute (GIKI)', state: 'Khyber Pakhtunkhwa', city: 'Topi', type: 'Private', tier: 'Elite Engineering', founded: 1993, students: 2000, acceptanceRate: '15%', website: 'https://giki.edu.pk', tuition: 'PKR 600,000–800,000', popularPrograms: ['Engineering', 'Computer Science'], description: 'Top private engineering institute with strong alumni network.' },
+  { id: 10, name: 'International Islamic University Islamabad (IIUI)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'General', founded: 1980, students: 30000, acceptanceRate: '60%', website: 'https://www.iiu.edu.pk', tuition: 'PKR 30,000–70,000', popularPrograms: ['Islamic Studies', 'Law', 'Engineering'], description: 'Well-known university offering modern and Islamic education.' },
+  { id: 11, name: 'Bahauddin Zakariya University (BZU)', state: 'Punjab', city: 'Multan', type: 'Public', tier: 'General', founded: 1975, students: 38000, acceptanceRate: '60%', website: 'https://www.bzu.edu.pk', tuition: 'PKR 25,000–50,000', popularPrograms: ['Agriculture', 'Engineering', 'Business'], description: 'Large public university in South Punjab offering diverse academic programs.' },
+  { id: 12, name: 'University of Peshawar', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Public', tier: 'General', founded: 1950, students: 30000, acceptanceRate: '50%', website: 'https://www.uop.edu.pk', tuition: 'PKR 20,000–45,000', popularPrograms: ['Social Sciences', 'Law', 'Science'], description: 'One of the oldest universities in KPK with wide academic offerings.' },
+  { id: 13, name: 'The University of Faisalabad (TUF)', state: 'Punjab', city: 'Faisalabad', type: 'Private', tier: 'Emerging', founded: 2002, students: 11000, acceptanceRate: '50%', website: 'https://tuf.edu.pk', tuition: 'PKR 90,000–160,000', popularPrograms: ['Health Sciences', 'Engineering', 'Islamic Studies'], description: 'Private university focused on modern and Islamic education in Faisalabad.' },
+  { id: 14, name: 'University of Gujrat (UOG)', state: 'Punjab', city: 'Gujrat', type: 'Public', tier: 'Emerging', founded: 2004, students: 25000, acceptanceRate: '60%', website: 'https://www.uog.edu.pk', tuition: 'PKR 25,000–40,000', popularPrograms: ['Business', 'IT', 'Design'], description: 'Emerging public university in central Punjab with career-focused programs.' },
+  { id: 15, name: 'Hazara University', state: 'Khyber Pakhtunkhwa', city: 'Mansehra', type: 'Public', tier: 'Regional', founded: 2001, students: 18000, acceptanceRate: '65%', website: 'https://www.hu.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Education', 'Social Sciences', 'IT'], description: 'Regional university in scenic Hazara offering undergraduate and graduate education.' },
+  { id: 16, name: 'Riphah International University', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'Medical/IT', founded: 2002, students: 14000, acceptanceRate: '50%', website: 'https://riphah.edu.pk', tuition: 'PKR 100,000–180,000', popularPrograms: ['Health Sciences', 'Management', 'IT'], description: 'Private Islamic university focused on medical and technical education.' },
+  { id: 17, name: 'University of Azad Jammu & Kashmir (UAJK)', state: 'Azad Jammu and Kashmir', city: 'Muzaffarabad', type: 'Public', tier: 'General', founded: 1980, students: 15000, acceptanceRate: '60%', website: 'https://www.ajku.edu.pk', tuition: 'PKR 20,000–40,000', popularPrograms: ['Science', 'Education', 'Islamic Studies'], description: 'Leading university in AJK serving the region’s academic needs.' },
+  { id: 18, name: 'Shaheed Benazir Bhutto Women University (SBBWU)', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Public', tier: 'Women-Only', founded: 2004, students: 7000, acceptanceRate: '70%', website: 'https://www.sbbwu.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Education', 'Management', 'Islamic Studies'], description: 'Dedicated women’s university empowering female students in KPK.' },
+  { id: 19, name: 'University of Sargodha (UOS)', state: 'Punjab', city: 'Sargodha', type: 'Public', tier: 'General', founded: 2002, students: 25000, acceptanceRate: '55%', website: 'https://uos.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['Law', 'Science', 'Business'], description: 'Popular public university in central Punjab with quality teaching.' },
+  { id: 20, name: 'Islamia University of Bahawalpur (IUB)', state: 'Punjab', city: 'Bahawalpur', type: 'Public', tier: 'Large', founded: 1975, students: 40000, acceptanceRate: '55%', website: 'https://www.iub.edu.pk', tuition: 'PKR 20,000–40,000', popularPrograms: ['Engineering', 'Education', 'Agriculture'], description: 'Major university in South Punjab with diverse academic departments.' },
+  { id: 21, name: 'Allama Iqbal Open University (AIOU)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Distance Learning', founded: 1974, students: 1300000, acceptanceRate: 'Open', website: 'https://aiou.edu.pk', tuition: 'PKR 5,000–20,000', popularPrograms: ['Education', 'Islamic Studies', 'Business'], description: 'Pakistan’s largest university offering distance education nationwide.' },
+  { id: 22, name: 'University of Balochistan', state: 'Balochistan', city: 'Quetta', type: 'Public', tier: 'Regional', founded: 1970, students: 15000, acceptanceRate: '60%', website: 'https://www.uob.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Political Science', 'Literature', 'Law'], description: 'Main higher education institution in Balochistan.' },
+  { id: 23, name: 'Khyber Medical University (KMU)', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Public', tier: 'Medical', founded: 2007, students: 9000, acceptanceRate: '40%', website: 'https://www.kmu.edu.pk', tuition: 'PKR 50,000–100,000', popularPrograms: ['MBBS', 'Nursing', 'Public Health'], description: 'Specialized medical university for KPK region.' },
+  { id: 24, name: 'NED University of Engineering & Technology', state: 'Sindh', city: 'Karachi', type: 'Public', tier: 'Engineering', founded: 1921, students: 12000, acceptanceRate: '30%', website: 'https://www.neduet.edu.pk', tuition: 'PKR 40,000–80,000', popularPrograms: ['Civil Engineering', 'Mechanical', 'Computer Systems'], description: 'One of Pakistan’s oldest engineering institutions.' },
+  { id: 25, name: 'Mehran University of Engineering and Technology (MUET)', state: 'Sindh', city: 'Jamshoro', type: 'Public', tier: 'Engineering', founded: 1963, students: 11000, acceptanceRate: '35%', website: 'https://www.muet.edu.pk', tuition: 'PKR 35,000–75,000', popularPrograms: ['Electrical Engineering', 'Civil', 'Software Engineering'], description: 'Renowned engineering university in Sindh province.' },
+  { id: 26, name: 'Ziauddin University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Medical', founded: 1995, students: 5000, acceptanceRate: '45%', website: 'https://zu.edu.pk', tuition: 'PKR 600,000–1,000,000', popularPrograms: ['MBBS', 'Pharmacy', 'Dentistry'], description: 'Private medical university offering modern health education.' },
+  { id: 27, name: 'Foundation University Islamabad (FUI)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'General', founded: 2002, students: 8000, acceptanceRate: '50%', website: 'https://www.fui.edu.pk', tuition: 'PKR 120,000–200,000', popularPrograms: ['IT', 'Psychology', 'Medical Sciences'], description: 'Private university with both civilian and military programs.' },
+  { id: 28, name: 'Iqra University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Business/IT', founded: 1998, students: 10000, acceptanceRate: '50%', website: 'https://iqra.edu.pk', tuition: 'PKR 100,000–180,000', popularPrograms: ['Business', 'Computer Science', 'Fashion Design'], description: 'Private university known for business and design programs.' },
+  { id: 29, name: 'University of Malakand', state: 'Khyber Pakhtunkhwa', city: 'Chakdara', type: 'Public', tier: 'General', founded: 2001, students: 16000, acceptanceRate: '60%', website: 'https://www.uom.edu.pk', tuition: 'PKR 20,000–40,000', popularPrograms: ['Science', 'IT', 'Management'], description: 'Public university in northern KPK serving Malakand region.' },
+  { id: 30, name: 'University of Haripur (UOH)', state: 'Khyber Pakhtunkhwa', city: 'Haripur', type: 'Public', tier: 'Emerging', founded: 2012, students: 10000, acceptanceRate: '65%', website: 'https://www.uoh.edu.pk', tuition: 'PKR 25,000–50,000', popularPrograms: ['Agriculture', 'Management', 'IT'], description: 'Young university in KPK focusing on quality education.' },
+  { id: 31, name: 'The Women University Multan', state: 'Punjab', city: 'Multan', type: 'Public', tier: 'Women-Only', founded: 2013, students: 7000, acceptanceRate: '70%', website: 'https://www.wum.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Education', 'IT', 'Social Sciences'], description: 'Public sector women-only university empowering female students in South Punjab.' },
+  { id: 32, name: 'Virtual University of Pakistan', state: 'Punjab', city: 'Lahore (Virtual)', type: 'Public', tier: 'Online', founded: 2002, students: 300000, acceptanceRate: 'Open', website: 'https://www.vu.edu.pk', tuition: 'PKR 10,000–30,000', popularPrograms: ['Computer Science', 'Business', 'Mass Communication'], description: 'First university based on modern ICT tools and fully online education.' },
+  { id: 33, name: 'Abasyn University', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Private', tier: 'Emerging', founded: 2007, students: 6000, acceptanceRate: '60%', website: 'https://abasyn.edu.pk', tuition: 'PKR 80,000–140,000', popularPrograms: ['Pharmacy', 'Engineering', 'Management Sciences'], description: 'Fast-growing private university in KPK offering professional degrees.' },
+  { id: 34, name: 'University of Swat', state: 'Khyber Pakhtunkhwa', city: 'Swat', type: 'Public', tier: 'Emerging', founded: 2010, students: 10000, acceptanceRate: '65%', website: 'https://uswat.edu.pk', tuition: 'PKR 20,000–40,000', popularPrograms: ['Education', 'Computer Science', 'Botany'], description: 'Scenic public university in the Swat valley, KPK.' },
+  { id: 35, name: 'University of Turbat', state: 'Balochistan', city: 'Turbat', type: 'Public', tier: 'Regional', founded: 2012, students: 5000, acceptanceRate: '70%', website: 'https://uot.edu.pk', tuition: 'PKR 15,000–35,000', popularPrograms: ['Balochi', 'Economics', 'Commerce'], description: 'Emerging university providing education in South Balochistan.' },
+  { id: 36, name: 'The Islamia University of Bahawalpur – Baghdad-ul-Jadeed Campus', state: 'Punjab', city: 'Bahawalpur', type: 'Public', tier: 'Large', founded: 1975, students: 30000, acceptanceRate: '55%', website: 'https://www.iub.edu.pk', tuition: 'PKR 20,000–40,000', popularPrograms: ['Engineering', 'Agriculture', 'Education'], description: 'Flagship campus of IUB offering a variety of academic programs.' },
+  { id: 37, name: 'Dow University of Health Sciences (DUHS)', state: 'Sindh', city: 'Karachi', type: 'Public', tier: 'Medical', founded: 2003, students: 11000, acceptanceRate: '25%', website: 'https://www.duhs.edu.pk', tuition: 'PKR 150,000–300,000', popularPrograms: ['MBBS', 'Pharmacy', 'Nursing'], description: 'Renowned medical university producing quality healthcare professionals.' },
+  { id: 38, name: 'Quaid-e-Awam University of Engineering, Science & Technology (QUEST)', state: 'Sindh', city: 'Nawabshah', type: 'Public', tier: 'Engineering', founded: 1996, students: 8000, acceptanceRate: '40%', website: 'https://www.quest.edu.pk', tuition: 'PKR 30,000–60,000', popularPrograms: ['Engineering', 'IT'], description: 'Engineering-focused public university in rural Sindh.' },
+  { id: 39, name: 'Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology (SZABIST)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'General', founded: 1995, students: 7000, acceptanceRate: '35%', website: 'https://szabist.edu.pk', tuition: 'PKR 200,000–350,000', popularPrograms: ['Business', 'Computer Science', 'Media Studies'], description: 'Private university with campuses across Pakistan and UAE.' },
+  { id: 40, name: 'University of Lahore (UOL)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Large', founded: 1999, students: 38000, acceptanceRate: '50%', website: 'https://www.uol.edu.pk', tuition: 'PKR 180,000–300,000', popularPrograms: ['Health Sciences', 'Engineering', 'Business'], description: 'One of Pakistan’s largest private universities offering diverse disciplines.' },
+  { id: 41, name: 'University of Management and Technology (UMT)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Business & IT', founded: 1990, students: 20000, acceptanceRate: '45%', website: 'https://www.umt.edu.pk', tuition: 'PKR 150,000–250,000', popularPrograms: ['Business', 'Computer Science', 'Engineering'], description: 'Well-known private university with strong business and technology programs.' },
+  { id: 42, name: 'Bahria University', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public (Semi-Gov)', tier: 'General', founded: 2000, students: 15000, acceptanceRate: '40%', website: 'https://www.bahria.edu.pk', tuition: 'PKR 160,000–300,000', popularPrograms: ['Business', 'Maritime Studies', 'Software Engineering'], description: 'Multi-campus university operated under the Pakistan Navy.' },
+  { id: 43, name: 'HITEC University', state: 'Punjab', city: 'Taxila', type: 'Private', tier: 'Engineering', founded: 2007, students: 6000, acceptanceRate: '50%', website: 'https://www.hitecuni.edu.pk', tuition: 'PKR 120,000–200,000', popularPrograms: ['Engineering', 'Computer Science', 'Islamic Studies'], description: 'Modern university located in the industrial hub of Taxila.' },
+  { id: 44, name: 'The Superior University', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'General', founded: 2000, students: 17000, acceptanceRate: '55%', website: 'https://www.superior.edu.pk', tuition: 'PKR 100,000–200,000', popularPrograms: ['Business', 'Media Studies', 'IT'], description: 'Rapidly growing university with focus on innovation and entrepreneurship.' },
+  { id: 45, name: 'Greenwich University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Business', founded: 1987, students: 4000, acceptanceRate: '60%', website: 'https://www.greenwich.edu.pk', tuition: 'PKR 200,000–300,000', popularPrograms: ['Business', 'Media Studies', 'International Relations'], description: 'Private university known for business and communication degrees.' },
+  { id: 46, name: 'University of Wah', state: 'Punjab', city: 'Wah Cantt', type: 'Private', tier: 'Engineering/General', founded: 2005, students: 7000, acceptanceRate: '50%', website: 'https://www.uow.edu.pk', tuition: 'PKR 90,000–160,000', popularPrograms: ['Engineering', 'Management Sciences', 'Computer Science'], description: 'University affiliated with Pakistan Ordnance Factories (POF).' },
+  { id: 47, name: 'Kinnaird College for Women', state: 'Punjab', city: 'Lahore', type: 'Public (Semi-Gov)', tier: 'Women-Only', founded: 1913, students: 8000, acceptanceRate: '30%', website: 'https://www.kinnaird.edu.pk', tuition: 'PKR 80,000–150,000', popularPrograms: ['English', 'Environmental Sciences', 'Business'], description: 'Prestigious women’s college with strong academic tradition.' },
+  { id: 48, name: 'Beaconhouse National University (BNU)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Arts & Design', founded: 2003, students: 3000, acceptanceRate: '40%', website: 'https://www.bnu.edu.pk', tuition: 'PKR 200,000–400,000', popularPrograms: ['Design', 'Liberal Arts', 'Architecture'], description: 'Elite university for art, design, and liberal education in Pakistan.' },
+  { id: 49, name: 'University of Okara', state: 'Punjab', city: 'Okara', type: 'Public', tier: 'Emerging', founded: 2016, students: 10000, acceptanceRate: '65%', website: 'https://uo.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Education', 'Social Sciences', 'IT'], description: 'Emerging public university in central Punjab.' },
+  { id: 50, name: 'City University of Science and IT (CUSIT)', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Private', tier: 'IT-Focused', founded: 2001, students: 5000, acceptanceRate: '55%', website: 'https://cusit.edu.pk', tuition: 'PKR 90,000–150,000', popularPrograms: ['Computer Science', 'Engineering', 'Business'], description: 'Growing IT and business university in the heart of Peshawar.' },
+  { id: 51, name: 'University of Science and Technology Bannu (USTB)', state: 'Khyber Pakhtunkhwa', city: 'Bannu', type: 'Public', tier: 'Emerging', founded: 2005, students: 7000, acceptanceRate: '60%', website: 'https://www.ustb.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Science', 'Engineering', 'IT'], description: 'Emerging university providing modern education in South KPK.' },
+  { id: 52, name: 'Gomal University', state: 'Khyber Pakhtunkhwa', city: 'Dera Ismail Khan', type: 'Public', tier: 'General', founded: 1974, students: 18000, acceptanceRate: '55%', website: 'https://www.gu.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['Veterinary Sciences', 'Agriculture', 'Education'], description: 'Old and prominent university in southern KPK.' },
+  { id: 53, name: 'Government College University (GCU)', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Elite', founded: 1864, students: 12000, acceptanceRate: '30%', website: 'https://www.gcu.edu.pk', tuition: 'PKR 30,000–70,000', popularPrograms: ['Literature', 'Economics', 'Physics'], description: 'One of the oldest and most prestigious colleges turned universities in Pakistan.' },
+  { id: 54, name: 'Shaheed Benazir Bhutto University (SBBU)', state: 'Khyber Pakhtunkhwa', city: 'Sheringal (Upper Dir)', type: 'Public', tier: 'Regional', founded: 2009, students: 5000, acceptanceRate: '65%', website: 'https://sbbu.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Forestry', 'Botany', 'Education'], description: 'Scenic mountain university serving Upper Dir region.' },
+  { id: 55, name: 'University of Narowal', state: 'Punjab', city: 'Narowal', type: 'Public', tier: 'Emerging', founded: 2018, students: 4000, acceptanceRate: '70%', website: 'https://uon.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Education', 'Management', 'Computer Science'], description: 'New university aiming to provide quality education to under-served regions.' },
+  { id: 56, name: 'Benazir Bhutto Shaheed University Lyari (BBSUL)', state: 'Sindh', city: 'Karachi', type: 'Public', tier: 'Urban', founded: 2010, students: 6000, acceptanceRate: '60%', website: 'https://bbsul.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Business', 'Computer Science', 'English'], description: 'University dedicated to educational uplift in Lyari region of Karachi.' },
+  { id: 57, name: 'University of Chakwal', state: 'Punjab', city: 'Chakwal', type: 'Public', tier: 'Emerging', founded: 2020, students: 3000, acceptanceRate: '70%', website: 'https://uoc.edu.pk', tuition: 'PKR 18,000–30,000', popularPrograms: ['Mathematics', 'Physics', 'IT'], description: 'New public university with focus on science and technology.' },
+  { id: 58, name: 'Arid Agriculture University Rawalpindi (PMAS-AAUR)', state: 'Punjab', city: 'Rawalpindi', type: 'Public', tier: 'Agriculture', founded: 1994, students: 11000, acceptanceRate: '50%', website: 'https://www.uaar.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['Agriculture', 'Food Sciences', 'IT'], description: 'Specialized university focusing on dryland farming and agri research.' },
+  { id: 59, name: 'University of Swabi', state: 'Khyber Pakhtunkhwa', city: 'Swabi', type: 'Public', tier: 'Emerging', founded: 2012, students: 9000, acceptanceRate: '65%', website: 'https://www.uoswabi.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Pharmacy', 'Education', 'Social Sciences'], description: 'Public university with increasing enrollment and academic scope.' },
+  { id: 60, name: 'Pakistan Institute of Engineering and Applied Sciences (PIEAS)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Top Engineering', founded: 1967, students: 1500, acceptanceRate: '10%', website: 'https://www.pieas.edu.pk', tuition: 'PKR 50,000–100,000', popularPrograms: ['Nuclear Engineering', 'Electrical', 'Physics'], description: 'Top-ranked engineering and nuclear science university in Pakistan.' },
+  { id: 61, name: 'National Textile University (NTU)', state: 'Punjab', city: 'Faisalabad', type: 'Public', tier: 'Specialized', founded: 1959, students: 5000, acceptanceRate: '45%', website: 'https://www.ntu.edu.pk', tuition: 'PKR 40,000–80,000', popularPrograms: ['Textile Engineering', 'Fashion Design', 'Polymer Sciences'], description: 'Leading textile-focused university offering design and engineering degrees.' },
+  { id: 62, name: 'The Women University Swabi', state: 'Khyber Pakhtunkhwa', city: 'Swabi', type: 'Public', tier: 'Women-Only', founded: 2016, students: 4000, acceptanceRate: '70%', website: 'https://www.wus.edu.pk', tuition: 'PKR 18,000–30,000', popularPrograms: ['Islamic Studies', 'Computer Science', 'Education'], description: 'Public women’s university focused on regional female education.' },
+  { id: 63, name: 'University of Mianwali', state: 'Punjab', city: 'Mianwali', type: 'Public', tier: 'Emerging', founded: 2019, students: 3000, acceptanceRate: 'Open', website: 'https://www.umw.edu.pk', tuition: 'PKR 18,000–30,000', popularPrograms: ['Mathematics', 'Zoology', 'IT'], description: 'Newly established university providing quality education to southern Punjab.' },
+  { id: 64, name: 'University of Kotli (UoK)', state: 'Azad Jammu and Kashmir', city: 'Kotli', type: 'Public', tier: 'Regional', founded: 2014, students: 5000, acceptanceRate: '60%', website: 'https://www.uokajk.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Management Sciences', 'Law', 'Computer Science'], description: 'AJK-based university aiming to uplift education in border region.' },
+  { id: 65, name: 'Mirpur University of Science and Technology (MUST)', state: 'Azad Jammu and Kashmir', city: 'Mirpur', type: 'Public', tier: 'General', founded: 2009, students: 8000, acceptanceRate: '50%', website: 'https://www.must.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['Engineering', 'Physics', 'Business'], description: 'AJK university with focus on science and tech disciplines.' },
+  { id: 66, name: 'Government College Women University Sialkot (GCWUS)', state: 'Punjab', city: 'Sialkot', type: 'Public', tier: 'Women-Only', founded: 2012, students: 6000, acceptanceRate: '65%', website: 'https://www.gcwus.edu.pk', tuition: 'PKR 20,000–30,000', popularPrograms: ['English', 'Zoology', 'Education'], description: 'Women’s university empowering female students in Sialkot region.' },
+  { id: 67, name: 'University of Loralai', state: 'Balochistan', city: 'Loralai', type: 'Public', tier: 'Emerging', founded: 2009, students: 4000, acceptanceRate: '70%', website: 'https://www.uoli.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Education', 'Management', 'Economics'], description: 'Regional university in Balochistan serving underserved areas.' },
+  { id: 68, name: 'Lasbela University of Agriculture, Water & Marine Sciences (LUAWMS)', state: 'Balochistan', city: 'Lasbela', type: 'Public', tier: 'Specialized', founded: 2005, students: 3000, acceptanceRate: '50%', website: 'https://www.luawms.edu.pk', tuition: 'PKR 15,000–35,000', popularPrograms: ['Marine Biology', 'Veterinary', 'Water Sciences'], description: 'Specialized public university in water and marine sciences.' },
+  { id: 69, name: 'University of Baltistan', state: 'Gilgit-Baltistan', city: 'Skardu', type: 'Public', tier: 'Remote/Regional', founded: 2017, students: 2500, acceptanceRate: 'Open', website: 'https://www.uobs.edu.pk', tuition: 'PKR 10,000–25,000', popularPrograms: ['Tourism Management', 'Business', 'English'], description: 'Northern Pakistan university focusing on regional development.' },
+  { id: 70, name: 'Karakoram International University (KIU)', state: 'Gilgit-Baltistan', city: 'Gilgit', type: 'Public', tier: 'General', founded: 2002, students: 7000, acceptanceRate: 'Open', website: 'https://www.kiu.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Environmental Sciences', 'Forestry', 'IT'], description: 'Public university serving the mountainous regions of Pakistan.' },
+  { id: 71, name: 'Ghazi University', state: 'Punjab', city: 'Dera Ghazi Khan', type: 'Public', tier: 'General', founded: 2012, students: 8000, acceptanceRate: '60%', website: 'https://www.gudgk.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Agriculture', 'Education', 'Business'], description: 'Public university in South Punjab serving the DG Khan region.' },
+  { id: 72, name: 'University of Sahiwal', state: 'Punjab', city: 'Sahiwal', type: 'Public', tier: 'Emerging', founded: 2015, students: 5000, acceptanceRate: '65%', website: 'https://www.uosahiwal.edu.pk', tuition: 'PKR 20,000–30,000', popularPrograms: ['Computer Science', 'Management', 'Chemistry'], description: 'New public university offering modern education to Sahiwal division.' },
+  { id: 73, name: 'Government College Women University Faisalabad (GCWUF)', state: 'Punjab', city: 'Faisalabad', type: 'Public', tier: 'Women-Only', founded: 2013, students: 7000, acceptanceRate: '60%', website: 'https://www.gcwuf.edu.pk', tuition: 'PKR 18,000–30,000', popularPrograms: ['Biochemistry', 'English', 'Computer Science'], description: 'Dedicated women’s university in Faisalabad focusing on STEM and arts.' },
+  { id: 74, name: 'University of Education', state: 'Punjab', city: 'Lahore (Multiple Campuses)', type: 'Public', tier: 'Teacher Education', founded: 2002, students: 13000, acceptanceRate: 'Open', website: 'https://ue.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Education', 'Science', 'Mathematics'], description: 'Public university specialized in teacher training and educational research.' },
+  { id: 75, name: 'Sardar Bahadur Khan Women’s University (SBKWU)', state: 'Balochistan', city: 'Quetta', type: 'Public', tier: 'Women-Only', founded: 2004, students: 6000, acceptanceRate: 'Open', website: 'https://www.sbkwu.edu.pk', tuition: 'PKR 10,000–25,000', popularPrograms: ['Biology', 'Education', 'Management'], description: 'Only women’s university in Balochistan promoting female education.' },
+  { id: 76, name: 'University of Agriculture Faisalabad (UAF)', state: 'Punjab', city: 'Faisalabad', type: 'Public', tier: 'Top Agriculture', founded: 1906, students: 25000, acceptanceRate: '35%', website: 'https://www.uaf.edu.pk', tuition: 'PKR 30,000–50,000', popularPrograms: ['Agriculture', 'Food Science', 'Environmental Sciences'], description: 'Top-ranked agricultural university in South Asia.' },
+  { id: 77, name: 'Forman Christian College (A Chartered University)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Elite Liberal Arts', founded: 1864, students: 8000, acceptanceRate: '30%', website: 'https://www.fccollege.edu.pk', tuition: 'PKR 200,000–350,000', popularPrograms: ['Liberal Arts', 'Economics', 'Biotechnology'], description: 'Historic liberal arts university offering world-class education.' },
+  { id: 78, name: 'Sarhad University of Science and Information Technology', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Private', tier: 'General', founded: 2001, students: 7000, acceptanceRate: '50%', website: 'https://www.suit.edu.pk', tuition: 'PKR 80,000–150,000', popularPrograms: ['Engineering', 'Pharmacy', 'Education'], description: 'HEC-recognized private university known for professional programs.' },
+  { id: 79, name: 'Preston University', state: 'Multiple Provinces', city: 'Islamabad/Karachi', type: 'Private', tier: 'General', founded: 1984, students: 6000, acceptanceRate: '60%', website: 'https://www.preston.edu.pk', tuition: 'PKR 90,000–160,000', popularPrograms: ['Business', 'IT', 'Social Sciences'], description: 'Multi-campus private university with focus on professional development.' },
+  { id: 80, name: 'University of Wah Engineering College', state: 'Punjab', city: 'Wah Cantt', type: 'Public', tier: 'Engineering', founded: 2012, students: 4000, acceptanceRate: '40%', website: 'https://www.uwec.edu.pk', tuition: 'PKR 70,000–120,000', popularPrograms: ['Mechanical Engineering', 'Electrical Engineering'], description: 'Engineering division of University of Wah, focused on technical education.' },
+  { id: 81, name: 'University of Veterinary and Animal Sciences (UVAS)', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Specialized', founded: 1882, students: 8000, acceptanceRate: '45%', website: 'https://www.uvas.edu.pk', tuition: 'PKR 30,000–60,000', popularPrograms: ['Veterinary Sciences', 'Animal Nutrition', 'Biotechnology'], description: 'Premier veterinary university with multiple campuses across Punjab.' },
+  { id: 82, name: 'Indus Valley School of Art and Architecture', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Art & Design', founded: 1990, students: 1000, acceptanceRate: '25%', website: 'https://www.indusvalley.edu.pk', tuition: 'PKR 250,000–400,000', popularPrograms: ['Architecture', 'Fine Arts', 'Design'], description: 'Elite design school known for quality art education and creative excellence.' },
+  { id: 83, name: 'Textile Institute of Pakistan (TIP)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Specialized', founded: 1994, students: 1500, acceptanceRate: '50%', website: 'https://www.tip.edu.pk', tuition: 'PKR 150,000–250,000', popularPrograms: ['Textile Design', 'Apparel Manufacturing', 'Marketing'], description: 'Specialized textile university supporting Pakistan’s major export industry.' },
+  { id: 84, name: 'Institute of Space Technology (IST)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Engineering/Space', founded: 2002, students: 2000, acceptanceRate: '20%', website: 'https://www.ist.edu.pk', tuition: 'PKR 60,000–100,000', popularPrograms: ['Aerospace Engineering', 'Space Science', 'Electrical Engineering'], description: 'Cutting-edge university focused on aerospace and satellite research.' },
+  { id: 85, name: 'Pakistan Institute of Development Economics (PIDE)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Postgraduate/Research', founded: 1957, students: 1000, acceptanceRate: '30%', website: 'https://www.pide.org.pk', tuition: 'PKR 40,000–80,000', popularPrograms: ['Development Studies', 'Economics', 'Public Policy'], description: 'Leading policy think-tank and postgraduate research university.' },
+  { id: 86, name: 'National College of Arts (NCA)', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Art & Culture', founded: 1875, students: 2000, acceptanceRate: '25%', website: 'https://www.nca.edu.pk', tuition: 'PKR 30,000–60,000', popularPrograms: ['Fine Arts', 'Film', 'Architecture'], description: 'Historic and prestigious institute for fine arts and design in Pakistan.' },
+  { id: 87, name: 'Institute of Business Management (IoBM)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Business School', founded: 1995, students: 4000, acceptanceRate: '35%', website: 'https://www.iobm.edu.pk', tuition: 'PKR 180,000–300,000', popularPrograms: ['Business', 'Economics', 'Media Studies'], description: 'Reputed business school with strong links to the corporate sector.' },
+  { id: 88, name: 'Habib University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Liberal Arts', founded: 2014, students: 800, acceptanceRate: '15%', website: 'https://www.habib.edu.pk', tuition: 'PKR 600,000–1,000,000', popularPrograms: ['Humanities', 'Design', 'Computer Science'], description: 'Elite liberal arts university with a strong focus on interdisciplinary learning.' },
+  { id: 89, name: 'University of Art and Culture Jamshoro', state: 'Sindh', city: 'Jamshoro', type: 'Public', tier: 'Arts', founded: 2018, students: 1000, acceptanceRate: 'Open', website: 'https://uac.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Visual Arts', 'Design', 'Culture Studies'], description: 'Newly established arts university promoting local culture and creativity.' },
+  { id: 90, name: 'Pak-Austria Fachhochschule Institute of Applied Sciences and Technology (PAF-IAST)', state: 'Khyber Pakhtunkhwa', city: 'Haripur', type: 'Public', tier: 'Technology', founded: 2020, students: 2000, acceptanceRate: '50%', website: 'https://www.paf-iast.edu.pk', tuition: 'PKR 60,000–90,000', popularPrograms: ['Engineering', 'Computer Science', 'Materials Science'], description: 'Technology-focused institute in collaboration with Austrian universities.' },
+  { id: 91, name: 'Air University', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public (Air Force)', tier: 'Engineering/General', founded: 2002, students: 9000, acceptanceRate: '35%', website: 'https://www.au.edu.pk', tuition: 'PKR 100,000–200,000', popularPrograms: ['Aerospace Engineering', 'Computer Science', 'Business'], description: 'Military-administered university with focus on engineering and defense tech.' },
+  { id: 92, name: 'Capital University of Science and Technology (CUST)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'Technology-Focused', founded: 1998, students: 7000, acceptanceRate: '50%', website: 'https://cust.edu.pk', tuition: 'PKR 120,000–250,000', popularPrograms: ['Engineering', 'IT', 'Management'], description: 'Private university known for IT, engineering, and management programs.' },
+  { id: 93, name: 'Shaheed Zulfiqar Ali Bhutto Medical University (SZABMU)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Medical', founded: 2013, students: 4000, acceptanceRate: '30%', website: 'https://www.szabmu.edu.pk', tuition: 'PKR 100,000–300,000', popularPrograms: ['MBBS', 'Dentistry', 'Nursing'], description: 'Leading federal medical university associated with PIMS Hospital.' },
+  { id: 94, name: 'University of Engineering and Technology (UET) Peshawar', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Public', tier: 'Engineering', founded: 1980, students: 9000, acceptanceRate: '40%', website: 'https://www.uetpeshawar.edu.pk', tuition: 'PKR 50,000–100,000', popularPrograms: ['Civil Engineering', 'Electrical', 'Mechanical'], description: 'Main public engineering university in KPK.' },
+  { id: 95, name: 'National University of Computer and Emerging Sciences (FAST-NUCES) Islamabad', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'Tech', founded: 2000, students: 8000, acceptanceRate: '35%', website: 'https://www.nu.edu.pk', tuition: 'PKR 180,000–250,000', popularPrograms: ['CS', 'AI', 'Cyber Security'], description: 'Islamabad campus of FAST University, known for computer sciences.' },
+  { id: 96, name: 'Iqra National University (INU)', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Private', tier: 'Emerging', founded: 2010, students: 4000, acceptanceRate: '55%', website: 'https://www.inu.edu.pk', tuition: 'PKR 90,000–150,000', popularPrograms: ['Media Studies', 'Engineering', 'Business'], description: 'Private university in Peshawar offering a wide range of programs.' },
+  { id: 97, name: 'Superior College (University Status)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Emerging', founded: 2000, students: 15000, acceptanceRate: '50%', website: 'https://www.superior.edu.pk', tuition: 'PKR 100,000–180,000', popularPrograms: ['Commerce', 'Media Studies', 'IT'], description: 'Growing institution with multiple campuses and university charter.' },
+  { id: 98, name: 'Mohammad Ali Jinnah University (MAJU)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'General', founded: 1998, students: 5000, acceptanceRate: '45%', website: 'https://www.jinnah.edu', tuition: 'PKR 120,000–200,000', popularPrograms: ['Business', 'Computer Science', 'Finance'], description: 'Private Karachi-based university offering tech and business degrees.' },
+  { id: 99, name: 'University of Sindh', state: 'Sindh', city: 'Jamshoro', type: 'Public', tier: 'General', founded: 1947, students: 27000, acceptanceRate: '50%', website: 'https://usindh.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Sindhi Literature', 'Education', 'Social Sciences'], description: 'Oldest university in Sindh with diverse academic offerings.' },
+  { id: 100, name: 'Sindh Madressatul Islam University (SMIU)', state: 'Sindh', city: 'Karachi', type: 'Public', tier: 'Historic', founded: 2012, students: 6000, acceptanceRate: '55%', website: 'https://smiu.edu.pk', tuition: 'PKR 20,000–40,000', popularPrograms: ['Media Studies', 'Computer Science', 'Business'], description: 'Historic institute turned university known for Quaid-e-Azam’s early education.' },
+  { id: 101, name: 'Al-Khair University', state: 'Azad Jammu and Kashmir', city: 'Bhimber', type: 'Private', tier: 'General', founded: 1994, students: 3000, acceptanceRate: '60%', website: 'https://alkhair.edu.pk', tuition: 'PKR 40,000–80,000', popularPrograms: ['Education', 'IT', 'Business'], description: 'Private university offering affordable education in AJK.' },
+  { id: 102, name: 'University of Buner', state: 'Khyber Pakhtunkhwa', city: 'Buner', type: 'Public', tier: 'Emerging', founded: 2017, students: 2500, acceptanceRate: '70%', website: 'https://www.ubuner.edu.pk', tuition: 'PKR 18,000–30,000', popularPrograms: ['Computer Science', 'Social Sciences', 'Education'], description: 'Emerging public university serving Buner region in KPK.' },
+  { id: 103, name: 'Barrett Hodgson University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Specialized', founded: 2016, students: 1500, acceptanceRate: '45%', website: 'https://www.bhu.edu.pk', tuition: 'PKR 200,000–350,000', popularPrograms: ['Biosciences', 'Public Health', 'Pharmaceutical Sciences'], description: 'Health and science focused private university with modern facilities.' },
+  { id: 104, name: 'Aga Khan University (AKU)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Elite Medical', founded: 1983, students: 2500, acceptanceRate: '10%', website: 'https://www.aku.edu', tuition: 'PKR 900,000–1,500,000', popularPrograms: ['MBBS', 'Nursing', 'Public Health'], description: 'Internationally recognized university known for medical and health sciences.' },
+  { id: 105, name: 'University of Chitral', state: 'Khyber Pakhtunkhwa', city: 'Chitral', type: 'Public', tier: 'Remote', founded: 2017, students: 3000, acceptanceRate: 'Open', website: 'https://www.uoch.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Education', 'Tourism', 'Sociology'], description: 'Remote-area university aiming to promote education in northern KPK.' },
+  { id: 106, name: 'Northern University', state: 'Khyber Pakhtunkhwa', city: 'Nowshera', type: 'Private', tier: 'Emerging', founded: 2002, students: 4000, acceptanceRate: '55%', website: 'https://northern.edu.pk', tuition: 'PKR 80,000–120,000', popularPrograms: ['IT', 'Management Sciences', 'Education'], description: 'Private sector university in central KPK with career-focused programs.' },
+  { id: 107, name: 'University of Agriculture Dera Ismail Khan', state: 'Khyber Pakhtunkhwa', city: 'D.I. Khan', type: 'Public', tier: 'Specialized Agriculture', founded: 2018, students: 2000, acceptanceRate: 'Open', website: 'https://uad.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Agronomy', 'Horticulture', 'Animal Sciences'], description: 'Agriculture-focused university addressing southern KP’s rural education needs.' },
+  { id: 108, name: 'Sindh Agriculture University (SAU)', state: 'Sindh', city: 'Tandojam', type: 'Public', tier: 'Agriculture', founded: 1977, students: 6000, acceptanceRate: '50%', website: 'https://www.sau.edu.pk', tuition: 'PKR 25,000–40,000', popularPrograms: ['Agriculture', 'Animal Husbandry', 'Food Technology'], description: 'Leading agriculture university in Sindh province.' },
+  { id: 109, name: 'University of Health Sciences (UHS)', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Medical', founded: 2002, students: 3500, acceptanceRate: '15%', website: 'https://www.uhs.edu.pk', tuition: 'PKR 100,000–300,000', popularPrograms: ['Medical Education', 'MBBS', 'Dental'], description: 'Punjab’s regulatory medical university for all public/private medical colleges.' },
+  { id: 110, name: 'University of Kamalia', state: 'Punjab', city: 'Kamalia', type: 'Public', tier: 'Emerging', founded: 2022, students: 1000, acceptanceRate: 'Open', website: 'https://www.ukam.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['English', 'IT', 'Management'], description: 'Newly established public university to serve the Kamalia and surrounding districts.' },
+  { id: 111, name: 'University of Shuhada-e-APS (UoSA)', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Public', tier: 'Emerging', founded: 2021, students: 2000, acceptanceRate: 'Open', website: 'https://uosaps.edu.pk', tuition: 'PKR 15,000–25,000', popularPrograms: ['Computer Science', 'Education', 'Management'], description: 'Named in honor of APS martyrs, this university is focused on peace and education.' },
+  { id: 112, name: 'Dar-ul-Madina International University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Religious/Modern', founded: 2019, students: 1500, acceptanceRate: 'Open', website: 'https://www.darulmadina.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Islamic Studies', 'Education'], description: 'Islamic institution blending traditional teachings with modern academics.' },
+  { id: 113, name: 'Rashid Latif Medical College (RLMC)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Medical', founded: 2010, students: 1200, acceptanceRate: '30%', website: 'https://www.rlmc.edu.pk', tuition: 'PKR 600,000–900,000', popularPrograms: ['MBBS', 'Pharmacy', 'Allied Health'], description: 'Private medical college offering quality healthcare education and training.' },
+  { id: 114, name: 'GIFT University', state: 'Punjab', city: 'Gujranwala', type: 'Private', tier: 'Emerging', founded: 2002, students: 5000, acceptanceRate: '50%', website: 'https://www.gift.edu.pk', tuition: 'PKR 100,000–200,000', popularPrograms: ['Business', 'CS', 'Media Sciences'], description: 'Private university in Gujranwala offering modern education in multiple fields.' },
+  { id: 115, name: 'Imperial College of Business Studies', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Business', founded: 1991, students: 3000, acceptanceRate: '45%', website: 'https://www.imperial.edu.pk', tuition: 'PKR 120,000–220,000', popularPrograms: ['Business Administration', 'Engineering', 'Architecture'], description: 'Business-oriented university offering professional education in various disciplines.' },
+  { id: 116, name: 'Abdul Wali Khan University Mardan (AWKUM)', state: 'Khyber Pakhtunkhwa', city: 'Mardan', type: 'Public', tier: 'General', founded: 2009, students: 12000, acceptanceRate: '55%', website: 'https://www.awkum.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['IT', 'Management', 'Education'], description: 'Rapidly growing public university with multiple campuses in KPK.' },
+  { id: 117, name: 'Shaheed Benazir Bhutto University Shaheed Benazirabad', state: 'Sindh', city: 'Nawabshah', type: 'Public', tier: 'General', founded: 2012, students: 6000, acceptanceRate: '60%', website: 'https://www.sbbusba.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Social Sciences', 'IT', 'Education'], description: 'Regional university offering higher education in interior Sindh.' },
+  { id: 118, name: 'NFC Institute of Engineering and Technology Multan', state: 'Punjab', city: 'Multan', type: 'Public', tier: 'Engineering', founded: 1985, students: 4500, acceptanceRate: '40%', website: 'https://www.nfciet.edu.pk', tuition: 'PKR 60,000–120,000', popularPrograms: ['Mechanical', 'Electrical', 'CS'], description: 'Renowned public engineering institute affiliated with UET Lahore.' },
+  { id: 119, name: 'Institute of Southern Punjab (ISP)', state: 'Punjab', city: 'Multan', type: 'Private', tier: 'General', founded: 2010, students: 4000, acceptanceRate: '50%', website: 'https://www.isp.edu.pk', tuition: 'PKR 80,000–160,000', popularPrograms: ['IT', 'Mass Communication', 'Business'], description: 'Private university in South Punjab offering diverse programs.' },
+  { id: 120, name: 'Sialkot Medical College', state: 'Punjab', city: 'Sialkot', type: 'Private', tier: 'Medical', founded: 2014, students: 1000, acceptanceRate: '35%', website: 'https://www.sialkotmedicalcollege.edu.pk', tuition: 'PKR 800,000–1,000,000', popularPrograms: ['MBBS', 'Allied Health'], description: 'Private medical college known for modern healthcare training in Sialkot region.' },
+  { id: 121, name: 'The Millennium Universal College (TMUC)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'International/Franchise', founded: 2009, students: 3000, acceptanceRate: '50%', website: 'https://www.tmuc.edu.pk', tuition: 'PKR 250,000–450,000', popularPrograms: ['Law (University of London)', 'Business', 'Media'], description: 'International degree provider affiliated with UK universities.' },
+  { id: 122, name: 'Hajvery University (HU)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'General', founded: 2002, students: 5000, acceptanceRate: '55%', website: 'https://www.hup.edu.pk', tuition: 'PKR 100,000–200,000', popularPrograms: ['Pharmacy', 'Business', 'CS'], description: 'Private university offering professional education in multiple disciplines.' },
+  { id: 123, name: 'National University of Modern Languages (NUML)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Languages & General', founded: 1970, students: 20000, acceptanceRate: '45%', website: 'https://www.numl.edu.pk', tuition: 'PKR 20,000–50,000', popularPrograms: ['English', 'Chinese', 'International Relations'], description: 'Leading public university specializing in modern languages and global studies.' },
+  { id: 124, name: 'Commecs Institute of Business and Emerging Sciences (CIBES)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Business', founded: 2001, students: 2000, acceptanceRate: '60%', website: 'https://www.commecscollege.edu.pk', tuition: 'PKR 150,000–250,000', popularPrograms: ['Business Administration', 'Economics'], description: 'Business school created by Commecs Trust to provide quality higher education.' },
+  { id: 125, name: 'University of Narowal', state: 'Punjab', city: 'Narowal', type: 'Public', tier: 'Emerging', founded: 2018, students: 4000, acceptanceRate: 'Open', website: 'https://uon.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Mathematics', 'Economics', 'CS'], description: 'Recently established university serving underserved regions near India border.' },
+  { id: 126, name: 'Iqra University Islamabad Campus', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'General', founded: 2005, students: 4000, acceptanceRate: '55%', website: 'https://iuisl.iqra.edu.pk', tuition: 'PKR 120,000–220,000', popularPrograms: ['Business', 'Computer Science', 'Fashion Design'], description: 'Capital branch of Karachi’s Iqra University with modern disciplines.' },
+  { id: 127, name: 'The University of Faisalabad (TUF)', state: 'Punjab', city: 'Faisalabad', type: 'Private', tier: 'General', founded: 2002, students: 11000, acceptanceRate: '50%', website: 'https://tuf.edu.pk', tuition: 'PKR 90,000–160,000', popularPrograms: ['Health Sciences', 'Engineering', 'Islamic Studies'], description: 'Private university known for high discipline and modern education.' },
+  { id: 128, name: 'Muhammad Ali Jinnah University (MAJU) Islamabad Campus', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'Business/CS', founded: 2002, students: 4000, acceptanceRate: '50%', website: 'https://www.jinnah.edu/islamabad', tuition: 'PKR 120,000–220,000', popularPrograms: ['Finance', 'CS', 'Data Science'], description: 'Islamabad campus of MAJU focused on modern market-driven degrees.' },
+  { id: 129, name: 'Ziauddin Medical University (Clifton Campus)', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'Medical', founded: 1995, students: 1500, acceptanceRate: '30%', website: 'https://www.ziauddin.edu.pk', tuition: 'PKR 800,000–1,200,000', popularPrograms: ['MBBS', 'Dental', 'Nursing'], description: 'Karachi-based private medical college under Ziauddin Group.' },
+  { id: 130, name: 'The Lyallpur Institute of Management and Sciences', state: 'Punjab', city: 'Faisalabad', type: 'Private', tier: 'Emerging', founded: 2010, students: 2500, acceptanceRate: '65%', website: 'https://lims.edu.pk', tuition: 'PKR 80,000–140,000', popularPrograms: ['Business', 'CS', 'Education'], description: 'Private college in Faisalabad offering market-relevant degrees.' },
+  { id: 131, name: 'University of Chenab', state: 'Punjab', city: 'Gujrat', type: 'Private', tier: 'Emerging', founded: 2021, students: 2000, acceptanceRate: '60%', website: 'https://www.chenab.edu.pk', tuition: 'PKR 90,000–150,000', popularPrograms: ['Pharmacy', 'IT', 'Management'], description: 'New private university aiming to boost education in Gujrat region.' },
+  { id: 132, name: 'Alhamd Islamic University', state: 'Balochistan', city: 'Quetta', type: 'Private', tier: 'Islamic/Modern', founded: 2005, students: 3500, acceptanceRate: 'Open', website: 'https://www.aiu.edu.pk', tuition: 'PKR 30,000–70,000', popularPrograms: ['Islamic Studies', 'IT', 'Management'], description: 'Islamic private university offering a mix of modern and religious programs.' },
+  { id: 133, name: 'City University of Ajk', state: 'Azad Jammu and Kashmir', city: 'Kotli', type: 'Private', tier: 'Emerging', founded: 2017, students: 1500, acceptanceRate: 'Open', website: 'https://www.cityuniajk.edu.pk', tuition: 'PKR 30,000–60,000', popularPrograms: ['Business', 'Education', 'CS'], description: 'Private university in AJK working to improve regional higher education.' },
+  { id: 134, name: 'Kohat University of Science and Technology (KUST)', state: 'Khyber Pakhtunkhwa', city: 'Kohat', type: 'Public', tier: 'Science & Tech', founded: 2001, students: 6000, acceptanceRate: '50%', website: 'https://www.kust.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['Physics', 'Chemistry', 'Biotechnology'], description: 'Science and research-oriented university in Southern KPK.' },
+  { id: 135, name: 'University of Jhang', state: 'Punjab', city: 'Jhang', type: 'Public', tier: 'Emerging', founded: 2019, students: 2500, acceptanceRate: 'Open', website: 'https://www.uoj.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['English', 'Education', 'Social Sciences'], description: 'Recently established public university in central Punjab.' },
+  { id: 136, name: 'Minhaj University Lahore (MUL)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Religious & Modern', founded: 1986, students: 8000, acceptanceRate: '50%', website: 'https://www.mul.edu.pk', tuition: 'PKR 80,000–180,000', popularPrograms: ['Islamic Studies', 'Management', 'CS'], description: 'Recognized private university under Minhaj-ul-Quran with modern faculties.' },
+  { id: 137, name: 'The University of Haripur (UOH)', state: 'Khyber Pakhtunkhwa', city: 'Haripur', type: 'Public', tier: 'General', founded: 2012, students: 10000, acceptanceRate: '55%', website: 'https://www.uoh.edu.pk', tuition: 'PKR 25,000–45,000', popularPrograms: ['Environmental Science', 'IT', 'Education'], description: 'KPK’s progressive university with growing academic reputation.' },
+  { id: 138, name: 'Qarshi University', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Emerging', founded: 2011, students: 2500, acceptanceRate: '55%', website: 'https://www.qarshiuniversity.edu.pk', tuition: 'PKR 70,000–120,000', popularPrograms: ['Business', 'Botany', 'Eastern Medicine'], description: 'Private university focusing on herbal science and natural health.' },
+  { id: 139, name: 'National College of Business Administration & Economics (NCBA&E)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Business/IT', founded: 1994, students: 6000, acceptanceRate: '50%', website: 'https://www.ncbae.edu.pk', tuition: 'PKR 90,000–180,000', popularPrograms: ['Economics', 'Finance', 'IT'], description: 'Private sector university with strong business and economics education.' },
+  { id: 140, name: 'University of Technology Nowshera', state: 'Khyber Pakhtunkhwa', city: 'Nowshera', type: 'Public', tier: 'Technology', founded: 2016, students: 2000, acceptanceRate: '60%', website: 'https://www.uotnowshera.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Engineering Technology', 'Electrical Tech', 'Mechanical Tech'], description: 'Emerging technical university focusing on practical engineering skills.' },
+  { id: 141, name: 'University of Makran', state: 'Balochistan', city: 'Turbat', type: 'Public', tier: 'Emerging', founded: 2021, students: 2000, acceptanceRate: 'Open', website: 'https://www.uom.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Education', 'Political Science', 'Economics'], description: 'Newly established public university serving Makran division in Balochistan.' },
+  { id: 142, name: 'Shaheed Allah Bakhsh Soomro University of Art, Design & Heritage (SABS)', state: 'Sindh', city: 'Jamshoro', type: 'Public', tier: 'Art & Design', founded: 2009, students: 1500, acceptanceRate: '50%', website: 'https://www.sabs.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Fine Arts', 'Architecture', 'Design'], description: 'Sindh’s premier university for heritage preservation and fine arts.' },
+  { id: 143, name: 'Capital University of Physical Education and Sports', state: 'Punjab', city: 'Lahore', type: 'Public', tier: 'Specialized', founded: 2020, students: 1000, acceptanceRate: 'Open', website: 'https://cupe.edu.pk', tuition: 'PKR 15,000–25,000', popularPrograms: ['Sports Sciences', 'Physical Education', 'Management'], description: 'Specialized university for sports and fitness education in Pakistan.' },
+  { id: 144, name: 'Pak-Turk Maarif International Schools and Colleges (University Division)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Emerging/Intl', founded: 2017, students: 1500, acceptanceRate: '45%', website: 'https://www.pak-turk.edu.pk', tuition: 'PKR 150,000–250,000', popularPrograms: ['Business', 'IT', 'Education'], description: 'International collaboration aiming to expand into higher education sector.' },
+  { id: 145, name: 'HITEC Institute of Medical Sciences', state: 'Punjab', city: 'Taxila', type: 'Private', tier: 'Medical', founded: 2016, students: 1000, acceptanceRate: '30%', website: 'https://hitecims.edu.pk', tuition: 'PKR 800,000–1,200,000', popularPrograms: ['MBBS', 'Allied Health'], description: 'Medical school under HITEC system offering modern healthcare education.' },
+  { id: 146, name: 'Pakistan Institute of Fashion and Design (PIFD)', state: 'Punjab', city: 'Lahore', type: 'Public (Semi-Gov)', tier: 'Design', founded: 2007, students: 1200, acceptanceRate: '30%', website: 'https://www.pifd.edu.pk', tuition: 'PKR 150,000–300,000', popularPrograms: ['Fashion Design', 'Textile Design', 'Jewelry Design'], description: 'Leading fashion and product design university in Pakistan.' },
+  { id: 147, name: 'The Knowledge University', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'Emerging', founded: 2021, students: 800, acceptanceRate: 'Open', website: 'https://www.tku.edu.pk', tuition: 'PKR 70,000–120,000', popularPrograms: ['Business', 'Education', 'IT'], description: 'New private university offering industry-relevant programs in Lahore.' },
+  { id: 148, name: 'Riphah International University – Faisalabad Campus', state: 'Punjab', city: 'Faisalabad', type: 'Private', tier: 'Medical/General', founded: 2015, students: 4000, acceptanceRate: '45%', website: 'https://www.riphahfsd.edu.pk', tuition: 'PKR 120,000–250,000', popularPrograms: ['Pharmacy', 'Rehab Sciences', 'Management'], description: 'Sub-campus of Riphah University providing modern education in Faisalabad.' },
+  { id: 149, name: 'Indus University', state: 'Sindh', city: 'Karachi', type: 'Private', tier: 'General', founded: 2004, students: 5000, acceptanceRate: '50%', website: 'https://www.indus.edu.pk', tuition: 'PKR 90,000–160,000', popularPrograms: ['Design', 'Computer Science', 'Business'], description: 'Karachi-based private university with focus on design and commerce.' },
+  { id: 150, name: 'University of Okara', state: 'Punjab', city: 'Okara', type: 'Public', tier: 'General', founded: 2016, students: 8000, acceptanceRate: '60%', website: 'https://uo.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Education', 'Management', 'Biology'], description: 'Fast-growing public university in central Punjab.' },
+  { id: 151, name: 'University of Gwadar', state: 'Balochistan', city: 'Gwadar', type: 'Public', tier: 'Emerging/Coastal', founded: 2021, students: 1000, acceptanceRate: 'Open', website: 'https://www.uog.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Maritime Studies', 'Economics', 'Business'], description: 'New coastal university supporting CPEC and regional education development.' },
+  { id: 152, name: 'University of Sufism and Modern Sciences Bhitshah', state: 'Sindh', city: 'Bhitshah', type: 'Public', tier: 'Spiritual/Modern', founded: 2017, students: 1200, acceptanceRate: 'Open', website: 'https://www.usms.edu.pk', tuition: 'PKR 10,000–25,000', popularPrograms: ['Sufism', 'CS', 'Education'], description: 'Unique blend of spiritual heritage and modern sciences education.' },
+  { id: 153, name: 'Thal University Bhakkar', state: 'Punjab', city: 'Bhakkar', type: 'Public', tier: 'Emerging', founded: 2022, students: 1500, acceptanceRate: 'Open', website: 'https://thaluniversity.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Education', 'IT', 'Management'], description: 'Recently formed university to support underserved region of Thal.' },
+  { id: 154, name: 'University of North Punjab', state: 'Punjab', city: 'Rawalpindi', type: 'Private', tier: 'Emerging', founded: 2022, students: 1000, acceptanceRate: 'Open', website: 'https://unp.edu.pk', tuition: 'PKR 80,000–150,000', popularPrograms: ['CS', 'Business', 'Social Sciences'], description: 'Private university targeting northern Punjab’s educational needs.' },
+  { id: 155, name: 'Alhamd Islamic University Islamabad Campus', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Private', tier: 'Islamic', founded: 2005, students: 2000, acceptanceRate: 'Open', website: 'https://www.aiu.edu.pk', tuition: 'PKR 30,000–60,000', popularPrograms: ['Islamic Studies', 'CS', 'Education'], description: 'Islamic private university with a campus in Islamabad for modern learning.' },
+  { id: 156, name: 'University of Mardan', state: 'Khyber Pakhtunkhwa', city: 'Mardan', type: 'Public', tier: 'General', founded: 2016, students: 6000, acceptanceRate: '60%', website: 'https://www.uom.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['English', 'Computer Science', 'Zoology'], description: 'Public sector university offering affordable education in central KPK.' },
+  { id: 157, name: 'Government College University Hyderabad', state: 'Sindh', city: 'Hyderabad', type: 'Public', tier: 'General', founded: 2021, students: 2500, acceptanceRate: 'Open', website: 'https://gcuh.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Chemistry', 'Botany', 'Economics'], description: 'Historic GCU upgraded to a full-fledged public university.' },
+  { id: 158, name: 'University of Layyah', state: 'Punjab', city: 'Layyah', type: 'Public', tier: 'Emerging', founded: 2023, students: 800, acceptanceRate: 'Open', website: 'https://uolayyah.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Agriculture', 'Education', 'IT'], description: 'New university created to support education in southern Punjab.' },
+  { id: 159, name: 'University of Hafizabad', state: 'Punjab', city: 'Hafizabad', type: 'Public', tier: 'Emerging', founded: 2022, students: 1000, acceptanceRate: 'Open', website: 'https://uoh.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Computer Science', 'Management', 'English'], description: 'One of Punjab’s most recent universities serving rural communities.' },
+  { id: 160, name: 'University of Narowal – Women Campus', state: 'Punjab', city: 'Narowal', type: 'Public', tier: 'Women-Only', founded: 2022, students: 700, acceptanceRate: 'Open', website: 'https://uon.edu.pk', tuition: 'PKR 8,000–15,000', popularPrograms: ['Education', 'Psychology', 'Islamic Studies'], description: 'Dedicated campus to empower female students in border region.' },
+  { id: 161, name: 'Kohsar University Murree (KUM)', state: 'Punjab', city: 'Murree', type: 'Public', tier: 'General', founded: 2020, students: 1200, acceptanceRate: 'Open', website: 'https://kum.edu.pk', tuition: 'PKR 12,000–25,000', popularPrograms: ['Tourism Management', 'Botany', 'English'], description: 'Newly established university in Murree focusing on tourism and natural sciences.' },
+  { id: 162, name: 'University of Chakdara', state: 'Khyber Pakhtunkhwa', city: 'Chakdara', type: 'Public', tier: 'Emerging', founded: 2023, students: 800, acceptanceRate: 'Open', website: 'https://www.uochakdara.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Education', 'CS', 'Biology'], description: 'Freshly launched public university to uplift higher education in Lower Dir.' },
+  { id: 163, name: 'University of Bhakkar (Sub Campus of University of Sargodha)', state: 'Punjab', city: 'Bhakkar', type: 'Public', tier: 'Sub Campus', founded: 2012, students: 2000, acceptanceRate: 'Open', website: 'https://uos.edu.pk', tuition: 'PKR 15,000–25,000', popularPrograms: ['Management', 'Education', 'Social Work'], description: 'Sub-campus of Sargodha University providing access to higher education in Bhakkar.' },
+  { id: 164, name: 'University of Malakand', state: 'Khyber Pakhtunkhwa', city: 'Chakdara, Dir Lower', type: 'Public', tier: 'General', founded: 2001, students: 7000, acceptanceRate: '50%', website: 'https://www.uom.edu.pk', tuition: 'PKR 20,000–35,000', popularPrograms: ['Mathematics', 'Islamic Studies', 'Physics'], description: 'A reputed university nestled in the scenic Swat valley foothills.' },
+  { id: 165, name: 'Government Sadiq College Women University', state: 'Punjab', city: 'Bahawalpur', type: 'Public', tier: 'Women-Only', founded: 2013, students: 6000, acceptanceRate: '60%', website: 'https://www.gscwu.edu.pk', tuition: 'PKR 20,000–30,000', popularPrograms: ['English', 'IT', 'Zoology'], description: 'Public sector women-only university offering quality education in Southern Punjab.' },
+  { id: 166, name: 'University of Baltistan – Skardu Campus', state: 'Gilgit-Baltistan', city: 'Skardu', type: 'Public', tier: 'Mountain/Remote', founded: 2017, students: 2000, acceptanceRate: 'Open', website: 'https://www.uobs.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Tourism', 'Environmental Science', 'Business'], description: 'Mountainous campus promoting higher education in Gilgit-Baltistan.' },
+  { id: 167, name: 'Shaheed Benazir Bhutto Women University (SBBWU)', state: 'Khyber Pakhtunkhwa', city: 'Peshawar', type: 'Public', tier: 'Women-Only', founded: 2005, students: 4500, acceptanceRate: 'Open', website: 'https://www.sbbwu.edu.pk', tuition: 'PKR 15,000–30,000', popularPrograms: ['Psychology', 'Mathematics', 'Education'], description: 'Leading public university dedicated to female education in KPK.' },
+  { id: 168, name: 'University of Larkana', state: 'Sindh', city: 'Larkana', type: 'Public', tier: 'Emerging', founded: 2022, students: 1000, acceptanceRate: 'Open', website: 'https://uolr.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Sociology', 'Law', 'Commerce'], description: 'New public university aiming to uplift education in upper Sindh.' },
+  { id: 169, name: 'University of Balochistan – Khuzdar Campus', state: 'Balochistan', city: 'Khuzdar', type: 'Public', tier: 'Sub Campus', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.uob.edu.pk', tuition: 'PKR 10,000–20,000', popularPrograms: ['Geography', 'Urdu', 'Education'], description: 'Sub-campus of UoB serving remote regions of South Balochistan.' },
+  { id: 170, name: 'University of South Asia (USA)', state: 'Punjab', city: 'Lahore', type: 'Private', tier: 'General', founded: 2003, students: 5000, acceptanceRate: '55%', website: 'https://www.usa.edu.pk', tuition: 'PKR 120,000–200,000', popularPrograms: ['Business', 'Design', 'Computer Science'], description: 'Private university in Lahore offering modern and professional degrees.' },
+  { id: 171, name: 'Allama Iqbal Open University (AIOU)', state: 'Islamabad Capital Territory', city: 'Islamabad', type: 'Public', tier: 'Distance Learning', founded: 1974, students: 1_400_000, acceptanceRate: 'Open', website: 'https://www.aiou.edu.pk', tuition: 'PKR 3,000–25,000', popularPrograms: ['Education', 'Islamic Studies', 'Mass Communication', 'Urdu', 'Teacher Training'], description: 'Asia’s first open university providing flexible, distance-based education to millions across Pakistan.' }
+  ];
+
+
+  const pakistaniRegions = {
+  'Punjab': 'Punjab',
+  'Sindh': 'Sindh',
+  'Khyber Pakhtunkhwa': 'Khyber Pakhtunkhwa',
+  'Balochistan': 'Balochistan',
+  'Islamabad Capital Territory': 'Islamabad Capital Territory',
+  'Gilgit-Baltistan': 'Gilgit-Baltistan',
+  'Azad Jammu and Kashmir': 'Azad Jammu and Kashmir'
+};
+
+   // University types and tiers (Pakistan specific)
+const universityTypes = [
+  'Public', 'Private', 'College', 'Medical', 'Engineering', 'Distance Learning', 'Women-Only'
+];
+
+const universityTiers = [
+  'HEC Recognized', 'Top Ranked', 'General', 'Emerging', 'Specialized', 'Regional', 'Sub Campus', 'Faith-Based'
+];
+
+
+    // App state
+    let isLoading = false;
+    let currentPage = 1;
+    const itemsPerPage = 12;
+    let filteredUniversities = [];
+    
+
+    // DOM elements
+    window.searchInput = window.searchInput || null;
+    window.stateFilter = window.stateFilter || null;
+    window.typeFilter = window.typeFilter || null;
+    window.resetButton = window.resetButton || null;
+    window.resultCount = window.resultCount || null;
+    window.totalCount = window.totalCount || null;
+    window.loadingIndicator = window.loadingIndicator || null;
+    window.universityGrid = window.universityGrid || null,
+
+
+
+    // Initialize filter dropdowns
+    function initFilters() {
+      // Clear existing options first
+      stateFilter.innerHTML = '<option value="">All States</option>';
+      
+      // States
+      Object.entries(pakistaniRegions).forEach(([name, value]) => {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        stateFilter.appendChild(option);
+      });
+
+      // Clear and add type filters
+      typeFilter.innerHTML = '<option value="">All Types</option>';
+      const types = [...new Set(universities.map(u => u.type))];
+      types.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeFilter.appendChild(option);
+      });
+
+      // Types
+      universityTypes.forEach(type => {
+        const option = document.createElement('option');
+        option.value = type;
+        option.textContent = type;
+        typeFilter.appendChild(option);
+      });
+    }
+
+    // Handle search input
+    function handleSearch() {
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Handle filter changes
+    function handleFilter() {
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Reset all filters
+    function resetFilters() {
+      searchInput.value = '';
+      stateFilter.value = '';
+      typeFilter.value = '';
+      currentPage = 1;
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      renderUniversities(filteredUniversities.slice(0, currentPage * itemsPerPage), false);
+    }
+
+    // Get filtered universities based on current filters
+    function getFilteredUniversities() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const state = stateFilter.value;
+      const type = typeFilter.value;
+      
+      return universities.filter(univ => {
+        const matchesSearch = !searchTerm || 
+          univ.name.toLowerCase().includes(searchTerm) ||
+          univ.city.toLowerCase().includes(searchTerm) ||
+          univ.state.toLowerCase().includes(searchTerm) ||
+          (pakistaniRegions[univ.state] && pakistaniRegions[univ.state].toLowerCase().includes(searchTerm));
+        
+        const matchesState = !state || univ.state === state;
+        const matchesType = !type || univ.type === type;
+        
+        return matchesSearch && matchesState && matchesType;
+      });
+    }
+
+    // Update result counts
+    function updateResultCounts() {
+      const displayedCount = Math.min(filteredUniversities.length, currentPage * itemsPerPage);
+      resultCount.textContent = displayedCount.toLocaleString();
+      totalCount.textContent = filteredUniversities.length.toLocaleString();
+    }
+
+    // Handle scroll for infinite loading
+    function handleScroll() {
+      if (isLoading) return;
+      
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const scrollThreshold = 100; // pixels from bottom
+      
+      if (scrollTop + clientHeight >= scrollHeight - scrollThreshold) {
+        loadMore();
+      }
+    }
+
+    // Load more universities
+    function loadMore() {
+      if (isLoading || (currentPage * itemsPerPage) >= filteredUniversities.length) {
+        return;
+      }
+      
+      isLoading = true;
+      loadingIndicator.style.display = 'block';
+      
+      // Simulate network delay
+      setTimeout(() => {
+        currentPage++;
+        const start = 0;
+        const end = currentPage * itemsPerPage;
+        const moreUniversities = filteredUniversities.slice(start, end);
+        
+        renderUniversities(moreUniversities, false);
+        updateResultCounts();
+        
+        isLoading = false;
+        loadingIndicator.style.display = 'none';
+      }, 500);
+    }
+
+    // Render universities to the grid
+    function renderUniversities(universitiesToRender, append = false) {
+      if (!append) {
+        universityGrid.innerHTML = '';
+      }
+      
+      if (universitiesToRender.length === 0) {
+        universityGrid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 2rem;">No universities found matching your criteria.</p>';
+        return;
+      }
+      
+      universitiesToRender.forEach(univ => {
+        const card = createUniversityCard(univ);
+        universityGrid.appendChild(card);
+      });
+    }
+
+    function createUniversityCard(university) {
+  const card = document.createElement('div');
+  card.className = 'university-card';
+
+  // ... (favorite button code yahan rahe)
+
+  // Details section (hidden by default)
+  const detailsSection = document.createElement('div');
+  detailsSection.className = 'university-details-section';
+  detailsSection.style.display = 'none';
+  detailsSection.innerHTML = `
+    <div style="padding:1rem 0; border-top:1px solid #eee;">
+      <strong>Description:</strong>
+      <p>${university.description || 'No description available.'}</p>
+      <div><strong>Location:</strong> ${university.city}, ${pakistaniRegions[university.state] || university.state}</div>
+      <div><strong>Founded:</strong> ${university.founded}</div>
+      <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
+      <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
+      ${university.tuition ? `<div><strong>Tuition:</strong> ${university.tuition}</div>` : ''}
+      ${university.website ? `<div><a href="${university.website}" target="_blank">Official Website</a></div>` : ''}
+    </div>
+  `;
+
+  // Card HTML
+  card.innerHTML = `
+    <div class="university-image" style="background-image: url('https://source.unsplash.com/random/600x400/?university,${encodeURIComponent(university.name.split(' ')[0])}')">
+      <div class="university-tier">${university.tier || 'University'}</div>
+    </div>
+    <div class="university-details">
+      <div class="university-header">
+        <h2>${university.name}</h2>
+        <div class="university-meta">
+          <span class="founded">
+            <i class="far fa-calendar"></i> Est. ${university.founded}
+          </span>
+          <span>•</span>
+          <span class="acceptance">
+            <i class="fas fa-user-graduate"></i> ${university.acceptanceRate}% acceptance
+          </span>
+        </div>
+      </div>
+      <div class="university-stats">
+        <div class="stat" title="Location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>${university.city}, ${pakistaniRegions[university.state] || university.state}</span>
+        </div>
+        <div class="stat" title="Student population">
+          <i class="fas fa-users"></i>
+          <span>${university.students.toLocaleString()}</span>
+        </div>
+      </div>
+      <div class="university-description">
+        <p>${university.description || 'No description available.'}</p>
+      </div>
+      <div class="university-actions">
+        <button class="btn btn-outline details-btn" type="button">
+          <i class="fas fa-info-circle"></i> Details
+        </button>
+      </div>
+    </div>
+  `;
+
+  // Add details section to card
+  card.appendChild(detailsSection);
+
+  // Details button click handler
+  card.querySelector('.details-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (detailsSection.style.display === 'none') {
+      detailsSection.style.display = 'block';
+      this.innerHTML = '<i class="fas fa-info-circle"></i> Hide Details';
+    } else {
+      detailsSection.style.display = 'none';
+      this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+    }
+  });
+
+  return card;
+}
+    
+    // Toggle favorite status for a university
+    function toggleFavorite(universityId) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const index = favorites.indexOf(universityId);
+      
+      if (index === -1) {
+        favorites.push(universityId);
+      } else {
+        favorites.splice(index, 1);
+      }
+      
+      localStorage.setItem('favoriteUniversities', JSON.stringify(favorites));
+      updateFavoriteBadge();
+    }
+    
+    // Check if a university is in favorites
+    function isFavorite(universityId) {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      return favorites.includes(universityId);
+    }
+    
+    // Update the favorite badge count
+    function updateFavoriteBadge() {
+      const favorites = JSON.parse(localStorage.getItem('favoriteUniversities') || '[]');
+      const badge = document.getElementById('favoriteBadge');
+      if (badge) {
+        badge.textContent = favorites.length || '';
+        badge.style.display = favorites.length ? 'flex' : 'none';
+      }
+    }
+
+    // Show enhanced university details in a modal
+    function showUniversityDetails(universityId) {
+      const university = universities.find(u => u.id === universityId);
+      if (!university) return;
+      
+      // Generate campus images
+      const campusImage = `https://source.unsplash.com/random/1200x600/?campus,${encodeURIComponent(university.name.split(' ')[0])}`;
+      const logoImage = `https://logo.clearbit.com/${university.website?.replace('https://', '').replace('http://', '')}?size=200`;
+      
+      // Determine university characteristics
+      const isPublic = university.type === 'Public';
+      const isIvy = university.tier === 'Ivy League';
+      const isTechFocused = university.type.includes('Science') || university.type.includes('Engineering');
+      
+      // Generate realistic campus life data based on university type
+      const campusLife = {
+        housing: isIvy ? 'On-campus housing guaranteed for all 4 years' : 
+                  isPublic ? 'On-campus housing for freshmen and sophomores' : 'On-campus housing available',
+        clubs: isIvy ? `${Math.floor(Math.random() * 400) + 400} student organizations` :
+                isPublic ? `${Math.floor(Math.random() * 300) + 200} student organizations` : 
+                `${Math.floor(Math.random() * 150) + 100} student organizations`,
+        sports: isPublic ? 'NCAA Division I' : 
+                isIvy ? 'NCAA Division I (Ivy League)' :
+                'NCAA Division III',
+        greekLife: isIvy ? 'Active Greek life with historic fraternities/sororities' :
+                   isPublic ? 'Strong Greek life presence' :
+                   Math.random() > 0.5 ? 'Greek life available' : 'Limited Greek life',
+        diversity: isTechFocused ? `${Math.floor(Math.random() * 15) + 30}% international students` :
+                    isIvy ? `${Math.floor(Math.random() * 12) + 12}% international students` :
+                    `${Math.floor(Math.random() * 10) + 8}% international students`,
+        facilities: isTechFocused ? 
+                   ['Advanced Research Labs', 'Innovation Center', 'Tech Library'] :
+                   isIvy ? ['Historic Libraries', 'Museums', 'Performing Arts Centers'] :
+                   ['Modern Classrooms', 'Student Center', 'Recreation Center']
+      };
+      
+      // Generate realistic academic stats based on university type
+      const academicStats = {
+        studentFacultyRatio: isIvy ? `${Math.floor(Math.random() * 3) + 5}:1` :
+                              isTechFocused ? `${Math.floor(Math.random() * 4) + 6}:1` :
+                              `${Math.floor(Math.random() * 5) + 10}:1`,
+        averageClassSize: isIvy ? Math.floor(Math.random() * 8) + 10 :
+                            isTechFocused ? Math.floor(Math.random() * 10) + 15 :
+                            Math.floor(Math.random() * 15) + 20,
+        graduationRate: isIvy ? `${Math.floor(Math.random() * 5) + 90}%` :
+                          isPublic ? `${Math.floor(Math.random() * 15) + 70}%` :
+                          `${Math.floor(Math.random() * 10) + 80}%`,
+        retentionRate: isIvy ? `${Math.floor(Math.random() * 3) + 95}%` :
+                         isPublic ? `${Math.floor(Math.random() * 10) + 80}%` :
+                         `${Math.floor(Math.random() * 7) + 85}%`,
+        researchFunding: isTechFocused ? `$${(Math.random() * 300 + 100).toFixed(1)}M` :
+                            isIvy ? `$${(Math.random() * 200 + 50).toFixed(1)}M` :
+                            `$${(Math.random() * 150 + 30).toFixed(1)}M`
+      };
+      
+      // Generate admission requirements
+      const admissionRequirements = {
+        sat: isIvy ? '1450-1570' : 
+                  isTechFocused ? '1400-1550' :
+                  isPublic ? '1200-1450' : '1100-1350',
+        act: isIvy ? '33-35' :
+                  isTechFocused ? '32-35' :
+                  isPublic ? '26-32' : '24-30',
+        gpa: isIvy ? '3.9-4.0' :
+                  isTechFocused ? '3.8-4.0' :
+                  isPublic ? '3.5-4.0' : '3.3-4.0',
+        deadline: isIvy ? 'January 1 (Early Decision: November 1)' :
+                        'January 15 (Early Action: November 15)'
+      };
+      
+      // Create modal HTML
+      const modal = document.createElement('div');
+      modal.className = 'university-modal';
+      modal.innerHTML = `
+        <div class="modal-content">
+          <button class="close-modal" aria-label="Close">&times;</button>
+          
+          <!-- Hero Section with University Image -->
+          <div class="modal-header">
+            <div class="modal-hero">
+              <img src="${campusImage}" alt="${university.name} Campus">
+            </div>
+            <div class="university-logo">
+              <img src="${logoImage}" alt="${university.name} Logo" onerror="this.src='https://via.placeholder.com/200?text=${encodeURIComponent(university.name.split(' ')[0])}';">
+            </div>
+            <div class="header-content">
+              <h1>${university.name}</h1>
+              <div class="university-meta">
+                <span>${university.city}, ${pakistaniRegions[university.state] || university.state}</span>
+                <span class="divider">•</span>
+                <span>Est. ${university.founded}</span>
+                <span class="divider">•</span>
+                <span class="university-type">${university.type || 'University'}</span>
+              </div>
+              <div class="university-stats">
+                <div class="stat">
+                  <i class="fas fa-users"></i>
+                  <span>${university.students.toLocaleString()} Students</span>
+                </div>
+                <div class="stat">
+                  <i class="fas fa-graduation-cap"></i>
+                  <span>${university.acceptanceRate}% Acceptance Rate</span>
+                </div>
+                ${university.tuition ? `
+                  <div class="stat">
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>${university.tuition}</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Main Content -->
+          <div class="modal-body">
+            <div class="modal-columns">
+              <!-- Left Column - Main Content -->
+              <div class="main-content">
+                <!-- About Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-university"></i> About ${university.name.split(' ')[0]}</h2>
+                  <p>${university.description || 'No description available.'}</p>
+                  
+                  <div class="highlights">
+                    <div class="highlight">
+                      <i class="fas fa-trophy"></i>
+                      <span>${university.tier || 'Nationally Ranked'}</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span>${university.city}, ${pakistaniRegions[university.state] || university.state}</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span>Est. ${university.founded} (${new Date().getFullYear() - university.founded} years of excellence)</span>
+                    </div>
+                    <div class="highlight">
+                      <i class="fas fa-building"></i>
+                      <span>${isPublic ? 'Public' : 'Private'} ${university.type || 'University'}</span>
+                    </div>
+                  </div>
+                  
+                  <div class="campus-features">
+                    <h3><i class="fas fa-star"></i> Campus Highlights</h3>
+                    <ul>
+                      <li>${campusLife.facilities[0]}</li>
+                      <li>${campusLife.facilities[1]}</li>
+                      <li>${campusLife.facilities[2] || campusLife.facilities[0]}</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <!-- Academics Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-graduation-cap"></i> Academics</h2>
+                  <p>${university.name} offers a comprehensive academic experience with ${academicStats.studentFacultyRatio} student-faculty ratio and an average class size of ${academicStats.averageClassSize} students. The university maintains a strong ${academicStats.retentionRate} first-year retention rate and a ${academicStats.graduationRate} six-year graduation rate.</p>
+                  
+                  <div class="academics-grid">
+                    <div class="academic-info">
+                      <h3>Student-Faculty Ratio</h3>
+                      <div class="value">${academicStats.studentFacultyRatio}</div>
+                      <div class="subtext">Personalized Attention</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Average Class Size</h3>
+                      <div class="value">${academicStats.averageClassSize}</div>
+                      <div class="subtext">Students per class</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Graduation Rate</h3>
+                      <div class="value">${academicStats.graduationRate}</div>
+                      <div class="subtext">Within 6 years</div>
+                    </div>
+                    <div class="academic-info">
+                      <h3>Retention Rate</h3>
+                      <div class="value">${academicStats.retentionRate}</div>
+                      <div class="subtext">First-year students return</div>
+                    </div>
+                  </div>
+                  
+                  <div class="admission-requirements">
+                    <h3><i class="fas fa-clipboard-check"></i> Admission Requirements</h3>
+                    <div class="requirements-grid">
+                      <div class="requirement">
+                        <span class="label">SAT Range:</span>
+                        <span class="value">${admissionRequirements.sat}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">ACT Range:</span>
+                        <span class="value">${admissionRequirements.act}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">GPA:</span>
+                        <span class="value">${admissionRequirements.gpa}</span>
+                      </div>
+                      <div class="requirement">
+                        <span class="label">Application Deadline:</span>
+                        <span class="value">${admissionRequirements.deadline}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Programs Section -->
+                ${university.popularPrograms && university.popularPrograms.length > 0 ? `
+                  <div class="detail-section">
+                    <h2><i class="fas fa-book-open"></i> Popular Programs</h2>
+                    <p>Explore some of the most sought-after academic programs at ${university.name}.</p>
+                    
+                    <div class="programs-grid">
+                      ${university.popularPrograms.slice(0, 4).map(program => `
+                        <div class="program-card">
+                          <div class="program-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                          </div>
+                          <h3 class="program-name">${program}</h3>
+                          <p class="program-desc">${['Bachelor', 'Master', 'PhD'][Math.floor(Math.random() * 3)]} Program</p>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+                
+                <!-- Campus Life Section -->
+                <div class="detail-section">
+                  <h2><i class="fas fa-home"></i> Campus Life</h2>
+                  <p>Experience a vibrant campus community with ${campusLife.clubs} and numerous opportunities for involvement, leadership, and personal growth.</p>
+                  
+                  <div class="campus-life">
+                    <div class="campus-stat">
+                      <i class="fas fa-home"></i>
+                      <div>
+                        <div class="label">Housing</div>
+                        <div class="value">${campusLife.housing}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-users"></i>
+                      <div>
+                        <div class="label">Student Organizations</div>
+                        <div class="value">${campusLife.clubs}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-football-ball"></i>
+                      <div>
+                        <div class="label">Athletics</div>
+                        <div class="value">${campusLife.sports}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-gem"></i>
+                      <div>
+                        <div class="label">Greek Life</div>
+                        <div class="value">${campusLife.greekLife}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-globe-americas"></i>
+                      <div>
+                        <div class="label">International Students</div>
+                        <div class="value">${campusLife.diversity}</div>
+                      </div>
+                    </div>
+                    <div class="campus-stat">
+                      <i class="fas fa-flask"></i>
+                      <div>
+                        <div class="label">Research Funding</div>
+                        <div class="value">${academicStats.researchFunding}</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="campus-resources">
+                    <h3><i class="fas fa-tools"></i> Campus Resources</h3>
+                    <div class="resources-grid">
+                      ${campusLife.facilities.map(facility => `
+                        <div class="resource">
+                          <i class="fas fa-check-circle"></i>
+                          <span>${facility}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Right Column - Sidebar -->
+              <div class="sidebar">
+                <!-- Quick Facts Card -->
+                <div class="sidebar-card">
+                  <h3><i class="fas fa-info-circle"></i> Quick Facts</h3>
+                  <div class="facts-list">
+                    <div class="fact">
+                      <span class="fact-label">Institution Type</span>
+                      <span class="fact-value">${isPublic ? 'Public' : 'Private'} ${university.type || 'University'}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Established</span>
+                      <span class="fact-value">${university.founded} (${new Date().getFullYear() - university.founded} years)</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Location</span>
+                      <span class="fact-value">${university.city}, ${usStates[university.state] || university.state}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Campus Setting</span>
+                      <span class="fact-value">${campusLife.campusSetting}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Acceptance Rate</span>
+                      <span class="fact-value">${university.acceptanceRate}% ${isIvy ? '(Highly Selective)' : isPublic ? '(Competitive)' : '(Selective)'}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Student Population</span>
+                      <span class="fact-value">${university.students.toLocaleString()}</span>
+                    </div>
+                    ${university.tuition ? `
+                      <div class="fact">
+                        <span class="fact-label">Tuition</span>
+                        <span class="fact-value">${university.tuition} ${isPublic ? '(in-state)' : ''}</span>
+                      </div>
+                    ` : ''}
+                    <div class="fact">
+                      <span class="fact-label">Student-Faculty Ratio</span>
+                      <span class="fact-value">${academicStats.studentFacultyRatio}</span>
+                    </div>
+                    <div class="fact">
+                      <span class="fact-label">Graduation Rate</span>
+                      <span class="fact-value">${academicStats.graduationRate} (6 years)</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Contact & Important Dates -->
+                <div class="sidebar-card">
+                  <h3><i class="fas fa-envelope"></i> Contact Information</h3>
+                  <div class="contact-list">
+                    <div class="contact-item">
+                      <i class="fas fa-globe"></i>
+                      <div>
+                        <div class="label">Website</div>
+                        ${university.website ? `
+                          <a href="${university.website}" target="_blank" class="value">
+                            ${university.website.replace('https://', '').replace('http://', '')}
+                          </a>
+                        ` : '<span class="value">N/A</span>'}
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-phone"></i>
+                      <div>
+                        <div class="label">Admissions Office</div>
+                        <span class="value">(${Math.floor(Math.random() * 900) + 100}) ${Math.floor(Math.random() * 900) + 100}-${Math.floor(Math.random() * 9000) + 1000}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <div>
+                        <div class="label">Campus Address</div>
+                        <span class="value">${university.city}, ${usStates[university.state] || university.state} ${Math.floor(Math.random() * 90000) + 10000}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-calendar-day"></i>
+                      <div>
+                        <div class="label">Application Deadline</div>
+                        <span class="value">${admissionRequirements.deadline}</span>
+                      </div>
+                    </div>
+                    <div class="contact-item">
+                      <i class="fas fa-graduation-cap"></i>
+                      <div>
+                        <div class="label">Graduation Rate</div>
+                        <span class="value">${academicStats.graduationRate} (6 years)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Virtual Tour & Visit -->
+                <div class="sidebar-card virtual-tour">
+                  <h3><i class="fas fa-vr-cardboard"></i> Visit ${university.name.split(' ')[0]}</h3>
+                  <div class="tour-thumbnail" style="background-image: url('https://source.unsplash.com/random/600x400/?university,${encodeURIComponent(university.name.split(' ')[0])}');">
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                    </div>
+                  </div>
+                  <p>Experience our campus through a virtual tour or schedule an in-person visit.</p>
+                  <div class="tour-buttons">
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-calendar-alt"></i> Schedule Visit
+                    </button>
+                    <button class="btn btn-primary btn-block">
+                      <i class="fas fa-play-circle"></i> Virtual Tour
+                    </button>
+                  </div>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="cta-box">
+                  <h3>Ready to apply to ${university.name.split(' ')[0]}?</h3>
+                  <p>Begin your journey at one of the nation's top institutions. The application process is straightforward and our admissions team is here to help.</p>
+                  <div class="cta-buttons">
+                    <button class="btn btn-primary btn-block">
+                      <i class="fas fa-edit"></i> Start Application
+                    </button>
+                    <button class="btn btn-outline btn-block">
+                      <i class="fas fa-download"></i> View Requirements
+                    </button>
+                  </div>
+                  <div class="cta-footer">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Application fee: ${isPublic ? '$50' : '$75'} (waivers available)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add to DOM
+      document.body.appendChild(modal);
+      document.body.style.overflow = 'hidden';
+      
+      // Clean up when modal is closed
+      modal.addEventListener('transitionend', function handler() {
+        if (!document.body.contains(modal)) {
+          document.body.style.overflow = '';
+          modal.removeEventListener('transitionend', handler);
+        }
+      });
+    }
+    
+    // Toggle between light and dark theme
+    function toggleTheme() {
+      const html = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      
+      if (html.getAttribute('data-theme') === 'dark') {
+        html.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+    }
+    
+    // Initialize filter dropdowns
+    function initFilters() {
+      // Get unique states and types
+      const states = new Set();
+      const types = new Set();
+      
+      universities.forEach(uni => {
+        if (uni.state) states.add(uni.state);
+        if (uni.type) types.add(uni.type);
+      });
+      
+      // Populate state filter
+      const stateFilter = document.getElementById('stateFilter');
+      if (stateFilter) {
+        // Clear existing options except the first one
+        while (stateFilter.options.length > 1) {
+          stateFilter.remove(1);
+        }
+        
+        // Add states in alphabetical order
+        Array.from(states).sort().forEach(state => {
+          const option = document.createElement('option');
+          option.value = state;
+          option.textContent = state;
+          stateFilter.appendChild(option);
+        });
+      }
+      
+      // Populate type filter
+      const typeFilter = document.getElementById('typeFilter');
+      if (typeFilter) {
+        // Clear existing options except the first one
+        while (typeFilter.options.length > 1) {
+          typeFilter.remove(1);
+        }
+        
+        // Add types in alphabetical order
+        Array.from(types).sort().forEach(type => {
+          const option = document.createElement('option');
+          option.value = type;
+          option.textContent = type;
+          typeFilter.appendChild(option);
+        });
+      }
+    }
+    
+    // Initialize the app
+    function init() {
+      // Get DOM elements
+      searchInput = document.getElementById('searchInput');
+      stateFilter = document.getElementById('stateFilter');
+      typeFilter = document.getElementById('typeFilter');
+      resetButton = document.getElementById('resetFilters');
+      resultCount = document.getElementById('resultCount');
+      totalCount = document.getElementById('totalCount');
+      loadingIndicator = document.getElementById('loadingIndicator');
+      universityGrid = document.getElementById('universityGrid');
+      
+      // Create favorites button in header if it doesn't exist
+      const header = document.querySelector('header');
+      if (header && !document.getElementById('favoritesButton')) {
+        const favoritesButton = document.createElement('button');
+        favoritesButton.id = 'favoritesButton';
+        favoritesButton.className = 'favorites-button';
+        favoritesButton.innerHTML = `
+          <i class="fas fa-heart"></i>
+          <span class="favorite-badge" id="favoriteBadge"></span>
+          Favorites
+        `;
+        favoritesButton.onclick = () => {
+          const favoritesOnly = document.getElementById('favoritesOnly');
+          if (favoritesOnly) {
+            favoritesOnly.checked = !favoritesOnly.checked;
+            handleFilter();
+          }
+        };
+        header.appendChild(favoritesButton);
+        
+        // Add theme toggle button
+        const themeToggle = document.createElement('button');
+        themeToggle.id = 'themeToggle';
+        themeToggle.className = 'theme-toggle';
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        themeToggle.title = 'Toggle dark mode';
+        themeToggle.onclick = toggleTheme;
+        header.appendChild(themeToggle);
+        
+        // Apply saved theme
+        if (localStorage.getItem('theme') === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+      }
+      
+      // Initialize filters
+      initFilters();
+      
+      // Add event listeners
+      searchInput.addEventListener('input', handleSearch);
+      stateFilter.addEventListener('change', handleFilter);
+      typeFilter.addEventListener('change', handleFilter);
+      resetButton.addEventListener('click', resetFilters);
+      window.addEventListener('scroll', handleScroll);
+      
+      // Add keyboard shortcut for search (Ctrl+F or Cmd+F)
+      document.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+      
+      // Initial load
+      filteredUniversities = getFilteredUniversities();
+      updateResultCounts();
+      updateFavoriteBadge();
+      loadMore();
+    }
+    
+    // Start the app when the DOM is fully loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+    
+  function renderUniversities(universityList) {
+    const grid = document.getElementById("universityGrid");
+    grid.innerHTML = "";
+
+    function createUniversityCard(university) {
+  const card = document.createElement('div');
+  card.className = 'university-card';
+  
+  const isFav = isFavorite(university.id);
+  
+  card.innerHTML = `
+    <div class="university-card-inner">
+      <div class="university-header">
+        <div class="university-badge">${university.tier || 'Standard'}</div>
+        <button class="favorite-button ${isFav ? 'favorited' : ''}" data-university-id="${university.id}">
+          <i class="${isFav ? 'fas' : 'far'} fa-heart"></i>
+        </button>
+      </div>
+      <div class="university-info">
+        <h3>${university.name}</h3>
+        <div class="university-meta">
+          <span><i class="fas fa-map-marker-alt"></i> ${university.city}, ${university.state}</span>
+          <span><i class="fas fa-university"></i> ${university.type}</span>
+        </div>
+        <div class="university-stats">
+          <div class="stat">
+            <i class="fas fa-calendar-alt"></i>
+            <span>${university.founded || 'N/A'}</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-users"></i>
+            <span>${university.students ? university.students.toLocaleString() : 'N/A'}</span>
+          </div>
+          <div class="stat">
+            <i class="fas fa-percentage"></i>
+            <span>${university.acceptanceRate || 'N/A'}</span>
+          </div>
+        </div>
+        <div class="university-actions">
+          <a href="${university.website}" class="university-link" target="_blank">
+            <i class="fas fa-external-link-alt"></i> Visit Website
+          </a>
+          <button class="details-button">
+            <i class="fas fa-info-circle"></i> Details
+          </button>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Add event listener for favorite button
+  const favButton = card.querySelector('.favorite-button');
+  favButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleFavorite(university.id);
+    favButton.innerHTML = `<i class="${isFavorite(university.id) ? 'fas' : 'far'} fa-heart"></i>`;
+    updateFavoriteBadge();
+  });
+  
+  // Add click event to details button
+  const detailsButton = card.querySelector('.details-button');
+  detailsButton.addEventListener('click', (e) => {
+    e.stopPropagation();
+    showUniversityDetails(university.id);
+  });
+  
+  // Add click event to card (excluding buttons)
+  const cardInner = card.querySelector('.university-card-inner');
+  const buttons = card.querySelectorAll('button, a');
+  
+  cardInner.addEventListener('click', (e) => {
+    // Check if the click was on a button or link
+    const isButtonClick = Array.from(buttons).some(button => 
+      button === e.target || button.contains(e.target)
+    );
+    
+    if (!isButtonClick) {
+      showUniversityDetails(university.id);
+    }
+  });
+  
+  return card;
+}
+
+    universityList.forEach((uni) => {
+      const card = createUniversityCard(uni);
+      grid.appendChild(card);
+    });
+
+    // Update counts
+    document.getElementById("resultCount").textContent = universityList.length;
+    document.getElementById("totalCount").textContent = universities.length;
+  }
+
+  // Show detailed information for a specific university
+  function showUniversityDetails(universityId) {
+    const uni = universities.find(u => u.id === universityId);
+    if (!uni) return;
+    
+    // Create modal content
+    const modalContent = `
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>${uni.name}</h2>
+          <button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="university-info">
+            <p><strong>Location:</strong> ${uni.city}, ${uni.state}</p>
+            <p><strong>Type:</strong> ${uni.type} University</p>
+            <p><strong>Founded:</strong> ${uni.founded}</p>
+            <p><strong>Students:</strong> ${uni.students.toLocaleString()}</p>
+            <p><strong>Acceptance Rate:</strong> ${uni.acceptanceRate}</p>
+            <p><strong>Tuition:</strong> ${uni.tuition}</p>
+            <p><strong>Popular Programs:</strong> ${uni.popularPrograms.join(', ')}</p>
+          </div>
+          <div class="university-description">
+            <h3>About</h3>
+            <p>${uni.description}</p>
+          </div>
+          <div class="modal-actions">
+            <a href="${uni.website}" class="university-link" target="_blank">
+              <i class="fas fa-external-link-alt"></i> Visit Official Website
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    // Create and show modal
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.id = 'universityModal';
+    modal.innerHTML = modalContent;
+    
+    // Add close functionality
+    const closeButton = modal.querySelector('.close-button');
+    closeButton.addEventListener('click', () => {
+      modal.remove();
+      document.body.style.overflow = 'auto';
+    });
+    
+    // Close when clicking outside the modal
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.remove();
+        document.body.style.overflow = 'auto';
+      }
+    });
+    
+    document.body.appendChild(modal);
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Initialize the app when the DOM is fully loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    // DOM already loaded, initialize immediately
+    init();
+  }
+
+  </script>
+</body>
+</html>

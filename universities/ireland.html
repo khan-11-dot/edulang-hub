@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>Ireland Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>Ireland Universities</h1>
+      <p>Find and explore universities across the Ireland</p>
     </header>
     
     <div class="search-container">
@@ -1076,73 +1076,61 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
+    const universitiesIreland = [
+  { id: 1, name: 'Trinity College Dublin', state: 'Dublin', city: 'Dublin', type: 'Public', tier: 'Research', founded: 1592, students: 21000, website: 'https://www.tcd.ie', popularPrograms: ['Humanities', 'Science', 'Law'], description: 'Ireland’s oldest and highest-ranked university with a global reputation.' },
+  { id: 2, name: 'University College Dublin (UCD)', state: 'Dublin', city: 'Belfield', type: 'Public', tier: 'Research', founded: 1854, students: 38000, website: 'https://www.ucd.ie', popularPrograms: ['Business', 'Engineering', 'Health Sciences'], description: 'Ireland’s largest university, known for innovation and global partnerships.' },
+  { id: 3, name: 'University College Cork (UCC)', state: 'Cork', city: 'Cork', type: 'Public', tier: 'Research', founded: 1845, students: 24000, website: 'https://www.ucc.ie', popularPrograms: ['Medicine', 'Law', 'Arts'], description: 'Top public university with strong research and medical programs.' },
+  { id: 4, name: 'University of Galway', state: 'Connacht', city: 'Galway', type: 'Public', tier: 'Research', founded: 1845, students: 18000, website: 'https://www.universityofgalway.ie', popularPrograms: ['Marine Science', 'Engineering', 'Arts'], description: 'Historic university known for innovation and coastal research.' },
+  { id: 5, name: 'Dublin City University (DCU)', state: 'Dublin', city: 'Dublin', type: 'Public', tier: 'Technology', founded: 1989, students: 17000, website: 'https://www.dcu.ie', popularPrograms: ['Business', 'Engineering', 'Applied Sciences'], description: 'Young and vibrant university focused on entrepreneurship and tech.' },
+  { id: 6, name: 'University of Limerick (UL)', state: 'Munster', city: 'Limerick', type: 'Public', tier: 'Research', founded: 1972, students: 18000, website: 'https://www.ul.ie', popularPrograms: ['Engineering', 'Sports Science', 'Business'], description: 'Known for cooperative education and student employability.' },
+  { id: 7, name: 'Maynooth University', state: 'Kildare', city: 'Maynooth', type: 'Public', tier: 'Research', founded: 1997, students: 16000, website: 'https://www.maynoothuniversity.ie', popularPrograms: ['Arts', 'Science', 'Education'], description: 'Youngest public university in Ireland with a modern academic approach.' },
+  { id: 8, name: 'Technological University Dublin (TU Dublin)', state: 'Dublin', city: 'Dublin', type: 'Public', tier: 'Technological', founded: 2019, students: 30000, website: 'https://www.tudublin.ie', popularPrograms: ['Engineering', 'Business', 'IT'], description: 'Ireland’s first technological university spread across multiple campuses.' },
+  { id: 9, name: 'RCSI University of Medicine and Health Sciences', state: 'Dublin', city: 'Dublin', type: 'Private', tier: 'Medical', founded: 1784, students: 4700, website: 'https://www.rcsi.com', popularPrograms: ['Medicine', 'Surgery', 'Pharmacy'], description: 'Premier private medical university with global recognition.' },
+  { id: 10, name: 'South East Technological University (SETU)', state: 'Munster', city: 'Waterford', type: 'Public', tier: 'Technological', founded: 2022, students: 9000, website: 'https://www.setu.ie', popularPrograms: ['Engineering', 'Health', 'Business'], description: 'New tech university serving Ireland’s southeast region.' },
+  { id: 11, name: 'Atlantic Technological University (ATU)', state: 'Connacht', city: 'Galway & Sligo', type: 'Public', tier: 'Technological', founded: 2022, students: 20000, website: 'https://www.atu.ie', popularPrograms: ['Marine Science', 'Engineering', 'IT'], description: 'Formed by a merger of institutes in the west and northwest with a strong regional focus.' },
+  { id: 12, name: 'Munster Technological University (MTU)', state: 'Munster', city: 'Cork & Kerry', type: 'Public', tier: 'Technological', founded: 2021, students: 18000, website: 'https://www.mtu.ie', popularPrograms: ['Engineering', 'Business', 'Creative Arts'], description: 'Modern technological university serving southern Ireland.' },
+  { id: 13, name: 'National College of Ireland (NCI)', state: 'Dublin', city: 'Dublin', type: 'Private', tier: 'Specialist', founded: 1951, students: 6000, website: 'https://www.ncirl.ie', popularPrograms: ['Business', 'Computing', 'HR Management'], description: 'Career-focused private college in the heart of Dublin.' },
+  { id: 14, name: 'Griffith College', state: 'Dublin', city: 'Dublin, Cork, Limerick', type: 'Private', tier: 'Specialist', founded: 1974, students: 7000, website: 'https://www.griffith.ie', popularPrograms: ['Law', 'Business', 'Design'], description: 'One of Ireland’s largest private colleges offering professional and academic degrees.' },
+  { id: 15, name: 'Dublin Business School (DBS)', state: 'Dublin', city: 'Dublin', type: 'Private', tier: 'Specialist', founded: 1975, students: 9000, website: 'https://www.dbs.ie', popularPrograms: ['Business', 'Psychology', 'Law'], description: 'Private college with strong industry links and career-oriented programs.' },
+  { id: 16, name: 'Institute of Public Administration (IPA)', state: 'Dublin', city: 'Dublin', type: 'Public', tier: 'Specialist', founded: 1957, students: 2000, website: 'https://www.ipa.ie', popularPrograms: ['Public Policy', 'Admin Studies', 'Finance'], description: 'Focused on educating civil servants and public-sector professionals.' },
+  { id: 17, name: 'Shannon College of Hotel Management', state: 'Clare', city: 'Shannon', type: 'Public', tier: 'Specialist', founded: 1951, students: 450, website: 'https://www.shannoncollege.com', popularPrograms: ['Hospitality', 'Hotel Management'], description: 'Prestigious institution specializing in hotel and tourism education.' },
+  { id: 18, name: 'Burren College of Art', state: 'Clare', city: 'Ballyvaughan', type: 'Private', tier: 'Art & Design', founded: 1994, students: 100, website: 'https://www.burrencollege.ie', popularPrograms: ['Fine Arts', 'Studio Art'], description: 'International art college located in Ireland’s scenic Burren region.' },
+  { id: 19, name: 'Hibernia College', state: 'Dublin', city: 'Dublin (Online)', type: 'Private', tier: 'Online / Teaching', founded: 2000, students: 3000, website: 'https://www.hiberniacollege.com', popularPrograms: ['Teaching', 'Education', 'Leadership'], description: 'Leading online provider of professional teacher education in Ireland.' },
+  { id: 20, name: 'American College Dublin', state: 'Dublin', city: 'Dublin', type: 'Private', tier: 'International', founded: 1993, students: 1000, website: 'https://www.acd.ie', popularPrograms: ['Performing Arts', 'Business', 'Liberal Arts'], description: 'U.S.-accredited private college with a focus on American liberal arts education.' }
 ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
-};
 
-    // University types and tiers
-     const universityTypes = [
-      'Public', 'Private', 'Collegiate', 'Specialist'
-    ];
 
-    const universityTiers = [
-      'Ivy League', 'Top 10 National', 'Top 25 National',
-      'Top 50 National', 'Top 100 National', 'Regional', 'State', 'Local'
-    ];
+
+const irishCounties = {
+      'Dublin': 'Dublin',
+      'Connacht': 'Connacht',
+      'Munster': 'Munster',
+      'Leinster': 'Leinster',
+      'Ulster': 'Ulster',
+    };
+   // University types for Ireland
+const universityTypesIreland = [
+  'Public',
+  'Private',
+  'Collegiate',
+  'Specialist',
+  'Technological University', // e.g., Technological University Dublin
+  'Institute of Technology'    // e.g., Cork Institute of Technology
+];
+
+// University tiers for Ireland
+const universityTiersIreland = [
+  'Top 5 National',
+  'Top 10 National',
+  'Top 20 National',
+  'Research-Intensive',
+  'Technological',
+  'Regional',
+  'Specialized',
+  'Local'
+];
+
 
     // App state
     let isLoading = false;
@@ -1162,7 +1150,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(irishCounties).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1171,7 +1159,7 @@ const singaporeStates = {
 
       // Clear and add type filters
       typeFilter.innerHTML = '<option value="">All Types</option>';
-      const types = [...new Set(universities.map(u => u.type))];
+      const types = [...new Set(universitiesIreland.map(u => u.type))];
       types.forEach(type => {
         const option = document.createElement('option');
         option.value = type;
@@ -1180,7 +1168,7 @@ const singaporeStates = {
       });
 
       // Types
-      universityTypes.forEach(type => {
+      universityTypesIreland.forEach(type => {
         const option = document.createElement('option');
         option.value = type;
         option.textContent = type;
@@ -1221,12 +1209,12 @@ const singaporeStates = {
       const state = stateFilter.value;
       const type = typeFilter.value;
       
-      return universities.filter(univ => {
+      return universitiesIreland.filter(univ => {
         const matchesSearch = !searchTerm || 
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
           univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          (irishCounties[univ.state] && irishCounties[univ.state].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1297,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${irishCounties[university.state] || university.state}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1327,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${irishCounties[university.state] || university.state}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1408,7 +1396,7 @@ const singaporeStates = {
 
     // Show enhanced university details in a modal
     function showUniversityDetails(universityId) {
-      const university = universities.find(u => u.id === universityId);
+      const university = universitiesIreland.find(u => u.id === universityId);
       if (!university) return;
       
       // Generate campus images
@@ -1494,7 +1482,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${irishCounties[university.state] || university.state}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1524,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${irishCounties[university.state] || university.state}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>

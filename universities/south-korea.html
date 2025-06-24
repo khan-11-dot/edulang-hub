@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singapore Universities</title>
+  <title>South Korea Universities</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
@@ -1044,8 +1044,8 @@
 <body>
   <div class="container">
     <header>
-      <h1>Singapore Universities</h1>
-      <p>Find and explore universities across the Singapore</p>
+      <h1>South Korea Universities</h1>
+      <p>Find and explore universities across the South Korea</p>
     </header>
     
     <div class="search-container">
@@ -1076,62 +1076,70 @@
 
   <script>
     // University data
-  // Full Singapore university dataset from ID 1 to 50
-const universities = [
-  { id: 1, name: 'National University of Singapore (NUS)', state: 'Kent Ridge', city: 'Kent Ridge', type: 'Public', tier: 'Autonomous', founded: 1905, students: 38000, acceptanceRate: 'Selective', website: 'https://www.nus.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Computer Science'], description: 'Singapore’s oldest and highest-ranked university with global reputation.' },
-  { id: 2, name: 'Nanyang Technological University (NTU)', state: 'Jurong West', city: 'Jurong West', type: 'Public', tier: 'Autonomous', founded: 1991, students: 33000, acceptanceRate: 'Selective', website: 'https://www.ntu.edu.sg', tuition: 'SGD 8,200 (Subsidized)', popularPrograms: ['Engineering', 'Business'], description: 'Top-ranked university known for engineering and technology.' },
-  { id: 3, name: 'Singapore Management University (SMU)', state: 'Bras Basah', city: 'Bras Basah', type: 'Public', tier: 'Autonomous', founded: 2000, students: 10000, acceptanceRate: 'Selective', website: 'https://www.smu.edu.sg', tuition: 'SGD 11,000 (Subsidized)', popularPrograms: ['Business', 'Law'], description: 'Urban-focused university with emphasis on business and management education.' },
-  { id: 4, name: 'Singapore University of Technology and Design (SUTD)', state: 'Upper Changi', city: 'Upper Changi', type: 'Public', tier: 'Autonomous', founded: 2009, students: 1500, acceptanceRate: 'Selective', website: 'https://www.sutd.edu.sg', tuition: 'SGD 13,000 (Subsidized)', popularPrograms: ['Architecture', 'Engineering'], description: 'Design-centric university in partnership with MIT.' },
-  { id: 5, name: 'Singapore Institute of Technology (SIT)', state: 'Dover', city: 'Dover', type: 'Public', tier: 'Autonomous', founded: 2009, students: 9000, acceptanceRate: 'Moderate', website: 'https://www.singaporetech.edu.sg', tuition: 'SGD 7,500 (Subsidized)', popularPrograms: ['Hospitality', 'Engineering'], description: 'Applied learning university offering industry-relevant programs.' },
-  { id: 6, name: 'Singapore University of Social Sciences (SUSS)', state: 'Clementi', city: 'Clementi', type: 'Public', tier: 'Autonomous', founded: 2005, students: 15000, acceptanceRate: 'Moderate', website: 'https://www.suss.edu.sg', tuition: 'SGD 7,000 (Subsidized)', popularPrograms: ['Social Work', 'Business'], description: 'Specializes in applied degree pathways with part-time and full-time options.' },
-  { id: 7, name: 'LASALLE College of the Arts', state: 'Rochor', city: 'Rochor', type: 'Public', tier: 'Specialized Arts', founded: 1984, students: 2800, acceptanceRate: 'Moderate', website: 'https://www.lasalle.edu.sg', tuition: 'SGD 10,000 (Subsidized)', popularPrograms: ['Fine Arts', 'Design'], description: 'Premier arts institution supported by the Ministry of Education.' },
-  { id: 8, name: 'Nanyang Academy of Fine Arts (NAFA)', state: 'Bencoolen', city: 'Bencoolen', type: 'Public', tier: 'Specialized Arts', founded: 1938, students: 2500, acceptanceRate: 'Open', website: 'https://www.nafa.edu.sg', tuition: 'SGD 9,000 (Subsidized)', popularPrograms: ['Fashion Design', 'Music'], description: 'Renowned arts institution offering diplomas and degrees.' },
-  { id: 9, name: 'DigiPen Institute of Technology Singapore', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Tech/Design', founded: 2008, students: 1200, acceptanceRate: 'Moderate', website: 'https://www.digipen.edu.sg', tuition: 'SGD 25,000', popularPrograms: ['Game Design', 'Computer Science'], description: 'US-based campus focusing on games, animation, and computing.' },
-  { id: 10, name: 'James Cook University Singapore', state: 'Sims Drive', city: 'Sims Drive', type: 'Private', tier: 'International Branch', founded: 2003, students: 4000, acceptanceRate: 'Open', website: 'https://www.jcu.edu.sg', tuition: 'SGD 18,000/year', popularPrograms: ['Psychology', 'Business'], description: 'Singapore university branch campus with full degree offerings.' },
-  { id: 11, name: 'PSB Academy', state: 'Novena', city: 'Novena', type: 'Private', tier: 'Industry-Focused', founded: 1964, students: 12000, acceptanceRate: 'Open', website: 'https://www.psb-academy.edu.sg', tuition: 'SGD 14,000–18,000', popularPrograms: ['Engineering', 'Business'], description: 'Recognized private institution offering UK degrees in partnership with foreign universities.' },
-  { id: 12, name: 'Kaplan Higher Education Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'International Pathway', founded: 2005, students: 18000, acceptanceRate: 'Open', website: 'https://www.kaplan.com.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Finance', 'IT'], description: 'Leading private institution offering degree pathways with global universities.' },
-  { id: 13, name: 'ERC Institute', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Entrepreneurship', 'Business'], description: 'Specializes in business and entrepreneurship training programs.' },
-  { id: 14, name: 'Amity Global Institute', state: 'Tanglin', city: 'Tanglin', type: 'Private', tier: 'International Branch', founded: 2009, students: 2500, acceptanceRate: 'Open', website: 'https://amitysingapore.sg', tuition: 'SGD 14,000–22,000', popularPrograms: ['IT', 'Business'], description: 'Indian university’s branch campus with global degree programs.' },
-  { id: 15, name: 'East Asia Institute of Management (EASB)', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'International', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['Hospitality', 'Business'], description: 'Private institute with UK degree tie-ups and industry-focused programs.' },
-  // Add IDs 16–50 here if needed
-  { id: 16, name: 'BMC International College', state: 'Beach Road', city: 'Beach Road', type: 'Private', tier: 'Vocational', founded: 1966, students: 1500, acceptanceRate: 'Open', website: 'https://www.bmc.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Business', 'Accounting'], description: 'Well-known for diploma and advanced diploma programs in business and finance.' },
-  { id: 17, name: 'Dimensions International College', state: 'Bukit Timah', city: 'Bukit Timah', type: 'Private', tier: 'International', founded: 1980, students: 2000, acceptanceRate: 'Open', website: 'https://www.dimensions.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Hospitality'], description: 'Offers diploma to degree programs with a global curriculum.' },
-  { id: 18, name: 'Informatics Academy', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'IT Focused', founded: 1983, students: 2500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 13,000–19,000', popularPrograms: ['IT', 'Cybersecurity'], description: 'Specializes in computing and IT education for global students.' },
-  { id: 19, name: 'TMC Academy', state: 'Newton', city: 'Newton', type: 'Private', tier: 'Business & IT', founded: 1981, students: 1600, acceptanceRate: 'Open', website: 'https://www.tmc.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Business', 'Mass Communication'], description: 'Boutique private college offering flexible academic pathways.' },
-  { id: 20, name: 'Stansfield College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Law & Business', founded: 1993, students: 1000, acceptanceRate: 'Open', website: 'https://www.stansfield.edu.sg', tuition: 'SGD 10,000–15,000', popularPrograms: ['Law', 'Business'], description: 'Partnered with University of London for law and business programs.' },
-  { id: 21, name: 'SDH Institute', state: 'Dhoby Ghaut', city: 'Dhoby Ghaut', type: 'Private', tier: 'Hospitality', founded: 2007, students: 800, acceptanceRate: 'Open', website: 'https://www.sdh.edu.sg', tuition: 'SGD 12,000–18,000', popularPrograms: ['Hospitality', 'Tourism'], description: 'Specialized school offering diplomas and degrees in hospitality management.' },
-  { id: 22, name: 'Beacon International College', state: 'Little India', city: 'Little India', type: 'Private', tier: 'Vocational', founded: 2003, students: 1200, acceptanceRate: 'Open', website: 'https://www.beacon.edu.sg', tuition: 'SGD 10,000–14,000', popularPrograms: ['IT', 'Business'], description: 'College offering certificate to advanced diploma programs in business and IT.' },
-  { id: 23, name: 'FTMS Global Academy', state: 'Orchard', city: 'Orchard', type: 'Private', tier: 'Finance & IT', founded: 1986, students: 1000, acceptanceRate: 'Open', website: 'https://www.ftmsglobal.edu.sg', tuition: 'SGD 11,000–15,000', popularPrograms: ['Finance', 'IT'], description: 'Academy known for professional and academic programs in finance and technology.' },
-  { id: 24, name: 'Spring College International', state: 'Bishan', city: 'Bishan', type: 'Private', tier: 'Language & Business', founded: 2001, students: 900, acceptanceRate: 'Open', website: 'https://www.spring.edu.sg', tuition: 'SGD 8,000–13,000', popularPrograms: ['English', 'Chinese', 'Business'], description: 'College providing multilingual education and business training.' },
-  { id: 25, name: 'LSBF Singapore', state: 'Cecil Street', city: 'Cecil Street', type: 'Private', tier: 'Finance & Business', founded: 2011, students: 1500, acceptanceRate: 'Open', website: 'https://www.lsbf.edu.sg', tuition: 'SGD 12,000–20,000', popularPrograms: ['Accounting', 'Business'], description: 'London School of Business & Finance’s Singapore campus with ACCA and business degrees.' },
-  { id: 26, name: 'Management Development Institute of Singapore (MDIS)', state: 'Stirling Road', city: 'Stirling Road', type: 'Private', tier: 'International Partnership', founded: 1956, students: 5000, acceptanceRate: 'Open', website: 'https://www.mdis.edu.sg', tuition: 'SGD 15,000–22,000', popularPrograms: ['Business', 'Media', 'Engineering'], description: 'Singapore’s oldest not-for-profit professional institute for lifelong learning.' },
-  { id: 27, name: 'ERC Institute', state: 'Mountbatten', city: 'Mountbatten', type: 'Private', tier: 'Business School', founded: 2003, students: 2000, acceptanceRate: 'Open', website: 'https://www.erci.edu.sg', tuition: 'SGD 12,000–17,000', popularPrograms: ['Business', 'Marketing'], description: 'Entrepreneurship-focused institute offering UK degrees.' },
-  { id: 28, name: 'EASB East Asia Institute of Management', state: 'Balestier', city: 'Balestier', type: 'Private', tier: 'UK Degree Partner', founded: 2001, students: 2000, acceptanceRate: 'Open', website: 'https://www.easb.edu.sg', tuition: 'SGD 13,000–20,000', popularPrograms: ['Business', 'Tourism'], description: 'Academic partner with leading UK institutions for undergraduate and postgraduate programs.' },
-  { id: 29, name: 'Academies Australasia College', state: 'Bukit Merah', city: 'Bukit Merah', type: 'Private', tier: 'Vocational', founded: 1908, students: 1000, acceptanceRate: 'Open', website: 'https://www.aac.edu.sg', tuition: 'SGD 8,000–12,000', popularPrograms: ['Hospitality', 'Business'], description: 'Vocational and diploma-level courses from a century-old institution.' },
-  { id: 30, name: 'Informatics Global Campus', state: 'Tanjong Pagar', city: 'Tanjong Pagar', type: 'Private', tier: 'IT & Business', founded: 1983, students: 1500, acceptanceRate: 'Open', website: 'https://www.informatics.edu.sg', tuition: 'SGD 11,000–18,000', popularPrograms: ['Data Science', 'Business IT'], description: 'Online and blended learning hub of Informatics Group.' },
-  { id: 31, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 32, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 33, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 34, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
-  { id: 35, name: 'Asia Pacific University of Technology & Innovation (APU)', state: 'Tampines', city: 'Tampines', type: 'Private', tier: 'Technical', founded: 2006, students: 1200, acceptanceRate: 'Open', website: 'https://www.apu.edu.sg', tuition: 'SGD 12,000–16,000', popularPrograms: ['Engineering', 'Business'], description: 'Private university offering technical and business programs.' },
+    const universities = [
+  { id: 1, name: 'Seoul National University', province: 'Seoul', city: 'Seoul', type: 'Public', tier: 'Top', founded: 1946, students: 28000, acceptanceRate: '15%', website: 'https://www.snu.ac.kr', tuition: '₩2,000,000–₩6,000,000 per semester', popularPrograms: ['Engineering', 'Business', 'Medicine'], description: 'South Korea’s premier national university with strong emphasis on research and global reputation.' },
+  { id: 2, name: 'Korea Advanced Institute of Science and Technology (KAIST)', province: 'Daejeon', city: 'Daejeon', type: 'Public', tier: 'Top', founded: 1971, students: 11000, acceptanceRate: '20%', website: 'https://www.kaist.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Science', 'Technology', 'AI'], description: 'World-renowned institution focused on science and technology innovation.' },
+  { id: 3, name: 'Yonsei University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'SKY', founded: 1885, students: 35000, acceptanceRate: '22%', website: 'https://www.yonsei.ac.kr', tuition: '₩4,000,000–₩8,000,000 per semester', popularPrograms: ['Medicine', 'International Studies', 'Business'], description: 'Historic private university and part of the elite SKY trio in South Korea.' },
+  { id: 4, name: 'Korea University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'SKY', founded: 1905, students: 37000, acceptanceRate: '20%', website: 'https://www.korea.ac.kr', tuition: '₩4,000,000–₩7,000,000 per semester', popularPrograms: ['Law', 'Business', 'Engineering'], description: 'Another prestigious SKY university with a strong reputation in law and business.' },
+  { id: 5, name: 'Pohang University of Science and Technology (POSTECH)', province: 'Gyeongsangbuk-do', city: 'Pohang', type: 'Private', tier: 'Top Science', founded: 1986, students: 3500, acceptanceRate: '17%', website: 'https://www.postech.ac.kr', tuition: '₩3,500,000–₩6,000,000 per semester', popularPrograms: ['Materials Science', 'Physics', 'Engineering'], description: 'Highly ranked for science and engineering, with excellent research output.' },
+  { id: 6, name: 'Hanyang University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Top', founded: 1939, students: 31000, acceptanceRate: '30%', website: 'https://www.hanyang.ac.kr', tuition: '₩3,500,000–₩7,000,000 per semester', popularPrograms: ['Engineering', 'Medicine', 'Architecture'], description: 'Known for engineering and practical education, with strong industry partnerships.' },
+  { id: 7, name: 'Sungkyunkwan University (SKKU)', province: 'Gyeonggi-do', city: 'Suwon / Seoul', type: 'Private', tier: 'Samsung Affiliated', founded: 1398, students: 25000, acceptanceRate: '25%', website: 'https://www.skku.edu', tuition: '₩4,000,000–₩7,000,000 per semester', popularPrograms: ['Engineering', 'Pharmacy', 'Business'], description: 'Historical institution now backed by Samsung, offering high-tech and business-focused education.' },
+  { id: 8, name: 'Ewha Womans University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Women’s University', founded: 1886, students: 20000, acceptanceRate: '30%', website: 'https://www.ewha.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Nursing', 'Education', 'Art'], description: 'World’s largest female educational institute with top programs in humanities and arts.' },
+  { id: 9, name: 'Kyung Hee University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Upper Mid-Tier', founded: 1949, students: 30000, acceptanceRate: '35%', website: 'https://www.khu.ac.kr', tuition: '₩3,500,000–₩6,500,000 per semester', popularPrograms: ['Medicine', 'Hotel Management', 'Philosophy'], description: 'Known for its beautiful campus and strong liberal arts and health sciences programs.' },
+  { id: 10, name: 'Chung-Ang University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Mid-Tier', founded: 1918, students: 29000, acceptanceRate: '38%', website: 'https://www.cau.ac.kr', tuition: '₩3,000,000–₩6,500,000 per semester', popularPrograms: ['Film', 'Pharmacy', 'Engineering'], description: 'Respected university particularly renowned for its film and performing arts department.' },
+  { id: 11, name: 'Inha University', province: 'Incheon', city: 'Incheon', type: 'Private', tier: 'Mid-Tier', founded: 1954, students: 21000, acceptanceRate: '40%', website: 'https://www.inha.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Engineering', 'Business', 'Logistics'], description: 'Tech-focused university known for strong engineering and international logistics.' },
+  { id: 12, name: 'Chonbuk National University', province: 'Jeollabuk-do', city: 'Jeonju', type: 'Public', tier: 'National', founded: 1947, students: 30000, acceptanceRate: '42%', website: 'https://www.jbnu.ac.kr', tuition: '₩2,500,000–₩5,500,000 per semester', popularPrograms: ['Agriculture', 'Engineering', 'Pharmacy'], description: 'Major regional university with strengths in research and agriculture.' },
+  { id: 13, name: 'Pusan National University', province: 'Busan', city: 'Busan', type: 'Public', tier: 'National', founded: 1946, students: 35000, acceptanceRate: '35%', website: 'https://www.pusan.ac.kr', tuition: '₩2,700,000–₩5,500,000 per semester', popularPrograms: ['Engineering', 'Marine Science', 'Economics'], description: 'Prestigious national university with strong programs in oceanography and engineering.' },
+  { id: 14, name: 'Sogang University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Selective', founded: 1960, students: 12000, acceptanceRate: '28%', website: 'https://www.sogang.ac.kr', tuition: '₩4,000,000–₩6,500,000 per semester', popularPrograms: ['Economics', 'Physics', 'Literature'], description: 'Jesuit university focused on liberal arts, social sciences, and research excellence.' },
+  { id: 15, name: 'Chungnam National University', province: 'Daejeon', city: 'Daejeon', type: 'Public', tier: 'National', founded: 1952, students: 25000, acceptanceRate: '45%', website: 'https://www.cnu.ac.kr', tuition: '₩2,800,000–₩5,000,000 per semester', popularPrograms: ['Engineering', 'Veterinary Science', 'Agriculture'], description: 'National university with a broad range of academic strengths and solid reputation.' },
+  { id: 16, name: 'Dankook University', province: 'Gyeonggi-do', city: 'Yongin / Cheonan', type: 'Private', tier: 'General', founded: 1947, students: 30000, acceptanceRate: '50%', website: 'https://www.dankook.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Performing Arts', 'Dentistry', 'Business'], description: 'Dual-campus university known for the arts and health sciences.' },
+  { id: 17, name: 'Ajou University', province: 'Gyeonggi-do', city: 'Suwon', type: 'Private', tier: 'Rising', founded: 1973, students: 18000, acceptanceRate: '40%', website: 'https://www.ajou.ac.kr', tuition: '₩3,500,000–₩6,200,000 per semester', popularPrograms: ['Engineering', 'IT', 'Medical Sciences'], description: 'Rapidly growing university with strengths in engineering and research.' },
+  { id: 18, name: 'Gwangju Institute of Science and Technology (GIST)', province: 'Gwangju', city: 'Gwangju', type: 'Public', tier: 'Research Institute', founded: 1993, students: 1800, acceptanceRate: 'Highly Selective', website: 'https://www.gist.ac.kr', tuition: '₩3,000,000–₩5,000,000 per semester', popularPrograms: ['AI', 'Photonics', 'Robotics'], description: 'Small elite science institute with globally competitive research programs.' },
+  { id: 19, name: 'University of Ulsan', province: 'Ulsan', city: 'Ulsan', type: 'Private', tier: 'Mid-Tier', founded: 1970, students: 19000, acceptanceRate: '45%', website: 'https://www.ulsan.ac.kr', tuition: '₩3,200,000–₩6,000,000 per semester', popularPrograms: ['Engineering', 'Business', 'Automotive Design'], description: 'Strong ties to Hyundai; known for engineering and industry collaboration.' },
+  { id: 20, name: 'Sejong University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Mid-Tier', founded: 1940, students: 15000, acceptanceRate: '42%', website: 'https://www.sejong.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Hotel Management', 'Dance', 'Computer Science'], description: 'Well-rounded university with standout programs in arts and hospitality.' },
+  { id: 21, name: 'Konkuk University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Mid-Tier', founded: 1946, students: 25000, acceptanceRate: '45%', website: 'https://www.konkuk.ac.kr', tuition: '₩3,200,000–₩6,000,000 per semester', popularPrograms: ['Biotechnology', 'Veterinary Medicine', 'Business'], description: 'Urban campus with strong programs in bio and life sciences.' },
+  { id: 22, name: 'Hallym University', province: 'Gangwon-do', city: 'Chuncheon', type: 'Private', tier: 'General', founded: 1982, students: 9000, acceptanceRate: '50%', website: 'https://www.hallym.ac.kr', tuition: '₩2,800,000–₩5,800,000 per semester', popularPrograms: ['Medicine', 'Media', 'Social Welfare'], description: 'Humanities and health sciences university in scenic region.' },
+  { id: 23, name: 'Kangwon National University', province: 'Gangwon-do', city: 'Chuncheon', type: 'Public', tier: 'National', founded: 1947, students: 18000, acceptanceRate: '50%', website: 'https://www.kangwon.ac.kr', tuition: '₩2,700,000–₩5,500,000 per semester', popularPrograms: ['Forestry', 'Veterinary', 'Engineering'], description: 'Main regional university with strong agriculture and science focus.' },
+  { id: 24, name: 'University of Seoul', province: 'Seoul', city: 'Seoul', type: 'Public', tier: 'Urban', founded: 1918, students: 15000, acceptanceRate: '38%', website: 'https://www.uos.ac.kr', tuition: '₩2,500,000–₩5,000,000 per semester', popularPrograms: ['Urban Planning', 'Environmental Engineering', 'Economics'], description: 'Public university run by the city, strong in urban and public policy studies.' },
+  { id: 25, name: 'Jeju National University', province: 'Jeju', city: 'Jeju City', type: 'Public', tier: 'National', founded: 1952, students: 12000, acceptanceRate: '60%', website: 'https://www.jejunu.ac.kr', tuition: '₩2,700,000–₩5,200,000 per semester', popularPrograms: ['Marine Biology', 'Tourism', 'Agriculture'], description: 'Island-based national university with a unique research environment.' },
+  { id: 26, name: 'Kyungpook National University', province: 'Daegu', city: 'Daegu', type: 'Public', tier: 'National', founded: 1946, students: 32000, acceptanceRate: '42%', website: 'https://www.knu.ac.kr', tuition: '₩2,800,000–₩5,800,000 per semester', popularPrograms: ['Medicine', 'Engineering', 'Science'], description: 'One of Korea’s top national universities with strong research output.' },
+  { id: 27, name: 'Chungbuk National University', province: 'Chungcheongbuk-do', city: 'Cheongju', type: 'Public', tier: 'National', founded: 1951, students: 22000, acceptanceRate: '50%', website: 'https://www.chungbuk.ac.kr', tuition: '₩2,600,000–₩5,000,000 per semester', popularPrograms: ['Engineering', 'Agriculture', 'Business'], description: 'Regional public university serving central Korea.' },
+  { id: 28, name: 'Dongguk University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Specialized', founded: 1906, students: 19000, acceptanceRate: '40%', website: 'https://www.dongguk.edu', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Buddhist Studies', 'Film', 'Medical Science'], description: 'One of the only Buddhist-affiliated universities, known for arts and film.' },
+  { id: 29, name: 'Ewha Womans University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Elite', founded: 1886, students: 20000, acceptanceRate: '35%', website: 'https://www.ewha.ac.kr', tuition: '₩3,500,000–₩6,800,000 per semester', popularPrograms: ['Women’s Studies', 'Medicine', 'Design'], description: 'Prestigious women’s university with global influence and elite academics.' },
+  { id: 30, name: 'Myongji University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Mid-Tier', founded: 1948, students: 17000, acceptanceRate: '48%', website: 'https://www.mju.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Game Design', 'Engineering', 'Business'], description: 'Technology-friendly institution with growing emphasis on digital innovation.' },
+  { id: 31, name: 'Sogang University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Elite', founded: 1960, students: 12000, acceptanceRate: '35%', website: 'https://www.sogang.ac.kr', tuition: '₩3,500,000–₩6,500,000 per semester', popularPrograms: ['Humanities', 'Business', 'Computer Science'], description: 'Jesuit-affiliated university with liberal arts focus and high academic standards.' },
+  { id: 32, name: 'Hoseo University', province: 'Chungcheongnam-do', city: 'Asan', type: 'Private', tier: 'Applied Sciences', founded: 1978, students: 13000, acceptanceRate: '55%', website: 'https://www.hoseo.ac.kr', tuition: '₩2,800,000–₩5,000,000 per semester', popularPrograms: ['Design', 'Engineering', 'Animation'], description: 'Innovative private university known for creative industries and engineering.' },
+  { id: 33, name: 'Inje University', province: 'Gyeongsangnam-do', city: 'Gimhae', type: 'Private', tier: 'Medical-Focused', founded: 1932, students: 14000, acceptanceRate: '52%', website: 'https://www.inje.ac.kr', tuition: '₩3,000,000–₩5,800,000 per semester', popularPrograms: ['Medicine', 'Nursing', 'Social Work'], description: 'Health-focused university with one of Korea’s top medical schools.' },
+  { id: 34, name: 'Sun Moon University', province: 'Chungcheongnam-do', city: 'Asan', type: 'Private', tier: 'General', founded: 1989, students: 11000, acceptanceRate: '58%', website: 'https://www.sunmoon.ac.kr', tuition: '₩2,700,000–₩5,000,000 per semester', popularPrograms: ['International Studies', 'IT', 'Business'], description: 'Global-minded Christian university with growing foreign student body.' },
+  { id: 35, name: 'Changwon National University', province: 'Gyeongsangnam-do', city: 'Changwon', type: 'Public', tier: 'Regional', founded: 1969, students: 15000, acceptanceRate: '60%', website: 'https://www.changwon.ac.kr', tuition: '₩2,800,000–₩5,200,000 per semester', popularPrograms: ['Engineering', 'Business', 'Marine Studies'], description: 'Key university in industrial hub with focus on mechanical and marine tech.' },
+  { id: 36, name: 'Sejong University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Technology', founded: 1940, students: 16000, acceptanceRate: '44%', website: 'https://www.sejong.ac.kr', tuition: '₩3,000,000–₩6,000,000 per semester', popularPrograms: ['Hotel Management', 'Computer Science', 'Dance'], description: 'Noted for hospitality and the arts, with strong technical departments.' },
+  { id: 37, name: 'Daegu Catholic University', province: 'Gyeongsangbuk-do', city: 'Gyeongsan', type: 'Private', tier: 'Religious', founded: 1914, students: 14000, acceptanceRate: '55%', website: 'https://www.cu.ac.kr', tuition: '₩2,800,000–₩5,400,000 per semester', popularPrograms: ['Nursing', 'Social Welfare', 'Psychology'], description: 'Catholic university with a mission-driven approach to social and health sciences.' },
+  { id: 38, name: 'Kunsan National University', province: 'Jeollabuk-do', city: 'Gunsan', type: 'Public', tier: 'Regional', founded: 1947, students: 10000, acceptanceRate: '60%', website: 'https://www.kunsan.ac.kr', tuition: '₩2,600,000–₩4,800,000 per semester', popularPrograms: ['Shipbuilding', 'Engineering', 'IT'], description: 'Coastal public university with maritime and engineering strengths.' },
+  { id: 39, name: 'Gyeongsang National University', province: 'Gyeongsangnam-do', city: 'Jinju', type: 'Public', tier: 'National', founded: 1948, students: 21000, acceptanceRate: '52%', website: 'https://www.gnu.ac.kr', tuition: '₩2,700,000–₩5,000,000 per semester', popularPrograms: ['Agriculture', 'Veterinary Medicine', 'Engineering'], description: 'Key national university in southern Korea with strong research focus.' },
+  { id: 40, name: 'Hansung University', province: 'Seoul', city: 'Seoul', type: 'Private', tier: 'Design-Focused', founded: 1945, students: 8000, acceptanceRate: '60%', website: 'https://www.hansung.ac.kr', tuition: '₩3,000,000–₩5,500,000 per semester', popularPrograms: ['Fashion Design', 'Business', 'Visual Communication'], description: 'Seoul-based university popular for arts and business programs.' }
 ];
 
-const singaporeStates = {
-  'Kent Ridge': 'Kent Ridge',
-  'Jurong West': 'Jurong West',
-  'Bras Basah': 'Bras Basah',
-  'Upper Changi': 'Upper Changi',
-  'Dover': 'Dover',
-  'Clementi': 'Clementi',
-  'Rochor': 'Rochor',
-  'Bencoolen': 'Bencoolen',
-  'Tampines': 'Tampines',
-  'Sims Drive': 'Sims Drive',
-  'Novena': 'Novena',
-  'Bukit Timah': 'Bukit Timah',
-  'Pasir Panjang': 'Pasir Panjang',
-  'Redhill': 'Redhill',
-  'Yishun': 'Yishun'
+
+
+
+const southKoreanRegions = {
+  'Seoul': 'Seoul',
+  'Busan': 'Busan',
+  'Incheon': 'Incheon',
+  'Daegu': 'Daegu',
+  'Daejeon': 'Daejeon',
+  'Gwangju': 'Gwangju',
+  'Ulsan': 'Ulsan',
+  'Sejong': 'Sejong',
+  'Gyeonggi-do': 'Gyeonggi-do',
+  'Gangwon-do': 'Gangwon-do',
+  'Chungcheongbuk-do': 'Chungcheongbuk-do',
+  'Chungcheongnam-do': 'Chungcheongnam-do',
+  'Jeollabuk-do': 'Jeollabuk-do',
+  'Jeollanam-do': 'Jeollanam-do',
+  'Gyeongsangbuk-do': 'Gyeongsangbuk-do',
+  'Gyeongsangnam-do': 'Gyeongsangnam-do',
+  'Jeju-do': 'Jeju-do'
 };
 
     // University types and tiers
@@ -1162,7 +1170,7 @@ const singaporeStates = {
       stateFilter.innerHTML = '<option value="">All States</option>';
       
       // States
-      Object.entries(singaporeStates).forEach(([name, value]) => {
+      Object.entries(southKoreanRegions).forEach(([name, value]) => {
         const option = document.createElement('option');
         option.value = name;
         option.textContent = name;
@@ -1226,7 +1234,7 @@ const singaporeStates = {
           univ.name.toLowerCase().includes(searchTerm) ||
           univ.city.toLowerCase().includes(searchTerm) ||
           univ.state.toLowerCase().includes(searchTerm) ||
-          (singaporeStates[univ.state] && singaporeStates[univ.state].toLowerCase().includes(searchTerm));
+          (southKoreanRegions[univ.state] && southKoreanRegions[univ.state].toLowerCase().includes(searchTerm));
         
         const matchesState = !state || univ.state === state;
         const matchesType = !type || univ.type === type;
@@ -1309,7 +1317,7 @@ const singaporeStates = {
     <div style="padding:1rem 0; border-top:1px solid #eee;">
       <strong>Description:</strong>
       <p>${university.description || 'No description available.'}</p>
-      <div><strong>Location:</strong> ${university.city}, ${singaporeStates[university.state] || university.state}</div>
+      <div><strong>Location:</strong> ${university.city}, ${southKoreanRegions[university.state] || university.state}</div>
       <div><strong>Founded:</strong> ${university.founded}</div>
       <div><strong>Students:</strong> ${university.students.toLocaleString()}</div>
       <div><strong>Acceptance Rate:</strong> ${university.acceptanceRate}%</div>
@@ -1339,7 +1347,7 @@ const singaporeStates = {
       <div class="university-stats">
         <div class="stat" title="Location">
           <i class="fas fa-map-marker-alt"></i>
-          <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+          <span>${university.city}, ${southKoreanRegions[university.state] || university.state}</span>
         </div>
         <div class="stat" title="Student population">
           <i class="fas fa-users"></i>
@@ -1494,7 +1502,7 @@ const singaporeStates = {
             <div class="header-content">
               <h1>${university.name}</h1>
               <div class="university-meta">
-                <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                <span>${university.city}, ${southKoreanRegions[university.state] || university.state}</span>
                 <span class="divider">•</span>
                 <span>Est. ${university.founded}</span>
                 <span class="divider">•</span>
@@ -1536,7 +1544,7 @@ const singaporeStates = {
                     </div>
                     <div class="highlight">
                       <i class="fas fa-map-marker-alt"></i>
-                      <span>${university.city}, ${singaporeStates[university.state] || university.state}</span>
+                      <span>${university.city}, ${southKoreanRegions[university.state] || university.state}</span>
                     </div>
                     <div class="highlight">
                       <i class="fas fa-calendar-alt"></i>
