@@ -216,6 +216,88 @@
       color: var(--primary);
     }
 
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .modal-content {
+      background: white;
+      margin: 2% auto;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 800px;
+      width: 90%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: #666;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+    }
+
+    .modal-close:hover {
+      color: #000;
+    }
+
+    .modal-header {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-header h2 {
+      margin: 0 0 0.5rem 0;
+      color: var(--primary);
+    }
+
+    .modal-body {
+      line-height: 1.8;
+    }
+
+    .modal-body h3 {
+      color: var(--primary);
+      margin: 1.5rem 0 1rem;
+      font-size: 1.25rem;
+    }
+
+    .modal-body ul {
+      padding-left: 1.5rem;
+      margin: 0.8rem 0;
+    }
+
+    .modal-body li {
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-footer {
+      margin-top: 2rem;
+      text-align: right;
+    }
+
+    @media (max-width: 768px) {
+      .modal-content {
+        padding: 1.5rem 1rem;
+      }
+    }
+
     .btn:hover {
       background: var(--primary-light);
     }
@@ -375,6 +457,14 @@
       
       .btn {
         width: 100%;
+      }
+    }
+    /* Responsive Modal */
+    @media (max-width: 768px) {
+      .modal-content {
+        width: 90%;
+        margin: 10% auto;
+        padding: 1.5rem;
       }
     }
   </style>
@@ -807,6 +897,44 @@
   </main>
 
   <!-- Footer -->
+  <!-- Scholarship Details Modal -->
+  <div id="scholarshipModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <div class="modal-header">
+        <h2 id="modalTitle">Scholarship Title</h2>
+        <div class="scholarship-meta">
+          <span id="modalCountry" class="scholarship-country"><i class="fas fa-globe"></i> Country</span>
+          <span id="modalDeadline" class="scholarship-deadline">Deadline: Loading...</span>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div id="modalDescription" class="scholarship-description"></div>
+        
+        <h3>Scholarship Coverage</h3>
+        <ul id="modalCoverage">
+          <!-- Will be populated by JavaScript -->
+        </ul>
+        
+        <h3>Eligibility Criteria</h3>
+        <ul id="modalEligibility">
+          <!-- Will be populated by JavaScript -->
+        </ul>
+        
+        <h3>Required Documents</h3>
+        <ul id="modalDocuments">
+          <!-- Will be populated by JavaScript -->
+        </ul>
+        
+        <div id="modalNotes" class="notes"></div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" id="modalApplyLink" class="btn" target="_blank">Apply Now</a>
+        <button class="btn btn-outline modal-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -862,10 +990,82 @@
   <script>
     // JavaScript functionality will be added here
     document.addEventListener('DOMContentLoaded', function() {
-      // Initialize tooltips
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-      tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
+      // Modal elements
+      const modal = document.getElementById('scholarshipModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalCountry = document.getElementById('modalCountry');
+      const modalDeadline = document.getElementById('modalDeadline');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalCoverage = document.getElementById('modalCoverage');
+      const modalEligibility = document.getElementById('modalEligibility');
+      const modalDocuments = document.getElementById('modalDocuments');
+      const modalNotes = document.getElementById('modalNotes');
+      const modalApplyLink = document.getElementById('modalApplyLink');
+      const closeButtons = document.querySelectorAll('.modal-close, .modal-close-btn');
+      const viewDetailButtons = document.querySelectorAll('.view-details-btn');
+
+      // Function to open modal with scholarship details
+      function openScholarshipModal(scholarshipId) {
+        const scholarship = scholarships[scholarshipId];
+        if (!scholarship) return;
+
+        // Update modal content
+        modalTitle.textContent = scholarship.name;
+        modalCountry.innerHTML = `<i class="fas fa-globe"></i> ${scholarship.country}`;
+        modalDeadline.textContent = `Deadline: ${scholarship.deadline}`;
+        modalDescription.textContent = scholarship.description;
+        
+        // Populate coverage
+        modalCoverage.innerHTML = scholarship.coverage.map(item => `<li>${item}</li>`).join('');
+        
+        // Populate eligibility
+        modalEligibility.innerHTML = scholarship.eligibility.map(item => `<li>${item}</li>`).join('');
+        
+        // Populate documents
+        modalDocuments.innerHTML = scholarship.documents.map(doc => `<li>${doc}</li>`).join('');
+        
+        // Add notes if available
+        if (scholarship.notes) {
+          modalNotes.innerHTML = `<h4>Important Notes</h4><p>${scholarship.notes}</p>`;
+        } else {
+          modalNotes.innerHTML = '';
+        }
+        
+        // Update apply link
+        modalApplyLink.href = scholarship.applyLink || '#';
+        
+        // Show modal
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Close modal function
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // Add event listeners for close buttons
+      closeButtons.forEach(button => {
+        button.addEventListener('click', closeModal);
+      });
+
+      // Close modal when clicking outside the content
+      window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Add event listeners to view detail buttons
+      viewDetailButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const scholarshipId = button.getAttribute('data-scholarship');
+          if (scholarshipId) {
+            openScholarshipModal(scholarshipId);
+          }
+        });
       });
 
       // Search functionality
@@ -873,10 +1073,14 @@
       const searchBtn = document.querySelector('.search-btn');
       
       searchBtn.addEventListener('click', function() {
-        const searchTerm = searchBar.value.trim();
+        const searchTerm = searchBar.value.trim().toLowerCase();
         if (searchTerm) {
-          // Implement search functionality
-          alert('Searching for: ' + searchTerm);
+          // Implement basic search functionality
+          const cards = document.querySelectorAll('.scholarship-card');
+          cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+          });
         }
       });
 
@@ -887,8 +1091,16 @@
         const country = document.getElementById('country').value;
         const type = document.getElementById('type').value;
         
-        // Implement filter functionality
-        console.log('Filters applied:', { degree, country, type });
+        // Basic filter implementation
+        const cards = document.querySelectorAll('.scholarship-card');
+        cards.forEach(card => {
+          const cardText = card.textContent.toLowerCase();
+          const matchesDegree = !degree || cardText.includes(degree);
+          const matchesCountry = !country || cardText.includes(country);
+          const matchesType = !type || card.getAttribute('data-type') === type;
+          
+          card.style.display = (matchesDegree && matchesCountry && matchesType) ? 'block' : 'none';
+        });
       });
 
       // Reset filters
@@ -898,7 +1110,12 @@
         document.getElementById('country').value = '';
         document.getElementById('type').value = '';
         
-        // Reset any filtered results
+        // Show all scholarship cards
+        const cards = document.querySelectorAll('.scholarship-card');
+        cards.forEach(card => {
+          card.style.display = 'block';
+        });
+        
         console.log('Filters reset');
       });
     });
