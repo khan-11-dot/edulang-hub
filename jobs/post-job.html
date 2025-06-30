@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job - EduLang Hub</title>
+</head>
+<body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Post a Job - EduLang Hub</title>
+  <style>
+    .modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 80px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  color: #333;
+  position: relative;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  color: #111;
+}
+
+.modal-body {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-top: 10px;
+}
+
+.modal-body ul {
+  padding-left: 20px;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.close {
+  color: #aaa;
+  font-size: 28px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #000;
+}
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .form-container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 40px 30px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      color: white;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 10px 14px;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      background: transparent;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 80px;
+    }
+
+    .form-group input::placeholder {
+      color: #ccc;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #90caf9;
+      border: none;
+      border-radius: 5px;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 15px;
+    }
+
+    .submit-btn:hover {
+      background-color: #64b5f6;
+    }
+
+    .bottom-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .bottom-link a {
+      color: #90caf9;
+      text-decoration: none;
+    }
+
+    .bottom-link a:hover {
+      text-decoration: underline;
+    }
+
+    .warning-message {
+      margin-top: 20px;
+      padding: 12px;
+      font-size: 14px;
+      color: #ffb3b3;
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid rgba(255, 0, 0, 0.4);
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Post a Job</h2>
+    <form id="jobForm">
+      <div class="form-group">
+        <label>Job Title</label>
+        <input type="text" placeholder="e.g. Web Developer" required />
+      </div>
+
+      <div class="form-group">
+        <label>Company Name</label>
+        <input type="text" placeholder="e.g. EduLang Hub" required />
+      </div>
+
+      <div class="form-group">
+        <label>Job Type</label>
+        <select required>
+          <option>Select Job Type</option>
+          <option>Full-Time</option>
+          <option>Part-Time</option>
+          <option>Remote</option>
+          <option>Freelance</option>
+          <option>Army</option>
+          <option>Technician</option>
+          <option>Air Force</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <select required>
+          <option>Select Country</option>
+          <option>Pakistan</option>
+          <option>India</option>
+          <option>UAE</option>
+          <option>Germany</option>
+          <option>Canada</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Contact Email</label>
+        <input type="email" placeholder="your@email.com" required />
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="+92xxxxxxxxxx" required />
+      </div>
+
+      <div class="form-group">
+        <label>Job Description</label>
+        <textarea placeholder="Write full job responsibilities..." required></textarea>
+    
+      <div class="form-group">
+        <input type="checkbox" id="agree" required />
+        <label for="agree" style="font-size: 13px;">
+          I agree to the <a href="#" id="openModal" style="color: #90caf9;">Terms & Conditions</a> of EduLang Hub.
+        </label>
+      </div>
+      
+      <button type="submit" class="submit-btn">Submit Job</button>
+
+      <div class="bottom-link">
+        Already have jobs listed? <a href="#">View Listings</a>
+      </div>
+
+      <div class="warning-message">
+        ⚠️ Warning: If you post a fake job or attempt to cheat users, strict legal and disciplinary action will be taken against you by EduLang Hub based on your phone number and location.
+      </div>
+      
+      
+      
+    </form>
+  </div>
+  <script>
+    document.getElementById("jobForm").addEventListener("submit", function(e) {
+      if (!document.getElementById("agree").checked) {
+        alert("You must agree to the Terms & Conditions to continue.");
+        e.preventDefault();
+      } else {
+        alert("Job submitted successfully!");
+      }
+    });
+  </script>
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3>EduLang Hub – Terms & Conditions</h3>
+      <div class="modal-body">
+        <ul>
+          <li>Only real, clear job postings are allowed.</li>
+          <li>Fake jobs, fraud, or spam will lead to permanent ban and legal action.</li>
+          <li>Phone number and location may be used to trace users who violate terms.</li>
+          <li>No discrimination of any kind is tolerated.</li>
+          <li>EduLang Hub may review or reject job posts at its discretion.</li>
+          <li>We are not responsible for any user-to-user agreements.</li>
+          <li>Information provided is stored securely and only used when required.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>
+    const openModal = document.getElementById("openModal");
+    const closeModal = document.getElementById("closeModal");
+    const termsModal = document.getElementById("termsModal");
+  
+    openModal.onclick = function (e) {
+      e.preventDefault();
+      termsModal.style.display = "block";
+    }
+  
+    closeModal.onclick = function () {
+      termsModal.style.display = "none";
+    }
+  
+    window.onclick = function (event) {
+      if (event.target == termsModal) {
+        termsModal.style.display = "none";
+      }
+    }
+  </script>
+  
+</body>
+</html>

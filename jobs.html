@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JobBoard - Dream Job Finder</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?fit=crop&w=1500&q=80') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      position: relative;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #8CC63F;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .hero-content {
+      text-align: center;
+      padding-top: 150px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .hero-content h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      color: #161313;
+      margin-bottom: 30px;
+    }
+
+    .search-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .search-bar input, .search-bar select {
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      min-width: 180px;
+    }
+
+    .keywords {
+      margin-top: 20px;
+    }
+
+    .keywords span {
+      background-color: #444;
+      padding: 5px 10px;
+      border-radius: 20px;
+      margin: 0 5px;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .arrow-down {
+      text-align: center;
+      font-size: 30px;
+      color: white;
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+
+    .stats-section {
+      background: #8CC63F;
+      padding: 60px 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .stats-section h2 {
+      margin-bottom: 10px;
+    }
+
+    .stats-section p {
+      max-width: 600px;
+      margin: auto;
+      margin-bottom: 40px;
+    }
+
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .stat {
+      font-size: 22px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 34px;
+      font-weight: bold;
+    }
+
+    @media(max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+      .search-bar {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <nav>
+      <div style="font-size: 24px; font-weight: bold;"> <i class="fas fa-graduation-cap"></i>Careers at EduLang Hub</div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Job Listings</a></li>
+        <li><a href="#">Pages</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div>
+        <a href="jobs/post-job.html" class="btn"  style="margin-right: 10px;">Post a Job</a>
+       
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <h1>The Easiest Way To Get Your Dream Job</h1>
+      <p>Join our mission to teach languages, typing, and computer skills across the world.</p>
+      <div class="search-bar">
+        <input type="text" placeholder="Job title, Company...">
+        <select>
+          <option>Select Region</option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>United Kingdom</option>
+            <option>Germany</option>
+            <option>Australia</option>
+            <option>New Zealand</option>
+            <option>United Arab Emirates</option>
+            <option>Saudi Arabia</option>
+            <option>Qatar</option>
+            <option>Singapore</option>
+            <option>Japan</option>
+            <option>South Korea</option>
+            <option>Sweden</option>
+            <option>Netherlands</option>
+            <option>Switzerland</option>
+            <option>Norway</option>
+            <option>Denmark</option>
+            <option>France</option>
+            <option>Finland</option>
+            <option>Ireland</option>
+            <option>Italy</option>
+            <option>Spain</option>
+            <option>Malaysia</option>
+            <option>Thailand</option>
+            <option>Vietnam</option>
+            <option>Indonesia</option>
+            <option>China</option>
+            <option>India</option>
+            <option>Pakistan</option>
+            <option>Philippines</option>
+            <option>South Africa</option>
+            <option>Brazil</option>
+            <option>Turkey</option>
+            <option>Poland</option>
+            <option>Austria</option>
+        </select>
+        <select>
+            <option>Select Job Type</option>
+          
+            <!-- General Work Modes -->
+            <option>Full-Time</option>
+            <option>Part-Time</option>
+            <option>Remote</option>
+            <option>Freelance</option>
+            <option>Contract</option>
+            <option>Internship</option>
+            <option>Temporary</option>
+            <option>Work From Home</option>
+            <option>Onsite</option>
+            <option>Hybrid</option>
+          
+            <!-- Education & Office -->
+            <option>Teaching</option>
+            <option>Tutoring</option>
+            <option>Typing Operator</option>
+            <option>Data Entry</option>
+            <option>Call Center Agent</option>
+            <option>Customer Support</option>
+            <option>Office Assistant</option>
+            <option>Receptionist</option>
+          
+            <!-- IT & Digital -->
+            <option>IT / Software</option>
+            <option>Web Developer</option>
+            <option>App Developer</option>
+            <option>Graphic Designer</option>
+            <option>Content Writer</option>
+            <option>Social Media Manager</option>
+            <option>Video Editor</option>
+            <option>SEO Specialist</option>
+          
+            <!-- Government & Forces -->
+            <option>Army</option>
+            <option>Navy</option>
+            <option>Air Force</option>
+            <option>Police</option>
+            <option>Rescue / Emergency</option>
+            <option>WAPDA / Electricity Department</option>
+            <option>Post Office</option>
+            <option>Government Clerk</option>
+          
+            <!-- Skilled Workers -->
+            <option>Electrician</option>
+            <option>Plumber</option>
+            <option>Technician</option>
+            <option>Mechanic</option>
+            <option>Welder</option>
+            <option>Carpenter</option>
+            <option>Painter</option>
+            <option>Tailor</option>
+            <option>Beautician</option>
+            <option>Photographer</option>
+          
+            <!-- Labor & Services -->
+            <option>Construction Worker</option>
+            <option>Factory Worker</option>
+            <option>Driver</option>
+            <option>Delivery Rider</option>
+            <option>Cleaner / Janitor</option>
+            <option>Security Guard</option>
+            <option>Cook / Chef</option>
+            <option>Waiter</option>
+          
+            <!-- Health & Medical -->
+            <option>Doctor</option>
+            <option>Nurse</option>
+            <option>Pharmacist</option>
+            <option>Hospital Assistant</option>
+            <option>Lab Technician</option>
+          </select>
+          
+        <button class="btn">Search Job</button>
+      </div>
+
+      <div class="keywords">
+        <strong>Trending Keywords:</strong>
+        <span>UI Designer</span>
+        <span>Python</span>
+        <span>Developer</span>
+      </div>
+    </div>
+
+    <div class="arrow-down" onclick="scrollToStats()">&#x25BC;</div>
+  </header>
+
+  <!-- Stats Section -->
+  <section class="stats-section" id="stats">
+    <h2>Careers at EduLang Hub</h2>
+    <p>Join our mission to teach languages, typing, and computer skills across the world.</p>
+    <div class="stats-grid">
+      <div class="stat"><span>1,930</span>Candidates</div>
+      <div class="stat"><span>54</span>Jobs Posted</div>
+      <div class="stat"><span>120</span>Jobs Filled</div>
+      <div class="stat"><span>550</span>Companies</div>
+    </div>
+  </section>
+
+  <script>
+    function scrollToStats() {
+      document.getElementById("stats").scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
+
+</body>
+</html>
