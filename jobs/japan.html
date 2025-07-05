@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Japan - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p:not(.company-name) {
+            color: #e6f7ff;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 3px #fff,
+                0 0 5px #00ffff;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 15px #0073e6,
+                0 0 20px #0073e6,
+                0 0 25px #0073e6;
+            animation: neonPulse 1.5s infinite alternate;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        .company-name {
+            color: #ff00ff;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-shadow: 
+                0 0 5px #ff00ff,
+                0 0 10px #ff00ff,
+                0 0 15px #ff00ff,
+                0 0 20px #ff00ff;
+            animation: neonPulse 2s infinite alternate;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #e6f7ff;
+            text-shadow: 
+                0 0 3px #fff,
+                0 0 5px #00ffff;
+            font-size: 0.95rem;
+        }
+        
+        .job-meta i {
+            color: #00ffff;
+            text-shadow: 
+                0 0 5px #00ffff,
+                0 0 10px #00ffff;
+        }
+        
+        .deadline {
+            color: #ff6b6b !important;
+            font-weight: 500;
+            text-shadow: 
+                0 0 5px #ff6b6b,
+                0 0 10px #ff6b6b !important;
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background: linear-gradient(45deg, #0066ff, #00ccff);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .apply-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .apply-btn:hover::before {
+            left: 100%;
+        }
+        
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+            color: white;
+        }
+        
+        @keyframes neonPulse {
+            from {
+                text-shadow: 
+                    0 0 5px #fff,
+                    0 0 10px #fff,
+                    0 0 15px #0073e6,
+                    0 0 20px #0073e6;
+            }
+            to {
+                text-shadow: 
+                    0 0 7px #fff,
+                    0 0 15px #fff,
+                    0 0 20px #00b3ff,
+                    0 0 25px #00b3ff,
+                    0 0 30px #00b3ff;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background: rgba(255, 0, 0, 0.15);
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ff6b6b;
+            border-left: 4px solid #ff6b6b;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+            animation: deadlinePulse 2s infinite;
+        }
+        
+        @keyframes deadlinePulse {
+            0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); }
+            100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.3); }
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background: linear-gradient(45deg, #ff00ff, #ff66ff);
+            color: white;
+            border: none;
+            padding: 9px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 0, 255, 0.3);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .ad-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .ad-btn:hover::before {
+            left: 100%;
+        }
+        
+        .ad-btn:hover {
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="text-center mb-4">Job Opportunities in Japan</h1>
+                    <p class="lead">Explore current job vacancies with distant application deadlines</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Robotics Software Engineer</h3>
+                    <p class="company-name">Sony Corporation</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥8,000,000 - ¥12,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: September 30, 2025</span>
+                    </div>
+                    <p>Join Sony's Robotics Division to develop cutting-edge AI and robotics solutions. We're looking for engineers with 3+ years of experience in robotics, computer vision, and machine learning. Japanese language skills preferred but not required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">September 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.sony.com/en/SonyInfo/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Automotive Engineer</h3>
+                    <p class="company-name">Toyota Motor Corporation</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Aichi, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥7,500,000 - ¥11,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 15, 2025</span>
+                    </div>
+                    <p>Join Toyota's engineering team to work on next-generation electric and autonomous vehicles. We're seeking engineers with expertise in automotive systems, battery technology, or autonomous driving. Business-level Japanese proficiency required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.toyota-global.com/company/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Game Developer</h3>
+                    <p class="company-name">Nintendo Co., Ltd.</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kyoto, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥6,500,000 - ¥10,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 1, 2025</span>
+                    </div>
+                    <p>Join Nintendo's game development team to create the next generation of gaming experiences. We're looking for talented developers with experience in C++, Unity, or Unreal Engine. Passion for gaming and basic Japanese language skills required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.nintendo.co.jp/jobs/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">AI Research Scientist</h3>
+                    <p class="company-name">Preferred Networks</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥9,000,000 - ¥14,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 20, 2025</span>
+                    </div>
+                    <p>Join our cutting-edge AI research team to work on deep learning, reinforcement learning, and computer vision. We're looking for PhD holders with publications in top AI conferences (NeurIPS, ICML, CVPR). Strong programming skills in Python and experience with PyTorch/TensorFlow required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 20, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.preferred.jp/en/jobs/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Robotics Engineer</h3>
+                    <p class="company-name">SoftBank Robotics</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥7,000,000 - ¥11,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 15, 2025</span>
+                    </div>
+                    <p>Work on the development of next-generation service robots at SoftBank Robotics. We're seeking engineers with experience in ROS, computer vision, and robot control systems. Business-level Japanese proficiency and experience with Pepper/NAO robots is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.softbankrobotics.com/jp/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Specialist</h3>
+                    <p class="company-name">Trend Micro</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥8,000,000 - ¥13,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 15, 2026</span>
+                    </div>
+                    <p>Join Trend Micro's cybersecurity team to protect enterprises from advanced threats. We're looking for security experts with experience in threat intelligence, incident response, or security architecture. Certifications like CISSP, CEH, or OSCP are highly valued. Business-level Japanese proficiency required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.trendmicro.com/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Semiconductor Engineer</h3>
+                    <p class="company-name">Tokyo Electron (TEL)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥7,500,000 - ¥12,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 1, 2026</span>
+                    </div>
+                    <p>Join Tokyo Electron's R&D team to develop next-generation semiconductor manufacturing equipment. We're looking for engineers with experience in semiconductor processes, equipment engineering, or related fields. Business-level Japanese proficiency required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 1, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.tel.com/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">Biomedical Researcher</h3>
+                    <p class="company-name">Takeda Pharmaceutical</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Osaka, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥8,500,000 - ¥13,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 30, 2025</span>
+                    </div>
+                    <p>Join our pharmaceutical research team to develop innovative treatments. We're seeking PhD-level researchers with expertise in immunology, oncology, or neuroscience. Strong publication record and experience in drug discovery required. Business-level Japanese preferred.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.takeda.com/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Renewable Energy Specialist</h3>
+                    <p class="company-name">Mitsubishi Heavy Industries</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Yokohama, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥8,000,000 - ¥12,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 10, 2026</span>
+                    </div>
+                    <p>Work on cutting-edge renewable energy projects including hydrogen, offshore wind, and carbon capture technologies. We're looking for engineers with 5+ years of experience in renewable energy projects. Business-level Japanese proficiency required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 10, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.mhi.com/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">UX/UI Designer</h3>
+                    <p class="company-name">Rakuten</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Tokyo, Japan</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥7,000,000 - ¥11,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 1, 2025</span>
+                    </div>
+                    <p>Join Rakuten's design team to create exceptional user experiences across our digital services. We're looking for designers with 3+ years of experience, strong portfolio, and proficiency in design tools. Experience with Japanese UX/UI patterns is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.rakuten.com/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">View Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/sony-careers.jpg" alt="Sony Careers - Join Our Robotics Team" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/toyota-careers.jpg" alt="Toyota Careers - Shape the Future of Mobility" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/nintendo-careers.jpg" alt="Nintendo Careers - Create the Fun" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/preferred-networks-careers.jpg" alt="Preferred Networks - AI Research Careers" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/softbank-robotics-careers.jpg" alt="SoftBank Robotics - Shape the Future with Us" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/trend-micro-careers.jpg" alt="Trend Micro - Cybersecurity Careers" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/tokyo-electron-careers.jpg" alt="Tokyo Electron - Semiconductor Careers" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/takeda-careers.jpg" alt="Takeda Pharmaceutical - Research Careers" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/mhi-careers.jpg" alt="Mitsubishi Heavy Industries - Energy Careers" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/rakuten-careers.jpg" alt="Rakuten - Design Careers" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 5, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

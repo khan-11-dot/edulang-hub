@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Finland - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 text-white text-center mb-4">Job Opportunities in Finland</h1>
+                    <p class="lead">Explore current job vacancies with distant application deadlines</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Software Developer</h3>
+                    <p class="company-name">Supercell</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Helsinki, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 70,000 - 90,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: September 30, 2025</span>
+                    </div>
+                    <p>Join our game development team in Helsinki to create amazing mobile games. We're looking for an experienced developer with strong skills in C++ and game development. Experience with Unity is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">September 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://supercell.com/en/jobs/" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Machine Learning Engineer</h3>
+                    <p class="company-name">Nokia</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Espoo, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 65,000 - 85,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 15, 2025</span>
+                    </div>
+                    <p>Join Nokia's AI research team to develop cutting-edge machine learning solutions for telecommunications. We're looking for engineers with experience in Python, TensorFlow/PyTorch, and cloud platforms. Experience with 5G/6G technologies is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.nokia.com/about-us/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior UX/UI Designer</h3>
+                    <p class="company-name">Rovio Entertainment</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Helsinki, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 60,000 - 80,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 1, 2025</span>
+                    </div>
+                    <p>Join the team behind Angry Birds to create engaging mobile game experiences. We're looking for a Senior UX/UI Designer with 5+ years of experience in mobile game design. Proficiency in Figma and experience with user research methodologies required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.rovio.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Data Scientist - AI Research</h3>
+                    <p class="company-name">Silentium AI</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Turku, Southwest Finland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 70,000 - 90,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 20, 2025</span>
+                    </div>
+                    <p>Join our AI research team to develop next-generation machine learning models. We're looking for PhDs or Masters with 3+ years of experience in deep learning, NLP, or computer vision. Strong Python and PyTorch skills required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 20, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.silentiumai.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Backend Developer</h3>
+                    <p class="company-name">Wolt</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Helsinki, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 75,000 - 95,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 15, 2025</span>
+                    </div>
+                    <p>Join Wolt's engineering team to build the future of last-mile delivery. We're looking for experienced backend developers with strong skills in Python, Java, or Kotlin. Experience with microservices, cloud platforms (AWS/GCP), and distributed systems is required. You'll work on scaling our platform to serve millions of users.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.wolt.com/en" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Specialist</h3>
+                    <p class="company-name">F-Secure</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Oulu, Northern Ostrobothnia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 65,000 - 85,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 15, 2026</span>
+                    </div>
+                    <p>Join F-Secure's cybersecurity team to protect businesses from digital threats. We're looking for experienced security professionals with knowledge of threat intelligence, incident response, and security operations. Certifications like CISSP, CISM, or CEH are a plus. Experience with cloud security and compliance frameworks is highly valued.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.f-secure.com/en/business/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Renewable Energy Project Manager</h3>
+                    <p class="company-name">Fortum</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Espoo, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 75,000 - 95,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 28, 2026</span>
+                    </div>
+                    <p>Lead renewable energy projects in the Nordic region. You'll be responsible for planning, executing, and finalizing projects according to deadlines and within budget. The role requires experience in wind or solar energy projects, strong leadership skills, and knowledge of EU energy regulations. PMP certification is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 28, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.fortum.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">Quantum Computing Researcher</h3>
+                    <p class="company-name">IQM Quantum Computers</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Espoo, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 80,000 - 100,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: March 15, 2026</span>
+                    </div>
+                    <p>Join IQM's research team to advance quantum computing technology. We're looking for PhDs in Physics, Computer Science, or related fields with experience in quantum algorithms, quantum error correction, or quantum hardware. Strong programming skills (Python, Qiskit, Cirq) and publications in top-tier conferences/journals are required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">March 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.meetiqm.com/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Game Designer</h3>
+                    <p class="company-name">Remedy Entertainment</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Espoo, Uusimaa</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 65,000 - 85,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 30, 2026</span>
+                    </div>
+                    <p>Join the team behind Control and Alan Wake to create groundbreaking gaming experiences. We're looking for an experienced game designer with 5+ years in the industry and at least one shipped AAA title. Strong understanding of game mechanics, level design, and player psychology required. Experience with Unreal Engine is a must.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 30, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.remedygames.com/jobs/" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Healthcare Consultant</h3>
+                    <p class="company-name">Deloitte Australia</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $120,000 - $160,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 15, 2026</span>
+                    </div>
+                    <p>Join our healthcare consulting team to advise clients on healthcare strategy, operations, and digital transformation. The role requires experience in healthcare management and strong analytical skills. MBA or relevant master's degree preferred.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Show Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Supercell_logo_2019.png" alt="Supercell Careers" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>Join Supercell - Crafting Games That Are Played for Years</h3>
+                <p>At Supercell, we create games that millions of people play every day. Our culture is built on small, independent teams with the freedom to make their own decisions. We're looking for talented individuals who share our passion for mobile gaming.</p>
+                <p>Why join us?</p>
+                <ul>
+                    <li>Work on games enjoyed by millions worldwide</li>
+                    <li>Competitive salary and benefits</li>
+                    <li>Relocation support to Helsinki, Finland</li>
+                    <li>Flexible working hours and great work-life balance</li>
+                </ul>
+                <a href="https://supercell.com/en/jobs/" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">View Open Positions</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Nokia_wordmark.svg" alt="Nokia Careers" class="ad-image" style="background-color: #124191; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Shape the Future of Technology with Nokia</h3>
+                <p>At Nokia, we create the technology to connect the world. We're at the forefront of innovation in 5G, cloud, and AI technologies that will shape the next decade of connectivity.</p>
+                <p>Why join Nokia Finland?</p>
+                <ul>
+                    <li>Work on cutting-edge telecommunications technology</li>
+                    <li>Be part of a global leader in 5G innovation</li>
+                    <li>Competitive salary and comprehensive benefits</li>
+                    <li>Opportunities for professional growth and development</li>
+                    <li>Work-life balance with flexible arrangements</li>
+                </ul>
+                <p>We're looking for passionate individuals who want to make a real impact in the world of technology.</p>
+                <a href="https://www.nokia.com/about-us/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Explore Careers at Nokia</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Rovio_Entertainment_logo.svg/1200px-Rovio_Entertainment_logo.svg.png" alt="Rovio Entertainment Careers" class="ad-image" style="background-color: #000; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Angry Birds Needs You!</h3>
+                <p>Rovio Entertainment is home to Angry Birds, one of the most successful mobile games of all time. We're looking for creative and passionate individuals to join our team in Espoo, Finland.</p>
+                <p>What we offer:</p>
+                <ul>
+                    <li>Work on globally recognized game franchises</li>
+                    <li>Creative and collaborative work environment</li>
+                    <li>Competitive salary and benefits</li>
+                    <li>Professional development opportunities</li>
+                    <li>Fun and relaxed company culture</li>
+                </ul>
+                <p>Whether you're a game designer, developer, or artist, if you're passionate about mobile gaming, we want to hear from you!</p>
+                <a href="https://www.rovio.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Join the Rovio Team</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Silentium_AI_logo.png" alt="Silentium AI Careers" class="ad-image" style="background-color: #000; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Pioneer the Future of AI with Silentium AI</h3>
+                <p>Based in Turku, Silentium AI is at the forefront of artificial intelligence research and development. We're building the next generation of AI systems that will transform industries and improve lives.</p>
+                <p>Why join Silentium AI?</p>
+                <ul>
+                    <li>Work with world-class AI researchers and engineers</li>
+                    <li>Tackle challenging problems in machine learning and AI</li>
+                    <li>Competitive salary and equity options</li>
+                    <li>Modern office in the heart of Turku's tech hub</li>
+                    <li>Flexible working arrangements</li>
+                </ul>
+                <p>We're looking for talented individuals who are passionate about pushing the boundaries of what's possible with AI.</p>
+                <a href="https://www.silentium.ai/careers" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Explore AI Careers</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Wolt_logo_2020.svg/1200px-Wolt_logo_2020.svg.png" alt="Wolt Careers" class="ad-image" style="background-color: #003dff; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Deliver Amazing with Wolt</h3>
+                <p>Wolt is a technology company that makes it incredibly easy to discover and get the best restaurants, grocery stores and other local shops delivered to your home or office. We're growing rapidly across Europe and looking for talented people to join our team in Helsinki.</p>
+                <p>What we offer:</p>
+                <ul>
+                    <li>Work on products used by millions of people</li>
+                    <li>Competitive salary and stock options</li>
+                    <li>Flexible working hours and remote work options</li>
+                    <li>Modern office in central Helsinki</li>
+                    <li>Company-wide events and team outings</li>
+                </ul>
+                <p>Whether you're an engineer, designer, or business professional, if you're passionate about building great products, we'd love to hear from you!</p>
+                <a href="https://careers.wolt.com/" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Join the Wolt Team</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/F-Secure_logo.svg/1200px-F-Secure_logo.svg.png" alt="F-Secure Careers" class="ad-image" style="background-color: #00baf0; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Secure the Digital World with F-Secure</h3>
+                <p>F-Secure is a global leader in cybersecurity, protecting millions of users and businesses against advanced cyber attacks. Join our team in Oulu or Helsinki to help create a safer digital future.</p>
+                <p>Why choose F-Secure?</p>
+                <ul>
+                    <li>Work with cutting-edge cybersecurity technologies</li>
+                    <li>Be part of a global team of security experts</li>
+                    <li>Competitive salary and comprehensive benefits</li>
+                    <li>Continuous learning and development opportunities</li>
+                    <li>Hybrid work model with flexible hours</li>
+                </ul>
+                <p>We're looking for passionate individuals who want to make a difference in the fight against cybercrime.</p>
+                <a href="https://www.f-secure.com/en/business/careers" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Explore Cybersecurity Careers</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Fortum_logo.svg/1200px-Fortum_logo.svg.png" alt="Fortum Careers" class="ad-image" style="background-color: #00b251; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Powering a Cleaner World with Fortum</h3>
+                <p>Fortum is a leading clean energy company driving the transition to a carbon-neutral economy. Join us in Espoo to help build a sustainable future through innovative energy solutions.</p>
+                <p>Why join Fortum?</p>
+                <ul>
+                    <li>Work on cutting-edge renewable energy projects</li>
+                    <li>Be part of Finland's green energy transition</li>
+                    <li>Competitive salary and comprehensive benefits package</li>
+                    <li>Opportunities for professional growth and international career</li>
+                    <li>Hybrid work model and flexible working hours</li>
+                </ul>
+                <p>We're looking for passionate individuals who want to make a real impact on climate change.</p>
+                <a href="https://www.fortum.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Explore Energy Careers</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/IQM_Quantum_Computers_logo.svg/1200px-IQM_Quantum_Computers_logo.svg.png" alt="IQM Quantum Computers Careers" class="ad-image" style="background-color: #000; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Build the Quantum Future with IQM</h3>
+                <p>IQM is a European leader in quantum computers, building superconducting quantum computers for research laboratories and supercomputing centers. Join our team in Espoo to work on the cutting edge of quantum technology.</p>
+                <p>Why join IQM?</p>
+                <ul>
+                    <li>Work on groundbreaking quantum computing technology</li>
+                    <li>Collaborate with world-leading quantum scientists</li>
+                    <li>Competitive salary and equity options</li>
+                    <li>International work environment</li>
+                    <li>Opportunities for professional growth in a fast-growing startup</li>
+                </ul>
+                <p>We're looking for brilliant minds in quantum physics, cryogenics, and quantum software engineering.</p>
+                <a href="https://www.meetiqm.com/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Join the Quantum Revolution</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Remedy_Entertainment_logo.svg/1200px-Remedy_Entertainment_logo.svg.png" alt="Remedy Entertainment Careers" class="ad-image" style="background-color: #000; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Create the Next Gaming Masterpiece with Remedy</h3>
+                <p>Remedy Entertainment, the creators of Control, Alan Wake, and Max Payne, is looking for talented individuals to join our team in Espoo. Help us create groundbreaking narrative-driven games that push the boundaries of interactive storytelling.</p>
+                <p>Why join Remedy?</p>
+                <ul>
+                    <li>Work on AAA games with passionate industry veterans</li>
+                    <li>Be part of a creative and collaborative environment</li>
+                    <li>Competitive salary and benefits package</li>
+                    <li>Flexible working hours and hybrid work model</li>
+                    <li>Opportunity to work with cutting-edge game technology</li>
+                </ul>
+                <p>We're looking for talented developers, artists, designers, and production staff who share our passion for creating memorable gaming experiences.</p>
+                <a href="https://www.remedygames.com/jobs/" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Join Our Creative Team</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Kone_logo.svg/1200px-Kone_logo.svg.png" alt="KONE Careers" class="ad-image" style="background-color: #003380; padding: 20px;">
+            </div>
+            <div class="ad-content">
+                <h3>Elevate Your Career with KONE</h3>
+                <p>KONE is a global leader in the elevator and escalator industry, and we're looking for talented individuals to join our team in the Helsinki metropolitan area. Help us make people's journeys safe, convenient, and reliable in an increasingly urban world.</p>
+                <p>Why choose KONE?</p>
+                <ul>
+                    <li>Work with cutting-edge elevator and escalator technology</li>
+                    <li>Be part of a global industry leader with Finnish roots</li>
+                    <li>Competitive salary and comprehensive benefits</li>
+                    <li>Opportunities for international career growth</li>
+                    <li>Commitment to sustainability and innovation</li>
+                </ul>
+                <p>We're looking for engineers, developers, and business professionals who want to shape the future of urban mobility.</p>
+                <a href="https://www.kone.com/en/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn" style="display: inline-block; margin-top: 15px;">Join KONE Today</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 4, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Ireland - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">Job Opportunities in Ireland</h1>
+                    <p class="lead">Discover exciting career opportunities in the Emerald Isle</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Software Engineer</h3>
+                    <p class="company-name">Stripe Ireland</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €90,000 - €120,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 30, 2025</span>
+                    </div>
+                    <p>Join Stripe's engineering team in Dublin to build the economic infrastructure of the internet. You'll work on complex distributed systems handling billions in transactions. The ideal candidate has 5+ years of experience with modern backend technologies and a passion for financial technology.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://stripe.com/jobs/position/12345" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Data Scientist</h3>
+                    <p class="company-name">Microsoft Ireland</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €85,000 - €110,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 15, 2025</span>
+                    </div>
+                    <p>Join Microsoft's Dublin team to work on cutting-edge AI and data solutions. You'll analyze large datasets, build machine learning models, and drive data-informed decisions. Strong Python, SQL, and experience with cloud platforms required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.microsoft.com/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Civil Engineer</h3>
+                    <p class="company-name">Arup Ireland</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Cork, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €75,000 - €95,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 10, 2026</span>
+                    </div>
+                    <p>Join Arup's Cork office to work on sustainable infrastructure projects across Ireland. You'll lead design teams, manage client relationships, and ensure project delivery to the highest standards. Chartered Engineer status and 8+ years of experience required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 10, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.arup.com/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Digital Marketing Manager</h3>
+                    <p class="company-name">Workhuman</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €70,000 - €90,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 15, 2025</span>
+                    </div>
+                    <p>Lead digital marketing initiatives for Workhuman's EMEA region. You'll develop and execute digital campaigns, manage social media presence, and analyze performance metrics. Experience with marketing automation tools and B2B marketing required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.workhuman.com/company/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Mechanical Design Engineer</h3>
+                    <p class="company-name">Stryker</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Cork, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €55,000 - €75,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 5, 2025</span>
+                    </div>
+                    <p>Join Stryker's R&D team in Cork to design and develop innovative medical devices. You'll work on all phases of product development from concept to manufacturing. Experience with SolidWorks and medical device regulations (ISO 13485) preferred.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 5, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.stryker.com/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Analyst</h3>
+                    <p class="company-name">Mastercard Dublin</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €65,000 - €85,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 1, 2025</span>
+                    </div>
+                    <p>Join Mastercard's cybersecurity team in Dublin to protect payment systems and customer data. You'll monitor security alerts, investigate incidents, and implement security controls. Experience with SIEM tools and security certifications (CISSP, CISM) preferred.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.mastercard.us/en-us/vision/who-we-are/careers.html" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Primary School Teacher</h3>
+                    <p class="company-name">Dublin and Dún Laoghaire ETB</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time/Part-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €38,000 - €72,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 20, 2025</span>
+                    </div>
+                    <p>Join Dublin and Dún Laoghaire ETB as a Primary School Teacher. We're looking for passionate educators to inspire young minds in our community national schools. Must be registered with the Teaching Council of Ireland and have experience with the Irish Primary Curriculum.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 20, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.etb.ie/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">AI Research Scientist</h3>
+                    <p class="company-name">ADAPT Centre</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €70,000 - €90,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 30, 2026</span>
+                    </div>
+                    <p>Join Ireland's leading AI research center to work on next-generation AI technologies. You'll conduct cutting-edge research in NLP, machine learning, or computer vision, and collaborate with industry partners. PhD in Computer Science or related field with strong publication record required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 30, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.adaptcentre.ie/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Pharmaceutical Project Manager</h3>
+                    <p class="company-name">Janssen Sciences Ireland</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Cork, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €80,000 - €110,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 15, 2026</span>
+                    </div>
+                    <p>Lead complex pharmaceutical projects at our Cork facility. You'll manage cross-functional teams, ensure regulatory compliance, and deliver projects on time and within budget. PMP certification and 5+ years of experience in pharma project management required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.janssen.com/ireland/careers" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">View Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Financial Services Consultant</h3>
+                    <p class="company-name">PwC Ireland</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> €65,000 - €85,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 28, 2026</span>
+                    </div>
+                    <p>Join PwC's Financial Services team in Dublin to advise leading banks, insurers, and asset managers. You'll work on regulatory compliance, digital transformation, and risk management projects. Professional qualifications (ACA, ACCA, CFA) and 3+ years of financial services experience required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 28, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.pwc.ie/careers.html" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">View Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/stripe-ireland-ad.jpg" alt="Stripe Ireland Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/microsoft-ireland-ad.jpg" alt="Microsoft Ireland Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/arup-ireland-ad.jpg" alt="Arup Ireland Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/workhuman-ad.jpg" alt="Workhuman Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/mastercard-dublin-ad.jpg" alt="Mastercard Dublin Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/etb-ad.jpg" alt="Dublin and Dún Laoghaire ETB Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/stryker-ad.jpg" alt="Stryker Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/adapt-ireland-ad.jpg" alt="ADAPT Centre Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/janssen-ireland-ad.jpg" alt="Janssen Sciences Ireland Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/pwc-ireland-ad.jpg" alt="PwC Ireland Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0"> 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 5, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

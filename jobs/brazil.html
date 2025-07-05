@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Brazil - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="text-center mb-4" style="color: #fff; text-shadow: 0 0 10px #00fffc, 0 0 20px #00fffc, 0 0 40px #00fffc;">Oportunidades de Emprego no <span class="text-primary" style="color: #00fffc !important; text-shadow: 0 0 10px #00fffc, 0 0 20px #00fffc, 0 0 40px #00fffc;">Brasil</span></h1>
+                    <p class="lead" style="color: #fff; text-shadow: 0 0 5px #00fffc;">Explore vagas de emprego com prazos de inscrição futuros</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Desenvolvedor Sênior de Software</h3>
+                    <p class="company-name">Nubank</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> São Paulo, SP</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 25.000 - R$ 35.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 30 de setembro de 2025</span>
+                    </div>
+                    <p>O Nubank está em busca de um Desenvolvedor Sênior para nossa equipe de tecnologia em São Paulo. Você trabalhará no desenvolvimento e manutenção de nossos produtos financeiros inovadores, utilizando as mais modernas tecnologias do mercado. Buscamos profissionais com experiência em desenvolvimento de software escalável e arquitetura de sistemas distribuídos.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">30 de setembro de 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://nubank.com.br/careers/" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Médico(a) Cardiologista</h3>
+                    <p class="company-name">Hospital Albert Einstein</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> São Paulo, SP</span>
+                        <span><i class="fas fa-briefcase"></i> Período Integral/Parcial</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 35.000 - R$ 50.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 15 de outubro de 2025</span>
+                    </div>
+                    <p>O Hospital Albert Einstein está contratando Médicos Cardiologistas para compor nosso time em São Paulo. Buscamos profissionais com especialização em Cardiologia pelo CRM-SP, experiência mínima de 3 anos na área e disponibilidade para plantões. Oferecemos plano de carreira, benefícios diferenciados e oportunidade de atuar em um dos melhores hospitais da América Latina.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">15 de outubro de 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.einstein.br/carreiras/Paginas/home.aspx" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Engenheiro(a) Civil Sênior</h3>
+                    <p class="company-name">Odebrecht Engenharia e Construção</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 18.000 - R$ 25.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 1º de novembro de 2025</span>
+                    </div>
+                    <p>A Odebrecht está buscando Engenheiros Civis Sênior para atuar em grandes obras de infraestrutura no Rio de Janeiro. Responsabilidades incluem gestão de projetos, planejamento de obras, orçamento e coordenação de equipes. Requisitos: Formação em Engenharia Civil, CREA ativo, experiência mínima de 8 anos em obras de grande porte e domínio de softwares de projeto.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">1º de novembro de 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.odebrecht.com/carreiras" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Gerente de Marketing Digital</h3>
+                    <p class="company-name">Magazine Luiza</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> São Paulo, SP</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 15.000 - R$ 22.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 20 de outubro de 2025</span>
+                    </div>
+                    <p>O Magazine Luiza está em busca de um(a) Gerente de Marketing Digital para liderar nossas estratégias digitais em São Paulo. Responsabilidades incluem desenvolvimento de campanhas digitais, gestão de mídias sociais, SEO/SEM, e análise de métricas. Buscamos profissionais com experiência comprovada em marketing digital, conhecimento em ferramentas de análise e gestão de equipes.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">20 de outubro de 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.magazineluiza.com.br/carreiras/" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Engenheiro(a) de Petróleo Sênior</h3>
+                    <p class="company-name">Petrobras</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 28.000 - R$ 40.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 15 de dezembro de 2025</span>
+                    </div>
+                    <p>A Petrobras está contratando Engenheiros de Petróleo Sênior para atuar em projetos de exploração e produção na Bacia de Santos. Responsabilidades incluem gestão de reservatórios, planejamento de produção, análise de dados sísmicos e otimização de processos. Requisitos: Formação em Engenharia de Petróleo ou áreas afins, experiência mínima de 8 anos na indústria do petróleo e domínio de softwares de simulação.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">15 de dezembro de 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://petrobras.com.br/carreiras.html" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Specialist</h3>
+                    <p class="company-name">Commonwealth Bank</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $140,000 - $180,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 15, 2026</span>
+                    </div>
+                    <p>Join our cybersecurity team to protect our digital assets and customer data. You'll be responsible for threat detection, incident response, and implementing security measures. The ideal candidate has 5+ years of experience in cybersecurity and relevant certifications (CISSP, CISM).</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.itau.com.br/carreira/" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Gerente de Projetos de Energia Renovável</h3>
+                    <p class="company-name">Eletrobras</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Rio de Janeiro, RJ</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 25.000 - R$ 35.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 31 de janeiro de 2026</span>
+                    </div>
+                    <p>A Eletrobras está contratando um(a) Gerente de Projetos de Energia Renovável para liderar iniciativas de energia limpa em todo o Brasil. Responsabilidades incluem gerenciamento de projetos de usinas solares e eólicas, coordenação de equipes multidisciplinares e garantia de conformidade com as regulamentações ambientais. Requisitos: Engenharia ou áreas afins, experiência mínima de 7 anos em projetos de energia renovável e certificação PMP.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">31 de janeiro de 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://eletrobras.com/pt/Paginas/carreiras.aspx" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cientista de Dados Sênior</h3>
+                    <p class="company-name">iFood</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Osasco, SP</span>
+                        <span><i class="fas fa-briefcase"></i> Híbrido</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 18.000 - R$ 25.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 15 de março de 2026</span>
+                    </div>
+                    <p>O iFood está em busca de Cientistas de Dados Sênior para integrar nosso time de tecnologia em Osasco. Você será responsável por desenvolver modelos preditivos, algoritmos de machine learning e análises avançadas para impulsionar a experiência de milhões de usuários. Requisitos: Formação em Ciência da Computação, Estatística ou áreas afins, experiência com Python, SQL e ferramentas de Big Data, além de vivência em projetos de ciência de dados.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">15 de março de 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://ifood.gupy.io/" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Gerente de Projetos de Construção</h3>
+                    <p class="company-name">OAS</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Salvador, BA</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 20.000 - R$ 30.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 10 de abril de 2026</span>
+                    </div>
+                    <p>A OAS está contratando Gerente de Projetos de Construção para atuar em Salvador. Responsabilidades incluem gerenciamento de obras de grande porte, planejamento de atividades, controle de custos e prazos, e coordenação de equipes. Requisitos: Engenharia Civil, CREA ativo, experiência mínima de 8 anos em gestão de obras e conhecimento em softwares de engenharia.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">10 de abril de 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.oas.com.br/trabalhe-conosco/" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Ver Anúncio</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Consultor de Saúde</h3>
+                    <p class="company-name">Hapvida</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Fortaleza, CE</span>
+                        <span><i class="fas fa-briefcase"></i> Tempo Integral</span>
+                        <span><i class="fas fa-dollar-sign"></i> R$ 12.000 - R$ 18.000 por mês</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Candidatar até: 15 de fevereiro de 2026</span>
+                    </div>
+                    <p>A Hapvida está contratando Consultores de Saúde para nossa equipe em Fortaleza. Responsabilidades incluem análise de dados de saúde, desenvolvimento de estratégias de gestão em saúde e consultoria para clientes corporativos. Buscamos profissionais com formação em Medicina, Enfermagem ou Saúde Coletiva, experiência em operadoras de saúde e conhecimentos em gestão de saúde populacional.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Último dia para se candidatar: <span class="text-danger">15 de fevereiro de 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.hapvida.com.br/site/carreiras" class="apply-btn" target="_blank" rel="noopener noreferrer">Candidatar-se Agora</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Ver Anúncio</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/nubank-ad.jpg" alt="Nubank - Vaga para Desenvolvedor Sênior" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/einstein-ad.jpg" alt="Hospital Albert Einstein - Vaga para Cardiologista" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/odebrecht-ad.jpg" alt="Odebrecht - Vaga para Engenheiro Civil Sênior" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/magalu-ad.jpg" alt="Magazine Luiza - Vaga para Gerente de Marketing Digital" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/petrobras-ad.jpg" alt="Petrobras - Vaga para Engenheiro de Petróleo" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/itau-ad.jpg" alt="Itaú Unibanco - Vaga para Especialista em Segurança" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/eletrobras-ad.jpg" alt="Eletrobras - Vaga para Gerente de Projetos de Energia Renovável" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/ifood-ad.jpg" alt="iFood - Vaga para Cientista de Dados" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/oas-ad.jpg" alt="OAS - Vaga para Gerente de Projetos de Construção" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/hapvida-ad.jpg" alt="Hapvida - Vaga para Consultor de Saúde" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Última Atualização: <span class="text-primary">4 de julho de 2025</span></p>
+                <p class="small text-muted mt-1">Vagas atualizadas regularmente</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

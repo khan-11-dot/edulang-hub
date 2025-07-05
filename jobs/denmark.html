@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Denmark - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="text-center mb-4">Job Opportunities in <span class="text-primary">Denmark</span></h1>
+                    <p class="lead text-center mb-4">Find your dream job in Denmark's innovative job market</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Software Engineer (Copenhagen)</h3>
+                    <p class="company-name">Maersk Technology</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Copenhagen, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 650,000 - 800,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: September 15, 2025</span>
+                    </div>
+                    <p>Join Maersk's digital transformation journey as a Senior Software Engineer. You'll work on cutting-edge logistics solutions using cloud-native technologies. Experience with microservices, Kubernetes, and event-driven architecture required. Fluent English required; Danish is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">September 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.maersk.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Biomedical Research Scientist</h3>
+                    <p class="company-name">Novo Nordisk</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Bagsværd, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 600,000 - 800,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 30, 2025</span>
+                    </div>
+                    <p>Novo Nordisk is seeking a Biomedical Research Scientist to join our diabetes research team. You'll contribute to groundbreaking research in diabetes treatment development. PhD in life sciences and 3+ years of postdoctoral experience in metabolic disease research required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.novonordisk.com/careers.html" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Renewable Energy Engineer</h3>
+                    <p class="company-name">Ørsted</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Gentofte, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 580,000 - 750,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 15, 2025</span>
+                    </div>
+                    <p>Join the world leader in offshore wind energy! Ørsted is looking for a Renewable Energy Engineer to work on our next-generation wind farm projects. You'll be involved in design optimization, technical due diligence, and project development. Experience with wind energy and project management required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://orsted.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">UX/UI Designer</h3>
+                    <p class="company-name">LEGO Group</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Billund, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 550,000 - 700,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 1, 2025</span>
+                    </div>
+                    <p>Bring play to life as a UX/UI Designer at the LEGO Group! You'll create engaging digital experiences for children and families worldwide. We're looking for someone with 3+ years of experience in digital product design, a strong portfolio, and a passion for play-based learning. Experience with design systems and accessibility is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.lego.com/en-us/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Data Scientist - Machine Learning</h3>
+                    <p class="company-name">Pandora</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Copenhagen, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 650,000 - 850,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 10, 2026</span>
+                    </div>
+                    <p>Join Pandora's Data Science team to transform the world's largest jewelry brand through data! You'll develop machine learning models for personalized recommendations, demand forecasting, and customer insights. We're looking for someone with 3+ years of experience in data science, strong Python skills, and expertise in ML frameworks. Experience with cloud platforms (AWS/GCP) is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 10, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://pandoragroup.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Frontend Developer - React</h3>
+                    <p class="company-name">Unity Technologies</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Copenhagen, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 700,000 - 900,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 15, 2026</span>
+                    </div>
+                    <p>Help shape the future of real-time 3D development at Unity! We're looking for an experienced Frontend Developer with 5+ years of React experience to join our Copenhagen office. You'll work on our cloud-based tools that empower creators worldwide. Strong TypeScript skills and experience with modern frontend tooling required. Experience with WebGL or 3D graphics is a big plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.unity.com/" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Robotics Engineer</h3>
+                    <p class="company-name">Universal Robots</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Odense, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 600,000 - 850,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: March 15, 2026</span>
+                    </div>
+                    <p>Join the world leader in collaborative robots! We're looking for a Robotics Engineer to design and implement advanced control algorithms for our next-generation cobots. You'll work on motion planning, force control, and human-robot interaction. The ideal candidate has a master's or PhD in robotics, mechatronics, or related field, with strong C++ and ROS experience. Knowledge of machine learning for robotics is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">March 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.universal-robots.com/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">Clinical Research Manager</h3>
+                    <p class="company-name">Lundbeck</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Valby, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 680,000 - 900,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: April 1, 2026</span>
+                    </div>
+                    <p>Lundbeck is seeking a Clinical Research Manager to lead our clinical trials in neuroscience. You'll oversee study protocols, ensure regulatory compliance, and manage cross-functional teams. The ideal candidate has 5+ years of experience in clinical research, preferably in CNS disorders, and a strong understanding of ICH-GCP guidelines. Experience with global clinical trials is essential.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">April 1, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.lundbeck.com/global/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Specialist</h3>
+                    <p class="company-name">Danske Bank</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Copenhagen, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 650,000 - 900,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: April 15, 2026</span>
+                    </div>
+                    <p>Join Denmark's leading bank in protecting our digital infrastructure. As a Cybersecurity Specialist, you'll be responsible for threat detection, security architecture, and incident response. The ideal candidate has 5+ years of experience in cybersecurity, relevant certifications (CISSP, CISM, CEH), and expertise in cloud security. Experience in the financial sector is highly valued.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">April 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://danskebank.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Sustainability Consultant</h3>
+                    <p class="company-name">Ramboll</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Aarhus, Denmark</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-euro-sign"></i> 550,000 - 750,000 DKK per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: May 1, 2026</span>
+                    </div>
+                    <p>Join Ramboll's sustainability team to help clients achieve their environmental and social responsibility goals. You'll work on projects related to circular economy, carbon neutrality, and sustainable business strategies. The ideal candidate has a master's degree in environmental science, engineering, or related field, with 3+ years of consulting experience in sustainability. Experience with LCA and carbon footprinting is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">May 1, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.ramboll.com/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Show Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Maersk_Logo.svg/1200px-Maersk_Logo.svg.png" alt="Maersk Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Join Maersk Technology</h3>
+                    <p>Be part of digital transformation in global logistics. We're hiring software engineers to build the future of shipping and trade.</p>
+                    <a href="https://www.maersk.com/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Novo_Nordisk_logo.svg/1200px-Novo_Nordisk_logo.svg.png" alt="Novo Nordisk Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Innovate at Novo Nordisk</h3>
+                    <p>Join our research team to develop life-changing diabetes treatments. We're looking for passionate scientists to drive medical breakthroughs.</p>
+                    <a href="https://www.novonordisk.com/careers.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Explore Careers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Orsted_logo.svg/1200px-Orsted_logo.svg.png" alt="Ørsted Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Power the Future with Ørsted</h3>
+                    <p>Be part of the green energy revolution! We're hiring engineers and project managers to build the world's largest offshore wind farms.</p>
+                    <a href="https://orsted.com/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Join Our Team</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/500px-LEGO_logo.svg.png" alt="LEGO Group Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Create the Future of Play</h3>
+                    <p>Join the LEGO Group as a UX/UI Designer in Billund. Help us create amazing digital experiences that inspire and develop the builders of tomorrow.</p>
+                    <a href="https://www.lego.com/en-us/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Build Your Career</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/PANDORA_logo_2019.svg/1200px-PANDORA_logo_2019.svg.png" alt="Pandora Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Data Science at Pandora</h3>
+                    <p>Join our data science team in Copenhagen and help us create personalized jewelry experiences through machine learning and AI.</p>
+                    <a href="https://pandoragroup.com/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Discover Opportunities</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Unity_Technologies_logo.svg/1200px-Unity_Technologies_logo.svg.png" alt="Unity Technologies Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Shape the Future of Real-Time 3D</h3>
+                    <p>Join Unity's Copenhagen office as a Senior Frontend Developer. Work on tools that empower creators worldwide to build immersive experiences.</p>
+                    <a href="https://unity.com/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Openings</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Universal_Robots_logo.svg/1200px-Universal_Robots_logo.svg.png" alt="Universal Robots Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Pioneer the Future of Robotics</h3>
+                    <p>Join Universal Robots in Odense as a Robotics Engineer. Help us develop the next generation of collaborative robots that transform industries worldwide.</p>
+                    <a href="https://www.universal-robots.com/careers/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Explore Careers</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Lundbeck_Logo.svg/1200px-Lundbeck_Logo.svg.png" alt="Lundbeck Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Improving Lives Through Brain Health</h3>
+                    <p>Join Lundbeck in Valby as a Clinical Research Manager. Contribute to groundbreaking research in brain diseases and help develop innovative treatments.</p>
+                    <a href="https://www.lundbeck.com/global/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Join Our Mission</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Danske_Bank_logo.svg/1200px-Danske_Bank_logo.svg.png" alt="Danske Bank Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Secure the Digital Future of Banking</h3>
+                    <p>Join Danske Bank's cybersecurity team in Copenhagen. Protect our customers and systems while working with cutting-edge security technologies.</p>
+                    <a href="https://danskebank.com/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Protect With Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Ramboll_logo.svg/1200px-Ramboll_logo.svg.png" alt="Ramboll Job Advertisement" class="ad-image">
+                <div class="ad-text">
+                    <h3>Create Sustainable Change</h3>
+                    <p>Join Ramboll in Aarhus as a Sustainability Consultant. Work on meaningful projects that shape sustainable societies and create a positive impact on people's lives.</p>
+                    <a href="https://www.ramboll.com/careers" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Shape the Future</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 4, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -154,11 +154,7 @@
     <nav>
       <div style="font-size: 24px; font-weight: bold;"> <i class="fas fa-graduation-cap"></i>Careers at EduLang Hub</div>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Job Listings</a></li>
-        <li><a href="#">Pages</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
+       
       </ul>
       <div>
         <a href="jobs/post-job.html" class="btn"  style="margin-right: 10px;">Post a Job</a>
@@ -171,43 +167,43 @@
       <p>Join our mission to teach languages, typing, and computer skills across the world.</p>
       <div class="search-bar">
         <input type="text" placeholder="Job title, Company...">
-        <select>
-          <option>Select Region</option>
-            <option>United States</option>
-            <option>Canada</option>
-            <option>United Kingdom</option>
-            <option>Germany</option>
-            <option>Australia</option>
-            <option>New Zealand</option>
-            <option>United Arab Emirates</option>
-            <option>Saudi Arabia</option>
-            <option>Qatar</option>
-            <option>Singapore</option>
-            <option>Japan</option>
-            <option>South Korea</option>
-            <option>Sweden</option>
-            <option>Netherlands</option>
-            <option>Switzerland</option>
-            <option>Norway</option>
-            <option>Denmark</option>
-            <option>France</option>
-            <option>Finland</option>
-            <option>Ireland</option>
-            <option>Italy</option>
-            <option>Spain</option>
-            <option>Malaysia</option>
-            <option>Thailand</option>
-            <option>Vietnam</option>
-            <option>Indonesia</option>
-            <option>China</option>
-            <option>India</option>
-            <option>Pakistan</option>
-            <option>Philippines</option>
-            <option>South Africa</option>
-            <option>Brazil</option>
-            <option>Turkey</option>
-            <option>Poland</option>
-            <option>Austria</option>
+        <select id="countrySelect">
+          <option value="">Select Region</option>
+            <option value="united-states.html">United States</option>
+            <option value="canada.html">Canada</option>
+            <option value="united-kingdom.html">United Kingdom</option>
+            <option value="germany.html">Germany</option>
+            <option value="australia.html">Australia</option>
+            <option value="newzealand.html">New Zealand</option>
+            <option value="united-arab-emirates.html">United Arab Emirates</option>
+            <option value="saudi-arabia.html">Saudi Arabia</option>
+            <option value="qatar.html">Qatar</option>
+            <option value="singapore.html">Singapore</option>
+            <option value="japan.html">Japan</option>
+            <option value="south-korea.html">South Korea</option>
+            <option value="sweden.html">Sweden</option>
+            <option value="netherland.html">Netherlands</option>
+            <option value="switzerland.html">Switzerland</option>
+            <option value="norway.html">Norway</option>
+            <option value="Denmark.html">Denmark</option>
+            <option value="france.html">France</option>
+            <option value="finland.html">Finland</option>
+            <option value="ireland.html">Ireland</option>
+            <option value="italy.html">Italy</option>
+            <option value="spain.html">Spain</option>
+            <option value="malaysia.html">Malaysia</option>
+            <option value="thailand.html">Thailand</option>
+            <option value="vietnaam.html">Vietnam</option>
+            <option value="indonesia.html">Indonesia</option>
+            <option value="china.html">China</option>
+            <option value="india.html">India</option>
+            <option value="pakistan.html">Pakistan</option>
+            <option value="philipines.html">Philippines</option>
+            <option value="south-africa.html">South Africa</option>
+            <option value="brazil.html">Brazil</option>
+            <option value="turkey.html">Turkey</option>
+            <option value="poland.html">Poland</option>
+            <option value="austria.html">Austria</option>
         </select>
         <select>
             <option>Select Job Type</option>
@@ -284,15 +280,10 @@
             <option>Lab Technician</option>
           </select>
           
-        <button class="btn">Search Job</button>
+        <button class="btn" onclick="searchJobs()">Search Job</button>
       </div>
 
-      <div class="keywords">
-        <strong>Trending Keywords:</strong>
-        <span>UI Designer</span>
-        <span>Python</span>
-        <span>Developer</span>
-      </div>
+      
     </div>
 
     <div class="arrow-down" onclick="scrollToStats()">&#x25BC;</div>
@@ -311,6 +302,29 @@
   </section>
 
   <script>
+    // Function to handle job search
+    function searchJobs() {
+      const countrySelect = document.getElementById('countrySelect');
+      const selectedFile = countrySelect.value;
+      
+      if (selectedFile) {
+        // Redirect to the selected country's job page
+        window.location.href = 'jobs/' + selectedFile;
+      } else {
+        alert('Please select a country/region first');
+      }
+    }
+    
+    // Add event listener for Enter key on the search input
+    document.addEventListener('DOMContentLoaded', function() {
+      const searchInput = document.querySelector('input[type="text"]');
+      searchInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          searchJobs();
+        }
+      });
+    });
+    
     function scrollToStats() {
       document.getElementById("stats").scrollIntoView({ behavior: "smooth" });
     }

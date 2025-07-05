@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="hi" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="hi">
+    <meta name="description" content="भारत में नवीनतम नौकरी के अवसरों की खोज करें। Edulang Hub के साथ अपना अगला कैरियर अवसर खोजें।">
+    <title>भारत में नौकरी के अवसर - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            color: #fff;
+            transform: translateX(5px);
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        
+        .job-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .job-title:hover::after {
+            height: 3px;
+            opacity: 1;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 3px;
+        }
+        
+        .company-name::before {
+            content: '🏢 ';
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0);
+                text-shadow: 0 0 5px #0ff;
+            }
+            50% { 
+                transform: translateY(-5px);
+                text-shadow: 0 0 15px #0ff;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
+            }
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #e0f7fa;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background: linear-gradient(45deg, rgba(255, 0, 0, 0.2), rgba(255, 50, 50, 0.3));
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: 600;
+            border-left: 3px solid #ff4444;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+        .btn-apply {
+            background: linear-gradient(45deg, #0d6efd, #0b5ed7);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-left: 5px;
+        }
+        
+        .btn-info {
+            background: linear-gradient(45deg, #0dcaf0, #0aa2c0);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: white;
+        }
+        
+        .btn-info:hover {
+            background: linear-gradient(45deg, #0aa2c0, #0dcaf0);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(13, 202, 240, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 text-white">भारत में नौकरी के अवसर</h1>
+                    <p class="lead text-light">भारत की शीर्ष कंपनियों में अपने सपनों की नौकरी खोजें</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">वरिष्ठ सॉफ्टवेयर इंजीनियर</h3>
+                    <p class="company-name">टाटा कंसल्टेंसी सर्विसेज (TCS)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> मुंबई, महाराष्ट्र</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹15,00,000 - ₹25,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 15 अगस्त 2025</span>
+                    </div>
+                    <p>हमारी टीम में एक वरिष्ठ सॉफ्टवेयर इंजीनियर के रूप में शामिल हों और अत्याधुनिक परियोजनाओं पर काम करें। इस भूमिका के लिए जावा, पायथन, या जावास्क्रिप्ट में 5+ वर्षों का अनुभव आवश्यक है। क्लाउड प्रौद्योगिकियों का अनुभव एक अतिरिक्त लाभ होगा।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">15 अगस्त 2025</span>
+                    </div>
+                    <div class="job-actions">
+                        <button class="btn btn-info btn-sm mb-2" onclick="openAdModal('adModal1')">विज्ञापन देखें</button>
+                        <a href="https://www.tcs.com/careers/india" target="_blank" class="btn btn-primary btn-apply">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">डेटा वैज्ञानिक</h3>
+                    <p class="company-name">इंफोसिस</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> बैंगलोर, कर्नाटक</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹12,00,000 - ₹20,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 30 सितंबर 2025</span>
+                    </div>
+                    <p>हमारी टीम में एक डेटा वैज्ञानिक के रूप में शामिल हों और आर्टिफिशियल इंटेलिजेंस और मशीन लर्निंग परियोजनाओं पर काम करें। इस भूमिका के लिए पायथन, आर, या स्किकिट-लर्न में 3+ वर्षों का अनुभव आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">30 सितंबर 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.infosys.com/careers.html" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">साइबर सुरक्षा विशेषज्ञ</h3>
+                    <p class="company-name">विप्रो लिमिटेड</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> हैदराबाद, तेलंगाना</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹10,00,000 - ₹18,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 10 अक्टूबर 2025</span>
+                    </div>
+                    <p>हमारी साइबर सुरक्षा टीम में शामिल हों और हमारे डिजिटल संपत्तियों की सुरक्षा में मदद करें। इस भूमिका के लिए नेटवर्क सुरक्षा, एथिकल हैकिंग, या सूचना सुरक्षा में 4+ वर्षों का अनुभव आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">10 अक्टूबर 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.wipro.com/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">डिजिटल मार्केटिंग प्रबंधक</h3>
+                    <p class="company-name">फ्लिपकार्ट</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> बैंगलोर, कर्नाटक</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹8,00,000 - ₹15,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 5 नवंबर 2025</span>
+                    </div>
+                    <p>हमारी मार्केटिंग टीम में शामिल हों और हमारे डिजिटल मार्केटिंग अभियानों का नेतृत्व करें। इस भूमिका के लिए डिजिटल मार्केटिंग, एसईओ, एसईएम, और सोशल मीडिया मार्केटिंग में 5+ वर्षों का अनुभव आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">5 नवंबर 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.flipkartcareers.com/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">क्लाउड सॉल्यूशन आर्किटेक्ट</h3>
+                    <p class="company-name">अमेज़न वेब सर्विसेज (AWS) इंडिया</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> बैंगलोर, कर्नाटक</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹20,00,000 - ₹35,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 15 दिसंबर 2025</span>
+                    </div>
+                    <p>हमारी टीम में एक क्लाउड सॉल्यूशन आर्किटेक्ट के रूप में शामिल हों और ग्राहकों को उनकी क्लाउड यात्रा में मदद करें। इस भूमिका के लिए AWS, Azure, या Google क्लाउड प्लेटफॉर्म पर 7+ वर्षों का अनुभव और संबंधित प्रमाणपत्र आवश्यक हैं।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">15 दिसंबर 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.amazon.jobs/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">डेटा इंजीनियर</h3>
+                    <p class="company-name">माइक्रोसॉफ्ट इंडिया</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> हैदराबाद, तेलंगाना</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹15,00,000 - ₹30,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 10 जनवरी 2026</span>
+                    </div>
+                    <p>हमारी डेटा इंजीनियरिंग टीम में शामिल हों और बड़े पैमाने पर डेटा पाइपलाइन और विश्लेषण समाधान विकसित करें। इस भूमिका के लिए SQL, Python, और बिग डेटा टेक्नोलॉजीज में 5+ वर्षों का अनुभव आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">10 जनवरी 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.microsoft.com/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">आर्टिफिशियल इंटेलिजेंस रिसर्च साइंटिस्ट</h3>
+                    <p class="company-name">गूगल रिसर्च इंडिया</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> बैंगलोर, कर्नाटक</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹25,00,000 - ₹45,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 28 फरवरी 2026</span>
+                    </div>
+                    <p>हमारी एआई रिसर्च टीम में शामिल हों और अत्याधुनिक मशीन लर्निंग एल्गोरिदम विकसित करें। इस भूमिका के लिए कंप्यूटर विज्ञान या संबंधित क्षेत्र में पीएचडी और एआई/एमएल में मजबूत प्रकाशन रिकॉर्ड आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">28 फरवरी 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.google.com/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">डिवॉप्स इंजीनियर</h3>
+                    <p class="company-name">अडोब इंडिया</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> नोएडा, उत्तर प्रदेश</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹12,00,000 - ₹25,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 15 मार्च 2026</span>
+                    </div>
+                    <p>हमारी डिवॉप्स टीम में शामिल हों और क्लाउड-नेटिव एप्लिकेशन के लिए स्केलेबल और विश्वसनीय इन्फ्रास्ट्रक्चर बनाएं। इस भूमिका के लिए AWS/Azure/GCP, Kubernetes, Docker, और CI/CD पाइपलाइन में 4+ वर्षों का अनुभव आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">15 मार्च 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.adobe.com/careers.html" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">ब्लॉकचेन डेवलपर</h3>
+                    <p class="company-name">टेक महिंद्रा</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> पुणे, महाराष्ट्र</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹10,00,000 - ₹20,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 30 जनवरी 2026</span>
+                    </div>
+                    <p>हमारी ब्लॉकचेन टीम में शामिल हों और विकेंद्रीकृत अनुप्रयोग (DApps) और स्मार्ट कॉन्ट्रैक्ट विकसित करें। इस भूमिका के लिए सॉलिडिटी, इथेरियम, या हाइपरलेजर फैब्रिक में 3+ वर्षों का अनुभव आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">30 जनवरी 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.techmahindra.com/careers/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">क्वांटम कंप्यूटिंग रिसर्च साइंटिस्ट</h3>
+                    <p class="company-name">आईबीएम रिसर्च इंडिया</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> बैंगलोर, कर्नाटक</span>
+                        <span><i class="fas fa-briefcase"></i> पूर्णकालिक</span>
+                        <span><i class="fas fa-rupee-sign"></i> ₹30,00,000 - ₹50,00,000 प्रति वर्ष</span>
+                        <span class="deadline"><i class="far fa-clock"></i> आवेदन की अंतिम तिथि: 15 फरवरी 2026</span>
+                    </div>
+                    <p>हमारी क्वांटम कंप्यूटिंग रिसर्च टीम में शामिल हों और अगली पीढ़ी के क्वांटम एल्गोरिदम और अनुप्रयोगों पर शोध करें। इस भूमिका के लिए क्वांटम भौतिकी, कंप्यूटर विज्ञान, या संबंधित क्षेत्र में पीएचडी और क्वांटम कंप्यूटिंग में मजबूत पृष्ठभूमि आवश्यक है।</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> आवेदन की अंतिम तिथि: <span class="text-danger">15 फरवरी 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.ibm.com/careers/in-en/" target="_blank" class="apply-btn">अभी आवेदन करें</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">विज्ञापन देखें</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.tcs.com/content/dam/global-tcs/en/images/who-we-are/tcs-logo-1.png" alt="TCS Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>TCS - Building on Belief</h3>
+                <p>Join India's largest IT services company and work on cutting-edge digital transformation projects for global clients. We're hiring experienced professionals across various technology domains.</p>
+                <p><strong>Why TCS?</strong></p>
+                <ul>
+                    <li>Work on innovative projects with Fortune 500 clients</li>
+                    <li>Continuous learning and upskilling opportunities</li>
+                    <li>Global career growth prospects</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Apply now to be part of our diverse and inclusive workplace!</p>
+            </div>
+        </div>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.wipro.com/content/dam/nexus/en/brand/images/wipro-primary-logo-color-rbg-1.png" alt="Wipro Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>Wipro - Spirit of Wipro</h3>
+                <p>Join our cybersecurity team and help protect organizations from evolving digital threats. We're looking for skilled cybersecurity professionals with expertise in network security and ethical hacking.</p>
+                <p><strong>Why Wipro?</strong></p>
+                <ul>
+                    <li>Work on high-impact security projects</li>
+                    <li>Continuous learning and certification support</li>
+                    <li>Global client exposure</li>
+                    <li>Innovative work environment</li>
+                </ul>
+                <p>Secure your future with Wipro's cybersecurity team!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8d85f4.png" alt="Flipkart Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>Flipkart - The Better Choice</h3>
+                <p>Join India's leading e-commerce platform and be part of revolutionizing how India shops. We're looking for talented digital marketing professionals to drive our growth.</p>
+                <p><strong>Why Flipkart?</strong></p>
+                <ul>
+                    <li>Work on India's largest e-commerce platform</li>
+                    <li>Fast-paced, dynamic work environment</li>
+                    <li>Opportunity to impact millions of customers</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Be part of India's e-commerce revolution with Flipkart!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1280px-Amazon_Web_Services_Logo.svg.png" alt="AWS India Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>AWS India - Cloud Solutions Architect</h3>
+                <p>Join the world's most comprehensive and broadly adopted cloud platform. We're looking for experienced cloud architects to help customers on their cloud journey.</p>
+                <p><strong>Why AWS?</strong></p>
+                <ul>
+                    <li>Work on cutting-edge cloud technologies</li>
+                    <li>Help shape the future of cloud computing</li>
+                    <li>Continuous learning and certification support</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Build the future with AWS!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/768px-Microsoft_logo.svg.png" alt="Microsoft India Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>Microsoft India - Empowering Every Person and Organization</h3>
+                <p>Join one of the world's leading technology companies and help empower every person and organization on the planet to achieve more.</p>
+                <p><strong>Why Microsoft?</strong></p>
+                <ul>
+                    <li>Work on products used by billions</li>
+                    <li>Inclusive and diverse work culture</li>
+                    <li>Continuous learning and growth opportunities</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Be what's next with Microsoft!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Research India Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>Google Research India - AI Research Scientist</h3>
+                <p>Join our research team to solve complex problems and advance the state of artificial intelligence. We're looking for talented researchers with expertise in machine learning and AI.</p>
+                <p><strong>Why Google Research?</strong></p>
+                <ul>
+                    <li>Work on cutting-edge AI research</li>
+                    <li>Collaborate with world-class researchers</li>
+                    <li>Access to massive datasets and computing resources</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Shape the future of AI with Google Research!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Tech_Mahindra_Logo.svg/1280px-Tech_Mahindra_Logo.svg.png" alt="Tech Mahindra Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>Tech Mahindra - Connected World. Connected Experiences.</h3>
+                <p>Join us in building innovative blockchain solutions for enterprises across industries. We're looking for talented blockchain developers with experience in smart contracts and DApps.</p>
+                <p><strong>Why Tech Mahindra?</strong></p>
+                <ul>
+                    <li>Work on cutting-edge blockchain projects</li>
+                    <li>Opportunity to shape the future of enterprise blockchain</li>
+                    <li>Continuous learning and upskilling</li>
+                    <li>Global career opportunities</li>
+                </ul>
+                <p>Build the future of blockchain with Tech Mahindra!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" alt="IBM Research India Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>IBM Research India - Pioneering the Future of Computing</h3>
+                <p>Join our quantum computing research team and help build the future of computing. We're looking for talented researchers with expertise in quantum physics and computer science.</p>
+                <p><strong>Why IBM Research?</strong></p>
+                <ul>
+                    <li>Work on cutting-edge quantum computing research</li>
+                    <li>Access to IBM's quantum computers</li>
+                    <li>Collaborate with world-class researchers</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Be at the forefront of quantum computing with IBM Research!</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png" alt="IBM Research India Career Opportunities" class="ad-image">
+            </div>
+            <div class="ad-content">
+                <h3>IBM Research India - Pioneering the Future of Computing</h3>
+                <p>Join our quantum computing research team and help build the future of computing. We're looking for talented researchers with expertise in quantum physics and computer science.</p>
+                <p><strong>Why IBM Research?</strong></p>
+                <ul>
+                    <li>Work on cutting-edge quantum computing research</li>
+                    <li>Access to IBM's quantum computers</li>
+                    <li>Collaborate with world-class researchers</li>
+                    <li>Competitive compensation and benefits</li>
+                </ul>
+                <p>Be at the forefront of quantum computing with IBM Research!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0"> 2025 Edulang Hub. सर्वाधिकार सुरक्षित।</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 3, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

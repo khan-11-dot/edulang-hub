@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Australia - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">Job Opportunities in Australia</h1>
+                    <p class="lead">Explore current job vacancies with distant application deadlines</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Software Engineer</h3>
+                    <p class="company-name">Atlassian</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $130,000 - $160,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: September 30, 2025</span>
+                    </div>
+                    <p>We're looking for an experienced Software Engineer to join our Sydney team. You'll work on developing and maintaining our core products...</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">September 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Registered Nurse</h3>
+                    <p class="company-name">Australian Healthcare Services</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Melbourne, VIC</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time/Part-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $75,000 - $95,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 15, 2025</span>
+                    </div>
+                    <p>Join our healthcare team in Melbourne. We're seeking dedicated Registered Nurses with at least 2 years of experience...</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Civil Engineer</h3>
+                    <p class="company-name">Aurecon Australia</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Brisbane, QLD</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $90,000 - $120,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 1, 2025</span>
+                    </div>
+                    <p>We're looking for a Civil Engineer with experience in infrastructure projects to join our growing Brisbane office...</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Marketing Manager</h3>
+                    <p class="company-name">Canva</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $110,000 - $140,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 20, 2025</span>
+                    </div>
+                    <p>Join Canva's marketing team to help us create a world where anyone can design anything and publish anywhere...</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 20, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Mining Engineer</h3>
+                    <p class="company-name">BHP</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Perth, WA</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $120,000 - $150,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 15, 2025</span>
+                    </div>
+                    <p>BHP is seeking experienced Mining Engineers to join our Western Australia Iron Ore operations. You'll be responsible for designing and optimizing mining operations, ensuring safety standards, and implementing sustainable mining practices. The role requires strong technical skills in mine planning and design.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Specialist</h3>
+                    <p class="company-name">Commonwealth Bank</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $140,000 - $180,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 15, 2026</span>
+                    </div>
+                    <p>Join our cybersecurity team to protect our digital assets and customer data. You'll be responsible for threat detection, incident response, and implementing security measures. The ideal candidate has 5+ years of experience in cybersecurity and relevant certifications (CISSP, CISM).</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Renewable Energy Project Manager</h3>
+                    <p class="company-name">Acciona Energy</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Melbourne, VIC</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $130,000 - $160,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 28, 2026</span>
+                    </div>
+                    <p>Lead renewable energy projects from conception to completion. Responsibilities include project planning, budget management, and stakeholder coordination. The role requires experience in renewable energy projects and strong leadership skills. Knowledge of Australian energy regulations is a plus.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 28, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">Data Scientist</h3>
+                    <p class="company-name">CSIRO</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Canberra, ACT</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $110,000 - $150,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: March 15, 2026</span>
+                    </div>
+                    <p>Join Australia's national science agency to work on cutting-edge research projects. You'll develop machine learning models, analyze complex datasets, and contribute to scientific publications. A PhD in a quantitative field and experience with Python/R is required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">March 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Construction Project Manager</h3>
+                    <p class="company-name">Lendlease</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Brisbane, QLD</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $150,000 - $190,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 30, 2026</span>
+                    </div>
+                    <p>Manage large-scale construction projects in Brisbane. Responsibilities include project planning, budget control, and team leadership. The ideal candidate has 10+ years of experience in construction management and relevant certifications (CPM, PMP).</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 30, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Healthcare Consultant</h3>
+                    <p class="company-name">Deloitte Australia</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $120,000 - $160,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 15, 2026</span>
+                    </div>
+                    <p>Join our healthcare consulting team to advise clients on healthcare strategy, operations, and digital transformation. The role requires experience in healthcare management and strong analytical skills. MBA or relevant master's degree preferred.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Show Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/atlassian-ad.jpg" alt="Atlassian Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/healthcare-ad.jpg" alt="Australian Healthcare Services Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/aurecon-ad.jpg" alt="Aurecon Australia Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/canva-ad.jpg" alt="Canva Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/bhp-ad.jpg" alt="BHP Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/commbank-ad.jpg" alt="Commonwealth Bank Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/acciona-ad.jpg" alt="Acciona Energy Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/csiro-ad.jpg" alt="CSIRO Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/lendlease-ad.jpg" alt="Lendlease Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/deloitte-ad.jpg" alt="Deloitte Australia Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 3, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

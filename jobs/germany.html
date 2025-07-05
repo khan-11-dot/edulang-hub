@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="de">
+    <meta name="description" content="Entdecken Sie die neuesten Stellenangebote in Deutschland. Finden Sie Ihre nächste Karrieremöglichkeit mit Edulang Hub.">
+    <title>Stellenangebote in Deutschland - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            text-shadow: 0 0 2px #ffffff, 0 0 5px #ffffff, 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #00ffff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00a2ff;
+            animation: neonPulse 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neonPulse {
+            from {
+                text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00a2ff;
+            }
+            to {
+                text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 50px #00a2ff;
+            }
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4 fw-bold text-white mb-3">Stellenangebote in Deutschland</h1>
+                    <p class="lead text-white-50 mb-4">Finden Sie Ihren Traumjob bei führenden deutschen Unternehmen</p>
+                    <a href="../jobs.html" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-arrow-left me-2"></i>Zurück zu den Ländern
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Softwareentwickler (m/w/d)</h3>
+                    <p class="company-name">SAP SE</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Walldorf, Baden-Württemberg</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 85.000 - 110.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 30. September 2025</span>
+                    </div>
+                    <p>Als Senior Softwareentwickler bei SAP arbeiten Sie an der Entwicklung innovativer Unternehmenssoftware. Sie sind verantwortlich für die Konzeption, Implementierung und Wartung von Softwarelösungen im SAP-Ökosystem. Ihre Expertise in Java, JavaScript oder ABAP ist gefragt, um maßgeschneiderte Lösungen für unsere globalen Kunden zu entwickeln.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">30. September 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://jobs.sap.com/" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Entwicklungsingenieur Fahrzeugelektronik (m/w/d)</h3>
+                    <p class="company-name">Volkswagen AG</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Wolfsburg, Niedersachsen</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 78.000 - 95.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 15. Oktober 2025</span>
+                    </div>
+                    <p>Als Entwicklungsingenieur für Fahrzeugelektronik gestalten Sie die Mobilität der Zukunft. Sie sind verantwortlich für die Entwicklung und Integration elektronischer Systeme in Fahrzeuge, mit Schwerpunkt auf Elektromobilität und vernetztes Fahren. Sie arbeiten eng mit verschiedenen Fachabteilungen zusammen, um innovative Lösungen für die Automobilindustrie zu entwickeln.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">15. Oktober 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://karriere.volkswagen.de/" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Projektleiter Automatisierungstechnik (m/w/d)</h3>
+                    <p class="company-name">Siemens AG</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Nürnberg, Bayern</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 80.000 - 105.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 1. November 2025</span>
+                    </div>
+                    <p>Als Projektleiter (m/w/d) für Automatisierungstechnik verantworten Sie die Planung und Umsetzung von Automatisierungsprojekten in der Industrie. Sie führen ein Team von Ingenieuren, koordinieren die Projektdurchführung und sind zentraler Ansprechpartner für unsere Kunden. Fundierte Kenntnisse in SPS-Programmierung und Erfahrung mit digitalen Zwillingen sind von Vorteil.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">1. November 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.siemens.com/global/de/unternehmen/jobs.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Clinical Research Manager (m/w/d)</h3>
+                    <p class="company-name">Bayer AG</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Berlin, Deutschland</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 92.000 - 120.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 20. Oktober 2025</span>
+                    </div>
+                    <p>Als Clinical Research Manager (m/w/d) bei Bayer leiten Sie klinische Studien im Bereich der Arzneimittelforschung. Sie sind verantwortlich für die Planung, Durchführung und Überwachung von Studien in enger Zusammenarbeit mit internationalen Forschungsteams. Ein abgeschlossenes Studium der Medizin, Pharmazie oder Naturwissenschaften sowie Erfahrung in der klinischen Forschung sind erforderlich.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">20. Oktober 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://karriere.bayer.de/" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Risk Analyst (m/w/d)</h3>
+                    <p class="company-name">Deutsche Bank AG</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Frankfurt am Main, Hessen</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 88.000 - 115.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 15. Dezember 2025</span>
+                    </div>
+                    <p>Als Senior Risk Analyst (m/w/d) bei der Deutschen Bank analysieren Sie Marktrisiken, entwickeln Risikomodelle und unterstützen das Risikomanagement. Sie arbeiten eng mit dem Handelsbereich und der Unternehmensleitung zusammen, um Risikostrategien zu entwickeln und regulatorische Anforderungen umzusetzen. Ein abgeschlossenes Studium der Wirtschaftswissenschaften, Mathematik oder eines verwandten Fachgebiets sowie Erfahrung im Risikomanagement sind erforderlich.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">15. Dezember 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.db.com/careers/" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">IoT Security Expert (m/w/d)</h3>
+                    <p class="company-name">Robert Bosch GmbH</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Stuttgart, Baden-Württemberg</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 85.000 - 110.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 15. Januar 2026</span>
+                    </div>
+                    <p>Als IoT Security Expert (m/w/d) bei Bosch entwickeln Sie Sicherheitskonzepte für vernetzte Produkte und Industrie-4.0-Lösungen. Sie identifizieren Sicherheitslücken, führen Penetrationstests durch und beraten Entwicklungsteams zu Security-by-Design-Prinzipien. Fundierte Kenntnisse in IT-Sicherheit, Kryptographie und Erfahrung mit Sicherheitsstandards wie ISO 27001 sind erforderlich. Zertifizierungen wie CISSP oder CEH sind von Vorteil.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">15. Januar 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.bosch.de/karriere/" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Energiemanager (m/w/d) Erneuerbare Energien</h3>
+                    <p class="company-name">E.ON SE</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Essen, Nordrhein-Westfalen</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 82.000 - 105.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 28. Februar 2026</span>
+                    </div>
+                    <p>Als Energiemanager (m/w/d) für Erneuerbare Energien bei E.ON gestalten Sie die Energiewende aktiv mit. Sie verantworten die Integration erneuerbarer Energien in das Stromnetz, analysieren Energieverbräuche und entwickeln nachhaltige Energiekonzepte für Gewerbe- und Industriekunden. Ein abgeschlossenes Studium der Energietechnik, Wirtschaftsingenieurwesen oder einer vergleichbaren Fachrichtung sowie Kenntnisse im Bereich erneuerbarer Energien und Energiemanagementsysteme sind wünschenswert.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">28. Februar 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.eon.com/karriere.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">KI-Forscher (m/w/d) für Maschinelles Lernen</h3>
+                    <p class="company-name">Fraunhofer-Institut</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sankt Augustin, Nordrhein-Westfalen</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 75.000 - 95.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 15. März 2026</span>
+                    </div>
+                    <p>Als KI-Forscher (m/w/d) entwickeln Sie am Fraunhofer-Institut innovative Algorithmen des Maschinellen Lernens für industrielle Anwendungen. Sie forschen an der Schnittstelle zwischen Wissenschaft und Praxis, publizieren in internationalen Fachzeitschriften und arbeiten an spannenden Projekten mit Industriepartnern. Ein abgeschlossenes Master- oder Promotionsstudium in Informatik, Mathematik oder einem verwandten Fachgebiet sowie fundierte Kenntnisse in Python und Deep Learning sind erforderlich.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">15. März 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.fraunhofer.de/de/jobs-karriere.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Produktionsleiter (m/w/d) Elektromobilität</h3>
+                    <p class="company-name">BMW Group</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> München, Bayern</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 95.000 - 130.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 30. März 2026</span>
+                    </div>
+                    <p>Als Produktionsleiter (m/w/d) für Elektromobilität bei der BMW Group verantworten Sie die Produktion von Elektrofahrzeugen und deren Komponenten. Sie führen ein Team von Fachkräften, optimieren Produktionsprozesse und stellen die Einhaltung von Qualitäts- und Effizienzzielen sicher. Ein abgeschlossenes technisches Studium, mehrjährige Führungserfahrung in der Automobilproduktion sowie Kenntnisse in Elektromobilität und Lean Management sind erforderlich.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">30. März 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.bmwgroup.com/de/careers.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Biotechnologe (m/w/d) Impfstoffentwicklung</h3>
+                    <p class="company-name">BioNTech SE</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Mainz, Rheinland-Pfalz</span>
+                        <span><i class="fas fa-briefcase"></i> Vollzeit</span>
+                        <span><i class="fas fa-euro-sign"></i> 88.000 - 115.000 € pro Jahr</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Bewerbungsfrist: 15. April 2026</span>
+                    </div>
+                    <p>Als Senior Biotechnologe (m/w/d) bei BioNTech arbeiten Sie an der Entwicklung innovativer Impfstoffe und Krebstherapien auf mRNA-Basis. Sie leiten ein Team von Wissenschaftlern, planen und überwachen präklinische Studien und tragen zur Weiterentwicklung unserer Plattformtechnologien bei. Ein abgeschlossenes Promotion in Molekularbiologie, Biotechnologie oder einem verwandten Fachgebiet sowie mehrjährige Erfahrung in der pharmazeutischen Forschung und Entwicklung sind erforderlich.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Letzter Bewerbungstag: <span class="text-danger">15. April 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.biontech.com/de/de/careers/job-opportunities.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Anzeige anzeigen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg" alt="SAP Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Werde Teil von SAP</h3>
+                    <p>Gestalte die digitale Zukunft mit uns! Als führender Anbieter von Unternehmenssoftware suchen wir talentierte Mitarbeiter, die mit uns Innovationen vorantreiben möchten.</p>
+                    <p><strong>Warum SAP?</strong></p>
+                    <ul>
+                        <li>Flexible Arbeitszeiten & Homeoffice-Möglichkeiten</li>
+                        <li>Umfangreiche Weiterbildungsangebote</li>
+                        <li>Internationale Karrierechancen</li>
+                        <li>Attraktive Sozialleistungen</li>
+                    </ul>
+                    <a href="https://www.sap.com/germany/careers.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.volkswagen.de/content/volkswagen/de/brand/de.html" alt="Volkswagen Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Deine Zukunft bei Volkswagen</h3>
+                    <p>Gestalte mit uns die Mobilität von morgen! Als einer der weltweit führenden Automobilhersteller bieten wir spannende Perspektiven in einem zukunftssicheren Arbeitsumfeld.</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Moderne Arbeitsplätze mit besten Entwicklungsmöglichkeiten</li>
+                        <li>Umfassende Gesundheitsförderung</li>
+                        <li>Vergünstigte Mitarbeiterleasing-Modelle</li>
+                        <li>Betriebliche Altersvorsorge</li>
+                    </ul>
+                    <a href="https://karriere.volkswagen.de/" target="_blank" class="apply-btn">Zu den Stellenangeboten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://new.siemens.com/global/de/unternehmen/jobs/karriereportal/_jcr_content/root/container_1532485/container_0/container/teaser_2f3e/teasergroup_0/teaser_0/image.img.82.8cfd7f8e6f9f7d98.png" alt="Siemens Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Ingenieurskunst bei Siemens</h3>
+                    <p>Entdecken Sie Ihre Möglichkeiten als Teil unseres weltweit agierenden Technologiekonzerns. Wir bieten Ihnen ein inspirierendes Arbeitsumfeld und vielfältige Entwicklungsmöglichkeiten.</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Internationale Projekte mit globaler Wirkung</li>
+                        <li>Umfassende Einarbeitung und Mentoring</li>
+                        <li>Attraktive Work-Life-Balance</li>
+                        <li>Zukunftssichere Arbeitsplätze in zukunftsweisenden Branchen</li>
+                    </ul>
+                    <a href="https://new.siemens.com/global/de/unternehmen/jobs/karriereportal.html" target="_blank" class="apply-btn">Karriere starten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.bayer.de/sites/gbweb/bayer_com/logo.png" alt="Bayer Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Science For A Better Life</h3>
+                    <p>Bei Bayer verbinden wir Wissenschaft mit Innovation, um die Lebensqualität von Menschen weltweit zu verbessern. Werden Sie Teil unseres Teams und gestalten Sie mit uns eine nachhaltige Zukunft.</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Forschung an zukunftsweisenden Gesundheitslösungen</li>
+                        <li>Internationale Karrieremöglichkeiten</li>
+                        <li>Umfassende Sozialleistungen und Gesundheitsvorsorge</li>
+                        <li>Vereinbarkeit von Beruf und Familie</li>
+                    </ul>
+                    <a href="https://www.bayer.de/karriere" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.db.com/company/img/logo.svg" alt="Deutsche Bank Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Eine Bank. Ein Ziel: Einflussreich sein.</h3>
+                    <p>Bei der Deutschen Bank gestalten Sie die Zukunft des Bankwesens. Als eine der führenden Finanzinstitutionen weltweit bieten wir Ihnen herausfordernde Aufgaben und exzellente Entwicklungsmöglichkeiten.</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Spannende Aufgaben in einem internationalen Umfeld</li>
+                        <li>Umfassende Weiterbildungsmöglichkeiten</li>
+                        <li>Attraktive Vergütung und Sozialleistungen</li>
+                        <li>Flexible Arbeitsmodelle</li>
+                    </ul>
+                    <a href="https://www.db.com/careers/" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.bosch.de/static2/bosch-redesign/images/logo_bosch.png" alt="Bosch Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Technik fürs Leben</h3>
+                    <p>Als führendes Technologie- und Dienstleistungsunternehmen bieten wir Ihnen die Möglichkeit, an zukunftsweisenden Technologien mitzuwirken und die Welt von morgen mitzugestalten.</p>
+                    <p><strong>Das bieten wir:</strong></p>
+                    <ul>
+                        <li>Innovative Projekte mit echter Wirkung</li>
+                        <li>Vielfältige Entwicklungsmöglichkeiten</li>
+                        <li>Attraktive Arbeitsbedingungen</li>
+                        <li>Umfassende Gesundheits- und Sozialleistungen</li>
+                    </ul>
+                    <a href="https://www.bosch.de/karriere/" target="_blank" class="apply-btn">Karriere bei Bosch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.eon.com/content/dam/eon/eon-com/logo.svg" alt="E.ON Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Energie mit Zukunft</h3>
+                    <p>Gestalten Sie mit uns die Energiewende! Als einer der führenden Energiedienstleister Europas bieten wir Ihnen spannende Herausforderungen in einem zukunftssicheren Arbeitsumfeld.</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Nachhaltige Jobs in der Energiewirtschaft</li>
+                        <li>Vielfältige Karrierewege</li>
+                        <li>Attraktive Arbeitsbedingungen</li>
+                        <li>Umfassende Weiterbildungsangebote</li>
+                    </ul>
+                    <a href="https://www.eon.com/karriere.html" target="_blank" class="apply-btn">Jetzt entdecken</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.fraunhofer.de/static/images/fraunhofer-logo.svg" alt="Fraunhofer Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Wissenschaft mit Wirkung</h3>
+                    <p>Als größte Organisation für anwendungsorientierte Forschung in Europa bieten wir Ihnen ein inspirierendes Arbeitsumfeld an der Schnittstelle zwischen Wissenschaft und Industrie.</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Forschung mit gesellschaftlicher Relevanz</li>
+                        <li>Interdisziplinäre Zusammenarbeit</li>
+                        <li>Exzellente Ausstattung und Infrastruktur</li>
+                        <li>Vereinbarkeit von Beruf und Familie</li>
+                    </ul>
+                    <a href="https://www.fraunhofer.de/de/jobs-karriere.html" target="_blank" class="apply-btn">Zu den Stellenangeboten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.bmwgroup.com/content/dam/grpw/websites/bmwgroup_com/logo/logo-bmw-1200x630.png" alt="BMW Group Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Freude am Fortschritt</h3>
+                    <p>Als einer der weltweit führenden Automobil- und Motorradhersteller bieten wir Ihnen spannende Herausforderungen in einem zukunftssicheren Arbeitsumfeld.</p>
+                    <p><strong>Das bieten wir Ihnen:</strong></p>
+                    <ul>
+                        <li>Zukunftssichere Arbeitsplätze in der Mobilitätsbranche</li>
+                        <li>Umfassende Einarbeitung und Weiterbildung</li>
+                        <li>Attraktive Sozialleistungen und Vergünstigungen</li>
+                        <li>Internationale Karrieremöglichkeiten</li>
+                    </ul>
+                    <a href="https://www.bmwgroup.com/de/careers/overview.html" target="_blank" class="apply-btn">Karriere starten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.biontech.com/typo3conf/ext/site_package/Resources/Public/Images/logo.svg" alt="BioNTech Karriere" class="ad-image">
+                <div class="ad-text-content">
+                    <h3>Pionierarbeit in der Medizin</h3>
+                    <p>Als führendes Biotechnologieunternehmen entwickeln wir innovative Immuntherapien zur Behandlung von Krebs und anderen schweren Erkrankungen. Werden Sie Teil unseres Teams und gestalten Sie die Medizin der Zukunft mit!</p>
+                    <p><strong>Ihre Vorteile:</strong></p>
+                    <ul>
+                        <li>Forschung an der Spitze der Wissenschaft</li>
+                        <li>Hochmoderne Arbeitsumgebung</li>
+                        <li>Flache Hierarchien und kurze Entscheidungswege</li>
+                        <li>Umfassende Sozialleistungen</li>
+                    </ul>
+                    <a href="https://www.biontech.com/de/de/careers/job-opportunities.html" target="_blank" class="apply-btn">Jetzt bewerben</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Jobportal. Alle Rechte vorbehalten.</p>
+            <p class="last-updated">Zuletzt aktualisiert: 5. Juli 2025</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

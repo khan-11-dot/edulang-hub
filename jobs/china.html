@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in China - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            position: relative;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.8), 
+                         0 0 20px rgba(0, 255, 255, 0.5);
+            color: #fff;
+            transform: scale(1.01);
+        }
+        
+        .job-card p::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #0ff, transparent);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover::after {
+            opacity: 1;
+            height: 2px;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+        
+        .job-title::before, .job-title::after {
+            content: '❰';
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff;
+            margin: 0 5px;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .job-title::after {
+            content: '❱';
+        }
+        
+        .job-card:hover .job-title::before,
+        .job-card:hover .job-title::after {
+            opacity: 1;
+            text-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+            position: relative;
+            display: inline-block;
+            padding: 0 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .company-name::before {
+            content: '❨';
+            margin-right: 5px;
+            opacity: 0.7;
+        }
+        
+        .company-name::after {
+            content: '❩';
+            margin-left: 5px;
+            opacity: 0.7;
+        }
+        
+        .job-card:hover .company-name {
+            letter-spacing: 0.5px;
+        }
+        
+        .job-card:hover .company-name::before,
+        .job-card:hover .company-name::after {
+            opacity: 1;
+            text-shadow: 0 0 10px #0ff;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+            padding: 10px 0;
+            border-top: 1px dashed rgba(0, 255, 255, 0.3);
+            border-bottom: 1px dashed rgba(0, 255, 255, 0.3);
+        }
+        
+        .job-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .job-meta span:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #0ff;
+            transform: translateY(-2px);
+        }
+        
+        .job-meta i {
+            color: #0ff;
+            transition: all 0.3s ease;
+        }
+        
+        .job-meta span:hover i {
+            transform: scale(1.2);
+            text-shadow: 0 0 10px #0ff;
+        }
+        
+        .deadline {
+            color: #ff6b6b !important;
+            font-weight: 600;
+            animation: blink 2s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; text-shadow: 0 0 10px #ff6b6b; }
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">Job Opportunities in China</h1>
+                    <p class="lead">探索当前职位空缺与远期申请截止日期</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Software Engineer (高级软件工程师)</h3>
+                    <p class="company-name">Alibaba Group (阿里巴巴集团)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Hangzhou, China (中国杭州)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥800,000 - ¥1,200,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2025年9月30日</span>
+                    </div>
+                    <p>Join Alibaba's core e-commerce platform team to develop cutting-edge technologies that power our global marketplace. You'll work on high-performance distributed systems serving millions of users worldwide. 加入阿里巴巴核心电商平台团队，开发支持全球市场的前沿技术。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2025年9月30日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://talent.alibaba.com" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Data Scientist (数据科学家)</h3>
+                    <p class="company-name">Tencent (腾讯)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Shenzhen, China (中国深圳)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥600,000 - ¥1,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2025年10月15日</span>
+                    </div>
+                    <p>Join Tencent's AI Lab to work on cutting-edge AI research and applications. You'll develop machine learning models for our global products including WeChat and gaming platforms. 加入腾讯AI实验室，参与前沿AI研究和应用开发。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2025年10月15日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.tencent.com" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">AI Research Scientist (AI研究科学家)</h3>
+                    <p class="company-name">Baidu Research (百度研究院)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Beijing, China (中国北京)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥800,000 - ¥1,500,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2025年11月1日</span>
+                    </div>
+                    <p>Join Baidu Research to work on cutting-edge AI technologies including deep learning, computer vision, and natural language processing. 加入百度研究院，参与深度学习、计算机视觉和自然语言处理等前沿AI技术研究。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2025年11月1日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://talent.baidu.com" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Blockchain Developer (区块链开发工程师)</h3>
+                    <p class="company-name">Ant Group (蚂蚁集团)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Hangzhou, China (中国杭州)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥700,000 - ¥1,200,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2025年11月15日</span>
+                    </div>
+                    <p>Work on AntChain's blockchain platform to develop innovative financial solutions. Experience with smart contracts and distributed systems required. 参与蚂蚁链平台开发，要求具备智能合约和分布式系统经验。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2025年11月15日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.antgroup.com/en/careers" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">5G Network Engineer (5G网络工程师)</h3>
+                    <p class="company-name">Huawei Technologies (华为技术)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Shenzhen, China (中国深圳)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥500,000 - ¥900,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2025年11月30日</span>
+                    </div>
+                    <p>Join Huawei's 5G R&D team to develop next-generation wireless communication technologies. 加入华为5G研发团队，参与下一代无线通信技术开发。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2025年11月30日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://career.huawei.com" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">E-commerce Product Manager (电商产品经理)</h3>
+                    <p class="company-name">JD.com (京东)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Beijing, China (中国北京)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥400,000 - ¥800,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2025年12月1日</span>
+                    </div>
+                    <p>Lead product strategy and development for JD.com's e-commerce platform. Experience in e-commerce and product management required. 负责京东电商平台产品策略与开发，要求具备电商和产品管理经验。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2025年12月1日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://corporate.jd.com/jobs" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Electric Vehicle Engineer (电动汽车工程师)</h3>
+                    <p class="company-name">BYD (比亚迪)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Shenzhen, China (中国深圳)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥350,000 - ¥700,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2026年1月15日</span>
+                    </div>
+                    <p>Work on next-generation electric vehicle technology at BYD, the world's leading EV manufacturer. 加入全球领先的电动汽车制造商比亚迪，参与下一代电动汽车技术研发。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2026年1月15日</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">AI Chip Architect (AI芯片架构师)</h3>
+                    <p class="company-name">Huawei (华为)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Shenzhen, China (中国深圳)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥800,000 - ¥1,500,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2026年2月15日</span>
+                    </div>
+                    <p>Design next-generation AI processors at Huawei's HiSilicon. Experience in computer architecture and VLSI design required. 参与华为海思下一代AI处理器设计，要求具备计算机体系结构和VLSI设计经验。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2026年2月15日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://career.huawei.com" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Construction Project Manager (建筑项目经理)</h3>
+                    <p class="company-name">China State Construction (中国建筑)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Shanghai, China (中国上海)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥450,000 - ¥800,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2026年3月15日</span>
+                    </div>
+                    <p>Lead large-scale construction projects in Shanghai. Experience in high-rise buildings and infrastructure required. 负责上海大型建筑项目，要求具备高层建筑和基础设施项目经验。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2026年3月15日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="http://www.cscec.com/" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">查看招聘广告</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">AI Healthcare Researcher (AI医疗研究员)</h3>
+                    <p class="company-name">iFLYTEK (科大讯飞)</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Hefei, China (中国合肥)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time (全职)</span>
+                        <span><i class="fas fa-yen-sign"></i> ¥500,000 - ¥1,000,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> 申请截止: 2026年3月1日</span>
+                    </div>
+                    <p>Research and develop AI solutions for healthcare applications at iFLYTEK. Experience in medical imaging or natural language processing preferred. 在科大讯飞研发医疗AI解决方案，有医学影像或自然语言处理经验者优先。</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> 最后申请日期: <span class="text-danger">2026年3月1日</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.iflytek.com/en/careers/" target="_blank" rel="noopener noreferrer" class="apply-btn">立即申请</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">查看招聘广告</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/atlassian-ad.jpg" alt="Atlassian Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/healthcare-ad.jpg" alt="Australian Healthcare Services Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/aurecon-ad.jpg" alt="Aurecon Australia Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/canva-ad.jpg" alt="Canva Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/bhp-ad.jpg" alt="BHP Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/commbank-ad.jpg" alt="Commonwealth Bank Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/acciona-ad.jpg" alt="Acciona Energy Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/csiro-ad.jpg" alt="CSIRO Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/lendlease-ad.jpg" alt="Lendlease Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/deloitte-ad.jpg" alt="Deloitte Australia Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 3, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

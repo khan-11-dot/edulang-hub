@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Canada - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-4">Job Opportunities in Canada</h1>
+                    <p class="lead">Explore current job vacancies with distant application deadlines</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Software Developer</h3>
+                    <p class="company-name">Shopify</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Ottawa, ON</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $140,000 - $180,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 15, 2025</span>
+                    </div>
+                    <p>Join Shopify's engineering team to build the future of commerce. We're looking for experienced developers to work on our core platform, creating solutions that empower millions of merchants worldwide. Experience with Ruby on Rails, React, and cloud technologies preferred.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.shopify.com/careers" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Registered Nurse - Emergency Department</h3>
+                    <p class="company-name">University Health Network - Toronto General Hospital</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Toronto, ON</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time/Part-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $75,000 - $95,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 30, 2025</span>
+                    </div>
+                    <p>Join Canada's leading research hospital in providing exceptional emergency care. We're seeking dedicated Registered Nurses with 2+ years of acute care experience. Current registration with the College of Nurses of Ontario (CNO) and BLS/ACLS certification required. Experience in emergency nursing preferred but new graduates with relevant clinical placements will be considered.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.uhn.ca/Careers/Pages/Current_Opportunities.aspx" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Civil Engineer - Infrastructure</h3>
+                    <p class="company-name">SNC-Lavalin</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Montreal, QC</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $95,000 - $130,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 15, 2025</span>
+                    </div>
+                    <p>Join SNC-Lavalin's Infrastructure team in Montreal to work on major transportation and municipal projects across Canada. We're seeking a P.Eng. with 7+ years of experience in civil engineering design, project management, and client relations. Bilingual (English/French) is an asset. You'll lead design teams, prepare technical reports, and ensure projects meet quality standards and deadlines.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.snclavalin.com/en/careers" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Digital Marketing Manager - E-commerce</h3>
+                    <p class="company-name">Lululemon</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Vancouver, BC</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $100,000 - $135,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 10, 2026</span>
+                    </div>
+                    <p>Lululemon is seeking a Digital Marketing Manager to lead our Canadian e-commerce growth strategy. You'll develop and execute digital marketing campaigns across paid social, email, and performance marketing channels. The ideal candidate has 5+ years of digital marketing experience with a focus on DTC e-commerce, strong analytical skills, and a passion for the active lifestyle industry. Experience with Google Analytics, Meta Business Suite, and email marketing platforms required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 10, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://careers.lululemon.com/" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Mining Engineer - Open Pit</h3>
+                    <p class="company-name">Teck Resources</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sparwood, BC</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $130,000 - $160,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: February 28, 2026</span>
+                    </div>
+                    <p>Teck Resources is seeking a Senior Mining Engineer for our Elk Valley operations in British Columbia. You'll be responsible for mine planning, design, and optimization of open pit operations. The role requires a P.Eng. designation, 8+ years of mining experience, and expertise in mine planning software (MineSight, Vulcan, or similar). Experience with sustainable mining practices and safety management systems is essential. This position offers a competitive compensation package including relocation assistance and performance bonuses.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">February 28, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.teck.com/careers/" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Threat Intelligence Analyst</h3>
+                    <p class="company-name">BMO Financial Group</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Toronto, ON (Hybrid)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $110,000 - $150,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: March 15, 2026</span>
+                    </div>
+                    <p>Join BMO's Security Operations Center as a Cybersecurity Threat Intelligence Analyst. You'll monitor, detect, and respond to cybersecurity threats in real-time, conduct threat hunting activities, and provide intelligence briefings to senior leadership. The ideal candidate has 5+ years in cybersecurity operations, experience with SIEM tools, threat intelligence platforms, and holds certifications such as CISSP, CEH, or GIAC. Knowledge of Canadian financial regulations (OSFI, PIPEDA) is a strong asset.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">March 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://jobs.bmo.com/ca/en/cybersecurity-jobs" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Renewable Energy Project Manager - Wind & Solar</h3>
+                    <p class="company-name">TransAlta Renewables</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Calgary, AB</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $125,000 - $155,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: April 30, 2026</span>
+                    </div>
+                    <p>TransAlta is seeking an experienced Project Manager to lead the development and execution of wind and solar energy projects across Canada. You'll be responsible for managing all aspects of project development including permitting, stakeholder engagement, budget management, and construction oversight. The ideal candidate has 8+ years of experience in renewable energy project management, with a strong understanding of Canadian energy regulations and the IESO/AESO/MIESC markets. PMP certification and experience with large-scale renewable energy projects is required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">April 30, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.transalta.com/careers/" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">Machine Learning Research Scientist</h3>
+                    <p class="company-name">Vector Institute</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Toronto, ON</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $120,000 - $160,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: May 31, 2026</span>
+                    </div>
+                    <p>The Vector Institute is seeking a Machine Learning Research Scientist to advance AI research and its applications. You'll conduct original research in deep learning, publish in top-tier conferences, and collaborate with industry partners. The ideal candidate has a PhD in Computer Science, Mathematics, or related field with a strong publication record in machine learning. Expertise in PyTorch/TensorFlow and experience with large language models or computer vision is required. This position offers the opportunity to work with world-class researchers and contribute to Canada's AI ecosystem.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">May 31, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://vectorinstitute.ai/careers/" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Construction Project Manager - High Rise</h3>
+                    <p class="company-name">PCL Construction</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Toronto, ON</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $140,000 - $180,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: June 30, 2026</span>
+                    </div>
+                    <p>PCL Construction is seeking an experienced Senior Project Manager to lead high-rise residential and commercial projects in the Greater Toronto Area. You'll be responsible for overall project execution, including budget management, scheduling, quality control, and client relations. The ideal candidate has 10+ years of construction management experience with a focus on high-rise developments, a degree in Civil Engineering or Construction Management, and a Gold Seal Certification. Experience with LEED projects and knowledge of Ontario Building Code is required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">June 30, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.pcl.com/careers/" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Consultant - Healthcare & Life Sciences</h3>
+                    <p class="company-name">Deloitte Canada</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Multiple Locations (Toronto, Montreal, Vancouver, Calgary)</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $110,000 - $150,000 CAD per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: July 31, 2026</span>
+                    </div>
+                    <p>Join Deloitte's Canadian Healthcare & Life Sciences practice to help transform healthcare delivery across the country. In this role, you'll work with provincial health authorities, hospitals, and life sciences companies on strategic initiatives including digital health transformation, healthcare analytics, and operational improvement. The ideal candidate has 5+ years of consulting experience in healthcare, strong knowledge of the Canadian healthcare system, and experience with healthcare IT systems. Bilingual (English/French) is an asset.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">July 31, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www2.deloitte.com/ca/en/pages/careers/topics/apply-now.html" class="apply-btn" target="_blank" rel="noopener noreferrer">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Show Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456ba735801d47a6a5755d1522b0b8e51a70b3c1f6f2e6b9e8d3e4f5a6b7c8d9.png" alt="Shopify Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Join Shopify - Where Commerce Meets Innovation</h3>
+                    <p>At Shopify, we're on a mission to make commerce better for everyone. As a Senior Software Developer in our Ottawa office, you'll build the tools that power over 1.7 million businesses in 175 countries.</p>
+                    <p>Why choose Shopify?</p>
+                    <ul>
+                        <li>Work on projects that impact millions of merchants worldwide</li>
+                        <li>Competitive compensation and benefits package</li>
+                        <li>Flexible work environment with remote options</li>
+                        <li>Continuous learning and growth opportunities</li>
+                        <li>Inclusive and diverse workplace culture</li>
+                    </ul>
+                    <p class="mt-3 text-center">Apply now to be part of our mission to make commerce better for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.uhn.ca/AboutUHN/Media_Assets/Images/uhn_logo.png" alt="University Health Network Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Join Canada's #1 Research Hospital</h3>
+                    <p>At Toronto General Hospital, part of University Health Network, we're looking for passionate Registered Nurses to join our Emergency Department team. Be part of a world-renowned healthcare institution that's leading the way in patient care, research, and education.</p>
+                    <p>Why join UHN?</p>
+                    <ul>
+                        <li>Work in a state-of-the-art facility with cutting-edge medical technology</li>
+                        <li>Competitive compensation and comprehensive benefits package</li>
+                        <li>Opportunities for professional development and continuing education</li>
+                        <li>Collaborative and supportive work environment</li>
+                        <li>Pension plan and paid vacation</li>
+                    </ul>
+                    <p class="mt-3 text-center">Make a difference in patients' lives every day at UHN.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.snclavalin.com/globalassets/images/logos/snclavalin-logo.svg" alt="SNC-Lavalin Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Build the Future with SNC-Lavalin</h3>
+                    <p>Join our team as a Senior Civil Engineer in Montreal and work on some of Canada's most iconic infrastructure projects. At SNC-Lavalin, we're shaping the future of transportation, energy, and urban development across the country.</p>
+                    <p>Why choose SNC-Lavalin?</p>
+                    <ul>
+                        <li>Work on high-profile infrastructure projects that shape communities</li>
+                        <li>Competitive compensation and comprehensive benefits package</li>
+                        <li>Opportunities for professional growth and international experience</li>
+                        <li>Collaborative work environment with industry experts</li>
+                        <li>Commitment to sustainability and innovation in engineering</li>
+                    </ul>
+                    <p class="mt-3 text-center">Be part of building a better tomorrow with SNC-Lavalin.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://cdn.cdnlogo.com/logos/l/15/lululemon-0.svg" alt="Lululemon Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Elevate Your Career at Lululemon</h3>
+                    <p>Join our Vancouver team as a Digital Marketing Manager and help shape the future of e-commerce in the athletic apparel industry. At Lululemon, we believe in the power of sweat to transform lives and communities.</p>
+                    <p>Why join Lululemon?</p>
+                    <ul>
+                        <li>Be part of a purpose-driven company that values innovation and wellbeing</li>
+                        <li>Competitive salary and comprehensive benefits including health & wellness programs</li>
+                        <li>Generous employee discount on Lululemon products</li>
+                        <li>Opportunities for career growth in a fast-paced, dynamic environment</li>
+                        <li>Inclusive workplace culture that celebrates diversity and creativity</li>
+                    </ul>
+                    <p class="mt-3 text-center">Help us create the future of experiential retail and digital commerce.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.teck.com/media/Teck-Resources-Logo.png" alt="Teck Resources Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Shape the Future of Mining at Teck Resources</h3>
+                    <p>Join our team as a Senior Mining Engineer in Sparwood, BC, and be at the forefront of responsible resource development. At Teck, we're committed to mining with a focus on sustainability and innovation.</p>
+                    <p>Why join Teck Resources?</p>
+                    <ul>
+                        <li>Work with cutting-edge mining technology and practices</li>
+                        <li>Competitive compensation with performance bonuses</li>
+                        <li>Comprehensive benefits including pension and savings plans</li>
+                        <li>Opportunities for career advancement in a global mining company</li>
+                        <li>Commitment to safety, sustainability, and community engagement</li>
+                    </ul>
+                    <p class="mt-3 text-center">Be part of a company that's building a better world through responsible mining.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/BMO_Financial_Group_logo_%282020%29.svg/1200px-BMO_Financial_Group_logo_%282020%29.svg.png" alt="BMO Financial Group Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Protect What Matters at BMO</h3>
+                    <p>Join our team as a Cybersecurity Threat Intelligence Analyst in Toronto and help protect one of North America's leading financial institutions. At BMO, we're committed to maintaining the highest standards of security and trust.</p>
+                    <p>Why choose BMO?</p>
+                    <ul>
+                        <li>Work with cutting-edge cybersecurity technologies and tools</li>
+                        <li>Competitive compensation and comprehensive benefits package</li>
+                        <li>Opportunities for professional development and certifications</li>
+                        <li>Inclusive and supportive work environment</li>
+                        <li>Be part of a team that's securing the future of banking</li>
+                    </ul>
+                    <p class="mt-3 text-center">Help us build a secure digital future at BMO.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.transalta.com/wp-content/uploads/2021/05/transalta-logo-blue-rgb.png" alt="TransAlta Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Power Your Career at TransAlta</h3>
+                    <p>Join our team as a Renewable Energy Project Manager in Calgary and help lead the transition to a cleaner energy future. At TransAlta, we're committed to sustainable energy solutions that power communities and industries across Canada.</p>
+                    <p>Why join TransAlta?</p>
+                    <ul>
+                        <li>Work on innovative wind and solar projects across Canada</li>
+                        <li>Competitive compensation and comprehensive benefits package</li>
+                        <li>Opportunities for professional growth in the renewable energy sector</li>
+                        <li>Commitment to sustainability and environmental responsibility</li>
+                        <li>Collaborative work environment with industry experts</li>
+                    </ul>
+                    <p class="mt-3 text-center">Be part of Canada's clean energy transformation with TransAlta.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://vectorinstitute.ai/wp-content/uploads/2022/09/Vector_Logo_Black_CMYK.jpg" alt="Vector Institute Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Pioneer the Future of AI at Vector Institute</h3>
+                    <p>Join our team as a Machine Learning Research Scientist in Toronto and be at the forefront of artificial intelligence research. At the Vector Institute, we're pushing the boundaries of deep learning and AI to solve real-world challenges.</p>
+                    <p>Why join Vector Institute?</p>
+                    <ul>
+                        <li>Work alongside world-renowned AI researchers and faculty</li>
+                        <li>Access to cutting-edge computing resources and datasets</li>
+                        <li>Competitive compensation and comprehensive benefits</li>
+                        <li>Opportunities for collaboration with industry partners</li>
+                        <li>Be part of Canada's AI ecosystem and innovation hub</li>
+                    </ul>
+                    <p class="mt-3 text-center">Help shape the future of artificial intelligence at Vector Institute.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www.pcl.com/pcl-theme/images/logos/pcl_logo_red.svg" alt="PCL Construction Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Build What Matters at PCL Construction</h3>
+                    <p>Join our team as a Senior Construction Project Manager in Toronto and help shape the skyline of Canada's largest city. At PCL, we're building more than structures - we're building communities and creating lasting legacies.</p>
+                    <p>Why choose PCL Construction?</p>
+                    <ul>
+                        <li>Work on high-profile, complex construction projects across Canada</li>
+                        <li>Competitive compensation with performance-based bonuses</li>
+                        <li>Comprehensive benefits including pension and profit-sharing</li>
+                        <li>Commitment to safety, innovation, and sustainability</li>
+                        <li>Opportunities for career advancement in a 100% employee-owned company</li>
+                    </ul>
+                    <p class="mt-3 text-center">Build your future with PCL Construction - where your work stands the test of time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="https://www2.deloitte.com/content/dam/Deloitte/ca/Images/promo_images/ca-en-logo-deloitte-touch-tagline-3x.jpg" alt="Deloitte Canada Careers" class="ad-image">
+                <div class="ad-text-content p-4">
+                    <h3 class="text-center mb-3">Make an Impact That Matters at Deloitte Canada</h3>
+                    <p>Join our Healthcare & Life Sciences practice as a Senior Consultant and help transform the future of healthcare in Canada. At Deloitte, we work with leading healthcare organizations to solve their most complex challenges.</p>
+                    <p>Why choose Deloitte Canada?</p>
+                    <ul>
+                        <li>Work with Canada's top healthcare organizations and government agencies</li>
+                        <li>Competitive compensation and comprehensive benefits package</li>
+                        <li>Opportunities for professional development and career advancement</li>
+                        <li>Inclusive and diverse workplace culture</li>
+                        <li>Flexible work arrangements and work-life balance</li>
+                    </ul>
+                    <p class="mt-3 text-center">Be part of a team that's making a difference in Canadian healthcare.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <p>&copy; 2025 Job Portal. All rights reserved. | Last updated: March 23, 2025</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Opportunities in Malaysia - Edulang Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-image: url('https://4.bp.blogspot.com/-k_P1f8olZz8/ToOYNmz4ApI/AAAAAAAAD08/2M8R4wC7BRg/s1600/amazing_sky_wallpapers.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #2b28283f;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .job-card {
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            background-color: rgba(0, 10, 20, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .job-card:hover::before {
+            left: 100%;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+            border-color: #0ff;
+        }
+        .job-card p {
+            color: #e0f7fa;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .job-card p:hover {
+            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            color: #fff;
+        }
+        .job-title {
+            color: #fff;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #fff,
+                0 0 20px #0ff,
+                0 0 40px #0ff;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+        .company-name {
+            color: #0ff;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            text-shadow: 
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff;
+            animation: neonGlow 3s ease-in-out infinite alternate;
+        }
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #ddd;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .job-meta i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        .apply-btn {
+            background-color: #3498db;
+            color: rgb(15, 1, 1);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .apply-btn:hover {
+            background-color: #0ff;
+            color: #ff3366 !important;
+            text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            font-weight: bold;
+            animation: redPulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes redPulse {
+            from {
+                text-shadow: 0 0 5px #ff3366, 0 0 10px #ff3366;
+            }
+            to {
+                text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366;
+            }
+        }
+        .deadline {
+            color: #ff3366;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 51, 102, 0.7);
+        }
+        .last-date {
+            background-color: rgba(0, 20, 40, 0.8);
+            padding: 8px 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+            border-left: 4px solid #0ff;
+            color: #fff;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .last-date i {
+            margin-right: 8px;
+            color: #e74c3c;
+        }
+        .ad-btn {
+            background-color: #0aa;
+            color: #000;
+            border: 1px solid #0ff;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+        }
+        .ad-btn:hover {
+            background-color: #0ff;
+            box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
+            transform: translateY(-2px);
+        }
+        .modal-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        .modal-content-ad {
+            background-color: #fefefe;
+            margin: 2% auto;
+            padding: 10px;
+            border: 1px solid #888;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 8px;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .ad-image-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        .ad-image {
+            max-width: 100%;
+            height: auto;
+            max-height: 85vh;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .close-ad {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
+        }
+        .ad-content {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .header-bg {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 40px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #00fffc;
+            box-shadow: 0 0 20px rgba(0, 255, 252, 0.5);
+        }
+        .display-4 {
+            color: #fff;
+            text-shadow: 0 0 10px #00fffc,
+                         0 0 20px #00fffc,
+                         0 0 40px #00fffc;
+            font-weight: 700;
+            letter-spacing: 2px;
+            animation: neon 1.5s ease-in-out infinite alternate;
+        }
+        .lead {
+            color: #fff;
+            text-shadow: 0 0 5px #00fffc,
+                         0 0 10px #00fffc;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        @keyframes neon {
+            from {
+                text-shadow: 0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc;
+            }
+            to {
+                text-shadow: 0 0 5px #00fffc,
+                             0 0 10px #00fffc,
+                             0 0 20px #00fffc,
+                             0 0 40px #00fffc,
+                             0 0 80px #00fffc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="display-5 fw-bold">Job Opportunities in Malaysia</h1>
+                    <p class="lead">Explore exciting career opportunities in Malaysia's dynamic job market</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <!-- Job Listings -->
+            <div class="col-lg-8 mx-auto">
+                <!-- Job Card 1 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Petroleum Engineer</h3>
+                    <p class="company-name">PETRONAS</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 180,000 - MYR 240,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: August 31, 2025</span>
+                    </div>
+                    <p>We are seeking an experienced Petroleum Engineer to join our upstream operations team. You will be responsible for reservoir management, production optimization, and field development planning. The ideal candidate will have 8+ years of experience in the oil and gas industry with strong technical expertise in reservoir engineering.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">August 31, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.petronas.com/careers" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal1')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card">
+                    <h3 class="job-title">Digital Banking Manager</h3>
+                    <p class="company-name">Maybank</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 150,000 - MYR 200,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: September 15, 2025</span>
+                    </div>
+                    <p>Join Maybank's Digital Banking Division to lead innovative digital banking solutions. You will be responsible for developing and implementing digital strategies, managing digital channels, and ensuring seamless customer experiences. The ideal candidate has 5+ years of experience in digital banking or fintech with strong leadership skills.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">September 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.maybank.com/en/careers/index.page" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal2')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card">
+                    <h3 class="job-title">Aircraft Maintenance Engineer</h3>
+                    <p class="company-name">AirAsia</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sepang, Selangor, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 84,000 - MYR 120,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 10, 2025</span>
+                    </div>
+                    <p>AirAsia is seeking a Licensed Aircraft Maintenance Engineer (LAME) to join our engineering team. You will be responsible for maintenance, repair, and inspection of aircraft to ensure airworthiness. The ideal candidate holds a valid CAAM license with type ratings on A320 family aircraft and has 5+ years of relevant experience in line and base maintenance.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 10, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.airasia.com/en/careers" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal3')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 4 -->
+                <div class="job-card">
+                    <h3 class="job-title">Senior Relationship Manager - Corporate Banking</h3>
+                    <p class="company-name">CIMB Group</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 180,000 - MYR 250,000 per year + Commission</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: September 30, 2025</span>
+                    </div>
+                    <p>CIMB Group is looking for an experienced Senior Relationship Manager to manage and grow our corporate banking portfolio. The successful candidate will be responsible for developing new business opportunities, managing client relationships, and achieving sales targets. Minimum 8 years of experience in corporate banking with a proven track record in business development is required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">September 30, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.cimb.com/en/careers.html" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal4')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 5 -->
+                <div class="job-card">
+                    <h3 class="job-title">Resort Operations Manager</h3>
+                    <p class="company-name">Genting Group</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Genting Highlands, Pahang, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 240,000 - MYR 300,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: October 31, 2025</span>
+                    </div>
+                    <p>Genting Group is seeking an experienced Resort Operations Manager to oversee daily operations at our world-class integrated resort in Genting Highlands. The ideal candidate will have 10+ years of experience in hospitality management, with a strong background in hotel and resort operations. Responsibilities include managing staff, ensuring guest satisfaction, and optimizing operational efficiency across all resort departments.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">October 31, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.gentingmalaysia.com/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal5')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 6 -->
+                <div class="job-card">
+                    <h3 class="job-title">Cybersecurity Specialist</h3>
+                    <p class="company-name">Commonwealth Bank</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Sydney, NSW</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> $140,000 - $180,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 15, 2026</span>
+                    </div>
+                    <p>Join our cybersecurity team to protect our digital assets and customer data. You'll be responsible for threat detection, incident response, and implementing security measures. The ideal candidate has 5+ years of experience in cybersecurity and relevant certifications (CISSP, CISM).</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="#" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal6')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 7 -->
+                <div class="job-card">
+                    <h3 class="job-title">Network Solutions Architect</h3>
+                    <p class="company-name">Maxis</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Kuala Lumpur, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 180,000 - MYR 250,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: November 15, 2025</span>
+                    </div>
+                    <p>Maxis is seeking a Network Solutions Architect to design and implement cutting-edge telecommunications solutions. The role involves creating scalable network architectures, leading technical projects, and providing expert guidance on network infrastructure. The ideal candidate has 7+ years of experience in network architecture, with expertise in 5G, cloud networking, and enterprise solutions. Professional certifications (CCIE, JNCIE, or equivalent) are highly desirable.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">November 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.maxis.com.my/en/careers.html" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal7')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 8 -->
+                <div class="job-card">
+                    <h3 class="job-title">5G Solutions Specialist</h3>
+                    <p class="company-name">CelcomDigi</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Cyberjaya, Selangor, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 150,000 - MYR 220,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 1, 2025</span>
+                    </div>
+                    <p>CelcomDigi is looking for a 5G Solutions Specialist to drive the development and implementation of 5G technologies and services. The role involves working with cross-functional teams to design 5G solutions, conduct technical feasibility studies, and support business development activities. The ideal candidate has 5+ years of experience in telecommunications with expertise in 5G NR, network slicing, and IoT solutions. Strong knowledge of 3GPP standards and experience with 5G core networks is required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 1, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.celcomdigi.com/careers" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal8')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 9 -->
+                <div class="job-card">
+                    <h3 class="job-title">Property Development Manager</h3>
+                    <p class="company-name">Sunway Group</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Petaling Jaya, Selangor, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 200,000 - MYR 280,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: December 15, 2025</span>
+                    </div>
+                    <p>Sunway Group is seeking an experienced Property Development Manager to lead high-profile property development projects. The role involves overseeing the entire development lifecycle from concept to completion, including feasibility studies, design development, authority approvals, and project delivery. The ideal candidate has 8+ years of experience in property development, strong project management skills, and a proven track record of delivering mixed-use developments in Malaysia. Professional qualifications in Property, Architecture, or Engineering are required.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">December 15, 2025</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.sunway.com.my/careers" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal9')">Show Advertisement</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 10 -->
+                <div class="job-card">
+                    <h3 class="job-title">Quality Assurance Manager - Medical Devices</h3>
+                    <p class="company-name">Top Glove</p>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Klang, Selangor, Malaysia</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-dollar-sign"></i> MYR 120,000 - MYR 180,000 per year</span>
+                        <span class="deadline"><i class="far fa-clock"></i> Apply by: January 15, 2026</span>
+                    </div>
+                    <p>Top Glove is seeking a Quality Assurance Manager to oversee quality control and assurance processes for our medical device manufacturing operations. The role involves ensuring compliance with international standards (FDA, CE, ISO 13485), managing quality control teams, and implementing continuous improvement initiatives. The ideal candidate has 5+ years of experience in quality assurance within the medical device or pharmaceutical industry, with strong knowledge of GMP and GDP requirements. Experience with medical glove manufacturing is highly desirable.</p>
+                    <div class="last-date">
+                        <i class="far fa-calendar-alt"></i> Last Date to Apply: <span class="text-danger">January 15, 2026</span>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+                        <a href="https://www.topglove.com/careers/" target="_blank" class="apply-btn">Apply Now</a>
+                        <button class="ad-btn" onclick="openAdModal('adModal10')">Show Advertisement</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ad Modals -->
+    <div id="adModal1" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal1')">&times;</span>
+            <div class="ad-image-container">
+                <h3 class="text-center mb-4">PETRONAS - Fuelling the Future of Energy</h3>
+                <p class="text-center mb-4">Join Malaysia's Fortune Global 500 company and be part of the energy transition journey. At PETRONAS, we're not just an oil and gas company - we're building sustainable energy solutions for tomorrow.</p>
+                <div class="text-center">
+                    <img src="https://www.petronas.com/sites/default/files/2023-03/petronas-careers.jpg" alt="PETRONAS Careers" class="img-fluid mb-3" style="max-height: 300px;">
+                </div>
+                <h4 class="mt-4">Why Join PETRONAS?</h4>
+                <ul>
+                    <li>Work on cutting-edge energy projects worldwide</li>
+                    <li>Comprehensive learning and development programs</li>
+                    <li>Competitive compensation and benefits package</li>
+                    <li>Inclusive and diverse work environment</li>
+                    <li>Opportunities for international assignments</li>
+                </ul>
+                <div class="text-center mt-4">
+                    <a href="https://www.petronas.com/careers" target="_blank" class="btn btn-primary">Explore Careers at PETRONAS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal2" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal2')">&times;</span>
+            <div class="ad-image-container">
+                <h3 class="text-center mb-4">Maybank - Humanising Financial Services</h3>
+                <p class="text-center mb-4">Be part of ASEAN's leading financial services group and help shape the future of digital banking in the region.</p>
+                <div class="text-center">
+                    <img src="https://www.maybank.com/iwov-resources/v2/images/careers/careers-banner.jpg" alt="Maybank Careers" class="img-fluid mb-3" style="max-height: 250px;">
+                </div>
+                <h4 class="mt-4">Why Join Maybank?</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul>
+                            <li>ASEAN's 4th largest bank by assets</li>
+                            <li>Pioneer in digital banking innovation</n                            <li>Comprehensive learning ecosystem</li>
+                            <li>Global career opportunities</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul>
+                            <li>Competitive remuneration package</li>
+                            <li>Work-life balance initiatives</li>
+                            <li>Employee wellness programs</li>
+                            <li>Community engagement opportunities</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="https://www.maybank.com/en/careers/index.page" target="_blank" class="btn btn-primary me-2">Explore Careers</a>
+                    <a href="https://www.maybank.com/en/careers/graduates/index.page" target="_blank" class="btn btn-outline-primary">Graduate Programs</a>
+                </div>
+                <p class="text-muted small mt-3">Maybank is an equal opportunity employer. We celebrate diversity and are committed to creating an inclusive environment for all employees.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal3" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal3')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.airasia.com/aa/images/brand/airasia-logo-red.png" alt="AirAsia" style="max-height: 60px;" class="mb-3">
+                    <h3 class="text-danger">Now Everyone Can Fly - Including Your Career!</h3>
+                </div>
+                
+                <div class="row align-items-center mb-4">
+                    <div class="col-md-6">
+                        <img src="https://www.airasia.com/aa/images/careers/airasia-cabin-crew.jpg" alt="AirAsia Team" class="img-fluid rounded">
+                    </div>
+                    <div class="col-md-6">
+                        <h4 class="text-danger">Why Join AirAsia?</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-plane text-danger me-2"></i> World's Best Low-Cost Airline (Skytrax)</li>
+                            <li class="mb-2"><i class="fas fa-globe-asia text-danger me-2"></i> 150+ destinations across Asia Pacific</li>
+                            <li class="mb-2"><i class="fas fa-graduation-cap text-danger me-2"></i> Comprehensive training programs</li>
+                            <li class="mb-2"><i class="fas fa-users text-danger me-2"></i> Diverse and inclusive workplace</li>
+                            <li class="mb-2"><i class="fas fa-chart-line text-danger me-2"></i> Fast-track career progression</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-light p-4 rounded mb-4">
+                    <h5 class="text-center mb-3">Our Divisions</h5>
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <i class="fas fa-plane-departure fa-2x text-danger d-block mb-2"></i>
+                            <div>Flight Operations</div>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <i class="fas fa-cogs fa-2x text-danger d-block mb-2"></i>
+                            <div>Engineering</div>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-md-0">
+                            <i class="fas fa-headset fa-2x text-danger d-block mb-2"></i>
+                            <div>Guest Services</div>
+                        </div>
+                        <div class="col-md-3">
+                            <i class="fas fa-laptop-code fa-2x text-danger d-block mb-2"></i>
+                            <div>Digital & IT</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="https://www.airasia.com/en/careers" target="_blank" class="btn btn-danger btn-lg me-2">View Open Positions</a>
+                    <a href="https://www.airasia.com/en/careers/graduates" target="_blank" class="btn btn-outline-danger btn-lg">Graduate Programs</a>
+                </div>
+
+                <p class="text-muted small mt-4 text-center">AirAsia Berhad is an equal opportunity employer that values diversity and inclusion in the workplace.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal4" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal4')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.cimb.com/content/dam/cimb/site-assets/img/logo/cimb-logo-color.svg" alt="CIMB Group" style="max-height: 50px;" class="mb-3">
+                    <h3 style="color: #FF0000;">ASEAN's Leading Universal Bank</h3>
+                    <p class="lead">Be Part of Our Growth Story</p>
+                </div>
+                
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Why Join CIMB?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-check-circle text-danger me-2"></i> ASEAN's 5th largest bank by assets</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-danger me-2"></i> Presence in 16 countries</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-danger me-2"></i> Digital banking leader</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-danger me-2"></i> Comprehensive learning & development</li>
+                                    <li class="mb-2"><i class="fas fa-check-circle text-danger me-2"></i> Diverse and inclusive culture</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-danger">Our Business Areas</h5>
+                                <div class="row">
+                                    <div class="col-6 mb-2">
+                                        <i class="fas fa-university text-danger me-2"></i> Consumer Banking
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <i class="fas fa-briefcase text-danger me-2"></i> Commercial Banking
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <i class="fas fa-chart-line text-danger me-2"></i> Investment Banking
+                                    </div>
+                                    <div class="col-6 mb-2">
+                                        <i class="fas fa-globe-asia text-danger me-2"></i> Islamic Banking
+                                    </div>
+                                    <div class="col-6">
+                                        <i class="fas fa-mobile-alt text-danger me-2"></i> Digital Banking
+                                    </div>
+                                    <div class="col-6">
+                                        <i class="fas fa-shield-alt text-danger me-2"></i> Risk Management
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="d-inline-flex flex-column flex-md-row gap-3">
+                        <a href="https://www.cimb.com/en/careers/working-at-cimb.html" target="_blank" class="btn btn-outline-danger">Working at CIMB</a>
+                        <a href="https://www.cimb.com/en/careers/graduates.html" target="_blank" class="btn btn-outline-danger">Graduate Programs</a>
+                        <a href="https://www.cimb.com/en/careers/opportunities.html" target="_blank" class="btn btn-danger">View Openings</a>
+                    </div>
+                </div>
+
+                <div class="alert alert-light mt-4" style="background-color: #FFF5F5;">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-quote-left text-danger fa-2x me-3"></i>
+                        <div>
+                            <p class="mb-0 fst-italic">At CIMB, we believe in nurturing talent and providing opportunities for growth in a dynamic and inclusive environment.</p>
+                            <footer class="blockquote-footer mt-2">CIMB Group Human Capital</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal5" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal5')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.genting.com/images/genting-logo.png" alt="Genting Group" style="max-height: 60px;" class="mb-3">
+                    <h3 class="text-primary">A World of Exceptional Experiences</h3>
+                    <p class="lead">Join Malaysia's Premier Integrated Resort Operator</p>
+                </div>
+
+                <div class="row align-items-center mb-4">
+                    <div class="col-lg-5">
+                        <img src="https://www.rwgenting.com/media/2023/Resorts-World-Genting-Aerial-View.jpg" alt="Resorts World Genting" class="img-fluid rounded shadow">
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title text-primary">Why Join Genting Group?</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><i class="fas fa-medal text-primary me-2"></i> Global hospitality leader</li>
+                                            <li class="mb-2"><i class="fas fa-globe-asia text-primary me-2"></i> Presence in 6 countries</li>
+                                            <li class="mb-2"><i class="fas fa-award text-primary me-2"></i> Multiple industry awards</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><i class="fas fa-graduation-cap text-primary me-2"></i> Career development</li>
+                                            <li class="mb-2"><i class="fas fa-users text-primary me-2"></i> Diverse workforce</li>
+                                            <li class="mb-2"><i class="fas fa-heart text-primary me-2"></i> Employee wellness</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-hotel fa-3x text-primary mb-3"></i>
+                                <h5>Hospitality</h5>
+                                <p class="small">Luxury resorts, hotels, and theme parks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-utensils fa-3x text-primary mb-3"></i>
+                                <h5>Food & Beverage</h5>
+                                <p class="small">World-class dining experiences</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mountain fa-3x text-primary mb-3"></i>
+                                <h5>Leisure & Entertainment</h5>
+                                <p class="small">Theme parks and attractions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="d-inline-flex flex-column flex-md-row gap-3">
+                        <a href="https://www.genting.com/careers/" target="_blank" class="btn btn-primary">Explore Careers</a>
+                        <a href="https://www.rwgenting.com/careers/" target="_blank" class="btn btn-outline-primary">Resorts World Genting</a>
+                        <a href="https://www.gentingmalaysia.com/careers" target="_blank" class="btn btn-outline-primary">Genting Malaysia</a>
+                    </div>
+                </div>
+
+                <div class="alert alert-light mt-4" style="background-color: #f0f8ff;">
+                    <div class="d-flex">
+                        <i class="fas fa-info-circle fa-2x text-primary me-3"></i>
+                        <div>
+                            <h5 class="alert-heading">Employee Benefits</h5>
+                            <p class="mb-1">• Competitive salary packages • Staff rates at Genting properties • Medical & dental coverage • Training & development programs • Career advancement opportunities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal6" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal6')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.maxis.com.my/content/dam/maxis/en/personal/refresh2022/logo-maxis-red.svg" alt="Maxis" style="max-height: 50px;" class="mb-3">
+                    <h3 style="color: #E20074;">Malaysia's Leading Digital Solutions Provider</h3>
+                    <p class="lead">Empowering a Smarter, Digital Malaysia</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #E20074;">Why Maxis?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-bolt me-2" style="color: #E20074;"></i> Pioneer in 5G technology</li>
+                                    <li class="mb-2"><i class="fas fa-trophy me-2" style="color: #E20074;"></i> Multiple industry awards</li>
+                                    <li class="mb-2"><i class="fas fa-globe-asia me-2" style="color: #E20074;"></i> Regional digital hub</li>
+                                    <li class="mb-2"><i class="fas fa-users me-2" style="color: #E20074;"></i> Diverse & inclusive culture</li>
+                                    <li class="mb-2"><i class="fas fa-graduation-cap me-2" style="color: #E20074;"></i> Continuous learning</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://www.maxis.com.my/content/dam/maxis/en/careers/why-join/career-banner.jpg" alt="Maxis Team" class="img-fluid rounded h-100" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-network-wired fa-3x mb-3" style="color: #E20074;"></i>
+                                <h5>Network & Engineering</h5>
+                                <p class="small">5G, IoT, and network infrastructure</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt fa-3x mb-3" style="color: #E20074;"></i>
+                                <h5>Digital & IT</h5>
+                                <p class="small">Software development & digital solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-headset fa-3x mb-3" style="color: #E20074;"></i>
+                                <h5>Customer Experience</h5>
+                                <p class="small">Service excellence & support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="d-inline-flex flex-column flex-md-row gap-3">
+                        <a href="https://www.maxis.com.my/en/careers/why-join-maxis.html" target="_blank" class="btn" style="background-color: #E20074; color: white;">Why Join Maxis</a>
+                        <a href="https://www.maxis.com.my/en/careers/our-people.html" target="_blank" class="btn btn-outline" style="border-color: #E20074; color: #E20074;">Our People</a>
+                        <a href="https://www.maxis.com.my/en/careers/graduates.html" target="_blank" class="btn btn-outline" style="border-color: #E20074; color: #E20074;">Graduate Program</a>
+                    </div>
+                </div>
+
+                <div class="alert alert-light mt-4" style="background-color: #FFF0F7; border-left: 4px solid #E20074;">
+                    <div class="d-flex">
+                        <i class="fas fa-quote-left fa-2x me-3" style="color: #E20074;"></i>
+                        <div>
+                            <p class="mb-0 fst-italic">At Maxis, we don't just offer jobs, we offer careers that make a difference. Our people are at the heart of everything we do.</p>
+                            <footer class="blockquote-footer mt-2">Maxis Leadership Team</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal7" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal7')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.celcomdigi.com/sites/default/files/2023-11/celcomdigi-logo.png" alt="CelcomDigi" style="max-height: 50px;" class="mb-3">
+                    <h3 style="color: #00A9E0;">Malaysia's Newest & Strongest Network</h3>
+                    <p class="lead">Building Malaysia's Digital Future Together</p>
+                </div>
+
+                <div class="row align-items-center mb-4">
+                    <div class="col-lg-7">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #00A9E0;">Why Join CelcomDigi?</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><i class="fas fa-signal me-2" style="color: #00A9E0;"></i> Malaysia's widest 5G network</li>
+                                            <li class="mb-2"><i class="fas fa-users me-2" style="color: #00A9E0;"></i> 20+ million customers</li>
+                                            <li class="mb-2"><i class="fas fa-rocket me-2" style="color: #00A9E0;"></i> Digital innovation leader</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ul class="list-unstyled">
+                                            <li class="mb-2"><i class="fas fa-graduation-cap me-2" style="color: #00A9E0;"></i> Learning & growth</li>
+                                            <li class="mb-2"><i class="fas fa-heart me-2" style="color: #00A9E0;"></i> Work-life balance</li>
+                                            <li class="mb-2"><i class="fas fa-trophy me-2" style="color: #00A9E0;"></i> Industry recognition</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mt-4 mt-lg-0">
+                        <img src="https://www.celcomdigi.com/sites/default/files/2023-11/celcomdigi-about.jpg" alt="CelcomDigi Team" class="img-fluid rounded">
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-network-wired fa-3x mb-3" style="color: #00A9E0;"></i>
+                                <h5>Network & Technology</h5>
+                                <p class="small">5G, IoT, and infrastructure</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-mobile-alt fa-3x mb-3" style="color: #00A9E0;"></i>
+                                <h5>Digital Innovation</h5>
+                                <p class="small">Apps and digital services</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-user-tie fa-3x mb-3" style="color: #00A9E0;"></i>
+                                <h5>Business Solutions</h5>
+                                <p class="small">Enterprise services</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="d-inline-flex flex-column flex-md-row gap-3">
+                        <a href="https://www.celcomdigi.com/careers" target="_blank" class="btn" style="background-color: #00A9E0; color: white;">View Open Positions</a>
+                        <a href="https://www.celcomdigi.com/graduates" target="_blank" class="btn btn-outline" style="border-color: #00A9E0; color: #00A9E0;">Graduate Program</a>
+                        <a href="https://www.celcomdigi.com/internships" target="_blank" class="btn btn-outline" style="border-color: #00A9E0; color: #00A9E0;">Internships</a>
+                    </div>
+                </div>
+
+                <div class="alert alert-light mt-4" style="background-color: #F0FAFF; border-left: 4px solid #00A9E0;">
+                    <div class="d-flex">
+                        <i class="fas fa-quote-left fa-2x me-3" style="color: #00A9E0;"></i>
+                        <div>
+                            <p class="mb-0 fst-italic">At CelcomDigi, we're not just building networks, we're building connections that matter. Join us in shaping Malaysia's digital future.</p>
+                            <footer class="blockquote-footer mt-2">CelcomDigi Leadership</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal8" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal8')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.sunway.com.my/wp-content/themes/sunway/assets/images/logo.svg" alt="Sunway Group" style="max-height: 50px;" class="mb-3">
+                    <h3 style="color: #0066B3;">Building Sustainable Futures</h3>
+                    <p class="lead">A Leading Malaysian Conglomerate with a Heart</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #0066B3;">Why Join Sunway Group?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-building me-2" style="color: #0066B3;"></i> 13 business divisions across property, healthcare, education, and more</li>
+                                    <li class="mb-2"><i class="fas fa-globe-asia me-2" style="color: #0066B3;"></i> Presence in over 50 locations worldwide</li>
+                                    <li class="mb-2"><i class="fas fa-leaf me-2" style="color: #0066B3;"></i> Sustainability and social responsibility focus</li>
+                                    <li class="mb-2"><i class="fas fa-graduation-cap me-2" style="color: #0066B3;"></i> Comprehensive learning and development</li>
+                                    <li class="mb-2"><i class="fas fa-heart me-2" style="color: #0066B3;"></i> Strong emphasis on work-life balance</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="https://www.sunway.com.my/wp-content/uploads/2023/05/sunway-city-kuala-lumpur-aerial-view.jpg" alt="Sunway City Kuala Lumpur" class="img-fluid rounded h-100" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-building fa-3x mb-3" style="color: #0066B3;"></i>
+                                <h5>Property & Construction</h5>
+                                <p class="small">Sustainable urban development and iconic landmarks</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-heartbeat fa-3x mb-3" style="color: #0066B3;"></i>
+                                <h5>Healthcare</h5>
+                                <p class="small">Leading private healthcare provider in Malaysia</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-graduation-cap fa-3x mb-3" style="color: #0066B3;"></i>
+                                <h5>Education</h5>
+                                <p class="small">Premier education institutions and research</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="d-inline-flex flex-column flex-md-row gap-3">
+                        <a href="https://www.sunway.com.my/careers" target="_blank" class="btn" style="background-color: #0066B3; color: white;">Explore Careers</a>
+                        <a href="https://www.sunway.com.my/graduates" target="_blank" class="btn btn-outline" style="border-color: #0066B3; color: #0066B3;">Graduate Program</a>
+                        <a href="https://www.sunway.com.my/internships" target="_blank" class="btn btn-outline" style="border-color: #0066B3; color: #0066B3;">Internships</a>
+                    </div>
+                </div>
+
+                <div class="alert alert-light mt-4" style="background-color: #F0F7FF; border-left: 4px solid #0066B3;">
+                    <div class="d-flex">
+                        <i class="fas fa-quote-left fa-2x me-3" style="color: #0066B3;"></i>
+                        <div>
+                            <p class="mb-0 fst-italic">At Sunway, we believe in building not just properties, but communities and futures. Join us in making a meaningful impact.</p>
+                            <footer class="blockquote-footer mt-2">Sunway Group Leadership</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal9" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal9')">&times;</span>
+            <div class="ad-image-container">
+                <div class="text-center mb-4">
+                    <img src="https://www.topglove.com/images/logo.png" alt="Top Glove" style="max-height: 50px;" class="mb-3">
+                    <h3 style="color: #E31937;">The World's Largest Manufacturer of Gloves</h3>
+                    <p class="lead">Touching Lives, Delivering the Safest, Best Quality Gloves</p>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-lg-7">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title" style="color: #E31937;">Why Join Top Glove?</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2"><i class="fas fa-globe me-2" style="color: #E31937;"></i> World's largest rubber glove manufacturer</li>
+                                    <li class="mb-2"><i class="fas fa-industry me-2" style="color: #E31937;"></i> 48 manufacturing plants across 7 countries</li>
+                                    <li class="mb-2"><i class="fas fa-flag me-2" style="color: #E31937;"></i> Exports to 195 countries worldwide</li>
+                                    <li class="mb-2"><i class="fas fa-medal me-2" style="color: #E31937;"></i> Multiple industry awards and recognitions</li>
+                                    <li class="mb-2"><i class="fas fa-heartbeat me-2" style="color: #E31937;"></i> Essential healthcare products manufacturer</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 mt-4 mt-lg-0">
+                        <img src="https://www.topglove.com/img/abt-overview-1.jpg" alt="Top Glove Manufacturing" class="img-fluid rounded h-100" style="object-fit: cover;">
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-industry fa-3x mb-3" style="color: #E31937;"></i>
+                                <h5>Manufacturing</h5>
+                                <p class="small">State-of-the-art production facilities</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-flask fa-3x mb-3" style="color: #E31937;"></i>
+                                <h5>R&D</h5>
+                                <p class="small">Innovation and product development</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="fas fa-truck fa-3x mb-3" style="color: #E31937;"></i>
+                                <h5>Supply Chain</h5>
+                                <p class="small">Global logistics and distribution</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <div class="d-inline-flex flex-column flex-md-row gap-3">
+                        <a href="https://careers.topglove.com/" target="_blank" class="btn" style="background-color: #E31937; color: white;">View Job Openings</a>
+                        <a href="https://www.topglove.com/careers/graduates/" target="_blank" class="btn btn-outline" style="border-color: #E31937; color: #E31937;">Graduate Program</a>
+                        <a href="https://www.topglove.com/careers/internship/" target="_blank" class="btn btn-outline" style="border-color: #E31937; color: #E31937;">Internships</a>
+                    </div>
+                </div>
+
+                <div class="alert alert-light mt-4" style="background-color: #FFEEF0; border-left: 4px solid #E31937;">
+                    <div class="d-flex">
+                        <i class="fas fa-quote-left fa-2x me-3" style="color: #E31937;"></i>
+                        <div>
+                            <p class="mb-0 fst-italic">At Top Glove, we don't just make gloves, we protect lives. Join our team and be part of a company that makes a real difference in global healthcare.</p>
+                            <footer class="blockquote-footer mt-2">Top Glove Management</footer>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="adModal10" class="modal-ad">
+        <div class="modal-content-ad">
+            <span class="close-ad" onclick="closeAdModal('adModal10')">&times;</span>
+            <div class="ad-image-container">
+                <img src="ads/deloitte-ad.jpg" alt="Deloitte Australia Job Advertisement" class="ad-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Edulang Hub. All rights reserved.</p>
+            <div class="mt-3 p-2 bg-white rounded">
+                <p class="mb-0 text-dark fw-bold">Last Updated: <span class="text-primary">July 5, 2025</span></p>
+                <p class="small text-muted mt-1">Job listings are updated regularly</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function openAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+        }
+        
+        function closeAdModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+        
+        // Close modal when clicking outside the content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal-ad') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
